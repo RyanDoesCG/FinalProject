@@ -6,10 +6,16 @@
 //  Copyright © 2016 Dissertation. All rights reserved.
 //
 
+// Sphere: http://stackoverflow.com/questions/7687148/drawing-sphere-in-opengl-without-using-glusphere
+
+#include "GameObject.hpp"
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+
+    while (false) {
+        
+    }
+
     return 0;
 }

@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		45C1178A1D77FF6200FE98A9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117891D77FF6200FE98A9 /* main.cpp */; };
+		45C117951D78005500FE98A9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117941D78005500FE98A9 /* OpenGL.framework */; };
+		45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1179F1D7805E700FE98A9 /* libGLEW.dylib */; };
+		45C117A21D7805E700FE98A9 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117A01D7805E700FE98A9 /* SDL2.framework */; };
+		45C117A71D780C1A00FE98A9 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117A51D780C1A00FE98A9 /* GameObject.cpp */; };
+		45C117AA1D780C2F00FE98A9 /* GraphicsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117A81D780C2F00FE98A9 /* GraphicsComponent.cpp */; };
+		45C117AD1D780C3D00FE98A9 /* PhysicsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117AB1D780C3D00FE98A9 /* PhysicsComponent.cpp */; };
+		45C117B11D78181000FE98A9 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117AF1D78181000FE98A9 /* Mesh.cpp */; };
+		45C117B41D78186C00FE98A9 /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117B21D78186C00FE98A9 /* Vertex.cpp */; };
+		45C117B81D78202B00FE98A9 /* PlanetGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117B61D78202B00FE98A9 /* PlanetGenerator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +34,26 @@
 /* Begin PBXFileReference section */
 		45C117861D77FF6200FE98A9 /* Tribes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tribes; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C117891D77FF6200FE98A9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
+		45C117A01D7805E700FE98A9 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		45C117A31D78084800FE98A9 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		45C117A41D78099D00FE98A9 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
+		45C117A51D780C1A00FE98A9 /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
+		45C117A61D780C1A00FE98A9 /* GameObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
+		45C117A81D780C2F00FE98A9 /* GraphicsComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsComponent.cpp; sourceTree = "<group>"; };
+		45C117A91D780C2F00FE98A9 /* GraphicsComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GraphicsComponent.hpp; sourceTree = "<group>"; };
+		45C117AB1D780C3D00FE98A9 /* PhysicsComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsComponent.cpp; sourceTree = "<group>"; };
+		45C117AC1D780C3D00FE98A9 /* PhysicsComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhysicsComponent.hpp; sourceTree = "<group>"; };
+		45C117AE1D78132E00FE98A9 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Transform.hpp; sourceTree = "<group>"; };
+		45C117AF1D78181000FE98A9 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		45C117B01D78181000FE98A9 /* Mesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
+		45C117B21D78186C00FE98A9 /* Vertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vertex.cpp; sourceTree = "<group>"; };
+		45C117B31D78186C00FE98A9 /* Vertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vertex.hpp; sourceTree = "<group>"; };
+		45C117B51D7818F900FE98A9 /* glew */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glew; sourceTree = "<group>"; };
+		45C117B61D78202B00FE98A9 /* PlanetGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlanetGenerator.cpp; sourceTree = "<group>"; };
+		45C117B71D78202B00FE98A9 /* PlanetGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlanetGenerator.hpp; sourceTree = "<group>"; };
+		45C117BA1D78250000FE98A9 /* Maths.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Maths.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +61,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */,
+				45C117A21D7805E700FE98A9 /* SDL2.framework in Frameworks */,
+				45C117951D78005500FE98A9 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +75,7 @@
 			children = (
 				45C117881D77FF6200FE98A9 /* Tribes */,
 				45C117871D77FF6200FE98A9 /* Products */,
+				45C117931D78005500FE98A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +90,36 @@
 		45C117881D77FF6200FE98A9 /* Tribes */ = {
 			isa = PBXGroup;
 			children = (
+				45C117A31D78084800FE98A9 /* Assets */,
+				45C117B51D7818F900FE98A9 /* glew */,
+				45C117A41D78099D00FE98A9 /* glm */,
 				45C117891D77FF6200FE98A9 /* main.cpp */,
+				45C117A51D780C1A00FE98A9 /* GameObject.cpp */,
+				45C117A61D780C1A00FE98A9 /* GameObject.hpp */,
+				45C117A81D780C2F00FE98A9 /* GraphicsComponent.cpp */,
+				45C117A91D780C2F00FE98A9 /* GraphicsComponent.hpp */,
+				45C117AB1D780C3D00FE98A9 /* PhysicsComponent.cpp */,
+				45C117AC1D780C3D00FE98A9 /* PhysicsComponent.hpp */,
+				45C117B61D78202B00FE98A9 /* PlanetGenerator.cpp */,
+				45C117B71D78202B00FE98A9 /* PlanetGenerator.hpp */,
+				45C117AE1D78132E00FE98A9 /* Transform.hpp */,
+				45C117AF1D78181000FE98A9 /* Mesh.cpp */,
+				45C117B01D78181000FE98A9 /* Mesh.hpp */,
+				45C117B21D78186C00FE98A9 /* Vertex.cpp */,
+				45C117B31D78186C00FE98A9 /* Vertex.hpp */,
+				45C117BA1D78250000FE98A9 /* Maths.h */,
 			);
 			path = Tribes;
+			sourceTree = "<group>";
+		};
+		45C117931D78005500FE98A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45C1179F1D7805E700FE98A9 /* libGLEW.dylib */,
+				45C117A01D7805E700FE98A9 /* SDL2.framework */,
+				45C117941D78005500FE98A9 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45C117A71D780C1A00FE98A9 /* GameObject.cpp in Sources */,
 				45C1178A1D77FF6200FE98A9 /* main.cpp in Sources */,
+				45C117B81D78202B00FE98A9 /* PlanetGenerator.cpp in Sources */,
+				45C117AA1D780C2F00FE98A9 /* GraphicsComponent.cpp in Sources */,
+				45C117B41D78186C00FE98A9 /* Vertex.cpp in Sources */,
+				45C117AD1D780C3D00FE98A9 /* PhysicsComponent.cpp in Sources */,
+				45C117B11D78181000FE98A9 /* Mesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +278,14 @@
 		45C1178E1D77FF6200FE98A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -219,6 +293,14 @@
 		45C1178F1D77FF6200FE98A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
