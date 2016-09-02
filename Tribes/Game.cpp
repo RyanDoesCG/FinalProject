@@ -1,17 +1,21 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  PlanetGenerator.cpp
+ *  Game.cpp
  *  Tribes
  *
- *  Created by ryan needham on 01/09/2016.
+ *  Created by ryan needham on 02/09/2016.
  *    Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "PlanetGenerator.hpp"
+#include "Game.hpp"
 
-PlanetGenerator::PlanetGenerator  () {
+Game::Game  () {
 
 }
 
-PlanetGenerator::~PlanetGenerator () {
+Game::~Game () {
+
+}
+
+void Game::begin() {
 
 }

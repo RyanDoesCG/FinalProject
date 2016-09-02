@@ -26,7 +26,7 @@ class GameObject {
         void render ();
 
     private:
-        Mesh*      mesh;
+        Mesh* mesh;
         glm::vec3* position;
         Transform* transform;
     

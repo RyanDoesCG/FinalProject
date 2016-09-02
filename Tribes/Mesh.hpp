@@ -36,11 +36,10 @@ class Mesh {
         ~Mesh ();
     
         void draw ();
+        void initMesh (const IndexedModel& model);
     
     private:
         Mesh (const Mesh& other);
-    
-        void initMesh (const IndexedModel& model);
     
         enum {
             POSITION_VB,
