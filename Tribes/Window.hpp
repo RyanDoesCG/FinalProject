@@ -3,7 +3,7 @@
  *  Tribes
  *
  *  Created by ryan needham on 01/09/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Window_hpp
@@ -36,6 +36,7 @@ class Window {
     
         int initSDL();
         int initGLEW();
+
 };
 
 #endif /* Window_hpp */

@@ -3,7 +3,7 @@
  *  Tribes
  *
  *  Created by ryan needham on 01/09/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "GLEW/glew.h"
@@ -11,25 +11,24 @@
 #include <Random>
 
 Window::Window  (int width, int height, const std::string& title) {
-    glewExperimental = GL_TRUE;  // Mesh Vertex Array initialisation doesn't work without this flag
+    glewExperimental = GL_TRUE; // Mesh Vertex Array initialisation doesn't work without this flag
 
-    this->width = width;
+    this->width  = width;
     this->height = height;
-    this->title = title;
+    this->title  = title;
 
-    if (initSDL()) std::cout << "SDL initialisation failure\n";
+    if (initSDL())  std::cout << "SDL initialisation failure\n";
     if (initGLEW()) std::cout << "GLEW initialisation failure\n";
     
-    clearColor = new glm::vec4(0.3, 0.7, 0.6, 1);
-    
-    open = true;
+    this->clearColor = new glm::vec4(0.3, 0.7, 0.6, 1);
+    this->open = true;
     
     // improve and replace...
 //    srand(static_cast<unsigned int>(time(0)));
 //    clearColor = new glm::vec4 (
-//        (float)(random() % 100) / rand(),
-//        (float)(random() % 100) / rand(),
-//        (float)(random() % 100) / rand(),
+//        (float)(random() - 1),
+//        (float)(random() - 1),
+//        (float)(random() - 1),
 //        1
 //    );
 }
@@ -45,8 +44,7 @@ Window::~Window () {
 
 int Window::initSDL () {
     // start SDL Subsystem
-    if (SDL_Init (SDL_INIT_EVERYTHING))
-        return 1;
+    if (SDL_Init (SDL_INIT_EVERYTHING)) return 1;
     
     // set 32-bit colour buffer
     SDL_GL_SetAttribute (SDL_GL_RED_SIZE,    8);
@@ -82,8 +80,7 @@ int Window::initGLEW() {
     // initialise GLEW
     GLenum status = glewInit();
     
-    if (status!=GLEW_OK)
-        return 1;
+    if (status!=GLEW_OK) return 1;
 
     // face culling
     glEnable   (GL_CULL_FACE);

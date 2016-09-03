@@ -9,8 +9,6 @@
 #ifndef GameObject_hpp
 #define GameObject_hpp
 
-#include "GraphicsComponent.hpp"
-#include "PhysicsComponent.hpp"
 #include "Transform.hpp"
 #include "glm/vec3.hpp"
 #include "Mesh.hpp"
@@ -26,12 +24,8 @@ class GameObject {
         void render ();
 
     private:
-        Mesh* mesh;
         glm::vec3* position;
         Transform* transform;
-    
-        GraphicsComponent* graphicsComponent;
-        PhysicsComponent*  physicsComponent;
 
 };
 

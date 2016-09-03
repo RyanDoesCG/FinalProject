@@ -9,17 +9,11 @@
 #include "GameObject.hpp"
 
 GameObject::GameObject  () {
-
+    position = new glm::vec3(0, 0, 0);
+    transform = new Transform();
 }
 
 GameObject::~GameObject () {
-
-}
-
-void GameObject::update () {
-    this->physicsComponent->update();
-}
-
-void GameObject::render () {
-    this->graphicsComponent->render();
+    free(position);
+    free(transform);
 }

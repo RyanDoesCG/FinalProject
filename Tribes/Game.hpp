@@ -3,21 +3,21 @@
  *  Tribes
  *
  *  Created by ryan needham on 02/09/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Game_hpp
 #define Game_hpp
 
 #include "InputHandler.hpp"
+#include "GameObject.hpp"
 #include "Window.hpp"
-#include <iostream>
 
-enum State {
-    RUNNING,
-    PAUSED,
-    ENDED
-};
+#include <iostream>
+#include <vector>
+
+#define SCREEN_WIDTH  720
+#define SCREEN_HEIGHT 368
 
 class Game {
     public:
@@ -25,11 +25,20 @@ class Game {
         ~Game ();
     
         void begin ();
+        void end ();
 
     private:
+        enum State {
+            RUNNING,
+            PAUSED,
+            ENDED
+        };
+    
         InputHandler* input;
         Window* window;
         State state;
+    
+        std::vector<GameObject*> objectPool;
 };
 
 #endif /* Game_hpp */
