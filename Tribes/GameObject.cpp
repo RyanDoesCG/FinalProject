@@ -36,7 +36,7 @@ void GameObject::update (float time) {
 
 void GameObject::render () {
     if (graphics) graphics->render();
-    else std::cout << "No Physics Module" << "\n";
+    else std::cout << "No Graphics Module" << "\n";
 }
 
 void GameObject::setGraphics(GraphicsComponent* graphics) {

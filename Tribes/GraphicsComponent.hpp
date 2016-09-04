@@ -16,10 +16,9 @@
 
 class GraphicsComponent {
     public:
-        virtual void render ();
-    
-    private:
+        void render ();
         Mesh* mesh;
+        Shader* shader;
 };
 
 #endif /* GraphicsComponent_hpp */

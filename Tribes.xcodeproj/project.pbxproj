@@ -10,6 +10,7 @@
 		4505AB511D7A1D9E00AA1987 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4505AB4F1D7A1D9E00AA1987 /* Game.cpp */; };
 		4513EAEB1D79B07C008FE329 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4513EAE91D79B07C008FE329 /* Shader.cpp */; };
 		45836B261D7C66C400F17DD1 /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45836B251D7C66C400F17DD1 /* Biome.cpp */; };
+		45A2119E1D7C904F002C5674 /* PlanetGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45A2119C1D7C904F002C5674 /* PlanetGraphics.cpp */; };
 		45C1178A1D77FF6200FE98A9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117891D77FF6200FE98A9 /* main.cpp */; };
 		45C117951D78005500FE98A9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117941D78005500FE98A9 /* OpenGL.framework */; };
 		45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1179F1D7805E700FE98A9 /* libGLEW.dylib */; };
@@ -40,6 +41,8 @@
 		4513EAEA1D79B07C008FE329 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		45315AE01D7C58A8000BC397 /* Biome.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Biome.hpp; sourceTree = "<group>"; };
 		45836B251D7C66C400F17DD1 /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Biome.cpp; sourceTree = "<group>"; };
+		45A2119C1D7C904F002C5674 /* PlanetGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlanetGraphics.cpp; sourceTree = "<group>"; };
+		45A2119D1D7C904F002C5674 /* PlanetGraphics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlanetGraphics.hpp; sourceTree = "<group>"; };
 		45C117861D77FF6200FE98A9 /* Tribes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tribes; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C117891D77FF6200FE98A9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -104,9 +107,11 @@
 				45C117891D77FF6200FE98A9 /* main.cpp */,
 				45C117A51D780C1A00FE98A9 /* GameObject.cpp */,
 				45C117A61D780C1A00FE98A9 /* GameObject.hpp */,
-				45315AE01D7C58A8000BC397 /* Biome.hpp */,
 				45836B251D7C66C400F17DD1 /* Biome.cpp */,
+				45315AE01D7C58A8000BC397 /* Biome.hpp */,
 				45EA1AF11D7C0EA400DEA56C /* GraphicsComponent.hpp */,
+				45A2119C1D7C904F002C5674 /* PlanetGraphics.cpp */,
+				45A2119D1D7C904F002C5674 /* PlanetGraphics.hpp */,
 				45EA1AEE1D7C0E4200DEA56C /* PhysicsComponent.hpp */,
 				4505AB4F1D7A1D9E00AA1987 /* Game.cpp */,
 				4505AB501D7A1D9E00AA1987 /* Game.hpp */,
@@ -199,6 +204,7 @@
 				4513EAEB1D79B07C008FE329 /* Shader.cpp in Sources */,
 				45C117B41D78186C00FE98A9 /* Vertex.cpp in Sources */,
 				45C117B11D78181000FE98A9 /* Mesh.cpp in Sources */,
+				45A2119E1D7C904F002C5674 /* PlanetGraphics.cpp in Sources */,
 				4505AB511D7A1D9E00AA1987 /* Game.cpp in Sources */,
 				45836B261D7C66C400F17DD1 /* Biome.cpp in Sources */,
 				45EA1AEC1D7B6C3E00DEA56C /* InputHandler.cpp in Sources */,

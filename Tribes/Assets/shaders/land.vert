@@ -1,4 +1,4 @@
-#version 430
+#version 120
 
 // attributes come from mesh
 attribute vec3  position;
@@ -12,6 +12,13 @@ varying   vec3  normal_vary;
 // uniform are shared state between GPU/CPU
 uniform   mat4  transform;
 
+/** 
+ *  basicShader.vert
+ *
+ *  applies vertex information from the passed mesh attributes
+ *  and transform data from the uniform before passing the 
+ *  texture coordinates and normal data to the fragment shader.
+ */
 void main (void) {
     gl_Position  = transform * vec4(position, 1.0);
     
