@@ -8,11 +8,14 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "Biome.hpp"
 
-Biome::Biome  () {
+Biome::Biome () {
     srand(static_cast<unsigned int>(time(0)));
-    this->weather = static_cast<Weather>(rand() % (WEATHER_MAX) + 1);
-    this->landscape = static_cast<Landscape>(rand() % (LANDSCAPE_MAX) + 1);
-    this->vegitation = static_cast<Vegitation>(rand() % (VEGITATION_MAX) + 1);
+    this->weather = static_cast<Weather>(rand() % (WEATHER_MAX));
+    this->landscape = static_cast<Landscape>(rand() % (LANDSCAPE_MAX));
+    this->vegitation = static_cast<Vegitation>(rand() % (VEGITATION_MAX));
+    
+    // meh...
+    this->hospitability = (weather + landscape + vegitation) * 10;
 }
 
 
@@ -20,20 +23,28 @@ Biome::~Biome () {
 
 }
 
+inline Weather Biome::getWeatherType () { return weather; }
+inline Landscape Biome::getLandscapeType () { return landscape; }
+inline Vegitation Biome::getVegitationType () { return vegitation; }
+
 std::string Biome::toString() {
     std::string output = "Weather: ";
-    if      (weather == 1) output += "Snow\n";
-    else if (weather == 2) output += "Desert\n";
-    else if (weather == 3) output += "Normal\n";
+    if      (weather == Snow) output += "Snow\n";
+    else if (weather == Desert) output += "Desert\n";
+    else if (weather == Normal) output += "Normal\n";
     
     output += "Landscape: ";
-    if      (landscape == 1) output += "Mountainous\n";
-    else if (landscape == 2) output += "Flatlands\n";
-    else if (landscape == 3) output += "Hilly\n";
+    if      (landscape == Mountainous) output += "Mountainous\n";
+    else if (landscape == Flatlands) output += "Flatlands\n";
+    else if (landscape == Hilly) output += "Hilly\n";
     
     output += "Vegitation: ";
-    if      (vegitation == 1) output += "Plentiful\n";
-    else if (vegitation == 2) output += "Moderate\n";
-    else if (vegitation == 3) output += "Sparse\n";
+    if      (vegitation == Plentiful) output += "Plentiful\n";
+    else if (vegitation == Moderate) output += "Moderate\n";
+    else if (vegitation == Sparse) output += "Sparse\n";
+    
+    output += "Hospitability: ";
+    output += std::to_string(hospitability);
+    output += "\n";
     return output;
 }

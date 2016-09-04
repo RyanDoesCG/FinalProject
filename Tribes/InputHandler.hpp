@@ -6,7 +6,6 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
 #ifndef InputHandler_hpp
 #define InputHandler_hpp
 
@@ -14,7 +13,6 @@
 #include <iostream>
 
 class Game;
-
 class InputHandler {
     public:
         InputHandler  (Game* game);

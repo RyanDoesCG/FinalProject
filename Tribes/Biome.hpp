@@ -5,31 +5,38 @@
 //  Created by ryan needham on 04/09/2016.
 //  Copyright © 2016 Dissertation. All rights reserved.
 //
-
 #ifndef Biome_hpp
 #define Biome_hpp
 
 #include <iostream>
 
 enum Weather {
-    Snow,
     Desert,
+    Snow,
     Normal,
     WEATHER_MAX
 };
 
 enum Landscape {
     Mountainous,
-    Flatlands,
     Hilly,
+    Flatlands,
     LANDSCAPE_MAX
 };
 
 enum Vegitation {
-    Plentiful,
-    Moderate,
     Sparse,
+    Moderate,
+    Plentiful,
     VEGITATION_MAX
+};
+
+// exp.
+enum Resources {
+    Gold,
+    Iron,
+    Steel,
+    Alluminium
 };
 
 class Biome {
@@ -37,13 +44,15 @@ class Biome {
         Biome();
         ~Biome();
     
-        inline Weather getWeatherType () { return weather; }
-        inline Landscape getLandscapeType () { return landscape; }
-        inline Vegitation getVegitationType () { return vegitation; }
+        inline Weather getWeatherType ();
+        inline Landscape getLandscapeType ();
+        inline Vegitation getVegitationType ();
     
         std::string toString();
     
     private:
+        int hospitability;
+    
         Weather weather;
         Landscape landscape;
         Vegitation vegitation;

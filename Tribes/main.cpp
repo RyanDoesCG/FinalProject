@@ -19,10 +19,9 @@
 #include "Biome.hpp"
 
 int main(int argc, const char * argv[]) {
-/*    Game* game = new Game();
+    Game* game = new Game();
     game->begin();
     free(game);
-*/
     Biome* test = new Biome();
     
     std::cout << "test --\n";

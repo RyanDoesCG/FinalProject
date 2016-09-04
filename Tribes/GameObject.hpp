@@ -19,10 +19,7 @@
 
 class GameObject {
     public:
-        GameObject (
-            GraphicsComponent* graphics,
-            PhysicsComponent* physics
-        );
+        GameObject (GraphicsComponent* graphics, PhysicsComponent* physics);
     
         GameObject  ();
         ~GameObject ();

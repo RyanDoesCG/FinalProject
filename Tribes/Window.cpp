@@ -25,24 +25,19 @@ Window::Window  (int width, int height, const std::string& title) {
     float r = (rand() % 100) / 100.0f;
     float g = (rand() % 100) / 100.0f;
     float b = (rand() % 100) / 100.0f;
+    float a = 0;
     std::cout <<  "r: " << r
               << " g: " << g
               << " b: " << b
               << "\n\n";
-    clearColor = new glm::vec4 (
-        r,
-        g,
-        b,
-        1
-    );
+    clearColor = new glm::vec4 (r,g,b,a);
 }
 
 Window::~Window () {
-    // delete stuff
+    // delete context and window before
+    // quitting SDL subsystems
     SDL_GL_DeleteContext (glContext);
     SDL_DestroyWindow    (window);
-    
-    // quit SDL
     SDL_Quit();
 }
 

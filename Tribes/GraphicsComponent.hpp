@@ -19,6 +19,7 @@ class GraphicsComponent {
         void render ();
         Mesh* mesh;
         Shader* shader;
+    private:
 };
 
 #endif /* GraphicsComponent_hpp */
