@@ -9,6 +9,8 @@
 #ifndef GameObject_hpp
 #define GameObject_hpp
 
+#include "GraphicsComponent.hpp"
+#include "PhysicsComponent.hpp"
 #include "Transform.hpp"
 #include "glm/vec3.hpp"
 #include "Mesh.hpp"
@@ -17,15 +19,26 @@
 
 class GameObject {
     public:
+        GameObject (
+            GraphicsComponent* graphics,
+            PhysicsComponent* physics
+        );
+    
         GameObject  ();
         ~GameObject ();
     
-        void update ();
+        void update (float time);
         void render ();
+    
+        void setGraphics(GraphicsComponent* graphics);
+        void setPhysics(PhysicsComponent* physics);
 
     private:
         glm::vec3* position;
         Transform* transform;
+    
+        GraphicsComponent* graphics;
+        PhysicsComponent* physics;
 
 };
 

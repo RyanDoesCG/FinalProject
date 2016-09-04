@@ -9,7 +9,7 @@
 #include "Game.hpp"
 
 Game::Game() {
-    input = new InputHandler(this);
+    input  = new InputHandler(this);
     window = new Window(
         SCREEN_WIDTH,
         SCREEN_HEIGHT,
@@ -37,4 +37,11 @@ void Game::begin() {
 
 void Game::end() {
     state = ENDED;
+}
+
+void Game::pause() {
+    // toggle pause on and off
+    if (state == PAUSED) state = RUNNING;
+    else if (state == RUNNING) state = PAUSED;
+    std::cout << "pause msg received\n";
 }

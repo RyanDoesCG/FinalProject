@@ -20,17 +20,21 @@ Window::Window  (int width, int height, const std::string& title) {
     if (initSDL())  std::cout << "SDL initialisation failure\n";
     if (initGLEW()) std::cout << "GLEW initialisation failure\n";
     
-    this->clearColor = new glm::vec4(0.3, 0.7, 0.6, 1);
-    this->open = true;
-    
-    // improve and replace...
-//    srand(static_cast<unsigned int>(time(0)));
-//    clearColor = new glm::vec4 (
-//        (float)(random() - 1),
-//        (float)(random() - 1),
-//        (float)(random() - 1),
-//        1
-//    );
+    // apply some rules to this for a consistent vibe
+    srand(static_cast<unsigned int>(time(0)));
+    float r = (rand() % 100) / 100.0f;
+    float g = (rand() % 100) / 100.0f;
+    float b = (rand() % 100) / 100.0f;
+    std::cout <<  "r: " << r
+              << " g: " << g
+              << " b: " << b
+              << "\n\n";
+    clearColor = new glm::vec4 (
+        r,
+        g,
+        b,
+        1
+    );
 }
 
 Window::~Window () {

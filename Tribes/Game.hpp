@@ -26,6 +26,8 @@ class Game {
     
         void begin ();
         void end ();
+    
+        void pause();
 
     private:
         enum State {

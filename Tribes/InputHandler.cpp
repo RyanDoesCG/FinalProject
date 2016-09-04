@@ -24,6 +24,10 @@ void InputHandler::checkInput() {
                 std::cout << "x: " << event.motion.x << "\n";
                 std::cout << "y: " << event.motion.y << "\n\n";
                 break;
+            case SDL_KEYDOWN:
+                if (event.key.keysym.sym == SDLK_ESCAPE)
+                    game->pause();
+                break;
             case SDL_QUIT:
                 game->end();
                 break;

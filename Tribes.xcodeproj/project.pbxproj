@@ -37,6 +37,7 @@
 		4505AB501D7A1D9E00AA1987 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		4513EAE91D79B07C008FE329 /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		4513EAEA1D79B07C008FE329 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		45315AE01D7C58A8000BC397 /* Biome.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Biome.hpp; sourceTree = "<group>"; };
 		45C117861D77FF6200FE98A9 /* Tribes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tribes; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C117891D77FF6200FE98A9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -57,6 +58,8 @@
 		45C117BC1D788CBC00FE98A9 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
 		45CAB16B1D7AD269006A0018 /* InputHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputHandler.hpp; sourceTree = "<group>"; };
 		45EA1AEB1D7B6C3E00DEA56C /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
+		45EA1AEE1D7C0E4200DEA56C /* PhysicsComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhysicsComponent.hpp; sourceTree = "<group>"; };
+		45EA1AF11D7C0EA400DEA56C /* GraphicsComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GraphicsComponent.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,9 @@
 				45C117891D77FF6200FE98A9 /* main.cpp */,
 				45C117A51D780C1A00FE98A9 /* GameObject.cpp */,
 				45C117A61D780C1A00FE98A9 /* GameObject.hpp */,
+				45315AE01D7C58A8000BC397 /* Biome.hpp */,
+				45EA1AF11D7C0EA400DEA56C /* GraphicsComponent.hpp */,
+				45EA1AEE1D7C0E4200DEA56C /* PhysicsComponent.hpp */,
 				4505AB4F1D7A1D9E00AA1987 /* Game.cpp */,
 				4505AB501D7A1D9E00AA1987 /* Game.hpp */,
 				4513EAE91D79B07C008FE329 /* Shader.cpp */,

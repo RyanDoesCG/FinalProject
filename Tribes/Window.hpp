@@ -20,7 +20,6 @@ class Window {
     
         void update ();
         void clear  ();
-        void close  ();
     
         bool open;
 

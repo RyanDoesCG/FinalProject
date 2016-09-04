@@ -1,10 +1,11 @@
-//
-//  InputHandler.hpp
-//  Tribes
-//
-//  Created by ryan needham on 03/09/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  InputHandler.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 03/09/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef InputHandler_hpp
 #define InputHandler_hpp
@@ -23,7 +24,7 @@ class InputHandler {
     
     private:
         SDL_Event event;
-        Game* game; // what THE FUCK?!?!?!
+        Game* game;
 };
 
 #endif /* InputHandler_h */
