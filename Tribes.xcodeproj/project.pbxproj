@@ -41,6 +41,7 @@
 		4513EAEA1D79B07C008FE329 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		45315AE01D7C58A8000BC397 /* Biome.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Biome.hpp; sourceTree = "<group>"; };
 		45836B251D7C66C400F17DD1 /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Biome.cpp; sourceTree = "<group>"; };
+		4592786F1D7CBEDC00BBA3BE /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		45A2119C1D7C904F002C5674 /* PlanetGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlanetGraphics.cpp; sourceTree = "<group>"; };
 		45A2119D1D7C904F002C5674 /* PlanetGraphics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlanetGraphics.hpp; sourceTree = "<group>"; };
 		45C117861D77FF6200FE98A9 /* Tribes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tribes; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +117,7 @@
 				4505AB4F1D7A1D9E00AA1987 /* Game.cpp */,
 				4505AB501D7A1D9E00AA1987 /* Game.hpp */,
 				4513EAE91D79B07C008FE329 /* Shader.cpp */,
+				4592786F1D7CBEDC00BBA3BE /* Camera.hpp */,
 				4513EAEA1D79B07C008FE329 /* Shader.hpp */,
 				45CAB16B1D7AD269006A0018 /* InputHandler.hpp */,
 				45EA1AEB1D7B6C3E00DEA56C /* InputHandler.cpp */,

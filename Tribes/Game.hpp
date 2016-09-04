@@ -11,6 +11,7 @@
 
 #include "InputHandler.hpp"
 #include "GameObject.hpp"
+#include "Camera.hpp"
 #include "Window.hpp"
 
 #include <iostream>
@@ -38,6 +39,7 @@ class Game {
     
         InputHandler* input;
         Window* window;
+        Camera* camera;
         State state;
     
         std::vector<GameObject*> objectPool;

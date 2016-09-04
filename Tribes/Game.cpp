@@ -18,6 +18,14 @@ Game::Game() {
         "tribes"
     );
     
+    camera = new Camera(
+        glm::vec3(0, 0, -12),
+        100.0f,
+        (float)SCREEN_WIDTH/(float)SCREEN_HEIGHT,
+        0.01f,
+        1000.0f
+    );
+    
     state = RUNNING;
 }
 

@@ -19,13 +19,16 @@
 #include "Biome.hpp"
 
 int main(int argc, const char * argv[]) {
+    // run the game
     Game* game = new Game();
     game->begin();
     free(game);
-    Biome* test = new Biome();
     
+    // run a biome generation test
+    Biome* test = new Biome();
     std::cout << "test --\n";
     std::cout << test->toString();
+    free(test);
     
     return 0;
 }
