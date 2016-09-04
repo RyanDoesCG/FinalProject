@@ -12,6 +12,9 @@
 #include "Game.hpp"
 #include <iostream>
 
+// test
+#include "Biome.hpp"
+
 int main(int argc, const char * argv[]) {
     Game* game = new Game();
     game->begin();

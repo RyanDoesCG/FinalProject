@@ -13,7 +13,6 @@
 #include "Mesh.hpp"
 
 #include <iostream>
-#include <unordered_map>
 
 class GraphicsComponent {
     public:
