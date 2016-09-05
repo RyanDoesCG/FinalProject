@@ -11,6 +11,14 @@
 
 #include <iostream>
 
+/** 
+ *  Vegitation type should be generated based on
+ *  weather. 
+ *      - snow makes evergreens
+ *      - desert makes palm trees
+ *      - normal makes oak
+ *      - volcanic makes burnt out trunks.
+ */
 enum Weather {
     Volcanic,
     Desert,

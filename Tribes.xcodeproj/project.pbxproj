@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4505AB511D7A1D9E00AA1987 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4505AB4F1D7A1D9E00AA1987 /* Game.cpp */; };
 		4513EAEB1D79B07C008FE329 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4513EAE91D79B07C008FE329 /* Shader.cpp */; };
+		455D0DD71D7D6A1A009F956E /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455D0DD51D7D6A1A009F956E /* Mesh.cpp */; };
 		45836B261D7C66C400F17DD1 /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45836B251D7C66C400F17DD1 /* Biome.cpp */; };
 		45BD7E081D7D44D20034BECD /* GraphicsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7E061D7D44D20034BECD /* GraphicsComponent.cpp */; };
 		45BD7E0B1D7D44E80034BECD /* PhysicsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7E091D7D44E80034BECD /* PhysicsComponent.cpp */; };
@@ -39,6 +40,8 @@
 		4513EAE91D79B07C008FE329 /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		4513EAEA1D79B07C008FE329 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		45315AE01D7C58A8000BC397 /* Biome.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Biome.hpp; sourceTree = "<group>"; };
+		455D0DD51D7D6A1A009F956E /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		455D0DD61D7D6A1A009F956E /* Mesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
 		45836B251D7C66C400F17DD1 /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Biome.cpp; sourceTree = "<group>"; };
 		4592786F1D7CBEDC00BBA3BE /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		45BD7E061D7D44D20034BECD /* GraphicsComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsComponent.cpp; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				45CAB16B1D7AD269006A0018 /* InputHandler.hpp */,
 				45C117891D77FF6200FE98A9 /* main.cpp */,
 				45C117BA1D78250000FE98A9 /* Maths.h */,
+				455D0DD51D7D6A1A009F956E /* Mesh.cpp */,
+				455D0DD61D7D6A1A009F956E /* Mesh.hpp */,
 				4513EAE91D79B07C008FE329 /* Shader.cpp */,
 				4513EAEA1D79B07C008FE329 /* Shader.hpp */,
 				45C117AE1D78132E00FE98A9 /* Transform.hpp */,
@@ -195,6 +200,7 @@
 				45C1178A1D77FF6200FE98A9 /* main.cpp in Sources */,
 				45BD7E081D7D44D20034BECD /* GraphicsComponent.cpp in Sources */,
 				45C117BD1D788CBC00FE98A9 /* Window.cpp in Sources */,
+				455D0DD71D7D6A1A009F956E /* Mesh.cpp in Sources */,
 				4513EAEB1D79B07C008FE329 /* Shader.cpp in Sources */,
 				4505AB511D7A1D9E00AA1987 /* Game.cpp in Sources */,
 				45836B261D7C66C400F17DD1 /* Biome.cpp in Sources */,

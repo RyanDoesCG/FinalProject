@@ -15,6 +15,8 @@ class GraphicsComponent {
     public:
         GraphicsComponent  ();
         ~GraphicsComponent ();
+    
+      //  virtual void draw();
 
     private:
 

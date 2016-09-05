@@ -2,8 +2,8 @@
 
 // attributes come from mesh
 attribute vec3  position;
-attribute vec2  textureCoordinate;
 attribute vec3  normal;
+attribute vec2  textureCoordinate;
 
 // varying is shared between shaders
 varying   vec2  textureCoordinate_vary;

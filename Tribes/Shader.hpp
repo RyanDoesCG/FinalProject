@@ -21,6 +21,7 @@ class Shader {
 
         void bind();
         void update();
+        GLuint programID;
 
     private:
         std::string loadSource (const std::string& path);
@@ -33,7 +34,6 @@ class Shader {
         };
 
     
-        GLuint programID;
         GLuint shaders[NUM_SHADERS];
         GLuint uniforms[NUM_UNIFORMS];
     

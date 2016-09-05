@@ -34,7 +34,9 @@ inline Resources  Biome::getAuxResourcesType  () { return auxResource; }
 inline Vegitation Biome::getVegitationType    () { return vegitation; }
 
 std::string Biome::toString() {
-    std::string output = "Weather: ";
+    std::string output = "";
+    
+    output += "Weather: ";
     if      (weather == Snow)     output += "Snow\n";
     else if (weather == Desert)   output += "Desert\n";
     else if (weather == Normal)   output += "Normal\n";
