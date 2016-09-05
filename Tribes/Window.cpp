@@ -70,7 +70,7 @@ int Window::initSDL () {
     glContext = SDL_GL_CreateContext (window);
     
     // hide mouse
-    //SDL_ShowCursor(SDL_DISABLE);
+    SDL_ShowCursor(SDL_DISABLE);
     
     return 0;
 }

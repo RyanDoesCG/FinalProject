@@ -40,7 +40,7 @@ void Game::begin() {
         if (state == RUNNING) {
             // update
             window->clear();
-            // draw
+            
             window->update();
         }
     }
