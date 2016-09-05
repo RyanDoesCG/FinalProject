@@ -17,7 +17,10 @@
  *      - snow makes evergreens
  *      - desert makes palm trees
  *      - normal makes oak
- *      - volcanic makes burnt out trunks.
+ *      - volcanic makes burnt out trunks
+ *
+ *  Every biome should have at least enough wood/materials
+ *  for the player to build a boat and reach another biome.
  */
 enum Weather {
     Volcanic,
@@ -44,7 +47,6 @@ enum Resources {
 };
 
 enum Vegitation {
-    None,
     Sparse,
     Moderate,
     Plentiful,
@@ -65,13 +67,15 @@ class Biome {
         std::string toString ();
     
     private:
-        int hospitability;
-    
         Weather    weather;
         Landscape  landscape;
         Vegitation vegitation;
         Resources  auxResource;
         Resources  mainResource;
+    
+        // need some kind of score on how
+        // accomodating to life a biome is
+        // based on the above parameters.
 };
 
 #endif /* Biome_hpp */

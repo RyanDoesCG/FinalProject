@@ -55,9 +55,9 @@ void Mesh::createMesh() {
 
 void Mesh::draw(Shader shader) {
     shader.bind();
-    glUniform1f(glGetUniformLocation(shader.programID, "position"), 0);
-    glUniform1f(glGetUniformLocation(shader.programID, "normal"), 1);
-    glUniform1f(glGetUniformLocation(shader.programID, "textureCoordinates"), 2);
+    glUniform1f(glGetUniformLocation(shader.uniforms[0], "position"), 0);
+    glUniform1f(glGetUniformLocation(shader.uniforms[0], "normal"), 0);
+    glUniform1f(glGetUniformLocation(shader.uniforms[0], "textureCoordinates"), 0);
     
     
     // Draw mesh

@@ -16,26 +16,25 @@
 
 class Shader {
     public:
+        // Uniform variables
+        enum {
+            TRANSFORM_U,
+            NUM_UNIFORMS
+        };
+    
         Shader  (const std::string& name);
         ~Shader ();
 
         void bind();
         void update();
         GLuint programID;
+        GLuint shaders[NUM_SHADERS];
+        GLuint uniforms[NUM_UNIFORMS];
 
     private:
         std::string loadSource (const std::string& path);
         GLuint  createShader (const std::string& source, GLenum type);
-    
-        // Uniform variables
-        enum {
-            TRANSFORM_U,
-            NUM_UNIFORMS
-        };
 
-    
-        GLuint shaders[NUM_SHADERS];
-        GLuint uniforms[NUM_UNIFORMS];
     
 };
 

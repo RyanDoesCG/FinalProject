@@ -17,7 +17,8 @@
 #include <iostream>
 #include <vector>
 
-// look up differences between struct and class in terms of memory
+// "In C++ classes/structs are identical (in terms of initialization)."
+// Structs have sequiential memory
 struct Vertex {
     glm::vec3 Position;
     glm::vec3 Normal;

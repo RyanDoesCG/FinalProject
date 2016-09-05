@@ -13,6 +13,7 @@
 		45836B261D7C66C400F17DD1 /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45836B251D7C66C400F17DD1 /* Biome.cpp */; };
 		45BD7E081D7D44D20034BECD /* GraphicsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7E061D7D44D20034BECD /* GraphicsComponent.cpp */; };
 		45BD7E0B1D7D44E80034BECD /* PhysicsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7E091D7D44E80034BECD /* PhysicsComponent.cpp */; };
+		45BDBAAF1D7DAF1500BF1396 /* AVLTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45BDBAAD1D7DAF1500BF1396 /* AVLTree.cpp */; };
 		45C1178A1D77FF6200FE98A9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117891D77FF6200FE98A9 /* main.cpp */; };
 		45C117951D78005500FE98A9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117941D78005500FE98A9 /* OpenGL.framework */; };
 		45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1179F1D7805E700FE98A9 /* libGLEW.dylib */; };
@@ -48,6 +49,8 @@
 		45BD7E071D7D44D20034BECD /* GraphicsComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GraphicsComponent.hpp; sourceTree = "<group>"; };
 		45BD7E091D7D44E80034BECD /* PhysicsComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsComponent.cpp; sourceTree = "<group>"; };
 		45BD7E0A1D7D44E80034BECD /* PhysicsComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhysicsComponent.hpp; sourceTree = "<group>"; };
+		45BDBAAD1D7DAF1500BF1396 /* AVLTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AVLTree.cpp; sourceTree = "<group>"; };
+		45BDBAAE1D7DAF1500BF1396 /* AVLTree.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AVLTree.hpp; sourceTree = "<group>"; };
 		45C117861D77FF6200FE98A9 /* Tribes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tribes; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C117891D77FF6200FE98A9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -114,6 +117,8 @@
 				45BD7E0A1D7D44E80034BECD /* PhysicsComponent.hpp */,
 				45C117A51D780C1A00FE98A9 /* GameObject.cpp */,
 				45C117A61D780C1A00FE98A9 /* GameObject.hpp */,
+				45BDBAAD1D7DAF1500BF1396 /* AVLTree.cpp */,
+				45BDBAAE1D7DAF1500BF1396 /* AVLTree.hpp */,
 				45EA1AEB1D7B6C3E00DEA56C /* InputHandler.cpp */,
 				45CAB16B1D7AD269006A0018 /* InputHandler.hpp */,
 				45C117891D77FF6200FE98A9 /* main.cpp */,
@@ -200,6 +205,7 @@
 				45C1178A1D77FF6200FE98A9 /* main.cpp in Sources */,
 				45BD7E081D7D44D20034BECD /* GraphicsComponent.cpp in Sources */,
 				45C117BD1D788CBC00FE98A9 /* Window.cpp in Sources */,
+				45BDBAAF1D7DAF1500BF1396 /* AVLTree.cpp in Sources */,
 				455D0DD71D7D6A1A009F956E /* Mesh.cpp in Sources */,
 				4513EAEB1D79B07C008FE329 /* Shader.cpp in Sources */,
 				4505AB511D7A1D9E00AA1987 /* Game.cpp in Sources */,
