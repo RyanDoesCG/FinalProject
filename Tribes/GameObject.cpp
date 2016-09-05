@@ -21,28 +21,20 @@ GameObject::GameObject () {
 }
 
 GameObject::~GameObject () {
-    // free (null) should be value but
-    // check for null to be safe
+    // free (null) should be value but check for null to be safe
     if (graphics) free(graphics);
-    if (physics)  free(physics);
-    free(position);
+    if (physics) free(physics);
     free(transform);
+    free(position);
 }
     
-void GameObject::update (float time) {
-    if (physics) physics->update(time);
-    else std::cout << "No Physics Module" << "\n";
+void GameObject::update () {
+
 }
 
 void GameObject::render () {
-    if (graphics) graphics->render();
-    else std::cout << "No Graphics Module" << "\n";
+
 }
 
-void GameObject::setGraphics(GraphicsComponent* graphics) {
-    this->graphics = graphics;
-}
-
-void GameObject::setPhysics(PhysicsComponent* physics) {
-    this->physics = physics;
-}
+void GameObject::setGraphics(GraphicsComponent* graphics) { this->graphics = graphics; }
+void GameObject::setPhysics(PhysicsComponent* physics) { this->physics = physics; }

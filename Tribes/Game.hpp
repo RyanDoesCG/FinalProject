@@ -17,8 +17,8 @@
 #include <iostream>
 #include <vector>
 
-#define SCREEN_WIDTH  1366
-#define SCREEN_HEIGHT 768
+#define SCREEN_WIDTH  683
+#define SCREEN_HEIGHT 384
 
 class Game {
     public:

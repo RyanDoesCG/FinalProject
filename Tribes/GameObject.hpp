@@ -13,7 +13,6 @@
 #include "PhysicsComponent.hpp"
 #include "Transform.hpp"
 #include "glm/vec3.hpp"
-#include "Mesh.hpp"
 
 #include <iostream>
 
@@ -21,11 +20,11 @@ class GameObject {
     public:
         GameObject (GraphicsComponent* graphics, PhysicsComponent* physics);
     
-        GameObject  ();
-        ~GameObject ();
+        GameObject();
+        ~GameObject();
     
-        void update (float time);
-        void render ();
+        void update();
+        void render();
     
         void setGraphics(GraphicsComponent* graphics);
         void setPhysics(PhysicsComponent* physics);

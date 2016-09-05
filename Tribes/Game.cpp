@@ -6,8 +6,6 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-#include "PlanetGraphics.hpp"
 #include "Game.hpp"
 
 Game::Game() {

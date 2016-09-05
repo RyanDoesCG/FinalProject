@@ -39,3 +39,8 @@ class Window {
 };
 
 #endif /* Window_hpp */
+
+/** 
+ *  Nice Colours:
+ *      - r: 0.52 g: 0.64 b: 0.49
+ */

@@ -1,16 +1,18 @@
-//
-//  Biome.hpp
-//  Tribes
-//
-//  Created by ryan needham on 04/09/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Biome.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 04/09/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Biome_hpp
 #define Biome_hpp
 
 #include <iostream>
 
 enum Weather {
+    Volcanic,
     Desert,
     Snow,
     Normal,
@@ -24,38 +26,44 @@ enum Landscape {
     LANDSCAPE_MAX
 };
 
+enum Resources {
+    Bronze,
+    Iron,
+    Steel,
+    Alluminium,
+    Diamond,
+    RESOURCE_MAX
+};
+
 enum Vegitation {
+    None,
     Sparse,
     Moderate,
     Plentiful,
     VEGITATION_MAX
 };
 
-// exp.
-enum Resources {
-    Gold,
-    Iron,
-    Steel,
-    Alluminium
-};
-
 class Biome {
     public:
-        Biome();
-        ~Biome();
+        Biome  ();
+        ~Biome ();
     
-        inline Weather getWeatherType ();
-        inline Landscape getLandscapeType ();
-        inline Vegitation getVegitationType ();
+        inline Weather    getWeatherType       ();
+        inline Landscape  getLandscapeType     ();
+        inline Vegitation getVegitationType    ();
+        inline Resources  getAuxResourcesType  ();
+        inline Resources  getMainResourcesType ();
     
-        std::string toString();
+        std::string toString ();
     
     private:
         int hospitability;
     
-        Weather weather;
-        Landscape landscape;
+        Weather    weather;
+        Landscape  landscape;
         Vegitation vegitation;
+        Resources  auxResource;
+        Resources  mainResource;
 };
 
 #endif /* Biome_hpp */
