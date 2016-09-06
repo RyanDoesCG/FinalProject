@@ -5,6 +5,8 @@
  *  Created by ryan needham on 01/09/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
+ *  r: 0.67 g: 0.61 b: 0.71
+ *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "GLEW/glew.h"
 #include "Window.hpp"

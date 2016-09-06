@@ -3,7 +3,7 @@
  *  Tribes
  *
  *  Created by ryan needham on 05/09/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef AVLTree_hpp
@@ -23,6 +23,10 @@ struct Node {
     SDL_Keycode item;
     Node* left;
     Node* right;
+    
+    int getHeight () {
+        return height;
+    }
 };
 
 class AVLTree {
@@ -38,6 +42,8 @@ class AVLTree {
         void remove   (SDL_Keycode item);
         bool contains (SDL_Keycode item);
     
+        int  size; // not ideal
+    
         /** 
          *  returns an integer representation. Ideally this
          *  will be replaced by a char/string representation.
@@ -46,7 +52,6 @@ class AVLTree {
 
     private:
         Node* root;
-        int   size;
 };
 
 #endif /* AVLTree_hpp */

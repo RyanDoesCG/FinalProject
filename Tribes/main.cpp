@@ -16,7 +16,7 @@
 #include "Game.hpp"
 #include <iostream>
 
-#include "Biome.hpp"
+#include "Planet.hpp"
 
 int main(int argc, const char * argv[]) {
     // run the game
@@ -24,11 +24,9 @@ int main(int argc, const char * argv[]) {
     game->begin();
     free(game);
     
-    // run a biome generation test
-    Biome* test = new Biome();
-    std::cout << "test --\n";
-    std::cout << test->toString();
-    free(test);
+    // test planet
+    Planet* planet = new Planet(TOUGH);
+    std::cout << "test--\n" << planet->toString();
     
     return 0;
 }

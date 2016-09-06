@@ -34,38 +34,6 @@ Game::~Game() {
 }
 
 void Game::begin() {
-    std::vector<Vertex> vertices;
-    std::vector<GLuint> indices;
-    std::vector<Texture> textures;
-    
-    // test vertices
-    Vertex one = Vertex();
-    Vertex two = Vertex();
-    Vertex three = Vertex();
-    one.Position = glm::vec3(-0.3, -0.5, 0);
-    one.Normal   = glm::vec3();
-    one.TexCoords= glm::vec2(0.0, 0.0);
-    two.Position = glm::vec3(0, 0.3, 0);
-    two.Normal   = glm::vec3();
-    two.TexCoords= glm::vec2(0.5, 1.0);
-    three.Position = glm::vec3(0.3, -0.5, 0);
-    three.Normal   = glm::vec3();
-    three.TexCoords= glm::vec2(1.0, 0.0);
-    vertices.push_back(one);
-    vertices.push_back(two);
-    vertices.push_back(three);
-    
-    // test indices
-    indices.push_back(0);
-    indices.push_back(1);
-    indices.push_back(2);
-
-    Shader* testShade = new Shader("land");
-    Mesh* test = new Mesh(
-        vertices,
-        indices,
-        textures
-    );
 
     while (state != ENDED) {
         input->checkInput();
@@ -73,7 +41,7 @@ void Game::begin() {
         if (state == RUNNING) {
             // update
             window->clear();
-            test->draw(*testShade);
+            // draw
             window->update();
         }
     }

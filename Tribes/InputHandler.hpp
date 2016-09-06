@@ -9,6 +9,8 @@
 #ifndef InputHandler_hpp
 #define InputHandler_hpp
 
+#include "AVLTree.hpp"
+
 #include <SDL2/SDL.h>
 #include <iostream>
 
@@ -19,10 +21,12 @@ class InputHandler {
         ~InputHandler ();
 
         void checkInput();
+        void handleKeys();
     
     private:
         SDL_Event event;
-        Game* game;
+        AVLTree*  activeKeys;
+        Game*     game;
 };
 
 #endif /* InputHandler_h */

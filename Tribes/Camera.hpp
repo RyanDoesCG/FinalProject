@@ -9,7 +9,6 @@
 #ifndef Camera_hpp
 #define Camera_hpp
 
-#include "GLM/gtx/transform.hpp"
 #include "GLM/glm.hpp"
 
 #include <iostream>

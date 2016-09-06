@@ -7,22 +7,23 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "AVLTree.hpp"
+#include <assert.h>
 
 // Recursive Helper Function Signatures
 int   probeDepth   (Node* node);
 Node* rotateLeft   (Node* node);
 Node* rotateRight  (Node* node);
-Node* balance      (Node* node);
-Node* put          (Node* node, SDL_Keycode item);
+Node* balance      (Node* node);                    // TO-DO
+Node* put          (AVLTree* tree, Node* node, SDL_Keycode item);  // TO-DO
 Node* findSmallest (Node* node);
-Node* del          (Node* node, SDL_Keycode item);
+Node* del          (AVLTree* tree, Node* node, SDL_Keycode item);
 bool  isIn         (Node* node, SDL_Keycode item);
 void  inorder      (Node* node, std::string* output);
 void  preorder     (Node* node, std::string* output);
 void  postorder    (Node* node, std::string* output);
 
 // Constructor
-AVLTree::AVLTree() {
+AVLTree::AVLTree () {
     root = NULL;
     size = 0;
 }
@@ -37,21 +38,20 @@ bool AVLTree::isEmpty  ()                 { return size==0; }
 bool AVLTree::isFull   ()                 { return false; }
 int  AVLTree::getSize  ()                 { return size; }
 int  AVLTree::getDepth ()                 { return probeDepth(root); }
-void AVLTree::insert   (SDL_Keycode item) { put(root, item); }
-void AVLTree::remove   (SDL_Keycode item) { del(root, item); }
+void AVLTree::insert   (SDL_Keycode item) { if (!contains(item)) put(this, root, item); } // no duplication.
+void AVLTree::remove   (SDL_Keycode item) { del(this, root, item); }
 bool AVLTree::contains (SDL_Keycode item) { return isIn(root, item); }
-    
-std::string* AVLTree::toString(TraversalType traversal) {
-    std::string* output = new std::string();
+std::string* AVLTree::toString (TraversalType traversal) {
+    std::string* output = new std::string ();
     switch (traversal) {
         case INORDER:
-            inorder(root, output);
+            inorder (root, output);
             break;
         case PREORDER:
-            preorder(root, output);
+            preorder (root, output);
             break;
         case POSTORDER:
-            postorder(root, output);
+            postorder (root, output);
             break;
     }
     
@@ -59,31 +59,72 @@ std::string* AVLTree::toString(TraversalType traversal) {
 }
 
 // Recursion Functions
-int probeDepth(Node* node) {
+int probeDepth (Node* node) {
     int l;
     int r;
     
     if (!node) return 0;
     
-    l = 1 + probeDepth(node->left);
-    r = 1 + probeDepth(node->right);
+    l = 1 + probeDepth (node->left);
+    r = 1 + probeDepth (node->right);
+    
     return (l > r) ? l : r;
 }
 
 Node* rotateLeft (Node* node) {
-
+    Node* temp;
+    
+    assert (node!=NULL);
+    assert (node->right!=NULL);
+    
+    temp = node->right;
+    
+    node->right  = temp->left;
+    temp->left   = node;
+    node->height = 1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight());
+    temp->height = 1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight());
+    
+    return temp;
 }
 
 Node* rotateRight (Node* node) {
-
+    Node* temp;
+    
+    assert (node!=NULL);
+    assert (node->left!=NULL);
+    
+    temp = node->left;
+    
+    node->left   = temp->right;
+    temp->right  = node;
+    node->height = 1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight());
+    temp->height = 1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight());
+    
+    return temp;
 }
 
 Node* balance (Node* node) {
-
+    // TO-DO
+    return new Node();
 }
 
-Node* put (Node* node, SDL_Keycode item) {
+Node* put (AVLTree* tree, Node* node, SDL_Keycode item) {
 
+    if (!node) {
+        node = new Node();
+        if (!node) {
+            std::cout << "Node Allocation Failed\n";
+        }
+        node->left   = NULL;
+        node->right  = NULL;
+        node->item   = item;
+        tree->size++;
+    }
+    
+    else if (item < node->item) node->left  = put(tree, node->left, item);
+    else if (item > node->item) node->right = put(tree, node->right, item);
+    
+    return balance(node);
 }
 
 Node* findSmallest (Node* node) {
@@ -92,17 +133,49 @@ Node* findSmallest (Node* node) {
     else if (!node->left)
         return node;
     else
-        return findSmallest(node->left);
+        return findSmallest (node->left);
 }
 
-Node* del (Node* node, SDL_Keycode item) {
-
+Node* del (AVLTree* tree, Node* node, SDL_Keycode item) {
+    Node * n;
+    
+    if (node == NULL) {
+    
+        ; // do nothing - data not in tree
+        
+    } else if (item < node->item) {
+    
+        node->left  = del(tree, node->left, item);
+        
+    } else if (item > node->item) {
+    
+        node->right = del(tree, node->right, item);
+        
+    } else if (node->left && node->right) {               // found and has two children
+    
+        n           = findSmallest(node->right);          // get smallest in right tree
+        node->item  = n->item;                            // overwrite the item to be deleted
+        node->right = del(tree, node->right, node->item); // del the duplicate item in right tree
+        
+    } else {
+                                               // found and has at most one child
+        n = node;
+        if (node->left == NULL)
+            node = node->right;                 // promote the right tree
+        else if (node->right == NULL)           // or...
+            node = node->left;                  // promote the left tree
+        tree->size--;                           // reduce the count SHIT
+        free(n);                                // reclaim memory
+        
+    }
+    
+    return balance(node);
 }
 
 bool isIn (Node* node, SDL_Keycode item) {
     if (!node) return false;
-    if (node->item < item) isIn(node->right, item);
-    if (node->item > item) isIn(node->left, item);
+    if (node->item < item) isIn (node->right, item);
+    if (node->item > item) isIn (node->left, item);
     
     // if none of the above conditions are met, the
     // value has been found.

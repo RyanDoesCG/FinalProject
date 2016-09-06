@@ -9,6 +9,7 @@
 #ifndef Biome_hpp
 #define Biome_hpp
 
+#include "GameObject.hpp"
 #include <iostream>
 
 /** 
@@ -53,7 +54,7 @@ enum Vegitation {
     VEGITATION_MAX
 };
 
-class Biome {
+class Biome : GameObject {
     public:
         Biome  ();
         ~Biome ();
