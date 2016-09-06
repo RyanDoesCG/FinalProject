@@ -81,8 +81,8 @@ Node* rotateLeft (Node* node) {
     
     node->right  = temp->left;
     temp->left   = node;
-    node->height = 1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight());
-    temp->height = 1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight());
+    node->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
+    temp->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
     
     return temp;
 }
@@ -97,15 +97,40 @@ Node* rotateRight (Node* node) {
     
     node->left   = temp->right;
     temp->right  = node;
-    node->height = 1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight());
-    temp->height = 1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight());
+    node->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
+    temp->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
     
     return temp;
 }
 
 Node* balance (Node* node) {
-    // TO-DO
-    return new Node();
+    if (!node) return node;                         // trivially balanced - return now
+
+    node->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
+    
+    if (node->left->height - node->right->height > 1) {
+        // left-heavy  - rebalance needed
+        if (node->left->height > node->right->height)
+            node = rotateRight(node);
+        else {
+            node->left = rotateLeft(node->left);
+            node = rotateRight(node);
+        }
+    }
+   
+     else if (node->right->height - node->left->height > 1) {  // right-heavy - rebalance needed
+
+        if (node->right->right->height > node->right->left->height)
+           node = rotateLeft(node);
+        else {
+           node->right = rotateRight(node->right);
+           node = rotateLeft(node);
+        }
+    }
+    else                                            // balanced - no rebalance needed
+        ;
+        
+    return node;
 }
 
 Node* put (AVLTree* tree, Node* node, SDL_Keycode item) {

@@ -23,10 +23,6 @@ struct Node {
     SDL_Keycode item;
     Node* left;
     Node* right;
-    
-    int getHeight () {
-        return height;
-    }
 };
 
 class AVLTree {

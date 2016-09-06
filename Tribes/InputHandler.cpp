@@ -26,10 +26,10 @@ void InputHandler::checkInput() {
                 std::cout << "y: " << event.motion.y << "\n\n";
                 break;
             case SDL_KEYDOWN:
-                activeKeys->insert(event.key.keysym.sym);
+               // activeKeys->insert(event.key.keysym.sym);
                 break;
             case SDL_KEYUP:
-                activeKeys->remove(event.key.keysym.sym);
+               // activeKeys->remove(event.key.keysym.sym);
                 break;
             case SDL_QUIT:
                 game->end();
