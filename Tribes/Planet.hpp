@@ -33,15 +33,15 @@ class Planet : GameObject {
         inline int        getBiomeCount () { return biomeCount; }
         inline int        getTribeCount () { return tribeCount; }
     
-        std::string* toString ();
+        std::string toString ();
 
     private:
         Difficulty difficulty;
         int biomeCount;
         int tribeCount;
     
-        std::vector<Biome*>* regions;
-        std::vector<Tribe*>* tribes;
+        std::vector<Biome*> regions;
+        std::vector<Tribe*> tribes;
 };
 
 #endif /* Planet_hpp */

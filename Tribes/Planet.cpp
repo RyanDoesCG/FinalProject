@@ -9,37 +9,42 @@
 #include "Planet.hpp"
 
 Planet::Planet  (Difficulty difficulty) {
-    srand(static_cast<unsigned int>(time(0)));
     
     this->difficulty = difficulty;
-    this->biomeCount = rand() % ((difficulty + 1) * 10); // the fuck?
-    this->tribeCount = rand() % ((difficulty + 1) * 10);
+    this->biomeCount = ((difficulty + 1) * 5) + (rand() % 10);
+    this->tribeCount = ((difficulty + 1) * 3) + (rand() % 10);
     
-    regions = new std::vector<Biome*>();
-    tribes  = new std::vector<Tribe*>();
+    regions = std::vector<Biome*>();
+    tribes  = std::vector<Tribe*>();
 
-    for (int i = 0; i < biomeCount; i++) regions->push_back(new Biome());
-    for (int i = 0; i < tribeCount; i++) tribes ->push_back(new Tribe());
+    for (int i = 0; i < biomeCount; i++) regions.push_back(new Biome());
+    for (int i = 0; i < tribeCount; i++) tribes.push_back(new Tribe());
 }
 
 Planet::~Planet () {
     // free each element
-    for (int i = 0; i < biomeCount; i++) free(&regions[i]);
-    for (int i = 0; i < tribeCount; i++) free(&tribes[i]);
-    
-    // free collections
-    free(regions);
-    free(tribes);
+    for (int i = 0; i < biomeCount; i++) free(regions[i]);
+    for (int i = 0; i < tribeCount; i++) free(tribes[i]);
 }
 
-std::string* Planet::toString() {
-    std::string* output = new std::string();
+std::string Planet::toString() {
+    std::string output = "";
     
-    std::cout << "difficulty:  " << this->getDifficulty() << "\n";
-    std::cout << "biome count: " << this->getBiomeCount() << "\n";
-    for (int i = 0; i < regions->size(); i++) regions->at(i)->toString();
-    std::cout << "tribe count: " << this->getTribeCount() << "\n";
-    for (int i = 0; i < tribes->size(); i++) tribes->at(i)->toString();
+    // difficulty
+    output += "difficulty:  ";
+    if (difficulty == TOUGH) output += "TOUGH\n";
+    else if (difficulty == TOUGHER) output += "TOUGHER\n";
+    else if (difficulty == TOUGHEST) output += "TOUGHEST\n";
+    
+    // biomes
+    output += "biome count: ";
+    output += std::to_string(this->getBiomeCount()); output += "\n";
+    for (int i = 0; i < regions.size(); i++) std::cout << "\n" << regions[i]->toString();
+    
+    // tribes
+    output += "tribe count: ";
+    output += std::to_string(this->getTribeCount()); output += "\n";
+    //for (int i = 0; i < tribes.size(); i++) std::cout << tribes[i]->toString();
     
     return output;
 }

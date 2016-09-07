@@ -9,13 +9,20 @@
 #include "Tribe.hpp"
 
 Tribe::Tribe  () {
-
+        name  = generateName();
+        ethos = static_cast<Ethos>(rand() % ETHOS_MAX);
+//      flag  = generateFlat();
+        population = (rand() % 1000) + 1;
 }
 
 Tribe::~Tribe () {
 
 }
 
-std::string* Tribe::toString() {
-    return new std::string();
+std::string Tribe::toString() {
+    return std::string();
+}
+
+std::string Tribe::generateName() {
+    return "name gen not implemented";
 }

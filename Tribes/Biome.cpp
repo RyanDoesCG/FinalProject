@@ -9,19 +9,17 @@
 #include "Biome.hpp"
 
 Biome::Biome () {
-    srand(static_cast<unsigned int>(time(0)));
-    this->weather       = static_cast<Weather>   (rand() % WEATHER_MAX);
-    this->landscape     = static_cast<Landscape> (rand() % LANDSCAPE_MAX);
-    this->vegitation    = static_cast<Vegitation>(rand() % VEGITATION_MAX);
-    this->mainResource  = static_cast<Resources> (rand() % RESOURCE_MAX);
-    this->auxResource   = static_cast<Resources> (rand() % RESOURCE_MAX);
+    this->weather      = static_cast<Weather>   (rand() % WEATHER_MAX);
+    this->landscape    = static_cast<Landscape> (rand() % LANDSCAPE_MAX);
+    this->vegitation   = static_cast<Vegitation>(rand() % VEGITATION_MAX);
+    this->mainResource = static_cast<Resources> (rand() % RESOURCE_MAX);
+    this->auxResource  = static_cast<Resources> (rand() % RESOURCE_MAX);
     
     // ensure no duplicate resource types
     while (auxResource == mainResource) {
         this->auxResource = static_cast<Resources>(rand() % RESOURCE_MAX);
     }
 }
-
 
 Biome::~Biome () {
 
@@ -36,36 +34,36 @@ inline Vegitation Biome::getVegitationType    () { return vegitation; }
 std::string Biome::toString() {
     std::string output = "";
     
-    output += "Weather: ";
-    if      (weather == Snow)     output += "Snow\n";
-    else if (weather == Desert)   output += "Desert\n";
-    else if (weather == Normal)   output += "Normal\n";
-    else if (weather == Volcanic) output += "Volcanic\n";
+    output += "\tWeather:             ";
+    if      (weather == Snow)     output += "\tSnow\n";
+    else if (weather == Desert)   output += "\tDesert\n";
+    else if (weather == Normal)   output += "\tNormal\n";
+    else if (weather == Volcanic) output += "\tVolcanic\n";
     
-    output += "Landscape: ";
-    if      (landscape == Mountainous) output += "Mountainous\n";
-    else if (landscape == Flatlands)   output += "Flatlands\n";
-    else if (landscape == Hilly)       output += "Hilly\n";
+    output += "\tLandscape:           ";
+    if      (landscape == Mountainous) output += "\tMountainous\n";
+    else if (landscape == Flatlands)   output += "\tFlatlands\n";
+    else if (landscape == Hilly)       output += "\tHilly\n";
     
-    output += "Vegitation: ";
-    if      (vegitation == Plentiful) output += "Plentiful\n";
-    else if (vegitation == Moderate)  output += "Moderate\n";
-    else if (vegitation == Sparse)    output += "Sparse\n";
+    output += "\tVegitation:          ";
+    if      (vegitation == Plentiful) output += "\tPlentiful\n";
+    else if (vegitation == Moderate)  output += "\tModerate\n";
+    else if (vegitation == Sparse)    output += "\tSparse\n";
     
-    output += "Main Resources: ";
-    if      (mainResource == Bronze)     output += "Bronze\n";
-    else if (mainResource == Iron)       output += "Iron\n";
-    else if (mainResource == Steel)      output += "Steel\n";
-    else if (mainResource == Alluminium) output += "Alluminium\n";
-    else if (mainResource == Diamond)    output += "Diamond\n";
+    output += "\tMain Resources:      ";
+    if      (mainResource == Bronze)     output += "\tBronze\n";
+    else if (mainResource == Iron)       output += "\tIron\n";
+    else if (mainResource == Steel)      output += "\tSteel\n";
+    else if (mainResource == Alluminium) output += "\tAlluminium\n";
+    else if (mainResource == Diamond)    output += "\tDiamond\n";
     
-    output += "Auxiliary Resources: ";
-    if      (auxResource == Bronze)     output += "Bronze\n";
-    else if (auxResource == Iron)       output += "Iron\n";
-    else if (auxResource == Steel)      output += "Steel\n";
-    else if (auxResource == Alluminium) output += "Alluminium\n";
-    else if (auxResource == Diamond)    output += "Diamond\n";
+    output += "\tAuxiliary Resources: ";
+    if      (auxResource == Bronze)     output += "\tBronze\n";
+    else if (auxResource == Iron)       output += "\tIron\n";
+    else if (auxResource == Steel)      output += "\tSteel\n";
+    else if (auxResource == Alluminium) output += "\tAlluminium\n";
+    else if (auxResource == Diamond)    output += "\tDiamond\n";
 
-    output += "\n\n";
+    output += "\n";
     return output;
 }

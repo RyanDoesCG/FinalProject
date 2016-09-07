@@ -33,7 +33,7 @@ AVLTree::~AVLTree () {
     free(root);
 }
 
-// Face Functions
+// Face Member Functions
 bool AVLTree::isEmpty  ()                 { return size==0; }
 bool AVLTree::isFull   ()                 { return false; }
 int  AVLTree::getSize  ()                 { return size; }
@@ -106,6 +106,10 @@ Node* rotateRight (Node* node) {
 Node* balance (Node* node) {
     if (!node) return node;                         // trivially balanced - return now
 
+    /**
+     * ISSUE:
+     *      - calling "height" on a null pointer causes crash.
+     */
     node->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
     
     if (node->left->height - node->right->height > 1) {
@@ -118,8 +122,8 @@ Node* balance (Node* node) {
         }
     }
    
-     else if (node->right->height - node->left->height > 1) {  // right-heavy - rebalance needed
-
+     else if (node->right->height - node->left->height > 1) {
+        // right-heavy - rebalance needed
         if (node->right->right->height > node->right->left->height)
            node = rotateLeft(node);
         else {
@@ -164,32 +168,28 @@ Node* findSmallest (Node* node) {
 Node* del (AVLTree* tree, Node* node, SDL_Keycode item) {
     Node * n;
     
-    if (node == NULL) {
+    if      (node == NULL) ; // not here at all
+    else if (item < node->item) node->left  = del(tree, node->left,  item); // not here, go left
+    else if (item > node->item) node->right = del(tree, node->right, item); // not here, go right
     
-        ; // do nothing - data not in tree
-        
-    } else if (item < node->item) {
-    
-        node->left  = del(tree, node->left, item);
-        
-    } else if (item > node->item) {
-    
-        node->right = del(tree, node->right, item);
-        
-    } else if (node->left && node->right) {               // found and has two children
+    // found with two children
+    else if (node->left && node->right) {
     
         n           = findSmallest(node->right);          // get smallest in right tree
         node->item  = n->item;                            // overwrite the item to be deleted
         node->right = del(tree, node->right, node->item); // del the duplicate item in right tree
         
-    } else {
+        // decrement and free?
+    }
+    
+    // found with one child
+    else if (node->left || node->right) {
                                                // found and has at most one child
         n = node;
-        if (node->left == NULL)
-            node = node->right;                 // promote the right tree
-        else if (node->right == NULL)           // or...
-            node = node->left;                  // promote the left tree
-        tree->size--;                           // reduce the count SHIT
+        if      (!node->left)  node = node->right;
+        else if (!node->right) node = node->left;
+        
+        tree->size--;                           // reduce the size
         free(n);                                // reclaim memory
         
     }
