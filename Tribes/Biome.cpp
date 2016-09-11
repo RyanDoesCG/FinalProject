@@ -35,20 +35,20 @@ std::string Biome::toString() {
     std::string output = "";
     
     output += "\tWeather:             ";
-    if      (weather == Snow)     output += "\tSnow\n";
-    else if (weather == Desert)   output += "\tDesert\n";
-    else if (weather == Normal)   output += "\tNormal\n";
-    else if (weather == Volcanic) output += "\tVolcanic\n";
+    if      (weather == Snow)            output += "\tSnow\n";
+    else if (weather == Desert)          output += "\tDesert\n";
+    else if (weather == Normal)          output += "\tNormal\n";
+    else if (weather == Volcanic)        output += "\tVolcanic\n";
     
     output += "\tLandscape:           ";
-    if      (landscape == Mountainous) output += "\tMountainous\n";
-    else if (landscape == Flatlands)   output += "\tFlatlands\n";
-    else if (landscape == Hilly)       output += "\tHilly\n";
+    if      (landscape == Mountainous)   output += "\tMountainous\n";
+    else if (landscape == Flatlands)     output += "\tFlatlands\n";
+    else if (landscape == Hilly)         output += "\tHilly\n";
     
     output += "\tVegitation:          ";
-    if      (vegitation == Plentiful) output += "\tPlentiful\n";
-    else if (vegitation == Moderate)  output += "\tModerate\n";
-    else if (vegitation == Sparse)    output += "\tSparse\n";
+    if      (vegitation == Plentiful)    output += "\tPlentiful\n";
+    else if (vegitation == Moderate)     output += "\tModerate\n";
+    else if (vegitation == Sparse)       output += "\tSparse\n";
     
     output += "\tMain Resources:      ";
     if      (mainResource == Bronze)     output += "\tBronze\n";
@@ -58,11 +58,11 @@ std::string Biome::toString() {
     else if (mainResource == Diamond)    output += "\tDiamond\n";
     
     output += "\tAuxiliary Resources: ";
-    if      (auxResource == Bronze)     output += "\tBronze\n";
-    else if (auxResource == Iron)       output += "\tIron\n";
-    else if (auxResource == Steel)      output += "\tSteel\n";
-    else if (auxResource == Alluminium) output += "\tAlluminium\n";
-    else if (auxResource == Diamond)    output += "\tDiamond\n";
+    if      (auxResource == Bronze)      output += "\tBronze\n";
+    else if (auxResource == Iron)        output += "\tIron\n";
+    else if (auxResource == Steel)       output += "\tSteel\n";
+    else if (auxResource == Alluminium)  output += "\tAlluminium\n";
+    else if (auxResource == Diamond)     output += "\tDiamond\n";
 
     output += "\n";
     return output;

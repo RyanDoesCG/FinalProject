@@ -44,7 +44,7 @@ std::string Planet::toString() {
     // tribes
     output += "tribe count: ";
     output += std::to_string(this->getTribeCount()); output += "\n";
-    //for (int i = 0; i < tribes.size(); i++) std::cout << tribes[i]->toString();
+    for (int i = 0; i < tribes.size(); i++) std::cout << "\n" << tribes[i]->toString();
     
     return output;
 }

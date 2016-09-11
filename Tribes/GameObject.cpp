@@ -36,5 +36,5 @@ void GameObject::render () {
 
 }
 
-void GameObject::setGraphics(GraphicsComponent* graphics) { this->graphics = graphics; }
-void GameObject::setPhysics(PhysicsComponent* physics) { this->physics = physics; }
+void GameObject::setGraphics (GraphicsComponent* graphics) { this->graphics = graphics; }
+void GameObject::setPhysics  (PhysicsComponent*   physics) { this->physics  = physics;  }

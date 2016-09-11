@@ -27,6 +27,7 @@ void InputHandler::checkInput() {
                 break;
             case SDL_KEYDOWN:
                 activeKeys->insert(event.key.keysym.sym);
+                activeKeys->toString(INORDER);
                 break;
             case SDL_KEYUP:
                 activeKeys->remove(event.key.keysym.sym);
@@ -37,24 +38,28 @@ void InputHandler::checkInput() {
         }
     }
     
-    if (!activeKeys->isEmpty()) handleKeys();
+    handleKeys();
 }
 
 void InputHandler::handleKeys() {
     if (activeKeys->contains(SDLK_w)) {
-        // move camera up/forward
+        std::cout << "w handled\n";
     }
     
     if (activeKeys->contains(SDLK_a)) {
-        // move camera left
+        std::cout << "a handled\n";
     }
     
     if (activeKeys->contains(SDLK_s)) {
-        // move camera right
+        std::cout << "s handled\n";
     }
     
     if (activeKeys->contains(SDLK_d)) {
-        // move camera down/back
+        std::cout << "d handled\n";
+    }
+    
+    if (activeKeys->contains(SDLK_SPACE)) {
+        std::cout << "space handled\n";
     }
     
     if (activeKeys->contains(SDLK_ESCAPE)) {

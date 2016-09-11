@@ -23,6 +23,15 @@ struct Node {
     SDL_Keycode item;
     Node* left;
     Node* right;
+
+    int getHeight () {
+        if (this) return height; else return 0;
+    }
+    
+    void setHeight (int h) {
+        this->height = h;
+    }
+    
 };
 
 class AVLTree {
@@ -37,10 +46,11 @@ class AVLTree {
         void insert   (SDL_Keycode item);
         void remove   (SDL_Keycode item);
         bool contains (SDL_Keycode item);
-    
-        int  size; // not ideal
-    
-        /** 
+
+        void decrementSize () { size -= 1; }
+        void incrementSize () { size += 1; }
+
+        /**
          *  returns an integer representation. Ideally this
          *  will be replaced by a char/string representation.
          */
@@ -48,6 +58,7 @@ class AVLTree {
 
     private:
         Node* root;
+        int   size;
 };
 
 #endif /* AVLTree_hpp */

@@ -9,12 +9,17 @@
 #include "AVLTree.hpp"
 #include <assert.h>
 
+/** 
+ *  Calling getHeight() on am undefined node causes
+ *  bad access.
+ */
+
 // Recursive Helper Function Signatures
 int   probeDepth   (Node* node);
 Node* rotateLeft   (Node* node);
 Node* rotateRight  (Node* node);
-Node* balance      (Node* node);                    // TO-DO
-Node* put          (AVLTree* tree, Node* node, SDL_Keycode item);  // TO-DO
+Node* balance      (Node* node);                                  // TO-FIX
+Node* put          (AVLTree* tree, Node* node, SDL_Keycode item); // TO-FIX
 Node* findSmallest (Node* node);
 Node* del          (AVLTree* tree, Node* node, SDL_Keycode item);
 bool  isIn         (Node* node, SDL_Keycode item);
@@ -41,6 +46,8 @@ int  AVLTree::getDepth ()                 { return probeDepth(root); }
 void AVLTree::insert   (SDL_Keycode item) { if (!contains(item)) put(this, root, item); } // no duplication.
 void AVLTree::remove   (SDL_Keycode item) { del(this, root, item); }
 bool AVLTree::contains (SDL_Keycode item) { return isIn(root, item); }
+
+// Doth Not Worketh
 std::string* AVLTree::toString (TraversalType traversal) {
     std::string* output = new std::string ();
     switch (traversal) {
@@ -54,7 +61,7 @@ std::string* AVLTree::toString (TraversalType traversal) {
             postorder (root, output);
             break;
     }
-    
+
     return output;
 }
 
@@ -62,44 +69,44 @@ std::string* AVLTree::toString (TraversalType traversal) {
 int probeDepth (Node* node) {
     int l;
     int r;
-    
+
     if (!node) return 0;
-    
+
     l = 1 + probeDepth (node->left);
     r = 1 + probeDepth (node->right);
-    
+
     return (l > r) ? l : r;
 }
 
 Node* rotateLeft (Node* node) {
     Node* temp;
-    
+
     assert (node!=NULL);
     assert (node->right!=NULL);
-    
+
     temp = node->right;
-    
+
     node->right  = temp->left;
     temp->left   = node;
-    node->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
-    temp->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
-    
+    node->setHeight(1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight()));
+    temp->setHeight(1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight()));
+
     return temp;
 }
 
 Node* rotateRight (Node* node) {
     Node* temp;
-    
+
     assert (node!=NULL);
     assert (node->left!=NULL);
-    
+
     temp = node->left;
-    
+
     node->left   = temp->right;
     temp->right  = node;
-    node->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
-    temp->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
-    
+    node->setHeight(1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight()));
+    temp->setHeight(1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight()));
+
     return temp;
 }
 
@@ -108,23 +115,23 @@ Node* balance (Node* node) {
 
     /**
      * ISSUE:
-     *      - calling "height" on a null pointer causes crash.
+     *      - calling "getHeight()" on a null pointer causes crash.
      */
-    node->height = 1 + (node->left->height > node->right->height ? node->left->height : node->right->height);
-    
-    if (node->left->height - node->right->height > 1) {
+    node->setHeight(1 + (node->left->getHeight() > node->right->getHeight() ? node->left->getHeight() : node->right->getHeight()));
+
+    if (node->left->getHeight() - node->right->getHeight() > 1) {
         // left-heavy  - rebalance needed
-        if (node->left->height > node->right->height)
+        if (node->left->getHeight() > node->right->getHeight())
             node = rotateRight(node);
         else {
             node->left = rotateLeft(node->left);
             node = rotateRight(node);
         }
     }
-   
-     else if (node->right->height - node->left->height > 1) {
+
+     else if (node->right->getHeight() - node->left->getHeight() > 1) {
         // right-heavy - rebalance needed
-        if (node->right->right->height > node->right->left->height)
+        if (node->right->right->getHeight() > node->right->left->getHeight())
            node = rotateLeft(node);
         else {
            node->right = rotateRight(node->right);
@@ -133,7 +140,7 @@ Node* balance (Node* node) {
     }
     else                                            // balanced - no rebalance needed
         ;
-        
+
     return node;
 }
 
@@ -147,12 +154,14 @@ Node* put (AVLTree* tree, Node* node, SDL_Keycode item) {
         node->left   = NULL;
         node->right  = NULL;
         node->item   = item;
-        tree->size++;
+        tree->incrementSize();
+        
+        std::cout << "key inserted\n";
     }
-    
+
     else if (item < node->item) node->left  = put(tree, node->left, item);
     else if (item > node->item) node->right = put(tree, node->right, item);
-    
+
     return balance(node);
 }
 
@@ -167,33 +176,33 @@ Node* findSmallest (Node* node) {
 
 Node* del (AVLTree* tree, Node* node, SDL_Keycode item) {
     Node * n;
-    
+
     if      (node == NULL) ; // not here at all
     else if (item < node->item) node->left  = del(tree, node->left,  item); // not here, go left
     else if (item > node->item) node->right = del(tree, node->right, item); // not here, go right
-    
+
     // found with two children
     else if (node->left && node->right) {
-    
+
         n           = findSmallest(node->right);          // get smallest in right tree
         node->item  = n->item;                            // overwrite the item to be deleted
         node->right = del(tree, node->right, node->item); // del the duplicate item in right tree
-        
+
         // decrement and free?
     }
-    
+
     // found with one child
-    else if (node->left || node->right) {
+    else {
                                                // found and has at most one child
         n = node;
         if      (!node->left)  node = node->right;
         else if (!node->right) node = node->left;
         
-        tree->size--;                           // reduce the size
+        tree->decrementSize();                           // reduce the size
         free(n);                                // reclaim memory
-        
+
     }
-    
+
     return balance(node);
 }
 
@@ -201,7 +210,7 @@ bool isIn (Node* node, SDL_Keycode item) {
     if (!node) return false;
     if (node->item < item) isIn (node->right, item);
     if (node->item > item) isIn (node->left, item);
-    
+
     // if none of the above conditions are met, the
     // value has been found.
     return true;
@@ -210,14 +219,14 @@ bool isIn (Node* node, SDL_Keycode item) {
 void inorder (Node* node, std::string* output) {
     if (node) {
         inorder(node->left, output);
-        output->append(std::to_string((int)node->item));
+        std::cout << (int)node->item;
         inorder(node->right, output);
     }
 }
 
 void preorder (Node* node, std::string* output) {
     if (node) {
-        output->append(std::to_string((int)node->item));
+        std::cout << (int)node->item;
         preorder(node->left, output);
         preorder(node->right, output);
     }
@@ -227,6 +236,6 @@ void postorder (Node* node, std::string* output) {
     if (node) {
         postorder(node->left, output);
         postorder(node->right, output);
-        output->append(std::to_string((int)node->item));
+        std::cout << (int)node->item;
     }
 }

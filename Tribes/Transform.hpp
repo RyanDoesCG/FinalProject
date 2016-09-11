@@ -35,7 +35,6 @@ class Transform {
             
             // matrices can be combined by multiplying them
             glm::mat4 rotMatrix = rotZMatrix * rotYMatrix * rotXMatrix;
-            
             return posMatrix * rotMatrix * scaleMatrix;
         }
     
