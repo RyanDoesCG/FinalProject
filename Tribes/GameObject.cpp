@@ -33,7 +33,7 @@ void GameObject::update () {
 }
 
 void GameObject::render () {
-
+    if (graphics) graphics->draw();
 }
 
 void GameObject::setGraphics (GraphicsComponent* graphics) { this->graphics = graphics; }

@@ -19,37 +19,19 @@
 
 // "In C++ classes/structs are identical (in terms of initialization)."
 // Structs have sequiential memory
-struct Vertex {
-    glm::vec3 Position;
-    glm::vec3 Normal;
-    glm::vec2 TexCoords;
-};
-
-struct Texture {
-    GLuint id;
-    std::string type;
-};
 
 class Mesh {
     public:
-        Mesh  (
-            std::vector<Vertex>  vertices,
-            std::vector<GLuint>  indices,
-            std::vector<Texture> textures
-        );
-    
+        Mesh  (std::vector<GLfloat>* vert);
         ~Mesh ();
-    
-        std::vector<Vertex>  vertices;
-        std::vector<GLuint>  indices;
-        std::vector<Texture> textures;
     
         void draw(Shader shader);
 
     private:
-        GLuint VAO, VBO, EBO;
         void createMesh();
-
+    
+        std::vector<GLfloat>* vertices;
+        GLuint   VBO; // Vertex Buffer Object (sends verts to GPU)
 };
 
 #endif /* Mesh_hpp */

@@ -9,6 +9,8 @@
 #include "Game.hpp"
 #include "Mesh.hpp"
 
+#include "PlanetGraphics.hpp"
+
 Game::Game() {
     input  = new InputHandler(this);
     window = new Window(
@@ -29,6 +31,8 @@ Game::Game() {
     srand(static_cast<unsigned int>(time(0)));
     
     planet = new Planet(TOUGHER);
+    planet->setGraphics(new PlanetGraphics());
+    
     state  = RUNNING;
 }
 
@@ -37,7 +41,6 @@ Game::~Game() {
 }
 
 void Game::begin() {
-    planet->toString();
 
     while (state != ENDED) {
         input->checkInput();

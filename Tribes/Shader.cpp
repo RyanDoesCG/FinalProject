@@ -24,21 +24,26 @@ Shader::Shader  (const std::string& name) {
     
     // bind attributes
     glBindAttribLocation(programID, 0, "position");
-    glBindAttribLocation(programID, 1, "textureCoordinate");
-    glBindAttribLocation(programID, 2, "normal");
     
-    glLinkProgram (programID);
-    glValidateProgram(programID);
+    glLinkProgram     (programID);
+    glValidateProgram (programID);
+    
+    bind();
+    
+    // delete shaders
+    for (unsigned int i = 0; i < NUM_SHADERS; i++){
+        glDeleteShader(shaders[i]);
+    }
+    
+   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+   glEnableVertexAttribArray(0);
     
     // *Error Checking: TO-DO*
-    
-    uniforms[TRANSFORM_U] = glGetUniformLocation(programID, "transform");
 }
 
 Shader::~Shader () {
     for (unsigned int i = 0; i < NUM_SHADERS; i++) {
         glDetachShader(programID, shaders[i]);
-        glDeleteShader(shaders[i]);
     }
     
     glDeleteProgram(programID);
@@ -57,7 +62,7 @@ std::string Shader::loadSource (const std::string& path) {
     
     source.open(path.c_str());
     
-        std::string output;
+    std::string output;
     std::string line;
     
     if (source.is_open()) {
