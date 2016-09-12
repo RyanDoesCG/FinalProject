@@ -208,8 +208,8 @@ Node* del (AVLTree* tree, Node* node, SDL_Keycode item) {
 
 bool isIn (Node* node, SDL_Keycode item) {
     if (!node) return false;
-    if (node->item < item) isIn (node->right, item);
-    if (node->item > item) isIn (node->left, item);
+    if (node->item < item) isIn (node->left, item);
+    if (node->item > item) isIn (node->right, item);
 
     // if none of the above conditions are met, the
     // value has been found.

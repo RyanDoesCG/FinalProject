@@ -33,22 +33,6 @@ int main(int argc, const char * argv[]) {
     Game* game = new Game();
     game->begin();
     free(game);
-    
-    // seed random generator ONCE PER RUN
-    srand(static_cast<unsigned int>(time(0)));
-    
-    // test planets
-    Planet* planet1 = new Planet(TOUGH);
-    Planet* planet2 = new Planet(TOUGHER);
-    Planet* planet3 = new Planet(TOUGHEST);
-    
-    std::cout<<"\n--\n"<< planet1->toString();
-    std::cout<<"\n--\n"<< planet2->toString();
-    std::cout<<"\n--\n"<< planet3->toString();
-    
-    free(planet1);
-    free(planet2);
-    free(planet3);
     return 0;
 }
 

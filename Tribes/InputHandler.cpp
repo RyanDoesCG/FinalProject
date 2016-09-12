@@ -27,7 +27,6 @@ void InputHandler::checkInput() {
                 break;
             case SDL_KEYDOWN:
                 activeKeys->insert(event.key.keysym.sym);
-                activeKeys->toString(INORDER);
                 break;
             case SDL_KEYUP:
                 activeKeys->remove(event.key.keysym.sym);
@@ -42,27 +41,13 @@ void InputHandler::checkInput() {
 }
 
 void InputHandler::handleKeys() {
-    if (activeKeys->contains(SDLK_w)) {
-        std::cout << "w handled\n";
-    }
-    
-    if (activeKeys->contains(SDLK_a)) {
-        std::cout << "a handled\n";
-    }
-    
-    if (activeKeys->contains(SDLK_s)) {
-        std::cout << "s handled\n";
-    }
-    
-    if (activeKeys->contains(SDLK_d)) {
-        std::cout << "d handled\n";
-    }
-    
-    if (activeKeys->contains(SDLK_SPACE)) {
-        std::cout << "space handled\n";
-    }
-    
-    if (activeKeys->contains(SDLK_ESCAPE)) {
-        game->pause();
-    }
+    if (!activeKeys->isEmpty())
+        std::cout << "Tree Size: " << activeKeys->getSize() << "\n";
+
+    if (activeKeys->contains(SDLK_w)) { std::cout << "w handled\n"; }
+    if (activeKeys->contains(SDLK_a)) { std::cout << "a handled\n"; }
+    if (activeKeys->contains(SDLK_s)) { std::cout << "s handled\n"; }
+    if (activeKeys->contains(SDLK_d)) { std::cout << "d handled\n"; }
+    if (activeKeys->contains(SDLK_SPACE)) { std::cout << "space handled\n"; }
+    if (activeKeys->contains(SDLK_ESCAPE)) { game->pause(); }
 }

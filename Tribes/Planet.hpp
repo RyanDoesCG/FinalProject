@@ -24,7 +24,7 @@ enum Difficulty {
     TOUGHEST
 };
 
-class Planet : GameObject {
+class Planet : public GameObject {
     public:
         Planet  (Difficulty difficulty);
         ~Planet ();
@@ -32,6 +32,8 @@ class Planet : GameObject {
         inline Difficulty getDifficulty () { return difficulty; }
         inline int        getBiomeCount () { return biomeCount; }
         inline int        getTribeCount () { return tribeCount; }
+    
+        void draw () { this->render(); }
     
         std::string toString ();
 

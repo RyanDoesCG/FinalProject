@@ -43,10 +43,10 @@ class Tribe : GameObject {
         std::string toString ();
 
     private:
-        std::string name;       // proc
-        Ethos       ethos;      // proc
-        Flag        flag;       // proc
-        int         population; // proc then modelled
+        std::string name;
+        Ethos       ethos;
+        Flag        flag;
+        int         population;
     
         // Procedural Generators for more complicated data
         void        generateName ();

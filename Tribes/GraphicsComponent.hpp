@@ -11,15 +11,18 @@
 
 #include <iostream>
 
+#include "Shader.hpp"
+#include "Mesh.hpp"
+
 class GraphicsComponent {
     public:
-        GraphicsComponent  ();
-        ~GraphicsComponent ();
+        GraphicsComponent  () {}
+        ~GraphicsComponent () {}
     
-      //  virtual void draw();
+        virtual void draw();
 
-    private:
-
+        Shader* objectShader;
+        Mesh* objectMesh;
 };
 
 #endif /* GraphicsComponent_hpp */

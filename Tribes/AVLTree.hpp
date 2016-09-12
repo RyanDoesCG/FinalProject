@@ -25,7 +25,10 @@ struct Node {
     Node* right;
 
     int getHeight () {
-        if (this) return height; else return 0;
+        if (this)
+            return height;
+        else
+            return 0;
     }
     
     void setHeight (int h) {
@@ -45,7 +48,7 @@ class AVLTree {
         int  getDepth ();
         void insert   (SDL_Keycode item);
         void remove   (SDL_Keycode item);
-        bool contains (SDL_Keycode item);
+        bool contains (SDL_Keycode item); // BROKEN/FUCKED/PLEASE WORK SOON THANKS
 
         void decrementSize () { size -= 1; }
         void incrementSize () { size += 1; }

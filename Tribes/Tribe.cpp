@@ -42,24 +42,21 @@ void Tribe::generateName() {
         int ting = rand() % 100;
         
         if (i > 0) {
-            if (ting < 36) {
+            if (ting < 36)
                 name[i] = lowerCons[(rand() % 18) + 1];
-            } else {
+            else
                 name[i] = lowerVowels[(rand() % 4) + 1];
-            }
         }
         
         else {
-            if (ting < 36) {
+            if (ting < 36)
                 name[i] = upperCons[rand() % 18];
-            } else {
+            else
                 name[i] = upperVowels[rand() % 4];
-            }
         }
     }
     
     // TEMP FIX: kull numbers (find cause)
-    for (int i; i < length; i++) if (name[i] == '\\' || name[i] == '_') name[i] = ' ';
     
     /*
      
@@ -107,6 +104,9 @@ std::string Tribe::toString() {
     } else if (ethos == Ferals) {
         output += "Ferals\n";
     }
+    
+    output += "Population: ";
+    output += std::to_string(population);
     
     return this->name;
 }

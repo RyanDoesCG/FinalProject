@@ -7,7 +7,6 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "Game.hpp"
-
 #include "Mesh.hpp"
 
 Game::Game() {
@@ -26,7 +25,11 @@ Game::Game() {
         1000.0f
     );
     
-    state = RUNNING;
+    // seed random generator ONCE PER RUN
+    srand(static_cast<unsigned int>(time(0)));
+    
+    planet = new Planet(TOUGHER);
+    state  = RUNNING;
 }
 
 Game::~Game() {
@@ -34,14 +37,19 @@ Game::~Game() {
 }
 
 void Game::begin() {
+    planet->toString();
 
     while (state != ENDED) {
         input->checkInput();
         
         if (state == RUNNING) {
-            // update
+            // update objects
+            
+            // render objects
             window->clear();
-            // draw
+            planet->draw();
+            
+            // swap buffers
             window->update();
         }
     }
