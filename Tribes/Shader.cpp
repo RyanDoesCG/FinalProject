@@ -35,9 +35,6 @@ Shader::Shader  (const std::string& name) {
         glDeleteShader(shaders[i]);
     }
     
-   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-   glEnableVertexAttribArray(0);
-    
     // *Error Checking: TO-DO*
 }
 

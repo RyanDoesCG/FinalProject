@@ -33,8 +33,6 @@ class Planet : public GameObject {
         inline int        getBiomeCount () { return biomeCount; }
         inline int        getTribeCount () { return tribeCount; }
     
-        void draw () { this->render(); }
-    
         std::string toString ();
 
     private:

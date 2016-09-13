@@ -22,16 +22,17 @@
 
 class Mesh {
     public:
-        Mesh  (std::vector<GLfloat>* vert);
+        Mesh  (GLfloat* vert);
         ~Mesh ();
     
-        void draw(Shader shader);
+        void draw(Shader* shader);
 
     private:
         void createMesh();
     
-        std::vector<GLfloat>* vertices;
+        GLfloat* vertices;
         GLuint   VBO; // Vertex Buffer Object (sends verts to GPU)
+        GLuint   VAO; // Vertex Array Object
 };
 
 #endif /* Mesh_hpp */

@@ -3,7 +3,7 @@
  *  Tribes
  *
  *  Created by user on 12/09/2016.
- *  Copyright © 2016 Dissertation. All rights reserved.
+ *   Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "PlanetGraphics.hpp"
@@ -12,22 +12,14 @@
 #include <vector>
 
 PlanetGraphics::PlanetGraphics  () {
-    std::vector<GLfloat>* vert = new std::vector<GLfloat>();
+    GLfloat vert[] = {
+        -0.5f, -0.5f, 0.0f,
+        0.5f, -0.5f, 0.0f,
+        0.0f, 0.5f, 0.0f
+    };
     
-    vert->push_back(-0.5f);
-    vert->push_back(-0.5f);
-    vert->push_back(0.0f);
-    
-    vert->push_back(0.5f);
-    vert->push_back(-0.5f);
-    vert->push_back(0.0f);
-    
-    vert->push_back(0.0f);
-    vert->push_back(0.5f);
-    vert->push_back(0.0f);
-
-    this->objectMesh   = new Mesh(vert);
     this->objectShader = new Shader("Basic");
+    this->objectMesh   = new Mesh(vert);
 }
 
 PlanetGraphics::~PlanetGraphics () {
@@ -35,5 +27,5 @@ PlanetGraphics::~PlanetGraphics () {
 }
 
 void GraphicsComponent::draw() {
-    this->objectMesh->draw(*objectShader);
+    this->objectMesh->draw(objectShader);
 }

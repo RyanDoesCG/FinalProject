@@ -7,8 +7,12 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "Planet.hpp"
+#include "PlanetGraphics.hpp"
 
 Planet::Planet  (Difficulty difficulty) {
+    this->setGraphics(new PlanetGraphics());
+//    this->setPhysics(new PlanetPhysics());
+
     
     this->difficulty = difficulty;
     this->biomeCount = ((difficulty + 1) * 5) + (rand() % 10);

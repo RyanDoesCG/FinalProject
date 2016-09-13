@@ -14,7 +14,7 @@ Tribe::Tribe  () {
         generateName();
         generateFlag();
     
-        population = (rand() % 1000) + 1;
+        population = (rand() % 100000) + 1;
 }
 
 Tribe::~Tribe () {
@@ -22,64 +22,30 @@ Tribe::~Tribe () {
 }
 
 void Tribe::generateName() {
-    // ISSUE: Picking Garbage
+    const char* upperVowels = "AEIOU";
+    const char* lowerVowels = "aeiou";
+    const char* upperCons   = "BCDFGHJKLMNPQRSTVXZW";
+    const char* lowerCons   = "bcdfghjklmnpqrstvxzw";
     
-    char upperVowels[] = {'A', 'E', 'I', 'O', 'U'};
-    char lowerVowels[] = {'a', 'e', 'i', 'o', 'u'};
-    char upperCons  [] = {'B', 'C', 'D', 'F', 'G',
-                          'H', 'J', 'K', 'L', 'M',
-                          'N', 'P', 'Q', 'R', 'S',
-                          'T', 'V', 'X', 'Z', 'W'};
-    char lowerCons  [] = {'b', 'c', 'd', 'f', 'g',
-                          'h', 'j', 'k', 'l', 'm',
-                          'n', 'p', 'q', 'r', 's',
-                          't', 'v', 'x', 'x', 'w'};
-    
-    int  length = rand() % 14;
-    char name[length];
+    int  length = (rand() % 15) + 2;
     
     for (int i = 0; i < length; i++) {
         int ting = rand() % 100;
         
         if (i > 0) {
             if (ting < 36)
-                name[i] = lowerCons[(rand() % 18) + 1];
+                name += lowerCons[(rand() % 20)];
             else
-                name[i] = lowerVowels[(rand() % 4) + 1];
+                name += lowerVowels[(rand() % 5)];
         }
         
         else {
             if (ting < 36)
-                name[i] = upperCons[rand() % 18];
+                name += upperCons[rand() % 20];
             else
-                name[i] = upperVowels[rand() % 4];
+                name += upperVowels[rand() % 5];
         }
     }
-    
-    // TEMP FIX: kull numbers (find cause)
-    
-    /*
-     
-     Sample
-     
-     Ocjc\377
-     Ioiljkim\343+
-     Avxaeoroie
-     Aaias
-     \240\361\277_\377
-     Egooeiare+
-     Eqaeiiiimieii
-     Hpim\377
-     Ailaaie
-     E\361\277_\377
-     Eabla
-     Pehiilaomi
-     Eiorise
-     \240\361\277_\377
-     
-     */
-    
-    this->name = name;
 }
 
 void Tribe::generateFlag() {
@@ -101,12 +67,15 @@ std::string Tribe::toString() {
         output += "Scientists\n";
     } else if (ethos == Traders) {
         output += "Traders\n";
+    } else if (ethos == Preachers) {
+        output += "Preachers\n";
     } else if (ethos == Ferals) {
         output += "Ferals\n";
     }
     
     output += "Population: ";
     output += std::to_string(population);
+    output += "\n";
     
-    return this->name;
+    return output;
 }

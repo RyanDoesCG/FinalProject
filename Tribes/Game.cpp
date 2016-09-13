@@ -31,7 +31,6 @@ Game::Game() {
     srand(static_cast<unsigned int>(time(0)));
     
     planet = new Planet(TOUGHER);
-    planet->setGraphics(new PlanetGraphics());
     
     state  = RUNNING;
 }
@@ -41,7 +40,8 @@ Game::~Game() {
 }
 
 void Game::begin() {
-
+    planet->toString();
+    
     while (state != ENDED) {
         input->checkInput();
         
@@ -50,8 +50,7 @@ void Game::begin() {
             
             // render objects
             window->clear();
-            planet->draw();
-            
+            //planet->render();
             // swap buffers
             window->update();
         }

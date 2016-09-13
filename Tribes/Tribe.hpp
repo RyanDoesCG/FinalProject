@@ -15,6 +15,7 @@
 enum Ethos {
     Warriors,
     Scientists,
+    Preachers,
     Traders,
     Ferals,
     ETHOS_MAX

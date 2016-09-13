@@ -16,8 +16,6 @@ class PlanetGraphics : public GraphicsComponent {
     public:
         PlanetGraphics  ();
         ~PlanetGraphics ();
-
-        void render ();
     
     private:
         
