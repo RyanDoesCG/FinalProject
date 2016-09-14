@@ -7,6 +7,8 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "GLEW/glew.h"
+#include "GLFW/glfw3.h"
+
 #include "Window.hpp"
 #include <Random>
 
@@ -17,7 +19,7 @@ Window::Window(int width, int height, const std::string& title) {
     this->height = height;
     this->title  = title;
 
-    if (initSDL ()) {std::cout << "SDL initialisation failure\n"; exit(1);}
+    if (initGLFW()) {std::cout << "SDL initialisation failure\n"; exit(1);}
     if (initGLEW()) {std::cout << "GLEW initialisation failure\n"; exit(1);}
     
     float r = (rand() % 100) / 100.0f;
@@ -36,42 +38,26 @@ Window::Window(int width, int height, const std::string& title) {
 Window::~Window() {
     // delete context and window before
     // quitting SDL subsystems
-    SDL_GL_DeleteContext (glContext);
-    SDL_DestroyWindow    (window);
-    SDL_Quit             ();
+    glfwTerminate();
 }
 
-int Window::initSDL() {
+int Window::initGLFW() {
     // start SDL Subsystem
-    if (SDL_Init (SDL_INIT_EVERYTHING)) return 1;
+    if (glfwInit() == GLFW_FALSE) return 1;
     
-    // set 32-bit colour buffer
-    SDL_GL_SetAttribute (SDL_GL_RED_SIZE,    8);
-    SDL_GL_SetAttribute (SDL_GL_GREEN_SIZE,  8);
-    SDL_GL_SetAttribute (SDL_GL_BLUE_SIZE,   8);
-    SDL_GL_SetAttribute (SDL_GL_ALPHA_SIZE,  8);
-    SDL_GL_SetAttribute (SDL_GL_DEPTH_SIZE,  16);
-    SDL_GL_SetAttribute (SDL_GL_BUFFER_SIZE, 32);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     
-    // Enable Double buffering
-    SDL_GL_SetAttribute (SDL_GL_DOUBLEBUFFER, 1);
+    // macOS
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+    window = glfwCreateWindow(width, height, "tribes", nullptr, nullptr);
     
-    // create window
-    window = SDL_CreateWindow (
-        title.c_str(),
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
-        width,
-        height,
-        SDL_WINDOW_OPENGL
-    );
+    if (!window) return 1;
     
-    
-    // create context
-    glContext = SDL_GL_CreateContext (window);
-    
-    // hide mouse
-    SDL_ShowCursor(SDL_DISABLE);
+    glfwMakeContextCurrent(window);
     
     return 0;
 }
@@ -81,6 +67,9 @@ int Window::initGLEW() {
     GLenum status = glewInit();
     
     if (status != GLEW_OK) return 1;
+
+    // viewport
+    glViewport(0, 0, width, height);
 
     // face culling
     glEnable   (GL_CULL_FACE);
@@ -92,8 +81,12 @@ int Window::initGLEW() {
     return 0;
 }
 
+bool Window::shouldClose() {
+    return glfwWindowShouldClose(window);
+}
+
 void Window::update() {
-    SDL_GL_SwapWindow (window);
+    glfwSwapBuffers(window);
 }
 
 void Window::clear() {

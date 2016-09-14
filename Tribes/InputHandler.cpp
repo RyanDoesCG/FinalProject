@@ -19,29 +19,15 @@ InputHandler::~InputHandler () {
 }
 
 void InputHandler::checkInput() {
-    while (SDL_PollEvent (&event)) {
-        switch (event.type) {
-            case SDL_MOUSEMOTION:
-                std::cout << "x: " << event.motion.x << "\n";
-                std::cout << "y: " << event.motion.y << "\n\n";
-                break;
-            case SDL_KEYDOWN:
-                activeKeys->insert(event.key.keysym.sym);
-                break;
-            case SDL_KEYUP:
-                activeKeys->remove(event.key.keysym.sym);
-                break;
-            case SDL_QUIT:
-                game->end();
-                break;
-        }
+    while (false) {
+
     }
     
     handleKeys();
 }
 
 void InputHandler::handleKeys() {
-//    if (!activeKeys->isEmpty()) std::cout << "Tree Size: " << activeKeys->getSize() << "\n";
+/*    if (!activeKeys->isEmpty()) std::cout << "Tree Size: " << activeKeys->getSize() << "\n";
 
     if (activeKeys->contains(SDLK_w)) {
         std::cout << "w handled\n";
@@ -69,5 +55,5 @@ void InputHandler::handleKeys() {
     
     if (activeKeys->contains(SDLK_ESCAPE)) {
         game->pause();
-    }
+    }*/
 }

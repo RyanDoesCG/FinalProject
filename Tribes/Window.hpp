@@ -10,7 +10,8 @@
 #define Window_hpp
 
 #include "glm/vec4.hpp"
-#include <SDL2/SDL.h>
+#include "GLFW/glfw3.h"
+
 #include <iostream>
 
 class Window {
@@ -22,10 +23,11 @@ class Window {
         void clear  ();
     
         bool open;
+    
+        bool shouldClose();
 
     private:
-        SDL_Window *  window;
-        SDL_GLContext glContext;
+        GLFWwindow*  window;
     
         int width;
         int height;
@@ -33,7 +35,7 @@ class Window {
         glm::vec4 * clearColour;
         std::string title;
     
-        int initSDL();
+        int initGLFW();
         int initGLEW();
 
 };

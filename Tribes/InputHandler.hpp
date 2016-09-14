@@ -10,7 +10,6 @@
 #define InputHandler_hpp
 
 #include "AVLTree.hpp"
-#include <SDL2/SDL.h>
 #include <iostream>
 
 class Game;
@@ -23,7 +22,7 @@ class InputHandler {
         void handleKeys();
     
     private:
-        SDL_Event event;
+//        SDL_Event event;
         AVLTree*  activeKeys;
         Game*     game;
 };

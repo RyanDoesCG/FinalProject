@@ -10,6 +10,8 @@
 #include "Game.hpp"
 #include "Mesh.hpp"
 
+#include "GLFW/glfw3.h"
+
 Game::Game() {
     // seed random generator ONCE PER RUN
     srand(static_cast<unsigned int>(time(0)));
@@ -40,8 +42,8 @@ Game::~Game() {
 void Game::begin() {
     //planet->toString();
     
-    while (state) {
-        input->checkInput();
+    while (!window->shouldClose()) {
+        glfwPollEvents();
         
         if (state == RUNNING) {
             // update objects

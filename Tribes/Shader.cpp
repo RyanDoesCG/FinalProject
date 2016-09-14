@@ -22,9 +22,6 @@ Shader::Shader(const std::string& name) {
     glAttachShader (programID, vertexShaderID);
     glAttachShader (programID, fragmentShaderID);
     
-    // bind attributes
-    glBindAttribLocation(programID, 0, "position");
-    
     // link
     glLinkProgram  (programID);
     

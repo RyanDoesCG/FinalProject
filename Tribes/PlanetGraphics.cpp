@@ -11,11 +11,7 @@
 #include <vector>
 
 PlanetGraphics::PlanetGraphics  () {
-    GLfloat vert[] = {
-        -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        0.0f, 0.5f, 0.0f
-    };
+    GLfloat* vert = {};
     
     this->objectMesh   = new Mesh(vert);
     this->objectShader = new Shader("Basic");

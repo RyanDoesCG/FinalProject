@@ -11,7 +11,6 @@
 Mesh::Mesh(GLfloat* vert) {
     
     // POTENTIAL BUG (IS THIS PROPERLY REPRESENTING THE ARRAY?!)
-    this->vertices = vert;
     
     createMesh();
 }
@@ -21,8 +20,15 @@ Mesh::~Mesh() {
 }
 
 void Mesh::createMesh() {
+    GLfloat vertices[] = {
+        -0.5f, -0.5f, 0.0f,
+        0.5f, -0.5f, 0.0f,
+        0.0f, 0.5f, 0.0f
+    };
+    
+
     glGenBuffers(1, &VBO);
-    glGenBuffers(1, &VAO);
+    glGenVertexArrays(1, &VAO);
     
     glBindVertexArray(VAO);
         glBindBuffer(GL_ARRAY_BUFFER, VBO);

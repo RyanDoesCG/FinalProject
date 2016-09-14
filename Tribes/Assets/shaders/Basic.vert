@@ -1,5 +1,5 @@
-#version 320
-#extension GL_ARB_explicit_attrib_location : require
+#version 330 core
+
 /** 
  *  Why i can't draw a triangle:
  *

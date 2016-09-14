@@ -17,11 +17,14 @@
 		45C1178A1D77FF6200FE98A9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117891D77FF6200FE98A9 /* main.cpp */; };
 		45C117951D78005500FE98A9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117941D78005500FE98A9 /* OpenGL.framework */; };
 		45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1179F1D7805E700FE98A9 /* libGLEW.dylib */; };
-		45C117A21D7805E700FE98A9 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117A01D7805E700FE98A9 /* SDL2.framework */; };
 		45C117A71D780C1A00FE98A9 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117A51D780C1A00FE98A9 /* GameObject.cpp */; };
 		45C117BD1D788CBC00FE98A9 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117BB1D788CBC00FE98A9 /* Window.cpp */; };
 		45EA1AEC1D7B6C3E00DEA56C /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45EA1AEB1D7B6C3E00DEA56C /* InputHandler.cpp */; };
+		CE71EFCB1D89AE4D00A638DD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */; };
 		CECBD07F1D86C18C0001D6A9 /* PlanetGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECBD07D1D86C18C0001D6A9 /* PlanetGraphics.cpp */; };
+		CED62A9F1D89A7BD00805C8E /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */; };
+		CED62ABC1D89AC6300805C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62ABB1D89AC6300805C8E /* Cocoa.framework */; };
+		CED62ABE1D89ACF900805C8E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62ABD1D89ACF900805C8E /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,7 +61,6 @@
 		45C117891D77FF6200FE98A9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
-		45C117A01D7805E700FE98A9 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		45C117A31D78084800FE98A9 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		45C117A41D78099D00FE98A9 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
 		45C117A51D780C1A00FE98A9 /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
@@ -70,8 +72,13 @@
 		45C117BC1D788CBC00FE98A9 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
 		45CAB16B1D7AD269006A0018 /* InputHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputHandler.hpp; sourceTree = "<group>"; };
 		45EA1AEB1D7B6C3E00DEA56C /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
+		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CECBD07D1D86C18C0001D6A9 /* PlanetGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlanetGraphics.cpp; sourceTree = "<group>"; };
 		CECBD07E1D86C18C0001D6A9 /* PlanetGraphics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlanetGraphics.hpp; sourceTree = "<group>"; };
+		CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.dylib; path = ../../../../../../../Library/Frameworks/libglfw3.dylib; sourceTree = "<group>"; };
+		CED62AA01D89A7F900805C8E /* GLFW */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GLFW; sourceTree = "<group>"; };
+		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +86,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */,
-				45C117A21D7805E700FE98A9 /* SDL2.framework in Frameworks */,
+				CE71EFCB1D89AE4D00A638DD /* CoreVideo.framework in Frameworks */,
 				45C117951D78005500FE98A9 /* OpenGL.framework in Frameworks */,
+				CED62ABC1D89AC6300805C8E /* Cocoa.framework in Frameworks */,
+				CED62ABE1D89ACF900805C8E /* IOKit.framework in Frameworks */,
+				45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */,
+				CED62A9F1D89A7BD00805C8E /* libglfw3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +118,7 @@
 		45C117881D77FF6200FE98A9 /* Tribes */ = {
 			isa = PBXGroup;
 			children = (
+				CED62AA01D89A7F900805C8E /* GLFW */,
 				45C117A31D78084800FE98A9 /* Assets */,
 				45C117B51D7818F900FE98A9 /* glew */,
 				45C117A41D78099D00FE98A9 /* glm */,
@@ -146,9 +157,12 @@
 		45C117931D78005500FE98A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				45C1179F1D7805E700FE98A9 /* libGLEW.dylib */,
-				45C117A01D7805E700FE98A9 /* SDL2.framework */,
+				CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */,
 				45C117941D78005500FE98A9 /* OpenGL.framework */,
+				CED62ABB1D89AC6300805C8E /* Cocoa.framework */,
+				CED62ABD1D89ACF900805C8E /* IOKit.framework */,
+				CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */,
+				45C1179F1D7805E700FE98A9 /* libGLEW.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
