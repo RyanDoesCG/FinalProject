@@ -49,6 +49,7 @@ int Window::initGLFW() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
     
     // macOS
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -69,8 +70,8 @@ int Window::initGLEW() {
     if (status != GLEW_OK) return 1;
 
     // viewport
-    glViewport(0, 0, width, height);
-
+//    glViewport (0, height, width, height); // fucks things up, not sure worth it.
+ 
     // face culling
     glEnable   (GL_CULL_FACE);
     glCullFace (GL_BACK);

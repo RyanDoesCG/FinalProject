@@ -22,15 +22,15 @@
 
 class Mesh {
     public:
-        Mesh  (GLfloat* vert);
+        Mesh  ();
         ~Mesh ();
     
         void draw(Shader* shader);
 
     private:
         void createMesh();
-    
-        GLfloat* vertices;
+
+        // STORE VERTICES IN A MANNER THAT CAN BE PASSED/STORED EASILY BETWEEN CLASSES
     
         GLuint   VBO; // Vertex Buffer Object (sends verts to GPU)
         GLuint   VAO; // Vertex Array Object
