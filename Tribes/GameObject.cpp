@@ -21,7 +21,7 @@ GameObject::GameObject () {
 }
 
 GameObject::~GameObject () {
-    // free (null) should be value but check for null to be safe
+    // free (null) should be valid but check for null to be safe
     if (graphics) free(graphics);
     if (physics) free(physics);
     free(transform);
@@ -33,8 +33,7 @@ void GameObject::update () {
 }
 
 void GameObject::render () {
-    if (graphics)
-        graphics->draw();
+    if (graphics) graphics->draw();
     else
         std::cout << "GRAPHICS ERROR: No graphics module";
 }

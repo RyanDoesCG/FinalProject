@@ -10,40 +10,45 @@
 
 #include <fstream>
 
-Shader::Shader  (const std::string& name) {
+Shader::Shader(const std::string& name) {
     // create shader program
     programID = glCreateProgram();
     
     // create a fragment and vertex shader
-    shaders[0] = createShader(loadSource("Assets/shaders/" + name + ".vert"), GL_VERTEX_SHADER);
-    shaders[1] = createShader(loadSource("Assets/shaders/" + name + ".frag"), GL_FRAGMENT_SHADER);
+    vertexShaderID   = createShader(loadSource("Assets/shaders/" + name + ".vert"), GL_VERTEX_SHADER);
+    fragmentShaderID = createShader(loadSource("Assets/shaders/" + name + ".frag"), GL_FRAGMENT_SHADER);
     
-    // attach all shaders to program
-    for (unsigned int i = 0; i < NUM_SHADERS; i++)
-        glAttachShader(programID, shaders[i]);
+    // attach shaders
+    glAttachShader (programID, vertexShaderID);
+    glAttachShader (programID, fragmentShaderID);
     
     // bind attributes
     glBindAttribLocation(programID, 0, "position");
     
-    glLinkProgram     (programID);
-    glValidateProgram (programID);
+    // link
+    glLinkProgram  (programID);
+    
+    // ERROR CHECKING
+    GLint  success;
+    GLchar info[512];
+    glGetProgramiv(programID, GL_LINK_STATUS, &success);
+    if (!success) {
+        glGetProgramInfoLog(programID, 512, NULL, info);
+        std::cout << "Shader Program Link Error: " << info << std::endl;
+    }
     
     bind();
     
     // delete shaders
-    for (unsigned int i = 0; i < NUM_SHADERS; i++){
-        glDeleteShader(shaders[i]);
-    }
-    
-    // *Error Checking: TO-DO*
+    glDeleteShader(vertexShaderID);
+    glDeleteShader(fragmentShaderID);
+
 }
 
-Shader::~Shader () {
-    for (unsigned int i = 0; i < NUM_SHADERS; i++) {
-        glDetachShader(programID, shaders[i]);
-    }
-    
-    glDeleteProgram(programID);
+Shader::~Shader() {
+    glDetachShader  (programID, fragmentShaderID);
+    glDetachShader  (programID, vertexShaderID);
+    glDeleteProgram (programID);
 }
 
 void Shader::bind() {
@@ -54,7 +59,7 @@ void Shader::update() {
 
 }
 
-std::string Shader::loadSource (const std::string& path) {
+std::string Shader::loadSource(const std::string& path) {
     std::ifstream source;
     
     source.open(path.c_str());
@@ -87,8 +92,22 @@ GLuint Shader::createShader (const std::string& source, GLenum type) {
     shaderSource[0] = source.c_str();
     sourceLength[0] = (int)source.length();
     
-    glShaderSource  (shader, 1, shaderSource, sourceLength);
+    glShaderSource  (shader, 1, shaderSource, NULL);
     glCompileShader (shader);
+    
+    // ERROR CHECKING
+    GLint  success;
+    GLchar info[512];
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+    
+    if (!success) {
+        glGetShaderInfoLog(shader, 512, NULL, info);
+        std::cout << "Shader Compile Error: " << info << std::endl;
+    }
+    
+    else {
+        std::cout << " Shader Compile Success" << std::endl;
+    }
     
     return shader;
 }

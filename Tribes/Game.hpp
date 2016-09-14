@@ -14,7 +14,6 @@
 #include "Camera.hpp"
 #include "Window.hpp"
 #include "Planet.hpp"
-
 #include <iostream>
 #include <vector>
 
@@ -30,12 +29,14 @@ class Game {
         void end ();
     
         void pause ();
+    
+    Camera* getCamera () {return camera;}
 
     private:
         enum State {
+            ENDED,
             RUNNING,
-            PAUSED,
-            ENDED
+            PAUSED
         };
     
         InputHandler* input;

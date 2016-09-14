@@ -30,7 +30,7 @@ class Window {
         int width;
         int height;
     
-        glm::vec4 * clearColor;
+        glm::vec4 * clearColour;
         std::string title;
     
         int initSDL();
@@ -43,4 +43,6 @@ class Window {
 /** 
  *  Nice Colours:
  *      - r: 0.52 g: 0.64 b: 0.49
+ *      - r: 0.64 g: 0.1  b: 0.24
+ *      - r: 0.67 g: 0.61 b: 0.71
  */

@@ -36,8 +36,8 @@ std::string Planet::toString() {
     
     // difficulty
     output += "difficulty:  ";
-    if (difficulty == TOUGH) output += "TOUGH\n";
-    else if (difficulty == TOUGHER) output += "TOUGHER\n";
+    if      (difficulty == TOUGH)    output += "TOUGH\n";
+    else if (difficulty == TOUGHER)  output += "TOUGHER\n";
     else if (difficulty == TOUGHEST) output += "TOUGHEST\n";
     
     // biomes

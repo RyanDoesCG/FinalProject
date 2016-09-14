@@ -3,7 +3,7 @@
  *  Tribes
  *
  *  Created by ryan needham on 05/09/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Mesh_hpp
@@ -31,6 +31,7 @@ class Mesh {
         void createMesh();
     
         GLfloat* vertices;
+    
         GLuint   VBO; // Vertex Buffer Object (sends verts to GPU)
         GLuint   VAO; // Vertex Array Object
 };

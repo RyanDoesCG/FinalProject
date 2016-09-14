@@ -9,7 +9,7 @@
 #include "InputHandler.hpp"
 #include "Game.hpp"
 
-InputHandler::InputHandler (Game* game) {
+InputHandler::InputHandler(Game* game) {
     this->activeKeys = new AVLTree();
     this->game = game;
 }
@@ -41,13 +41,33 @@ void InputHandler::checkInput() {
 }
 
 void InputHandler::handleKeys() {
-    if (!activeKeys->isEmpty())
-        std::cout << "Tree Size: " << activeKeys->getSize() << "\n";
+//    if (!activeKeys->isEmpty()) std::cout << "Tree Size: " << activeKeys->getSize() << "\n";
 
-    if (activeKeys->contains(SDLK_w)) { std::cout << "w handled\n"; }
-    if (activeKeys->contains(SDLK_a)) { std::cout << "a handled\n"; }
-    if (activeKeys->contains(SDLK_s)) { std::cout << "s handled\n"; }
-    if (activeKeys->contains(SDLK_d)) { std::cout << "d handled\n"; }
-    if (activeKeys->contains(SDLK_SPACE)) { std::cout << "space handled\n"; }
-    if (activeKeys->contains(SDLK_ESCAPE)) { game->pause(); }
+    if (activeKeys->contains(SDLK_w)) {
+        std::cout << "w handled\n";
+        game->getCamera()->moveForward();
+    }
+    
+    if (activeKeys->contains(SDLK_a)) {
+        std::cout << "a handled\n";
+        game->getCamera()->moveLeft();
+    }
+    
+    if (activeKeys->contains(SDLK_s)) {
+        std::cout << "s handled\n";
+        game->getCamera()->moveBack();
+    }
+    
+    if (activeKeys->contains(SDLK_d)) {
+        std::cout << "d handled\n";
+        game->getCamera()->moveRight();
+    }
+    
+    if (activeKeys->contains(SDLK_SPACE)) {
+        std::cout << "space handled\n";
+    }
+    
+    if (activeKeys->contains(SDLK_ESCAPE)) {
+        game->pause();
+    }
 }

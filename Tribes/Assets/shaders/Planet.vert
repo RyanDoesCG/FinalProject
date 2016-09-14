@@ -13,7 +13,7 @@ varying   vec3  normal_vary;
 uniform   mat4  transform;
 
 void main (void) {
-    gl_Position  = transform * vec4(position, 1.0);
+    gl_Position = transform * vec4(position, 1.0);
     
     textureCoordinate_vary = textureCoordinate;
     normal_vary            = (transform * vec4(normal, 0.0)).xyz;

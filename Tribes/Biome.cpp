@@ -9,16 +9,18 @@
 #include "Biome.hpp"
 
 Biome::Biome () {
-    this->weather      = static_cast<Weather>   (rand() % WEATHER_MAX);
-    this->landscape    = static_cast<Landscape> (rand() % LANDSCAPE_MAX);
-    this->vegitation   = static_cast<Vegitation>(rand() % VEGITATION_MAX);
-    this->mainResource = static_cast<Resources> (rand() % RESOURCE_MAX);
-    this->auxResource  = static_cast<Resources> (rand() % RESOURCE_MAX);
+    weather      = static_cast<Weather>   (rand() % WEATHER_MAX);
+    landscape    = static_cast<Landscape> (rand() % LANDSCAPE_MAX);
+    vegitation   = static_cast<Vegitation>(rand() % VEGITATION_MAX);
+    mainResource = static_cast<Resources> (rand() % RESOURCE_MAX);
+    auxResource  = static_cast<Resources> (rand() % RESOURCE_MAX);
     
     // ensure no duplicate resource types
     while (auxResource == mainResource) {
-        this->auxResource = static_cast<Resources>(rand() % RESOURCE_MAX);
+        auxResource = static_cast<Resources>(rand() % RESOURCE_MAX);
     }
+    
+    viability = (weather * (landscape + vegitation)) + mainResource + (auxResource/2);
 }
 
 Biome::~Biome () {
@@ -63,6 +65,9 @@ std::string Biome::toString() {
     else if (auxResource == Steel)       output += "\tSteel\n";
     else if (auxResource == Alluminium)  output += "\tAlluminium\n";
     else if (auxResource == Diamond)     output += "\tDiamond\n";
+    
+    output += "\tViability:              ";
+    output += std::to_string(viability);
 
     output += "\n";
     return output;

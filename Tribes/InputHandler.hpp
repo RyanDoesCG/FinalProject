@@ -10,7 +10,6 @@
 #define InputHandler_hpp
 
 #include "AVLTree.hpp"
-
 #include <SDL2/SDL.h>
 #include <iostream>
 

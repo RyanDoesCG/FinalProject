@@ -5,45 +5,43 @@
  *  Created by ryan needham on 01/09/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
- *  r: 0.67 g: 0.61 b: 0.71
- *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "GLEW/glew.h"
 #include "Window.hpp"
 #include <Random>
 
-Window::Window  (int width, int height, const std::string& title) {
+Window::Window(int width, int height, const std::string& title) {
     glewExperimental = GL_TRUE; // Mesh Vertex Array initialisation doesn't work without this flag
 
     this->width  = width;
     this->height = height;
     this->title  = title;
 
-    if (initSDL())  std::cout << "SDL initialisation failure\n";
+    if (initSDL ()) std::cout << "SDL initialisation failure\n";
     if (initGLEW()) std::cout << "GLEW initialisation failure\n";
     
-    // apply some rules to this for a consistent vibe
-    srand(static_cast<unsigned int>(time(0)));
     float r = (rand() % 100) / 100.0f;
     float g = (rand() % 100) / 100.0f;
     float b = (rand() % 100) / 100.0f;
     float a = 0;
-    std::cout <<  "r: " << r
-              << " g: " << g
-              << " b: " << b
-              << "\n\n";
-    clearColor = new glm::vec4 (r,g,b,a);
+    
+    clearColour = new glm::vec4(r, g, b, a);
+    
+    std::cout << " r: " << clearColour->x
+              << " g: " << clearColour->y
+              << " b: " << clearColour->z
+              << "\n";
 }
 
-Window::~Window () {
+Window::~Window() {
     // delete context and window before
     // quitting SDL subsystems
     SDL_GL_DeleteContext (glContext);
     SDL_DestroyWindow    (window);
-    SDL_Quit();
+    SDL_Quit             ();
 }
 
-int Window::initSDL () {
+int Window::initSDL() {
     // start SDL Subsystem
     if (SDL_Init (SDL_INIT_EVERYTHING)) return 1;
     
@@ -81,23 +79,23 @@ int Window::initGLEW() {
     // initialise GLEW
     GLenum status = glewInit();
     
-    if (status!=GLEW_OK) return 1;
+    if (status != GLEW_OK) return 1;
 
     // face culling
     glEnable   (GL_CULL_FACE);
     glCullFace (GL_BACK);
     
     // Z-Buffering
-    glEnable (GL_DEPTH_TEST);
+    glEnable   (GL_DEPTH_TEST);
     
     return 0;
 }
 
-void Window::update () {
+void Window::update() {
     SDL_GL_SwapWindow (window);
 }
 
-void Window::clear  () {
-    glClearColor (clearColor->x, clearColor->y, clearColor->z, clearColor->w);
+void Window::clear() {
+    glClearColor (clearColour->x, clearColour->y, clearColour->z, clearColour->w);
     glClear      (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

@@ -74,6 +74,8 @@ class Biome : GameObject {
         Resources  auxResource;
         Resources  mainResource;
     
+        int viability;
+    
         // need some kind of score on how
         // accomodating to life a biome is
         // based on the above parameters.

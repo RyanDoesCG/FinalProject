@@ -6,32 +6,30 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#include "PlanetGraphics.hpp"
 #include "Game.hpp"
 #include "Mesh.hpp"
 
-#include "PlanetGraphics.hpp"
-
 Game::Game() {
+    // seed random generator ONCE PER RUN
+    srand(static_cast<unsigned int>(time(0)));
+    
     input  = new InputHandler(this);
-    window = new Window(
+    window = new Window (
         SCREEN_WIDTH,
         SCREEN_HEIGHT,
         "tribes"
     );
     
-    camera = new Camera(
+    camera = new Camera (
         glm::vec3(0, 0, -12),
         100.0f,
         (float)SCREEN_WIDTH/(float)SCREEN_HEIGHT,
         0.01f,
         1000.0f
     );
-    
-    // seed random generator ONCE PER RUN
-    srand(static_cast<unsigned int>(time(0)));
-    
+
     planet = new Planet(TOUGHER);
-    
     state  = RUNNING;
 }
 
@@ -40,17 +38,18 @@ Game::~Game() {
 }
 
 void Game::begin() {
-    planet->toString();
+    //planet->toString();
     
-    while (state != ENDED) {
+    while (state) {
         input->checkInput();
         
         if (state == RUNNING) {
             // update objects
             
-            // render objects
             window->clear();
-            //planet->render();
+            // render objects
+            planet->render();
+            
             // swap buffers
             window->update();
         }

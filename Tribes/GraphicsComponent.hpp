@@ -9,10 +9,9 @@
 #ifndef GraphicsComponent_hpp
 #define GraphicsComponent_hpp
 
-#include <iostream>
-
 #include "Shader.hpp"
 #include "Mesh.hpp"
+#include <iostream>
 
 class GraphicsComponent {
     public:

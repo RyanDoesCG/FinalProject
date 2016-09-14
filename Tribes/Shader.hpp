@@ -12,8 +12,6 @@
 #include "glew/glew.h"
 #include <iostream>
 
-#define NUM_SHADERS  2
-
 class Shader {
     public:
     
@@ -22,11 +20,13 @@ class Shader {
 
         void bind();
         void update();
+        
         GLuint programID;
-        GLuint shaders[NUM_SHADERS];
+        GLuint vertexShaderID;
+        GLuint fragmentShaderID;
 
     private:
-        std::string loadSource (const std::string& path);
+        std::string loadSource   (const std::string& path);
         GLuint      createShader (const std::string& source, GLenum type);
 
     
