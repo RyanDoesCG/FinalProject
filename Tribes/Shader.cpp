@@ -92,7 +92,7 @@ GLuint Shader::createShader (const std::string& source, GLenum type) {
     shaderSource[0] = source.c_str();
     sourceLength[0] = (int)source.length();
     
-    glShaderSource  (shader, 1, shaderSource, NULL);
+    glShaderSource  (shader, 1, shaderSource, sourceLength);
     glCompileShader (shader);
     
     // ERROR CHECKING

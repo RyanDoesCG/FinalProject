@@ -10,8 +10,8 @@
 #include "PlanetGraphics.hpp"
 
 Planet::Planet  (Difficulty difficulty) {
-    this->setGraphics(new PlanetGraphics());
-//    this->setPhysics(new PlanetPhysics());
+    setGraphics (new PlanetGraphics());
+//  setPhysics  (new PlanetPhysics());
 
     
     this->difficulty = difficulty;

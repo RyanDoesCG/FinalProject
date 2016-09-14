@@ -17,8 +17,8 @@ Window::Window(int width, int height, const std::string& title) {
     this->height = height;
     this->title  = title;
 
-    if (initSDL ()) std::cout << "SDL initialisation failure\n";
-    if (initGLEW()) std::cout << "GLEW initialisation failure\n";
+    if (initSDL ()) {std::cout << "SDL initialisation failure\n"; exit(1);}
+    if (initGLEW()) {std::cout << "GLEW initialisation failure\n"; exit(1);}
     
     float r = (rand() % 100) / 100.0f;
     float g = (rand() % 100) / 100.0f;
@@ -65,6 +65,7 @@ int Window::initSDL() {
         height,
         SDL_WINDOW_OPENGL
     );
+    
     
     // create context
     glContext = SDL_GL_CreateContext (window);
