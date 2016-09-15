@@ -13,7 +13,6 @@
 #include <Random>
 
 Window::Window(int width, int height, const std::string& title) {
-    glewExperimental = GL_TRUE; // Mesh Vertex Array initialisation doesn't work without this flag
 
     this->width  = width;
     this->height = height;
@@ -46,7 +45,7 @@ int Window::initGLFW() {
     if (glfwInit() == GLFW_FALSE) return 1;
     
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
@@ -60,6 +59,8 @@ int Window::initGLFW() {
     
     glfwMakeContextCurrent(window);
     
+    glewExperimental = GL_TRUE; // Mesh Vertex Array initialisation doesn't work without this flag
+    
     return 0;
 }
 
@@ -70,11 +71,12 @@ int Window::initGLEW() {
     if (status != GLEW_OK) return 1;
 
     // viewport
-//    glViewport (0, height, width, height); // fucks things up, not sure worth it.
+    glfwGetFramebufferSize(window, &width, &height);
+    glViewport (0, 0, width, height); // fucks things up, not sure worth it.
  
-    // face culling
-    glEnable   (GL_CULL_FACE);
-    glCullFace (GL_BACK);
+    // face culling REMOVED: CAUSES THINGS TO NOT SHOW UP
+//    glEnable   (GL_CULL_FACE);
+//    glCullFace (GL_BACK);
     
     // Z-Buffering
     glEnable   (GL_DEPTH_TEST);

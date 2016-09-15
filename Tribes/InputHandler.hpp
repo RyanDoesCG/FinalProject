@@ -9,22 +9,19 @@
 #ifndef InputHandler_hpp
 #define InputHandler_hpp
 
-#include "AVLTree.hpp"
 #include <iostream>
 
 class Game;
 class InputHandler {
     public:
-        InputHandler  (Game* game);
+        InputHandler  (Game* g);
         ~InputHandler ();
 
         void checkInput();
-        void handleKeys();
     
     private:
-//        SDL_Event event;
-        AVLTree*  activeKeys;
         Game*     game;
+    
 };
 
 #endif /* InputHandler_h */

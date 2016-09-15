@@ -20,7 +20,7 @@ Biome::Biome () {
         auxResource = static_cast<Resources>(rand() % RESOURCE_MAX);
     }
     
-    viability = (weather * (landscape + vegitation)) + mainResource + (auxResource/2);
+    classification = 77 - (weather + landscape + vegitation + mainResource + (auxResource - 1));
 }
 
 Biome::~Biome () {
@@ -66,8 +66,8 @@ std::string Biome::toString() {
     else if (auxResource == Alluminium)  output += "\tAlluminium\n";
     else if (auxResource == Diamond)     output += "\tDiamond\n";
     
-    output += "\tViability:              ";
-    output += std::to_string(viability);
+    output += "\tclassification:            ";
+    output += classification;
 
     output += "\n";
     return output;

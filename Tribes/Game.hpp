@@ -30,7 +30,8 @@ class Game {
     
         void pause ();
     
-    Camera* getCamera () {return camera;}
+        inline Camera* getCamera () {return camera;}
+        inline Window* getWindowObject () {return window;}
 
     private:
         enum State {

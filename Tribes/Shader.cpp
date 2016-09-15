@@ -7,7 +7,6 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "Shader.hpp"
-
 #include <fstream>
 
 Shader::Shader(const std::string& name) {
@@ -43,8 +42,8 @@ Shader::Shader(const std::string& name) {
 }
 
 Shader::~Shader() {
-    glDetachShader  (programID, fragmentShaderID);
     glDetachShader  (programID, vertexShaderID);
+    glDetachShader  (programID, fragmentShaderID);
     glDeleteProgram (programID);
 }
 
@@ -70,7 +69,7 @@ std::string Shader::loadSource(const std::string& path) {
             output.append(line + "\n");
         }
     } else {
-        std::cout << "Shader couldnt be loaded from disk" << "\n";
+        std::cout << "Shader Loading Error" << "\n";
     }
     
     return output;

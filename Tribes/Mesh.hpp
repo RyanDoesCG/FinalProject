@@ -22,18 +22,19 @@
 
 class Mesh {
     public:
-        Mesh  ();
+        Mesh  (std::vector<GLfloat>* v, std::vector<GLuint>* i);
         ~Mesh ();
     
         void draw(Shader* shader);
 
     private:
-        void createMesh();
-
-        // STORE VERTICES IN A MANNER THAT CAN BE PASSED/STORED EASILY BETWEEN CLASSES
+        // ideally this should be a C array but had issues passing.
+        std::vector<GLfloat>* vertices;
+        std::vector<GLuint>*  indices;
     
-        GLuint   VBO; // Vertex Buffer Object (sends verts to GPU)
-        GLuint   VAO; // Vertex Array Object
+        GLuint VBO; // Vertex Buffer Object (sends verts to GPU)
+        GLuint VAO; // Vertex Array Object
+        GLuint EBO; // Element Buffer Object
 };
 
 #endif /* Mesh_hpp */

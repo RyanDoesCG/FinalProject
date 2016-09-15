@@ -12,11 +12,11 @@
 
 #include "GLFW/glfw3.h"
 
+/** 
+ *  RNG should only be seeded once per run
+ */
 Game::Game() {
-    // seed random generator ONCE PER RUN
     srand(static_cast<unsigned int>(time(0)));
-    
-    input  = new InputHandler(this);
     window = new Window (
         SCREEN_WIDTH,
         SCREEN_HEIGHT,
@@ -30,9 +30,15 @@ Game::Game() {
         0.01f,
         1000.0f
     );
-
-    planet = new Planet(TOUGHER);
+    
+    input  = new InputHandler (
+        this
+    );
+    
     state  = RUNNING;
+    
+    // Game Entities
+    planet = new Planet(TOUGHER);
 }
 
 Game::~Game() {
@@ -40,11 +46,10 @@ Game::~Game() {
 }
 
 void Game::begin() {
-    //planet->toString();
+    planet->toString();
     
     while (!window->shouldClose()) {
-        glfwPollEvents();
-        
+        input->checkInput();
         if (state == RUNNING) {
             // update objects
             

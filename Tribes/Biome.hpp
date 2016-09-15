@@ -28,14 +28,14 @@ enum Weather {
     Desert,
     Snow,
     Normal,
-    WEATHER_MAX
+    WEATHER_MAX // 4
 };
 
 enum Landscape {
     Mountainous,
     Hilly,
     Flatlands,
-    LANDSCAPE_MAX
+    LANDSCAPE_MAX // 3
 };
 
 enum Resources {
@@ -44,14 +44,14 @@ enum Resources {
     Steel,
     Alluminium,
     Diamond,
-    RESOURCE_MAX
+    RESOURCE_MAX // 5
 };
 
 enum Vegitation {
     Sparse,
     Moderate,
     Plentiful,
-    VEGITATION_MAX
+    VEGITATION_MAX // 3
 };
 
 class Biome : GameObject {
@@ -74,7 +74,7 @@ class Biome : GameObject {
         Resources  auxResource;
         Resources  mainResource;
     
-        int viability;
+        char classification;
     
         // need some kind of score on how
         // accomodating to life a biome is

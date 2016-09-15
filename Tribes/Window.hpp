@@ -26,6 +26,7 @@ class Window {
     
         bool shouldClose();
 
+        inline GLFWwindow* getWindow() {return window;}
     private:
         GLFWwindow*  window;
     

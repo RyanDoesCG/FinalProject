@@ -18,10 +18,10 @@
 #include <iostream>
 #include <vector>
 
-//      /|\         /\
-//     /_|_\       /  \
-//     \ | /       \  /
-//      \|/         \/
+//      /|\         /\      \\
+//     /_|_\       /  \     \\
+//     \ | /       \  /     \\
+//      \|/         \/      \\
 
 enum Difficulty {
     TOUGH,

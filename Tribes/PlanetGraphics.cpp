@@ -11,15 +11,20 @@
 #include <vector>
 
 PlanetGraphics::PlanetGraphics  () {
-
-    GLfloat vert[] = {
-        -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        0.0f, 0.5f, 0.0f
+    std::vector<GLfloat> vertices = {
+         0.5f,  0.5f, 0.0f, // Top Right
+         0.5f, -0.5f, 0.0f, // Bottom Right
+        -0.5f, -0.5f, 0.0f, // Bottom Left
+        -0.5f,  0.5f, 0.0f // Top Left
     };
     
-    this->objectMesh   = new Mesh();
+    std::vector<GLuint> indices = {
+        0, 1, 3, // First Triangle
+        1, 2, 3    // Second Triangle
+    };
+    
     this->objectShader = new Shader("Basic");
+    this->objectMesh   = new Mesh(&vertices, &indices);
 }
 
 PlanetGraphics::~PlanetGraphics () {

@@ -29,10 +29,8 @@ PolyTerra   (many worlds in latin)
 #include "Tribe.hpp"
 
 int main(int argc, const char * argv[]) {
-    // run the game
-    Game* game = new Game();
-    game->begin();
-    free(game);
+    Game game;
+    game.begin();
     return 0;
 }
 
