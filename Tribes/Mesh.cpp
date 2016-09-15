@@ -50,8 +50,8 @@ Mesh::~Mesh() {
 }
 
 void Mesh::draw(Shader* shader) {
+//    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    // EBO NOT WORKING, NOTHING DRAWN
     shader->bind();
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
