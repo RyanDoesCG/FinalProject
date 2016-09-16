@@ -12,6 +12,7 @@
 #include "glm/vec3.hpp"
 #include "glm/vec2.hpp"
 #include "glew/GLEW.h"
+#include "glfw/glfw3.h"
 #include "Shader.hpp"
 
 #include <iostream>
@@ -25,7 +26,11 @@ class Mesh {
         Mesh  (std::vector<GLfloat>* v, std::vector<GLuint>* i);
         ~Mesh ();
     
-        void draw(Shader* shader);
+        void draw(std::vector<Shader*>* shader);
+    
+        GLuint getVboID();
+        GLuint getVaoID();
+        GLuint getEboID();
 
     private:
         // ideally this should be a C array but had issues passing.

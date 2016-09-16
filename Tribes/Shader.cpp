@@ -7,6 +7,8 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "Shader.hpp"
+#include "GLFW/glfw3.h"
+#include <math.h>
 #include <fstream>
 
 Shader::Shader(const std::string& name) {
@@ -98,11 +100,11 @@ GLuint Shader::createShader (const std::string& source, GLenum type) {
     
     if (!success) {
         glGetShaderInfoLog(shader, 512, NULL, info);
-        std::cout << "Shader Compile Error: " << info << std::endl;
+        std::cout << "Shader Compilation Error: " << info << std::endl;
     }
     
     else {
-        std::cout << " Shader Compile Success" << std::endl;
+        std::cout << " Shader Compilation Success" << std::endl;
     }
     
     return shader;

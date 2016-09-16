@@ -33,7 +33,7 @@ InputHandler::InputHandler(Game* g) {
     // Set Callbacks
     glfwSetCursorPosCallback (gameWindow, mouseMovementCallback);
     glfwSetKeyCallback       (gameWindow, keyCallback);
-    glfwSetCursor             (gameWindow, cursor);
+    glfwSetCursor            (gameWindow, cursor);
 }
 
 InputHandler::~InputHandler () {
@@ -64,6 +64,6 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }
 
 void mouseMovementCallback(GLFWwindow* window, double xpos, double ypos) {
-    std::cout << "x: " << xpos << std::endl;
-    std::cout << "y: " << ypos << std::endl;
+//    std::cout << "x: " << xpos << std::endl;
+//    std::cout << "y: " << ypos << std::endl;
 }

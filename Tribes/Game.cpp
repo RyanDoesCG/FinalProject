@@ -69,7 +69,7 @@ void Game::end() {
 
 void Game::pause() {
     // toggle pause on and off
-    if (state == PAUSED) state = RUNNING;
+    if      (state ==  PAUSED) state = RUNNING;
     else if (state == RUNNING) state = PAUSED;
     std::cout << "pause msg received\n";
 }

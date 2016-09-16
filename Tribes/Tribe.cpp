@@ -17,7 +17,7 @@ Tribe::Tribe() {
     
 }
 
-Tribe::~Tribe () {
+Tribe::~Tribe() {
 
 }
 
@@ -26,7 +26,7 @@ void Tribe::generateName() {
     const char* lowerVowels = "aeiou";
     const char* upperCons   = "BCDFGHJKLMNPQRSTVXZW";
     const char* lowerCons   = "bcdfghjklmnpqrstvxzw";
-    int         length      = (rand() % 15) + 2;
+    int         length      = (rand() % 11) + 2;
     
     for (int i = 0; i < length; i++) {
         int ting = rand() % 100;

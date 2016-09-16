@@ -1,0 +1,4 @@
+
+
+      - BUILD SOIL IMAGE LOADER AND ADD TO LINKER
+        - Current build of SOIL being linked is invalid on x86/x64

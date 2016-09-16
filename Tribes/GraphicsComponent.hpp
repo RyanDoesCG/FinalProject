@@ -18,9 +18,11 @@ class GraphicsComponent {
         GraphicsComponent  () {}
         ~GraphicsComponent () {}
     
+        void addShader(Shader* s) { objectShaders.push_back(s); }
+    
         virtual void draw();
 
-        Shader* objectShader;
+        std::vector<Shader*> objectShaders;
         Mesh* objectMesh;
 };
 
