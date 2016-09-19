@@ -35,12 +35,15 @@ Mesh::Mesh(std::vector<GLfloat>* v, std::vector<GLuint>* i) {
         glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, EBO);
         glBufferData (GL_ELEMENT_ARRAY_BUFFER, sizeof(indi), indi, GL_STATIC_DRAW);
     
-        // Enable VERTEX ATTRIBUTE ARRAY
-        glVertexAttribPointer     (2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(sizeof(GLfloat)));
+        // position
+        glVertexAttribPointer     (0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+        glEnableVertexAttribArray (0);
+        // color
+        glVertexAttribPointer     (1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+        glEnableVertexAttribArray (1);
+        // texture coordinates
+        glVertexAttribPointer     (2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
         glEnableVertexAttribArray (2);
-    
-        // unbind vertex buffer
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
     // unbind vertex array object
     glBindVertexArray(0);
 }
@@ -51,8 +54,10 @@ Mesh::~Mesh() {
     glDeleteBuffers      (1, &EBO);
 }
 
-void Mesh::draw(std::vector<Shader*>* shader) {
-
+void Mesh::draw() {
+    glBindVertexArray(VAO);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
 }
 
 GLuint Mesh::getVboID() {return VBO;}

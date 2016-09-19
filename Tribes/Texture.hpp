@@ -19,6 +19,8 @@ class Texture {
         Texture(std::string path);
         ~Texture();
     
+        void bind();
+    
     private:
         int width;
         int height;

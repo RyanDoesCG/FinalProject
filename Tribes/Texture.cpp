@@ -8,6 +8,8 @@
 #include "Texture.hpp"
 
 Texture::Texture(std::string path) {
+    path = "Assets/textures/" + path + ".jpg";
+
     image = SOIL_load_image (
         path.c_str(),
         &width,
@@ -15,6 +17,8 @@ Texture::Texture(std::string path) {
         0,
         SOIL_LOAD_RGB
     );
+    
+    if (!image) std::cout << "Image load failure (" << path << ")" << std::endl;
     
     glGenTextures (1, &textureID);
     glBindTexture (GL_TEXTURE_2D, textureID);
@@ -36,4 +40,8 @@ Texture::Texture(std::string path) {
 
 Texture::~Texture() {
 
+}
+
+void Texture::bind() {
+    glBindTexture (GL_TEXTURE_2D, textureID);
 }

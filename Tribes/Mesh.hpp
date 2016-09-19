@@ -26,8 +26,9 @@ class Mesh {
         Mesh  (std::vector<GLfloat>* v, std::vector<GLuint>* i);
         ~Mesh ();
     
-        void draw(std::vector<Shader*>* shader);
+        void draw();
     
+    protected:
         GLuint getVboID();
         GLuint getVaoID();
         GLuint getEboID();

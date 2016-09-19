@@ -10,6 +10,7 @@
 #define GraphicsComponent_hpp
 
 #include "Shader.hpp"
+#include "Texture.hpp"
 #include "Mesh.hpp"
 #include <iostream>
 
@@ -22,8 +23,10 @@ class GraphicsComponent {
     
         virtual void draw();
 
+    protected:
         std::vector<Shader*> objectShaders;
-        Mesh* objectMesh;
+        Texture*             objectTexture;
+        Mesh*                objectMesh;
 };
 
 #endif /* GraphicsComponent_hpp */

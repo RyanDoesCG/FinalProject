@@ -20,8 +20,8 @@
 		45C117A71D780C1A00FE98A9 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117A51D780C1A00FE98A9 /* GameObject.cpp */; };
 		45C117BD1D788CBC00FE98A9 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45C117BB1D788CBC00FE98A9 /* Window.cpp */; };
 		45EA1AEC1D7B6C3E00DEA56C /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45EA1AEB1D7B6C3E00DEA56C /* InputHandler.cpp */; };
-		CE15709D1D8C1297005F6DB0 /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE15709C1D8C1297005F6DB0 /* libSOIL.a */; };
 		CE1570A11D8C13E9005F6DB0 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE15709F1D8C13E9005F6DB0 /* Texture.cpp */; };
+		CE3852881D8C3DC5006A104C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
 		CE71EFCB1D89AE4D00A638DD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */; };
 		CECBD07F1D86C18C0001D6A9 /* PlanetGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECBD07D1D86C18C0001D6A9 /* PlanetGraphics.cpp */; };
 		CED62A9F1D89A7BD00805C8E /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */; };
@@ -73,11 +73,11 @@
 		45C117BC1D788CBC00FE98A9 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
 		45CAB16B1D7AD269006A0018 /* InputHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputHandler.hpp; sourceTree = "<group>"; };
 		45EA1AEB1D7B6C3E00DEA56C /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
-		CE15709C1D8C1297005F6DB0 /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = ../../../../../../../Library/Frameworks/libSOIL.a; sourceTree = "<group>"; };
 		CE15709E1D8C1386005F6DB0 /* soil */ = {isa = PBXFileReference; lastKnownFileType = folder; path = soil; sourceTree = "<group>"; };
 		CE15709F1D8C13E9005F6DB0 /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		CE1570A01D8C13E9005F6DB0 /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		CE1570A21D8C1CA1005F6DB0 /* tasks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tasks.txt; sourceTree = "<group>"; };
+		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CECBD07D1D86C18C0001D6A9 /* PlanetGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlanetGraphics.cpp; sourceTree = "<group>"; };
 		CECBD07E1D86C18C0001D6A9 /* PlanetGraphics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlanetGraphics.hpp; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 				CED62ABE1D89ACF900805C8E /* IOKit.framework in Frameworks */,
 				45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */,
 				CED62A9F1D89A7BD00805C8E /* libglfw3.dylib in Frameworks */,
-				CE15709D1D8C1297005F6DB0 /* libSOIL.a in Frameworks */,
+				CE3852881D8C3DC5006A104C /* libSOIL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +173,7 @@
 				CED62ABD1D89ACF900805C8E /* IOKit.framework */,
 				CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */,
 				45C1179F1D7805E700FE98A9 /* libGLEW.dylib */,
-				CE15709C1D8C1297005F6DB0 /* libSOIL.a */,
+				CE3852871D8C3DC5006A104C /* libSOIL.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
