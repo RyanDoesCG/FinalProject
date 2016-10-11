@@ -11,7 +11,6 @@
 
 #include "GraphicsComponent.hpp"
 #include "PhysicsComponent.hpp"
-#include "Transform.hpp"
 #include "glm/vec3.hpp"
 #include <iostream>
 
@@ -30,7 +29,6 @@ class GameObject {
 
     private:
         glm::vec3* position;
-        Transform* transform;
     
         GraphicsComponent* graphics;
         PhysicsComponent* physics;

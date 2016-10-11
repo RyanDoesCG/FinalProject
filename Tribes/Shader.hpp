@@ -20,6 +20,8 @@ class Shader {
         void bind();
         void update();
     
+        GLuint getProgramID () { return programID; }
+    
     protected:
         GLuint programID;
         GLuint vertexShaderID;

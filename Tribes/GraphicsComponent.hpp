@@ -28,8 +28,10 @@ class GraphicsComponent {
 
     protected:
         std::vector<Shader*> objectShaders;
+        glm::mat4            objectTransform;
         Texture*             objectTexture;
         Mesh*                objectMesh;
+    
 };
 
 #endif /* GraphicsComponent_hpp */

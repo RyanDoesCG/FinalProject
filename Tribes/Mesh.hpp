@@ -9,8 +9,7 @@
 #ifndef Mesh_hpp
 #define Mesh_hpp
 
-#include "glm/vec3.hpp"
-#include "glm/vec2.hpp"
+#include "glm/glm.hpp"
 #include "glew/GLEW.h"
 #include "glfw/glfw3.h"
 #include "Shader.hpp"
@@ -37,6 +36,8 @@ class Mesh {
         // ideally this should be a C array but had issues passing.
         std::vector<GLfloat>* vertices;
         std::vector<GLuint>*  indices;
+    
+        glm::mat4 transform;
     
         GLuint VBO; // Vertex Buffer Object (sends verts to GPU)
         GLuint VAO; // Vertex Array Object

@@ -16,7 +16,7 @@
 class Camera {
     public:
         Camera (const glm::vec3& pos, float fov, float aspect, float zNear, float zFar) {
-            perspectiveMatrix = glm::perspective(fov, aspect, zNear, zFar);
+//            perspectiveMatrix = glm::perspective(fov, aspect, zNear, zFar);
             cameraPosition    = pos;
             forward           = glm::vec3(0, 0, 1); // z axis
             upward            = glm::vec3(0, 1, 0); // y axis
@@ -27,7 +27,8 @@ class Camera {
         }
     
         inline glm::mat4 getViewProjection () const {
-            return perspectiveMatrix * glm::lookAt(cameraPosition, cameraPosition + forward, upward);
+//            return perspectiveMatrix * glm::lookAt(cameraPosition, cameraPosition + forward, upward);
+              return *new glm::mat4();// PLACEHOLDER
         }
     
         inline glm::vec3& getForward () { return forward; }

@@ -65,7 +65,6 @@
 		45C117A41D78099D00FE98A9 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
 		45C117A51D780C1A00FE98A9 /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		45C117A61D780C1A00FE98A9 /* GameObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
-		45C117AE1D78132E00FE98A9 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Transform.hpp; sourceTree = "<group>"; };
 		45C117B51D7818F900FE98A9 /* glew */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glew; sourceTree = "<group>"; };
 		45C117BB1D788CBC00FE98A9 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
 		45C117BC1D788CBC00FE98A9 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
@@ -154,7 +153,6 @@
 				CED416F61DA2BADD0064D8C0 /* BiomeGraphics.hpp */,
 				4513EAE91D79B07C008FE329 /* Shader.cpp */,
 				4513EAEA1D79B07C008FE329 /* Shader.hpp */,
-				45C117AE1D78132E00FE98A9 /* Transform.hpp */,
 				4506DA741D7E98DB009F9AD9 /* Tribe.cpp */,
 				4506DA751D7E98DB009F9AD9 /* Tribe.hpp */,
 				45C117BB1D788CBC00FE98A9 /* Window.cpp */,

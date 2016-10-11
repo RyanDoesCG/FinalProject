@@ -12,12 +12,10 @@ GameObject::GameObject (GraphicsComponent* graphics, PhysicsComponent* physics) 
     graphics  = graphics;
     physics   = physics;
     position  = new glm::vec3(0, 0, 0);
-    transform = new Transform();
 }
     
 GameObject::GameObject () {
     position  = new glm::vec3(0, 0, 0);
-    transform = new Transform();
 }
 
 GameObject::~GameObject () {
@@ -26,7 +24,6 @@ GameObject::~GameObject () {
     ab i*/
     if (graphics) free(graphics);
     if (physics) free(physics);
-    free(transform);
     free(position);
 }
     

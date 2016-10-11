@@ -23,6 +23,7 @@ Planet::Planet  (Difficulty difficulty) {
 
     for (int i = 0; i < biomeCount; i++) regions.push_back(new Biome());
     for (int i = 0; i < tribeCount; i++) tribes.push_back(new Tribe());
+    
 }
 
 Planet::~Planet () {
