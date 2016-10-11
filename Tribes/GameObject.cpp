@@ -22,6 +22,8 @@ GameObject::GameObject () {
 
 GameObject::~GameObject () {
     // free (null) should be valid but check for null to be safe
+    /* Should the deletion of an object lead the components of such
+    ab i*/
     if (graphics) free(graphics);
     if (physics) free(physics);
     free(transform);
@@ -33,10 +35,18 @@ void GameObject::update () {
 }
 
 void GameObject::render () {
-    if (graphics) graphics->draw();
+    if (graphics)
+        graphics->draw();
     else
         std::cout << "GRAPHICS ERROR: No graphics module";
 }
 
-void GameObject::setGraphics (GraphicsComponent* graphics) { this->graphics = graphics; std::cout << "Graphics Module Online\n"; }
-void GameObject::setPhysics  (PhysicsComponent*   physics) { this->physics  = physics;  std::cout << "Physics Module Online\n";}
+void GameObject::setGraphics (GraphicsComponent* graphics) {
+    this->graphics = graphics;
+//    std::cout << "Graphics Module Online\n";
+}
+
+void GameObject::setPhysics (PhysicsComponent* physics) {
+    this->physics  = physics;
+//    std::cout << "Physics Module Online\n";
+}

@@ -32,9 +32,3 @@ PlanetGraphics::PlanetGraphics  () {
 PlanetGraphics::~PlanetGraphics () {
 
 }
-
-void GraphicsComponent::draw() {
-    objectShaders.at(0)->bind ();
-    objectTexture->bind       ();
-    objectMesh->draw          ();
-}

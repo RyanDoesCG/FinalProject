@@ -17,8 +17,8 @@
 #include <iostream>
 #include <vector>
 
-#define SCREEN_WIDTH  800
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH  1200
+#define SCREEN_HEIGHT 720
 
 class Game {
     public:
@@ -40,10 +40,13 @@ class Game {
             PAUSED
         };
     
+        // systems
         InputHandler* input;
         Window*       window;
         Camera*       camera;
         State         state;
+    
+        // objects
         Planet*       planet;
 };
 

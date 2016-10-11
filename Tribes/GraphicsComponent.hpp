@@ -20,8 +20,11 @@ class GraphicsComponent {
         ~GraphicsComponent () {}
     
         void addShader(Shader* s) { objectShaders.push_back(s); }
-    
-        virtual void draw();
+        void draw() {
+            objectShaders.at(0)->bind ();
+            objectTexture->bind       ();
+            objectMesh->draw          ();
+        }
 
     protected:
         std::vector<Shader*> objectShaders;

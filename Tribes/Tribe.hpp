@@ -21,16 +21,6 @@ enum Ethos {
     ETHOS_MAX
 };
 
-class Flag {
-    public:
-        Flag() {}
-        ~Flag() {}
-    
-    private:
-    
-    
-};
-
 class Tribe : GameObject {
     public:
         Tribe  ();
@@ -38,15 +28,15 @@ class Tribe : GameObject {
     
         std::string getName       ();
         Ethos       getEthos      ();
-        Flag        getFlag       ();
+        Texture*    getFlag       ();
         int         getPopulation ();
     
         std::string toString ();
 
     private:
         std::string name;
+        Texture*    flag;
         Ethos       ethos;
-        Flag        flag;
         int         population;
     
         // Procedural Generators for more complicated data

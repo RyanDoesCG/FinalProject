@@ -9,18 +9,25 @@
 #include "Tribe.hpp"
 
 Tribe::Tribe() {
-        ethos      = static_cast<Ethos>(rand() % ETHOS_MAX);
-        population = (rand() % 100000) + 1;
+    ethos      = static_cast<Ethos>(rand() % ETHOS_MAX);
+    population = (rand() % 100000) + 1;
     
-        generateName();
-        generateFlag();
-    
+    generateName();
+    generateFlag();
 }
 
 Tribe::~Tribe() {
 
 }
 
+/** 
+ *  Make this better
+ *
+ *      - Different lexican for each ethos?
+ *          - reflect education levels in lexican?
+ *
+ *      - Aggressive capitalisation for warriors?
+ */
 void Tribe::generateName() {
     const char* upperVowels = "AEIOU";
     const char* lowerVowels = "aeiou";
@@ -43,8 +50,45 @@ void Tribe::generateName() {
     }
 }
 
+/** 
+ *  select from a group of "themes" based on ethos
+ *      - bones, weapons etc. for warriors
+ *      - atoms, lab equipment etc. for scientists
+ *      - religious artifacts for preachers
+ *      - planet/travel/money stuff for traders
+ *      - Ferals have a big X on a plain background
+ */
 void Tribe::generateFlag() {
-    
+    // 1200 x 720
+    switch (ethos) {
+        case Warriors:
+            break;
+        case Scientists:
+            break;
+        case Preachers:
+            break;
+        case Traders:
+            break;
+        case Ferals:
+            break;
+    }
+}
+
+std::string Tribe::getName () {
+    std::cout << "fucking broken" << "\n";
+    return "";
+}
+
+Ethos Tribe::getEthos () {
+    return this->ethos;
+}
+
+Texture* Tribe::getFlag () {
+    return flag;
+}
+
+int Tribe::getPopulation () {
+    return this->population;
 }
 
 std::string Tribe::toString() {

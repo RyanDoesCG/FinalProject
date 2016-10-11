@@ -10,6 +10,7 @@
 #define Biome_hpp
 
 #include "GameObject.hpp"
+#include "Tribe.hpp"
 #include <iostream>
 
 /** 
@@ -28,14 +29,14 @@ enum Weather {
     Desert,
     Snow,
     Normal,
-    WEATHER_MAX // 4
+    WEATHER_MAX
 };
 
 enum Landscape {
     Mountainous,
     Hilly,
     Flatlands,
-    LANDSCAPE_MAX // 3
+    LANDSCAPE_MAX
 };
 
 enum Resources {
@@ -44,14 +45,14 @@ enum Resources {
     Steel,
     Alluminium,
     Diamond,
-    RESOURCE_MAX // 5
+    RESOURCE_MAX
 };
 
 enum Vegitation {
     Sparse,
     Moderate,
     Plentiful,
-    VEGITATION_MAX // 3
+    VEGITATION_MAX
 };
 
 class Biome : GameObject {
@@ -73,12 +74,8 @@ class Biome : GameObject {
         Vegitation vegitation;
         Resources  auxResource;
         Resources  mainResource;
-    
-        char classification;
-    
-        // need some kind of score on how
-        // accomodating to life a biome is
-        // based on the above parameters.
+        
+        Tribe*     occupier;
 };
 
 #endif /* Biome_hpp */

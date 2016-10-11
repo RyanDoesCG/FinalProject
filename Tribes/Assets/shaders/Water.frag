@@ -7,5 +7,7 @@ uniform sampler2D tex;
 
 void main (void) {
     // Varying blue value
-    color = texture(tex, textCoord);
+//    color = texture(tex, textCoord); // use texture
+
+    color = vec4(0.67, 0.61, 0.71, 1.0);
 }

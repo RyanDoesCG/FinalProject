@@ -20,19 +20,64 @@ Biome::Biome () {
         auxResource = static_cast<Resources>(rand() % RESOURCE_MAX);
     }
     
-    classification = 77 - (weather + landscape + vegitation + mainResource + (auxResource - 1));
+    this->setGraphics(new GraphicsComponent()); // needs to be specific for a biome.
 }
 
 Biome::~Biome () {
 
 }
 
-inline Weather    Biome::getWeatherType       () { return weather; }
-inline Landscape  Biome::getLandscapeType     () { return landscape; }
-inline Resources  Biome::getMainResourcesType () { return mainResource; }
-inline Resources  Biome::getAuxResourcesType  () { return auxResource; }
-inline Vegitation Biome::getVegitationType    () { return vegitation; }
+/** 
+ *  getWeatherType
+ *
+ *  @returns Weather    The value of the objects weather field
+ *
+ *  When called this function returns the generated weather type for this
+ *  biome.
+ */
+inline Weather Biome::getWeatherType () { return weather; }
 
+/**
+ *  getLandscapeType
+ *
+ *  @returns Landscape    The value of the objects landscape field
+ *
+ *  When called this function returns the generated landscape type for this
+ *  biome.
+ */
+inline Landscape Biome::getLandscapeType () { return landscape; }
+
+/**
+ *  getMainResourceType
+ *
+ *  @returns Resources    The value of the objects main/abundant resource field
+ *
+ *  When called this function returns the generated main resource type for this
+ *  biome.
+ */
+inline Resources Biome::getMainResourcesType () { return mainResource; }
+
+/**
+ *  getAuxResourceType
+ *
+ *  @returns Resources    The value of the objects secondary/sparse resource field
+ *
+ *  When called this function returns the generated aux resource type for this
+ *  biome.
+ */
+inline Resources Biome::getAuxResourcesType () { return auxResource; }
+
+
+inline Vegitation Biome::getVegitationType () { return vegitation; }
+
+/** 
+ *  toString
+ *
+ *  @returns std::string     A string representing the values of this biome
+ *
+ *  When called this function will return a string object containing a human
+ *  readable translation of the biomes generated configuration.
+ */
 std::string Biome::toString() {
     std::string output = "";
     
@@ -66,9 +111,17 @@ std::string Biome::toString() {
     else if (auxResource == Alluminium)  output += "\tAlluminium\n";
     else if (auxResource == Diamond)     output += "\tDiamond\n";
     
-    output += "\tclassification:            ";
-    output += classification;
-
+    /** 
+     *  i fucking hate software.
+     *
+     *  the null gate is broken at random despite the occupier of the
+     *  biome never being set to anything other that null.
+     *
+    output += "\tOccupied by: ";
+    if (!occupier) output += "\tnobody";
+    else output += "\t" + occupier->getName();
+     */
+    
     output += "\n";
     return output;
 }

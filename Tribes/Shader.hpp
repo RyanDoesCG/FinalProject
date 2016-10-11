@@ -14,13 +14,13 @@
 
 class Shader {
     public:
-    
         Shader  (const std::string& name);
         ~Shader ();
 
         void bind();
         void update();
-        
+    
+    protected:
         GLuint programID;
         GLuint vertexShaderID;
         GLuint fragmentShaderID;
