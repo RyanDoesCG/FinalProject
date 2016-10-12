@@ -27,6 +27,7 @@ Mesh::Mesh(std::vector<GLfloat>* v, std::vector<GLuint>* i) {
 
     // bind vertex array object
     glBindVertexArray(VAO);
+    
         // Bind and Buffer VERTEX ARRAY
         glBindBuffer (GL_ARRAY_BUFFER, VBO);
         glBufferData (GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);

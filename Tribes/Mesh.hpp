@@ -37,7 +37,7 @@ class Mesh {
         std::vector<GLfloat>* vertices;
         std::vector<GLuint>*  indices;
     
-        glm::mat4 transform;
+        glm::mat4* transform;
     
         GLuint VBO; // Vertex Buffer Object (sends verts to GPU)
         GLuint VAO; // Vertex Array Object

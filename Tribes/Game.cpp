@@ -40,14 +40,9 @@ void Game::begin() {
         input->checkInput();
         
         if (state == RUNNING) {
-            // update objects
-            planet->update();
-            
             // render objects
             window->clear();
-            planet->render();
-            
-            // swap buffers
+            planet->update();
             window->update();
         }
     }

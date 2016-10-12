@@ -16,22 +16,21 @@
 
 class GameObject {
     public:
-        GameObject (GraphicsComponent* graphics, PhysicsComponent* physics);
-    
         GameObject();
         ~GameObject();
     
-        void update();
-        void render();
+        void setGraphics (GraphicsComponent* graphics);
+        void setPhysics  (PhysicsComponent*  physics);
+
     
-        void setGraphics(GraphicsComponent* graphics);
-        void setPhysics(PhysicsComponent* physics);
+        void update();
+    
 
     private:
         glm::vec3* position;
     
         GraphicsComponent* graphics;
-        PhysicsComponent* physics;
+        PhysicsComponent*  physics;
 
 };
 

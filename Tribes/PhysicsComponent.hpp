@@ -13,11 +13,7 @@
 
 class PhysicsComponent {
     public:
-        PhysicsComponent  ();
-        ~PhysicsComponent ();
-
-    private:
-
+        virtual void update() {};
 };
 
 #endif /* PhysicsComponent_hpp */
