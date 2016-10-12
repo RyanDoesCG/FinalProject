@@ -6,8 +6,8 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "InputHandler.hpp"
-#include "Game.hpp"
+#include "../Headers/Engine/InputHandler.hpp"
+#include "../Headers/Engine/Game.hpp"
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 void mouseMovementCallback(GLFWwindow* window, double xpos, double ypos);

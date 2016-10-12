@@ -6,11 +6,9 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "GLEW/glew.h"
-#include "GLFW/glfw3.h"
-
-#include "Window.hpp"
-#include <Random>
+#include "../Headers/glew/glew.h"
+#include "../Headers/GLFW/glfw3.h"
+#include "../Headers/Engine/Window.hpp"
 
 Window::Window(int width, int height, const std::string& title) {
 

@@ -6,7 +6,7 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "Mesh.hpp"
+#include "../Headers/Engine/Mesh.hpp"
 #include <math.h>
 
 Mesh::Mesh(std::vector<GLfloat>* v, std::vector<GLuint>* i) {

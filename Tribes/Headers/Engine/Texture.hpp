@@ -9,9 +9,9 @@
 #ifndef Texture_hpp
 #define Texture_hpp
 
-#include "glew/glew.h"
-#include "glfw/glfw3.h"
-#include "soil/SOIL.h"
+#include "../glew/glew.h"
+#include "../glfw/glfw3.h"
+#include "../soil/SOIL.h"
 #include <iostream>
 
 class Texture {

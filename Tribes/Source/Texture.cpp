@@ -5,7 +5,7 @@
  *  Created by user on 16/09/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "Texture.hpp"
+#include "../Headers/Engine/Texture.hpp"
 
 Texture::Texture(std::string path) {
     path = "Assets/textures/" + path + ".jpg";

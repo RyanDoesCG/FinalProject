@@ -6,10 +6,11 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "Shader.hpp"
-#include "GLFW/glfw3.h"
-#include <math.h>
+#include "../Headers/Engine/Shader.hpp"
+#include "../Headers/GLFW/glfw3.h"
+
 #include <fstream>
+#include <math.h>
 
 Shader::Shader(const std::string& name) {
     // create shader program

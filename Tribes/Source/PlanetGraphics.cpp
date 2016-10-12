@@ -6,7 +6,7 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "PlanetGraphics.hpp"
+#include "../Headers/Engine/PlanetGraphics.hpp"
 #include <vector>
 
 PlanetGraphics::PlanetGraphics  () {

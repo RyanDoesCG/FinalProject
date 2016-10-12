@@ -9,7 +9,7 @@
 #ifndef Camera_hpp
 #define Camera_hpp
 
-#include "GLM/glm.hpp"
+#include "../GLM/glm.hpp"
 
 #include <iostream>
 

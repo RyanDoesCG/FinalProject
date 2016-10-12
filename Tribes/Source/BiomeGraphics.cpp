@@ -6,7 +6,7 @@
  *    Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "BiomeGraphics.hpp"
+#include "../Headers/Engine/BiomeGraphics.hpp"
 
 BiomeGraphics::BiomeGraphics  () {
 

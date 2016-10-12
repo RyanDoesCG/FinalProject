@@ -22,11 +22,8 @@ PolyTerra   (many worlds in latin)
 
 */
 
-#include "Game.hpp"
+#include "../Headers/Engine/Game.hpp"
 #include <iostream>
-
-#include "Planet.hpp"
-#include "Tribe.hpp"
 
 int main(int argc, const char * argv[]) {
     Game game;

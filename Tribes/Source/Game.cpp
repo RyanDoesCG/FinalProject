@@ -6,11 +6,10 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "PlanetGraphics.hpp"
-#include "Game.hpp"
-#include "Mesh.hpp"
-
-#include "GLFW/glfw3.h"
+#include "../Headers/Engine/PlanetGraphics.hpp"
+#include "../Headers/Engine/Game.hpp"
+#include "../Headers/Engine/Mesh.hpp"
+#include "../Headers/GLFW/glfw3.h"
 
 /** 
  *  RNG should only be seeded once per run

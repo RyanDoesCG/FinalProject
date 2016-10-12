@@ -6,7 +6,7 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "Biome.hpp"
+#include "../Headers/Engine/Biome.hpp"
 
 Biome::Biome () {
     weather      = static_cast<Weather>   (rand() % WEATHER_MAX);

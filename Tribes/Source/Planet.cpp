@@ -6,8 +6,8 @@
  *    Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "Planet.hpp"
-#include "PlanetGraphics.hpp"
+#include "../Headers/Engine/Planet.hpp"
+#include "../Headers/Engine/PlanetGraphics.hpp"
 
 Planet::Planet  (Difficulty difficulty) {
     setGraphics (new PlanetGraphics());

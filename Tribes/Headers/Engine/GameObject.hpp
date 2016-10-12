@@ -11,7 +11,7 @@
 
 #include "GraphicsComponent.hpp"
 #include "PhysicsComponent.hpp"
-#include "glm/vec3.hpp"
+#include "../glm/vec3.hpp"
 #include <iostream>
 
 class GameObject {
@@ -22,10 +22,8 @@ class GameObject {
         void setGraphics (GraphicsComponent* graphics);
         void setPhysics  (PhysicsComponent*  physics);
 
-    
         void update();
     
-
     private:
         glm::vec3* position;
     

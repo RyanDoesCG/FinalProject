@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		45C117951D78005500FE98A9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117941D78005500FE98A9 /* OpenGL.framework */; };
 		45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1179F1D7805E700FE98A9 /* libGLEW.dylib */; };
+		CE2697331DAEADE600F9833E /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697261DAEADE600F9833E /* Biome.cpp */; };
+		CE2697341DAEADE600F9833E /* BiomeGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697271DAEADE600F9833E /* BiomeGraphics.cpp */; };
+		CE2697351DAEADE600F9833E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697281DAEADE600F9833E /* Game.cpp */; };
+		CE2697361DAEADE600F9833E /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697291DAEADE600F9833E /* GameObject.cpp */; };
+		CE2697371DAEADE600F9833E /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972A1DAEADE600F9833E /* InputHandler.cpp */; };
+		CE2697381DAEADE600F9833E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972B1DAEADE600F9833E /* main.cpp */; };
+		CE2697391DAEADE600F9833E /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972C1DAEADE600F9833E /* Mesh.cpp */; };
+		CE26973A1DAEADE600F9833E /* Planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972D1DAEADE600F9833E /* Planet.cpp */; };
+		CE26973B1DAEADE600F9833E /* PlanetGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972E1DAEADE600F9833E /* PlanetGraphics.cpp */; };
+		CE26973C1DAEADE600F9833E /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972F1DAEADE600F9833E /* Shader.cpp */; };
+		CE26973D1DAEADE600F9833E /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697301DAEADE600F9833E /* Texture.cpp */; };
+		CE26973E1DAEADE600F9833E /* Tribe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697311DAEADE600F9833E /* Tribe.cpp */; };
+		CE26973F1DAEADE600F9833E /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697321DAEADE600F9833E /* Window.cpp */; };
 		CE3852881D8C3DC5006A104C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
 		CE71EFCB1D89AE4D00A638DD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */; };
 		CED62A9F1D89A7BD00805C8E /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */; };
@@ -34,10 +47,22 @@
 		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
 		45C117A31D78084800FE98A9 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		CE1570A21D8C1CA1005F6DB0 /* tasks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tasks.txt; sourceTree = "<group>"; };
+		CE2697261DAEADE600F9833E /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Biome.cpp; path = Source/Biome.cpp; sourceTree = "<group>"; };
+		CE2697271DAEADE600F9833E /* BiomeGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BiomeGraphics.cpp; path = Source/BiomeGraphics.cpp; sourceTree = "<group>"; };
+		CE2697281DAEADE600F9833E /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Game.cpp; path = Source/Game.cpp; sourceTree = "<group>"; };
+		CE2697291DAEADE600F9833E /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameObject.cpp; path = Source/GameObject.cpp; sourceTree = "<group>"; };
+		CE26972A1DAEADE600F9833E /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputHandler.cpp; path = Source/InputHandler.cpp; sourceTree = "<group>"; };
+		CE26972B1DAEADE600F9833E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = "<group>"; };
+		CE26972C1DAEADE600F9833E /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = Source/Mesh.cpp; sourceTree = "<group>"; };
+		CE26972D1DAEADE600F9833E /* Planet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Planet.cpp; path = Source/Planet.cpp; sourceTree = "<group>"; };
+		CE26972E1DAEADE600F9833E /* PlanetGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlanetGraphics.cpp; path = Source/PlanetGraphics.cpp; sourceTree = "<group>"; };
+		CE26972F1DAEADE600F9833E /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = Source/Shader.cpp; sourceTree = "<group>"; };
+		CE2697301DAEADE600F9833E /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Texture.cpp; path = Source/Texture.cpp; sourceTree = "<group>"; };
+		CE2697311DAEADE600F9833E /* Tribe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tribe.cpp; path = Source/Tribe.cpp; sourceTree = "<group>"; };
+		CE2697321DAEADE600F9833E /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = Source/Window.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CEB56C781DAEAA1E00840F6B /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Headers; sourceTree = "<group>"; };
-		CEB56C791DAEAA1E00840F6B /* Source */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Source; sourceTree = "<group>"; };
 		CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.dylib; path = ../../../../../../../Library/Frameworks/libglfw3.dylib; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -83,7 +108,19 @@
 			children = (
 				45C117A31D78084800FE98A9 /* Assets */,
 				CEB56C781DAEAA1E00840F6B /* Headers */,
-				CEB56C791DAEAA1E00840F6B /* Source */,
+				CE2697261DAEADE600F9833E /* Biome.cpp */,
+				CE2697271DAEADE600F9833E /* BiomeGraphics.cpp */,
+				CE2697281DAEADE600F9833E /* Game.cpp */,
+				CE2697291DAEADE600F9833E /* GameObject.cpp */,
+				CE26972A1DAEADE600F9833E /* InputHandler.cpp */,
+				CE26972B1DAEADE600F9833E /* main.cpp */,
+				CE26972C1DAEADE600F9833E /* Mesh.cpp */,
+				CE26972D1DAEADE600F9833E /* Planet.cpp */,
+				CE26972E1DAEADE600F9833E /* PlanetGraphics.cpp */,
+				CE26972F1DAEADE600F9833E /* Shader.cpp */,
+				CE2697301DAEADE600F9833E /* Texture.cpp */,
+				CE2697311DAEADE600F9833E /* Tribe.cpp */,
+				CE2697321DAEADE600F9833E /* Window.cpp */,
 				CE1570A21D8C1CA1005F6DB0 /* tasks.txt */,
 			);
 			path = Tribes;
@@ -160,6 +197,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE26973E1DAEADE600F9833E /* Tribe.cpp in Sources */,
+				CE2697361DAEADE600F9833E /* GameObject.cpp in Sources */,
+				CE2697351DAEADE600F9833E /* Game.cpp in Sources */,
+				CE2697381DAEADE600F9833E /* main.cpp in Sources */,
+				CE26973B1DAEADE600F9833E /* PlanetGraphics.cpp in Sources */,
+				CE26973F1DAEADE600F9833E /* Window.cpp in Sources */,
+				CE26973C1DAEADE600F9833E /* Shader.cpp in Sources */,
+				CE2697391DAEADE600F9833E /* Mesh.cpp in Sources */,
+				CE2697331DAEADE600F9833E /* Biome.cpp in Sources */,
+				CE2697371DAEADE600F9833E /* InputHandler.cpp in Sources */,
+				CE2697341DAEADE600F9833E /* BiomeGraphics.cpp in Sources */,
+				CE26973A1DAEADE600F9833E /* Planet.cpp in Sources */,
+				CE26973D1DAEADE600F9833E /* Texture.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

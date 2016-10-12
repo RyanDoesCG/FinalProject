@@ -6,7 +6,7 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "GameObject.hpp"
+#include "../Headers/Engine/GameObject.hpp"
 
 GameObject::GameObject () {
     graphics = nullptr;

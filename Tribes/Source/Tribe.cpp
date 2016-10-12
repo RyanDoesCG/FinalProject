@@ -6,7 +6,7 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "Tribe.hpp"
+#include "../Headers/Engine/Tribe.hpp"
 
 Tribe::Tribe() {
     ethos      = static_cast<Ethos>(rand() % ETHOS_MAX);
