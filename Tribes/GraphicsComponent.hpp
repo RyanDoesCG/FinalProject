@@ -39,7 +39,6 @@ class GraphicsComponent {
                 glm::value_ptr(objectTransform)
             );
             
-            
             objectTexture->bind       ();
             objectMesh->draw          ();
         }

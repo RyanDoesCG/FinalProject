@@ -23,17 +23,8 @@ PlanetGraphics::PlanetGraphics  () {
     };
 
     this->objectShaders.push_back(new Shader("Water"));
-
-    // BUGGY
-
-
-//    this->objectTransform = glm::scale (objectTransform, glm::vec3(0.5, 0.5, 0.5));
-    // BUGGY
-
     this->objectTexture   = new Texture("water");
     this->objectMesh      = new Mesh(&vertices, &indices);
-    
-    // transform uniform to GPU
 
 }
 
