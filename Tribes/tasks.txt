@@ -13,3 +13,9 @@
  3  WRITE A SHADER PROGRAM FOR EACH BIOME TEXTURE
 
  4  DISTORT PLANET MESH WITH NOISE FOR TERRAIN
+
+
+glm::ortho(0.0f, 800.0f, 0.0f, 600.0f, 0.1f, 100.0f);
+
+glm::mat4 proj = glm::perspective(45.0f, (float)width/(float)height, 0.1f,
+100.0f);

@@ -48,6 +48,41 @@ Mesh::Mesh(std::vector<GLfloat>* v, std::vector<GLuint>* i) {
     
     // unbind vertex array object
     glBindVertexArray(0);
+    
+    totalVertices = (int)vertices->size() / 3;
+    
+}
+
+Mesh::Mesh (std::vector<GLfloat>* v) {
+    // store vectors
+    vertices = v;
+    
+    // convert vector to a standard array
+    GLfloat vert[vertices->size()];
+    for (int i = 0; i < vertices->size(); i++) vert[i] = vertices->at(i);
+    
+    // Set up Buffers
+    glGenVertexArrays (1, &VAO);
+    glGenBuffers      (1, &VBO);
+    
+    // bind vertex array object
+    glBindVertexArray(VAO);
+    
+    // Bind and Buffer VERTEX ARRAY
+    glBindBuffer (GL_ARRAY_BUFFER, VBO);
+    glBufferData (GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
+    
+    // position
+    glVertexAttribPointer     (0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+    glEnableVertexAttribArray (0);
+    
+    // unbind vertex array object
+    glBindVertexArray(0);
+    
+    totalVertices = (int)vertices->size() / 3;
+    
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // wire frame rendering
+    glLineWidth(1.0f);
 }
 
 Mesh::~Mesh() {
@@ -58,12 +93,13 @@ Mesh::~Mesh() {
 
 void Mesh::draw() {
     glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glDrawArrays(GL_TRIANGLES, 0, totalVertices);
     glBindVertexArray(0);
 }
 
-GLuint Mesh::getVboID() {return VBO;}
-GLuint Mesh::getVaoID() {return VAO;}
-GLuint Mesh::getEboID() {return EBO;}
+GLuint Mesh::getVboID() { return VBO; }
+GLuint Mesh::getVaoID() { return VAO; }
+GLuint Mesh::getEboID() { return EBO; }
 
 // //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); wire frame rendering

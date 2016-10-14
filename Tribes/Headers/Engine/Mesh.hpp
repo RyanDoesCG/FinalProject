@@ -23,6 +23,7 @@
 class Mesh {
     public:
         Mesh  (std::vector<GLfloat>* v, std::vector<GLuint>* i);
+        Mesh  (std::vector<GLfloat>* v);
         ~Mesh ();
     
         void draw();
@@ -42,6 +43,8 @@ class Mesh {
         GLuint VBO; // Vertex Buffer Object (sends verts to GPU)
         GLuint VAO; // Vertex Array Object
         GLuint EBO; // Element Buffer Object
+    
+        int totalVertices;
 };
 
 #endif /* Mesh_hpp */

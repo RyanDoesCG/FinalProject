@@ -11,13 +11,12 @@
 GameObject::GameObject () {
     graphics = nullptr;
     physics  = nullptr;
-    position = new glm::vec3(0, 0, 0);
+    position = glm::mat4();
 }
 
 GameObject::~GameObject () {
     if (graphics) free(graphics);
     if (physics)  free(physics);
-    free(position);
 }
     
 void GameObject::update () {

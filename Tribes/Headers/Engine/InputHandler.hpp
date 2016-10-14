@@ -11,17 +11,22 @@
 
 #include <iostream>
 
+#define KEYCOUNT 348
+
+// Forward declaration as Game.hpp cannot be imported
 class Game;
 class InputHandler {
     public:
         InputHandler  (Game* g);
         ~InputHandler ();
 
-        void checkInput();
+        void update();
     
     private:
-        Game*     game;
+        Game* game;
     
+        void checkInput();
+        void processInput();
 };
 
 #endif /* InputHandler_h */

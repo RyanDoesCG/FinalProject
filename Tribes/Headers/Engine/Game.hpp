@@ -17,8 +17,8 @@
 #include <iostream>
 #include <vector>
 
-#define SCREEN_WIDTH  1200
-#define SCREEN_HEIGHT 720
+#define SCREEN_WIDTH  720
+#define SCREEN_HEIGHT 460
 
 class Game {
     public:
@@ -30,8 +30,10 @@ class Game {
     
         void pause ();
     
-        inline Camera* getCamera () {return camera;}
         inline Window* getWindowObject () {return window;}
+    
+        void rotatePlanetLeft();
+        void rotatePlanetRight();
 
     private:
         enum State {
@@ -40,13 +42,15 @@ class Game {
             PAUSED
         };
     
-        // systems
+        // world seed
+        long seed;
+    
+        // engine systems
         InputHandler* input;
         Window*       window;
-        Camera*       camera;
         State         state;
     
-        // objects
+        // game objects
         Planet*       planet;
 };
 

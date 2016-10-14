@@ -48,6 +48,9 @@ int Window::initGLFW() {
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
     
+    // multisampling
+    glfwWindowHint(GLFW_SAMPLES, 4);
+    
     // macOS
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
@@ -78,6 +81,7 @@ int Window::initGLEW() {
     
     // Z-Buffering
     glEnable   (GL_DEPTH_TEST);
+    glEnable   (GL_MULTISAMPLE);
     
     return 0;
 }

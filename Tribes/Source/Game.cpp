@@ -11,35 +11,33 @@
 #include "../Headers/Engine/Mesh.hpp"
 #include "../Headers/GLFW/glfw3.h"
 
-/** 
- *  RNG should only be seeded once per run
- */
 Game::Game() {
+    // seed random generator & generate random seed
     srand(static_cast<unsigned int>(time(0)));
+    seed = rand();
+    std::cout << seed << std::endl;
     
     // put engine stuff together
-    window = new Window         (SCREEN_WIDTH, SCREEN_HEIGHT, "tribes");
-    camera = new Camera         (glm::vec3(0, 0, -12), 100.0f, (float)SCREEN_WIDTH/(float)SCREEN_HEIGHT, 0.01f, 1000.0f);
-    input  = new InputHandler   (this);
-    state  = RUNNING;
+    window = new Window       (SCREEN_WIDTH, SCREEN_HEIGHT, "tribes");
+    input  = new InputHandler (this);
+    planet = new Planet       (TOUGHER, seed);
     
-    // Game Entities
-    planet  = new Planet(TOUGHER);
+    state  = RUNNING;
 }
 
 Game::~Game() {
-
+    free(window);
+    free(input);
+    free(planet);
 }
 
 void Game::begin() {
     planet->toString();
 
     while (!window->shouldClose()) {
-        // check for changes to state 
-        input->checkInput();
+        input->update();
         
         if (state == RUNNING) {
-            // render objects
             window->clear();
             planet->update();
             window->update();
@@ -56,4 +54,12 @@ void Game::pause() {
     if      (state ==  PAUSED) state = RUNNING;
     else if (state == RUNNING) state = PAUSED;
     std::cout << "pause msg received\n";
+}
+
+void Game::rotatePlanetLeft() {
+
+}
+
+void Game::rotatePlanetRight() {
+    
 }

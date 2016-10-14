@@ -14,6 +14,10 @@
 #include "../glm/vec3.hpp"
 #include <iostream>
 
+class GraphicsComponent;
+class PhysicsComponent;
+class InputComponent;
+
 class GameObject {
     public:
         GameObject();
@@ -21,14 +25,16 @@ class GameObject {
     
         void setGraphics (GraphicsComponent* graphics);
         void setPhysics  (PhysicsComponent*  physics);
+        void setInput    (InputComponent*    input);
 
         void update();
     
+        glm::mat4 position;
     private:
-        glm::vec3* position;
     
         GraphicsComponent* graphics;
         PhysicsComponent*  physics;
+        InputComponent*    input;
 
 };
 

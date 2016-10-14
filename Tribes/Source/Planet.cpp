@@ -9,21 +9,20 @@
 #include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/PlanetGraphics.hpp"
 
-Planet::Planet  (Difficulty difficulty) {
+Planet::Planet  (Difficulty diff, long seed) {
     setGraphics (new PlanetGraphics());
 //  setPhysics  (new PlanetPhysics());
 
     
-    this->difficulty = difficulty;
-    this->biomeCount = ((difficulty + 1) * 5) + (rand() % 10);
-    this->tribeCount = ((difficulty + 1) * 3) + (rand() % 10);
+    difficulty = diff;
+    biomeCount = ((difficulty + 1) * 5) + (rand() % 10);
+    tribeCount = ((difficulty + 1) * 3) + (rand() % 10);
     
     regions = std::vector<Biome*>();
     tribes  = std::vector<Tribe*>();
 
     for (int i = 0; i < biomeCount; i++) regions.push_back(new Biome());
     for (int i = 0; i < tribeCount; i++) tribes.push_back(new Tribe());
-    
 }
 
 Planet::~Planet () {

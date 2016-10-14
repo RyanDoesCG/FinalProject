@@ -31,7 +31,7 @@ enum Difficulty {
 
 class Planet : public GameObject {
     public:
-        Planet  (Difficulty difficulty);
+        Planet  (Difficulty difficulty, long seed);
         ~Planet ();
     
         inline Difficulty getDifficulty () { return difficulty; }

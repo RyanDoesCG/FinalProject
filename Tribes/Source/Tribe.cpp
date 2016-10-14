@@ -80,7 +80,7 @@ std::string Tribe::getName () {
 }
 
 Ethos Tribe::getEthos () {
-    return this->ethos;
+    return ethos;
 }
 
 Texture* Tribe::getFlag () {
@@ -88,14 +88,14 @@ Texture* Tribe::getFlag () {
 }
 
 int Tribe::getPopulation () {
-    return this->population;
+    return population;
 }
 
 std::string Tribe::toString() {
     std::string output = "";
     
     output += "Name:       ";
-    output += this->name;
+    output += name;
     output += "\n";
     
     output += "Ethos:      ";
