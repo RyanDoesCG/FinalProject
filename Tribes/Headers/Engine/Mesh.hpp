@@ -9,9 +9,9 @@
 #ifndef Mesh_hpp
 #define Mesh_hpp
 
-#include "../glm/glm.hpp"
-#include "../glew/GLEW.h"
-#include "../glfw/glfw3.h"
+#include "../GLM/glm.hpp"
+#include "../GLEW/GLEW.h"
+#include "../GLFW/glfw3.h"
 #include "Shader.hpp"
 
 #include <iostream>

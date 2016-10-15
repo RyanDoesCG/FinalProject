@@ -9,7 +9,7 @@
 #ifndef Window_hpp
 #define Window_hpp
 
-#include "../glm/vec4.hpp"
+#include "../GLM/vec4.hpp"
 #include "../GLFW/glfw3.h"
 
 #include <iostream>
@@ -27,13 +27,27 @@ class Window {
         bool shouldClose();
 
         inline GLFWwindow* getWindow() {return window;}
+        inline void randomiseClearColour () {
+            float r = (rand() % 100) / 100.0f;
+            float g = (rand() % 100) / 100.0f;
+            float b = (rand() % 100) / 100.0f;
+            float a = 0;
+            
+            clearColour = glm::vec4(r, g, b, a);
+            
+            std::cout << " r: " << clearColour.x
+            << " g: " << clearColour.y
+            << " b: " << clearColour.z
+            << "\n";
+        }
+    
     private:
         GLFWwindow*  window;
     
         int width;
         int height;
     
-        glm::vec4 * clearColour;
+        glm::vec4   clearColour;
         std::string title;
     
         int initGLFW();
@@ -48,4 +62,5 @@ class Window {
  *      - r: 0.52 g: 0.64 b: 0.49
  *      - r: 0.64 g: 0.1  b: 0.24
  *      - r: 0.67 g: 0.61 b: 0.71
+ *      - r: 0.8 g: 0.69 b: 0.57
  */

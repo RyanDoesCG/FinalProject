@@ -11,7 +11,7 @@
 
 #include "GraphicsComponent.hpp"
 #include "PhysicsComponent.hpp"
-#include "../glm/vec3.hpp"
+#include "../GLM/vec3.hpp"
 #include <iostream>
 
 class GraphicsComponent;
@@ -30,7 +30,7 @@ class GameObject {
         void update();
     
         glm::mat4 position;
-    private:
+    protected:
     
         GraphicsComponent* graphics;
         PhysicsComponent*  physics;

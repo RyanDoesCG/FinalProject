@@ -10,6 +10,7 @@
 #define Game_hpp
 
 #include "InputHandler.hpp"
+#include "TextRenderer.hpp"
 #include "GameObject.hpp"
 #include "Camera.hpp"
 #include "Window.hpp"
@@ -18,7 +19,7 @@
 #include <vector>
 
 #define SCREEN_WIDTH  720
-#define SCREEN_HEIGHT 460
+#define SCREEN_HEIGHT 500
 
 class Game {
     public:
@@ -35,6 +36,9 @@ class Game {
         void rotatePlanetLeft();
         void rotatePlanetRight();
 
+        // FIND A BETTER SOLUTION TO INPUT 
+        Planet*       planet;
+
     private:
         enum State {
             ENDED,
@@ -47,11 +51,12 @@ class Game {
     
         // engine systems
         InputHandler* input;
+        TextRenderer* text;
         Window*       window;
         State         state;
     
-        // game objects
-        Planet*       planet;
+        // for frame timing
+        float delta;
 };
 
 #endif /* Game_hpp */

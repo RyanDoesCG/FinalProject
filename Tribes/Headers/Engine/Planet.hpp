@@ -39,6 +39,22 @@ class Planet : public GameObject {
         inline int        getTribeCount () { return tribeCount; }
     
         std::string toString ();
+    
+        void rotateLeft () {
+            graphics->rotateLeft();
+        }
+    
+        void rotateRight() {
+            graphics->rotateRight();
+        }
+    
+        void grow () {
+            graphics->grow();
+        }
+    
+        void shrink () {
+            graphics->shrink();
+        }
 
     private:
         Difficulty difficulty;

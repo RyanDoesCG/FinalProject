@@ -9,8 +9,8 @@
 #ifndef GraphicsComponent_hpp
 #define GraphicsComponent_hpp
 
-#include "../glm/gtc/matrix_transform.hpp"
-#include "../glm/gtc/type_ptr.hpp"
+#include "../GLM/gtc/matrix_transform.hpp"
+#include "../GLM/gtc/type_ptr.hpp"
 #include "Shader.hpp"
 #include "Texture.hpp"
 #include "Mesh.hpp"
@@ -29,7 +29,7 @@ class GraphicsComponent {
             objectShaders.at(0)->bind ();
             
             // calculate transformations
-            modelMatrix      = glm::rotate(modelMatrix, (GLfloat)0.02, glm::vec3(0.0f, 1.0f, 0.0f));
+            modelMatrix      = glm::rotate(modelMatrix, (GLfloat)0.01, glm::vec3(0.0f, 1.0f, 0.0f));
 
             viewMatrix       = glm::translate(viewMatrix, glm::vec3(0.0f, 0.0f, 0.0f));
             projectionMatrix = glm::mat4();//glm::perspective(45.0f, (GLfloat)720 / (GLfloat)390, 0.1f, 100.0f);
@@ -42,7 +42,23 @@ class GraphicsComponent {
             objectTexture->bind       ();
             objectMesh->draw          ();
         }
-
+    
+        void rotateLeft () {
+            modelMatrix = glm::rotate(modelMatrix, (GLfloat)-0.05, glm::vec3(0.0f, 1.0f, 0.0f));
+        }
+    
+        void rotateRight () {
+            modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.04, glm::vec3(0.0f, 1.0f, 0.0f));
+        }
+    
+        void grow () {
+            modelMatrix = glm::scale(modelMatrix, glm::vec3(1.01, 1.01, 1.01));
+        }
+    
+        void shrink () {
+            modelMatrix = glm::scale(modelMatrix, glm::vec3(0.99, 0.99, 0.99));
+        }
+    
     protected:
         std::vector<Shader*> objectShaders;
         Texture*             objectTexture;

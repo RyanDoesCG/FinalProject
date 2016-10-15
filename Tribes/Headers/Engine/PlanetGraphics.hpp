@@ -10,7 +10,7 @@
 #define PlanetGraphics_hpp
 
 #include "GraphicsComponent.hpp"
-#include "../glm/glm.hpp"
+#include "../GLM/glm.hpp"
 #include <iostream>
 
 class PlanetGraphics : public GraphicsComponent {

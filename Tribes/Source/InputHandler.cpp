@@ -43,19 +43,26 @@ void InputHandler::processInput() {
         if (activeKeys[i]) {
             switch(i) {
                 case GLFW_KEY_W:
-                    std::cout << "w pressed\n";
+                    game->planet->grow();
                     break;
                 case GLFW_KEY_A:
-                    std::cout << "a pressed\n";
+                    game->planet->rotateLeft();
                     break;
                 case GLFW_KEY_S:
-                    std::cout << "s pressed\n";
+                    game->planet->shrink();
                     break;
                 case GLFW_KEY_D:
-                    std::cout << "d pressed\n";
+                    game->planet->rotateRight();
+                    break;
+                    
+                /** 
+                 *  the following keys are removed upon use
+                 */
+                case GLFW_KEY_SPACE:
+                    game->getWindowObject()->randomiseClearColour();
+                    activeKeys[GLFW_KEY_SPACE] = false;
                     break;
                 case GLFW_KEY_ESCAPE:
-                    // pause key needs to be removed
                     activeKeys[GLFW_KEY_ESCAPE] = false;
                     game->pause();
                     break;
@@ -66,51 +73,11 @@ void InputHandler::processInput() {
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     
-    /** 
-     *  if a key is pressed, add it
-     */
-    if (action == GLFW_PRESS) {
-        switch(key) {
-            case GLFW_KEY_W:
-                activeKeys[GLFW_KEY_W] = true;
-                break;
-            case GLFW_KEY_A:
-                activeKeys[GLFW_KEY_A] = true;
-                break;
-            case GLFW_KEY_S:
-                activeKeys[GLFW_KEY_S] = true;
-                break;
-            case GLFW_KEY_D:
-                activeKeys[GLFW_KEY_D] = true;
-                break;
-            case GLFW_KEY_ESCAPE:
-                activeKeys[GLFW_KEY_ESCAPE] = true;
-                break;
-        }
-    }
-    
-    /** 
-     *  if a key is released, remove it
-     */
-    else if (action == GLFW_RELEASE) {
-        switch(key) {
-            case GLFW_KEY_W:
-                activeKeys[GLFW_KEY_W] = false;
-                break;
-            case GLFW_KEY_A:
-                activeKeys[GLFW_KEY_A] = false;
-                break;
-            case GLFW_KEY_S:
-                activeKeys[GLFW_KEY_S] = false;
-                break;
-            case GLFW_KEY_D:
-                activeKeys[GLFW_KEY_D] = false;
-                break;
-            case GLFW_KEY_ESCAPE:
-                activeKeys[GLFW_KEY_ESCAPE] = false;
-                break;
-        }
-    }
+    if (action == GLFW_PRESS)
+        activeKeys[key] = true;
+
+    else if (action == GLFW_RELEASE)
+        activeKeys[key] = false;
 }
 
 void mouseMovementCallback(GLFWwindow* window, double xpos, double ypos) {

@@ -9,7 +9,7 @@
 #ifndef MathsToolkit_hpp
 #define MathsToolkit_hpp
 
-#include "../glm/glm.hpp"
+#include "../GLM/glm.hpp"
 #include <iostream>
 #include <vector>
 

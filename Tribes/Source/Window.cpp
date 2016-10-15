@@ -6,7 +6,7 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "../Headers/glew/glew.h"
+#include "../Headers/GLEW/glew.h"
 #include "../Headers/GLFW/glfw3.h"
 #include "../Headers/Engine/Window.hpp"
 
@@ -19,17 +19,7 @@ Window::Window(int width, int height, const std::string& title) {
     if (initGLFW()) {std::cout << "SDL initialisation failure\n"; exit(1);}
     if (initGLEW()) {std::cout << "GLEW initialisation failure\n"; exit(1);}
     
-    float r = (rand() % 100) / 100.0f;
-    float g = (rand() % 100) / 100.0f;
-    float b = (rand() % 100) / 100.0f;
-    float a = 0;
-    
-    clearColour = new glm::vec4(r, g, b, a);
-    
-    std::cout << " r: " << clearColour->x
-              << " g: " << clearColour->y
-              << " b: " << clearColour->z
-              << "\n";
+    randomiseClearColour();
 }
 
 Window::~Window() {
@@ -39,7 +29,7 @@ Window::~Window() {
 }
 
 int Window::initGLFW() {
-    // start SDL Subsystem
+    // start glfw Subsystem
     if (glfwInit() == GLFW_FALSE) return 1;
     
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -73,7 +63,7 @@ int Window::initGLEW() {
 
     // viewport
     glfwGetFramebufferSize(window, &width, &height);
-    glViewport (0, 0, width, height); // fucks things up, not sure worth it.
+    glViewport (0, 0, width, height);
  
     // face culling REMOVED: CAUSES THINGS TO NOT SHOW UP
 //    glEnable   (GL_CULL_FACE);
@@ -82,6 +72,9 @@ int Window::initGLEW() {
     // Z-Buffering
     glEnable   (GL_DEPTH_TEST);
     glEnable   (GL_MULTISAMPLE);
+    
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     return 0;
 }
@@ -95,6 +88,6 @@ void Window::update() {
 }
 
 void Window::clear() {
-    glClearColor (clearColour->x, clearColour->y, clearColour->z, clearColour->w);
+    glClearColor (clearColour.x, clearColour.y, clearColour.z, clearColour.w);
     glClear      (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

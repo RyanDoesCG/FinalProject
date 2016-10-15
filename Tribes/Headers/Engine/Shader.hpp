@@ -9,7 +9,7 @@
 #ifndef Shader_hpp
 #define Shader_hpp
 
-#include "../glew/glew.h"
+#include "../GLEW/glew.h"
 #include <iostream>
 
 class Shader {
