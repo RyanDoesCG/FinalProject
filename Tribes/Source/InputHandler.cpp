@@ -9,11 +9,15 @@
 #include "../Headers/Engine/InputHandler.hpp"
 #include "../Headers/Engine/Game.hpp"
 
+#include "../Headers/Engine/MathsToolkit.hpp"
+
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos);
 void keyCallback           (GLFWwindow* window, int key, int scancode, int action, int mods);
 
-/// URRRRGGGHHHHH NO DONT DO THIS
-bool activeKeys[KEYCOUNT] = {};
+// Ugly global state to accomodate the callbacks
+bool  activeKeys[KEYCOUNT] = {};
+float mouseX;
+float mouseY;
 
 InputHandler::InputHandler(Game* g) {
     game = g;
@@ -22,6 +26,16 @@ InputHandler::InputHandler(Game* g) {
     
     // Capture and Hide Mouse
 //  glfwSetInputMode         (gameWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+
+    unsigned char pixels[4 * 4 * 4];
+    memset(pixels, 0xff, sizeof(pixels));
+    
+    GLFWimage image;
+    image.width = 4;
+    image.height = 4;
+    image.pixels = pixels;
+    
+    glfwSetCursor(gameWindow, glfwCreateCursor(&image, 0, 0));
     
     // Set Callbacks
     glfwSetCursorPosCallback (gameWindow, mouseMovementCallback);
@@ -39,6 +53,8 @@ void InputHandler::update() {
 
 void InputHandler::checkInput() { glfwPollEvents(); }
 void InputHandler::processInput() {
+    game->getHUD()->updateMousePosition(mouseX, mouseY);
+
     for (int i = 0; i < KEYCOUNT; i++) {
         if (activeKeys[i]) {
             switch(i) {
@@ -59,7 +75,7 @@ void InputHandler::processInput() {
                  *  the following keys are removed upon use
                  */
                 case GLFW_KEY_SPACE:
-                    game->getWindowObject()->randomiseClearColour();
+                    
                     activeKeys[GLFW_KEY_SPACE] = false;
                     break;
                 case GLFW_KEY_ESCAPE:
@@ -81,6 +97,6 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }
 
 void mouseMovementCallback(GLFWwindow* window, double xpos, double ypos) {
-//    std::cout << "x: " << xpos << std::endl;
-//    std::cout << "y: " << ypos << std::endl;
+    mouseX = xpos;
+    mouseY = ypos;
 }

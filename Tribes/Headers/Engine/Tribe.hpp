@@ -10,6 +10,7 @@
 #define Tribe_hpp
 
 #include "GameObject.hpp"
+#include "Flag.hpp"
 #include <iostream>
 
 enum Ethos {
@@ -28,14 +29,14 @@ class Tribe : GameObject {
     
         std::string getName       ();
         Ethos       getEthos      ();
-        Texture*    getFlag       ();
+        Flag*       getFlag       ();
         int         getPopulation ();
     
         std::string toString ();
 
     private:
         std::string name;
-        Texture*    flag;
+        Flag        flag;
         Ethos       ethos;
         int         population;
     

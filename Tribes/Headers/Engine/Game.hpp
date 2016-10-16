@@ -15,12 +15,14 @@
 #include "Camera.hpp"
 #include "Window.hpp"
 #include "Planet.hpp"
+#include "HUD.hpp"
 #include <iostream>
 #include <vector>
 
-#define SCREEN_WIDTH  720
-#define SCREEN_HEIGHT 500
+#define SCREEN_WIDTH  960
+#define SCREEN_HEIGHT 540
 
+class HUD;
 class Game {
     public:
         Game  ();
@@ -32,6 +34,7 @@ class Game {
         void pause ();
     
         inline Window* getWindowObject () {return window;}
+        inline HUD* getHUD () { return hud; }
     
         void rotatePlanetLeft();
         void rotatePlanetRight();
@@ -52,6 +55,7 @@ class Game {
         // engine systems
         InputHandler* input;
         TextRenderer* text;
+        HUD*          hud;
         Window*       window;
         State         state;
     

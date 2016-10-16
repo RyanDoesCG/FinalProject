@@ -54,10 +54,6 @@ void Shader::bind() {
     glUseProgram(programID);
 }
 
-void Shader::update() {
-
-}
-
 std::string Shader::loadSource(const std::string& path) {
     std::ifstream source;
     

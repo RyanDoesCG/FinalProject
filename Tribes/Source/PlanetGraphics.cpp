@@ -16,57 +16,76 @@ PlanetGraphics::PlanetGraphics  () {
     std::vector<GLfloat> vertices = {
         // 1
         -0.5f, 0.0f, 0.0f,
-        0.0f, 0.75f, 0.0f,
+        0.0f, 0.5f, 0.0f,
         0.0f, 0.0f, 0.5f,
         
         // 2
         -0.5, 0.0f, 0.0f,
         0.0f, 0.0f, 0.5f,
-        0.0f, -0.75, 0.0f,
+        0.0f, -0.5, 0.0f,
         
         // 3
         0.5f, 0.0f, 0.0f,
-        0.0f, 0.75f, 0.0f,
+        0.0f, 0.5f, 0.0f,
         0.0f, 0.0f, 0.5f,
         
         // 4
-        0.0f, -0.75f, 0.0f,
+        0.0f, -0.5f, 0.0f,
         0.0f, 0.0f, 0.5f,
         0.5f, 0.00f, 0.0f,
         
         // 5
         -0.5f, 0.0f, 0.0f,
-        0.0f, 0.75f, 0.0f,
+        0.0f, 0.5f, 0.0f,
         0.0f, 0.0f, -0.5f,
         
         // 6
         -0.5, 0.0f, 0.0f,
-        0.0f, -0.75, 0.0f,
+        0.0f, -0.5, 0.0f,
         0.0f, 0.0f, -0.5f,
         
         
         // 7
-        0.0f, 0.75f, 0.0f,
+        0.0f, 0.5f, 0.0f,
         0.0f, 0.0f, -0.5f,
         0.5f, 0.0f, 0.0f,
         
         // 8
         0.0f, 0.0f, -0.5f,
         0.5f, 0.00f, 0.0f,
-        0.0f, -0.75f, 0.0f,    
+        0.0f, -0.5f, 0.0f,
     };
     
-    MathsToolkit::parseOctohedron(&vertices);
-    //MathsToolkit::normalizeOctohedron(&vertices);
-
+    MathsToolkit::parseOctohedron(&vertices, 4);
+    MathsToolkit::normalizeOctohedron(&vertices, 1.8); // broken
+    
+    modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.08, glm::vec3(1.0f, 0.0f, 0.0f));
+    viewMatrix  = glm::translate(viewMatrix, glm::vec3(0.0f, 0.0f, -3.0f));
+    projectionMatrix = glm::perspective(45.0f, (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);
+    
     objectShaders.push_back(new Shader("BasicBlack"));
-    objectTexture = new Texture("water");
+    objectTexture.push_back(new Texture("water"));
     objectMesh = new Mesh(&vertices);
 
 }
 
 PlanetGraphics::~PlanetGraphics () {
 
+}
+
+void PlanetGraphics::draw() {
+    objectShaders.at(0)->bind ();
+    
+    // calculate transformations
+    modelMatrix      = glm::rotate(modelMatrix, (GLfloat)0.001, glm::vec3(0.0f, 1.0f, 0.0f));
+    
+    // Pass them to the shaders
+    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "projectionMat"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));   // Note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
+    
+    objectTexture.at(0)->bind ();
+    objectMesh->draw          ();
 }
 
 

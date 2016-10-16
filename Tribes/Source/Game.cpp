@@ -21,10 +21,9 @@ Game::Game() {
     
     // put engine stuff together
     window = new Window       (SCREEN_WIDTH, SCREEN_HEIGHT, "tribes");
-    input  = new InputHandler (this);
-    text   = new TextRenderer ();
     planet = new Planet       (TOUGHER, seed);
-    
+    hud    = new HUD          (this, SCREEN_WIDTH, SCREEN_HEIGHT, &delta);
+    input  = new InputHandler (this);
     state  = RUNNING;
 }
 
@@ -40,18 +39,18 @@ void Game::begin() {
     while (!window->shouldClose()) {
         float start = glfwGetTime();
     
-        input->update();
         window->clear();
-        text->renderText("frame time: " + std::to_string(delta), 5, SCREEN_HEIGHT + 68, 1);
-        text->renderText("pre-alpha", 5, 9, 1);
+        input->update();
         
         if (state == RUNNING) {
             planet->update();
+            hud->update();
+            
             window->update();
         }
         
         delta = (glfwGetTime() - start) * 1000;
-        if (delta > 24) std::this_thread::sleep_for(std::chrono::milliseconds((int)(delta - 24)));
+        //if (delta > 24) std::this_thread::sleep_for(std::chrono::milliseconds((int)(delta - 24)));
     }
 }
 

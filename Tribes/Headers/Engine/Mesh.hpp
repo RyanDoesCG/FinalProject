@@ -20,6 +20,11 @@
 // "In C++ classes/structs are identical (in terms of initialization)."
 // Structs have sequiential memory
 
+enum MESH_TYPE {
+    RAW_VERTICES,
+    INDEXED
+};
+
 class Mesh {
     public:
         Mesh  (std::vector<GLfloat>* v, std::vector<GLuint>* i);
@@ -27,6 +32,8 @@ class Mesh {
         ~Mesh ();
     
         void draw();
+    
+        std::vector<GLfloat>* getVertices () { return vertices; }
     
     protected:
         GLuint getVboID();
@@ -44,7 +51,10 @@ class Mesh {
         GLuint VAO; // Vertex Array Object
         GLuint EBO; // Element Buffer Object
     
+        MESH_TYPE type;
+    
         int totalVertices;
+        int totalIndices;
 };
 
 #endif /* Mesh_hpp */

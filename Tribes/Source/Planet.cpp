@@ -23,6 +23,9 @@ Planet::Planet  (Difficulty diff, long seed) {
 
     for (int i = 0; i < biomeCount; i++) regions.push_back(new Biome());
     for (int i = 0; i < tribeCount; i++) tribes.push_back(new Tribe());
+    
+    galacticFlag = new Flag();
+    generateName();
 }
 
 Planet::~Planet () {
@@ -51,4 +54,46 @@ std::string Planet::toString() {
     for (int i = 0; i < tribes.size(); i++) std::cout << "\n" << tribes[i]->toString();
     
     return output;
+}
+
+void Planet::generateName() {
+    const char* upperVowels = "AEIOU";
+    const char* lowerVowels = "aeiou";
+    const char* upperCons   = "BCDFGHJKLMNPQRSTVXZW";
+    const char* lowerCons   = "bcdfghjklmnpqrstvxzw";
+    int         length      = (rand() % 4) + 2;
+    
+    for (int i = 0; i < length; i++) {
+        int ting = rand() % 100;
+        
+        if (i > 0) {
+            if (ting < 36) name += lowerCons  [(rand() % 20)];
+            else           name += lowerVowels[(rand() % 5)];
+        }
+        
+        else {
+            if (ting < 36) name += upperCons  [rand() % 20];
+            else           name += upperVowels[rand() % 5];
+        }
+    }
+    
+    name += " ";
+    
+    int ting = rand() % 100;
+    
+    if (ting >= 0 && ting <= 24) {
+        name += "Alpha";
+    }
+    
+    else if (ting >= 25 && ting <= 49) {
+        name += "Beta";
+    }
+    
+    else if (ting >= 50 && ting <= 74) {
+        name += "Prime";
+    }
+    
+    else if (ting >= 75 && ting <= 100) {
+        name += "";
+    }
 }

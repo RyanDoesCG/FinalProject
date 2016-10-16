@@ -15,6 +15,7 @@
 #include "GameObject.hpp"
 #include "Biome.hpp"
 #include "Tribe.hpp"
+#include "Flag.hpp"
 #include <iostream>
 #include <vector>
 
@@ -34,35 +35,33 @@ class Planet : public GameObject {
         Planet  (Difficulty difficulty, long seed);
         ~Planet ();
     
-        inline Difficulty getDifficulty () { return difficulty; }
-        inline int        getBiomeCount () { return biomeCount; }
-        inline int        getTribeCount () { return tribeCount; }
+        inline Difficulty  getDifficulty () { return difficulty; }
+        inline int         getBiomeCount () { return biomeCount; }
+        inline int         getTribeCount () { return tribeCount; }
+        inline Flag*       getFlag       () { return galacticFlag;}
+        inline std::string getName       () { return name; }
     
         std::string toString ();
     
-        void rotateLeft () {
-            graphics->rotateLeft();
-        }
+        void rotateLeft  () { graphics->rotateLeft(); }
+        void rotateRight () { graphics->rotateRight(); }
+        void grow        () { graphics->grow(); }
+        void shrink      () { graphics->shrink(); }
     
-        void rotateRight() {
-            graphics->rotateRight();
-        }
     
-        void grow () {
-            graphics->grow();
-        }
-    
-        void shrink () {
-            graphics->shrink();
-        }
+        void generateName ();
 
     private:
         Difficulty difficulty;
-        int biomeCount;
-        int tribeCount;
+        int        biomeCount;
+        int        tribeCount;
+    
+        Flag* galacticFlag;
     
         std::vector<Biome*> regions;
         std::vector<Tribe*> tribes;
+    
+        std::string name;
 };
 
 #endif /* Planet_hpp */

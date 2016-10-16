@@ -14,33 +14,20 @@
 #include "Shader.hpp"
 #include "Texture.hpp"
 #include "Mesh.hpp"
+#include "MathsToolkit.hpp"
 
 #include <iostream>
 
 class GraphicsComponent {
     public:
         GraphicsComponent() {
-            modelMatrix      = glm::rotate(modelMatrix, (GLfloat)0.08, glm::vec3(1.0f, 0.0f, 0.0f));
+           
         }
     
         ~GraphicsComponent () {}
         
-        void draw() {
-            objectShaders.at(0)->bind ();
-            
-            // calculate transformations
-            modelMatrix      = glm::rotate(modelMatrix, (GLfloat)0.01, glm::vec3(0.0f, 1.0f, 0.0f));
-
-            viewMatrix       = glm::translate(viewMatrix, glm::vec3(0.0f, 0.0f, 0.0f));
-            projectionMatrix = glm::mat4();//glm::perspective(45.0f, (GLfloat)720 / (GLfloat)390, 0.1f, 100.0f);
-            
-            // Pass them to the shaders
-            glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-            glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMatrix));
-            glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "projectionMat"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));   // Note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
-            
-            objectTexture->bind       ();
-            objectMesh->draw          ();
+        virtual void draw() {
+        
         }
     
         void rotateLeft () {
@@ -60,9 +47,9 @@ class GraphicsComponent {
         }
     
     protected:
-        std::vector<Shader*> objectShaders;
-        Texture*             objectTexture;
-        Mesh*                objectMesh;
+        std::vector<Shader*>  objectShaders;
+        std::vector<Texture*> objectTexture;
+        Mesh*                 objectMesh;
     
         // Transformations
         glm::mat4 modelMatrix;

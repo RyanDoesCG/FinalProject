@@ -8,14 +8,14 @@
 #include "../Headers/Engine/Texture.hpp"
 
 Texture::Texture(std::string path) {
-    path = "Assets/textures/" + path + ".jpg";
+    path = "Assets/textures/" + path + ".png";
 
     image = SOIL_load_image (
         path.c_str(),
         &width,
         &height,
         0,
-        SOIL_LOAD_RGB
+        SOIL_LOAD_RGBA
     );
     
     if (!image) std::cout << "Image load failure (" << path << ")" << std::endl;
@@ -25,11 +25,11 @@ Texture::Texture(std::string path) {
         glTexImage2D (
             GL_TEXTURE_2D,
             0,
-            GL_RGB,
+            GL_RGBA,
             width,
             height,
             0,
-            GL_RGB,
+            GL_RGBA,
             GL_UNSIGNED_BYTE,
             image
         );

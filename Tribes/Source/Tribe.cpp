@@ -59,6 +59,8 @@ void Tribe::generateName() {
  *      - Ferals have a big X on a plain background
  */
 void Tribe::generateFlag() {
+    //flag = Flag();
+
     // 1200 x 720
     switch (ethos) {
         case Warriors:
@@ -83,8 +85,8 @@ Ethos Tribe::getEthos () {
     return ethos;
 }
 
-Texture* Tribe::getFlag () {
-    return flag;
+Flag* Tribe::getFlag () {
+    return &flag;
 }
 
 int Tribe::getPopulation () {

@@ -27,19 +27,10 @@ class Window {
         bool shouldClose();
 
         inline GLFWwindow* getWindow() {return window;}
-        inline void randomiseClearColour () {
-            float r = (rand() % 100) / 100.0f;
-            float g = (rand() % 100) / 100.0f;
-            float b = (rand() % 100) / 100.0f;
-            float a = 0;
-            
-            clearColour = glm::vec4(r, g, b, a);
-            
-            std::cout << " r: " << clearColour.x
-            << " g: " << clearColour.y
-            << " b: " << clearColour.z
-            << "\n";
-        }
+        void randomiseClearColour ();
+    
+        inline int getWidth() { return width; }
+        inline int getHeight() { return height; }
     
     private:
         GLFWwindow*  window;
@@ -63,4 +54,5 @@ class Window {
  *      - r: 0.64 g: 0.1  b: 0.24
  *      - r: 0.67 g: 0.61 b: 0.71
  *      - r: 0.8 g: 0.69 b: 0.57
+ *      r: 0.82 g: 0.54 b: 0.15
  */

@@ -27,7 +27,7 @@ class GameObject {
         void setPhysics  (PhysicsComponent*  physics);
         void setInput    (InputComponent*    input);
 
-        void update();
+        virtual void update();
     
         glm::mat4 position;
     protected:

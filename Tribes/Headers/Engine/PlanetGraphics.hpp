@@ -18,6 +18,8 @@ class PlanetGraphics : public GraphicsComponent {
         PlanetGraphics  ();
         ~PlanetGraphics ();
     
+        virtual void draw();
+    
     private:
 };
 

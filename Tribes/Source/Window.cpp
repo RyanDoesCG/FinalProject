@@ -16,8 +16,8 @@ Window::Window(int width, int height, const std::string& title) {
     this->height = height;
     this->title  = title;
 
-    if (initGLFW()) {std::cout << "SDL initialisation failure\n"; exit(1);}
-    if (initGLEW()) {std::cout << "GLEW initialisation failure\n"; exit(1);}
+    if (initGLFW()) {std::cout << "SDL initialisation failure. Exiting\n";  exit(1);}
+    if (initGLEW()) {std::cout << "GLEW initialisation failure. Exiting\n"; exit(1);}
     
     randomiseClearColour();
 }
@@ -37,6 +37,7 @@ int Window::initGLFW() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
+    glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
     
     // multisampling
     glfwWindowHint(GLFW_SAMPLES, 4);
@@ -44,7 +45,7 @@ int Window::initGLFW() {
     // macOS
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-    window = glfwCreateWindow(width, height, "tribes", nullptr, nullptr);
+    window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     
     if (!window) return 1;
     
@@ -65,18 +66,29 @@ int Window::initGLEW() {
     glfwGetFramebufferSize(window, &width, &height);
     glViewport (0, 0, width, height);
  
-    // face culling REMOVED: CAUSES THINGS TO NOT SHOW UP
-//    glEnable   (GL_CULL_FACE);
-//    glCullFace (GL_BACK);
-    
-    // Z-Buffering
-    glEnable   (GL_DEPTH_TEST);
-    glEnable   (GL_MULTISAMPLE);
-    
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable    (GL_DEPTH_TEST);    // Z BUFFERING
+    glEnable    (GL_MULTISAMPLE);   // MULTISAMPLING
+    glEnable    (GL_BLEND);         // TEXT BLENDING
+    glBlendFunc (
+        GL_SRC_ALPHA,
+        GL_ONE_MINUS_SRC_ALPHA
+    );
     
     return 0;
+}
+
+void Window::randomiseClearColour () {
+    clearColour = glm::vec4(
+        0.3, //(rand() % 100) / 100.0f,
+        0.3, //(rand() % 100) / 100.0f,
+        0.3, //(rand() % 100) / 100.0f,
+        0
+    );
+    
+    std::cout << " r: " << clearColour.x
+    << " g: " << clearColour.y
+    << " b: " << clearColour.z
+    << "\n";
 }
 
 bool Window::shouldClose() {

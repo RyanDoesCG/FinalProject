@@ -18,7 +18,6 @@ class Shader {
         ~Shader ();
 
         void bind();
-        void update();
     
         GLuint getProgramID () { return programID; }
     
