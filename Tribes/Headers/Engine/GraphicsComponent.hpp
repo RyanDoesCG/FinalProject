@@ -27,26 +27,30 @@ class GraphicsComponent {
         ~GraphicsComponent () {}
         
         virtual void draw() {
-        
+            std::cout << "draw not impemented" << std::endl;
         }
     
-        void rotateLeft () {
+        virtual void rotateLeft () {
             modelMatrix = glm::rotate(modelMatrix, (GLfloat)-0.05, glm::vec3(0.0f, 1.0f, 0.0f));
         }
     
-        void rotateRight () {
+        virtual void rotateRight () {
             modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.04, glm::vec3(0.0f, 1.0f, 0.0f));
         }
     
-        void grow () {
+        virtual void grow () {
             modelMatrix = glm::scale(modelMatrix, glm::vec3(1.01, 1.01, 1.01));
         }
     
-        void shrink () {
+        virtual void shrink () {
             modelMatrix = glm::scale(modelMatrix, glm::vec3(0.99, 0.99, 0.99));
         }
     
     protected:
+        // mesh
+        std::vector<GLfloat>  vertices;
+    
+        // OpenGL stuff
         std::vector<Shader*>  objectShaders;
         std::vector<Texture*> objectTexture;
         Mesh*                 objectMesh;

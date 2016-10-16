@@ -12,6 +12,10 @@
 #include "../GLEW/glew.h"
 #include <iostream>
 
+/** 
+ *  Shader Class
+ *
+ */
 class Shader {
     public:
         Shader  (const std::string& name);

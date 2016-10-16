@@ -13,10 +13,18 @@
 #include "GameObject.hpp"
 #include "Game.hpp"
 
+/**
+ *  Quad Class
+ *
+ */
 class Quad {
     
 };
 
+/**
+ *  HUD Class
+ *
+ */
 class HUD : public GameObject {
     public:
         HUD  (Game* g, int width, int height, float* d);

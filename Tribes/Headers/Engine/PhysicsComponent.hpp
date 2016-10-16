@@ -11,6 +11,10 @@
 
 #include <iostream>
 
+/** 
+ *  PhysicsComponent Class
+ *
+ */
 class PhysicsComponent {
     public:
         virtual void update() {};

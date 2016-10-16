@@ -18,6 +18,10 @@ class GraphicsComponent;
 class PhysicsComponent;
 class InputComponent;
 
+/**
+ *  GameObject Class
+ *
+ */
 class GameObject {
     public:
         GameObject();

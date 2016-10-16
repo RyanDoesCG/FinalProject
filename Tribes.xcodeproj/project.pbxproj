@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		45C117951D78005500FE98A9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117941D78005500FE98A9 /* OpenGL.framework */; };
 		45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1179F1D7805E700FE98A9 /* libGLEW.dylib */; };
+		CE0194A91DB3B051002621EE /* Backdrop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0194A71DB3B051002621EE /* Backdrop.cpp */; };
+		CE0194AC1DB3B0E5002621EE /* BackdropGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0194AA1DB3B0E5002621EE /* BackdropGraphics.cpp */; };
 		CE1A096D1DB26C5A0024AD91 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A096C1DB26C5A0024AD91 /* Flag.cpp */; };
 		CE1A09701DB26D8F0024AD91 /* FlagGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A096E1DB26D8F0024AD91 /* FlagGraphics.cpp */; };
 		CE1A09731DB2A7CE0024AD91 /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A09711DB2A7CE0024AD91 /* HUD.cpp */; };
@@ -51,6 +53,8 @@
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
 		45C117A31D78084800FE98A9 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		CE0194A71DB3B051002621EE /* Backdrop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Backdrop.cpp; path = Source/Backdrop.cpp; sourceTree = "<group>"; };
+		CE0194AA1DB3B0E5002621EE /* BackdropGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BackdropGraphics.cpp; path = Source/BackdropGraphics.cpp; sourceTree = "<group>"; };
 		CE1570A21D8C1CA1005F6DB0 /* tasks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tasks.txt; sourceTree = "<group>"; };
 		CE1A096C1DB26C5A0024AD91 /* Flag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Flag.cpp; path = Source/Flag.cpp; sourceTree = "<group>"; };
 		CE1A096E1DB26D8F0024AD91 /* FlagGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagGraphics.cpp; path = Source/FlagGraphics.cpp; sourceTree = "<group>"; };
@@ -127,7 +131,9 @@
 				CE1A09711DB2A7CE0024AD91 /* HUD.cpp */,
 				CE1A096E1DB26D8F0024AD91 /* FlagGraphics.cpp */,
 				CE26972B1DAEADE600F9833E /* main.cpp */,
+				CE0194AA1DB3B0E5002621EE /* BackdropGraphics.cpp */,
 				CE26972C1DAEADE600F9833E /* Mesh.cpp */,
+				CE0194A71DB3B051002621EE /* Backdrop.cpp */,
 				CE26972D1DAEADE600F9833E /* Planet.cpp */,
 				CE1A096C1DB26C5A0024AD91 /* Flag.cpp */,
 				CEFB30011DB180E100BF5CE7 /* TextRender.cpp */,
@@ -213,9 +219,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2697361DAEADE600F9833E /* GameObject.cpp in Sources */,
 				CEFB30031DB180E100BF5CE7 /* TextRender.cpp in Sources */,
 				CE26973E1DAEADE600F9833E /* Tribe.cpp in Sources */,
-				CE2697361DAEADE600F9833E /* GameObject.cpp in Sources */,
 				CE2697351DAEADE600F9833E /* Game.cpp in Sources */,
 				CE2697381DAEADE600F9833E /* main.cpp in Sources */,
 				CE26973B1DAEADE600F9833E /* PlanetGraphics.cpp in Sources */,
@@ -230,6 +236,8 @@
 				CE2697341DAEADE600F9833E /* BiomeGraphics.cpp in Sources */,
 				CE26973A1DAEADE600F9833E /* Planet.cpp in Sources */,
 				CE26973D1DAEADE600F9833E /* Texture.cpp in Sources */,
+				CE0194A91DB3B051002621EE /* Backdrop.cpp in Sources */,
+				CE0194AC1DB3B0E5002621EE /* BackdropGraphics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

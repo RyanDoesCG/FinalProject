@@ -12,6 +12,10 @@
 #include "GraphicsComponent.hpp"
 #include <iostream>
 
+/**
+ *  FlagGraphics Class
+ *
+ */
 class FlagGraphics : public GraphicsComponent {
     public:
         FlagGraphics  ();

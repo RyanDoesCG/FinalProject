@@ -13,6 +13,10 @@
 #include <iostream>
 #include <vector>
 
+/**
+ *  MathsToolkit Class
+ *
+ */
 static class MathsToolkit {
     public:
         MathsToolkit  () {}
@@ -65,7 +69,6 @@ static class MathsToolkit {
         // SOMETHING HERE IS BROKEN
         //
         static void normalizeOctohedron (std::vector<GLfloat>* vertices, int length) {
-        
             for (int i = 0; i < vertices->size(); i += 3) {
                 glm::vec3 a = glm::vec3(0, 0, 0);
                 glm::vec3 b = glm::vec3(vertices->at(i + 0), vertices->at(i + 1), vertices->at(i + 2));

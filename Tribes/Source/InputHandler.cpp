@@ -52,6 +52,7 @@ void InputHandler::update() {
 }
 
 void InputHandler::checkInput() { glfwPollEvents(); }
+
 void InputHandler::processInput() {
     game->getHUD()->updateMousePosition(mouseX, mouseY);
 
@@ -63,19 +64,20 @@ void InputHandler::processInput() {
                     break;
                 case GLFW_KEY_A:
                     game->planet->rotateLeft();
+                    game->backdrop->rotateRight();
                     break;
                 case GLFW_KEY_S:
                     game->planet->shrink();
                     break;
                 case GLFW_KEY_D:
                     game->planet->rotateRight();
+                    game->backdrop->rotateLeft();
                     break;
                     
                 /** 
                  *  the following keys are removed upon use
                  */
                 case GLFW_KEY_SPACE:
-                    
                     activeKeys[GLFW_KEY_SPACE] = false;
                     break;
                 case GLFW_KEY_ESCAPE:
@@ -88,12 +90,8 @@ void InputHandler::processInput() {
 }
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    
-    if (action == GLFW_PRESS)
-        activeKeys[key] = true;
-
-    else if (action == GLFW_RELEASE)
-        activeKeys[key] = false;
+    if (action == GLFW_PRESS) activeKeys[key] = true;
+    else if (action == GLFW_RELEASE) activeKeys[key] = false;
 }
 
 void mouseMovementCallback(GLFWwindow* window, double xpos, double ypos) {

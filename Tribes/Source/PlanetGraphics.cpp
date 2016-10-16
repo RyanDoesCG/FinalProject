@@ -63,8 +63,8 @@ PlanetGraphics::PlanetGraphics  () {
     viewMatrix  = glm::translate(viewMatrix, glm::vec3(0.0f, 0.0f, -3.0f));
     projectionMatrix = glm::perspective(45.0f, (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);
     
-    objectShaders.push_back(new Shader("BasicBlack"));
-    objectTexture.push_back(new Texture("water"));
+    objectShaders.push_back(new Shader("Water"));
+    objectTexture.push_back(new Texture("flags/background_1"));
     objectMesh = new Mesh(&vertices);
 
 }
@@ -74,10 +74,12 @@ PlanetGraphics::~PlanetGraphics () {
 }
 
 void PlanetGraphics::draw() {
+    glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
+
     objectShaders.at(0)->bind ();
     
     // calculate transformations
-    modelMatrix      = glm::rotate(modelMatrix, (GLfloat)0.001, glm::vec3(0.0f, 1.0f, 0.0f));
+    modelMatrix      = glm::rotate(modelMatrix, (GLfloat)0.002, glm::vec3(0.0f, 1.0f, 0.0f));
     
     // Pass them to the shaders
     glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
@@ -87,7 +89,6 @@ void PlanetGraphics::draw() {
     objectTexture.at(0)->bind ();
     objectMesh->draw          ();
 }
-
 
 //    std::vector<GLfloat> vertices = {
 //        /*pos*/  0.5f, 0.5f, 0.0f, /*col*/ 1.0f, 0.0f, 0.0f, /*tc*/ 1.0f, 1.0f,

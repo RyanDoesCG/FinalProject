@@ -13,8 +13,12 @@
 
 #define KEYCOUNT 348
 
-// Forward declaration as Game.hpp cannot be imported
 class Game;
+
+/**
+ *  InputHandler Class
+ *
+ */
 class InputHandler {
     public:
         InputHandler  (Game* g);

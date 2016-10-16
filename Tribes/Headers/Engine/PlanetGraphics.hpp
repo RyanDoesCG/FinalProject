@@ -13,14 +13,17 @@
 #include "../GLM/glm.hpp"
 #include <iostream>
 
+/** 
+ *  PlanetGraphics Class
+ *
+ */
 class PlanetGraphics : public GraphicsComponent {
     public:
         PlanetGraphics  ();
         ~PlanetGraphics ();
     
         virtual void draw();
-    
-    private:
+
 };
 
 #endif /* PlanetGraphics_hpp */

@@ -12,6 +12,10 @@
 #include "GraphicsComponent.hpp"
 #include <iostream>
 
+/**
+ *  BiomeGraphics Class
+ *
+ */
 class BiomeGraphics : GraphicsComponent {
     public:
         BiomeGraphics  ();

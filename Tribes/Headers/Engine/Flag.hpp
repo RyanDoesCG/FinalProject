@@ -11,6 +11,10 @@
 
 #include "GameObject.hpp"
 
+/**
+ *  Flag Class
+ *
+ */
 class Flag : public GameObject {
     public:
         Flag();

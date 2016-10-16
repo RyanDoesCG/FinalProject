@@ -11,8 +11,7 @@
 
 #include "InputHandler.hpp"
 #include "TextRenderer.hpp"
-#include "GameObject.hpp"
-#include "Camera.hpp"
+#include "Backdrop.hpp"
 #include "Window.hpp"
 #include "Planet.hpp"
 #include "HUD.hpp"
@@ -23,6 +22,11 @@
 #define SCREEN_HEIGHT 540
 
 class HUD;
+
+/**
+ *  Game Class
+ *
+ */
 class Game {
     public:
         Game  ();
@@ -41,6 +45,7 @@ class Game {
 
         // FIND A BETTER SOLUTION TO INPUT 
         Planet*       planet;
+        Backdrop*     backdrop;
 
     private:
         enum State {

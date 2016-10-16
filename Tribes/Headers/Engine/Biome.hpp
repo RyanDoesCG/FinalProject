@@ -55,6 +55,10 @@ enum Vegitation {
     VEGITATION_MAX
 };
 
+/** 
+ *  Biome Class
+ *
+ */
 class Biome : GameObject {
     public:
         Biome  ();

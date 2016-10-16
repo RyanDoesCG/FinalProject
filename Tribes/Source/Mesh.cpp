@@ -92,13 +92,11 @@ void Mesh::draw() {
     glBindVertexArray(VAO);
     
     if (type == INDEXED) {
-        glPolygonMode  (GL_FRONT_AND_BACK, GL_FILL);
-        glDrawElements (GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawElements (GL_TRIANGLES, totalIndices, GL_UNSIGNED_INT, 0);
     }
     
-    if (type == RAW_VERTICES) {
-        glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
-        glDrawArrays  (GL_TRIANGLES, 0, totalVertices);
+    else if (type == RAW_VERTICES) {
+        glDrawArrays (GL_TRIANGLES, 0, totalVertices);
     }
     
     glBindVertexArray(0);

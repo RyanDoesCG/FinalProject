@@ -6,9 +6,7 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "../Headers/Engine/PlanetGraphics.hpp"
 #include "../Headers/Engine/Game.hpp"
-#include "../Headers/Engine/Mesh.hpp"
 #include "../Headers/GLFW/glfw3.h"
 #include <chrono>
 #include <thread>
@@ -25,6 +23,8 @@ Game::Game() {
     hud    = new HUD          (this, SCREEN_WIDTH, SCREEN_HEIGHT, &delta);
     input  = new InputHandler (this);
     state  = RUNNING;
+    
+    backdrop = new Backdrop(1000);
 }
 
 Game::~Game() {
@@ -38,15 +38,20 @@ void Game::begin() {
 
     while (!window->shouldClose()) {
         float start = glfwGetTime();
-    
-        window->clear();
         input->update();
         
         if (state == RUNNING) {
+            window->clear();
+            
+            backdrop->update();
             planet->update();
             hud->update();
             
             window->update();
+        }
+        
+        else {
+            glfwWaitEvents();
         }
         
         delta = (glfwGetTime() - start) * 1000;

@@ -20,11 +20,10 @@
 // "In C++ classes/structs are identical (in terms of initialization)."
 // Structs have sequiential memory
 
-enum MESH_TYPE {
-    RAW_VERTICES,
-    INDEXED
-};
-
+/** 
+ *  Mesh Class
+ *
+ */
 class Mesh {
     public:
         Mesh  (std::vector<GLfloat>* v, std::vector<GLuint>* i);
@@ -41,6 +40,11 @@ class Mesh {
         GLuint getEboID();
 
     private:
+        enum MESH_TYPE {
+            RAW_VERTICES,
+            INDEXED
+        };
+    
         // ideally this should be a C array but had issues passing.
         std::vector<GLfloat>* vertices;
         std::vector<GLuint>*  indices;

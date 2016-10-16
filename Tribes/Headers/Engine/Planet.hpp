@@ -30,6 +30,9 @@ enum Difficulty {
     TOUGHEST
 };
 
+/** 
+ *  Planet Class
+ */
 class Planet : public GameObject {
     public:
         Planet  (Difficulty difficulty, long seed);
@@ -47,7 +50,6 @@ class Planet : public GameObject {
         void rotateRight () { graphics->rotateRight(); }
         void grow        () { graphics->grow(); }
         void shrink      () { graphics->shrink(); }
-    
     
         void generateName ();
 

@@ -23,8 +23,6 @@ Window::Window(int width, int height, const std::string& title) {
 }
 
 Window::~Window() {
-    // delete context and window before
-    // quitting SDL subsystems
     glfwTerminate();
 }
 
@@ -32,18 +30,15 @@ int Window::initGLFW() {
     // start glfw Subsystem
     if (glfwInit() == GLFW_FALSE) return 1;
     
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-    glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
-    glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
-    
-    // multisampling
-    glfwWindowHint(GLFW_SAMPLES, 4);
-    
-    // macOS
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);                  // OpenGL Version
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);                  // OpenGL Version
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // OpenGL Profile
+    glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);                        // Resizable Window
+    glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);                     // Double Buffering
+    glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
+    glfwWindowHint(GLFW_SAMPLES, 4);                                // Multisampling
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // macOS requires this
+    glfwSwapInterval(1);                                            // enable VSYNC
 
     window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     
@@ -69,19 +64,16 @@ int Window::initGLEW() {
     glEnable    (GL_DEPTH_TEST);    // Z BUFFERING
     glEnable    (GL_MULTISAMPLE);   // MULTISAMPLING
     glEnable    (GL_BLEND);         // TEXT BLENDING
-    glBlendFunc (
-        GL_SRC_ALPHA,
-        GL_ONE_MINUS_SRC_ALPHA
-    );
+    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     return 0;
 }
 
 void Window::randomiseClearColour () {
     clearColour = glm::vec4(
-        0.3, //(rand() % 100) / 100.0f,
-        0.3, //(rand() % 100) / 100.0f,
-        0.3, //(rand() % 100) / 100.0f,
+        0.1, //(rand() % 100) / 100.0f,
+        0.1, //(rand() % 100) / 100.0f,
+        0.1, //(rand() % 100) / 100.0f,
         0
     );
     
