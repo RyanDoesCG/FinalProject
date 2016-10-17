@@ -16,7 +16,7 @@ Flag::Flag () {
 }
 
 Flag::~Flag() {
-    
+    std::cout << "Flag Freed" << std::endl;
 }
 
 void Flag::generateFlag() {

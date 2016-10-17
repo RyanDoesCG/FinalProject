@@ -61,6 +61,7 @@ void InputHandler::processInput() {
             switch(i) {
                 case GLFW_KEY_W:
                     game->planet->grow();
+                    game->backdrop->grow();
                     break;
                 case GLFW_KEY_A:
                     game->planet->rotateLeft();
@@ -68,6 +69,7 @@ void InputHandler::processInput() {
                     break;
                 case GLFW_KEY_S:
                     game->planet->shrink();
+                    game->backdrop->shrink();
                     break;
                 case GLFW_KEY_D:
                     game->planet->rotateRight();
@@ -77,6 +79,10 @@ void InputHandler::processInput() {
                 /** 
                  *  the following keys are removed upon use
                  */
+                case GLFW_KEY_R:
+                    game->planet->randomise();
+                    activeKeys[GLFW_KEY_R] = false;
+                    break;
                 case GLFW_KEY_SPACE:
                     activeKeys[GLFW_KEY_SPACE] = false;
                     break;

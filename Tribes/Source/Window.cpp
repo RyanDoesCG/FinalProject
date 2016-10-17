@@ -38,7 +38,7 @@ int Window::initGLFW() {
     glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
     glfwWindowHint(GLFW_SAMPLES, 4);                                // Multisampling
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // macOS requires this
-    glfwSwapInterval(1);                                            // enable VSYNC
+    glfwSwapInterval(10);                                            // enable VSYNC
 
     window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     
@@ -65,22 +65,18 @@ int Window::initGLEW() {
     glEnable    (GL_MULTISAMPLE);   // MULTISAMPLING
     glEnable    (GL_BLEND);         // TEXT BLENDING
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     
     return 0;
 }
 
 void Window::randomiseClearColour () {
     clearColour = glm::vec4(
-        0.1, //(rand() % 100) / 100.0f,
-        0.1, //(rand() % 100) / 100.0f,
-        0.1, //(rand() % 100) / 100.0f,
+        0.05, //(rand() % 100) / 100.0f,
+        0.05, //(rand() % 100) / 100.0f,
+        0.05, //(rand() % 100) / 100.0f,
         0
     );
-    
-    std::cout << " r: " << clearColour.x
-    << " g: " << clearColour.y
-    << " b: " << clearColour.z
-    << "\n";
 }
 
 bool Window::shouldClose() {

@@ -51,14 +51,17 @@ class Planet : public GameObject {
         void grow        () { graphics->grow(); }
         void shrink      () { graphics->shrink(); }
     
+        void randomise ();
+    
         void generateName ();
+        void generateFlag ();
 
     private:
         Difficulty difficulty;
         int        biomeCount;
         int        tribeCount;
     
-        Flag* galacticFlag;
+        Flag* galacticFlag = nullptr;
     
         std::vector<Biome*> regions;
         std::vector<Tribe*> tribes;

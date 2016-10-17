@@ -20,6 +20,8 @@ NAMES
 Domhan      (world in gaelic)
 PolyTerra   (many worlds in latin)
 
+voidstar
+
 */
 
 #include "../Headers/Engine/Game.hpp"
@@ -31,7 +33,6 @@ PolyTerra   (many worlds in latin)
 #define WIDTH  100
 
 int main(int argc, const char * argv[]) {
-
     Game game;
     game.begin();
     return 0;

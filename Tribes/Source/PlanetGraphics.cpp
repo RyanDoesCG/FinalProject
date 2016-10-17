@@ -56,15 +56,16 @@ PlanetGraphics::PlanetGraphics  () {
         0.0f, -0.5f, 0.0f,
     };
     
-    MathsToolkit::parseOctohedron(&vertices, 4);
-    MathsToolkit::normalizeOctohedron(&vertices, 1.8); // broken
+    MathsToolkit::parseOctohedron(&vertices, 3);
+    MathsToolkit::normalizeOctohedron(&vertices, 1.2);
+   // MathsToolkit::distortOctohedron(&vertices);
     
     modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.08, glm::vec3(1.0f, 0.0f, 0.0f));
     viewMatrix  = glm::translate(viewMatrix, glm::vec3(0.0f, 0.0f, -3.0f));
     projectionMatrix = glm::perspective(45.0f, (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);
     
-    objectShaders.push_back(new Shader("Water"));
-    objectTexture.push_back(new Texture("flags/background_1"));
+    objectShaders.push_back(new Shader("BasicWhite"));
+    //objectTexture.push_back(new Texture("flags/background_1"));
     objectMesh = new Mesh(&vertices);
 
 }
@@ -86,7 +87,7 @@ void PlanetGraphics::draw() {
     glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMatrix));
     glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "projectionMat"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));   // Note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
     
-    objectTexture.at(0)->bind ();
+   // objectTexture.at(0)->bind ();
     objectMesh->draw          ();
 }
 

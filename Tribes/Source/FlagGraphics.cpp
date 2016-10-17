@@ -31,7 +31,7 @@ FlagGraphics::FlagGraphics  () {
         };
     
     objectShaders.push_back(new Shader("Water"));
-    objectTexture.push_back(new Texture("flags/background_" + std::to_string((rand() % 6) + 1)));
+    objectTexture.push_back(new Texture("flags/background_" + std::to_string((rand() % 13) + 1)));
     objectMesh = new Mesh(&vertices, &indices);
     
     modelMatrix = glm::scale(modelMatrix, glm::vec3(0.5f, 0.5f, 0.5f));
@@ -39,7 +39,7 @@ FlagGraphics::FlagGraphics  () {
 }
 
 FlagGraphics::~FlagGraphics () {
-
+    
 }
 
 void FlagGraphics::draw() {

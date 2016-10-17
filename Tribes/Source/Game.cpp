@@ -15,7 +15,10 @@ Game::Game() {
     // seed random generator & generate random seed
     srand(static_cast<unsigned int>(time(0)));
     seed = rand();
+    
+    // display seed and seed game
     std::cout << seed << std::endl;
+    srand(seed);
     
     // put engine stuff together
     window = new Window       (SCREEN_WIDTH, SCREEN_HEIGHT, "tribes");
@@ -24,7 +27,7 @@ Game::Game() {
     input  = new InputHandler (this);
     state  = RUNNING;
     
-    backdrop = new Backdrop(1000);
+    backdrop = new Backdrop(10000);
 }
 
 Game::~Game() {
@@ -34,8 +37,6 @@ Game::~Game() {
 }
 
 void Game::begin() {
-    planet->toString();
-
     while (!window->shouldClose()) {
         float start = glfwGetTime();
         input->update();
@@ -54,8 +55,10 @@ void Game::begin() {
             glfwWaitEvents();
         }
         
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        
         delta = (glfwGetTime() - start) * 1000;
-        //if (delta > 24) std::this_thread::sleep_for(std::chrono::milliseconds((int)(delta - 24)));
+        //if (delta < 16) std::this_thread::sleep_for(std::chrono::milliseconds((int)(16 - delta)));
     }
 }
 

@@ -49,6 +49,7 @@ class GraphicsComponent {
     protected:
         // mesh
         std::vector<GLfloat>  vertices;
+        std::vector<GLfloat>  indices;
     
         // OpenGL stuff
         std::vector<Shader*>  objectShaders;
