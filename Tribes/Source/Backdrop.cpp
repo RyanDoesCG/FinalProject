@@ -16,7 +16,3 @@ Backdrop::Backdrop  (int quality) {
 Backdrop::~Backdrop () {
 
 }
-
-void Backdrop::update() {
-    if (graphics) graphics->draw();
-}

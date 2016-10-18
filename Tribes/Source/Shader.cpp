@@ -67,19 +67,19 @@ std::string Shader::loadSource(const std::string& path) {
             getline(source, line);
             output.append(line + "\n");
         }
-    } else {
+    }
+    
+    else {
         std::cout << "Shader Loading Error" << "\n";
     }
     
     return output;
-    
-    
 }
 
 GLuint Shader::createShader (const std::string& source, GLenum type) {
     GLuint shader = glCreateShader(type);
     
-    if (!shader) std::cout << "Shader Creation Error" << "\n";
+    if (!shader) std::cout << "Shader Creation Error" << std::endl;
     
     const GLchar* shaderSource[1];
     GLint         sourceLength[1];

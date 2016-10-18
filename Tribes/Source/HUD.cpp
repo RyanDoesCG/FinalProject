@@ -29,8 +29,8 @@ HUD::~HUD () {
 
 void HUD::update() {
     textPipeline.renderText("frame time: " + std::to_string(*delta) + "ms", 5, screenHeight - 390, 1);
-    textPipeline.renderText("xpos: " + std::to_string(mouseX), 5, screenHeight - 416, 1);
-    textPipeline.renderText("ypos: " + std::to_string(mouseY), 5, screenHeight - 442, 1);
+    textPipeline.renderText("xpos: "       + std::to_string(mouseX), 5, screenHeight - 416, 1);
+    textPipeline.renderText("ypos: "       + std::to_string(mouseY), 5, screenHeight - 442, 1);
     
     textPipeline.renderText("pre-alpha", 5, 9, 1);
     

@@ -21,12 +21,10 @@ class BackdropGraphics : public GraphicsComponent {
         virtual void draw ();
     
     
-    virtual void rotateLeft ();
-    virtual void rotateRight ();
-    virtual void grow ();
-    virtual void shrink ();
-    
-    private:
+        virtual void rotateLeft ();
+        virtual void rotateRight ();
+        virtual void grow ();
+        virtual void shrink ();
 
 };
 

@@ -20,36 +20,22 @@
 
 class GraphicsComponent {
     public:
-        GraphicsComponent() {
-           
-        }
-    
+        GraphicsComponent  () {}
         ~GraphicsComponent () {}
         
         virtual void draw() {
             std::cout << "draw not impemented" << std::endl;
         }
     
-        virtual void rotateLeft () {
-            modelMatrix = glm::rotate(modelMatrix, (GLfloat)-0.05, glm::vec3(0.0f, 1.0f, 0.0f));
-        }
-    
-        virtual void rotateRight () {
-            modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.04, glm::vec3(0.0f, 1.0f, 0.0f));
-        }
-    
-        virtual void grow () {
-            modelMatrix = glm::scale(modelMatrix, glm::vec3(1.01, 1.01, 1.01));
-        }
-    
-        virtual void shrink () {
-            modelMatrix = glm::scale(modelMatrix, glm::vec3(0.99, 0.99, 0.99));
-        }
+        virtual void rotateLeft  () { modelMatrix = glm::rotate (modelMatrix, (GLfloat)-0.05, glm::vec3(0.0f, 1.0f, 0.0f)); }
+        virtual void rotateRight () { modelMatrix = glm::rotate (modelMatrix, (GLfloat)0.04, glm::vec3(0.0f, 1.0f, 0.0f)); }
+        virtual void grow        () { modelMatrix = glm::scale  (modelMatrix, glm::vec3(1.01, 1.01, 1.01)); }
+        virtual void shrink      () { modelMatrix = glm::scale  (modelMatrix, glm::vec3(0.99, 0.99, 0.99)); }
     
     protected:
         // mesh
-        std::vector<GLfloat>  vertices;
-        std::vector<GLfloat>  indices;
+        std::vector<GLfloat> vertices;
+        std::vector<GLuint> indices;
     
         // OpenGL stuff
         std::vector<Shader*>  objectShaders;

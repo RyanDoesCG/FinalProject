@@ -8,144 +8,86 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/PlanetGraphics.hpp"
 #include "../Headers/Engine/MathsToolkit.hpp"
-#include <vector>
 
 PlanetGraphics::PlanetGraphics  () {
 
-    // octohedron
-    std::vector<GLfloat> vertices = {
-        // 1
-        -0.5f, 0.0f, 0.0f,
-        0.0f, 0.5f, 0.0f,
-        0.0f, 0.0f, 0.5f,
-        
-        // 2
-        -0.5, 0.0f, 0.0f,
-        0.0f, 0.0f, 0.5f,
-        0.0f, -0.5, 0.0f,
-        
-        // 3
-        0.5f, 0.0f, 0.0f,
-        0.0f, 0.5f, 0.0f,
-        0.0f, 0.0f, 0.5f,
-        
-        // 4
-        0.0f, -0.5f, 0.0f,
-        0.0f, 0.0f, 0.5f,
-        0.5f, 0.00f, 0.0f,
-        
-        // 5
-        -0.5f, 0.0f, 0.0f,
-        0.0f, 0.5f, 0.0f,
-        0.0f, 0.0f, -0.5f,
-        
-        // 6
-        -0.5, 0.0f, 0.0f,
-        0.0f, -0.5, 0.0f,
-        0.0f, 0.0f, -0.5f,
-        
-        
-        // 7
-        0.0f, 0.5f, 0.0f,
-        0.0f, 0.0f, -0.5f,
-        0.5f, 0.0f, 0.0f,
-        
-        // 8
-        0.0f, 0.0f, -0.5f,
-        0.5f, 0.00f, 0.0f,
-        0.0f, -0.5f, 0.0f,
+    /** 
+     *  Build basic vertex collection.
+     *
+     *      /\
+     *     /  \
+     *     \  /
+     *      \/
+     */
+    vertices = {
+        -0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f, 0.0f,  0.0f,  0.5f, // TRIANGLE 1
+        -0.5,   0.0f,  0.0f, 0.0f,  0.0f,  0.5f, 0.0f, -0.5,   0.0f, // TRIANGLE 2
+         0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f, 0.0f,  0.0f,  0.5f, // TRIANGLE 3
+         0.0f, -0.5f,  0.0f, 0.0f,  0.0f,  0.5f, 0.5f,  0.00f, 0.0f, // TRIANGLE 4
+        -0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f, 0.0f,  0.0f, -0.5f, // TRIANGLE 5
+        -0.5,   0.0f,  0.0f, 0.0f, -0.5,   0.0f, 0.0f,  0.0f, -0.5f, // TRIANGLE 6
+         0.0f,  0.5f,  0.0f, 0.0f,  0.0f, -0.5f, 0.5f,  0.0f,  0.0f, // TRIANGLE 7
+         0.0f,  0.0f, -0.5f, 0.5f,  0.0f,  0.0f, 0.0f, -0.5f,  0.0f, // TRIANGLE 8
     };
     
-    MathsToolkit::parseOctohedron(&vertices, 3);
-    MathsToolkit::normalizeOctohedron(&vertices, 1.2);
-   // MathsToolkit::distortOctohedron(&vertices);
+    /** 
+     *  Parse the octohedron into a pseudo-sphere
+     *
+     */
+    MathsToolkit::parseOctohedron     (&vertices, 5);
+    MathsToolkit::normalizeOctohedron (&vertices, 1.2);
     
-    modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.08, glm::vec3(1.0f, 0.0f, 0.0f));
-    viewMatrix  = glm::translate(viewMatrix, glm::vec3(0.0f, 0.0f, -3.0f));
-    projectionMatrix = glm::perspective(45.0f, (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);
+    /**
+     *  calculate transformation matrices
+     *  
+     *  EXPAND ON THIS
+     */
+    modelMatrix      = glm::rotate      (modelMatrix, (GLfloat)0.08, glm::vec3(1.0f, 0.0f, 0.0f));
+    viewMatrix       = glm::translate   (viewMatrix,  glm::vec3(0.0f, 0.0f, -3.0f));
+    projectionMatrix = glm::perspective (45.0f,       (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);
     
-    objectShaders.push_back(new Shader("BasicWhite"));
-    //objectTexture.push_back(new Texture("flags/background_1"));
+    /** 
+     *  build a shader and a mesh
+     */
+    objectShaders.push_back(new Shader("Planet"));
     objectMesh = new Mesh(&vertices);
-
+    
+    /** 
+     *  pass transformation matrices to the shader program
+     */
+    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "modelMat"),      1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "viewMat"),       1, GL_FALSE, glm::value_ptr(viewMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "projectionMat"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));
 }
 
 PlanetGraphics::~PlanetGraphics () {
 
 }
 
-void PlanetGraphics::draw() {
-    glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
-
-    objectShaders.at(0)->bind ();
+void generateBiomes () {
     
-    // calculate transformations
-    modelMatrix      = glm::rotate(modelMatrix, (GLfloat)0.002, glm::vec3(0.0f, 1.0f, 0.0f));
-    
-    // Pass them to the shaders
-    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "projectionMat"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));   // Note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
-    
-   // objectTexture.at(0)->bind ();
-    objectMesh->draw          ();
 }
 
-//    std::vector<GLfloat> vertices = {
-//        /*pos*/  0.5f, 0.5f, 0.0f, /*col*/ 1.0f, 0.0f, 0.0f, /*tc*/ 1.0f, 1.0f,
-//        /*pos*/  0.5f,-0.5f, 0.0f, /*col*/ 0.0f, 1.0f, 0.0f, /*tc*/ 1.0f, 0.0f,
-//        /*pos*/ -0.5f,-0.5f, 0.0f, /*col*/ 0.0f, 0.0f, 1.0f, /*tc*/ 0.0f, 0.0f,
-//        /*pos*/ -0.5f, 0.5f, 0.0f, /*col*/ 1.0f, 1.0f, 0.0f, /*tc*/ 0.0f, 1.0f
-//     };
+void PlanetGraphics::draw() {
 
-//    std::vector<GLuint> indices = {
-//        0, 1, 2,
-//        0, 3, 2
-//    };
+    /**
+     *  1. bind the shader program. This class has
+     *     no texture to bind so skip that.
+     */
+    objectShaders.at(0)->bind ();
 
-/*
- // cube
- std::vector<GLfloat> vertices = {
- -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
- 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
- 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
- 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
- -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
- -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
- 
- -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
- 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
- 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
- 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
- -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
- -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
- 
- -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
- -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
- -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
- -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
- -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
- -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
- 
- 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
- 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
- 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
- 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
- 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
- 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
- 
- -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
- 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
- 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
- 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
- -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
- -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
- 
- -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
- 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
- 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
- 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
- -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
- -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
- };
- */
+    /**
+     *  2. Rotate the planet model slightly every frame and
+     *     pass this update to the GPU via a shader program.
+     */
+    modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.002, glm::vec3(0.0f, 1.0f, 0.0f));
+    glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+
+    /** 
+     *  3. Set the polygon draw mode (GL_FILL for release,
+     *     GL_LINE for debug, GL_POINT for art) and trigger
+     *     the mesh to render.
+     */
+    glPolygonMode    (GL_FRONT_AND_BACK, GL_FILL);
+    objectMesh->draw ();
+}

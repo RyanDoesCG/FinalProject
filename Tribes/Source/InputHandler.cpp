@@ -14,7 +14,7 @@
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos);
 void keyCallback           (GLFWwindow* window, int key, int scancode, int action, int mods);
 
-// Ugly global state to accomodate the callbacks
+// a C style solution for a C API
 bool  activeKeys[KEYCOUNT] = {};
 float mouseX;
 float mouseY;
@@ -47,13 +47,12 @@ InputHandler::~InputHandler () {
 }
 
 void InputHandler::update() {
-    checkInput();
-    processInput();
+    populateInputArray();
+    processInputArray();
 }
 
-void InputHandler::checkInput() { glfwPollEvents(); }
-
-void InputHandler::processInput() {
+void InputHandler::populateInputArray() { glfwPollEvents(); }
+void InputHandler::processInputArray() {
     game->getHUD()->updateMousePosition(mouseX, mouseY);
 
     for (int i = 0; i < KEYCOUNT; i++) {

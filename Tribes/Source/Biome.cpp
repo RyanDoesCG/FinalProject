@@ -111,17 +111,6 @@ std::string Biome::toString() {
     else if (auxResource == Alluminium)  output += "\tAlluminium\n";
     else if (auxResource == Diamond)     output += "\tDiamond\n";
     
-    /** 
-     *  i fucking hate software.
-     *
-     *  the null gate is broken at random despite the occupier of the
-     *  biome never being set to anything other that null.
-     *
-    output += "\tOccupied by: ";
-    if (!occupier) output += "\tnobody";
-    else output += "\t" + occupier->getName();
-     */
-    
     output += "\n";
     return output;
 }

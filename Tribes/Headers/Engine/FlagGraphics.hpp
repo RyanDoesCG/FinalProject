@@ -21,9 +21,7 @@ class FlagGraphics : public GraphicsComponent {
         FlagGraphics  ();
         ~FlagGraphics ();
 
-    virtual void draw();
-    
-    private:
+        virtual void draw();
 
 };
 

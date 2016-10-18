@@ -9,12 +9,15 @@
 #include "../Headers/Engine/Mesh.hpp"
 #include <math.h>
 
+/** 
+ *  CONSTRUCTOR 1: INDEXED MESH
+ */
 Mesh::Mesh(std::vector<GLfloat>* v, std::vector<GLuint>* i) {
     // store vectors
     vertices = v;
     indices  = i;
     
-    // convert vector to a standard array
+    // convert vector to a standard array so OpenGL will play nice
     GLfloat vert[vertices->size()];
     GLuint  indi[indices->size()];
     for (int i = 0; i < vertices->size(); i++) vert[i] = vertices->at(i);
@@ -36,23 +39,28 @@ Mesh::Mesh(std::vector<GLfloat>* v, std::vector<GLuint>* i) {
         glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, EBO);
         glBufferData (GL_ELEMENT_ARRAY_BUFFER, sizeof(indi), indi, GL_STATIC_DRAW);
     
-        // position
+        // pass position to gpu
         glVertexAttribPointer     (0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
         glEnableVertexAttribArray (0);
-        // color
+        // pass color to gpu
         glVertexAttribPointer     (1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
         glEnableVertexAttribArray (1);
-        // texture coordinates
+        // pass texture coordinates to gpu
         glVertexAttribPointer     (2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
         glEnableVertexAttribArray (2);
     
     // unbind vertex array object
     glBindVertexArray(0);
+    
+    // House Keeping state
     totalVertices = (int)vertices->size() / 3;
-    totalIndices = (int)indices->size();
-    type = INDEXED;
+    totalIndices  = (int)indices->size();
+    type          = INDEXED;
 }
 
+/**
+ *  CONSTRUCTOR 1: VERTEX MESH
+ */
 Mesh::Mesh (std::vector<GLfloat>* v) {
     // store vectors
     vertices = v;
@@ -78,8 +86,10 @@ Mesh::Mesh (std::vector<GLfloat>* v) {
     
     // unbind vertex array object
     glBindVertexArray(0);
+    
+    // House Keeping state
     totalVertices = (int)vertices->size() / 3;
-    type = RAW_VERTICES;
+    type          = RAW_VERTICES;
 }
 
 Mesh::~Mesh() {

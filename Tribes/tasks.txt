@@ -19,3 +19,24 @@ glm::ortho(0.0f, 800.0f, 0.0f, 600.0f, 0.1f, 100.0f);
 
 glm::mat4 proj = glm::perspective(45.0f, (float)width/(float)height, 0.1f,
 100.0f);
+
+
+
+/*
+IDEAS/TO-DO
+
+Moon biome?
+Space stations?
+Custom RNG?
+
+NAMES
+Domhan      (world in gaelic)
+PolyTerra   (many worlds in latin)
+
+voidstar
+
+*/
+
+
+// Sphere/Planet: http://stackoverflow.com/questions/7687148/drawing-sphere-in-opengl-without-using-glusphere
+// Sky/Terrain:   http://vterrain.org/Atmosphere/

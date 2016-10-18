@@ -34,6 +34,12 @@ class GameObject {
         virtual void update();
     
         glm::mat4 position;
+    
+        void rotateLeft  () { graphics->rotateLeft(); }
+        void rotateRight () { graphics->rotateRight(); }
+        void grow        () { graphics->grow(); }
+        void shrink      () { graphics->shrink(); }
+    
     protected:
     
         GraphicsComponent* graphics;

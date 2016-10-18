@@ -13,7 +13,6 @@ Planet::Planet  (Difficulty diff, long seed) {
     setGraphics (new PlanetGraphics());
 //  setPhysics  (new PlanetPhysics());
 
-    
     difficulty = diff;
     biomeCount = ((difficulty + 1) * 5) + (rand() % 10);
     tribeCount = ((difficulty + 1) * 3) + (rand() % 10);
@@ -83,41 +82,16 @@ void Planet::generateName() {
         }
     }
     
-    name += " ";
-    
     int ting = rand() % 200;
     
-    if (ting >= 0 && ting <= 24) {
-        name += "Alpha";
-    }
-    
-    else if (ting >= 25 && ting <= 49) {
-        name += "Beta";
-    }
-    
-    else if (ting >= 50 && ting <= 74) {
-        name += "Prime";
-    }
-    
-    else if (ting >= 75 && ting <= 99) {
-        name += "";
-    }
-    
-    else     if (ting >=  100 && ting <= 124) {
-        name += "Nova";
-    }
-    
-    else if (ting >= 125 && ting <= 149) {
-        name += "Maxim";
-    }
-    
-    else if (ting >= 150 && ting <= 174) {
-        name += "X";
-    }
-    
-    else if (ting >= 175 && ting <= 200) {
-        name += "";
-    }
+    if      (ting >= 0   && ting <= 24 ) name += " Alpha";
+    else if (ting >= 25  && ting <= 49 ) name += " Beta";
+    else if (ting >= 50  && ting <= 74 ) name += " Prime";
+    else if (ting >= 75  && ting <= 99 ) name += "";
+    else if (ting >= 100 && ting <= 124) name += "-Nova";
+    else if (ting >= 125 && ting <= 149) name += "-Maxim";
+    else if (ting >= 150 && ting <= 174) name += "-X";
+    else if (ting >= 175 && ting <= 200) name += "s";
 }
 
 void Planet::generateFlag() {

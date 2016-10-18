@@ -29,8 +29,8 @@ class InputHandler {
     private:
         Game* game;
     
-        void checkInput();
-        void processInput();
+        void populateInputArray();
+        void processInputArray();
 };
 
 #endif /* InputHandler_h */

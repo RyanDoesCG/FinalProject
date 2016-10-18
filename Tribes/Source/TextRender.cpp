@@ -8,6 +8,9 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/TextRenderer.hpp"
 
+/** 
+ *  Make this a game object?
+ */
 TextRenderer::TextRenderer  () {
     if (FT_Init_FreeType(&ft))                               std::cout << "ERROR: Could not init FreeType Library" << std::endl;
     if (FT_New_Face(ft, "Assets/fonts/Tahoma.ttf", 0, &face)) std::cout << "ERROR: Failed to load font" << std::endl;

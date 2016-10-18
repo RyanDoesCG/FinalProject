@@ -33,29 +33,23 @@ class Game {
         ~Game ();
     
         void begin ();
-        void end ();
-    
         void pause ();
+        void end   ();
     
         inline Window* getWindowObject () {return window;}
-        inline HUD* getHUD () { return hud; }
+        inline HUD*    getHUD          () { return hud; }
     
-        void rotatePlanetLeft();
-        void rotatePlanetRight();
-
-        // FIND A BETTER SOLUTION TO INPUT 
+        // REPLACE/RETHINK
         Planet*       planet;
         Backdrop*     backdrop;
-
+        // REPLACE/RETHINK
+    
     private:
         enum State {
             ENDED,
             RUNNING,
             PAUSED
         };
-    
-        // world seed
-        long seed;
     
         // engine systems
         InputHandler* input;
@@ -66,6 +60,8 @@ class Game {
     
         // for frame timing
         float delta;
+        // world seed
+        long seed;
 };
 
 #endif /* Game_hpp */

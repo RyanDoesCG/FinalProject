@@ -10,8 +10,6 @@
 #define PlanetGraphics_hpp
 
 #include "GraphicsComponent.hpp"
-#include "../GLM/glm.hpp"
-#include <iostream>
 
 /** 
  *  PlanetGraphics Class
@@ -23,6 +21,8 @@ class PlanetGraphics : public GraphicsComponent {
         ~PlanetGraphics ();
     
         virtual void draw();
+    
+        void generateBiomes ();
 
 };
 

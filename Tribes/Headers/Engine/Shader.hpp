@@ -24,17 +24,14 @@ class Shader {
         void bind();
     
         GLuint getProgramID () { return programID; }
-    
-    protected:
-        GLuint programID;
-        GLuint vertexShaderID;
-        GLuint fragmentShaderID;
 
     private:
         std::string loadSource   (const std::string& path);
         GLuint      createShader (const std::string& source, GLenum type);
 
-    
+        GLuint programID;
+        GLuint vertexShaderID;
+        GLuint fragmentShaderID;
 };
 
 #endif /* Shader_hpp */

@@ -43,9 +43,9 @@ class HUD : public GameObject {
     
         float mouseX;
         float mouseY;
-        
-        Game* game;
+    
         float* delta;
+        Game* game;
 
 };
 

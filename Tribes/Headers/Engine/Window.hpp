@@ -22,18 +22,16 @@ class Window {
         void update ();
         void clear  ();
     
-        bool open;
-    
-        bool shouldClose();
+        bool finished();
 
-        inline GLFWwindow* getWindow() {return window;}
+        inline GLFWwindow* getWindow() { return window; }
         void randomiseClearColour ();
     
-        inline int getWidth() { return width; }
-        inline int getHeight() { return height; }
+        inline int getWidth  () { return width; }
+        inline int getHeight () { return height; }
     
     private:
-        GLFWwindow*  window;
+        GLFWwindow* window;
     
         int width;
         int height;

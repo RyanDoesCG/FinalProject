@@ -40,10 +40,6 @@ class Mesh {
         GLuint getEboID();
 
     private:
-        enum MESH_TYPE {
-            RAW_VERTICES,
-            INDEXED
-        };
     
         // ideally this should be a C array but had issues passing.
         std::vector<GLfloat>* vertices;
@@ -54,6 +50,11 @@ class Mesh {
         GLuint VBO; // Vertex Buffer Object (sends verts to GPU)
         GLuint VAO; // Vertex Array Object
         GLuint EBO; // Element Buffer Object
+    
+        enum MESH_TYPE {
+            RAW_VERTICES,
+            INDEXED
+        };
     
         MESH_TYPE type;
     

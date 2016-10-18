@@ -9,32 +9,27 @@
 
 Texture::Texture(std::string path) {
     path = "Assets/textures/" + path + ".png";
-
-    image = SOIL_load_image (
-        path.c_str(),
-        &width,
-        &height,
-        0,
-        SOIL_LOAD_RGBA
-    );
     
+    /** 
+     *  load an image and check for failures
+     */
+    image = SOIL_load_image (path.c_str(), &width, &height, 0, SOIL_LOAD_RGBA);
     if (!image) std::cout << "Image load failure (" << path << ")" << std::endl;
     
+    // Generate texture and bind as 2D
     glGenTextures (1, &textureID);
     glBindTexture (GL_TEXTURE_2D, textureID);
-        glTexImage2D (
-            GL_TEXTURE_2D,
-            0,
-            GL_RGBA,
-            width,
-            height,
-            0,
+    
+        // send to shader, enable mip-mapping and release memory
+        glTexImage2D (GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0,
             GL_RGBA,
             GL_UNSIGNED_BYTE,
             image
         );
         glGenerateMipmap(GL_TEXTURE_2D);
         SOIL_free_image_data(image);
+    
+    // unbind texture
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 

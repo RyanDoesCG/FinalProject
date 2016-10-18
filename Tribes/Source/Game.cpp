@@ -11,12 +11,14 @@
 #include <chrono>
 #include <thread>
 
-Game::Game() {
+int getSeed() {
     // seed random generator & generate random seed
     srand(static_cast<unsigned int>(time(0)));
-    seed = rand();
-    
-    // display seed and seed game
+    return rand();
+}
+
+Game::Game() {
+    seed = getSeed();
     std::cout << seed << std::endl;
     srand(seed);
     
@@ -26,8 +28,7 @@ Game::Game() {
     hud    = new HUD          (this, SCREEN_WIDTH, SCREEN_HEIGHT, &delta);
     input  = new InputHandler (this);
     state  = RUNNING;
-    
-    backdrop = new Backdrop(10000);
+    backdrop = new Backdrop(30000);
 }
 
 Game::~Game() {
@@ -37,16 +38,16 @@ Game::~Game() {
 }
 
 void Game::begin() {
-    while (!window->shouldClose()) {
+    while (!window->finished()) {
         float start = glfwGetTime();
         input->update();
         
         if (state == RUNNING) {
             window->clear();
             
-            backdrop->update();
-            planet->update();
-            hud->update();
+            backdrop->update(); // draw stars
+            planet->update();   // draw planet
+            hud->update();      // draw hud
             
             window->update();
         }
@@ -55,10 +56,7 @@ void Game::begin() {
             glfwWaitEvents();
         }
         
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
-        
         delta = (glfwGetTime() - start) * 1000;
-        //if (delta < 16) std::this_thread::sleep_for(std::chrono::milliseconds((int)(16 - delta)));
     }
 }
 
@@ -66,17 +64,10 @@ void Game::end() {
     state = ENDED;
 }
 
+// toggle pause on and off
 void Game::pause() {
-    // toggle pause on and off
-    if      (state ==  PAUSED) state = RUNNING;
-    else if (state == RUNNING) state = PAUSED;
-    std::cout << "pause msg received\n";
-}
-
-void Game::rotatePlanetLeft() {
-
-}
-
-void Game::rotatePlanetRight() {
-    
+    if (state ==  PAUSED)
+        state = RUNNING;
+    else if (state == RUNNING)
+        state = PAUSED;
 }

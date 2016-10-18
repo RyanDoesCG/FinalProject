@@ -17,7 +17,9 @@
  */
 class PhysicsComponent {
     public:
-        virtual void update() {};
+        virtual void update() {
+            std::cout << "Physics not implemented" << std::endl;
+        };
 };
 
 #endif /* PhysicsComponent_hpp */

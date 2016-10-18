@@ -38,15 +38,12 @@ int Window::initGLFW() {
     glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
     glfwWindowHint(GLFW_SAMPLES, 4);                                // Multisampling
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // macOS requires this
-    glfwSwapInterval(10);                                            // enable VSYNC
+    glfwSwapInterval(1);                                            // enable VSYNC
 
     window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
-    
     if (!window) return 1;
     
     glfwMakeContextCurrent(window);
-    
-    glewExperimental = GL_TRUE; // Mesh Vertex Array initialisation doesn't work without this flag
     
     return 0;
 }
@@ -66,7 +63,6 @@ int Window::initGLEW() {
     glEnable    (GL_BLEND);         // TEXT BLENDING
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    
     return 0;
 }
 
@@ -79,7 +75,7 @@ void Window::randomiseClearColour () {
     );
 }
 
-bool Window::shouldClose() {
+bool Window::finished() {
     return glfwWindowShouldClose(window);
 }
 

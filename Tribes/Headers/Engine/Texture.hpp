@@ -24,10 +24,10 @@ class Texture {
     private:
         int width;
         int height;
+        unsigned char* image;
     
         GLuint textureID;
     
-        unsigned char* image;
 };
 
 #endif /* Texture_hpp */

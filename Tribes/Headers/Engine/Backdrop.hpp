@@ -16,15 +16,6 @@ class Backdrop : public GameObject {
     public:
         Backdrop  (int quality);
         ~Backdrop ();
-    
-        virtual void update();
-    
-    void rotateLeft  () { graphics->rotateLeft(); }
-    void rotateRight () { graphics->rotateRight(); }
-    void grow        () { graphics->grow(); }
-    void shrink      () { graphics->shrink(); }
-
-    private:
 
 };
 

@@ -21,7 +21,7 @@ GameObject::~GameObject () {
     
 void GameObject::update () {
     if (graphics) graphics->draw();
-    if (physics) physics->update();
+    if (physics)  physics->update();
 }
 
 void GameObject::setGraphics (GraphicsComponent* graphics) { this->graphics = graphics; }
