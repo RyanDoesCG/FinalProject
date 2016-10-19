@@ -11,14 +11,8 @@
 #include <chrono>
 #include <thread>
 
-int getSeed() {
-    // seed random generator & generate random seed
-    srand(static_cast<unsigned int>(time(0)));
-    return rand();
-}
-
 Game::Game() {
-    seed = getSeed();
+    seed = generateSeed();
     std::cout << seed << std::endl;
     srand(seed);
     
@@ -27,7 +21,7 @@ Game::Game() {
     planet   = new Planet       (TOUGHER, seed);
     hud      = new HUD          (this, SCREEN_WIDTH, SCREEN_HEIGHT, &delta);
     input    = new InputHandler (this);
-    backdrop = new Backdrop(30000);
+    backdrop = new Backdrop(20000);
     state    = RUNNING;
 }
 
@@ -50,13 +44,12 @@ void Game::begin() {
             hud->update();      // draw hud
             
             window->update();
+            calculateFPS(start);
         }
         
         else {
             glfwWaitEvents();
         }
-        
-        delta = (glfwGetTime() - start) * 1000;
     }
 }
 
@@ -66,8 +59,15 @@ void Game::end() {
 
 // toggle pause on and off
 void Game::pause() {
-    if (state ==  PAUSED)
-        state = RUNNING;
-    else if (state == RUNNING)
-        state = PAUSED;
+    state == RUNNING ? state = PAUSED : state = RUNNING;
+}
+
+void Game::calculateFPS (float start) {
+    float smoothing = 0.9;
+    delta = (delta * smoothing) + ((glfwGetTime() - start) * 1000 * (1.0-smoothing));
+}
+
+long Game::generateSeed() {
+    srand(static_cast<unsigned int>(time(0)));
+    return rand();
 }

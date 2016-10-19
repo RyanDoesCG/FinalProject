@@ -3,10 +3,11 @@
  *  Tribes
  *
  *  Created by user on 16/10/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/BackdropGraphics.hpp"
+#include "../Headers/Engine/ShaderCache.hpp"
 
 BackdropGraphics::BackdropGraphics  (int quality) {
 
@@ -32,7 +33,7 @@ BackdropGraphics::BackdropGraphics  (int quality) {
     /**
      *  build a shader and a mesh
      */
-    objectShaders.push_back(new Shader("twinkle"));
+    objectShaders.push_back(ShaderCache::loadShader("twinkle"));
     objectMesh = new Mesh(&vertices);
     
     /**

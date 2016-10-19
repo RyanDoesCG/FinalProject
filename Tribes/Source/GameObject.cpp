@@ -24,5 +24,11 @@ void GameObject::update () {
     if (physics)  physics->update();
 }
 
+void GameObject::rotateLeft  () { graphics->rotateLeft(); }
+void GameObject::rotateRight () { graphics->rotateRight(); }
+void GameObject::grow        () { graphics->grow(); }
+void GameObject::shrink      () { graphics->shrink(); }
+
+
 void GameObject::setGraphics (GraphicsComponent* graphics) { this->graphics = graphics; }
 void GameObject::setPhysics  (PhysicsComponent* physics)   { this->physics  = physics; }

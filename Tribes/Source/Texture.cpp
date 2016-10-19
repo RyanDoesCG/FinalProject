@@ -8,6 +8,7 @@
 #include "../Headers/Engine/Texture.hpp"
 
 Texture::Texture(std::string path) {
+    title = path;
     path = "Assets/textures/" + path + ".png";
     
     /** 
@@ -39,4 +40,8 @@ Texture::~Texture() {
 
 void Texture::bind() {
     glBindTexture (GL_TEXTURE_2D, textureID);
+}
+
+std::string Texture::getTextureTitle() {
+    return title;
 }

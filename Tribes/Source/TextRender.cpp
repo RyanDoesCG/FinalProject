@@ -3,10 +3,11 @@
  *  Tribes
  *
  *  Created by user on 14/10/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/TextRenderer.hpp"
+#include "../Headers/Engine/ShaderCache.hpp"
 
 /** 
  *  Make this a game object?
@@ -18,7 +19,7 @@ TextRenderer::TextRenderer  () {
     FT_Set_Pixel_Sizes(face, 0, 24);
 
     projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
-    shader = new Shader("Text");
+    shader = ShaderCache::loadShader("Text");
     shader->bind();
     glUniformMatrix4fv(glGetUniformLocation(shader->getProgramID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 

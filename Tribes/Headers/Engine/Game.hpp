@@ -16,12 +16,16 @@
 #include "Planet.hpp"
 #include "HUD.hpp"
 #include <iostream>
-#include <vector>
 
-#define SCREEN_WIDTH  960
-#define SCREEN_HEIGHT 540
+#define SCREEN_WIDTH  1024
+#define SCREEN_HEIGHT 576
 
 class HUD;
+enum  State {
+    RUNNING,
+    PAUSED,
+    ENDED
+};
 
 /**
  *  Game Class
@@ -37,7 +41,8 @@ class Game {
         void end   ();
     
         inline Window* getWindowObject () {return window;}
-        inline HUD*    getHUD          () { return hud; }
+        inline HUD*    getHUD          () {return hud;}
+        inline State   getState        () {return state;}
     
         // REPLACE/RETHINK
         Planet*       planet;
@@ -45,12 +50,6 @@ class Game {
         // REPLACE/RETHINK
     
     private:
-        enum State {
-            ENDED,
-            RUNNING,
-            PAUSED
-        };
-    
         // engine systems
         InputHandler* input;
         TextRenderer* text;
@@ -61,7 +60,10 @@ class Game {
         // for frame timing
         float delta;
         // world seed
+        long generateSeed();
         long seed;
+    
+        void calculateFPS (float start);
 };
 
 #endif /* Game_hpp */

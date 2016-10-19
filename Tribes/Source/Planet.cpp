@@ -3,7 +3,7 @@
  *  Tribes
  *
  *  Created by ryan needham on 06/09/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Planet.hpp"

@@ -8,16 +8,15 @@ out vec4 color;
 highp float rand (vec2 co);
 
 void main (void) {
-    float twinkle = rand(vec2(FRAG_position.y, FRAG_position.z));
+    float twinkle = rand(vec2(FRAG_position.z , FRAG_position.y));
     
     color = vec4(
         1.0f * twinkle,
         1.0f * twinkle,
         1.0f * twinkle,
         1.0f
-    ); // * cos(FRAG_position.x / FRAG_position.y);
+    );// * cos(FRAG_position.x / FRAG_position.y);
 }
-
 
 // CREDIT: http://byteblacksmith.com/improvements-to-the-canonical-one-liner-glsl-rand-for-opengl-es-2-0/
 highp float rand (vec2 co) {

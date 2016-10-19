@@ -2,7 +2,7 @@
 
 layout (location = 0) in vec3 position;
 
-out vec3 FRAG_position;
+out vec4 FRAG_position;
 
 uniform mat4  modelMat;
 uniform mat4  viewMat;
@@ -19,7 +19,12 @@ void main (void) {
         1.0f
     );
     
-    FRAG_position = position;
+    FRAG_position = projectionMat * viewMat * modelMat * vec4(
+        position.x,
+        position.y,
+        position.z,
+        1.0f
+    );
 }
 
 // CREDIT: http://byteblacksmith.com/improvements-to-the-canonical-one-liner-glsl-rand-for-opengl-es-2-0/

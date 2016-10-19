@@ -13,6 +13,9 @@
 #include <math.h>
 
 Shader::Shader(const std::string& name) {
+    // store title/path
+    title = name;
+
     // create shader program
     programID = glCreateProgram();
     

@@ -35,10 +35,10 @@ class GameObject {
     
         glm::mat4 position;
     
-        void rotateLeft  () { graphics->rotateLeft(); }
-        void rotateRight () { graphics->rotateRight(); }
-        void grow        () { graphics->grow(); }
-        void shrink      () { graphics->shrink(); }
+        void rotateLeft  ();
+        void rotateRight ();
+        void grow        ();
+        void shrink      ();
     
     protected:
     

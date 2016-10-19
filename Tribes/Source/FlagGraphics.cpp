@@ -3,10 +3,12 @@
  *  Tribes
  *
  *  Created by user on 15/10/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/FlagGraphics.hpp"
+#include "../Headers/Engine/TextureCache.hpp"
+#include "../Headers/Engine/ShaderCache.hpp"
 
 FlagGraphics::FlagGraphics  () {
     
@@ -44,8 +46,8 @@ FlagGraphics::FlagGraphics  () {
     /**
      *  Load an image shader, a random stencil and a mesh
      */
-    objectShaders.push_back(new Shader("Image"));
-    objectTexture.push_back(new Texture("flags/background_" + std::to_string((rand() % 13) + 1)));
+    objectShaders.push_back(ShaderCache::loadShader("Image"));
+    objectTexture.push_back(TextureCache::loadTexture("flags/background_" + std::to_string((rand() % 13) + 1)));
     objectMesh = new Mesh(&vertices, &indices);
     
     /**

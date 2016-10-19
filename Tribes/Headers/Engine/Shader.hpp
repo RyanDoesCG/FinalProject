@@ -24,6 +24,7 @@ class Shader {
         void bind();
     
         GLuint getProgramID () { return programID; }
+        std::string getProgramTitle () { return title; }
 
     private:
         std::string loadSource   (const std::string& path);
@@ -32,6 +33,8 @@ class Shader {
         GLuint programID;
         GLuint vertexShaderID;
         GLuint fragmentShaderID;
+    
+        std::string title;
 };
 
 #endif /* Shader_hpp */

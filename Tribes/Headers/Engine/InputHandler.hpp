@@ -31,6 +31,7 @@ class InputHandler {
     
         void populateInputArray();
         void processInputArray();
+
 };
 
 #endif /* InputHandler_h */

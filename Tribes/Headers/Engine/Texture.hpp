@@ -21,12 +21,15 @@ class Texture {
     
         void bind();
     
+        std::string getTextureTitle();
+    
     private:
         int width;
         int height;
         unsigned char* image;
     
         GLuint textureID;
+        std::string title;
     
 };
 

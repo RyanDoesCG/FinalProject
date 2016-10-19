@@ -8,6 +8,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/PlanetGraphics.hpp"
 #include "../Headers/Engine/MathsToolkit.hpp"
+#include "../Headers/Engine/ShaderCache.hpp"
 
 PlanetGraphics::PlanetGraphics  () {
 
@@ -21,11 +22,11 @@ PlanetGraphics::PlanetGraphics  () {
      */
     vertices = {
         -0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f, 0.0f,  0.0f,  0.5f, // TRIANGLE 1
-        -0.5,   0.0f,  0.0f, 0.0f,  0.0f,  0.5f, 0.0f, -0.5,   0.0f, // TRIANGLE 2
+        -0.5f,  0.0f,  0.0f, 0.0f,  0.0f,  0.5f, 0.0f, -0.5f,  0.0f, // TRIANGLE 2
          0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f, 0.0f,  0.0f,  0.5f, // TRIANGLE 3
-         0.0f, -0.5f,  0.0f, 0.0f,  0.0f,  0.5f, 0.5f,  0.00f, 0.0f, // TRIANGLE 4
+         0.0f, -0.5f,  0.0f, 0.0f,  0.0f,  0.5f, 0.5f,  0.0f,  0.0f, // TRIANGLE 4
         -0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f, 0.0f,  0.0f, -0.5f, // TRIANGLE 5
-        -0.5,   0.0f,  0.0f, 0.0f, -0.5,   0.0f, 0.0f,  0.0f, -0.5f, // TRIANGLE 6
+        -0.5f,  0.0f,  0.0f, 0.0f, -0.5f,  0.0f, 0.0f,  0.0f, -0.5f, // TRIANGLE 6
          0.0f,  0.5f,  0.0f, 0.0f,  0.0f, -0.5f, 0.5f,  0.0f,  0.0f, // TRIANGLE 7
          0.0f,  0.0f, -0.5f, 0.5f,  0.0f,  0.0f, 0.0f, -0.5f,  0.0f, // TRIANGLE 8
     };
@@ -34,7 +35,7 @@ PlanetGraphics::PlanetGraphics  () {
      *  Parse the octohedron into a pseudo-sphere
      *
      */
-    MathsToolkit::parseOctohedron     (&vertices, 5);
+    MathsToolkit::parseOctohedron     (&vertices, 6);
     MathsToolkit::normalizeOctohedron (&vertices, 1.2);
     
     /**
@@ -42,14 +43,14 @@ PlanetGraphics::PlanetGraphics  () {
      *  
      *  EXPAND ON THIS
      */
-    modelMatrix      = glm::rotate      (modelMatrix, (GLfloat)0.08, glm::vec3(1.0f, 0.0f, 0.0f));
+    modelMatrix      = glm::rotate      (modelMatrix, (GLfloat)0.00, glm::vec3(1.0f, 0.0f, 0.0f));
     viewMatrix       = glm::translate   (viewMatrix,  glm::vec3(0.0f, 0.0f, -3.0f));
     projectionMatrix = glm::perspective (45.0f,       (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);
     
     /** 
      *  build a shader and a mesh
      */
-    objectShaders.push_back(new Shader("Planet"));
+    objectShaders.push_back(ShaderCache::loadShader("Planet"));
     objectMesh = new Mesh(&vertices);
     
     /** 

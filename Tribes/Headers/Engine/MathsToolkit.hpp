@@ -131,38 +131,6 @@ static class MathsToolkit {
             }
         }
     
-        static void distortOctohedron (std::vector<GLfloat>* vertices) {
-            for (int i = 0; i < vertices->size(); i += 3) {
-                glm::vec3 a = glm::vec3(0.0, 0.0, 0.0); // center
-                glm::vec3 b = glm::vec3(vertices->at(i + 0), vertices->at(i + 1), vertices->at(i + 2));
-                float length = ((rand() % 1000) / 2000.0f);
-                
-                // get the distance between a and b along the x and y axes
-                GLfloat distX = b.x - a.x;
-                GLfloat distY = b.y - a.y;
-                GLfloat distZ = b.z - a.z;
-                
-                /**
-                 *  WEIRD SHAPE FIX
-                 *
-                 *      Previously the sqrt equation was the divisor in the below
-                 *      calculations, seen as it changed after every line it caused
-                 *      strange shapes to be rendered instead of the sphere
-                 */
-                GLfloat a_b = sqrt(distX * distX + distY * distY + distZ * distZ);
-                
-                // right now, sqrt(dx^2 + dy^2) = distance(a,b).
-                // we want to modify them so that sqrt(dx^2 + dy^2) = the given length.
-                distX = distX + length;
-                distY = distY + length;
-                distZ = distZ + length;
-                
-                vertices->at(i + 0) = (a.x + distX);
-                vertices->at(i + 1) = (a.y + distY);
-                vertices->at(i + 2) = (a.z + distZ);
-            }
-        }
-    
         static void distanceBetween () {
         
         }
