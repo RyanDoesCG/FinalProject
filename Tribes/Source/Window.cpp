@@ -50,12 +50,11 @@ int Window::initGLFW() {
 
 int Window::initGLEW() {
     // initialise GLEW
-    GLenum status = glewInit();
-    
-    if (status != GLEW_OK) return 1;
+    GLenum error = glewInit();
+    if (error) return 1;
 
     // viewport
-    glfwGetFramebufferSize(window, &width, &height);
+    glfwGetFramebufferSize (window, &width, &height);
     glViewport (0, 0, width, height);
  
     glEnable    (GL_DEPTH_TEST);    // Z BUFFERING

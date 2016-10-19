@@ -81,17 +81,9 @@ std::string Tribe::getName () {
     return "";
 }
 
-Ethos Tribe::getEthos () {
-    return ethos;
-}
-
-Flag* Tribe::getFlag () {
-    return &flag;
-}
-
-int Tribe::getPopulation () {
-    return population;
-}
+Ethos Tribe::getEthos      () { return ethos; }
+Flag* Tribe::getFlag       () { return &flag; }
+int   Tribe::getPopulation () { return population; }
 
 std::string Tribe::toString() {
     std::string output = "";

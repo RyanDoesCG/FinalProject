@@ -29,6 +29,7 @@ class HUD : public GameObject {
     public:
         HUD  (Game* g, int width, int height, float* d);
         HUD  (Game* g, int width, int height);
+        HUD  ();
         ~HUD ();
     
         virtual void update ();

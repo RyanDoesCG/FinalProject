@@ -23,12 +23,12 @@ Game::Game() {
     srand(seed);
     
     // put engine stuff together
-    window = new Window       (SCREEN_WIDTH, SCREEN_HEIGHT, "tribes");
-    planet = new Planet       (TOUGHER, seed);
-    hud    = new HUD          (this, SCREEN_WIDTH, SCREEN_HEIGHT, &delta);
-    input  = new InputHandler (this);
-    state  = RUNNING;
+    window   = new Window       (SCREEN_WIDTH, SCREEN_HEIGHT, "tribes");
+    planet   = new Planet       (TOUGHER, seed);
+    hud      = new HUD          (this, SCREEN_WIDTH, SCREEN_HEIGHT, &delta);
+    input    = new InputHandler (this);
     backdrop = new Backdrop(30000);
+    state    = RUNNING;
 }
 
 Game::~Game() {

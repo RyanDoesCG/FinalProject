@@ -23,6 +23,10 @@ HUD::HUD  (Game* g, int width, int height) : screenHeight(width), screenWidth(he
     game = g;
 }
 
+HUD::HUD () : screenWidth(0), screenHeight(0) {
+    
+}
+
 HUD::~HUD () {
 
 }

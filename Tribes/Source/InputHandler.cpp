@@ -11,11 +11,22 @@
 
 #include "../Headers/Engine/MathsToolkit.hpp"
 
+enum MouseEvent {
+    MOUSE_SCROLL_LEFT,
+    MOUSE_SCROLL_RIGHT,
+    MOUSE_SCROLL_UP,
+    MOUSE_SCROLL_DOWN,
+    EVENTCOUNT
+};
+
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos);
+void mouseActionCallback   (GLFWwindow* window, int button, int action, int mods);
+void mouseScrollCallback   (GLFWwindow* window, double xoffset, double yoffset);
 void keyCallback           (GLFWwindow* window, int key, int scancode, int action, int mods);
 
 // a C style solution for a C API
 bool  activeKeys[KEYCOUNT] = {};
+bool  mouseEvents[EVENTCOUNT] = {};
 float mouseX;
 float mouseY;
 
@@ -38,8 +49,10 @@ InputHandler::InputHandler(Game* g) {
     glfwSetCursor(gameWindow, glfwCreateCursor(&image, 0, 0));
     
     // Set Callbacks
-    glfwSetCursorPosCallback (gameWindow, mouseMovementCallback);
-    glfwSetKeyCallback       (gameWindow, keyCallback);
+    glfwSetCursorPosCallback   (gameWindow, mouseMovementCallback);
+    glfwSetMouseButtonCallback (gameWindow, mouseActionCallback);
+    glfwSetScrollCallback      (gameWindow, mouseScrollCallback);
+    glfwSetKeyCallback         (gameWindow, keyCallback);
 }
 
 InputHandler::~InputHandler () {
@@ -54,7 +67,37 @@ void InputHandler::update() {
 void InputHandler::populateInputArray() { glfwPollEvents(); }
 void InputHandler::processInputArray() {
     game->getHUD()->updateMousePosition(mouseX, mouseY);
+    
+    /** 
+     *  note: macOS flips scroll up and scroll down
+     *  with natural scrolling
+     */
+    
+    // MOUSE/TRACKPAD
+    for (int i = 0; i < EVENTCOUNT; i++) {
+        if (mouseEvents[i]) {
+            switch(i) {
+                case MOUSE_SCROLL_LEFT:
+                    game->planet->rotateRight();
+                    break;
+                case MOUSE_SCROLL_RIGHT:
+                    game->planet->rotateLeft();
+                    break;
+                case MOUSE_SCROLL_UP:
+                    game->planet->shrink();
+                    game->backdrop->shrink();
+                    break;
+                case MOUSE_SCROLL_DOWN:
+                    game->planet->grow();
+                    game->backdrop->grow();
+                    break;
+            }
+        }
+        
+        mouseEvents[i] = false;
+    }
 
+    // KEYBOARD
     for (int i = 0; i < KEYCOUNT; i++) {
         if (activeKeys[i]) {
             switch(i) {
@@ -74,10 +117,6 @@ void InputHandler::processInputArray() {
                     game->planet->rotateRight();
                     game->backdrop->rotateLeft();
                     break;
-                    
-                /** 
-                 *  the following keys are removed upon use
-                 */
                 case GLFW_KEY_R:
                     game->planet->randomise();
                     activeKeys[GLFW_KEY_R] = false;
@@ -92,14 +131,47 @@ void InputHandler::processInputArray() {
             }
         }
     }
+    
+    // JOYSTICK/GAMEPAD
 }
 
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+void keyCallback (GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (action == GLFW_PRESS) activeKeys[key] = true;
     else if (action == GLFW_RELEASE) activeKeys[key] = false;
 }
 
-void mouseMovementCallback(GLFWwindow* window, double xpos, double ypos) {
+void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos) {
     mouseX = xpos;
     mouseY = ypos;
+}
+
+void mouseActionCallback (GLFWwindow* window, int button, int action, int mods) {
+    if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+        std::cout << "Right mouse click" << std::endl;
+    }
+    
+    else if (button == GLFW_MOUSE_BUTTON_LEFT) {
+        std::cout << "Left mouse click" << std::endl;
+    }
+}
+
+void mouseScrollCallback (GLFWwindow* window, double xoffset, double yoffset) {
+    std::cout << "XSCROLL: " << xoffset << std::endl;
+    std::cout << "YSCROLL: " << yoffset << std::endl;
+    
+    if (xoffset > 0) {
+        mouseEvents[MOUSE_SCROLL_LEFT] = true;
+    }
+    
+    else if (xoffset < 0) {
+        mouseEvents[MOUSE_SCROLL_RIGHT] = true;
+    }
+    
+    if (yoffset > 0) {
+        mouseEvents[MOUSE_SCROLL_UP] = true;
+    }
+    
+    else if (yoffset < 0) {
+        mouseEvents[MOUSE_SCROLL_DOWN] = true;
+    }
 }
