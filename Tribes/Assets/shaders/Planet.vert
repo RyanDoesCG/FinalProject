@@ -3,6 +3,7 @@
 layout (location = 0) in vec3 position;
 
 out vec4 FRAG_position;
+out vec4 FRAG_color;
 
 uniform mat4  modelMat;
 uniform mat4  viewMat;
@@ -23,6 +24,13 @@ void main (void) {
         position.x,
         position.y,
         position.z,
+        1.0f
+    );
+    
+    FRAG_color = vec4 (
+        rand(vec2(time, position.x)),
+        rand(vec2(time, time)),
+        rand(vec2(time, position.y)),
         1.0f
     );
 }

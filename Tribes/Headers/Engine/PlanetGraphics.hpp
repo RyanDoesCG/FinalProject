@@ -22,7 +22,7 @@ class PlanetGraphics : public GraphicsComponent {
     
         virtual void draw();
     
-        void generateBiomes ();
+        void divideMesh (int biomeCount);
 
 };
 

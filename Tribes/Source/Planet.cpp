@@ -56,6 +56,7 @@ std::string Planet::toString() {
 }
 
 void Planet::randomise () {
+    free (galacticFlag);
     generateName();
     generateFlag();
 }
@@ -95,6 +96,9 @@ void Planet::generateName() {
 }
 
 void Planet::generateFlag() {
-    if (galacticFlag!=nullptr) { free(galacticFlag); }
     galacticFlag = new Flag();
+}
+
+void Planet::generateBiomes () {
+  //  graphics->divideMesh(biomeCount);
 }

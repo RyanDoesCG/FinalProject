@@ -26,7 +26,7 @@ BackdropGraphics::BackdropGraphics  (int quality) {
      *
      *  EXPAND ON THIS
      */
-    modelMatrix      = glm::scale       (modelMatrix, glm::vec3(40.0f, 20.0f, 10.0f));
+    modelMatrix      = glm::scale       (modelMatrix, glm::vec3(400.0f, 20.0f, 10.0f));
     viewMatrix       = glm::translate   (viewMatrix, glm::vec3(0.8f, 0.8f, -10.0f));
     projectionMatrix = glm::perspective (45.0f, (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);
     

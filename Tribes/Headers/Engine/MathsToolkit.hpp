@@ -26,7 +26,7 @@
 static class MathsToolkit {
     public:
         MathsToolkit  () {}
-        ~MathsToolkit ()  {}
+        ~MathsToolkit () {}
     
         /**
          *  Given two points, returns the 3D coordinate of the point
@@ -40,8 +40,12 @@ static class MathsToolkit {
             );
         }
     
+    
+        /** 
+         *  Bug in which triangles are passed to the parseTriangle method?
+         */
         static void parseOctohedron (std::vector<GLfloat>* oldVertices, int lod) {
-            std::vector<GLfloat> newVertices = std::vector<GLfloat>();
+            std::vector<GLfloat> newVertices = {};
             
             for (int i = 0; i < oldVertices->size(); i += 9) {
                 parseTriangle (
@@ -53,16 +57,21 @@ static class MathsToolkit {
                     lod
                 );
             }
+            
+            std::cout << std::endl << "NEW SIZE: " << newVertices.size() << std::endl;
+            std::cout << "OLD SIZE: " << oldVertices->size() << std::endl << std::endl;
+
             oldVertices->clear();
             oldVertices->insert(oldVertices->begin(), newVertices.begin(), newVertices.end());
-            
         }
     
         /** 
          *  Pushed new coordinates onto the end of the vert structur.
          *  Needs to insert them AFTER their parent and BEFORE the parents successor
          *
-         *  STILL A BIT BROKEN
+         *  Breaks a single triangle into 4 and recursively breaks those triangles down. (find another way?)
+         *
+         *  STILL A BIT BROKEN (parse triangle issue? this seems solid.)
          */
         static void parseTriangle (glm::vec3 a, glm::vec3 b, glm::vec3 c, std::vector<GLfloat>* oldVertices, std::vector<GLfloat>* newVertices, int lod) {
         
@@ -100,7 +109,7 @@ static class MathsToolkit {
             }
         }
     
-        static void normalizeOctohedron (std::vector<GLfloat>* vertices, int length) {
+        static void normalizeOctohedron (std::vector<GLfloat>* vertices, float length) {
             for (int i = 0; i < vertices->size(); i += 3) {
                 glm::vec3 a = glm::vec3(0.0, 0.0, 0.0); // center
                 glm::vec3 b = glm::vec3(vertices->at(i + 0), vertices->at(i + 1), vertices->at(i + 2));
@@ -131,8 +140,16 @@ static class MathsToolkit {
             }
         }
     
-        static void distanceBetween () {
-        
+        static void flushVertices (std::vector<GLfloat>* vertices) {
+            std::cout << "Vertex Collection: " << std::endl;
+            
+            for (int i = 1; i < vertices->size(); i++) {
+                std::cout << vertices->at(i) << ", ";
+                
+                if (i % 3 == 0) {
+                    std::cout << std::endl;
+                }
+            }
         }
 };
 

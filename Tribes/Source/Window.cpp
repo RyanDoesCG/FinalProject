@@ -35,8 +35,8 @@ int Window::initGLFW() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // OpenGL Profile
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);                        // Resizable Window
     glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);                     // Double Buffering
-   // glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
-    glfwWindowHint(GLFW_SAMPLES, 4);                                // Multisampling
+    //glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
+    //glfwWindowHint(GLFW_SAMPLES, 4);                                // Multisampling
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // macOS requires this
     glfwSwapInterval(1);                                            // enable VSYNC
 
@@ -58,7 +58,7 @@ int Window::initGLEW() {
     glViewport (0, 0, width, height);
  
     glEnable    (GL_DEPTH_TEST);    // Z BUFFERING
-    glEnable    (GL_MULTISAMPLE);   // MULTISAMPLING
+   // glEnable    (GL_MULTISAMPLE);   // MULTISAMPLING
     glEnable    (GL_BLEND);         // TEXT BLENDING
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 

@@ -53,8 +53,9 @@ class Planet : public GameObject {
     
         void randomise ();
     
-        void generateName ();
-        void generateFlag ();
+        void generateName   ();
+        void generateFlag   ();
+        void generateBiomes ();
 
     private:
         Difficulty difficulty;

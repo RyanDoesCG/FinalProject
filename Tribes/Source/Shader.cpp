@@ -96,14 +96,17 @@ GLuint Shader::createShader (const std::string& source, GLenum type) {
     // ERROR CHECKING
     GLint  success;
     GLchar info[512];
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
     
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(shader, 512, NULL, info);
         std::cout << "Shader Compilation Error: " << info << std::endl;
     }
     
     else {
+        std::cout << title << " ";
+        if      (type == GL_VERTEX_SHADER) std::cout << "Vertex";
+        else if (type == GL_FRAGMENT_SHADER) std::cout << "Fragment";
         std::cout << " Shader Compilation Success" << std::endl;
     }
     

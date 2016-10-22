@@ -40,3 +40,29 @@ voidstar
 
 // Sphere/Planet: http://stackoverflow.com/questions/7687148/drawing-sphere-in-opengl-without-using-glusphere
 // Sky/Terrain:   http://vterrain.org/Atmosphere/
+
+
+//    if      (action == GLFW_PRESS)   activeKeys[key] = true;
+//    else if (action == GLFW_RELEASE) activeKeys[key] = false;
+
+/*
+if (action == GLFW_PRESS) {
+if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+mouseEvents[MOUSE_RIGHT_CLICK] = true;
+}
+
+else if (button == GLFW_MOUSE_BUTTON_LEFT) {
+mouseEvents[MOUSE_LEFT_CLICK] = true;
+}
+}
+
+else if (action == GLFW_RELEASE) {
+if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+mouseEvents[MOUSE_RIGHT_CLICK] = false;
+}
+
+else if (button == GLFW_MOUSE_BUTTON_LEFT) {
+mouseEvents[MOUSE_LEFT_CLICK] = false;
+}
+}
+*/

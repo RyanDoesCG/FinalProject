@@ -10,22 +10,19 @@
 #define Game_hpp
 
 #include "InputHandler.hpp"
-#include "TextRenderer.hpp"
 #include "Backdrop.hpp"
 #include "Window.hpp"
 #include "Planet.hpp"
 #include "HUD.hpp"
 #include <iostream>
 
-#define SCREEN_WIDTH  1024
-#define SCREEN_HEIGHT 576
-
 class HUD;
-enum  State {
-    RUNNING,
-    PAUSED,
-    ENDED
-};
+
+enum State { RUNNING, PAUSED, ENDED };
+enum Build { CINEMATIC_MODE,  DEBUG_MODE };
+
+// Deterines window size/debug hud
+#define BUILD_MODE CINEMATIC_MODE
 
 /**
  *  Game Class
@@ -52,7 +49,6 @@ class Game {
     private:
         // engine systems
         InputHandler* input;
-        TextRenderer* text;
         HUD*          hud;
         Window*       window;
         State         state;

@@ -17,6 +17,8 @@ Texture::Texture(std::string path) {
     image = SOIL_load_image (path.c_str(), &width, &height, 0, SOIL_LOAD_RGBA);
     if (!image) std::cout << "Image load failure (" << path << ")" << std::endl;
     
+    std::cout << path << " loaded successfully" << std::endl;
+    
     // Generate texture and bind as 2D
     glGenTextures (1, &textureID);
     glBindTexture (GL_TEXTURE_2D, textureID);

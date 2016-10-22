@@ -35,8 +35,9 @@ PlanetGraphics::PlanetGraphics  () {
      *  Parse the octohedron into a pseudo-sphere
      *
      */
-    MathsToolkit::parseOctohedron     (&vertices, 6);
-    MathsToolkit::normalizeOctohedron (&vertices, 1.2);
+    MathsToolkit::parseOctohedron     (&vertices, 6); // 6 is the limit. make this not so.
+    MathsToolkit::normalizeOctohedron (&vertices, 1.05);
+//  MathsToolkit::flushVertices       (&vertices);
     
     /**
      *  calculate transformation matrices
@@ -44,6 +45,7 @@ PlanetGraphics::PlanetGraphics  () {
      *  EXPAND ON THIS
      */
     modelMatrix      = glm::rotate      (modelMatrix, (GLfloat)0.00, glm::vec3(1.0f, 0.0f, 0.0f));
+    modelMatrix      - glm::scale       (modelMatrix, glm::vec3(0.1, 0.1, 0.1));
     viewMatrix       = glm::translate   (viewMatrix,  glm::vec3(0.0f, 0.0f, -3.0f));
     projectionMatrix = glm::perspective (45.0f,       (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);
     
@@ -59,13 +61,14 @@ PlanetGraphics::PlanetGraphics  () {
     glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "modelMat"),      1, GL_FALSE, glm::value_ptr(modelMatrix));
     glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "viewMat"),       1, GL_FALSE, glm::value_ptr(viewMatrix));
     glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "projectionMat"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));
+
 }
 
 PlanetGraphics::~PlanetGraphics () {
 
 }
 
-void generateBiomes () {
+void PlanetGraphics::divideMesh (int biomeCount) {
     
 }
 

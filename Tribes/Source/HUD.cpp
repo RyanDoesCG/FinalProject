@@ -31,13 +31,13 @@ HUD::~HUD () {
 }
 
 void HUD::update() {
-    textPipeline.renderText("xpos: " + std::to_string((int)mouseX),        5, screenHeight / 1.8, 1);
-    textPipeline.renderText("ypos: " + std::to_string((int)mouseY),        5, screenHeight / 1.9, 1);
-    textPipeline.renderText(std::to_string((int)*delta) + " fps",          5, screenHeight / 2.02, 1);
+    textPipeline.renderText("xpos: " + std::to_string((int)mouseX),        5, screenHeight * 0.675, 1);
+    textPipeline.renderText("ypos: " + std::to_string((int)mouseY),        5, screenHeight * 0.646, 1);
+    textPipeline.renderText(std::to_string((int)*delta) + " fps",          5, screenHeight * 0.610, 1);
     textPipeline.renderText("pre-alpha", 5, 9, 1);
     
     game->planet->getFlag()->update();
-    textPipeline.renderText(game->planet->getName(), screenWidth / 0.88, screenHeight / 2.2, 1);
+    textPipeline.renderText(game->planet->getName(), screenWidth * 1.37, screenHeight * 0.55, 1);
 
 }
 

@@ -13,15 +13,24 @@
 
 Game::Game() {
     seed = generateSeed();
-    std::cout << seed << std::endl;
+    std::cout << "World Seed: " << seed << std::endl << std::endl;
     srand(seed);
     
     // put engine stuff together
-    window   = new Window       (SCREEN_WIDTH, SCREEN_HEIGHT, "tribes");
-    planet   = new Planet       (TOUGHER, seed);
-    hud      = new HUD          (this, SCREEN_WIDTH, SCREEN_HEIGHT, &delta);
+    if (BUILD_MODE == CINEMATIC_MODE) {
+        window   = new Window   (1920, 1080, "tribes - cinematic");
+        backdrop = new Backdrop (40000);
+        hud      = new HUD      (this, 1920, 1080, &delta);
+    }
+    
+    else if (BUILD_MODE == DEBUG_MODE) {
+        window   = new Window   (848, 480, "tribes - debug");
+        backdrop = new Backdrop (20000);
+        hud      = new HUD      (this, 848, 480, &delta);
+    }
+    
+    planet   = new Planet (TOUGHER, seed);
     input    = new InputHandler (this);
-    backdrop = new Backdrop(20000);
     state    = RUNNING;
 }
 
@@ -32,6 +41,8 @@ Game::~Game() {
 }
 
 void Game::begin() {
+
+    // fucks up on vsync and just spins mad CPU - FIX THIS
     while (!window->finished()) {
         float start = glfwGetTime();
         input->update();
@@ -44,6 +55,7 @@ void Game::begin() {
             hud->update();      // draw hud
             
             window->update();
+            
             calculateFPS(start);
         }
         
@@ -63,8 +75,11 @@ void Game::pause() {
 }
 
 void Game::calculateFPS (float start) {
-    float smoothing = 0.9;
-    delta = (delta * smoothing) + ((glfwGetTime() - start) * 1000 * (1.0-smoothing));
+  //  BROKEN
+  //  float smoothing = 0.9;
+  //  delta = (delta * smoothing) + ((glfwGetTime() - start) * 1000 * (1.0-smoothing));
+
+    delta = glfwGetTime() - start;
 }
 
 long Game::generateSeed() {
