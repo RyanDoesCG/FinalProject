@@ -14,9 +14,9 @@ highp float rand(vec2 co);
 
 void main (void) {
     gl_Position = projectionMat * viewMat * modelMat * vec4(
-        position.x + (rand(vec2(position.y, time)) / 10),
-        position.y + (rand(vec2(time, position.z)) / 10),
-        position.z + (rand(vec2(position.x, time)) / 10),
+        position.x + (rand(vec2(position.y, time)) / 20),
+        position.y + (rand(vec2(time, position.z)) / 20),
+        position.z + (rand(vec2(position.x, time)) / 20),
         1.0f
     );
     
@@ -35,7 +35,10 @@ void main (void) {
     );
 }
 
-// CREDIT: http://byteblacksmith.com/improvements-to-the-canonical-one-liner-glsl-rand-for-opengl-es-2-0/
+/**
+ * CREDIT: 
+ *  http://byteblacksmith.com/improvements-to-the-canonical-one-liner-glsl-rand-for-opengl-es-2-0/
+ */
 highp float rand(vec2 co) {
     highp float a = 12.9898;
     highp float b = 78.233;

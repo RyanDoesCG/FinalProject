@@ -18,11 +18,11 @@
 
 class HUD;
 
-enum State { RUNNING, PAUSED, ENDED };
-enum Build { CINEMATIC_MODE,  DEBUG_MODE };
+enum State { MENU, RUNNING, PAUSED, ENDED };
+enum Build { CINEMATIC, DEVELOPMENT };
 
 // Deterines window size/debug hud
-#define BUILD_MODE CINEMATIC_MODE
+#define BUILD_MODE DEVELOPMENT
 
 /**
  *  Game Class
@@ -32,14 +32,15 @@ class Game {
     public:
         Game  ();
         ~Game ();
-    
+
         void begin ();
         void pause ();
         void end   ();
     
-        inline Window* getWindowObject () {return window;}
-        inline HUD*    getHUD          () {return hud;}
-        inline State   getState        () {return state;}
+        inline Window* getWindowObject () { return window; }
+        inline HUD*    getHUD          () { return hud; }
+        inline State   getState        () { return state; }
+        inline long    getSeed         () { return seed; }
     
         // REPLACE/RETHINK
         Planet*       planet;
@@ -55,6 +56,7 @@ class Game {
     
         // for frame timing
         float delta;
+        
         // world seed
         long generateSeed();
         long seed;

@@ -12,14 +12,6 @@
 
 class TextureCache {
 public:
-    TextureCache ()  {
-        
-    }
-    
-    ~TextureCache () {
-        
-    }
-    
     static Texture* loadTexture (std::string path) {
         static std::vector<Texture*> cache = std::vector<Texture*>();
         
@@ -33,5 +25,4 @@ public:
         cache.push_back(new Texture(path));
         return cache.back();
     }
-    
 };

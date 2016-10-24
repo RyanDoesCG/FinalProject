@@ -13,7 +13,7 @@
  *  Make this a game object?
  */
 TextRenderer::TextRenderer  () {
-    if (FT_Init_FreeType(&ft))                               std::cout << "ERROR: Could not init FreeType Library" << std::endl;
+    if (FT_Init_FreeType(&ft))                                std::cout << "ERROR: Could not init FreeType Library" << std::endl;
     if (FT_New_Face(ft, "Assets/fonts/Tahoma.ttf", 0, &face)) std::cout << "ERROR: Failed to load font" << std::endl;
     
     FT_Set_Pixel_Sizes(face, 0, 24);
@@ -101,10 +101,10 @@ void TextRenderer::renderText(std::string text, int x, int y, int scale) {
     for (c = text.begin(); c != text.end(); c++) {
         Character ch = charmap[*c];
         
-        GLfloat xpos = x + ch.Bearing.x * (scale - 0.25);
+        GLfloat xpos = x + ch.Bearing.x * (scale);
         GLfloat ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
         
-        GLfloat w = ch.Size.x * (scale - 0.25);
+        GLfloat w = ch.Size.x * (scale);
         GLfloat h = ch.Size.y * scale;
         
         // Update VBO for each character

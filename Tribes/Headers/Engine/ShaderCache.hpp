@@ -11,27 +11,18 @@
 #include <vector>
 
 class ShaderCache {
-    public:
-        ShaderCache ()  {
+public:
+    static Shader* loadShader (std::string path) {
+        static std::vector<Shader*> cache = std::vector<Shader*>();
         
-        }
-    
-        ~ShaderCache () {
-        
-        }
-    
-        static Shader* loadShader (std::string path) {
-            static std::vector<Shader*> cache = std::vector<Shader*>();
-        
-            for (int i = 0; i < cache.size(); i++) {
-                if (cache.at(i)->getProgramTitle() == path) {
-                    return cache.at(i);
-                }
+        for (int i = 0; i < cache.size(); i++) {
+            if (cache.at(i)->getProgramTitle() == path) {
+                return cache.at(i);
             }
-        
-            // shader not already in memory
-            cache.push_back(new Shader(path));
-            return cache.back();
         }
-
+        
+        // shader not already in memory
+        cache.push_back(new Shader(path));
+        return cache.back();
+        }
 };

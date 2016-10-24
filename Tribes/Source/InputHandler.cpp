@@ -105,6 +105,7 @@ void InputHandler::processInputArray() {
     for (int i = 0; i < MOUSE_MAX; i++) {
         if (mouseEvents[i]) {
             switch(i) {
+                // continuous
                 case MOUSE_CLICK_LEFT:
                     std::cout << "LEFT CLICK" << std::endl;
                     break;
@@ -139,6 +140,8 @@ void InputHandler::processInputArray() {
     for (int i = 0; i < KEYCOUNT; i++) {
         if (activeKeys[i]) {
             switch(i) {
+                    
+                // continuous
                 case GLFW_KEY_W:
                     game->planet->grow();
                     game->backdrop->grow();
@@ -175,12 +178,12 @@ void InputHandler::processInputArray() {
         }
     }
     
-    // JOYSTICK/GAMEPAD
-    // NEEDS TESTING
+    // GAMEPAD AXES
     for (int i = 0; i < axisCount; i++) {
         std::cout << gamepadAxis[i] << std::endl;
     }
     
+    // GAMEPAD BUTTONS
     for (int i = 0; i < buttonCount; i++) {
         if (gamepadButtons[i]) {
             switch (i) {

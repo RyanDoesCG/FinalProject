@@ -22,22 +22,19 @@ HUD::HUD (Game* g, int width, int height) : screenHeight(width), screenWidth(hei
     game = g;
 }
 
-HUD::HUD () : screenWidth(0), screenHeight(0) {
-    
-}
+HUD::HUD () : screenWidth(0), screenHeight(0) {}
 
-HUD::~HUD () {
-
-}
+HUD::~HUD () {}
 
 void HUD::update() {
-    textPipeline.renderText("xpos: " + std::to_string((int)mouseX),        5, screenHeight * 0.675, 1);
-    textPipeline.renderText("ypos: " + std::to_string((int)mouseY),        5, screenHeight * 0.646, 1);
-    textPipeline.renderText(std::to_string((int)*delta) + " fps",          5, screenHeight * 0.610, 1);
+    textPipeline.renderText("World Seed: " + std::to_string(game->getSeed()), 5, screenHeight * 0.675, 1);
+    textPipeline.renderText("xpos: "       + std::to_string((int)mouseX),     5, screenHeight * 0.646, 1);
+    textPipeline.renderText("ypos: "       + std::to_string((int)mouseY),     5, screenHeight * 0.614, 1);
+    textPipeline.renderText(std::to_string((int)*delta) + " mspf",            5, screenHeight * 0.580, 1);
     textPipeline.renderText("pre-alpha", 5, 9, 1);
     
     game->planet->getFlag()->update();
-    textPipeline.renderText(game->planet->getName(), screenWidth * 1.37, screenHeight * 0.55, 1);
+    textPipeline.renderText(game->planet->getName(), screenWidth * 1.365, screenHeight * 0.55, 1);
 
 }
 

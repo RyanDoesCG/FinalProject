@@ -8,8 +8,6 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Game.hpp"
 #include "../Headers/GLFW/glfw3.h"
-#include <chrono>
-#include <thread>
 
 Game::Game() {
     seed = generateSeed();
@@ -17,13 +15,13 @@ Game::Game() {
     srand(seed);
     
     // put engine stuff together
-    if (BUILD_MODE == CINEMATIC_MODE) {
-        window   = new Window   (1920, 1080, "tribes - cinematic");
+    if (BUILD_MODE == CINEMATIC) {
+        window   = new Window   (1920, 1400, "tribes - cinematic");
         backdrop = new Backdrop (40000);
         hud      = new HUD      (this, 1920, 1080, &delta);
     }
     
-    else if (BUILD_MODE == DEBUG_MODE) {
+    else if (BUILD_MODE == DEVELOPMENT) {
         window   = new Window   (848, 480, "tribes - debug");
         backdrop = new Backdrop (20000);
         hud      = new HUD      (this, 848, 480, &delta);
@@ -55,13 +53,13 @@ void Game::begin() {
             hud->update();      // draw hud
             
             window->update();
-            
-            calculateFPS(start);
         }
         
         else {
             glfwWaitEvents();
         }
+
+        calculateFPS(start);
     }
 }
 
@@ -71,15 +69,18 @@ void Game::end() {
 
 // toggle pause on and off
 void Game::pause() {
-    state == RUNNING ? state = PAUSED : state = RUNNING;
+    (state == RUNNING) ?
+        state = PAUSED
+    :
+        state = RUNNING;
 }
 
 void Game::calculateFPS (float start) {
   //  BROKEN
-  //  float smoothing = 0.9;
-  //  delta = (delta * smoothing) + ((glfwGetTime() - start) * 1000 * (1.0-smoothing));
+   //float smoothing = 0.7;
+   //delta = (delta * smoothing) + ((glfwGetTime() - start) * 1000 * (1.0-smoothing));
 
-    delta = glfwGetTime() - start;
+   delta = (glfwGetTime() - start) * 1000;
 }
 
 long Game::generateSeed() {
