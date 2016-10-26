@@ -11,7 +11,6 @@
 
 #include "InputHandler.hpp"
 #include "Backdrop.hpp"
-#include "Window.hpp"
 #include "Planet.hpp"
 #include "HUD.hpp"
 #include <iostream>
@@ -37,7 +36,7 @@ class Game {
         void pause ();
         void end   ();
     
-        inline Window* getWindowObject () { return window; }
+        inline GLFWwindow* getWindow   () { return window; }
         inline HUD*    getHUD          () { return hud; }
         inline State   getState        () { return state; }
         inline long    getSeed         () { return seed; }
@@ -48,10 +47,15 @@ class Game {
         // REPLACE/RETHINK
     
     private:
-        // engine systems
+        int initGLFW ();
+        int initGLEW ();
+    
+        int windowWidth;
+        int windowHeight;
+    
         InputHandler* input;
         HUD*          hud;
-        Window*       window;
+        GLFWwindow*   window;
         State         state;
     
         // for frame timing

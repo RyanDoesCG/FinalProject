@@ -60,7 +60,7 @@ void gamepadCallback       (int gamepadID,      int    event); // NEEDS TESTING
 InputHandler::InputHandler(Game* g) {
     game = g;
     
-    GLFWwindow* gameWindow = game->getWindowObject()->getWindow();
+    GLFWwindow* gameWindow = game->getWindow();
     
     // Capture and Hide Mouse
 //  glfwSetInputMode         (gameWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);

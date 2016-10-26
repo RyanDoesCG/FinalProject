@@ -66,3 +66,15 @@ mouseEvents[MOUSE_LEFT_CLICK] = false;
 }
 }
 */
+
+
+
+
+
+
+clearColour = glm::vec4(
+0.45, //(rand() % 100) / 100.0f,
+0.45, //(rand() % 100) / 100.0f,
+0.45, //(rand() % 100) / 100.0f,
+0
+);

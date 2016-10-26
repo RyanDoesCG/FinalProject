@@ -26,7 +26,6 @@
 		CE26973C1DAEADE600F9833E /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972F1DAEADE600F9833E /* Shader.cpp */; };
 		CE26973D1DAEADE600F9833E /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697301DAEADE600F9833E /* Texture.cpp */; };
 		CE26973E1DAEADE600F9833E /* Tribe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697311DAEADE600F9833E /* Tribe.cpp */; };
-		CE26973F1DAEADE600F9833E /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697321DAEADE600F9833E /* Window.cpp */; };
 		CE3852881D8C3DC5006A104C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
 		CE6DE44F1DB1870B00B5A1AD /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */; };
 		CE71EFCB1D89AE4D00A638DD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */; };
@@ -71,7 +70,6 @@
 		CE26972F1DAEADE600F9833E /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = Source/Shader.cpp; sourceTree = "<group>"; };
 		CE2697301DAEADE600F9833E /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Texture.cpp; path = Source/Texture.cpp; sourceTree = "<group>"; };
 		CE2697311DAEADE600F9833E /* Tribe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tribe.cpp; path = Source/Tribe.cpp; sourceTree = "<group>"; };
-		CE2697321DAEADE600F9833E /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = Source/Window.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE3EBCC61DB5257900CABC71 /* shapes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shapes.txt; sourceTree = "<group>"; };
 		CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../../Library/Frameworks/libfreetype.dylib; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 				CE26972F1DAEADE600F9833E /* Shader.cpp */,
 				CE2697301DAEADE600F9833E /* Texture.cpp */,
 				CE2697311DAEADE600F9833E /* Tribe.cpp */,
-				CE2697321DAEADE600F9833E /* Window.cpp */,
 				CE3EBCC61DB5257900CABC71 /* shapes.txt */,
 				CE1570A21D8C1CA1005F6DB0 /* tasks.txt */,
 			);
@@ -227,7 +224,6 @@
 				CE2697351DAEADE600F9833E /* Game.cpp in Sources */,
 				CE2697381DAEADE600F9833E /* main.cpp in Sources */,
 				CE26973B1DAEADE600F9833E /* PlanetGraphics.cpp in Sources */,
-				CE26973F1DAEADE600F9833E /* Window.cpp in Sources */,
 				CE26973C1DAEADE600F9833E /* Shader.cpp in Sources */,
 				CE2697391DAEADE600F9833E /* Mesh.cpp in Sources */,
 				CE1A096D1DB26C5A0024AD91 /* Flag.cpp in Sources */,

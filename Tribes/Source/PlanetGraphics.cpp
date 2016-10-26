@@ -35,7 +35,7 @@ PlanetGraphics::PlanetGraphics  () {
      *  Parse the octohedron into a pseudo-sphere
      *
      */
-    MathsToolkit::parseOctohedron     (&vertices, 6); // 6 is the limit. make this not so.
+    MathsToolkit::parseOctohedron     (&vertices, 5); // 6 is the limit. make this not so.
     MathsToolkit::normalizeOctohedron (&vertices, 1.05);
 //  MathsToolkit::flushVertices       (&vertices);
     
@@ -44,7 +44,7 @@ PlanetGraphics::PlanetGraphics  () {
      *  
      *  EXPAND ON THIS
      */
-    modelMatrix      = glm::rotate      (modelMatrix, (GLfloat)0.00, glm::vec3(1.0f, 0.0f, 0.0f));
+    modelMatrix      = glm::rotate      (modelMatrix, (GLfloat)0.00, glm::vec3(0.0f, 1.0f, 0.0f)); // kick/tilt back
     modelMatrix      - glm::scale       (modelMatrix, glm::vec3(0.1, 0.1, 0.1));
     viewMatrix       = glm::translate   (viewMatrix,  glm::vec3(0.0f, 0.0f, -3.0f));
     projectionMatrix = glm::perspective (45.0f,       (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);

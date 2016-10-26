@@ -11,26 +11,29 @@
 /** 
  *  Make a Quad class?
  */
-HUD::HUD (Game* g, int width, int height, float* d) : screenHeight(width), screenWidth(height) {
+HUD::HUD (Game* g,float* d) {
     textPipeline = TextRenderer ();
     delta = d;
     game  = g;
+    
+    // get window size
+    glfwGetWindowSize(game->getWindow(), &screenWidth, &screenHeight);
 }
 
-HUD::HUD (Game* g, int width, int height) : screenHeight(width), screenWidth(height) {
+HUD::HUD (Game* g)  {
     textPipeline = TextRenderer ();
     game = g;
 }
 
-HUD::HUD () : screenWidth(0), screenHeight(0) {}
+HUD::HUD () {}
 
 HUD::~HUD () {}
 
 void HUD::update() {
-    textPipeline.renderText("World Seed: " + std::to_string(game->getSeed()), 5, screenHeight * 0.675, 1);
-    textPipeline.renderText("xpos: "       + std::to_string((int)mouseX),     5, screenHeight * 0.646, 1);
-    textPipeline.renderText("ypos: "       + std::to_string((int)mouseY),     5, screenHeight * 0.614, 1);
-    textPipeline.renderText(std::to_string((int)*delta) + " mspf",            5, screenHeight * 0.580, 1);
+    textPipeline.renderText("World Seed: " + std::to_string(game->getSeed()), 5, screenHeight, 1);
+    textPipeline.renderText("xpos: "       + std::to_string((int)mouseX),     5, screenHeight, 1);
+    textPipeline.renderText("ypos: "       + std::to_string((int)mouseY),     5, screenHeight, 1);
+    textPipeline.renderText(std::to_string((int)*delta) + " mspf",            5, screenHeight, 1);
     textPipeline.renderText("pre-alpha", 5, 9, 1);
     
     game->planet->getFlag()->update();

@@ -13,6 +13,8 @@
 #include "GameObject.hpp"
 #include "Game.hpp"
 
+#include "../GLFW/glfw3.h"
+
 /**
  *  Quad Class
  *
@@ -27,8 +29,8 @@ class Quad {
  */
 class HUD : public GameObject {
     public:
-        HUD  (Game* g, int width, int height, float* d);
-        HUD  (Game* g, int width, int height);
+        HUD  (Game* g, float* d);
+        HUD  (Game* g);
         HUD  ();
         ~HUD ();
     
@@ -39,8 +41,8 @@ class HUD : public GameObject {
     private:
         TextRenderer textPipeline;
 
-        const int screenWidth;
-        const int screenHeight;
+        int screenWidth;
+        int screenHeight;
     
         float mouseX;
         float mouseY;
