@@ -9,14 +9,12 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-#include "InputHandler.hpp"
-#include "Backdrop.hpp"
-#include "Planet.hpp"
-#include "HUD.hpp"
-#include <iostream>
-#include <vector>
+#include "../GLEW/glew.h"
+#include "../GLFW/glfw3.h"
 
-class HUD;
+#include "Actor.hpp"
+#include <iostream>
+#include <map>
 
 enum State { MENU, RUNNING, PAUSED, ENDED };
 enum Build { CINEMATIC, DEVELOPMENT };
@@ -30,42 +28,34 @@ class Game {
         Game  ();
         ~Game ();
 
-        void begin ();
-        void pause ();
-        void end   ();
+        void begin();
+        void pause();
+        void end();
     
-        inline GLFWwindow* getWindow   () { return window; }
-        inline HUD*    getHUD          () { return hud; }
-        inline State   getState        () { return state; }
-        inline long    getSeed         () { return seed; }
+        inline State getState ();
+        inline long  getSeed  ();
     
-        // REPLACE/RETHINK
-        Planet*       planet;
-        Backdrop*     backdrop;
-        // REPLACE/RETHINK
-    
-        std::vector<GameObject> objects;
+        bool windowAlive();
     
     private:
+    
+        typedef int actorID;
+    
         int initGLFW ();
         int initGLEW ();
     
         int windowWidth;
         int windowHeight;
+
+        GLFWwindow* window;
+        State state;
+
+        std::map<actorID, Actor*> worldActors;
     
-        InputHandler* input;
-        HUD*          hud;
-        GLFWwindow*   window;
-        State         state;
-    
-        // for frame timing
-        float delta;
-        
         // world seed
         long generateSeed();
         long seed;
-    
-        void calculateFPS (float start);
+
 };
 
 #endif /* Game_hpp */
