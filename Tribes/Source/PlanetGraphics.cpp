@@ -21,23 +21,23 @@ PlanetGraphics::PlanetGraphics  () {
      *      \/
      */
     vertices = {
-        -0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f, 0.0f,  0.0f,  0.5f, // TRIANGLE 1
-        -0.5f,  0.0f,  0.0f, 0.0f,  0.0f,  0.5f, 0.0f, -0.5f,  0.0f, // TRIANGLE 2
-         0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f, 0.0f,  0.0f,  0.5f, // TRIANGLE 3
-         0.0f, -0.5f,  0.0f, 0.0f,  0.0f,  0.5f, 0.5f,  0.0f,  0.0f, // TRIANGLE 4
-        -0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f, 0.0f,  0.0f, -0.5f, // TRIANGLE 5
-        -0.5f,  0.0f,  0.0f, 0.0f, -0.5f,  0.0f, 0.0f,  0.0f, -0.5f, // TRIANGLE 6
-         0.0f,  0.5f,  0.0f, 0.0f,  0.0f, -0.5f, 0.5f,  0.0f,  0.0f, // TRIANGLE 7
-         0.0f,  0.0f, -0.5f, 0.5f,  0.0f,  0.0f, 0.0f, -0.5f,  0.0f, // TRIANGLE 8
+    // x      y      z     biome x      y      z     biome x      y      z     biome
+      -0.5f,  0.0f,  0.0f, 1.0f, 0.0f,  0.5f,  0.0f, 1.0f, 0.0f,  0.0f,  0.5f, 1.0f, // TRIANGLE 1
+      -0.5f,  0.0f,  0.0f, 2.0f, 0.0f,  0.0f,  0.5f, 2.0f, 0.0f, -0.5f,  0.0f, 2.0f, // TRIANGLE 2
+       0.5f,  0.0f,  0.0f, 3.0f, 0.0f,  0.5f,  0.0f, 3.0f, 0.0f,  0.0f,  0.5f, 3.0f, // TRIANGLE 3
+       0.0f, -0.5f,  0.0f, 4.0f, 0.0f,  0.0f,  0.5f, 4.0f, 0.5f,  0.0f,  0.0f, 4.0f, // TRIANGLE 4
+      -0.5f,  0.0f,  0.0f, 1.0f, 0.0f,  0.5f,  0.0f, 1.0f, 0.0f,  0.0f, -0.5f, 1.0f, // TRIANGLE 5
+      -0.5f,  0.0f,  0.0f, 2.0f, 0.0f, -0.5f,  0.0f, 2.0f, 0.0f,  0.0f, -0.5f, 2.0f, // TRIANGLE 6
+       0.0f,  0.5f,  0.0f, 3.0f, 0.0f,  0.0f, -0.5f, 3.0f, 0.5f,  0.0f,  0.0f, 3.0f, // TRIANGLE 7
+       0.0f,  0.0f, -0.5f, 4.0f, 0.5f,  0.0f,  0.0f, 4.0f, 0.0f, -0.5f,  0.0f, 4.0f, // TRIANGLE 8
     };
     
     /** 
      *  Parse the octohedron into a pseudo-sphere
      *
      */
-    MathsToolkit::parseOctohedron     (&vertices, 5); // 6 is the limit. make this not so.
-    MathsToolkit::normalizeOctohedron (&vertices, 1.05);
-//  MathsToolkit::flushVertices       (&vertices);
+    MathsToolkit::parseOctohedron     (&vertices, 3); // REWRITE
+    MathsToolkit::normalizeOctohedron (&vertices, 1.02);
     
     /**
      *  calculate transformation matrices
@@ -45,14 +45,14 @@ PlanetGraphics::PlanetGraphics  () {
      *  EXPAND ON THIS
      */
     modelMatrix      = glm::rotate      (modelMatrix, (GLfloat)0.00, glm::vec3(0.0f, 1.0f, 0.0f)); // kick/tilt back
-    modelMatrix      - glm::scale       (modelMatrix, glm::vec3(0.1, 0.1, 0.1));
+    modelMatrix      = glm::scale       (modelMatrix, glm::vec3(0.5, 0.5, 0.1));
     viewMatrix       = glm::translate   (viewMatrix,  glm::vec3(0.0f, 0.0f, -3.0f));
     projectionMatrix = glm::perspective (45.0f,       (GLfloat)960 / (GLfloat)540, 0.1f, 100.0f);
     
     /** 
      *  build a shader and a mesh
      */
-    objectShaders.push_back(ShaderCache::loadShader("Planet"));
+    objectShaders.push_back(ShaderCache::loadShader("BasicBlack"));
     objectMesh = new Mesh(&vertices);
     
     /** 
@@ -66,10 +66,6 @@ PlanetGraphics::PlanetGraphics  () {
 
 PlanetGraphics::~PlanetGraphics () {
 
-}
-
-void PlanetGraphics::divideMesh (int biomeCount) {
-    
 }
 
 void PlanetGraphics::draw() {
@@ -87,11 +83,15 @@ void PlanetGraphics::draw() {
     modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.002, glm::vec3(0.0f, 1.0f, 0.0f));
     glUniformMatrix4fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
+    // Send mouse position to GPU
+    glUniform3fv(glGetUniformLocation(objectShaders.at(0)->getProgramID(), "mousePos"), 1, glm::value_ptr(mousePos));
+    
     /** 
      *  3. Set the polygon draw mode (GL_FILL for release,
      *     GL_LINE for debug, GL_POINT for art) and trigger
      *     the mesh to render.
      */
-    glPolygonMode    (GL_FRONT_AND_BACK, GL_FILL);
+    glPolygonMode    (GL_FRONT_AND_BACK, GL_LINE);
     objectMesh->draw ();
+
 }

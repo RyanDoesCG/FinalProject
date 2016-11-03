@@ -9,6 +9,10 @@
 #include "../Headers/Engine/InputHandler.hpp"
 #include "../Headers/Engine/Game.hpp"
 
+/* 
+ - USE MAP FOR KEYS -> COMMANDS/ACTIONS
+*/
+
 #define MOUSE_CLICK_LEFT        0
 #define MOUSE_CLICK_RIGHT       1
 #define MOUSE_SCROLL_LEFT       2

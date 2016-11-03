@@ -1,36 +1,55 @@
 #version 330 core
 
-layout (location = 0) in vec3 position;
+layout (location = 0) in vec4 position;
 
-out vec4 FRAG_position;
-out vec4 FRAG_color;
-
+// Transformation Matrices
 uniform mat4  modelMat;
 uniform mat4  viewMat;
 uniform mat4  projectionMat;
-uniform float time;
 
+// User Interaction
+uniform vec3 mousePos;
+
+// RNG
+uniform float time;
 highp float rand(vec2 co);
 
+// PASS THROUGH
+out vec4  FRAG_position;
+out float FRAG_colorID;
+out float FRAG_mouseX;
+out float FRAG_mouseY;
+
 void main (void) {
-    gl_Position = projectionMat * viewMat * modelMat * vec4(
+    // PASS THROUGH
+    FRAG_position = projectionMat * viewMat * modelMat * vec4(
         position.x + (rand(vec2(position.y, time)) / 20),
         position.y + (rand(vec2(time, position.z)) / 20),
         position.z + (rand(vec2(position.x, time)) / 20),
         1.0f
     );
     
-    FRAG_position = projectionMat * viewMat * modelMat * vec4(
-        position.x,
-        position.y,
-        position.z,
-        1.0f
-    );
+    FRAG_colorID = position.w;
     
-    FRAG_color = vec4 (
-        rand(vec2(time, position.x)),
-        rand(vec2(time, time)),
-        rand(vec2(time, position.y)),
+    FRAG_mouseX = (projectionMat * viewMat * modelMat * vec4(
+        mousePos.x,
+        mousePos.y,
+        mousePos.z,
+        1.0f
+    )).x;
+    
+    FRAG_mouseY = (projectionMat * viewMat * modelMat * vec4(
+        mousePos.x,
+        mousePos.y,
+        mousePos.z,
+        1.0f
+    )).y;
+    
+    // VERT CODE
+    gl_Position = projectionMat * viewMat * modelMat * vec4(
+        position.x + (rand(vec2(position.y, time)) / 20),
+        position.y + (rand(vec2(time, position.z)) / 20),
+        position.z + (rand(vec2(position.x, time)) / 20),
         1.0f
     );
 }

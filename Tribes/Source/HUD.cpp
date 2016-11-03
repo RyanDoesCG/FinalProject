@@ -30,10 +30,10 @@ HUD::HUD () {}
 HUD::~HUD () {}
 
 void HUD::update() {
-    textPipeline.renderText("World Seed: " + std::to_string(game->getSeed()), 5, screenHeight, 1);
-    textPipeline.renderText("xpos: "       + std::to_string((int)mouseX),     5, screenHeight, 1);
-    textPipeline.renderText("ypos: "       + std::to_string((int)mouseY),     5, screenHeight, 1);
-    textPipeline.renderText(std::to_string((int)*delta) + " mspf",            5, screenHeight, 1);
+    textPipeline.renderText("World Seed: " + std::to_string(game->getSeed()), 5, screenHeight - 77.5, 1);
+    textPipeline.renderText("xpos: "       + std::to_string((int)mouseX),     5, screenHeight - 105, 1);
+    textPipeline.renderText("ypos: "       + std::to_string((int)mouseY),     5, screenHeight - 130, 1);
+//  textPipeline.renderText(std::to_string((int)*delta) + " mspf",            5, screenHeight, 1);
     textPipeline.renderText("pre-alpha", 5, 9, 1);
     
     game->planet->getFlag()->update();

@@ -3,7 +3,7 @@
  *  Tribes
  *
  *  Created by user on 03/10/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef BiomeGraphics_hpp

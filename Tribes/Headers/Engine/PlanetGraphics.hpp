@@ -21,8 +21,6 @@ class PlanetGraphics : public GraphicsComponent {
         ~PlanetGraphics ();
     
         virtual void draw();
-    
-        void divideMesh (int biomeCount);
 
 };
 

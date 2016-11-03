@@ -3,7 +3,7 @@
  *  Tribes
  *
  *  Created by user on 16/10/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef BackdropGraphics_hpp

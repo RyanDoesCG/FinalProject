@@ -32,6 +32,10 @@ class GraphicsComponent {
         virtual void grow        () { modelMatrix = glm::scale  (modelMatrix, glm::vec3(1.01, 1.01, 1.01)); }
         virtual void shrink      () { modelMatrix = glm::scale  (modelMatrix, glm::vec3(0.99, 0.99, 0.99)); }
     
+        void updateMousePos(float x, float y) {
+            mousePos = glm::vec3(x, y, 0);
+        }
+    
     protected:
         // mesh
         std::vector<GLfloat> vertices;
@@ -47,6 +51,9 @@ class GraphicsComponent {
         glm::mat4 viewMatrix;
         glm::mat4 projectionMatrix;
     
+        // Mouse Interaction
+        glm::vec3 mousePos;
+
 };
 
 #endif /* GraphicsComponent_hpp */

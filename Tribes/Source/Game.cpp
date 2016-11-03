@@ -9,6 +9,9 @@
 #include "../Headers/Engine/Game.hpp"
 #include "../Headers/GLFW/glfw3.h"
 
+// Deterines window size/debug hud
+#define BUILD_MODE DEVELOPMENT
+
 Game::Game() {
     srand(generateSeed());
     
@@ -23,12 +26,12 @@ Game::Game() {
         windowHeight = 648;
     }
     
-    if (initGLFW()) {std::cout << "SDL initialisation failure. Exiting\n";  exit(1);}
+    if (initGLFW()) {std::cout << "GLFW initialisation failure. Exiting\n"; exit(1);}
     if (initGLEW()) {std::cout << "GLEW initialisation failure. Exiting\n"; exit(1);}
         
     backdrop = new Backdrop     (40000);
-    hud      = new HUD          (this,  &delta);
     planet   = new Planet       (TOUGHER, seed);
+    hud      = new HUD          (this,  &delta);
     input    = new InputHandler (this);
     state    = RUNNING;
 }
@@ -37,14 +40,20 @@ Game::~Game() {
 
 }
 
+/** 
+ *  NEEDS MULTIPLE INPUT UPDATE FUNCTIONS THAT TAKE INTO ACCOUNT GAME STATE.
+ *
+ *  This will be really necessary in menus etc.
+ */
 void Game::begin() {
-    glClearColor (0.1f, 0.1f, 0.1f, 0.0f);
-
+    glClearColor (0.075f, 0.075f, 0.075f, 0.0f);
+    
     while (!glfwWindowShouldClose(window)) {
+        input->update();
+        
         if (state == RUNNING) {
             glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             
-            input     ->update(); // poll input
             backdrop->update();   // draw stars
             planet->update();     // draw planet
             hud->update();        // draw hud
@@ -69,24 +78,24 @@ void Game::pause() {
 
 long Game::generateSeed() {
     srand(static_cast<unsigned int>(time(0)));
-    int s = rand();
-    std::cout << "World Seed: " << s << std::endl <<std::endl;
-    return s;
+    seed = rand();
+    std::cout << "World Seed: " << seed << std::endl <<std::endl;
+    return seed;
 }
 
 int Game::initGLFW () {
     // start glfw Subsystem
     if (glfwInit() == GLFW_FALSE) return 1;
     
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);                  // OpenGL Version
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);                  // OpenGL Version
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // OpenGL Profile
-    glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);                        // Resizable Window
-    glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);                     // Double Buffering
-//  glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
-//  glfwWindowHint(GLFW_SAMPLES, 4);                                // Multisampling
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // macOS requires this
-    glfwSwapInterval(1);                                            // enable VSYNC
+    glfwWindowHint   (GLFW_CONTEXT_VERSION_MAJOR, 3);                  // OpenGL Version
+    glfwWindowHint   (GLFW_CONTEXT_VERSION_MINOR, 2);                  // OpenGL Version
+    glfwWindowHint   (GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // OpenGL Profile
+    glfwWindowHint   (GLFW_RESIZABLE, GL_TRUE);                        // Resizable Window
+    glfwWindowHint   (GLFW_DOUBLEBUFFER, GL_TRUE);                     // Double Buffering
+//  glfwWindowHint   (GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
+//  glfwWindowHint   (GLFW_SAMPLES, 4);                                // Multisampling
+    glfwWindowHint   (GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // macOS requires this
+    glfwSwapInterval (1);                                              // enable VSYNC
     
     window = glfwCreateWindow(windowWidth, windowHeight, "Tribes - OpenGL", nullptr, nullptr);
     if (!window) return 1;

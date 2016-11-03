@@ -14,14 +14,12 @@
 #include "Planet.hpp"
 #include "HUD.hpp"
 #include <iostream>
+#include <vector>
 
 class HUD;
 
 enum State { MENU, RUNNING, PAUSED, ENDED };
 enum Build { CINEMATIC, DEVELOPMENT };
-
-// Deterines window size/debug hud
-#define BUILD_MODE DEVELOPMENT
 
 /**
  *  Game Class
@@ -45,6 +43,8 @@ class Game {
         Planet*       planet;
         Backdrop*     backdrop;
         // REPLACE/RETHINK
+    
+        std::vector<GameObject> objects;
     
     private:
         int initGLFW ();

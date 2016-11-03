@@ -38,11 +38,8 @@ class Planet : public GameObject {
         Planet  (Difficulty difficulty, long seed);
         ~Planet ();
     
-        inline Difficulty  getDifficulty () { return difficulty; }
-        inline int         getBiomeCount () { return biomeCount; }
-        inline int         getTribeCount () { return tribeCount; }
-        inline Flag*       getFlag       () { return galacticFlag;}
-        inline std::string getName       () { return name; }
+        inline Flag*       getFlag () { return galacticFlag;}
+        inline std::string getName () { return name; }
     
         std::string toString ();
     
@@ -52,22 +49,19 @@ class Planet : public GameObject {
         void shrink      () { graphics->shrink(); }
     
         void randomise ();
-    
+
+    private:
         void generateName   ();
         void generateFlag   ();
         void generateBiomes ();
-
-    private:
-        Difficulty difficulty;
-        int        biomeCount;
-        int        tribeCount;
     
-        Flag* galacticFlag = nullptr;
+        Difficulty  difficulty;
+        Flag*       galacticFlag;
+        std::string name;
     
         std::vector<Biome*> regions;
         std::vector<Tribe*> tribes;
     
-        std::string name;
 };
 
 #endif /* Planet_hpp */
