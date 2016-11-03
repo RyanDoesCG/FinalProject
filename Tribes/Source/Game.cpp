@@ -9,21 +9,24 @@
 #include "../Headers/Engine/Game.hpp"
 #include "../Headers/Engine/Player.hpp"
 
+#include "../Headers/Engine/KeyboardInputComponent.hpp"
+
 // Deterines window size/debug hud
-#define BUILD_MODE CINEMATIC
+#define BUILD_MODE DEVELOPMENT
 
 Game::Game() {
     srand(generateSeed());
     
     // decide what window to build
-    if (BUILD_MODE == CINEMATIC) {
-        windowWidth  = 1920;
-        windowHeight = 1080;
-    }
-    
-    else if (BUILD_MODE == DEVELOPMENT) {
-        windowWidth  = 1200;
-        windowHeight = 648;
+    switch (BUILD_MODE) {
+        case CINEMATIC:
+            windowWidth  = 840;
+            windowHeight = 648;
+            break;
+        case DEVELOPMENT:
+            windowWidth  = 840;
+            windowHeight = 648;
+            break;
     }
     
     // Initialise Subsystems
@@ -37,6 +40,8 @@ Game::Game() {
     
     // init them
     for (int i = 0; i < worldActors.size(); i++) worldActors.at(i)->init();
+    
+    worldActors.at(1)->addComponent(new KeyboardInputComponent(window, this));
 
 }
 

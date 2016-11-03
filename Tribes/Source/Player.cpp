@@ -19,8 +19,6 @@ Player::~Player () {
 
 void Player::init() {
     std::cout << "Player Online" << std::endl;
-    
-    addComponent(new MouseInputComponent());
 }
 
 void Player::update() {

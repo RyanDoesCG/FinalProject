@@ -10,14 +10,25 @@
 #define TextureComponent_hpp
 
 #include "ActorComponent.hpp"
+#include "../GLEW/glew.h"
+#include "../GLFW/glfw3.h"
+#include <iostream>
 
 class TextureComponent : public ActorComponent {
     public:
-         TextureComponent ();
+         TextureComponent (std::string path);
         ~TextureComponent ();
     
         virtual void init() override;
         virtual void update() override;
+    
+    private:
+        int width;
+        int height;
+        unsigned char* imageData;
+    
+        GLuint textureID;
+        std::string title;
 };
 
 #endif /* TextureComponent_hpp */

@@ -10,15 +10,20 @@
 #define KeyboardInputComponent_hpp
 
 #include "ActorComponent.hpp"
-#include "../GLFW/glfw3.h"
+#include "Game.hpp"
 
 class KeyboardInputComponent : public ActorComponent {
     public:
-         KeyboardInputComponent ();
+         KeyboardInputComponent (GLFWwindow* window, Game* game);
         ~KeyboardInputComponent ();
     
         virtual void init() override;
         virtual void update() override;
+    
+    private:
+        GLFWwindow* window;
+        Game* game;
+    
 };
 
 #endif /* KeyboardInputComponent_hpp */

@@ -10,14 +10,26 @@
 #define ShaderComponent_hpp
 
 #include "ActorComponent.hpp"
+#include "../GLEW/glew.h"
+#include <iostream>
 
 class ShaderComponent : public ActorComponent {
     public:
-         ShaderComponent ();
+         ShaderComponent (const std::string& name);
         ~ShaderComponent ();
     
         virtual void init() override;
         virtual void update() override;
+    
+    private:
+        GLuint programID;
+        GLuint vertexShaderID;
+        GLuint fragmentShaderID;
+    
+        std::string loadSource (const std::string& path);
+        GLuint createShader (const std::string& source, GLenum type);
+    
+        std::string title;
 };
 
 #endif /* ShaderComponent_hpp */

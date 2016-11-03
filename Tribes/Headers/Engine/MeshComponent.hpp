@@ -10,14 +10,37 @@
 #define MeshComponent_hpp
 
 #include "ActorComponent.hpp"
+#include "../GLM/glm.hpp"
+#include "../GLEW/GLEW.h"
+#include "../GLFW/glfw3.h"
+#include <vector>
 
 class MeshComponent : public ActorComponent {
     public:
-         MeshComponent ();
+         MeshComponent (std::vector<GLfloat>* v, std::vector<GLuint>* i);
+         MeshComponent (std::vector<GLfloat>* v);
         ~MeshComponent ();
     
         virtual void init() override;
         virtual void update() override;
+    
+    private:
+        std::vector<GLfloat>* vertices;
+        std::vector<GLuint>*  indices;
+    
+        GLuint VBO;
+        GLuint VAO;
+        GLuint EBO;
+    
+        enum MESH_TYPE {
+            RAW_VERTICES,
+            INDEXED
+        };
+    
+        MESH_TYPE type;
+    
+        int totalVertices;
+        int totalIndices;
 };
 
 #endif /* MeshComponent_hpp */
