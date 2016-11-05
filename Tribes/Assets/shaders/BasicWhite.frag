@@ -4,7 +4,7 @@ out vec4 color;
 
 // solid black
 void main (void) {
-    color = vec4(0.55, 0.55, 0.55, 1.0f);// * vec4(FRAG_position, 1.0f);
+    color = vec4(0.52, 0.64, 0.49, 1.0f);// * vec4(FRAG_position, 1.0f);
 }
 
 /**

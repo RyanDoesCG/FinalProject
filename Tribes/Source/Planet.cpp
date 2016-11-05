@@ -45,6 +45,7 @@ void Planet::init() {
     breakdownMesh();
     breakdownMesh();
     breakdownMesh();
+    breakdownMesh();
     normaliseMesh();
     
     addComponent(new ShaderComponent("BasicBlack"));
