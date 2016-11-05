@@ -21,7 +21,12 @@
 #include FT_FREETYPE_H
 
 #include <iostream>
+#include <queue>
 #include <map>
+
+//  ISSUE:
+//      Need to manage Draw Call memory
+//
 
 class TextRenderingComponent : public ActorComponent {
 public:
@@ -31,8 +36,8 @@ public:
     virtual void init() override;
     virtual void update() override;
     
-    void renderTextAs2D(std::string text, glm::vec2 position, int scale);
-    void renderTextAs3D(std::string text, glm::vec3 position, int scale);
+    void renderTextAs2D(std::string text, glm::vec2 position, float scale);
+//    void renderTextAs3D(std::string text, glm::vec3 position, int scale);
     
 private:
     struct Character {
@@ -41,6 +46,14 @@ private:
         glm::ivec2 Bearing;    // Offset from baseline to left/top of glyph
         GLuint     Advance;    // Offset to advance to next glyph
     };
+    
+    struct DrawCall {
+        std::string text;
+        glm::vec2 pos;
+        float scale;
+    };
+    
+    std::queue<DrawCall> drawQueue;
     
     ShaderComponent textShader;
     std::map<GLchar, Character> charmap;

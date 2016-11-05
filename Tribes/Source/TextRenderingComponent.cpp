@@ -88,59 +88,68 @@ void TextRenderingComponent::init () {
 }
 
 void TextRenderingComponent::update() {
-    textShader.update();
-    
-    renderTextAs2D("pre-alpha", glm::vec2(10, 10), 1);
-}
-
-void TextRenderingComponent::renderTextAs2D(std::string text, glm::vec2 position, int scale) {
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    
-    textShader.update();
-    
-    glUniform3f(glGetUniformLocation(textShader.getProgramID(), "textColor"), 0.6, 0.6, 0.6);
-    glActiveTexture(GL_TEXTURE0);
-    glBindVertexArray(VAO);
-    
-    // Iterate through all characters
-    std::string::const_iterator c;
-    
-    for (c = text.begin(); c != text.end(); c++) {
-        Character ch = charmap[*c];
+    while (!drawQueue.empty()) {
+        DrawCall current = drawQueue.front();
+        std::cout << "draw queue read" << std::endl;
         
-        GLfloat xpos = position.x + ch.Bearing.x * (scale);
-        GLfloat ypos = position.y - (ch.Size.y - ch.Bearing.y) * scale;
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        textShader.update();
         
-        GLfloat w = ch.Size.x * (scale);
-        GLfloat h = ch.Size.y * scale;
+        glUniform3f(glGetUniformLocation(textShader.getProgramID(), "textColor"), 0.6, 0.6, 0.6);
+        glActiveTexture(GL_TEXTURE0);
+        glBindVertexArray(VAO);
         
-        // Update VBO for each character
-        GLfloat vertices[6][4] = {
-            { xpos,     ypos + h,   0.0, 0.0 },
-            { xpos,     ypos,       0.0, 1.0 },
-            { xpos + w, ypos,       1.0, 1.0 },
+        // Iterate through all characters
+        std::string::const_iterator c;
+        
+        for (c = current.text.begin(); c != current.text.end(); c++) {
+            Character ch   = charmap[*c];
+            GLfloat   xpos = current.pos.x + ch.Bearing.x * (current.scale);
+            GLfloat   ypos = current.pos.y - (ch.Size.y - ch.Bearing.y) * current.scale;
+            GLfloat   w    = ch.Size.x * (current.scale);
+            GLfloat   h    = ch.Size.y * current.scale;
             
-            { xpos,     ypos + h,   0.0, 0.0 },
-            { xpos + w, ypos,       1.0, 1.0 },
-            { xpos + w, ypos + h,   1.0, 0.0 }
-        };
-        // Render glyph texture over quad
-        glBindTexture(GL_TEXTURE_2D, ch.textureID);
+            // Update VBO for each character
+            GLfloat vertices[6][4] = {
+                { xpos,     ypos + h,   0.0, 0.0 },
+                { xpos,     ypos,       0.0, 1.0 },
+                { xpos + w, ypos,       1.0, 1.0 },
+                
+                { xpos,     ypos + h,   0.0, 0.0 },
+                { xpos + w, ypos,       1.0, 1.0 },
+                { xpos + w, ypos + h,   1.0, 0.0 }
+            };
+            
+            // Render glyph texture over quad
+            glBindTexture(GL_TEXTURE_2D, ch.textureID);
+            
+            // Update content of VBO memory
+            glBindBuffer(GL_ARRAY_BUFFER, VBO);
+            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
+            
+            // Render quad
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+            // Now advance cursors for next glyph (note that advance is number of 1/64 pixels)
+            current.pos.x += (ch.Advance >> 6) * current.scale; // Bitshift by 6 to get value in pixels (2^6 = 64)
+        }
         
-        // Update content of VBO memory
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindVertexArray(0);
+        glBindTexture(GL_TEXTURE_2D, 0);
         
-        // Render quad
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-        // Now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-        position.x += (ch.Advance >> 6) * scale; // Bitshift by 6 to get value in pixels (2^6 = 64)
+        drawQueue.pop();
     }
-    glBindVertexArray(0);
-    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void TextRenderingComponent::renderTextAs3D(std::string text, glm::vec3 position, int scale) {
-
+void TextRenderingComponent::renderTextAs2D(std::string text, glm::vec2 position, float scale) {
+    DrawCall call;
+    
+    call.text = text;
+    call.pos = position;
+    call.scale = scale;
+    
+    drawQueue.push(call);
+    std::cout << "draw call added" << std::endl;
 }
+
+//void TextRenderingComponent::renderTextAs3D(std::string text, glm::vec3 position, int scale) {}

@@ -9,6 +9,7 @@
 #include "../Headers/Engine/Game.hpp"
 #include "../Headers/Engine/Player.hpp"
 #include "../Headers/Engine/Planet.hpp"
+#include "../Headers/Engine/HUD.hpp"
 
 #include "../Headers/Engine/KeyboardInputComponent.hpp"
 #include "../Headers/Engine/MouseInputComponent.hpp"
@@ -39,6 +40,8 @@ Game::Game() {
     // give me an actor
     worldActors.insert(std::pair<actorID, Actor*>(0, new Player()));
     worldActors.insert(std::pair<actorID, Actor*>(1, new Planet()));
+    worldActors.insert(std::pair<actorID, Actor*>(2, new HUD()));
+    
     
     worldActors.at(0)->addComponent(new MouseInputComponent(window, this));
     worldActors.at(0)->addComponent(new KeyboardInputComponent(window, this));
