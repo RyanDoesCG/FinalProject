@@ -30,29 +30,52 @@ Planet::~Planet () {
 void Planet::init() {
     
     vertices = {
-      // x      y      z     x      y      z      x      y      z
-        -0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f,  0.0f,  0.0f,  0.5f,  // TRIANGLE 1
-        -0.5f,  0.0f,  0.0f, 0.0f,  0.0f,  0.5f,  0.0f, -0.5f,  0.0f,  // TRIANGLE 2
-         0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f,  0.0f,  0.0f,  0.5f,  // TRIANGLE 3
-         0.0f, -0.5f,  0.0f, 0.0f,  0.0f,  0.5f,  0.5f,  0.0f,  0.0f,  // TRIANGLE 4
-        -0.5f,  0.0f,  0.0f, 0.0f,  0.5f,  0.0f,  0.0f,  0.0f, -0.5f,  // TRIANGLE 5
-        -0.5f,  0.0f,  0.0f, 0.0f, -0.5f,  0.0f,  0.0f,  0.0f, -0.5f,  // TRIANGLE 6
-         0.0f,  0.5f,  0.0f, 0.0f,  0.0f, -0.5f,  0.5f,  0.0f,  0.0f,  // TRIANGLE 7
-         0.0f,  0.0f, -0.5f, 0.5f,  0.0f,  0.0f,  0.0f, -0.5f,  0.0f,  // TRIANGLE 8
+        -0.5, 0, 0, -0.25, 0.25, 0, -0.25, 0, 0.25,
+        -0.25, 0, 0.25, 0, 0, 0.5, 0, 0.25, 0.25,
+        -0.25, 0.25, 0, -0.25, 0, 0.25, 0, 0.25, 0.25,
+        0, 0.5, 0, -0.25, 0.25, 0, 0, 0.25, 0.25,
+        -0.5, 0, 0, -0.25, 0, 0.25, -0.25, -0.25, 0,
+        -0.25, -0.25, 0, 0, -0.5, 0, 0, -0.25, 0.25,
+        -0.25, 0, 0.25, -0.25, -0.25, 0, 0, -0.25, 0.25,
+        0, 0, 0.5, -0.25, 0, 0.25, 0, -0.25, 0.25,
+        0.5, 0, 0, 0.25, 0.25, 0, 0.25, 0, 0.25,
+        0.25, 0, 0.25, 0, 0, 0.5, 0, 0.25, 0.25,
+        0.25, 0.25, 0, 0.25, 0, 0.25, 0, 0.25, 0.25,
+        0, 0.5, 0, 0.25, 0.25, 0, 0, 0.25, 0.25,
+        0, -0.5, 0, 0, -0.25, 0.25, 0.25, -0.25, 0,
+        0.25, -0.25, 0, 0.5, 0, 0, 0.25, 0, 0.25,
+        0, -0.25, 0.25, 0.25, -0.25, 0, 0.25, 0, 0.25,
+        0, 0, 0.5, 0, -0.25, 0.25, 0.25, 0, 0.25,
+        -0.5, 0, 0, -0.25, 0.25, 0, -0.25, 0, -0.25,
+        -0.25, 0, -0.25, 0, 0, -0.5, 0, 0.25, -0.25,
+        -0.25, 0.25, 0, -0.25, 0, -0.25, 0, 0.25, -0.25,
+        0, 0.5, 0, -0.25, 0.25, 0, 0, 0.25, -0.25,
+        -0.5, 0, 0, -0.25, -0.25, 0, -0.25, 0, -0.25,
+        -0.25, 0, -0.25, 0, 0, -0.5, 0, -0.25, -0.25,
+        -0.25, -0.25, 0, -0.25, 0, -0.25, 0, -0.25, -0.25,
+        0, -0.5, 0, -0.25, -0.25, 0, 0, -0.25, -0.25,
+        0, 0.5, 0, 0, 0.25, -0.25, 0.25, 0.25, 0,
+        0.25, 0.25, 0, 0.5, 0, 0, 0.25, 0, -0.25,
+        0, 0.25, -0.25, 0.25, 0.25, 0, 0.25, 0, -0.25,
+        0, 0, -0.5, 0, 0.25, -0.25, 0.25, 0, -0.25,
+        0, 0, -0.5, 0.25, 0, -0.25, 0, -0.25, -0.25, 
+        0, -0.25, -0.25, 0, -0.5, 0, 0.25, -0.25, 0, 
+        0.25, 0, -0.25, 0, -0.25, -0.25, 0.25, -0.25, 0, 
+        0.5, 0, 0, 0.25, 0, -0.25, 0.25, -0.25, 0,
     };
 
     breakdownMesh();
     breakdownMesh();
     breakdownMesh();
     breakdownMesh();
-    breakdownMesh();
+    
     normaliseMesh();
     
     addComponent(new ShaderComponent("BasicBlack"));
     addComponent(new ShaderComponent("BasicWhite"));
     addComponent(new MeshComponent(&vertices));
     
-    modelMatrix = glm::rotate (modelMatrix, (GLfloat)0.2, glm::vec3(1.0f, 0.0f, 0.0f)); // kick/tilt back
+//    modelMatrix = glm::rotate (modelMatrix, (GLfloat)0.2, glm::vec3(1.0f, 0.0f, 0.0f)); // kick/tilt back
     modelMatrix = glm::translate(modelMatrix, glm::vec3(0.4, 0, 0));
     modelMatrix = glm::scale(modelMatrix, glm::vec3(0.4, 0.6, 0.6));
     
@@ -134,39 +157,59 @@ void Planet::breakdownMesh () {
 
 }
 
+//
+//  O = N^2 | FIX THIS (fixed with !normalised guard)
+//
+//  Without (!normalised) condition guard:  4.8 seconds
+//  With condition guard:                   0.8 seconds
+//
+//  int j = 0:                              0.909ms
+//  int j = i:                              0.878ms
+//
 void Planet::normaliseMesh () {
+    float start = glfwGetTime();
+    
+    bool normalised[vertices.size() / 3];
+    for (int i = 0; i < vertices.size() / 3; i ++) normalised[i] = false;
     for (int i = 0; i < vertices.size(); i += 3) {
-        float length = 1.0 + (float)(rand() % 10) / 100;
+        if (!normalised[i/3]) {
+            float length = 1.0 + (float)(rand() % 10) / 100;
         
-        glm::vec3 a = glm::vec3(0.0, 0.0, 0.0); // center
-        glm::vec3 b = glm::vec3(vertices.at(i + 0), vertices.at(i + 1), vertices.at(i + 2));
+            glm::vec3 a = glm::vec3(0.0, 0.0, 0.0); // center
+            glm::vec3 b = glm::vec3(vertices.at(i + 0), vertices.at(i + 1), vertices.at(i + 2));
         
-        // get the distance between a and b along the x and y axes
-        GLfloat distX = b.x - a.x;
-        GLfloat distY = b.y - a.y;
-        GLfloat distZ = b.z - a.z;
+            // get the distance between a and b along the x and y axes
+            GLfloat distX = b.x - a.x;
+            GLfloat distY = b.y - a.y;
+            GLfloat distZ = b.z - a.z;
         
-        GLfloat a_b = sqrt(distX * distX + distY * distY + distZ * distZ);
+            GLfloat a_b = sqrt(distX * distX + distY * distY + distZ * distZ);
         
-        // right now, sqrt(dx^2 + dy^2) = distance(a,b).
-        // we want to modify them so that sqrt(dx^2 + dy^2) = the given length.
-        distX = distX * length / a_b;
-        distY = distY * length / a_b;
-        distZ = distZ * length / a_b;
+            // right now, sqrt(dx^2 + dy^2) = distance(a,b).
+            // we want to modify them so that sqrt(dx^2 + dy^2) = the given length.
+            distX = distX * length / a_b;
+            distY = distY * length / a_b;
+            distZ = distZ * length / a_b;
         
-        // apply new length to this vector and any that share its values
-        vertices.at(i + 0) = (a.x + distX);
-        vertices.at(i + 1) = (a.y + distY);
-        vertices.at(i + 2) = (a.z + distZ);
+                // apply new length to this vector and any that share its values
+            vertices.at(i + 0) = (a.x + distX);
+            vertices.at(i + 1) = (a.y + distY);
+            vertices.at(i + 2) = (a.z + distZ);
         
-        for (int j = 0; j < vertices.size(); j+=3) {
-            glm::vec3 c = glm::vec3(vertices.at(j + 0), vertices.at(j + 1), vertices.at(j + 2));
+            normalised[i/3] = true;
+        
+            for (int j = i; j < vertices.size(); j+=3) {
+                glm::vec3 c = glm::vec3(vertices.at(j + 0), vertices.at(j + 1), vertices.at(j + 2));
             
-            if (b == c) {
-                vertices.at(j + 0) = (a.x + distX);
-                vertices.at(j + 1) = (a.y + distY);
-                vertices.at(j + 2) = (a.z + distZ);
+                if (b == c) {
+                    vertices.at(j + 0) = (a.x + distX);
+                    vertices.at(j + 1) = (a.y + distY);
+                    vertices.at(j + 2) = (a.z + distZ);
+                    normalised[j/3] = true;
+                }
             }
         }
     }
+
+    std::cout << "\nNormalisation Timer: " << glfwGetTime() - start << std::endl << std::endl;
 }

@@ -10,18 +10,19 @@
 #define HUD_hpp
 
 #include "Actor.hpp"
+#include "../GLEW/glew.h"
 #include <iostream>
+#include <vector>
 
 class HUD : public Actor {
 public:
-    HUD  ();
+     HUD  ();
     ~HUD ();
-    
     virtual void init() override;
     virtual void update() override;
     
 private:
-    
+    std::vector<GLfloat> mainPane;
 };
 
 #endif /* HUD_hpp */

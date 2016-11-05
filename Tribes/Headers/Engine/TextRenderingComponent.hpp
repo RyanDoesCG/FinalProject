@@ -36,6 +36,7 @@ public:
     virtual void init() override;
     virtual void update() override;
     
+    void renderTextAs2D(std::string text, glm::vec2 position, glm::vec3 colour, float scale);
     void renderTextAs2D(std::string text, glm::vec2 position, float scale);
 //    void renderTextAs3D(std::string text, glm::vec3 position, int scale);
     
@@ -50,6 +51,7 @@ private:
     struct DrawCall {
         std::string text;
         glm::vec2 pos;
+        glm::vec3 col;
         float scale;
     };
     
@@ -64,6 +66,8 @@ private:
     
     GLuint VAO;
     GLuint VBO;
+    
+    glm::vec3 defaultColour = glm::vec3(0.6, 0.6, 0.6);
 };
 
 #endif /* TextRenderingComponent_hpp */

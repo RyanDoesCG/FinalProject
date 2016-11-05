@@ -84,6 +84,7 @@ TextRenderingComponent::~TextRenderingComponent () {
 }
 
 void TextRenderingComponent::init () {
+    
     textShader.init();
 }
 
@@ -94,7 +95,7 @@ void TextRenderingComponent::update() {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         textShader.update();
         
-        glUniform3f(glGetUniformLocation(textShader.getProgramID(), "textColor"), 0.6, 0.6, 0.6);
+        glUniform3f(glGetUniformLocation(textShader.getProgramID(), "textColor"), current.col.r, current.col.g, current.col.b);
         glActiveTexture(GL_TEXTURE0);
         glBindVertexArray(VAO);
         
@@ -140,11 +141,23 @@ void TextRenderingComponent::update() {
     }
 }
 
+void TextRenderingComponent::renderTextAs2D(std::string text, glm::vec2 position, glm::vec3 colour, float scale) {
+    DrawCall call;
+    
+    call.text  = text;
+    call.pos   = position;
+    call.col   = colour;
+    call.scale = scale;
+    
+    drawQueue.push(call);
+}
+
 void TextRenderingComponent::renderTextAs2D(std::string text, glm::vec2 position, float scale) {
     DrawCall call;
     
-    call.text = text;
-    call.pos = position;
+    call.text  = text;
+    call.pos   = position;
+    call.col   = defaultColour;
     call.scale = scale;
     
     drawQueue.push(call);

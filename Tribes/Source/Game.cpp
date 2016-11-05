@@ -15,7 +15,7 @@
 #include "../Headers/Engine/MouseInputComponent.hpp"
 
 // Deterines window size/debug hud
-#define BUILD_MODE DEVELOPMENT
+#define BUILD_MODE CINEMATIC
 
 Game::Game() {
     srand(generateSeed());
