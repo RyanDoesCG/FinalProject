@@ -2,66 +2,39 @@
  *  Planet.hpp
  *  Tribes
  *
- *  Created by ryan needham on 06/09/2016.
+ *  Created by Ryan Needham on 03/11/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
- *
- *  Both regions and tribes can be "Wiped from the face of
- *  the earth"
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Planet_hpp
 #define Planet_hpp
 
-#include "GameObject.hpp"
-#include "Biome.hpp"
-#include "Tribe.hpp"
-#include "Flag.hpp"
+#include "Actor.hpp"
+#include "../GLEW/glew.h"
+#include "../GLM/gtc/matrix_transform.hpp"
+#include "../GLM/gtc/type_ptr.hpp"
+#include "../GLM/glm.hpp"
 #include <iostream>
 #include <vector>
 
-//      /|\         /\      \\
-//     /_|_\       /  \     \\
-//     \ | /       \  /     \\
-//      \|/         \/      \\
-
-enum Difficulty {
-    TOUGH,
-    TOUGHER,
-    TOUGHEST
-};
-
-/** 
- *  Planet Class
- */
-class Planet : public GameObject {
-    public:
-        Planet  (Difficulty difficulty, long seed);
-        ~Planet ();
+class Planet : public Actor {
+public:
+     Planet  ();
+    ~Planet ();
     
-        inline Flag*       getFlag () { return galacticFlag;}
-        inline std::string getName () { return name; }
+    virtual void init() override;
+    virtual void update() override;
     
-        std::string toString ();
+private:
+    void breakdownMesh ();  // morph octohedron into sphere
+    void normaliseMesh ();  // generate terrain
     
-        void rotateLeft  () { graphics->rotateLeft(); }
-        void rotateRight () { graphics->rotateRight(); }
-        void grow        () { graphics->grow(); }
-        void shrink      () { graphics->shrink(); }
+    std::vector<GLfloat> vertices;
     
-        void randomise ();
-
-    private:
-        void generateName   ();
-        void generateFlag   ();
-        void generateBiomes ();
-    
-        Difficulty  difficulty;
-        Flag*       galacticFlag;
-        std::string name;
-    
-        std::vector<Biome*> regions;
-        std::vector<Tribe*> tribes;
-    
+    // THESE SHOULD GO SOMEWHERE ELSE?!?!
+    glm::mat4 modelMatrix;
+    glm::mat4 viewMatrix;
+    glm::mat4 projectionMatrix;
 };
 
 #endif /* Planet_hpp */

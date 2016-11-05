@@ -24,5 +24,5 @@ public:
         // shader not already in memory
         cache.push_back(new Shader(path));
         return cache.back();
-        }
+    }
 };
