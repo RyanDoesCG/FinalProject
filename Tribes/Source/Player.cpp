@@ -7,9 +7,9 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Player.hpp"
-#include "../Headers/Engine/MouseInputComponent.hpp"
+#include "../Headers/Engine/TextRenderingComponent.hpp"
 
-Player::Player  () {
+Player::Player () {
 
 }
 
@@ -17,8 +17,10 @@ Player::~Player () {
 
 }
 
-void Player::init() {
+void Player::init () {
     std::cout << "Player Online" << std::endl;
+    
+    addComponent(new TextRenderingComponent);
 }
 
 void Player::update() {

@@ -16,31 +16,32 @@
 #include <vector>
 
 class MeshComponent : public ActorComponent {
-    public:
-         MeshComponent (std::vector<GLfloat>* v, std::vector<GLuint>* i);
-         MeshComponent (std::vector<GLfloat>* v);
-        ~MeshComponent ();
+public:
+     MeshComponent (std::vector<GLfloat>* v, std::vector<GLuint>* i);
+     MeshComponent (std::vector<GLfloat>* v);
+     MeshComponent ();
+    ~MeshComponent ();
     
-        virtual void init() override;
-        virtual void update() override;
+    virtual void init() override;
+    virtual void update() override;
     
-    private:
-        std::vector<GLfloat>* vertices;
-        std::vector<GLuint>*  indices;
+private:
+    std::vector<GLfloat>* vertices;
+    std::vector<GLuint>*  indices;
     
-        GLuint VBO;
-        GLuint VAO;
-        GLuint EBO;
+    GLuint VBO;
+    GLuint VAO;
+    GLuint EBO;
     
-        enum MESH_TYPE {
-            RAW_VERTICES,
-            INDEXED
-        };
+    enum MESH_TYPE {
+        RAW_VERTICES,
+        INDEXED
+    };
     
-        MESH_TYPE type;
+    MESH_TYPE type;
     
-        int totalVertices;
-        int totalIndices;
+    int totalVertices;
+    int totalIndices;
 };
 
 #endif /* MeshComponent_hpp */

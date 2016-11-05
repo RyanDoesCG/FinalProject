@@ -11,19 +11,19 @@
 
 class Actor;
 class ActorComponent {
-    public:
-         ActorComponent () {}
-        ~ActorComponent () {}
+public:
+     ActorComponent () {}
+    ~ActorComponent () {}
     
-        virtual void init () { }
-        virtual void update () { }
+    virtual void init () { }
+    virtual void update () { }
     
-        void setOwner (Actor* a) {
-            this->owner = a;
-        }
+    void setOwner (Actor* a) {
+        this->owner = a;
+    }
     
-    protected:
-        Actor* owner;
+protected:
+    Actor* owner;
 };
 
 #endif /* ActorComponent_hpp */

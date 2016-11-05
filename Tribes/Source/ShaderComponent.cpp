@@ -56,20 +56,20 @@ void ShaderComponent::update() {
 
 std::string ShaderComponent::loadSource (const std::string& path) {
     std::ifstream source;
+    std::string   output;
+    std::string   line;
     
     source.open(path.c_str());
     
-    std::string output, line;
-    
-    if (!source.is_open()) {
-        std::cout << "SHADER LOAD ERROR at " << path << std::endl;
-    }
-    
-    else {
+    if (source.is_open()) {
         while (source.good()) {
             getline(source, line);
             output.append(line + "\n");
         }
+    }
+    
+    else {
+        std::cout << "Error loading " << path << std::endl;
     }
     
     return output;
@@ -101,7 +101,7 @@ GLuint ShaderComponent::createShader (const std::string& source, GLenum type) {
         std::cout << " Shader Compilation Error: " << info << std::endl;
     }
     
-    else {
+    else if (success) {
         std::cout << title << " ";
         if      (type == GL_VERTEX_SHADER)   std::cout << "Vertex";
         else if (type == GL_FRAGMENT_SHADER) std::cout << "Fragment";
@@ -109,4 +109,8 @@ GLuint ShaderComponent::createShader (const std::string& source, GLenum type) {
     }
     
     return shader;
+}
+
+GLuint ShaderComponent::getProgramID() {
+    return programID;
 }

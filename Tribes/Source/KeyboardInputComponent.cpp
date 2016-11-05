@@ -20,7 +20,7 @@ KeyboardInputComponent::KeyboardInputComponent (GLFWwindow* window, Game* game) 
     this->window = window;
     this->game = game;
     
-    init();
+    glfwSetKeyCallback (window, keyboardCallback);
 }
 
 KeyboardInputComponent::~KeyboardInputComponent () {
@@ -28,7 +28,7 @@ KeyboardInputComponent::~KeyboardInputComponent () {
 }
 
 void KeyboardInputComponent::init () {
-    glfwSetKeyCallback (window, keyboardCallback);
+
 }
 
 void KeyboardInputComponent::update() {
@@ -38,12 +38,16 @@ void KeyboardInputComponent::update() {
         if (activeKeys[i]) {
             switch(i) {
                 case GLFW_KEY_W:
+                    std::cout << "w\n";
                     break;
                 case GLFW_KEY_A:
+                    std::cout << "a\n";
                     break;
                 case GLFW_KEY_S:
+                    std::cout << "s\n";
                     break;
                 case GLFW_KEY_D:
+                    std::cout << "d\n";
                     break;
                 case GLFW_KEY_Q:
                     game->end();

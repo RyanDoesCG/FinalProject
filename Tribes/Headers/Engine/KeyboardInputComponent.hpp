@@ -13,16 +13,16 @@
 #include "Game.hpp"
 
 class KeyboardInputComponent : public ActorComponent {
-    public:
-         KeyboardInputComponent (GLFWwindow* window, Game* game);
-        ~KeyboardInputComponent ();
+public:
+     KeyboardInputComponent (GLFWwindow* window, Game* game);
+    ~KeyboardInputComponent ();
     
-        virtual void init() override;
-        virtual void update() override;
+    virtual void init() override;
+    virtual void update() override;
     
-    private:
-        GLFWwindow* window;
-        Game* game;
+private:
+    GLFWwindow* window;
+    Game* game;
     
 };
 

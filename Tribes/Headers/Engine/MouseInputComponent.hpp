@@ -10,15 +10,20 @@
 #define MouseInputComponent_hpp
 
 #include "ActorComponent.hpp"
-#include "../GLFW/glfw3.h"
+#include "Game.hpp"
 
 class MouseInputComponent : public ActorComponent {
-    public:
-        MouseInputComponent ();
-       ~MouseInputComponent ();
+public:
+     MouseInputComponent (GLFWwindow* window, Game* game);
+    ~MouseInputComponent ();
 
-        virtual void init() override;
-        virtual void update() override;
+    virtual void init() override;
+    virtual void update() override;
+    
+private:
+    GLFWwindow* window;
+    Game* game;
+
 };
 
 #endif /* MouseInputComponent_hpp */

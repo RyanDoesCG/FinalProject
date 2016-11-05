@@ -18,20 +18,28 @@
  *
  */
 class Actor {
-    public:
-         Actor() {}
-        ~Actor() {}
+public:
+     Actor() {}
+    ~Actor() {}
 
-        virtual void init   () { std::cout << "Actor Online" << std::endl; }
-        virtual void update () { for (int i = 0; i < components.size(); i++) components.at(i)->update(); }
+    // replace these for loops with something prettier maybe
+    virtual void init   () {
+        for (int i = 0; i < components.size(); i++)
+            components.at(i)->init();
+    }
     
-        void addComponent (ActorComponent* comp) {
-            components.insert(std::pair<int, ActorComponent*>(components.size(), comp));
-            comp->setOwner(this);
-        }
+    virtual void update () {
+        for (int i = 0; i < components.size(); i++)
+            components.at(i)->update();
+    }
     
-    protected:
-        std::map<int, ActorComponent*> components;
+    void addComponent (ActorComponent* comp) {
+        components.insert(std::pair<int, ActorComponent*>(components.size(), comp));
+        comp->setOwner(this);
+    }
+    
+protected:
+    std::map<int, ActorComponent*> components;
 
 };
 

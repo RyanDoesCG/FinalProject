@@ -8,8 +8,10 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Game.hpp"
 #include "../Headers/Engine/Player.hpp"
+#include "../Headers/Engine/Planet.hpp"
 
 #include "../Headers/Engine/KeyboardInputComponent.hpp"
+#include "../Headers/Engine/MouseInputComponent.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE DEVELOPMENT
@@ -20,11 +22,11 @@ Game::Game() {
     // decide what window to build
     switch (BUILD_MODE) {
         case CINEMATIC:
-            windowWidth  = 840;
-            windowHeight = 648;
+            windowWidth  = 1920;
+            windowHeight = 1080;
             break;
         case DEVELOPMENT:
-            windowWidth  = 840;
+            windowWidth  = 1200;
             windowHeight = 648;
             break;
     }
@@ -35,14 +37,11 @@ Game::Game() {
     state = RUNNING;
     
     // give me an actor
-    worldActors.insert(std::pair<actorID, Actor*>(0, new Actor()));
-    worldActors.insert(std::pair<actorID, Actor*>(1, new Player()));
+    worldActors.insert(std::pair<actorID, Actor*>(0, new Player()));
+    worldActors.insert(std::pair<actorID, Actor*>(1, new Planet()));
     
-    // init them
-    for (int i = 0; i < worldActors.size(); i++) worldActors.at(i)->init();
-    
-    worldActors.at(1)->addComponent(new KeyboardInputComponent(window, this));
-
+    worldActors.at(0)->addComponent(new MouseInputComponent(window, this));
+    worldActors.at(0)->addComponent(new KeyboardInputComponent(window, this));
 }
 
 Game::~Game() {
@@ -53,15 +52,20 @@ Game::~Game() {
  *  Game Loop
  */
 void Game::begin() {
-    glClearColor (0.075f, 0.075f, 0.075f, 0.0f);
+    glClearColor (0.175f, 0.175f, 0.175f, 0.0f);
+    
+    // initialise actors
+    for (int i = 0; i < worldActors.size(); i++)
+        worldActors.at(i)->init();
     
     while (windowAlive()) {
         switch (state) {
             case MENU:
                 glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 
-                // menu interactions
-                for (int i = 0; i < worldActors.size(); i++) worldActors.at(i)->update();
+                // render menu scene
+                for (int i = 0; i < worldActors.size(); i++)
+                    worldActors.at(i)->update();
                 
                 glfwSwapBuffers(window);
                 break;
@@ -69,8 +73,9 @@ void Game::begin() {
                 glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 
                 // render actors
-                for (int i = 0; i < worldActors.size(); i++) worldActors.at(i)->update();
-                
+                for (int i = 0; i < worldActors.size(); i++)
+                    worldActors.at(i)->update();
+
                 glfwSwapBuffers(window);
                 break;
             case PAUSED:
@@ -110,7 +115,7 @@ int Game::initGLFW () {
     glfwWindowHint   (GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // OpenGL Profile
     glfwWindowHint   (GLFW_RESIZABLE, GL_TRUE);                        // Resizable Window
     glfwWindowHint   (GLFW_DOUBLEBUFFER, GL_TRUE);                     // Double Buffering
-    glfwWindowHint   (GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
+//  glfwWindowHint   (GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
     glfwWindowHint   (GLFW_SAMPLES, 4);                                // Multisampling
     glfwWindowHint   (GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // macOS requires this
     glfwSwapInterval (1);                                              // enable VSYNC

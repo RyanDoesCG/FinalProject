@@ -13,12 +13,14 @@
 #include <iostream>
 
 class Player : public Actor {
-    public:
-        Player  ();
-        ~Player ();
+public:
+     Player  ();
+    ~Player ();
 
-        virtual void init() override;
-        virtual void update() override;
+    virtual void init() override;
+    virtual void update() override;
+    
+private:
     
 };
 

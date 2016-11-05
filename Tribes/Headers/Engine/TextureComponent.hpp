@@ -15,20 +15,20 @@
 #include <iostream>
 
 class TextureComponent : public ActorComponent {
-    public:
-         TextureComponent (std::string path);
-        ~TextureComponent ();
+public:
+     TextureComponent (std::string path);
+    ~TextureComponent ();
     
-        virtual void init() override;
-        virtual void update() override;
+    virtual void init() override;
+    virtual void update() override;
     
-    private:
-        int width;
-        int height;
-        unsigned char* imageData;
+private:
+    int width;
+    int height;
+    unsigned char* imageData;
     
-        GLuint textureID;
-        std::string title;
+    GLuint textureID;
+    std::string title;
 };
 
 #endif /* TextureComponent_hpp */

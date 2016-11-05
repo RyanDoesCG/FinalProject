@@ -14,6 +14,8 @@
 
 #include "Actor.hpp"
 #include <iostream>
+#include <functional>
+#include <algorithm>
 #include <map>
 
 enum State { MENU, RUNNING, PAUSED, ENDED };
@@ -24,37 +26,36 @@ enum Build { CINEMATIC, DEVELOPMENT };
  *
  */
 class Game {
-    public:
-        Game  ();
-        ~Game ();
+public:
+     Game  ();
+    ~Game ();
 
-        void begin();
-        void pause();
-        void end();
+    void begin();
+    void pause();
+    void end();
     
-        inline State getState ();
-        inline long  getSeed  ();
+    inline State getState ();
+    inline long  getSeed  ();
     
-        bool windowAlive();
+    bool windowAlive();
     
-    private:
+private:
+    typedef int actorID;
     
-        typedef int actorID;
+    int initGLFW ();
+    int initGLEW ();
     
-        int initGLFW ();
-        int initGLEW ();
-    
-        int windowWidth;
-        int windowHeight;
+    int windowWidth;
+    int windowHeight;
 
-        GLFWwindow* window;
-        State state;
+    GLFWwindow* window;
+    State state;
 
-        std::map<actorID, Actor*> worldActors;
+    std::map<actorID, Actor*> worldActors;
     
-        // world seed
-        long generateSeed();
-        long seed;
+    // world seed
+    long generateSeed();
+    long seed;
 
 };
 

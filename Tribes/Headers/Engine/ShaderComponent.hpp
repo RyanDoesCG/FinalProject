@@ -14,22 +14,24 @@
 #include <iostream>
 
 class ShaderComponent : public ActorComponent {
-    public:
-         ShaderComponent (const std::string& name);
-        ~ShaderComponent ();
+public:
+     ShaderComponent (const std::string& name);
+    ~ShaderComponent ();
     
-        virtual void init() override;
-        virtual void update() override;
+    virtual void init() override;
+    virtual void update() override;
     
-    private:
-        GLuint programID;
-        GLuint vertexShaderID;
-        GLuint fragmentShaderID;
+    GLuint getProgramID();
     
-        std::string loadSource (const std::string& path);
-        GLuint createShader (const std::string& source, GLenum type);
+private:
+    GLuint programID;
+    GLuint vertexShaderID;
+    GLuint fragmentShaderID;
     
-        std::string title;
+    std::string loadSource (const std::string& path);
+    GLuint createShader (const std::string& source, GLenum type);
+    
+    std::string title;
 };
 
 #endif /* ShaderComponent_hpp */

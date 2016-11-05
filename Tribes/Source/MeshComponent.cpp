@@ -73,8 +73,8 @@ MeshComponent::MeshComponent (std::vector<GLfloat>* v) {
         glBindBuffer (GL_ARRAY_BUFFER, VBO);
         glBufferData (GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
     
-        // position (x, y, z) & colour ID (w)
-        glVertexAttribPointer     (0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
+        // position (x, y, z)
+        glVertexAttribPointer     (0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
         glEnableVertexAttribArray (0);
     
     // unbind vertex array object
@@ -83,6 +83,10 @@ MeshComponent::MeshComponent (std::vector<GLfloat>* v) {
     // House Keeping state
     totalVertices = (int)vertices->size() / 4;
     type          = RAW_VERTICES;
+}
+
+MeshComponent::MeshComponent () {
+    
 }
 
 MeshComponent::~MeshComponent () {
@@ -103,6 +107,7 @@ void MeshComponent::update() {
     }
     
     else if (type == RAW_VERTICES) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawArrays (GL_TRIANGLES, 0, totalVertices);
     }
     
