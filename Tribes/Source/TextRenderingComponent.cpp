@@ -90,7 +90,6 @@ void TextRenderingComponent::init () {
 void TextRenderingComponent::update() {
     while (!drawQueue.empty()) {
         DrawCall current = drawQueue.front();
-        std::cout << "draw queue read" << std::endl;
         
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         textShader.update();
@@ -149,7 +148,6 @@ void TextRenderingComponent::renderTextAs2D(std::string text, glm::vec2 position
     call.scale = scale;
     
     drawQueue.push(call);
-    std::cout << "draw call added" << std::endl;
 }
 
 //void TextRenderingComponent::renderTextAs3D(std::string text, glm::vec3 position, int scale) {}

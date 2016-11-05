@@ -48,6 +48,7 @@ void Planet::init() {
     normaliseMesh();
     
     addComponent(new ShaderComponent("BasicBlack"));
+    addComponent(new ShaderComponent("BasicWhite"));
     addComponent(new MeshComponent(&vertices));
     
     modelMatrix = glm::rotate (modelMatrix, (GLfloat)0.2, glm::vec3(1.0f, 0.0f, 0.0f)); // kick/tilt back
@@ -56,6 +57,7 @@ void Planet::init() {
     
     // C++ / OpenGL Engineers: "How can we make the code look reeaalllyyy gross?"
     glUniformMatrix4fv (glGetUniformLocation(dynamic_cast<ShaderComponent*>(components.at(0))->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glUniformMatrix4fv (glGetUniformLocation(dynamic_cast<ShaderComponent*>(components.at(1))->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
 }
 
@@ -63,7 +65,18 @@ void Planet::update() {
     dynamic_cast<ShaderComponent*>(components.at(0))->update();
     modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.002, glm::vec3(0.0f, 1.0f, 0.0f));
     glUniformMatrix4fv(glGetUniformLocation(dynamic_cast<ShaderComponent*>(components.at(0))->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-    Actor::update();
+    
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    components.at(2)->update();
+    
+    dynamic_cast<ShaderComponent*>(components.at(1))->update();
+    modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.002, glm::vec3(0.0f, 1.0f, 0.0f));
+    glUniformMatrix4fv(glGetUniformLocation(dynamic_cast<ShaderComponent*>(components.at(1))->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    components.at(2)->update();
+    
+        // Actor::update();
 }
 
 //

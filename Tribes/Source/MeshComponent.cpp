@@ -56,7 +56,8 @@ void MeshComponent::update() {
     glBindVertexArray(VAO);
 
         glPointSize(8);
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+       // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawArrays (GL_TRIANGLES, 0, totalVertices);
     
     glBindVertexArray(0);

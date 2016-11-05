@@ -26,7 +26,7 @@ void HUD::init () {
 
 void HUD::update () {
 
-    dynamic_cast<TextRenderingComponent*>(components.at(0))->renderTextAs2D("pre-alpha", glm::vec2(10, 10), 1);
+    dynamic_cast<TextRenderingComponent*>(components.at(0))->renderTextAs2D("pre-alpha", glm::vec2(5, 5), 0.5);
     
     Actor::update();
 }
