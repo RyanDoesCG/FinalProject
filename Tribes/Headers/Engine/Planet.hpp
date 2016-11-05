@@ -11,6 +11,9 @@
 
 #include "Actor.hpp"
 #include "../GLEW/glew.h"
+#include "../GLM/gtc/matrix_transform.hpp"
+#include "../GLM/gtc/type_ptr.hpp"
+#include "../GLM/glm.hpp"
 #include <iostream>
 #include <vector>
 
@@ -27,6 +30,11 @@ private:
     void normaliseMesh ();  // generate terrain
     
     std::vector<GLfloat> vertices;
+    
+    // THESE SHOULD GO SOMEWHERE ELSE?!?!
+    glm::mat4 modelMatrix;
+    glm::mat4 viewMatrix;
+    glm::mat4 projectionMatrix;
 };
 
 #endif /* Planet_hpp */

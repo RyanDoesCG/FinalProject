@@ -21,6 +21,7 @@ void Player::init () {
     std::cout << "Player Online" << std::endl;
     
     addComponent(new TextRenderingComponent);
+
 }
 
 void Player::update() {

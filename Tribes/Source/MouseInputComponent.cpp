@@ -30,11 +30,12 @@ MouseInputComponent::MouseInputComponent (GLFWwindow* window, Game* game) {
     this->window = window;
     this->game = game;
     
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-    
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+
     glfwSetCursorPosCallback   (window, mouseMovementCallback);
     glfwSetMouseButtonCallback (window, mouseActionCallback);
     glfwSetScrollCallback      (window, mouseScrollCallback);
+    
 }
 
 MouseInputComponent::~MouseInputComponent () {
@@ -48,16 +49,16 @@ void MouseInputComponent::init () {
 void MouseInputComponent::update() {
     glfwPollEvents();
     
-    std::cout << "x: " << mouseX << "\ty: " << mouseY << "\n";
-    
     for (int i = 0; i < MOUSE_EVENTS_MAX; i++) {
         if (mouseEvents[i]) {
             switch(i) {
                 case MOUSE_CLICK_LEFT:
                     std::cout << "mouse left" << std::endl;
+                    std::cout << "x: " << mouseX << "\ty: " << mouseY << std::endl;
                     break;
                 case MOUSE_CLICK_RIGHT:
                     std::cout << "mouse right" << std::endl;
+                    std::cout << "x: " << mouseX << "\ty: " << mouseY << std::endl;
                     break;
                 case MOUSE_SCROLL_LEFT:
                     break;

@@ -40,7 +40,7 @@ public:
     
 protected:
     std::map<int, ActorComponent*> components;
-
+    
 };
 
 #endif /* Actor_hpp */

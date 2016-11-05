@@ -31,7 +31,7 @@ void KeyboardInputComponent::init () {
 
 }
 
-void KeyboardInputComponent::update() {
+void KeyboardInputComponent::update () {
     glfwPollEvents();
     
     for (int i = 0; i < KEYCOUNT; i++) {
