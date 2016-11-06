@@ -23,12 +23,18 @@ public:
     ~HUD ();
     
     virtual void init() override;
-    virtual void update() override;
+    virtual void update(GameState state) override;
     
 private:
+    Game* game;
+    
     MouseInputComponent* mouse;
     KeyboardInputComponent* keyboard;
     TextRenderingComponent* textRenderer;
+    
+    void updateMenu ();
+    void updateRunning ();
+    void updatePause ();
     
 };
 

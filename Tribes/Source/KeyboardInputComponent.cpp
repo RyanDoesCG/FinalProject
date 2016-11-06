@@ -37,24 +37,8 @@ void KeyboardInputComponent::update () {
     for (int i = 0; i < KEYCOUNT; i++) {
         if (activeKeys[i]) {
             switch(i) {
-                case GLFW_KEY_W:
-                    std::cout << "w\n";
-                    break;
-                case GLFW_KEY_A:
-                    std::cout << "a\n";
-                    break;
-                case GLFW_KEY_S:
-                    std::cout << "s\n";
-                    break;
-                case GLFW_KEY_D:
-                    std::cout << "d\n";
-                    break;
                 case GLFW_KEY_Q:
                     game->end();
-                    break;
-                case GLFW_KEY_R:
-                    break;
-                case GLFW_KEY_SPACE:
                     break;
                 case GLFW_KEY_ESCAPE:
                     game->pause();
@@ -64,3 +48,18 @@ void KeyboardInputComponent::update () {
         }
     }
 }
+
+bool KeyboardInputComponent::isKeyDown(int keycode) {
+    if (activeKeys[keycode]) {
+        activeKeys[keycode] = false;
+        return true;
+    }
+    
+    else {
+        return false;
+    }
+}
+
+//void KeyboardInputComponent::keyHandled(int keycode) {
+//    activeKeys[keycode] = false;
+//}

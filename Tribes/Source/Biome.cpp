@@ -25,6 +25,6 @@ void Biome::init() {
     Actor::init();
 }
 
-void Biome::update() {
-    Actor::update();
+void Biome::update(GameState state) {
+    Actor::update(state);
 }

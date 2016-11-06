@@ -18,7 +18,7 @@ public:
     ~Biome ();
     
     virtual void init() override;
-    virtual void update() override;
+    virtual void update(GameState state) override;
     
 private:
     std::vector<GLfloat> territory;

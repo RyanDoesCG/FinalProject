@@ -27,7 +27,7 @@ public:
     ~Planet ();
     
     virtual void init() override;
-    virtual void update() override;
+    virtual void update(GameState state) override;
     
 private:
     void breakdownMesh ();  // morph octohedron into sphere
@@ -41,6 +41,8 @@ private:
     ShaderComponent* fillShader;
     ShaderComponent* lineShader;
     MeshComponent* mesh;
+    
+    GLfloat spin;
     
     // THESE SHOULD GO SOMEWHERE ELSE?!?!
     glm::mat4 modelMatrix;

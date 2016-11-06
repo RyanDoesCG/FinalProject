@@ -58,16 +58,29 @@ void Planet::init() {
     fillShader = (ShaderComponent*)addComponent(new ShaderComponent("BasicWhite"));
     mesh       = (MeshComponent*)addComponent(new MeshComponent(&vertices));
     
+    spin = 0.00085;
+    
     // move model to the left and shrink
     modelMatrix = glm::translate(modelMatrix, glm::vec3(0.4, 0, 0));
     modelMatrix = glm::scale(modelMatrix, glm::vec3(0.4, 0.6, 0.6));
     
     initChildren();
+    
+    // TEMPORARY: send procedural colour to planet shader
+    glm::vec4 color;
+    
+    color.r = (float)(rand() % 40) / 100;
+    color.g = (float)(rand() % 40) / 100;
+    color.b = (float)(rand() % 40) / 100;
+    
+    std::cout << "\n\nCOLOR: " << color.r << ", " << color.g << ", " << color.b << "\n\n";
+    
+    glUniform3f(glGetUniformLocation(fillShader->getProgramID(), "proceduralColour"), color.r, color.g, color.b);
 }
 
-void Planet::update() {
+void Planet::update(GameState state) {
     // rotate
-    modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.001, glm::vec3(0.0f, 1.0f, 0.0f));
+    modelMatrix = glm::rotate(modelMatrix, spin, glm::vec3(0.0f, 1.0f, 0.0f));
 
     // draw outline
     lineShader->update();
@@ -81,7 +94,7 @@ void Planet::update() {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     mesh->update();
     
-    updateChildren();
+    updateChildren(state);
 }
 
 //

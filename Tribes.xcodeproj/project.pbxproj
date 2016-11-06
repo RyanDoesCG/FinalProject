@@ -19,6 +19,7 @@
 		625F01E21DCE38BB005DB61D /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 625F01E01DCE38BB005DB61D /* HUD.cpp */; };
 		6294962A1DCE22A00001D77F /* IndexedMeshComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 629496291DCE22A00001D77F /* IndexedMeshComponent.cpp */; };
 		62983ECA1DCF6929009AD2AD /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62983EC81DCF6929009AD2AD /* Biome.cpp */; };
+		62983EF21DCF8639009AD2AD /* HUDElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62983EF01DCF8639009AD2AD /* HUDElement.cpp */; };
 		CE2697351DAEADE600F9833E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697281DAEADE600F9833E /* Game.cpp */; };
 		CE2697381DAEADE600F9833E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972B1DAEADE600F9833E /* main.cpp */; };
 		CE3852881D8C3DC5006A104C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
@@ -57,6 +58,7 @@
 		625F01E01DCE38BB005DB61D /* HUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HUD.cpp; path = Source/HUD.cpp; sourceTree = "<group>"; };
 		629496291DCE22A00001D77F /* IndexedMeshComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IndexedMeshComponent.cpp; path = Source/IndexedMeshComponent.cpp; sourceTree = "<group>"; };
 		62983EC81DCF6929009AD2AD /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Biome.cpp; path = Source/Biome.cpp; sourceTree = "<group>"; };
+		62983EF01DCF8639009AD2AD /* HUDElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HUDElement.cpp; path = Source/HUDElement.cpp; sourceTree = "<group>"; };
 		CE1570A21D8C1CA1005F6DB0 /* tasks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tasks.txt; sourceTree = "<group>"; };
 		CE2697281DAEADE600F9833E /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Game.cpp; path = Source/Game.cpp; sourceTree = "<group>"; };
 		CE26972B1DAEADE600F9833E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				625F01E01DCE38BB005DB61D /* HUD.cpp */,
 				629496291DCE22A00001D77F /* IndexedMeshComponent.cpp */,
 				624F49A41DCBE7CE0065CE1A /* KeyboardInputComponent.cpp */,
+				62983EF01DCF8639009AD2AD /* HUDElement.cpp */,
 				CE26972B1DAEADE600F9833E /* main.cpp */,
 				624F49A71DCBE7CE0065CE1A /* MeshComponent.cpp */,
 				624F49A61DCBE7CE0065CE1A /* MouseInputComponent.cpp */,
@@ -207,6 +210,7 @@
 				624F49AF1DCBE7CE0065CE1A /* TextureComponent.cpp in Sources */,
 				624F49AA1DCBE7CE0065CE1A /* KeyboardInputComponent.cpp in Sources */,
 				6224E9491DCCA5DE0096E420 /* Planet.cpp in Sources */,
+				62983EF21DCF8639009AD2AD /* HUDElement.cpp in Sources */,
 				CE2697351DAEADE600F9833E /* Game.cpp in Sources */,
 				CE2697381DAEADE600F9833E /* main.cpp in Sources */,
 				62983ECA1DCF6929009AD2AD /* Biome.cpp in Sources */,

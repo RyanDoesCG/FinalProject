@@ -25,7 +25,7 @@ void Player::init () {
  //   TextRenderingComponent = addComponent(new TextRenderingComponent());
 }
 
-void Player::update() {
+void Player::update(GameState state) {
 
-    Actor::update();
+    Actor::update(state);
 }

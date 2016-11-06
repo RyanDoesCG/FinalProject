@@ -9,6 +9,7 @@
 #ifndef Actor_hpp
 #define Actor_hpp
 
+#include "GameState.hpp"
 #include "ActorComponent.hpp"
 #include <iostream>
 #include <map>
@@ -31,9 +32,9 @@ public:
         initChildren();
     }
     
-    virtual void update () {
+    virtual void update (GameState state) {
         updateComponents();
-        updateChildren();
+        updateChildren(state);
     }
     
     ActorComponent* addComponent (ActorComponent* comp) {
@@ -57,7 +58,7 @@ protected:
     void initChildren     () { for (int i = 0; i < children.size(); i++) children.at(i)->init(); }
     
     void updateComponents () { for (int i = 0; i < components.size(); i++) components.at(i)->update(); }
-    void updateChildren   () { for (int i = 0; i < children.size(); i++) children.at(i)->update(); }
+    void updateChildren   (GameState state) { for (int i = 0; i < children.size(); i++) children.at(i)->update(state); }
     
     std::map<ComponentID, ActorComponent*> components;
     std::map<ChildID, Actor*> children;

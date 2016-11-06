@@ -12,13 +12,13 @@
 #include "../GLEW/glew.h"
 #include "../GLFW/glfw3.h"
 
+#include "GameState.hpp"
 #include "Actor.hpp"
 #include <iostream>
 #include <functional>
 #include <algorithm>
 #include <map>
 
-enum State { MENU, RUNNING, PAUSED, ENDED };
 enum Build { CINEMATIC, DEVELOPMENT };
 
 /**
@@ -27,17 +27,16 @@ enum Build { CINEMATIC, DEVELOPMENT };
  */
 class Game {
 public:
-     Game  ();
+     Game ();
     ~Game ();
 
     void begin();
     void pause();
     void end();
-    
-    inline State getState ();
+
     inline long  getSeed  ();
     
-    bool windowAlive();
+    bool windowIsAlive();
     
 private:
     typedef int actorID;
@@ -49,7 +48,7 @@ private:
     int windowHeight;
 
     GLFWwindow* window;
-    State state;
+    GameState state;
 
     std::map<actorID, Actor*> worldActors;
     

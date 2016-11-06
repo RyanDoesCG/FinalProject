@@ -15,9 +15,9 @@ TextRenderingComponent::TextRenderingComponent (): textShader(ShaderComponent("T
     if (FT_New_Face(ft, "Assets/fonts/AppleGothic.ttf", 0, &face))
         std::cout << "ERROR: Failed to load font" << std::endl;
 
-    FT_Set_Pixel_Sizes(face, 0, 24);
+    FT_Set_Pixel_Sizes(face, 0, 120);
     
-    projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
+    projection = glm::ortho(0.0f, 1920.0f, 0.0f, 1080.0f);
     glUniformMatrix4fv(glGetUniformLocation(textShader.getProgramID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     
     // construct character map

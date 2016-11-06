@@ -31,6 +31,16 @@ MouseInputComponent::MouseInputComponent (GLFWwindow* window, Game* game) {
     this->game = game;
     
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+    
+    unsigned char pixels[4 * 4 * 4];
+    memset(pixels, 0xfa, sizeof(pixels));
+    GLFWimage image;
+    image.width = 4;
+    image.height = 4;
+    image.pixels = pixels;
+    GLFWcursor* cursor = glfwCreateCursor(&image, 0, 0);
+    
+    glfwSetCursor(window, cursor);
 
     glfwSetCursorPosCallback   (window, mouseMovementCallback);
     glfwSetMouseButtonCallback (window, mouseActionCallback);

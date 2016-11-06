@@ -7,18 +7,18 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/HUD.hpp"
+#include "../Headers/Engine/HUDElement.hpp"
 
 HUD::HUD (GLFWwindow* window, Game* game) {
     mouse = (MouseInputComponent*)addComponent(new MouseInputComponent(window, game));
     keyboard = (KeyboardInputComponent*)addComponent(new KeyboardInputComponent(window, game));
+    this->game = game;
     
-/*
-    mainPane = {
-    //   x     y    z     x     y    z     x      y    z
-        -0.95, 0.9, 0.0, -0.25, 0.9, 0.0, -0.25, -0.9, 0.0, // TRIANGLE 1
-        -0.95, 0.9, 0.0, -0.95, -0.9, 0.0, -0.25, -0.9, 0,0// TRIANGLE 2
-    };
-*/
+    addChild(new HUDElement("new game",  glm::vec2(16, 660)));
+    addChild(new HUDElement("load game", glm::vec2(16, 590)));
+    addChild(new HUDElement("options",   glm::vec2(16, 520)));
+    addChild(new HUDElement("quit",      glm::vec2(16, 450)));
+
 }
 
 HUD::~HUD () {
@@ -27,22 +27,69 @@ HUD::~HUD () {
 
 void HUD::init () {
     textRenderer = (TextRenderingComponent*)addComponent(new TextRenderingComponent());
-
-    //addComponent(new ShaderComponent("HUDPane"));
-    //addComponent(new MeshComponent(&mainPane));
+    
+    initChildren();
+    
+    ((HUDElement*)children.at(0))->select();
 }
 
-void HUD::update () {
-    textRenderer->renderTextAs2D("mouse x: " + std::to_string(mouse->getMouseX()), glm::vec2(5, 580), glm::vec3(0.75, 0.75, 0.75), 0.75);
-    textRenderer->renderTextAs2D("mouse y: " + std::to_string(mouse->getMouseY()), glm::vec2(5, 560), glm::vec3(0.75, 0.75, 0.75), 0.75);
-
-    // mock UI
-    textRenderer->renderTextAs2D("NEW GAME", glm::vec2(8, 340), glm::vec3(0.001, 0.001, 0.001), 0.9);
-    textRenderer->renderTextAs2D("LOAD GAME", glm::vec2(8, 310), glm::vec3(0.001, 0.001, 0.001), 0.9);
-    textRenderer->renderTextAs2D("OPTIONS", glm::vec2(8, 280), glm::vec3(0.001, 0.001, 0.001), 0.9);
-    textRenderer->renderTextAs2D("EXIT", glm::vec2(8, 250), glm::vec3(0.001, 0.001, 0.001), 0.9);
-
+void HUD::update (GameState state) {
+    if (state == MENU) updateMenu();
+    else if (state == RUNNING) updateRunning();
+    else if (state == PAUSED) updatePause();
     
-    textRenderer->renderTextAs2D("pre-alpha", glm::vec2(5, 5), 0.5);
-    Actor::update();
+    // render elements
+    Actor::update(state);
+}
+
+void HUD::updateMenu () {
+
+}
+
+void HUD::updateRunning () {
+    // DEBUG UI
+    textRenderer->renderTextAs2D("mouse x: " + std::to_string(mouse->getMouseX()), glm::vec2(10, 1040), glm::vec3(0.75, 0.75, 0.75), 0.32);
+    textRenderer->renderTextAs2D("mouse y: " + std::to_string(mouse->getMouseY()), glm::vec2(10, 1005), glm::vec3(0.75, 0.75, 0.75), 0.32);
+    textRenderer->renderTextAs2D("pre-alpha", glm::vec2(10, 8), 0.24);
+    
+    // handle events
+    static int selected = 0;
+    if (keyboard->isKeyDown(GLFW_KEY_S) || keyboard->isKeyDown(GLFW_KEY_DOWN)) {
+        ((HUDElement*)children.at(selected))->unselect();
+        
+        selected = (selected + 1) % children.size();
+        
+        ((HUDElement*)children.at(selected))->select();
+    }
+    
+    if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP)) {
+        ((HUDElement*)children.at(selected))->unselect();
+        
+        if (selected == 0) selected = 3;
+        else selected -= 1;
+        
+        ((HUDElement*)children.at(selected))->select();
+    }
+    
+    if (keyboard->isKeyDown(GLFW_KEY_ENTER)) {
+        switch (selected) {
+            case 0:
+                std::cout << "New Game\n";
+                break;
+            case 1:
+                std::cout << "Load Game\n";
+                break;
+            case 2:
+                std::cout << "Options\n";
+                break;
+            case 3:
+                std::cout << "Exit\n";
+                game->end(); // breaks for fuck knows why when called here
+                break;
+        }
+    }
+}
+
+void HUD::updatePause () {
+    textRenderer->renderTextAs2D("PAUSED", glm::vec2(960, 540), glm::vec3(0.8, 0.1, 0.1), 0.5);
 }

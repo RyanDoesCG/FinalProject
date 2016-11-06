@@ -24,8 +24,8 @@ Game::Game() {
             windowHeight = 1080;
             break;
         case DEVELOPMENT:
-            windowWidth  = 1200;
-            windowHeight = 648;
+            windowWidth  = 800;
+            windowHeight = 460;
             break;
     }
     
@@ -49,46 +49,31 @@ Game::~Game() {
  *  Game Loop
  */
 void Game::begin() {
-    glClearColor (0.175f, 0.175f, 0.175f, 0.0f);
+    glClearColor (0.18f, 0.18f, 0.18f, 0.0f);
     
     // initialise actors
     for (int i = 0; i < worldActors.size(); i++)
         worldActors.at(i)->init();
     
-    while (windowAlive()) {
+    while (windowIsAlive()) {
         switch (state) {
-            case MENU:
-                glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-                
-                // render menu scene
+            case MENU || RUNNING || PAUSED:
+                glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
+
                 for (int i = 0; i < worldActors.size(); i++)
-                    worldActors.at(i)->update();
-                
-                glfwSwapBuffers(window);
-                break;
-            case RUNNING:
-                glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-                
-                // render actors
-                for (int i = 0; i < worldActors.size(); i++)
-                    worldActors.at(i)->update();
+                    worldActors.at(i)->update(state);
 
                 glfwSwapBuffers(window);
-                break;
-            case PAUSED:
-                
-                // pause menu
-                
-                glfwPollEvents();
-
                 break;
             case ENDED:
+                glfwTerminate();
                 break;
         }
     }
 }
 
 void Game::end() {
+    glfwSetWindowShouldClose(window, GL_TRUE);
     state = ENDED;
 }
 
@@ -143,6 +128,6 @@ int Game::initGLEW () {
     return 0;
 }
 
-bool Game::windowAlive() {
+bool Game::windowIsAlive() {
     return !glfwWindowShouldClose(window);
 }
