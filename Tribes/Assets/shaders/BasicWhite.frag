@@ -1,12 +1,5 @@
 #version 330 core
 
-out vec4 color;
-
-// solid black
-void main (void) {
-    color = vec4(0.53, 0.34, 0.2, 1.0f);// * vec4(FRAG_position, 1.0f);
-}
-
 /**
  *  Nice Colours:
  *      - r: 0.52 g: 0.64 b: 0.49
@@ -15,3 +8,14 @@ void main (void) {
  *      - r: 0.8 g: 0.69 b: 0.57
  *      r: 0.82 g: 0.54 b: 0.15
  */
+in vec3  FRAG_position;
+in float FRAG_index;
+
+out vec4 color;
+
+void main (void) {
+    //if (FRAG_index > 75) color = vec4(0.53, 0.34, 0.2, 1.0f);
+    //else color = vec4(0.67, 0.61, 0.71, 1.0f);
+    
+    color = vec4(0.62, 0.34, 0.15, 1.0);
+}

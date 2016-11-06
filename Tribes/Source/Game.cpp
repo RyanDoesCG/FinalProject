@@ -11,9 +11,6 @@
 #include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/HUD.hpp"
 
-#include "../Headers/Engine/KeyboardInputComponent.hpp"
-#include "../Headers/Engine/MouseInputComponent.hpp"
-
 // Deterines window size/debug hud
 #define BUILD_MODE CINEMATIC
 
@@ -38,13 +35,10 @@ Game::Game() {
     state = RUNNING;
     
     // give me an actor
-    worldActors.insert(std::pair<actorID, Actor*>(0, new Player()));
+    worldActors.insert(std::pair<actorID, Actor*>(0, new Player(window, this)));
     worldActors.insert(std::pair<actorID, Actor*>(1, new Planet()));
-    worldActors.insert(std::pair<actorID, Actor*>(2, new HUD()));
+    worldActors.insert(std::pair<actorID, Actor*>(2, new HUD(window, this)));
     
-    
-    worldActors.at(0)->addComponent(new MouseInputComponent(window, this));
-    worldActors.at(0)->addComponent(new KeyboardInputComponent(window, this));
 }
 
 Game::~Game() {
@@ -85,7 +79,8 @@ void Game::begin() {
                 
                 // pause menu
                 
-                glfwWaitEvents();
+                glfwPollEvents();
+
                 break;
             case ENDED:
                 break;

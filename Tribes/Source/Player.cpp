@@ -7,10 +7,12 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Player.hpp"
-#include "../Headers/Engine/TextRenderingComponent.hpp"
 
-Player::Player () {
 
+
+Player::Player (GLFWwindow* window, Game* game) {
+    mouse = (MouseInputComponent*)addComponent(new MouseInputComponent(window, game));
+    keyboard = (KeyboardInputComponent*)addComponent(new KeyboardInputComponent(window, game));
 }
 
 Player::~Player () {
@@ -19,11 +21,11 @@ Player::~Player () {
 
 void Player::init () {
     std::cout << "Player Online" << std::endl;
-    
-    addComponent(new TextRenderingComponent);
 
+ //   TextRenderingComponent = addComponent(new TextRenderingComponent());
 }
 
 void Player::update() {
+
     Actor::update();
 }

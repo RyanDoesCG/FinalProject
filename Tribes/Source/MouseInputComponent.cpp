@@ -73,6 +73,14 @@ void MouseInputComponent::update() {
     }
 }
 
+float MouseInputComponent::getMouseX() {
+    return mouseX;
+}
+
+float MouseInputComponent::getMouseY() {
+    return mouseY;
+}
+
 void mouseActionCallback (GLFWwindow* window, int button, int action, int mods) {
     mouseEvents[button] = action;
 }

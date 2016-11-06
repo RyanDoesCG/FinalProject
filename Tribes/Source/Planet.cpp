@@ -7,9 +7,8 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Planet.hpp"
+#include "../Headers/Engine/Biome.hpp"
 
-#include "../Headers/Engine/MeshComponent.hpp"
-#include "../Headers/Engine/ShaderComponent.hpp"
 
 glm::vec3 getMidPoint (glm::vec3 a, glm::vec3 b) {
     return glm::vec3(
@@ -20,7 +19,7 @@ glm::vec3 getMidPoint (glm::vec3 a, glm::vec3 b) {
 }
 
 Planet::Planet  () {
-
+    
 }
 
 Planet::~Planet () {
@@ -28,79 +27,61 @@ Planet::~Planet () {
 }
 
 void Planet::init() {
-    
     vertices = {
-        -0.5, 0, 0, -0.25, 0.25, 0, -0.25, 0, 0.25,
-        -0.25, 0, 0.25, 0, 0, 0.5, 0, 0.25, 0.25,
-        -0.25, 0.25, 0, -0.25, 0, 0.25, 0, 0.25, 0.25,
-        0, 0.5, 0, -0.25, 0.25, 0, 0, 0.25, 0.25,
-        -0.5, 0, 0, -0.25, 0, 0.25, -0.25, -0.25, 0,
-        -0.25, -0.25, 0, 0, -0.5, 0, 0, -0.25, 0.25,
-        -0.25, 0, 0.25, -0.25, -0.25, 0, 0, -0.25, 0.25,
-        0, 0, 0.5, -0.25, 0, 0.25, 0, -0.25, 0.25,
-        0.5, 0, 0, 0.25, 0.25, 0, 0.25, 0, 0.25,
-        0.25, 0, 0.25, 0, 0, 0.5, 0, 0.25, 0.25,
-        0.25, 0.25, 0, 0.25, 0, 0.25, 0, 0.25, 0.25,
-        0, 0.5, 0, 0.25, 0.25, 0, 0, 0.25, 0.25,
-        0, -0.5, 0, 0, -0.25, 0.25, 0.25, -0.25, 0,
-        0.25, -0.25, 0, 0.5, 0, 0, 0.25, 0, 0.25,
-        0, -0.25, 0.25, 0.25, -0.25, 0, 0.25, 0, 0.25,
-        0, 0, 0.5, 0, -0.25, 0.25, 0.25, 0, 0.25,
-        -0.5, 0, 0, -0.25, 0.25, 0, -0.25, 0, -0.25,
-        -0.25, 0, -0.25, 0, 0, -0.5, 0, 0.25, -0.25,
-        -0.25, 0.25, 0, -0.25, 0, -0.25, 0, 0.25, -0.25,
-        0, 0.5, 0, -0.25, 0.25, 0, 0, 0.25, -0.25,
-        -0.5, 0, 0, -0.25, -0.25, 0, -0.25, 0, -0.25,
-        -0.25, 0, -0.25, 0, 0, -0.5, 0, -0.25, -0.25,
-        -0.25, -0.25, 0, -0.25, 0, -0.25, 0, -0.25, -0.25,
-        0, -0.5, 0, -0.25, -0.25, 0, 0, -0.25, -0.25,
-        0, 0.5, 0, 0, 0.25, -0.25, 0.25, 0.25, 0,
-        0.25, 0.25, 0, 0.5, 0, 0, 0.25, 0, -0.25,
-        0, 0.25, -0.25, 0.25, 0.25, 0, 0.25, 0, -0.25,
-        0, 0, -0.5, 0, 0.25, -0.25, 0.25, 0, -0.25,
-        0, 0, -0.5, 0.25, 0, -0.25, 0, -0.25, -0.25, 
-        0, -0.25, -0.25, 0, -0.5, 0, 0.25, -0.25, 0, 
-        0.25, 0, -0.25, 0, -0.25, -0.25, 0.25, -0.25, 0, 
-        0.5, 0, 0, 0.25, 0, -0.25, 0.25, -0.25, 0,
+        -0.5, 0, 0, -0.25, 0.25, 0, -0.25, 0, 0.25, -0.25, 0, 0.25, 0, 0, 0.5, 0, 0.25, 0.25,
+        -0.25, 0.25, 0, -0.25, 0, 0.25, 0, 0.25, 0.25, 0, 0.5, 0, -0.25, 0.25, 0, 0, 0.25, 0.25,
+        -0.5, 0, 0, -0.25, 0, 0.25, -0.25, -0.25, 0, -0.25, -0.25, 0, 0, -0.5, 0, 0, -0.25, 0.25,
+        -0.25, 0, 0.25, -0.25, -0.25, 0, 0, -0.25, 0.25, 0, 0, 0.5, -0.25, 0, 0.25, 0, -0.25, 0.25,
+        0.5, 0, 0, 0.25, 0.25, 0, 0.25, 0, 0.25, 0.25, 0, 0.25, 0, 0, 0.5, 0, 0.25, 0.25,
+        0.25, 0.25, 0, 0.25, 0, 0.25, 0, 0.25, 0.25, 0, 0.5, 0, 0.25, 0.25, 0, 0, 0.25, 0.25,
+        0, -0.5, 0, 0, -0.25, 0.25, 0.25, -0.25, 0, 0.25, -0.25, 0, 0.5, 0, 0, 0.25, 0, 0.25,
+        0, -0.25, 0.25, 0.25, -0.25, 0, 0.25, 0, 0.25, 0, 0, 0.5, 0, -0.25, 0.25, 0.25, 0, 0.25,
+        -0.5, 0, 0, -0.25, 0.25, 0, -0.25, 0, -0.25, -0.25, 0, -0.25, 0, 0, -0.5, 0, 0.25, -0.25,
+        -0.25, 0.25, 0, -0.25, 0, -0.25, 0, 0.25, -0.25, 0, 0.5, 0, -0.25, 0.25, 0, 0, 0.25, -0.25,
+        -0.5, 0, 0, -0.25, -0.25, 0, -0.25, 0, -0.25, -0.25, 0, -0.25, 0, 0, -0.5, 0, -0.25, -0.25,
+        -0.25, -0.25, 0, -0.25, 0, -0.25, 0, -0.25, -0.25, 0, -0.5, 0, -0.25, -0.25, 0, 0, -0.25, -0.25,
+        0, 0.5, 0, 0, 0.25, -0.25, 0.25, 0.25, 0, 0.25, 0.25, 0, 0.5, 0, 0, 0.25, 0, -0.25,
+        0, 0.25, -0.25, 0.25, 0.25, 0, 0.25, 0, -0.25, 0, 0, -0.5, 0, 0.25, -0.25, 0.25, 0, -0.25,
+        0, 0, -0.5, 0.25, 0, -0.25, 0, -0.25, -0.25, 0, -0.25, -0.25, 0, -0.5, 0, 0.25, -0.25, 0,
+        0.25, 0, -0.25, 0, -0.25, -0.25, 0.25, -0.25, 0, 0.5, 0, 0, 0.25, 0, -0.25, 0.25, -0.25, 0,
     };
 
     breakdownMesh();
     breakdownMesh();
     breakdownMesh();
     breakdownMesh();
-    
     normaliseMesh();
+    allocateBiomes();
     
-    addComponent(new ShaderComponent("BasicBlack"));
-    addComponent(new ShaderComponent("BasicWhite"));
-    addComponent(new MeshComponent(&vertices));
+    // make graphics components
+    lineShader = (ShaderComponent*)addComponent(new ShaderComponent("BasicBlack"));
+    fillShader = (ShaderComponent*)addComponent(new ShaderComponent("BasicWhite"));
+    mesh       = (MeshComponent*)addComponent(new MeshComponent(&vertices));
     
-//    modelMatrix = glm::rotate (modelMatrix, (GLfloat)0.2, glm::vec3(1.0f, 0.0f, 0.0f)); // kick/tilt back
+    // move model to the left and shrink
     modelMatrix = glm::translate(modelMatrix, glm::vec3(0.4, 0, 0));
     modelMatrix = glm::scale(modelMatrix, glm::vec3(0.4, 0.6, 0.6));
     
-    // C++ / OpenGL Engineers: "How can we make the code look reeaalllyyy gross?"
-    glUniformMatrix4fv (glGetUniformLocation(dynamic_cast<ShaderComponent*>(components.at(0))->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-    glUniformMatrix4fv (glGetUniformLocation(dynamic_cast<ShaderComponent*>(components.at(1))->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-
+    initChildren();
 }
 
 void Planet::update() {
-    dynamic_cast<ShaderComponent*>(components.at(0))->update();
-    modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.002, glm::vec3(0.0f, 1.0f, 0.0f));
-    glUniformMatrix4fv(glGetUniformLocation(dynamic_cast<ShaderComponent*>(components.at(0))->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-    
+    // rotate
+    modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.001, glm::vec3(0.0f, 1.0f, 0.0f));
+
+    // draw outline
+    lineShader->update();
+    glUniformMatrix4fv(glGetUniformLocation(lineShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    components.at(2)->update();
+    mesh->update();
     
-    dynamic_cast<ShaderComponent*>(components.at(1))->update();
-    modelMatrix = glm::rotate(modelMatrix, (GLfloat)0.002, glm::vec3(0.0f, 1.0f, 0.0f));
-    glUniformMatrix4fv(glGetUniformLocation(dynamic_cast<ShaderComponent*>(components.at(1))->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-    
+    // draw fill
+    fillShader->update();
+    glUniformMatrix4fv(glGetUniformLocation(fillShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    components.at(2)->update();
+    mesh->update();
     
-        // Actor::update();
+    updateChildren();
 }
 
 //
@@ -117,21 +98,9 @@ void Planet::breakdownMesh () {
         glm::vec3 a = glm::vec3(vertices.at(i+0), vertices.at(i+1), vertices.at(i+2));
         glm::vec3 b = glm::vec3(vertices.at(i+3), vertices.at(i+4), vertices.at(i+5));
         glm::vec3 c = glm::vec3(vertices.at(i+6), vertices.at(i+7), vertices.at(i+8));
-        
-        glm::vec3 d = getMidPoint (
-            a,
-            b
-        );
-        
-        glm::vec3 e = getMidPoint (
-            a,
-            c
-        );
-        
-        glm::vec3 f = getMidPoint (
-            b,
-            c
-        );
+        glm::vec3 d = getMidPoint (a, b);
+        glm::vec3 e = getMidPoint (a, c);
+        glm::vec3 f = getMidPoint (b, c);
         
         // insert in clockwise order
         newVerts.push_back(a.x); newVerts.push_back(a.y); newVerts.push_back(a.z);
@@ -212,4 +181,15 @@ void Planet::normaliseMesh () {
     }
 
     std::cout << "\nNormalisation Timer: " << glfwGetTime() - start << std::endl << std::endl;
+}
+
+void Planet::allocateBiomes() {
+    biomeCount = 8;
+    int pointsPerBiome = vertices.size() / biomeCount;
+    
+    for (int i = 0; i < biomeCount; i++) {
+        std::vector<GLfloat> territory;
+        //for (int j = 0; j < pointsPerBiome; j++) { territory.push_back(vertices.at(rand() % vertices.size())); }
+        addChild(new Biome(&territory));
+    }
 }

@@ -13,6 +13,9 @@
 #include <iostream>
 #include <map>
 
+typedef int ComponentID;
+typedef int ChildID;
+
 /**
  *  Actor Class
  *
@@ -24,22 +27,42 @@ public:
 
     // replace these for loops with something prettier maybe
     virtual void init   () {
-        for (int i = 0; i < components.size(); i++)
-            components.at(i)->init();
+        initComponents();
+        initChildren();
     }
     
     virtual void update () {
-        for (int i = 0; i < components.size(); i++)
-            components.at(i)->update();
+        updateComponents();
+        updateChildren();
     }
     
-    void addComponent (ActorComponent* comp) {
-        components.insert(std::pair<int, ActorComponent*>(components.size(), comp));
+    ActorComponent* addComponent (ActorComponent* comp) {
+        components.insert(std::pair<ComponentID, ActorComponent*>(components.size(), comp));
         comp->setOwner(this);
+        return comp;
+    }
+    
+    Actor* addChild (Actor* child) {
+        children.insert(std::pair<ChildID, Actor*>(children.size(), child));
+        child->setParent(this);
+        return child;
+    }
+    
+    void setParent (Actor* parent) {
+        this->parent = parent;
     }
     
 protected:
-    std::map<int, ActorComponent*> components;
+    void initComponents   () { for (int i = 0; i < components.size(); i++) components.at(i)->init(); }
+    void initChildren     () { for (int i = 0; i < children.size(); i++) children.at(i)->init(); }
+    
+    void updateComponents () { for (int i = 0; i < components.size(); i++) components.at(i)->update(); }
+    void updateChildren   () { for (int i = 0; i < children.size(); i++) children.at(i)->update(); }
+    
+    std::map<ComponentID, ActorComponent*> components;
+    std::map<ChildID, Actor*> children;
+    
+    Actor* parent;
     
 };
 

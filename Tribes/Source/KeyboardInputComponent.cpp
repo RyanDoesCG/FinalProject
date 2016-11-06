@@ -57,6 +57,8 @@ void KeyboardInputComponent::update () {
                 case GLFW_KEY_SPACE:
                     break;
                 case GLFW_KEY_ESCAPE:
+                    game->pause();
+                    activeKeys[i] = false;
                     break;
             }
         }

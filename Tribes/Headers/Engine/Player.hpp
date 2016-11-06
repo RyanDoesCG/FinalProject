@@ -10,17 +10,25 @@
 #define Player_hpp
 
 #include "Actor.hpp"
+#include "TextRenderingComponent.hpp"
+#include "KeyboardInputComponent.hpp"
+#include "MouseInputComponent.hpp"
+
+#include "Game.hpp"
+
 #include <iostream>
 
 class Player : public Actor {
 public:
-     Player  ();
+     Player (GLFWwindow* window, Game* game);
     ~Player ();
 
     virtual void init() override;
     virtual void update() override;
     
 private:
+    MouseInputComponent* mouse;
+    KeyboardInputComponent* keyboard;
     
 };
 

@@ -10,19 +10,26 @@
 #define HUD_hpp
 
 #include "Actor.hpp"
-#include "../GLEW/glew.h"
+#include "Game.hpp"
+#include "TextRenderingComponent.hpp"
+#include "KeyboardInputComponent.hpp"
+#include "MouseInputComponent.hpp"
 #include <iostream>
 #include <vector>
 
 class HUD : public Actor {
 public:
-     HUD  ();
+     HUD (GLFWwindow* window, Game* game);
     ~HUD ();
+    
     virtual void init() override;
     virtual void update() override;
     
 private:
-    std::vector<GLfloat> mainPane;
+    MouseInputComponent* mouse;
+    KeyboardInputComponent* keyboard;
+    TextRenderingComponent* textRenderer;
+    
 };
 
 #endif /* HUD_hpp */

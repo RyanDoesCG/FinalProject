@@ -20,6 +20,9 @@ public:
     virtual void init() override;
     virtual void update() override;
     
+    float getMouseX ();
+    float getMouseY ();
+    
 private:
     GLFWwindow* window;
     Game* game;

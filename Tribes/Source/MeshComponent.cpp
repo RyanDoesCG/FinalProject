@@ -12,9 +12,17 @@ MeshComponent::MeshComponent (std::vector<GLfloat>* v) {
     // store vectors
     vertices = v;
     
-    // convert vector to a standard array
-    GLfloat vert[vertices->size()];
-    for (int i = 0; i < vertices->size(); i++) vert[i] = vertices->at(i);
+    // convert vector to a standard array with enough
+    // space for each 3 points and one index value per
+    // three points
+    GLfloat vert[vertices->size() + (vertices->size()/3)];
+    
+    for (int i = 0; i < vertices->size(); i += 3) {
+        vert[i+0] = vertices->at(i+0);  // x
+        vert[i+1] = vertices->at(i+1);  // y
+        vert[i+2] = vertices->at(i+2);  // z
+        vert[i+3] = i;                  // index
+    }
     
     // Set up Buffers
     glGenVertexArrays (1, &VAO);
@@ -30,6 +38,8 @@ MeshComponent::MeshComponent (std::vector<GLfloat>* v) {
         // position (x, y, z)
         glVertexAttribPointer     (0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
         glEnableVertexAttribArray (0);
+        glVertexAttribPointer     (1, 1, GL_FLOAT, GL_FALSE, 1 * sizeof(GLfloat), (GLvoid*)0);
+        glEnableVertexAttribArray (1);
     
     // unbind vertex array object
     glBindVertexArray(0);
