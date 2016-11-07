@@ -12,7 +12,7 @@
 #include "../Headers/Engine/HUD.hpp"
 
 // Deterines window size/debug hud
-#define BUILD_MODE CINEMATIC
+#define BUILD_MODE 0
 
 Game::Game() {
     srand(generateSeed());

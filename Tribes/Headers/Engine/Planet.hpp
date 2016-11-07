@@ -32,15 +32,22 @@ public:
 private:
     void breakdownMesh ();  // morph octohedron into sphere
     void normaliseMesh ();  // generate terrain
+    void distortMesh   ();
+    
     void allocateBiomes();
     
     int biomeCount;
     
     std::vector<GLfloat> vertices;
     
-    ShaderComponent* fillShader;
-    ShaderComponent* lineShader;
-    MeshComponent* mesh;
+    // water
+    ShaderComponent* waterShader;
+    MeshComponent* waterMesh;
+    
+    // land
+    ShaderComponent* landFillShader;
+    ShaderComponent* landLineShader;
+    MeshComponent* landMesh;
     
     GLfloat spin;
     

@@ -18,9 +18,8 @@ void main (void) {
     //else color = vec4(0.67, 0.61, 0.71, 1.0f);
     
     // procedural colour from game
-    color = vec4(proceduralColour.r, proceduralColour.g, proceduralColour.b, 1.0);
+    //color = vec4(proceduralColour.r, proceduralColour.g, proceduralColour.b, 1.0);
 
     // hard coded color from me
-    //color = vec4(0.29, 0.07, 0.13, 1.0);
+    color = vec4(0.32, 0.2, 0.04, 1.0);
 }
-

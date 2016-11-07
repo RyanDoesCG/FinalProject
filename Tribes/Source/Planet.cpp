@@ -48,21 +48,29 @@ void Planet::init() {
 
     breakdownMesh();
     breakdownMesh();
-    breakdownMesh();
-    breakdownMesh();
-    normaliseMesh();
-    allocateBiomes();
     
-    // make graphics components
-    lineShader = (ShaderComponent*)addComponent(new ShaderComponent("BasicBlack"));
-    fillShader = (ShaderComponent*)addComponent(new ShaderComponent("BasicWhite"));
-    mesh       = (MeshComponent*)addComponent(new MeshComponent(&vertices));
+    normaliseMesh();
+
+    // make water
+    waterShader = (ShaderComponent*)addComponent(new ShaderComponent("water"));
+    waterMesh   = (MeshComponent*)addComponent(new MeshComponent(&vertices));
+    
+    breakdownMesh();
+    breakdownMesh();
+    
+    distortMesh();
+    
+    // make land graphics
+    landLineShader = (ShaderComponent*)addComponent(new ShaderComponent("BasicBlack"));
+    landFillShader = (ShaderComponent*)addComponent(new ShaderComponent("BasicWhite"));
+    landMesh       = (MeshComponent*)addComponent(new MeshComponent(&vertices));
+
     
     spin = 0.00085;
     
     // move model to the left and shrink
     modelMatrix = glm::translate(modelMatrix, glm::vec3(0.4, 0, 0));
-    modelMatrix = glm::scale(modelMatrix, glm::vec3(0.4, 0.6, 0.6));
+    modelMatrix = glm::scale(modelMatrix, glm::vec3(0.5, 0.7, 0.7));
     
     initChildren();
     
@@ -75,24 +83,32 @@ void Planet::init() {
     
     std::cout << "\n\nCOLOR: " << color.r << ", " << color.g << ", " << color.b << "\n\n";
     
-    glUniform3f(glGetUniformLocation(fillShader->getProgramID(), "proceduralColour"), color.r, color.g, color.b);
+    
+    glUniform3f(glGetUniformLocation(landFillShader->getProgramID(), "proceduralColour"), color.r, color.g, color.b);
 }
 
 void Planet::update(GameState state) {
     // rotate
     modelMatrix = glm::rotate(modelMatrix, spin, glm::vec3(0.0f, 1.0f, 0.0f));
-
-    // draw outline
-    lineShader->update();
-    glUniformMatrix4fv(glGetUniformLocation(lineShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    mesh->update();
     
-    // draw fill
-    fillShader->update();
-    glUniformMatrix4fv(glGetUniformLocation(fillShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    // draw water
+    waterShader->update();
+    glUniformMatrix4fv(glGetUniformLocation(waterShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glUniform1f(glGetUniformLocation(waterShader->getProgramID(), "wave"), (float)(rand() % 2) / 1000);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    mesh->update();
+    waterMesh->update();
+
+    // draw land outline
+    landLineShader->update();
+    glUniformMatrix4fv(glGetUniformLocation(landLineShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    landMesh->update();
+    
+    // draw land fill
+    landFillShader->update();
+    glUniformMatrix4fv(glGetUniformLocation(landFillShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    landMesh->update();
     
     updateChildren(state);
 }
@@ -140,7 +156,7 @@ void Planet::breakdownMesh () {
 }
 
 //
-//  O = N^2 | FIX THIS (fixed with !normalised guard)
+//  O = N^2 | FIX THIS (semi-fixed with !normalised guard, now O= NlogN?)
 //
 //  Without (!normalised) condition guard:  4.8 seconds
 //  With condition guard:                   0.8 seconds
@@ -150,36 +166,40 @@ void Planet::breakdownMesh () {
 //
 void Planet::normaliseMesh () {
     float start = glfwGetTime();
+    int  noPoints = vertices.size() / 3;
+    bool normalised[noPoints];
     
-    bool normalised[vertices.size() / 3];
-    for (int i = 0; i < vertices.size() / 3; i ++) normalised[i] = false;
+    for (int i = 0; i < noPoints; i ++)
+        normalised[i] = false;
+    
     for (int i = 0; i < vertices.size(); i += 3) {
         if (!normalised[i/3]) {
-            float length = 1.0 + (float)(rand() % 10) / 100;
+            float length = 0.9455;
         
-            glm::vec3 a = glm::vec3(0.0, 0.0, 0.0); // center
-            glm::vec3 b = glm::vec3(vertices.at(i + 0), vertices.at(i + 1), vertices.at(i + 2));
+            glm::vec3 a = glm::vec3(0.0, 0.0, 0.0);                                         // center
+            glm::vec3 b = glm::vec3(vertices.at(i+0), vertices.at(i+1), vertices.at(i+2));  // point to normalise
         
-            // get the distance between a and b along the x and y axes
+            // get the distance between the center of the structure
+            // and the point on the x, y and z axes.
             GLfloat distX = b.x - a.x;
             GLfloat distY = b.y - a.y;
             GLfloat distZ = b.z - a.z;
         
+            // right now, sqrt(dx^2 + dy^2 + dz^2) == the distance between a and b
             GLfloat a_b = sqrt(distX * distX + distY * distY + distZ * distZ);
         
-            // right now, sqrt(dx^2 + dy^2) = distance(a,b).
             // we want to modify them so that sqrt(dx^2 + dy^2) = the given length.
             distX = distX * length / a_b;
             distY = distY * length / a_b;
             distZ = distZ * length / a_b;
         
-                // apply new length to this vector and any that share its values
+            // apply new length to this vertex
             vertices.at(i + 0) = (a.x + distX);
             vertices.at(i + 1) = (a.y + distY);
             vertices.at(i + 2) = (a.z + distZ);
-        
             normalised[i/3] = true;
         
+            // check this vertex is repeated and apply the new length to that
             for (int j = i; j < vertices.size(); j+=3) {
                 glm::vec3 c = glm::vec3(vertices.at(j + 0), vertices.at(j + 1), vertices.at(j + 2));
             
@@ -195,6 +215,60 @@ void Planet::normaliseMesh () {
 
     std::cout << "\nNormalisation Timer: " << glfwGetTime() - start << std::endl << std::endl;
 }
+
+void Planet::distortMesh () {
+    float start = glfwGetTime();
+    int  noPoints = vertices.size() / 3;
+    bool normalised[noPoints];
+    
+    for (int i = 0; i < noPoints; i ++)
+        normalised[i] = false;
+    
+    for (int i = 0; i < vertices.size(); i += 3) {
+        if (!normalised[i/3]) {
+            srand(i);
+            float length = 0.9 + (float)(rand() % 10) / 100;
+            
+            glm::vec3 a = glm::vec3(0.0, 0.0, 0.0);                                         // center
+            glm::vec3 b = glm::vec3(vertices.at(i+0), vertices.at(i+1), vertices.at(i+2));  // point to normalise
+            
+            // get the distance between the center of the structure
+            // and the point on the x, y and z axes.
+            GLfloat distX = b.x - a.x;
+            GLfloat distY = b.y - a.y;
+            GLfloat distZ = b.z - a.z;
+            
+            // right now, sqrt(dx^2 + dy^2 + dz^2) == the distance between a and b
+            GLfloat a_b = sqrt(distX * distX + distY * distY + distZ * distZ);
+            
+            // we want to modify them so that sqrt(dx^2 + dy^2) = the given length.
+            distX = distX * length / a_b;
+            distY = distY * length / a_b;
+            distZ = distZ * length / a_b;
+            
+            // apply new length to this vertex
+            vertices.at(i + 0) = (a.x + distX);
+            vertices.at(i + 1) = (a.y + distY);
+            vertices.at(i + 2) = (a.z + distZ);
+            normalised[i/3] = true;
+            
+            // check this vertex is repeated and apply the new length to that
+            for (int j = i; j < vertices.size(); j+=3) {
+                glm::vec3 c = glm::vec3(vertices.at(j + 0), vertices.at(j + 1), vertices.at(j + 2));
+                
+                if (b == c) {
+                    vertices.at(j + 0) = (a.x + distX);
+                    vertices.at(j + 1) = (a.y + distY);
+                    vertices.at(j + 2) = (a.z + distZ);
+                    normalised[j/3] = true;
+                }
+            }
+        }
+    }
+    
+    std::cout << "\nDistortion Timer: " << glfwGetTime() - start << std::endl << std::endl;
+}
+
 
 void Planet::allocateBiomes() {
     biomeCount = 8;

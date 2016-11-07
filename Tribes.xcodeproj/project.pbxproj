@@ -18,8 +18,6 @@
 		624F49AF1DCBE7CE0065CE1A /* TextureComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A91DCBE7CE0065CE1A /* TextureComponent.cpp */; };
 		625F01E21DCE38BB005DB61D /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 625F01E01DCE38BB005DB61D /* HUD.cpp */; };
 		6294962A1DCE22A00001D77F /* IndexedMeshComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 629496291DCE22A00001D77F /* IndexedMeshComponent.cpp */; };
-		62983ECA1DCF6929009AD2AD /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62983EC81DCF6929009AD2AD /* Biome.cpp */; };
-		62983EF21DCF8639009AD2AD /* HUDElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62983EF01DCF8639009AD2AD /* HUDElement.cpp */; };
 		CE2697351DAEADE600F9833E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697281DAEADE600F9833E /* Game.cpp */; };
 		CE2697381DAEADE600F9833E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972B1DAEADE600F9833E /* main.cpp */; };
 		CE3852881D8C3DC5006A104C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
@@ -29,6 +27,8 @@
 		CED62A9F1D89A7BD00805C8E /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */; };
 		CED62ABC1D89AC6300805C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62ABB1D89AC6300805C8E /* Cocoa.framework */; };
 		CED62ABE1D89ACF900805C8E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62ABD1D89ACF900805C8E /* IOKit.framework */; };
+		CEF03D331DCFEBD500573027 /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEF03D311DCFEBD500573027 /* Biome.cpp */; };
+		CEF03D341DCFEBD500573027 /* HUDElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEF03D321DCFEBD500573027 /* HUDElement.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,8 +57,6 @@
 		624F49A91DCBE7CE0065CE1A /* TextureComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureComponent.cpp; path = Source/TextureComponent.cpp; sourceTree = "<group>"; };
 		625F01E01DCE38BB005DB61D /* HUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HUD.cpp; path = Source/HUD.cpp; sourceTree = "<group>"; };
 		629496291DCE22A00001D77F /* IndexedMeshComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IndexedMeshComponent.cpp; path = Source/IndexedMeshComponent.cpp; sourceTree = "<group>"; };
-		62983EC81DCF6929009AD2AD /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Biome.cpp; path = Source/Biome.cpp; sourceTree = "<group>"; };
-		62983EF01DCF8639009AD2AD /* HUDElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HUDElement.cpp; path = Source/HUDElement.cpp; sourceTree = "<group>"; };
 		CE1570A21D8C1CA1005F6DB0 /* tasks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tasks.txt; sourceTree = "<group>"; };
 		CE2697281DAEADE600F9833E /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Game.cpp; path = Source/Game.cpp; sourceTree = "<group>"; };
 		CE26972B1DAEADE600F9833E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = "<group>"; };
@@ -71,6 +69,8 @@
 		CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.dylib; path = ../../../../../../../Library/Frameworks/libglfw3.dylib; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		CEF03D311DCFEBD500573027 /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Biome.cpp; path = Source/Biome.cpp; sourceTree = "<group>"; };
+		CEF03D321DCFEBD500573027 /* HUDElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HUDElement.cpp; path = Source/HUDElement.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,22 +114,22 @@
 			children = (
 				45C117A31D78084800FE98A9 /* Assets */,
 				CEB56C781DAEAA1E00840F6B /* Headers */,
-				62983EC81DCF6929009AD2AD /* Biome.cpp */,
-				CE2697281DAEADE600F9833E /* Game.cpp */,
-				625F01E01DCE38BB005DB61D /* HUD.cpp */,
-				629496291DCE22A00001D77F /* IndexedMeshComponent.cpp */,
 				624F49A41DCBE7CE0065CE1A /* KeyboardInputComponent.cpp */,
-				62983EF01DCF8639009AD2AD /* HUDElement.cpp */,
-				CE26972B1DAEADE600F9833E /* main.cpp */,
-				624F49A71DCBE7CE0065CE1A /* MeshComponent.cpp */,
-				624F49A61DCBE7CE0065CE1A /* MouseInputComponent.cpp */,
-				6224E9471DCCA5DE0096E420 /* Planet.cpp */,
 				624F49A51DCBE7CE0065CE1A /* Player.cpp */,
-				624F49A81DCBE7CE0065CE1A /* ShaderComponent.cpp */,
+				625F01E01DCE38BB005DB61D /* HUD.cpp */,
+				6224E9471DCCA5DE0096E420 /* Planet.cpp */,
+				CEF03D311DCFEBD500573027 /* Biome.cpp */,
+				CEF03D321DCFEBD500573027 /* HUDElement.cpp */,
+				624F49A61DCBE7CE0065CE1A /* MouseInputComponent.cpp */,
+				624F49A71DCBE7CE0065CE1A /* MeshComponent.cpp */,
 				CE53A5B51DCD6C1F00393AD4 /* TextRenderingComponent.cpp */,
+				629496291DCE22A00001D77F /* IndexedMeshComponent.cpp */,
+				624F49A81DCBE7CE0065CE1A /* ShaderComponent.cpp */,
 				624F49A91DCBE7CE0065CE1A /* TextureComponent.cpp */,
-				CE1570A21D8C1CA1005F6DB0 /* tasks.txt */,
+				CE2697281DAEADE600F9833E /* Game.cpp */,
+				CE26972B1DAEADE600F9833E /* main.cpp */,
 				CE3EBCC61DB5257900CABC71 /* shapes.txt */,
+				CE1570A21D8C1CA1005F6DB0 /* tasks.txt */,
 			);
 			path = Tribes;
 			sourceTree = "<group>";
@@ -210,10 +210,10 @@
 				624F49AF1DCBE7CE0065CE1A /* TextureComponent.cpp in Sources */,
 				624F49AA1DCBE7CE0065CE1A /* KeyboardInputComponent.cpp in Sources */,
 				6224E9491DCCA5DE0096E420 /* Planet.cpp in Sources */,
-				62983EF21DCF8639009AD2AD /* HUDElement.cpp in Sources */,
+				CEF03D341DCFEBD500573027 /* HUDElement.cpp in Sources */,
 				CE2697351DAEADE600F9833E /* Game.cpp in Sources */,
 				CE2697381DAEADE600F9833E /* main.cpp in Sources */,
-				62983ECA1DCF6929009AD2AD /* Biome.cpp in Sources */,
+				CEF03D331DCFEBD500573027 /* Biome.cpp in Sources */,
 				624F49AD1DCBE7CE0065CE1A /* MeshComponent.cpp in Sources */,
 				624F49AE1DCBE7CE0065CE1A /* ShaderComponent.cpp in Sources */,
 				624F49AC1DCBE7CE0065CE1A /* MouseInputComponent.cpp in Sources */,
