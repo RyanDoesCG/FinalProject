@@ -34,19 +34,50 @@ void HUD::init () {
 }
 
 void HUD::update (GameState state) {
-    if (state == MENU) updateMenu();
-    else if (state == RUNNING) updateRunning();
-    else if (state == PAUSED) updatePause();
+    switch (state) {
+        case MAIN_MENU:
+            updateMainMenu ();
+            break;
+        case NEW_GAME:
+            updateNewGame ();
+            break;
+        case LOAD_GAME:
+            updateLoadGame ();
+            break;
+        case OPTIONS_SCREEN:
+            updateOptionsScreen ();
+            break;
+        case IN_GAME:
+            updateInGame();
+            break;
+        case IN_GAME_PAUSED:
+            updateInGamePaused();
+            break;
+        case GAME_OVER:
+            break;
+    }
     
     // render elements
     Actor::update(state);
 }
 
-void HUD::updateMenu () {
+void HUD::updateMainMenu () {
 
 }
 
-void HUD::updateRunning () {
+void HUD::updateNewGame () {
+    
+}
+
+void HUD::updateLoadGame () {
+    
+}
+
+void HUD::updateOptionsScreen () {
+    
+}
+
+void HUD::updateInGame () {
     // DEBUG UI
     textRenderer->renderTextAs2D("mouse x: " + std::to_string(mouse->getMouseX()), glm::vec2(10, 1040), glm::vec3(0.75, 0.75, 0.75), 0.32);
     textRenderer->renderTextAs2D("mouse y: " + std::to_string(mouse->getMouseY()), glm::vec2(10, 1005), glm::vec3(0.75, 0.75, 0.75), 0.32);
@@ -90,6 +121,6 @@ void HUD::updateRunning () {
     }
 }
 
-void HUD::updatePause () {
+void HUD::updateInGamePaused () {
     textRenderer->renderTextAs2D("PAUSED", glm::vec2(960, 540), glm::vec3(0.8, 0.1, 0.1), 0.5);
 }

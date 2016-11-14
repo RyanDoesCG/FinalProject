@@ -32,10 +32,12 @@ private:
     KeyboardInputComponent* keyboard;
     TextRenderingComponent* textRenderer;
     
-    void updateMenu ();
-    void updateRunning ();
-    void updatePause ();
-    
+    void updateMainMenu        ();
+    void updateNewGame         ();
+    void updateLoadGame        ();
+    void updateOptionsScreen   ();
+    void updateInGame          ();
+    void updateInGamePaused    ();
 };
 
 #endif /* HUD_hpp */

@@ -21,9 +21,9 @@ highp float rand(vec2 co) {
 
 void main (void) {
     gl_Position = modelMat * vec4(position.x, position.y, position.z, 1.0f);
-    
+
 /*
-    float len = 0.98 + wave + (0 - (rand(vec2(wave, position.z)) / 10));
+    float len = 0.94 + (rand(vec2(wave, position.z)) / 200);
     
     vec3 a = vec3(0.0, 0.0, 0.0);
     vec3 b = position;

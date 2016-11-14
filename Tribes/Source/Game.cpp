@@ -32,7 +32,7 @@ Game::Game() {
     // Initialise Subsystems
     if (initGLFW()) {std::cout << "GLFW initialisation failure. Exiting\n"; exit(1);}
     if (initGLEW()) {std::cout << "GLEW initialisation failure. Exiting\n"; exit(1);}
-    state = RUNNING;
+    state = IN_GAME;
     
     // give me an actor
     worldActors.insert(std::pair<actorID, Actor*>(0, new Player(window, this)));
@@ -49,37 +49,36 @@ Game::~Game() {
  *  Game Loop
  */
 void Game::begin() {
-    glClearColor (0.18f, 0.18f, 0.18f, 0.0f);
+    glClearColor (0.18f, 0.18f, 0.18f, 1.0f);
     
     // initialise actors
     for (int i = 0; i < worldActors.size(); i++)
         worldActors.at(i)->init();
     
     while (windowIsAlive()) {
-        switch (state) {
-            case MENU || RUNNING || PAUSED:
-                glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
-
-                for (int i = 0; i < worldActors.size(); i++)
-                    worldActors.at(i)->update(state);
-
-                glfwSwapBuffers(window);
-                break;
-            case ENDED:
-                glfwTerminate();
-                break;
+        if (state == GAME_OVER) {
+            glfwTerminate();
+        }
+        
+        else {
+            glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            
+            for (int i = 0; i < worldActors.size(); i++)
+                worldActors.at(i)->update(state);
+            
+            glfwSwapBuffers(window);
         }
     }
 }
 
 void Game::end() {
     glfwSetWindowShouldClose(window, GL_TRUE);
-    state = ENDED;
+    state = GAME_OVER;
 }
 
 void Game::pause() {
     // toggle pause on and off
-    (state == RUNNING) ? state = PAUSED : state = RUNNING;
+    (state == IN_GAME) ? state = IN_GAME_PAUSED : state = IN_GAME;
 }
 
 long Game::generateSeed() {

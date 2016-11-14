@@ -20,6 +20,7 @@ glm::vec3 getMidPoint (glm::vec3 a, glm::vec3 b) {
 
 Planet::Planet  () {
     
+    
 }
 
 Planet::~Planet () {
@@ -56,9 +57,10 @@ void Planet::init() {
     waterMesh   = (MeshComponent*)addComponent(new MeshComponent(&vertices));
     
     breakdownMesh();
-    breakdownMesh();
-    
     distortMesh();
+    breakdownMesh();
+    breakdownMesh();
+    breakdownMesh();
     
     // make land graphics
     landLineShader = (ShaderComponent*)addComponent(new ShaderComponent("BasicBlack"));
@@ -90,13 +92,6 @@ void Planet::init() {
 void Planet::update(GameState state) {
     // rotate
     modelMatrix = glm::rotate(modelMatrix, spin, glm::vec3(0.0f, 1.0f, 0.0f));
-    
-    // draw water
-    waterShader->update();
-    glUniformMatrix4fv(glGetUniformLocation(waterShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-    glUniform1f(glGetUniformLocation(waterShader->getProgramID(), "wave"), (float)(rand() % 2) / 1000);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    waterMesh->update();
 
     // draw land outline
     landLineShader->update();
@@ -109,13 +104,16 @@ void Planet::update(GameState state) {
     glUniformMatrix4fv(glGetUniformLocation(landFillShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     landMesh->update();
-    
+
+    // draw water
+    waterShader->update();
+    glUniformMatrix4fv(glGetUniformLocation(waterShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glUniform1f(glGetUniformLocation(waterShader->getProgramID(), "wave"), (float)(rand() % 2) / 1000);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    waterMesh->update();
     updateChildren(state);
 }
 
-//
-//  The day i get this right i will jump for joy and kiss the nearest person
-//
 void Planet::breakdownMesh () {
     std::vector<GLfloat> newVerts = {};
     int i;
