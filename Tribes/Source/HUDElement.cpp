@@ -7,6 +7,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/HUDElement.hpp"
+#include "../Headers/Engine/ShaderCache.hpp"
 
 HUDElement::HUDElement  (std::string t, glm::vec2 p) {
     selected = 0;
@@ -26,7 +27,7 @@ HUDElement::~HUDElement () {
 
 void HUDElement::init () {
     textRenderer = (TextRenderingComponent*)addComponent(new TextRenderingComponent());
-    shader = (ShaderComponent*)addComponent(new ShaderComponent("HUDPane"));
+    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("HUDPane"));
     mesh = (MeshComponent*)addComponent(new MeshComponent());
 }
 

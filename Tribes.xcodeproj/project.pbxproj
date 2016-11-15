@@ -57,11 +57,9 @@
 		624F49A91DCBE7CE0065CE1A /* TextureComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureComponent.cpp; path = Source/TextureComponent.cpp; sourceTree = "<group>"; };
 		625F01E01DCE38BB005DB61D /* HUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HUD.cpp; path = Source/HUD.cpp; sourceTree = "<group>"; };
 		629496291DCE22A00001D77F /* IndexedMeshComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IndexedMeshComponent.cpp; path = Source/IndexedMeshComponent.cpp; sourceTree = "<group>"; };
-		CE1570A21D8C1CA1005F6DB0 /* tasks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tasks.txt; sourceTree = "<group>"; };
 		CE2697281DAEADE600F9833E /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Game.cpp; path = Source/Game.cpp; sourceTree = "<group>"; };
 		CE26972B1DAEADE600F9833E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
-		CE3EBCC61DB5257900CABC71 /* shapes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shapes.txt; sourceTree = "<group>"; };
 		CE53A5B51DCD6C1F00393AD4 /* TextRenderingComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextRenderingComponent.cpp; path = Source/TextRenderingComponent.cpp; sourceTree = "<group>"; };
 		CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../../Library/Frameworks/libfreetype.dylib; sourceTree = "<group>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -128,8 +126,6 @@
 				624F49A91DCBE7CE0065CE1A /* TextureComponent.cpp */,
 				CE2697281DAEADE600F9833E /* Game.cpp */,
 				CE26972B1DAEADE600F9833E /* main.cpp */,
-				CE3EBCC61DB5257900CABC71 /* shapes.txt */,
-				CE1570A21D8C1CA1005F6DB0 /* tasks.txt */,
 			);
 			path = Tribes;
 			sourceTree = "<group>";

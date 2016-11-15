@@ -7,8 +7,9 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/TextRenderingComponent.hpp"
+#include "../Headers/Engine/ShaderCache.hpp"
 
-TextRenderingComponent::TextRenderingComponent (): textShader(ShaderComponent("Text")) {
+TextRenderingComponent::TextRenderingComponent (): textShader(ShaderCache::loadShaderComponent("Text")) {
     if (FT_Init_FreeType(&ft))
         std::cout << "ERROR: Could not init FreeType Library" << std::endl;
     
@@ -18,7 +19,7 @@ TextRenderingComponent::TextRenderingComponent (): textShader(ShaderComponent("T
     FT_Set_Pixel_Sizes(face, 0, 120);
     
     projection = glm::ortho(0.0f, 1920.0f, 0.0f, 1080.0f);
-    glUniformMatrix4fv(glGetUniformLocation(textShader.getProgramID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    glUniformMatrix4fv(glGetUniformLocation(textShader->getProgramID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     
     // construct character map
     charmap = std::map<GLchar, Character>();
@@ -85,7 +86,7 @@ TextRenderingComponent::~TextRenderingComponent () {
 
 void TextRenderingComponent::init () {
     
-    textShader.init();
+    textShader->init();
 }
 
 void TextRenderingComponent::update() {
@@ -93,9 +94,9 @@ void TextRenderingComponent::update() {
         DrawCall current = drawQueue.front();
         
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        textShader.update();
+        textShader->update();
         
-        glUniform3f(glGetUniformLocation(textShader.getProgramID(), "textColor"), current.col.r, current.col.g, current.col.b);
+        glUniform3f(glGetUniformLocation(textShader->getProgramID(), "textColor"), current.col.r, current.col.g, current.col.b);
         glActiveTexture(GL_TEXTURE0);
         glBindVertexArray(VAO);
         

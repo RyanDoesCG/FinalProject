@@ -51,15 +51,10 @@ void Planet::init() {
     breakdownMesh();
     
     normaliseMesh();
-
-    // make water
-    waterShader = (ShaderComponent*)addComponent(new ShaderComponent("water"));
-    waterMesh   = (MeshComponent*)addComponent(new MeshComponent(&vertices));
     
     breakdownMesh();
+
     distortMesh();
-    breakdownMesh();
-    breakdownMesh();
     breakdownMesh();
     
     // make land graphics
@@ -67,8 +62,15 @@ void Planet::init() {
     landFillShader = (ShaderComponent*)addComponent(new ShaderComponent("BasicWhite"));
     landMesh       = (MeshComponent*)addComponent(new MeshComponent(&vertices));
 
+    normaliseMesh();
+    breakdownMesh();
+    breakdownMesh();
     
-    spin = 0.00085;
+    // make water
+    waterShader = (ShaderComponent*)addComponent(new ShaderComponent("water"));
+    waterMesh   = (MeshComponent*)addComponent(new MeshComponent(&vertices));
+    
+    spin = 0.005;
     
     // move model to the left and shrink
     modelMatrix = glm::translate(modelMatrix, glm::vec3(0.4, 0, 0));
@@ -108,12 +110,15 @@ void Planet::update(GameState state) {
     // draw water
     waterShader->update();
     glUniformMatrix4fv(glGetUniformLocation(waterShader->getProgramID(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-    glUniform1f(glGetUniformLocation(waterShader->getProgramID(), "wave"), (float)(rand() % 2) / 1000);
+    glUniform1f(glGetUniformLocation(waterShader->getProgramID(), "wave"), time(NULL));
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     waterMesh->update();
     updateChildren(state);
 }
 
+//
+//  The day i get this right i will jump for joy and kiss the nearest person
+//
 void Planet::breakdownMesh () {
     std::vector<GLfloat> newVerts = {};
     int i;
@@ -225,7 +230,7 @@ void Planet::distortMesh () {
     for (int i = 0; i < vertices.size(); i += 3) {
         if (!normalised[i/3]) {
             srand(i);
-            float length = 0.9 + (float)(rand() % 10) / 100;
+            float length = 0.9 + sin((float)(rand() % 10) / 100;
             
             glm::vec3 a = glm::vec3(0.0, 0.0, 0.0);                                         // center
             glm::vec3 b = glm::vec3(vertices.at(i+0), vertices.at(i+1), vertices.at(i+2));  // point to normalise

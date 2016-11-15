@@ -18,6 +18,8 @@
 #include "MeshComponent.hpp"
 #include "ShaderComponent.hpp"
 
+#include "KeyboardInputComponent.hpp"
+
 #include <iostream>
 #include <vector>
 
@@ -55,6 +57,7 @@ private:
     glm::mat4 modelMatrix;
     glm::mat4 viewMatrix;
     glm::mat4 projectionMatrix;
+
 };
 
 #endif /* Planet_hpp */

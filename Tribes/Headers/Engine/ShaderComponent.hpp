@@ -22,6 +22,7 @@ public:
     virtual void update() override;
     
     GLuint getProgramID();
+    std::string getTitle(){return title;}
     
 private:
     GLuint programID;

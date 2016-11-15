@@ -6,23 +6,23 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "Shader.hpp"
+#include "ShaderComponent.hpp"
 #include <iostream>
 #include <vector>
 
 class ShaderCache {
 public:
-    static Shader* loadShader (std::string path) {
-        static std::vector<Shader*> cache = std::vector<Shader*>();
+    static ShaderComponent* loadShaderComponent (std::string path) {
+        static std::vector<ShaderComponent*> cache = std::vector<ShaderComponent*>();
         
         for (int i = 0; i < cache.size(); i++) {
-            if (cache.at(i)->getProgramTitle() == path) {
+            if (cache.at(i)->getTitle() == path) {
                 return cache.at(i);
             }
         }
         
         // shader not already in memory
-        cache.push_back(new Shader(path));
+        cache.push_back(new ShaderComponent(path));
         return cache.back();
     }
 };

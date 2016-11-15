@@ -57,7 +57,7 @@ private:
     
     std::queue<DrawCall> drawQueue;
     
-    ShaderComponent textShader;
+    ShaderComponent* textShader;
     std::map<GLchar, Character> charmap;
     glm::mat4 projection;
     

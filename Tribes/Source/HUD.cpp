@@ -14,10 +14,10 @@ HUD::HUD (GLFWwindow* window, Game* game) {
     keyboard = (KeyboardInputComponent*)addComponent(new KeyboardInputComponent(window, game));
     this->game = game;
     
-    addChild(new HUDElement("new game",  glm::vec2(16, 660)));
-    addChild(new HUDElement("load game", glm::vec2(16, 590)));
-    addChild(new HUDElement("options",   glm::vec2(16, 520)));
-    addChild(new HUDElement("quit",      glm::vec2(16, 450)));
+    addChild(new HUDElement("new game",  glm::vec2(32, 660)));
+    addChild(new HUDElement("load game", glm::vec2(32, 590)));
+    addChild(new HUDElement("options",   glm::vec2(32, 520)));
+    addChild(new HUDElement("quit",      glm::vec2(32, 450)));
 
 }
 
@@ -79,8 +79,8 @@ void HUD::updateOptionsScreen () {
 
 void HUD::updateInGame () {
     // DEBUG UI
-    textRenderer->renderTextAs2D("mouse x: " + std::to_string(mouse->getMouseX()), glm::vec2(10, 1040), glm::vec3(0.75, 0.75, 0.75), 0.32);
-    textRenderer->renderTextAs2D("mouse y: " + std::to_string(mouse->getMouseY()), glm::vec2(10, 1005), glm::vec3(0.75, 0.75, 0.75), 0.32);
+    //textRenderer->renderTextAs2D("mouse x: " + std::to_string(mouse->getMouseX()), glm::vec2(10, 1040), glm::vec3(0.75, 0.75, 0.75), 0.32);
+    //textRenderer->renderTextAs2D("mouse y: " + std::to_string(mouse->getMouseY()), glm::vec2(10, 1005), glm::vec3(0.75, 0.75, 0.75), 0.32);
     textRenderer->renderTextAs2D("pre-alpha", glm::vec2(10, 8), 0.24);
     
     // handle events
@@ -115,7 +115,7 @@ void HUD::updateInGame () {
                 break;
             case 3:
                 std::cout << "Exit\n";
-                game->end(); // breaks for fuck knows why when called here
+                game->end();
                 break;
         }
     }
