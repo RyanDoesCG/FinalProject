@@ -132,7 +132,7 @@ void Game::begin() {
                 testCamera->moveRight();
             }
             
-            //testCamera->idle(glfwGetTime());
+            testCamera->idle(glfwGetTime());
             testCamera->update();
             // draw
             testmesh.draw(testShader, testCamera);

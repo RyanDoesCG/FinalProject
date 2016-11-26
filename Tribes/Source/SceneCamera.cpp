@@ -23,48 +23,23 @@ SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
         100.0f
     );
     
-    /*
-    view = lookAt (
-        position,                  // position
-        position + direction,      // target
-        relativeUp                 // up
-    );
-    */
-    
-    view = glm::lookAt(position, target, relativeUp);
+    update();
 }
 
 SceneCamera::~SceneCamera () {
     
 }
 
-mat4 SceneCamera::getProjectionTransform () {
-    return projection;
-}
+mat4 SceneCamera::getProjectionTransform () { return projection; }
+mat4 SceneCamera::getViewTransform       () { return view; }
 
-mat4 SceneCamera::getViewTransform () {
-    return view;
-}
-
-void SceneCamera::moveLeft() {
-    position += normalize(cross(relativeFront, relativeUp)) * movementSpeed;
-}
-
-void SceneCamera::moveRight() {
-    position -= normalize(cross(relativeFront, relativeUp)) * movementSpeed;
-}
-
-void SceneCamera::moveForward() {
-    position += movementSpeed * relativeFront;
-
-}
-
-void SceneCamera::moveBackward() {
-    position -= movementSpeed * relativeFront;
-}
+void SceneCamera::moveLeft     () { position += normalize(cross(relativeFront, relativeUp)) * movementSpeed; }
+void SceneCamera::moveRight    () { position -= normalize(cross(relativeFront, relativeUp)) * movementSpeed; }
+void SceneCamera::moveForward  () { position += movementSpeed * relativeFront; }
+void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
 
 void SceneCamera::idle(double animationTimer) {
-    GLfloat radius = 10.0f;
+    GLfloat radius = 3.0f;
     position.x = sin(animationTimer) * radius;
     position.z = cos(animationTimer) * radius;
     
