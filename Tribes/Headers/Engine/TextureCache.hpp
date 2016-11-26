@@ -6,6 +6,9 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#ifndef TEXTURECACHE_HPP
+#define TEXTURECACHE_HPP
+
 #include "Texture.hpp"
 #include <iostream>
 #include <vector>
@@ -26,3 +29,5 @@ public:
         return cache.back();
     }
 };
+
+#endif

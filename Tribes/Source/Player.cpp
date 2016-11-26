@@ -8,8 +8,6 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Player.hpp"
 
-
-
 Player::Player (GLFWwindow* window, Game* game) {
     mouse = (MouseInputComponent*)addComponent(new MouseInputComponent(window, game));
     keyboard = (KeyboardInputComponent*)addComponent(new KeyboardInputComponent(window, game));

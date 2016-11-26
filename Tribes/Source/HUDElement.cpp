@@ -28,7 +28,6 @@ HUDElement::~HUDElement () {
 void HUDElement::init () {
     textRenderer = (TextRenderingComponent*)addComponent(new TextRenderingComponent());
     shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("HUDPane"));
-    mesh = (MeshComponent*)addComponent(new MeshComponent());
 }
 
 void HUDElement::update (GameState state) {

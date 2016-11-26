@@ -58,7 +58,7 @@ void HUD::update (GameState state) {
     }
     
     // render elements
-    Actor::update(state);
+    //Actor::update(state);
 }
 
 void HUD::updateMainMenu () {
@@ -81,7 +81,7 @@ void HUD::updateInGame () {
     // DEBUG UI
     //textRenderer->renderTextAs2D("mouse x: " + std::to_string(mouse->getMouseX()), glm::vec2(10, 1040), glm::vec3(0.75, 0.75, 0.75), 0.32);
     //textRenderer->renderTextAs2D("mouse y: " + std::to_string(mouse->getMouseY()), glm::vec2(10, 1005), glm::vec3(0.75, 0.75, 0.75), 0.32);
-    textRenderer->renderTextAs2D("pre-alpha", glm::vec2(10, 8), 0.24);
+    //textRenderer->renderTextAs2D("pre-alpha", glm::vec2(10, 8), 0.24);
     
     // handle events
     static int selected = 0;

@@ -8,11 +8,11 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Game.hpp"
 #include "../Headers/Engine/Player.hpp"
-#include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/HUD.hpp"
+#include "../Headers/Engine/SceneCamera.hpp"
 
 // Deterines window size/debug hud
-#define BUILD_MODE 1
+#define BUILD_MODE 0
 
 Game::Game() {
     srand(generateSeed());
@@ -34,11 +34,6 @@ Game::Game() {
     if (initGLEW()) {std::cout << "GLEW initialisation failure. Exiting\n"; exit(1);}
     state = IN_GAME;
     
-    // give me an actor
-    worldActors.insert(std::pair<actorID, Actor*>(0, new Player(window, this)));
-    worldActors.insert(std::pair<actorID, Actor*>(1, new Planet()));
-    worldActors.insert(std::pair<actorID, Actor*>(2, new HUD(window, this)));
-    
 }
 
 Game::~Game() {
@@ -49,22 +44,98 @@ Game::~Game() {
  *  Game Loop
  */
 void Game::begin() {
-    glClearColor (0.18f, 0.18f, 0.18f, 1.0f);
+    glClearColor (0.68f, 0.68f, 0.68f, 1.0f);
+    int gameTick = 0;
     
-    // initialise actors
-    for (int i = 0; i < worldActors.size(); i++)
-        worldActors.at(i)->init();
+    KeyboardInputComponent inp = KeyboardInputComponent(window, this);
+    inp.init();
+    
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    
+    std::vector<GLfloat> vertices = {
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+        
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        
+        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+    };
+
+    GLuint VAO;
+    GLuint VBO;
+    
+    Mesh testmesh = Mesh(vertices);
+
+
+    ShaderComponent*    testShader = new ShaderComponent("BasicBlack");
+    SceneCamera*        testCamera = new SceneCamera(windowWidth, windowHeight);
     
     while (windowIsAlive()) {
+        inp.update();
+        
         if (state == GAME_OVER) {
             glfwTerminate();
         }
         
         else {
             glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+            // DEBUG INPUT
+            if (inp.isKeyDown(GLFW_KEY_W) || inp.isKeyDown(GLFW_KEY_UP)) {
+                testCamera->moveForward();
+            }
             
-            for (int i = 0; i < worldActors.size(); i++)
-                worldActors.at(i)->update(state);
+            if (inp.isKeyDown(GLFW_KEY_S) || inp.isKeyDown(GLFW_KEY_DOWN)) {
+                testCamera->moveBackward();
+            }
+            
+            if (inp.isKeyDown(GLFW_KEY_A) || inp.isKeyDown(GLFW_KEY_LEFT)) {
+                testCamera->moveLeft();
+            }
+            
+            if (inp.isKeyDown(GLFW_KEY_D) || inp.isKeyDown(GLFW_KEY_RIGHT)) {
+                testCamera->moveRight();
+            }
+            
+            //testCamera->idle(glfwGetTime());
+            testCamera->update();
+            // draw
+            testmesh.draw(testShader, testCamera);
             
             glfwSwapBuffers(window);
         }

@@ -12,6 +12,7 @@
 #include "../GLEW/glew.h"
 #include "../GLFW/glfw3.h"
 
+#include "ModelComponent.hpp"
 #include "GameState.hpp"
 #include "Actor.hpp"
 #include <iostream>
@@ -55,6 +56,8 @@ private:
     // world seed
     long generateSeed();
     long seed;
+    
+
 
 };
 

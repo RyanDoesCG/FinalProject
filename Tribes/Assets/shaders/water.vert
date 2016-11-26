@@ -21,7 +21,7 @@ highp float rand(vec2 co) {
 
 void main (void) {
     gl_Position = modelMat * vec4(position.x, position.y, position.z, 1.0f);
-
+    /*
     float len = cos(wave) * 0.95;
     
     vec3 a = vec3(0.0, 0.0, 0.0);
@@ -37,12 +37,14 @@ void main (void) {
     distY = distY * len / a_b;
     distZ = distZ * len / a_b;
     
+
     gl_Position = modelMat * vec4 (
         a.x + distX,
         a.y + distY,
         a.z + distZ,
         1.0f
     );
+     */
     
     FRAG_position = position;
 }

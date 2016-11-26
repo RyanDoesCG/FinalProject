@@ -6,6 +6,9 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#ifndef SHADERCACHE_HPP
+#define SHADERCACHE_HPP
+
 #include "ShaderComponent.hpp"
 #include <iostream>
 #include <vector>
@@ -26,3 +29,5 @@ public:
         return cache.back();
     }
 };
+
+#endif

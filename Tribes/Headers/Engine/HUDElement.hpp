@@ -11,7 +11,6 @@
 
 #include "TextRenderingComponent.hpp"
 #include "ShaderComponent.hpp"
-#include "MeshComponent.hpp"
 #include "Actor.hpp"
 
 class HUDElement : public Actor {
@@ -34,8 +33,6 @@ class HUDElement : public Actor {
     
         TextRenderingComponent* textRenderer;
         ShaderComponent* shader;
-        MeshComponent* mesh;
-
 };
 
 #endif /* HUDElement_hpp */
