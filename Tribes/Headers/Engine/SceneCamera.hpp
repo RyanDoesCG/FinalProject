@@ -31,6 +31,7 @@ class SceneCamera: public Actor {
     
         mat4 getProjectionTransform ();
         mat4 getViewTransform       ();
+        vec3 getPosition            ();
     
         GLfloat movementSpeed;
         GLfloat sensitivity;
@@ -44,6 +45,7 @@ class SceneCamera: public Actor {
         vec3 relativeFront; // Where we are looking
         vec3 relativeRight; // right from the camera
         vec3 relativeUp;    // up from the camrea
+        vec3 worldUp;       // up in world space
 
         mat4 projection;    // Projection Matrix for Shaders
         mat4 view;          // View Matrix for Shaders

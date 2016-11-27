@@ -19,6 +19,7 @@ enum MouseEvent {
 };
 
 bool mouseEvents[MOUSE_EVENTS_MAX] = {};
+bool firstEvent = true;
 
 double lastX = 0;
 double lastY = 0;
@@ -128,7 +129,15 @@ void mouseScrollCallback (GLFWwindow* window, double xoffset, double yoffset) {
 }
 
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos) {
-    xoffset = lastX - xpos;
+    
+    // fix jump
+    if (firstEvent) {
+        lastX = xpos;
+        lastY = ypos;
+        firstEvent = false;
+    }
+    
+    xoffset = xpos - lastX;
     yoffset = lastY - ypos;
     
     lastX = xpos;

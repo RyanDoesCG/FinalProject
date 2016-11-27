@@ -57,7 +57,7 @@ void Game::begin() {
     Mesh lamp   = Mesh();
     Mesh object = Mesh();
     
-    lamp.position = glm::vec3(-0.75, -0.75, 0.75);
+    lamp.position = glm::vec3(-1, 0.5, 0.5);
     object.position = glm::vec3(0.75, 0.0, 0.0);
     
     lamp.scale = glm::vec3(0.5, 0.5, 0.5);
@@ -69,8 +69,7 @@ void Game::begin() {
     ShaderComponent* lampShader  = new ShaderComponent("lightSource");
     ShaderComponent* lightableShader = new ShaderComponent("litObject");
     
-    glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "lightColour"), 1, glm::value_ptr(lamp.color));
-    glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "lightPosition"), 1, glm::value_ptr(lamp.position));
+
     
     while (windowIsAlive()) {
         
@@ -81,6 +80,11 @@ void Game::begin() {
         else {
             glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+            vec3 viewPos = player.getView()->getPosition();
+            glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "viewPosition"), 1, glm::value_ptr(viewPos));
+            glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "lightPosition"), 1, glm::value_ptr(lamp.position));
+            glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "lightColour"), 1, glm::value_ptr(lamp.color));
+            
             player.update(state);
             
             lamp.testdraw(lampShader, player.getView());
