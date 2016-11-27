@@ -1,5 +1,5 @@
-#ifndef GAMESTATE_HPP
-#define GAMESTATE_HPP
+#ifndef GameState_hpp
+#define GameState_hpp
 
 enum GameState {
     MAIN_MENU,

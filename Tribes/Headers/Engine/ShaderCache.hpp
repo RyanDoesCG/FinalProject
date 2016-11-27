@@ -6,11 +6,10 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef SHADERCACHE_HPP
-#define SHADERCACHE_HPP
+#ifndef ShaderCache_hpp
+#define ShaderCache_hpp
 
 #include "ShaderComponent.hpp"
-#include <iostream>
 #include <vector>
 
 class ShaderCache {
@@ -20,11 +19,12 @@ public:
         
         for (int i = 0; i < cache.size(); i++) {
             if (cache.at(i)->getTitle() == path) {
+                // Shader in memory, return reference
                 return cache.at(i);
             }
         }
         
-        // shader not already in memory
+        // shader not in memory, make it
         cache.push_back(new ShaderComponent(path));
         return cache.back();
     }

@@ -12,13 +12,7 @@
 HUDElement::HUDElement  (std::string t, glm::vec2 p) {
     selected = 0;
     position = p;
-    text = t;
-    
-    box = {
-    //   x     y    z     x     y    z     x      y    z
-        -0.95, 0.9, 0.0, -0.25, 0.9, 0.0, -0.25, -0.9, 0.0, // TRIANGLE 1
-        -0.95, 0.9, 0.0, -0.95, -0.9, 0.0, -0.25, -0.9, 0,0// TRIANGLE 2
-    };
+    text     = t;
 }
 
 HUDElement::~HUDElement () {
@@ -30,7 +24,7 @@ void HUDElement::init () {
     shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("HUDPane"));
 }
 
-void HUDElement::update (GameState state) {
+void HUDElement::update (GameState state, SceneCamera* camera) {
     // send text render calls
     if (selected)
         textRenderer->renderTextAs2D(text, position, glm::vec3(0.94, 0.94, 0.94), 0.54);
@@ -42,7 +36,7 @@ void HUDElement::update (GameState state) {
     glUniform1i(glGetUniformLocation(shader->getProgramID(), "selected"), selected);
     
     // call super
-    Actor::update(state);
+    Actor::update(state, camera);
 }
 
 void HUDElement::select () { selected = 1; }

@@ -1,29 +1,29 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  ModelComponent.cpp
+ *  Model.cpp
  *  Tribes
  *
  *  Created by Ryan Needham on 24/11/2016.
  *    Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "../Headers/Engine/ModelComponent.hpp"
+#include "../Headers/Engine/Model.hpp"
 #include "../Headers/soil/SOIL.h"
 
 GLint TextureFromFile(const char* path, string directory);
 
-void ModelComponent::draw(ShaderComponent* shader, SceneCamera* camera) {
+void Model::draw(ShaderComponent* shader, SceneCamera* camera) {
     
 }
 
-void ModelComponent::loadModel(string path) {
+void Model::loadModel(string path) {
 
 }
 
-void ModelComponent::processNode (aiNode* node, const aiScene* scene) {\
+void Model::processNode (aiNode* node, const aiScene* scene) {\
 
 }
 
-Mesh ModelComponent::processMesh (aiMesh* mesh, const aiScene* scene) {
+MeshComponent Model::processMesh (aiMesh* mesh, const aiScene* scene) {
     static int processed = 0;
     processed++;
     cout << "Total Vertices: " << mesh->mNumVertices << endl;
@@ -35,10 +35,10 @@ Mesh ModelComponent::processMesh (aiMesh* mesh, const aiScene* scene) {
     
 
     
-    return Mesh(vertices, indices, textures);
+    return MeshComponent(vertices, indices, textures);
 }
 
-vector<Texture> ModelComponent::loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName) {
+vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName) {
     vector<Texture> textures;
 
     return textures;

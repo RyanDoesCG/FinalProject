@@ -23,7 +23,7 @@ void Player::init () {
 
 }
 
-void Player::update(GameState state) {
+void Player::update(GameState state, SceneCamera* camera) {
     // DEBUG SCENE NAVIGATION
     if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP))    camera->moveForward();
     if (keyboard->isKeyDown(GLFW_KEY_S) || keyboard->isKeyDown(GLFW_KEY_DOWN))  camera->moveBackward();
@@ -34,5 +34,5 @@ void Player::update(GameState state) {
     camera->pitch += mouse->getYoffset();
     camera->yaw   += mouse->getXoffset();
     
-    Actor::update(state);
+    Actor::update(state, camera);
 }

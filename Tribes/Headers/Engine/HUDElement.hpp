@@ -19,7 +19,7 @@ class HUDElement : public Actor {
         ~HUDElement ();
     
         virtual void init() override;
-        virtual void update(GameState state) override;
+        virtual void update(GameState state, SceneCamera* camera) override;
     
         void select   ();
         void unselect ();

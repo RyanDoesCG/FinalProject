@@ -19,19 +19,19 @@
 #include <iostream>
 
 class Player : public Actor {
-public:
-     Player (GLFWwindow* window, Game* game);
-    ~Player ();
+    public:
+        Player (GLFWwindow* window, Game* game);
+       ~Player ();
 
-    SceneCamera* getView () {return this->camera;}
+        SceneCamera* getView () {return this->camera;}
     
-    virtual void init() override;
-    virtual void update(GameState state) override;
+        virtual void init() override;
+        virtual void update(GameState state, SceneCamera* camera) override;
     
-private:
-    SceneCamera*            camera;
-    MouseInputComponent*    mouse;
-    KeyboardInputComponent* keyboard;
+    private:
+        SceneCamera*            camera;
+        MouseInputComponent*    mouse;
+        KeyboardInputComponent* keyboard;
 };
 
 #endif /* Player_hpp */

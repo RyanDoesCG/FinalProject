@@ -12,7 +12,7 @@
 #include "../GLEW/glew.h"
 #include "../GLFW/glfw3.h"
 
-#include "ModelComponent.hpp"
+#include "Model.hpp"
 #include "GameState.hpp"
 #include "Actor.hpp"
 #include <iostream>
@@ -22,44 +22,42 @@
 
 enum Build { CINEMATIC, DEVELOPMENT };
 
-/**
- *  Game Class
- *
- */
+    /**
+     *  Game Class
+     *
+     */
 class Game {
-public:
-     Game ();
-    ~Game ();
+    public:
+        Game ();
+       ~Game ();
 
-    void begin();
-    void pause();
-    void end();
+        void begin();
+        void pause();
+        void end();
 
-    inline long  getSeed  ();
+        inline long getSeed ();
     
-    bool windowIsAlive();
+        bool windowIsAlive();
     
-    int windowWidth;
-    int windowHeight;
+        int windowWidth;
+        int windowHeight;
     
-private:
-    typedef int actorID;
+    private:
+        typedef int actorID;
     
-    int initGLFW ();
-    int initGLEW ();
+        int initGLFW ();
+        int initGLEW ();
 
 
-    GLFWwindow* window;
-    GameState state;
+        GLFWwindow* window;
+        GameState state;
 
-    std::map<actorID, Actor*> worldActors;
+        std::map<actorID, Actor*> worldActors;
     
-    // world seed
-    long generateSeed();
-    long seed;
+        // world seed
+        long generateSeed();
+        long seed;
     
-
-
 };
 
 #endif /* Game_hpp */

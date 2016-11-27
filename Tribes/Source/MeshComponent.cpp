@@ -6,74 +6,32 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "../Headers/Engine/Mesh.hpp"
+#include "../Headers/Engine/MeshComponent.hpp"
 #include "../Headers/glm/glm.hpp"
 #include "../Headers/glm/gtc/type_ptr.hpp"
 #include "../Headers/glm/gtc/matrix_transform.hpp"
 
-Mesh::Mesh (vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures) {
+MeshComponent::MeshComponent (vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures) {
     this->vertices = vertices;
     this->indices  = indices;
     this->textures = textures;
     
-    this->setupModelMesh();
+    this->setupModelMeshComponent();
 }
 
-Mesh::Mesh () {
-    this->testVertices = {
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-        0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-        0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-        0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-        
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-        
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-        
-        0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-        0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-        0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-        0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-        0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-        
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-        0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-        0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-        0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-        
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-        0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-        0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-        0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
-    };
+MeshComponent::MeshComponent (std::vector<GLfloat> vertices) {
+    this->testVertices = vertices;
     
-    this ->setupTestMesh();
+    this ->setupTestMeshComponent();
 }
 
-Mesh::~Mesh () {
+MeshComponent::~MeshComponent () {
     glDeleteVertexArrays (1, &this->VAO);
     glDeleteBuffers      (1, &this->VBO);
     glDeleteBuffers      (1, &this->EBO);
 }
 
-void Mesh::setupTestMesh () {
+void MeshComponent::setupTestMeshComponent () {
     glGenVertexArrays (1, &this->VAO);
     glGenBuffers      (1, &this->VBO);
     
@@ -87,14 +45,14 @@ void Mesh::setupTestMesh () {
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
         glEnableVertexAttribArray(0);
     
-        // TexCoord attribute
+        // Normal attribute
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
         glEnableVertexAttribArray(1);
     
     glBindVertexArray(0);
 }
 
-void Mesh::setupModelMesh() {
+void MeshComponent::setupModelMeshComponent() {
     glGenVertexArrays (1, &this->VAO);
     glGenBuffers      (1, &this->VBO);
     glGenBuffers      (1, &this->EBO);
@@ -125,8 +83,7 @@ void Mesh::setupModelMesh() {
 
 }
 
-void Mesh::draw(ShaderComponent* shader, SceneCamera* camera) {
-    shader->update();
+void MeshComponent::draw(ShaderComponent* shader, SceneCamera* camera) {
     
     // Give camera transforms to shader
     glm::mat4 view = camera->getViewTransform();
@@ -145,11 +102,10 @@ void Mesh::draw(ShaderComponent* shader, SceneCamera* camera) {
     glBindVertexArray(0);
 }
 
-void Mesh::testdraw(ShaderComponent* shader, SceneCamera* camera) {
-    shader->update();
+void MeshComponent::testdraw(ShaderComponent* shader, SceneCamera* camera) {
     
     // upload colour to shader
-    glUniform3fv(glGetUniformLocation(shader->getProgramID(), "objectColour"), 1, glm::value_ptr(color));
+    glUniform3fv(glGetUniformLocation(shader->getProgramID(), "objectColour"), 1, glm::value_ptr(colour));
     
     // Give camera transforms to shader
     glm::mat4 view = camera->getViewTransform();

@@ -21,10 +21,10 @@ enum MouseEvent {
 bool mouseEvents[MOUSE_EVENTS_MAX] = {};
 bool firstEvent = true;
 
-double lastX = 0;
-double lastY = 0;
-double mouseX = 0;
-double mouseY = 0;
+double  lastX   = 0;
+double  lastY   = 0;
+double  mouseX  = 0;
+double  mouseY  = 0;
 GLfloat xoffset = 0;
 GLfloat yoffset = 0;
 
@@ -90,21 +90,10 @@ void MouseInputComponent::update() {
     }
 }
 
-float MouseInputComponent::getMouseX() {
-    return mouseX;
-}
-
-float MouseInputComponent::getMouseY() {
-    return mouseY;
-}
-
-float MouseInputComponent::getXoffset () {
-    return xoffset;
-}
-
-float MouseInputComponent::getYoffset () {
-    return yoffset;
-}
+float MouseInputComponent::getMouseX  () { return mouseX; }
+float MouseInputComponent::getMouseY  () { return mouseY; }
+float MouseInputComponent::getXoffset () { return xoffset; }
+float MouseInputComponent::getYoffset () { return yoffset; }
 
 void mouseActionCallback (GLFWwindow* window, int button, int action, int mods) {
     mouseEvents[button] = action;
@@ -130,7 +119,7 @@ void mouseScrollCallback (GLFWwindow* window, double xoffset, double yoffset) {
 
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos) {
     
-    // fix jump
+    // fix openning jump
     if (firstEvent) {
         lastX = xpos;
         lastY = ypos;

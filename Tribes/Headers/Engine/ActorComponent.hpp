@@ -6,24 +6,25 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef Component_hpp
-#define Component_hpp
+#ifndef ActorComponent_hpp
+#define ActorComponent_hpp
 
 class Actor;
 class ActorComponent {
-public:
-     ActorComponent () {}
-    ~ActorComponent () {}
+    public:
+        ActorComponent () { }
+       ~ActorComponent () { }
     
-    virtual void init () { }
-    virtual void update () { }
+        virtual void init   () { }
+        virtual void update () { }
     
-    void setOwner (Actor* a) {
-        this->owner = a;
-    }
+        void setOwner (Actor* a) { this->owner = a; }
+        void releaseOwner () { this->owner = nullptr; }
     
-protected:
-    Actor* owner;
+        int componentID;
+    
+    protected:
+        Actor* owner;
 };
 
 #endif /* ActorComponent_hpp */

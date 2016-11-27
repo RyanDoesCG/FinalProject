@@ -32,7 +32,6 @@ SceneCamera::~SceneCamera () {
 
 mat4 SceneCamera::getProjectionTransform () { return projection; }
 mat4 SceneCamera::getViewTransform       () { return view; }
-vec3 SceneCamera::getPosition            () { return position; }
 
 void SceneCamera::moveLeft     () { position -= normalize(cross(relativeFront, relativeUp)) * movementSpeed; }
 void SceneCamera::moveRight    () { position += normalize(cross(relativeFront, relativeUp)) * movementSpeed; }
@@ -47,7 +46,7 @@ void SceneCamera::idle(double animationTimer) {
     view = glm::lookAt(position, relativeFront, relativeUp);
 }
 
-void SceneCamera::update (GameState state) {
+void SceneCamera::update (GameState state, SceneCamera* camera) {
     vec3 front;
     front.x = cos(radians(pitch)) * cos(radians(yaw));
     front.y = sin(radians(pitch));

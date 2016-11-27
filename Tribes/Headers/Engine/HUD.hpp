@@ -18,26 +18,20 @@
 #include <vector>
 
 class HUD : public Actor {
-public:
-     HUD (GLFWwindow* window, Game* game);
-    ~HUD ();
+    public:
+        HUD (GLFWwindow* window, Game* game);
+       ~HUD ();
     
-    virtual void init() override;
-    virtual void update(GameState state) override;
+        virtual void init() override;
+        virtual void update(GameState state, SceneCamera* camera) override;
     
-private:
-    Game* game;
+    private:
+        Game* game;
     
-    MouseInputComponent* mouse;
-    KeyboardInputComponent* keyboard;
-    TextRenderingComponent* textRenderer;
-    
-    void updateMainMenu        ();
-    void updateNewGame         ();
-    void updateLoadGame        ();
-    void updateOptionsScreen   ();
-    void updateInGame          ();
-    void updateInGamePaused    ();
+        MouseInputComponent* mouse;
+        KeyboardInputComponent* keyboard;
+        TextRenderingComponent* textRenderer;
+
 };
 
 #endif /* HUD_hpp */

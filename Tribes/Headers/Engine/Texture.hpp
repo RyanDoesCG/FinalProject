@@ -3,12 +3,11 @@
  *
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef TEXTURE_HPP
-#define TEXTURE_HPP
+#ifndef Texture_hpp
+#define Texture_hpp
 
 #include "../assimp/scene.h"
 #include "../glm/glm.hpp"
-#include <iostream>
 using namespace std;
 
 struct Texture {

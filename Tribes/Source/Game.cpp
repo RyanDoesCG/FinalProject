@@ -5,11 +5,14 @@
  *  Created by ryan needham on 02/09/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
+ *  DONT FORGET WARNINGS ARE SUPPRESSED
+ *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Game.hpp"
 #include "../Headers/Engine/Player.hpp"
+#include "../Headers/Engine/Cube.hpp"
+#include "../Headers/Engine/Lamp.hpp"
 #include "../Headers/Engine/HUD.hpp"
-#include "../Headers/Engine/SceneCamera.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 1
@@ -45,50 +48,34 @@ Game::~Game() {
  */
 void Game::begin() {
     glClearColor (0.2f, 0.2f, 0.2f, 1.0f);
-    int gameTick = 0;
     
     Player player = Player(window, this);
+    Lamp   lamp   = Lamp();
+    Cube   object = Cube();
     
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-    GLuint VAO;
-    GLuint VBO;
+    lamp.setPosition   (glm::vec3(-1, 0.5, 0.5));
+    object.setPosition (glm::vec3(0.75, 0.0, 0.0));
     
-    Mesh lamp   = Mesh();
-    Mesh object = Mesh();
+    lamp.setScale   (0.5f);
+    object.setScale (1.3f);
     
-    lamp.position = glm::vec3(-1, 0.5, 0.5);
-    object.position = glm::vec3(0.75, 0.0, 0.0);
+    lamp.setColour   (glm::vec3(1.0, 1.0, 1.0));
+    object.setColour (glm::vec3(1.0, 0.25, 0.25));
     
-    lamp.scale = glm::vec3(0.5, 0.5, 0.5);
-    object.scale = glm::vec3(1.3, 1.3, 1.3);
-    
-    lamp.color = glm::vec3(1.0, 1.0, 1.0);
-    object.color = glm::vec3(1.0, 0.25, 0.25);
-
-    ShaderComponent* lampShader  = new ShaderComponent("lightSource");
-    ShaderComponent* lightableShader = new ShaderComponent("litObject");
-    
-
+    object.setLightSource(&lamp);
     
     while (windowIsAlive()) {
-        
+
         if (state == GAME_OVER) {
             glfwTerminate();
         }
-        
+
         else {
             glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            vec3 viewPos = player.getView()->getPosition();
-            glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "viewPosition"), 1, glm::value_ptr(viewPos));
-            glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "lightPosition"), 1, glm::value_ptr(lamp.position));
-            glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "lightColour"), 1, glm::value_ptr(lamp.color));
-            
-            player.update(state);
-            
-            lamp.testdraw(lampShader, player.getView());
-            object.testdraw(lightableShader, player.getView());
+            player.update (state, player.getView());
+            lamp.update   (state, player.getView());
+            object.update (state, player.getView());
             
             glfwSwapBuffers(window);
         }

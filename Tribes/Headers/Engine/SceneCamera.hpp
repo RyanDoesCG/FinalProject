@@ -3,8 +3,9 @@
  *
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef SCENECAMERA_HPP
-#define SCENECAMERA_HPP
+#ifndef SceneCamera_hpp
+#define SceneCamera_hpp
+
 #include "../GL/glew.h"
 #include "../glm/glm.hpp"
 #include "../glm/gtc/matrix_transform.hpp"
@@ -27,11 +28,10 @@ class SceneCamera: public Actor {
         void slowDown ();
         void idle     (double animationTimer);
     
-        virtual void update (GameState state) override;
+        virtual void update (GameState state, SceneCamera* camera) override;
     
         mat4 getProjectionTransform ();
         mat4 getViewTransform       ();
-        vec3 getPosition            ();
     
         GLfloat movementSpeed;
         GLfloat sensitivity;
@@ -40,8 +40,6 @@ class SceneCamera: public Actor {
     
     private:
     
-        vec3 position;      // in world space
-        vec3 target;        // Where we want to look
         vec3 relativeFront; // Where we are looking
         vec3 relativeRight; // right from the camera
         vec3 relativeUp;    // up from the camrea

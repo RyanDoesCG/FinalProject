@@ -13,23 +13,22 @@
 #include "Game.hpp"
 
 class MouseInputComponent : public ActorComponent {
-public:
-     MouseInputComponent (GLFWwindow* window, Game* game);
-    ~MouseInputComponent ();
+    public:
+        MouseInputComponent (GLFWwindow* window, Game* game);
+       ~MouseInputComponent ();
 
-    virtual void init() override;
-    virtual void update() override;
+        virtual void init() override;
+        virtual void update() override;
     
-    float getMouseX ();
-    float getMouseY ();
+        float getMouseX ();
+        float getMouseY ();
     
-    float getXoffset ();
-    float getYoffset ();
+        float getXoffset ();
+        float getYoffset ();
     
-private:
-    GLFWwindow* window;
-    Game* game;
-
+    private:
+        GLFWwindow* window;
+        Game* game;
 };
 
 #endif /* MouseInputComponent_hpp */

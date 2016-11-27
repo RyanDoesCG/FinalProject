@@ -6,11 +6,10 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef TEXTURECACHE_HPP
-#define TEXTURECACHE_HPP
+#ifndef TextureCache_hpp
+#define TextureCache_hpp
 
 #include "Texture.hpp"
-#include <iostream>
 #include <vector>
 
 class TextureCache {

@@ -3,8 +3,8 @@
  *
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef VERTEX_HPP
-#define VERTEX_HPP
+#ifndef Vertex_hpp
+#define Vertex_hpp
 
 #include "../glm/glm.hpp"
 using namespace glm;
