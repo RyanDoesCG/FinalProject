@@ -53,3 +53,7 @@ bool KeyboardInputComponent::isKeyDown(int keycode) {
     if (activeKeys[keycode]) return true;
     else return false;
 }
+
+void KeyboardInputComponent::keyHandled(int keycode) {
+    activeKeys[keycode] = false;
+}

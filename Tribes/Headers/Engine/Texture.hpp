@@ -13,7 +13,7 @@ using namespace std;
 struct Texture {
     GLuint id;
     string type;
-    aiString path;
+//    aiString path;
 };
 
 #endif

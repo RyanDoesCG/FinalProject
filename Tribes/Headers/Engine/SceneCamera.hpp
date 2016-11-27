@@ -38,6 +38,8 @@ class SceneCamera: public Actor {
         GLfloat pitch;
         GLfloat yaw;
     
+        bool idling = false;
+    
     private:
     
         vec3 relativeFront; // Where we are looking

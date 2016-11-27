@@ -21,6 +21,7 @@ class KeyboardInputComponent : public ActorComponent {
         virtual void update() override;
     
         bool isKeyDown (int keycode);
+        void keyHandled (int keycode);
     
     private:
         GLFWwindow* window;

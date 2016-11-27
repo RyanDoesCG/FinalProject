@@ -13,9 +13,10 @@
 #include "../Headers/Engine/Cube.hpp"
 #include "../Headers/Engine/Lamp.hpp"
 #include "../Headers/Engine/HUD.hpp"
+#include "../Headers/Engine/Model.hpp"
 
 // Deterines window size/debug hud
-#define BUILD_MODE 1
+#define BUILD_MODE 0
 
 Game::Game() {
     srand(generateSeed());
@@ -47,23 +48,34 @@ Game::~Game() {
  *  Game Loop
  */
 void Game::begin() {
-    glClearColor (0.2f, 0.2f, 0.2f, 1.0f);
+    glClearColor (0.12f, 0.12f, 0.12f, 1.0f);
     
     Player player = Player(window, this);
+
     Lamp   lamp   = Lamp();
-    Cube   object = Cube();
+    Cube   object1 = Cube();
+    Cube   object2 = Cube();
+    Cube   object3 = Cube();
     
-    lamp.setPosition   (glm::vec3(-1, 0.5, 0.5));
-    object.setPosition (glm::vec3(0.75, 0.0, 0.0));
+    lamp.setPosition (glm::vec3(-1, 1, 0.5));
+    lamp.setScale    (0.25f);
+    lamp.setColour   (glm::vec3(0.75, 0.32, 0.46));
     
-    lamp.setScale   (0.5f);
-    object.setScale (1.3f);
+    object1.setPosition (glm::vec3(1.42, 0.0, 0.0));
+    object1.setScale    (1.0f);
+    object1.setColour   (glm::vec3(0.25, 0.75, 0.75));
+    object1.setLightSource(&lamp);
     
-    lamp.setColour   (glm::vec3(1.0, 1.0, 1.0));
-    object.setColour (glm::vec3(1.0, 0.25, 0.25));
+    object2.setPosition (glm::vec3(0.0, 0.0, 0.0));
+    object2.setScale    (1.2f);
+    object2.setColour   (glm::vec3(1.0, 0.25, 0.25));
+    object2.setLightSource(&lamp);
     
-    object.setLightSource(&lamp);
-    
+    object3.setPosition (glm::vec3(-1.42, 0.0, 0.0));
+    object3.setScale    (1.0f);
+    object3.setColour   (glm::vec3(0.25, 0.75, 0.75));
+    object3.setLightSource(&lamp);
+
     while (windowIsAlive()) {
 
         if (state == GAME_OVER) {
@@ -72,10 +84,15 @@ void Game::begin() {
 
         else {
             glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-            player.update (state, player.getView());
-            lamp.update   (state, player.getView());
-            object.update (state, player.getView());
+            
+            lamp.explore(glfwGetTime());
+            
+            player.update  (state, player.getView());
+            lamp.update    (state, player.getView());
+            object1.update (state, player.getView());
+            object2.update (state, player.getView());
+            object3.update (state, player.getView());
+    
             
             glfwSwapBuffers(window);
         }

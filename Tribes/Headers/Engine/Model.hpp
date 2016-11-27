@@ -18,23 +18,19 @@ using namespace std;
 
 class Model : Actor {
     public:
-        Model (const string& path) {
-            this->loadModel("Assets/models/" + path + ".obj");
-        }
-    
+        Model (const string& path) { this->loadModel("Assets/models/" + path + ".obj"); }
        ~Model () {}
     
         void draw (ShaderComponent* shader, SceneCamera* camera);
     private:
-        vector<MeshComponent> MeshComponentes;
-        string       directory;
+        vector<MeshComponent> meshes;
+        string directory;
     
-        void loadModel (string path);
-        void processNode (aiNode* node, const aiScene* scene);
+        void loadModel            (string path);
+        void processNode          (aiNode* node, const aiScene* scene);
         MeshComponent processMesh (aiMesh* mesh, const aiScene* scene);
     
-        vector<Texture> loadMaterialTextures (aiMaterial* mat, aiTextureType type, string typeName);
-        vector<Texture> textureCache;
+        //vector<Texture> loadMaterialTextures (aiMaterial* mat, aiTextureType type, string typeName);
 };
 
 #endif

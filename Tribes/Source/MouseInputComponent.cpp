@@ -36,7 +36,7 @@ MouseInputComponent::MouseInputComponent (GLFWwindow* window, Game* game) {
     this->window = window;
     this->game = game;
     
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+   // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     
     unsigned char pixels[4 * 4 * 4];
     memset(pixels, 0xfa, sizeof(pixels));
@@ -47,7 +47,6 @@ MouseInputComponent::MouseInputComponent (GLFWwindow* window, Game* game) {
     GLFWcursor* cursor = glfwCreateCursor(&image, 0, 0);
     
     glfwSetCursor(window, cursor);
-    glfwSetCursorPos(window, 0, 0);
 
     glfwSetCursorPosCallback   (window, mouseMovementCallback);
     glfwSetMouseButtonCallback (window, mouseActionCallback);

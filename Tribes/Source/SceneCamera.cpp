@@ -7,6 +7,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/SceneCamera.hpp"
+#include "../Headers/glfw/glfw3.h"
 
 SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
     movementSpeed = 0.05f;
@@ -24,6 +25,8 @@ SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
         0.1f,
         100.0f
     );
+    
+    view = glm::lookAt(position, position + relativeFront, relativeUp);
 }
 
 SceneCamera::~SceneCamera () {
@@ -38,23 +41,32 @@ void SceneCamera::moveRight    () { position += normalize(cross(relativeFront, r
 void SceneCamera::moveForward  () { position += movementSpeed * relativeFront; }
 void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
 
-void SceneCamera::idle(double animationTimer) {
-    GLfloat radius = 3.0f;
-    position.x = sin(animationTimer) * radius;
-    position.z = cos(animationTimer) * radius;
-    
-    view = glm::lookAt(position, relativeFront, relativeUp);
-}
-
 void SceneCamera::update (GameState state, SceneCamera* camera) {
-    vec3 front;
-    front.x = cos(radians(pitch)) * cos(radians(yaw));
-    front.y = sin(radians(pitch));
-    front.z = cos(radians(pitch)) * sin(radians(yaw));
+    // USE DELTA TIMING TO SMOOTH MOVEMENT ACROSS CPUs
     
-    relativeFront = normalize(front);
-    relativeRight = normalize(cross(relativeFront, worldUp));
-    relativeUp    = normalize(cross(relativeRight, relativeFront));
+    if (!idling) {
+        if (pitch > 90) { pitch = 90; }
+        if (pitch < -90) { pitch = -90; }
+        
+        //relativeFront.x = cos(radians(pitch)) * cos(radians(yaw));
+        //relativeFront.y = sin(radians(pitch));
+        //relativeFront.z = cos(radians(pitch)) * sin(radians(yaw));
+
+        relativeFront = normalize(relativeFront);
+        relativeRight = normalize(cross(relativeFront, worldUp));
+        relativeUp    = normalize(cross(relativeRight, relativeFront));
+        view = glm::lookAt(position, position + relativeFront, relativeUp);
+    }
     
-    view = glm::lookAt(position, position + relativeFront, relativeUp);
+    else {
+        GLfloat radius = 5.0f;
+        position.x = sin(glfwGetTime()/2) * radius;
+        position.z = cos(glfwGetTime()/2) * radius;
+        
+        relativeFront   = normalize((position - vec3(0.0, 0.0, 0.0))); // always face origin
+        relativeFront.x = relativeFront.x - (relativeFront.x * 2);
+        relativeFront.y = relativeFront.y - (relativeFront.y * 2);
+        relativeFront.z = relativeFront.z - (relativeFront.z * 2);
+        view = glm::lookAt(position, position + relativeFront, relativeUp);
+    }
 }

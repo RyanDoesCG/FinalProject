@@ -12,6 +12,12 @@ class Lamp: public Cube {
         }
     
        ~Lamp() {}
+    
+        void explore (double animationTimer) {
+            GLfloat radius = 6.0f;
+            position.x = sin(animationTimer) * radius;
+            position.z = cos(animationTimer) * radius;
+        }
 };
 
 #endif
