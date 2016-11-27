@@ -12,7 +12,7 @@
 #include "../Headers/Engine/SceneCamera.hpp"
 
 // Deterines window size/debug hud
-#define BUILD_MODE 0
+#define BUILD_MODE 1
 
 Game::Game() {
     srand(generateSeed());
@@ -47,8 +47,7 @@ void Game::begin() {
     glClearColor (0.68f, 0.68f, 0.68f, 1.0f);
     int gameTick = 0;
     
-    KeyboardInputComponent inp = KeyboardInputComponent(window, this);
-    inp.init();
+    Player player = Player(window, this);
     
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     
@@ -101,12 +100,9 @@ void Game::begin() {
     
     Mesh testmesh = Mesh(vertices);
 
-
     ShaderComponent*    testShader = new ShaderComponent("BasicBlack");
-    SceneCamera*        testCamera = new SceneCamera(windowWidth, windowHeight);
     
     while (windowIsAlive()) {
-        inp.update();
         
         if (state == GAME_OVER) {
             glfwTerminate();
@@ -115,27 +111,9 @@ void Game::begin() {
         else {
             glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            // DEBUG INPUT
-            if (inp.isKeyDown(GLFW_KEY_W) || inp.isKeyDown(GLFW_KEY_UP)) {
-                testCamera->moveForward();
-            }
+            player.update(state);
             
-            if (inp.isKeyDown(GLFW_KEY_S) || inp.isKeyDown(GLFW_KEY_DOWN)) {
-                testCamera->moveBackward();
-            }
-            
-            if (inp.isKeyDown(GLFW_KEY_A) || inp.isKeyDown(GLFW_KEY_LEFT)) {
-                testCamera->moveLeft();
-            }
-            
-            if (inp.isKeyDown(GLFW_KEY_D) || inp.isKeyDown(GLFW_KEY_RIGHT)) {
-                testCamera->moveRight();
-            }
-            
-            testCamera->idle(glfwGetTime());
-            testCamera->update();
-            // draw
-            testmesh.draw(testShader, testCamera);
+            testmesh.draw(testShader, player.getView());
             
             glfwSwapBuffers(window);
         }

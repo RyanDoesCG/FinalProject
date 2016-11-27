@@ -39,14 +39,15 @@ public:
     
     bool windowIsAlive();
     
+    int windowWidth;
+    int windowHeight;
+    
 private:
     typedef int actorID;
     
     int initGLFW ();
     int initGLEW ();
-    
-    int windowWidth;
-    int windowHeight;
+
 
     GLFWwindow* window;
     GameState state;

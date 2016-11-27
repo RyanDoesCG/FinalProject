@@ -23,7 +23,7 @@ SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
         100.0f
     );
     
-    update();
+    update(GameState::MAIN_MENU);
 }
 
 SceneCamera::~SceneCamera () {
@@ -46,6 +46,12 @@ void SceneCamera::idle(double animationTimer) {
     view = glm::lookAt(position, relativeFront, relativeUp);
 }
 
-void SceneCamera::update () {
+void SceneCamera::update (GameState state) {
+    vec3 front;
+    front.x = cos(radians(pitch)) * cos(glm::radians(yaw));
+    front.y = sin(radians(pitch));
+    front.z = cos(radians(pitch)) * sin(glm::radians(yaw));
+    relativeFront = glm::normalize(front);
+    
     view = glm::lookAt(position, position + relativeFront, relativeUp);
 }

@@ -23,13 +23,15 @@ public:
      Player (GLFWwindow* window, Game* game);
     ~Player ();
 
+    SceneCamera* getView () {return this->camera;}
+    
     virtual void init() override;
     virtual void update(GameState state) override;
     
 private:
-    MouseInputComponent* mouse;
+    SceneCamera*            camera;
+    MouseInputComponent*    mouse;
     KeyboardInputComponent* keyboard;
-    
 };
 
 #endif /* Player_hpp */

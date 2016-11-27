@@ -9,9 +9,11 @@
 #include "../glm/glm.hpp"
 #include "../glm/gtc/matrix_transform.hpp"
 
+#include "Actor.hpp"
+
 using namespace glm;
 
-class SceneCamera {
+class SceneCamera: public Actor {
     public:
         SceneCamera(GLfloat width, GLfloat height);
        ~SceneCamera();
@@ -25,13 +27,17 @@ class SceneCamera {
         void slowDown ();
         void idle     (double animationTimer);
     
-        void update ();
+        virtual void update (GameState state) override;
     
         mat4 getProjectionTransform ();
         mat4 getViewTransform       ();
     
-    private:
         GLfloat movementSpeed;
+        GLfloat sensitivity;
+        GLfloat pitch;
+        GLfloat yaw;
+    
+    private:
     
         vec3 position;      // in world space
         vec3 target;        // Where we want to look

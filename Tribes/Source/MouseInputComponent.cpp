@@ -19,8 +19,13 @@ enum MouseEvent {
 };
 
 bool mouseEvents[MOUSE_EVENTS_MAX] = {};
-double mouseX;
-double mouseY;
+
+double lastX = 0;
+double lastY = 0;
+double mouseX = 0;
+double mouseY = 0;
+GLfloat xoffset = 0;
+GLfloat yoffset = 0;
 
 void mouseActionCallback   (GLFWwindow* window, int button, int action, int mods);
 void mouseScrollCallback   (GLFWwindow* window, double xoffset, double yoffset);
@@ -30,7 +35,7 @@ MouseInputComponent::MouseInputComponent (GLFWwindow* window, Game* game) {
     this->window = window;
     this->game = game;
     
-    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     
     unsigned char pixels[4 * 4 * 4];
     memset(pixels, 0xfa, sizeof(pixels));
@@ -91,6 +96,14 @@ float MouseInputComponent::getMouseY() {
     return mouseY;
 }
 
+float MouseInputComponent::getXoffset () {
+    return xoffset;
+}
+
+float MouseInputComponent::getYoffset () {
+    return yoffset;
+}
+
 void mouseActionCallback (GLFWwindow* window, int button, int action, int mods) {
     mouseEvents[button] = action;
 }
@@ -114,6 +127,13 @@ void mouseScrollCallback (GLFWwindow* window, double xoffset, double yoffset) {
 }
 
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos) {
-    mouseX = xpos;
-    mouseY = ypos;
+    xoffset = lastX - xpos;
+    yoffset = ypos - lastY;
+    
+    lastX = xpos;
+    lastY = ypos;
+
+    GLfloat sensitivity = 0.05f;
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
 }

@@ -23,6 +23,9 @@ public:
     float getMouseX ();
     float getMouseY ();
     
+    float getXoffset ();
+    float getYoffset ();
+    
 private:
     GLFWwindow* window;
     Game* game;
