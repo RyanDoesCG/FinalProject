@@ -46,6 +46,7 @@ MouseInputComponent::MouseInputComponent (GLFWwindow* window, Game* game) {
     GLFWcursor* cursor = glfwCreateCursor(&image, 0, 0);
     
     glfwSetCursor(window, cursor);
+    glfwSetCursorPos(window, 0, 0);
 
     glfwSetCursorPosCallback   (window, mouseMovementCallback);
     glfwSetMouseButtonCallback (window, mouseActionCallback);
@@ -128,7 +129,7 @@ void mouseScrollCallback (GLFWwindow* window, double xoffset, double yoffset) {
 
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos) {
     xoffset = lastX - xpos;
-    yoffset = ypos - lastY;
+    yoffset = lastY - ypos;
     
     lastX = xpos;
     lastY = ypos;

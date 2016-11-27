@@ -9,7 +9,7 @@
 #include "../Headers/Engine/SceneCamera.hpp"
 
 SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
-    movementSpeed = 0.15f;
+    movementSpeed = 0.05f;
     
     position      = vec3(0.0f, 0.0f, 3.0f);   // in world space
     relativeFront = vec3(0.0f, 0.0f, -1.0f);  // front from camera

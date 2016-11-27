@@ -24,8 +24,8 @@ Game::Game() {
             windowHeight = 1080;
             break;
         case DEVELOPMENT:
-            windowWidth  = 800;
-            windowHeight = 460;
+            windowWidth  = 1200;
+            windowHeight = 620;
             break;
     }
     
@@ -44,63 +44,33 @@ Game::~Game() {
  *  Game Loop
  */
 void Game::begin() {
-    glClearColor (0.68f, 0.68f, 0.68f, 1.0f);
+    glClearColor (0.2f, 0.2f, 0.2f, 1.0f);
     int gameTick = 0;
     
     Player player = Player(window, this);
     
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    
-    std::vector<GLfloat> vertices = {
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-        0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-        
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-    };
 
     GLuint VAO;
     GLuint VBO;
     
-    Mesh testmesh = Mesh(vertices);
+    Mesh lamp   = Mesh();
+    Mesh object = Mesh();
+    
+    lamp.position = glm::vec3(-0.75, -0.75, 0.75);
+    object.position = glm::vec3(0.75, 0.0, 0.0);
+    
+    lamp.scale = glm::vec3(0.5, 0.5, 0.5);
+    object.scale = glm::vec3(1.3, 1.3, 1.3);
+    
+    lamp.color = glm::vec3(1.0, 1.0, 1.0);
+    object.color = glm::vec3(1.0, 0.25, 0.25);
 
-    ShaderComponent*    testShader = new ShaderComponent("BasicBlack");
+    ShaderComponent* lampShader  = new ShaderComponent("lightSource");
+    ShaderComponent* lightableShader = new ShaderComponent("litObject");
+    
+    glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "lightColour"), 1, glm::value_ptr(lamp.color));
+    glUniform3fv(glGetUniformLocation(lightableShader->getProgramID(), "lightPosition"), 1, glm::value_ptr(lamp.position));
     
     while (windowIsAlive()) {
         
@@ -113,7 +83,8 @@ void Game::begin() {
 
             player.update(state);
             
-            testmesh.draw(testShader, player.getView());
+            lamp.testdraw(lampShader, player.getView());
+            object.testdraw(lightableShader, player.getView());
             
             glfwSwapBuffers(window);
         }
@@ -146,7 +117,7 @@ int Game::initGLFW () {
     glfwWindowHint   (GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // OpenGL Profile
     glfwWindowHint   (GLFW_RESIZABLE, GL_TRUE);                        // Resizable Window
     glfwWindowHint   (GLFW_DOUBLEBUFFER, GL_TRUE);                     // Double Buffering
-//  glfwWindowHint   (GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
+    //glfwWindowHint   (GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
     glfwWindowHint   (GLFW_SAMPLES, 4);                                // Multisampling
     glfwWindowHint   (GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // macOS requires this
     glfwSwapInterval (1);                                              // enable VSYNC

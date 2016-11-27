@@ -14,7 +14,7 @@ using namespace std;
 class Mesh {
 public:
     Mesh (vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures);
-    Mesh (vector<GLfloat> vertices);
+    Mesh ();
    ~Mesh ();
     
     vector<Vertex>  vertices;
@@ -23,6 +23,10 @@ public:
     
     void draw (ShaderComponent* shader, SceneCamera* camera);
     void testdraw (ShaderComponent* shader, SceneCamera* camera);
+
+    glm::vec3 position;
+    glm::vec3 scale;
+    glm::vec3 color;
     
 private:
     GLuint VAO;
