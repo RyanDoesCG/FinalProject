@@ -72,11 +72,11 @@ void MainMenu::update () {
         }
         
         textPipeline->update();
-    } else {
-        // update sub menus
-        for (int i = 0; i < children.size(); i++) {
-            children[i].update();
-        }
+    }
+    
+    // update sub menus
+    for (int i = 0; i < children.size(); i++) {
+        children[i].update();
     }
 }
 
@@ -125,9 +125,7 @@ void MainMenu::handleEvents () {
     
     // back
     if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {
-        for (int i = 0; i < children.size(); i++) {
-            children[i].hide();
-        }
+        //for (int i = 0; i < children.size(); i++) { children[i].hide(); }
     
         show();
         

@@ -11,10 +11,12 @@ SubMenu::SubMenu (float width, float height) {
     windowHeight = height;
     bassline     = height * 0.28;
     textPipeline = new TextRenderingComponent();
-    //isHidden     = true;
+    isHidden     = true;
     
-    addItem("test 1");
-    addItem("test 2");
+    MenuItem item;
+    item.label = "hello";
+    item.index = items.size();
+    items.push_back(item);
     
     selectedItem = items.size()-1;
 }
@@ -23,26 +25,15 @@ SubMenu::~SubMenu () {
     
 }
 
-void SubMenu::hide () { isHidden = true; std::cout << "hide" << std::endl;}
-void SubMenu::show () { isHidden = false; std::cout << "show" << std::endl;}
-
-void SubMenu::addItem(std::string label) {
-    MenuItem item;
-    item.label = label;
-    item.index = items.size();
-    items.push_back(item);
-}
-
-void SubMenu::removeItem(std::string label) {
-    for (int i = 0; i < items.size(); i++) {
-        if (items[i].label == label) {
-            items.erase(items.begin() + i);
-            return; // found item, no need to carry on
-        }
-    }
+void SubMenu::hide () { isHidden = true;}
+void SubMenu::show () {
+    isHidden = false;
+    std::cout << "Show called, isHidden = " << isHidden << std::endl;
 }
 
 void SubMenu::update () {
+    std::cout << isHidden << std::endl;
+
     handleEvents();
     
     if (!isHidden) {
@@ -55,13 +46,10 @@ void SubMenu::update () {
                 textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.32, 0.32, 0.32), 0.6);
         }
         textPipeline->update();
-        
-        std::cout << "called" << std::endl;
     }
 }
 
 void SubMenu::handleEvents () {
-    if (!isHidden) {
         // scroll up
         if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP)) {
             selectedItem = (selectedItem + 1) % items.size();
@@ -89,6 +77,5 @@ void SubMenu::handleEvents () {
             }
             
             keyboard->keyHandled(GLFW_KEY_ENTER);
-        }
     }
 }
