@@ -97,6 +97,9 @@ void MeshComponent::draw(ShaderComponent* shader, SceneCamera* camera) {
     
     // Give model transform to shader
     modelTransform = glm::translate(glm::mat4(), position);
+    modelTransform = glm::rotate(modelTransform, rotation.x, glm::vec3(1.0, 0.0, 0.0));
+    modelTransform = glm::rotate(modelTransform, rotation.y, glm::vec3(0.0, 1.0, 0.0));
+    modelTransform = glm::rotate(modelTransform, rotation.z, glm::vec3(0.0, 0.0, 1.0));
     modelTransform = glm::scale(modelTransform, scale);
     glUniformMatrix4fv(glGetUniformLocation(shader->getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(modelTransform));
     
@@ -119,7 +122,10 @@ void MeshComponent::testdraw(ShaderComponent* shader, SceneCamera* camera) {
     
     // Give model transform to shader
     modelTransform = glm::translate(glm::mat4(), position);
-    modelTransform = glm::scale(modelTransform, scale);
+    modelTransform = glm::rotate(modelTransform, rotation.x, glm::vec3(1.0, 0.0, 0.0));
+    modelTransform = glm::rotate(modelTransform, rotation.y, glm::vec3(0.0, 1.0, 0.0));
+    modelTransform = glm::rotate(modelTransform, rotation.z, glm::vec3(0.0, 0.0, 1.0));
+    modelTransform = glm::scale(modelTransform,  scale);
     glUniformMatrix4fv(glGetUniformLocation(shader->getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(modelTransform));
     
     // render

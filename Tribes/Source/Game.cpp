@@ -36,7 +36,7 @@ Game::Game() {
     // Initialise Subsystems
     if (initGLFW()) {std::cout << "GLFW initialisation failure. Exiting\n"; exit(1);}
     if (initGLEW()) {std::cout << "GLEW initialisation failure. Exiting\n"; exit(1);}
-    state = IN_GAME;
+    state = MAIN_MENU;
     
 }
 
@@ -58,6 +58,7 @@ void Game::begin() {
     lamp.setScale    (0.25f);
     lamp.setColour   (glm::vec3(0.75, 0.32, 0.46));
     
+    // position needs to be from centre
     sphere.setPosition(glm::vec3(0.0, -0.65, 0.0));
     sphere.setScale(1.0);
     sphere.setColour(glm::vec3(1.0, 0.5, 0.5));
@@ -65,7 +66,7 @@ void Game::begin() {
 
     while (windowIsAlive()) {
 
-        if (state == GAME_OVER) {
+        if (state == OVER) {
             glfwTerminate();
         }
 
@@ -75,7 +76,8 @@ void Game::begin() {
             lamp.explore(glfwGetTime());
             
             player.update  (state, player.getView());
-            lamp.update    (state, player.getView());
+            //lamp.update    (state, player.getView());
+   
             sphere.update  (state, player.getView());
             
             glfwSwapBuffers(window);
@@ -85,12 +87,12 @@ void Game::begin() {
 
 void Game::end() {
     glfwSetWindowShouldClose(window, GL_TRUE);
-    state = GAME_OVER;
+    state = OVER;
 }
 
 void Game::pause() {
     // toggle pause on and off
-    (state == IN_GAME) ? state = IN_GAME_PAUSED : state = IN_GAME;
+    (state == RUNNING) ? state = PAUSED : state = RUNNING;
 }
 
 long Game::generateSeed() {

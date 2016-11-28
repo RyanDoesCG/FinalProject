@@ -25,6 +25,7 @@ class MeshComponent : public ActorComponent {
         void testdraw (ShaderComponent* shader, SceneCamera* camera);
 
         glm::vec3 position;
+        glm::vec3 rotation;
         glm::vec3 scale;
         glm::vec3 colour;
     

@@ -47,8 +47,10 @@ class Actor {
         void setParent   (Actor* parent)    { this->parent = parent; }
         void setColour   (glm::vec3 col)    { colour = col;}
         void setPosition (glm::vec3 newPos) { this->position = newPos; }
+        void setRotation (glm::vec3 rot)    { this->rotation = rot;}
     
         glm::vec3 getPosition () { return this->position; }
+        glm::vec3 getRotation () { return this->rotation; }
         glm::vec3 getColour   () { return colour; }
     
     protected:
@@ -95,9 +97,10 @@ class Actor {
     
         Actor* parent;
     
-        glm::vec3 position;
-        glm::vec3 colour;
-        glm::vec3 scale;
+        glm::vec3 position = glm::vec3(0.0, 0.0, 0.0);
+        glm::vec3 rotation = glm::vec3(0.0, 0.0, 0.0);
+        glm::vec3 colour   = glm::vec3(1.0, 0.5, 0.5);
+        glm::vec3 scale    = glm::vec3(1.0, 1.0, 1.0);
     
 };
 

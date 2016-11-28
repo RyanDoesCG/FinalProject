@@ -100,6 +100,7 @@ MeshComponent Model::processMesh (aiMesh* mesh, const aiScene* scene) {
 void Model::update(GameState state, SceneCamera *camera) {
     for(GLuint i = 0; i < meshes.size(); i++) {
         meshes[i].position = this->position;
+        meshes[i].rotation = this->rotation;
         meshes[i].scale    = this->scale;
         meshes[i].colour   = this->colour;
     
