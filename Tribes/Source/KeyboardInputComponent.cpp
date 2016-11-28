@@ -40,10 +40,6 @@ void KeyboardInputComponent::update () {
                 case GLFW_KEY_Q:
                     game->end();
                     break;
-                case GLFW_KEY_ESCAPE:
-                    game->pause();
-                    activeKeys[i] = false;
-                    break;
             }
         }
     }

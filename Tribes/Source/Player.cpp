@@ -24,18 +24,20 @@ void Player::init () {
 }
 
 void Player::update(GameState state, SceneCamera* camera) {
-    // DEBUG SCENE NAVIGATION
-    if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP))    camera->moveForward();
-    if (keyboard->isKeyDown(GLFW_KEY_S) || keyboard->isKeyDown(GLFW_KEY_DOWN))  camera->moveBackward();
-    if (keyboard->isKeyDown(GLFW_KEY_A) || keyboard->isKeyDown(GLFW_KEY_LEFT))  camera->moveLeft();
-    if (keyboard->isKeyDown(GLFW_KEY_D) || keyboard->isKeyDown(GLFW_KEY_RIGHT)) camera->moveRight();
-    if (keyboard->isKeyDown(GLFW_KEY_SPACE)) {
-        camera->idling = !camera->idling;
-        keyboard->keyHandled(GLFW_KEY_SPACE);
+    if (state == RUNNING) {
+        // DEBUG SCENE NAVIGATION
+        if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP))    camera->moveForward();
+        if (keyboard->isKeyDown(GLFW_KEY_S) || keyboard->isKeyDown(GLFW_KEY_DOWN))  camera->moveBackward();
+        if (keyboard->isKeyDown(GLFW_KEY_A) || keyboard->isKeyDown(GLFW_KEY_LEFT))  camera->moveLeft();
+        if (keyboard->isKeyDown(GLFW_KEY_D) || keyboard->isKeyDown(GLFW_KEY_RIGHT)) camera->moveRight();
+        if (keyboard->isKeyDown(GLFW_KEY_SPACE)) {
+            camera->idling = !camera->idling;
+            keyboard->keyHandled(GLFW_KEY_SPACE);
+        }
+        
+        camera->pitch += mouse->getYoffset();
+        camera->yaw   += mouse->getXoffset();
     }
-    
-    camera->pitch += mouse->getYoffset();
-    camera->yaw   += mouse->getXoffset();
     
     Actor::update(state, camera);
 }

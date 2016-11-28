@@ -10,10 +10,9 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Game.hpp"
 #include "../Headers/Engine/Player.hpp"
-#include "../Headers/Engine/Cube.hpp"
 #include "../Headers/Engine/Lamp.hpp"
-#include "../Headers/Engine/HUD.hpp"
 #include "../Headers/Engine/Model.hpp"
+#include "../Headers/Engine/MainMenu.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 1
@@ -50,6 +49,9 @@ Game::~Game() {
 void Game::begin() {
     glClearColor (0.12f, 0.12f, 0.12f, 1.0f);
     
+    MainMenu menu = MainMenu(windowWidth, windowHeight);
+    menu.show();
+    
     Player player = Player(window, this);
     Lamp   lamp   = Lamp();
     Model  sphere = Model("sphere/sphere");
@@ -59,7 +61,8 @@ void Game::begin() {
     lamp.setColour   (glm::vec3(0.75, 0.32, 0.46));
     
     // position needs to be from centre
-    sphere.setPosition(glm::vec3(0.0, -0.65, 0.0));
+    sphere.setPosition(glm::vec3(0.0, -0.6, 0.0));
+    sphere.setRotation(glm::vec3(0.0, 0.0, 0.0));
     sphere.setScale(1.0);
     sphere.setColour(glm::vec3(1.0, 0.5, 0.5));
     sphere.setLightSource(&lamp);
@@ -77,8 +80,9 @@ void Game::begin() {
             
             player.update  (state, player.getView());
             //lamp.update    (state, player.getView());
-   
             sphere.update  (state, player.getView());
+            
+            menu.update();
             
             glfwSwapBuffers(window);
         }
