@@ -54,14 +54,14 @@ void Game::begin() {
     
     Player player = Player(window, this);
     Lamp   lamp   = Lamp();
-    Model  sphere = Model("sphere/sphere");
+    Model  sphere = Model("sphere/sphere2");
     
     lamp.setPosition (glm::vec3(-1, 1, 0.5));
     lamp.setScale    (0.25f);
     lamp.setColour   (glm::vec3(0.75, 0.32, 0.46));
     
     // position needs to be from centre
-    sphere.setPosition(glm::vec3(0.0, -0.6, 0.0));
+    sphere.setPosition(glm::vec3(0.80, 0.0, 0.0));
     sphere.setRotation(glm::vec3(0.0, 0.0, 0.0));
     sphere.setScale(1.0);
     sphere.setColour(glm::vec3(1.0, 0.5, 0.5));

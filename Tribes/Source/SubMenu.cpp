@@ -12,12 +12,7 @@ SubMenu::SubMenu (float width, float height) {
     bassline     = height * 0.28;
     textPipeline = new TextRenderingComponent();
     isHidden     = true;
-    
-    MenuItem item;
-    item.label = "hello";
-    item.index = items.size();
-    items.push_back(item);
-    
+
     selectedItem = items.size()-1;
 }
 
@@ -26,7 +21,18 @@ SubMenu::~SubMenu () {
 }
 
 void SubMenu::hide () { isHidden = true;}
-void SubMenu::show () { isHidden = false;}
+void SubMenu::show () { isHidden = false;selectedItem = items.size()-1;}
+
+void SubMenu::addItem(std::string item) {
+    MenuItem holder;
+    holder.label = item;
+    holder.index = items.size();
+    items.push_back(holder);
+}
+
+void SubMenu::removeItem(std::string item) {
+    
+}
 
 void SubMenu::update () {
     handleEvents();

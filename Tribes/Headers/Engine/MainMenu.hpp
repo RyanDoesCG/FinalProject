@@ -44,7 +44,7 @@ class MainMenu {
         int selectedItem;
     
         std::vector<MenuItem> items;
-        std::vector<SubMenu> children;
+        std::vector<SubMenu*> children;
     
         void handleEvents ();
 };

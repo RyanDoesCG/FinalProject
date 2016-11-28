@@ -17,15 +17,32 @@ MainMenu::MainMenu (float width, float height) {
     options.index   = 1;
     items.push_back(options);
 
+    optionsSub = SubMenu(width, height);
+    optionsSub.addItem("audio");
+    optionsSub.addItem("gameplay");
+    optionsSub.addItem("graphics");
+    children.push_back(&optionsSub);
+
     // LOAD GAME
     loadgame.label  = "load game";
     loadgame.index  = 2;
     items.push_back(loadgame);
     
+    loadgameSub = SubMenu(width, height);
+    loadgameSub.addItem("example save 1");
+    loadgameSub.addItem("example save 2");
+    loadgameSub.addItem("example save 3");
+    children.push_back(&loadgameSub);
+    
     // NEW GAME
     newgame.label   = "new game";
     newgame.index   = 3;
     items.push_back(newgame);
+    
+    newgameSub = SubMenu(width, height);
+    newgameSub.addItem("custom seed");
+    newgameSub.addItem("random seed");
+    children.push_back(&newgameSub);
     
     // ADMIN
     windowWidth  = width;
@@ -35,6 +52,8 @@ MainMenu::MainMenu (float width, float height) {
     isHidden     = true;
     
     selectedItem = newgame.index;
+    
+    
 }
 
 MainMenu::~MainMenu () {
@@ -51,7 +70,7 @@ void MainMenu::update () {
      *  even when it isn't shown.
      */
     handleEvents();
-
+    
     if (!isHidden) {
         for (int i = items.size()-1; i >= 0; i--) {
             glm::vec2 position = glm::vec2(84, bassline + (10 * (12 * items[i].index)));
@@ -67,7 +86,7 @@ void MainMenu::update () {
     
     // update sub menus
     for (int i = 0; i < children.size(); i++) {
-        children[i].update();
+        children[i]->update();
     }
 }
 
@@ -93,21 +112,10 @@ void MainMenu::handleEvents () {
         // select
         if (keyboard->isKeyDown(GLFW_KEY_ENTER)) {
             switch (selectedItem) {
-                case 0:
-                    std::cout << "quit" << std::endl;
-                    break;
-                case 1:
-                    optionsSub.show();
-                    hide();
-                    break;
-                case 2:
-                    loadgameSub.show();
-                    hide();
-                    break;
-                case 3:
-                    newgameSub.show();
-                    hide();
-                    break;
+                case 0: std::cout << "quit" << std::endl; break;
+                case 1: optionsSub.show(); hide(); break;
+                case 2: loadgameSub.show(); hide(); break;
+                case 3: newgameSub.show(); hide(); break;
             }
             
             keyboard->keyHandled(GLFW_KEY_ENTER);
@@ -116,7 +124,7 @@ void MainMenu::handleEvents () {
     
     // back
     if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {
-        //for (int i = 0; i < children.size(); i++) { children[i].hide(); }
+        for (int i = 0; i < children.size(); i++) { children[i]->hide(); }
     
         show();
         
