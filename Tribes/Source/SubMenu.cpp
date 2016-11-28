@@ -26,14 +26,9 @@ SubMenu::~SubMenu () {
 }
 
 void SubMenu::hide () { isHidden = true;}
-void SubMenu::show () {
-    isHidden = false;
-    std::cout << "Show called, isHidden = " << isHidden << std::endl;
-}
+void SubMenu::show () { isHidden = false;}
 
 void SubMenu::update () {
-    std::cout << isHidden << std::endl;
-
     handleEvents();
     
     if (!isHidden) {

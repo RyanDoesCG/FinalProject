@@ -32,8 +32,9 @@ class SubMenu {
     
         KeyboardInputComponent* keyboard;
         TextRenderingComponent* textPipeline;
-        bool isHidden;
         int selectedItem;
+    
+        bool isHidden;
     
         std::vector<MenuItem> items;
         void handleEvents ();

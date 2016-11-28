@@ -15,7 +15,7 @@
 #include "../Headers/Engine/MainMenu.hpp"
 
 // Deterines window size/debug hud
-#define BUILD_MODE 1
+#define BUILD_MODE 0
 
 Game::Game() {
     srand(generateSeed());

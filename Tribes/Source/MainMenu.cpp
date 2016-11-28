@@ -16,30 +16,21 @@ MainMenu::MainMenu (float width, float height) {
     options.label   = "options";
     options.index   = 1;
     items.push_back(options);
-    
-    optionsSub = SubMenu(width, height);
-    children.push_back(optionsSub);
 
     // LOAD GAME
     loadgame.label  = "load game";
     loadgame.index  = 2;
     items.push_back(loadgame);
     
-    loadgameSub = SubMenu(width, height);
-    children.push_back(loadgameSub);
-    
     // NEW GAME
     newgame.label   = "new game";
     newgame.index   = 3;
     items.push_back(newgame);
     
-    newgameSub = SubMenu(width, height);
-    children.push_back(newgameSub);
-    
     // ADMIN
     windowWidth  = width;
     windowHeight = height;
-    bassline     = height * 0.28;
+    bassline     = height * 0.16;
     textPipeline = new TextRenderingComponent();
     isHidden     = true;
     
@@ -63,7 +54,7 @@ void MainMenu::update () {
 
     if (!isHidden) {
         for (int i = items.size()-1; i >= 0; i--) {
-            glm::vec2 position = glm::vec2(40, bassline + (10 * (12 * items[i].index)));
+            glm::vec2 position = glm::vec2(84, bassline + (10 * (12 * items[i].index)));
             
             if (i == selectedItem)
                 textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.75, 0.75, 0.75), 0.72);
