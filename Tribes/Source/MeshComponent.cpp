@@ -26,9 +26,10 @@ MeshComponent::MeshComponent (std::vector<GLfloat> vertices) {
 }
 
 MeshComponent::~MeshComponent () {
-    glDeleteVertexArrays (1, &this->VAO);
-    glDeleteBuffers      (1, &this->VBO);
-    glDeleteBuffers      (1, &this->EBO);
+    // Causes indexed meshes not to draw
+    //glDeleteVertexArrays (1, &this->VAO);
+    //glDeleteBuffers      (1, &this->VBO);
+    //glDeleteBuffers      (1, &this->EBO);
 }
 
 void MeshComponent::setupTestMeshComponent () {
@@ -68,15 +69,15 @@ void MeshComponent::setupModelMeshComponent() {
         glBufferData (GL_ELEMENT_ARRAY_BUFFER, this->indices.size() * sizeof(GLuint), &this->indices[0], GL_STATIC_DRAW);
     
         // Vertex Position (try swapping calls)
-        glEnableVertexAttribArray(0);
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)0);
+        glEnableVertexAttribArray(0);
     
         // Vertex Normal
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, Normal));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
         glEnableVertexAttribArray(1);
     
         // Vertex Texture Coordinate
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, TC));
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, tc));
         glEnableVertexAttribArray(2);
     
     glBindVertexArray(0);
@@ -84,6 +85,9 @@ void MeshComponent::setupModelMeshComponent() {
 }
 
 void MeshComponent::draw(ShaderComponent* shader, SceneCamera* camera) {
+    
+    // upload colour to shader
+    glUniform3fv(glGetUniformLocation(shader->getProgramID(), "objectColour"), 1, glm::value_ptr(colour));
     
     // Give camera transforms to shader
     glm::mat4 view = camera->getViewTransform();
@@ -97,8 +101,8 @@ void MeshComponent::draw(ShaderComponent* shader, SceneCamera* camera) {
     glUniformMatrix4fv(glGetUniformLocation(shader->getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(modelTransform));
     
     // Draw that bitch
-    glBindVertexArray(this->VAO);
-        glDrawElements(GL_TRIANGLES, (int)this->indices.size(), GL_UNSIGNED_INT, 0);
+    glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
 

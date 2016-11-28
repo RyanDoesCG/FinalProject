@@ -7,12 +7,11 @@
 #define Vertex_hpp
 
 #include "../glm/glm.hpp"
-using namespace glm;
 
 struct Vertex {
-    vec3 Position;
-    vec3 Normal;
-    vec2 TC;
+    glm::vec3 position;
+    glm::vec3 normal;
+    glm::vec2 tc;
 };
 
 #endif

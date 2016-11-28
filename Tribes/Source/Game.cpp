@@ -16,7 +16,7 @@
 #include "../Headers/Engine/Model.hpp"
 
 // Deterines window size/debug hud
-#define BUILD_MODE 0
+#define BUILD_MODE 1
 
 Game::Game() {
     srand(generateSeed());
@@ -51,30 +51,17 @@ void Game::begin() {
     glClearColor (0.12f, 0.12f, 0.12f, 1.0f);
     
     Player player = Player(window, this);
-
     Lamp   lamp   = Lamp();
-    Cube   object1 = Cube();
-    Cube   object2 = Cube();
-    Cube   object3 = Cube();
+    Model  sphere = Model("sphere/sphere");
     
     lamp.setPosition (glm::vec3(-1, 1, 0.5));
     lamp.setScale    (0.25f);
     lamp.setColour   (glm::vec3(0.75, 0.32, 0.46));
     
-    object1.setPosition (glm::vec3(1.42, 0.0, 0.0));
-    object1.setScale    (1.0f);
-    object1.setColour   (glm::vec3(0.25, 0.75, 0.75));
-    object1.setLightSource(&lamp);
-    
-    object2.setPosition (glm::vec3(0.0, 0.0, 0.0));
-    object2.setScale    (1.2f);
-    object2.setColour   (glm::vec3(1.0, 0.25, 0.25));
-    object2.setLightSource(&lamp);
-    
-    object3.setPosition (glm::vec3(-1.42, 0.0, 0.0));
-    object3.setScale    (1.0f);
-    object3.setColour   (glm::vec3(0.25, 0.75, 0.75));
-    object3.setLightSource(&lamp);
+    sphere.setPosition(glm::vec3(0.0, -0.65, 0.0));
+    sphere.setScale(1.0);
+    sphere.setColour(glm::vec3(1.0, 0.5, 0.5));
+    sphere.setLightSource(&lamp);
 
     while (windowIsAlive()) {
 
@@ -89,10 +76,7 @@ void Game::begin() {
             
             player.update  (state, player.getView());
             lamp.update    (state, player.getView());
-            object1.update (state, player.getView());
-            object2.update (state, player.getView());
-            object3.update (state, player.getView());
-    
+            sphere.update  (state, player.getView());
             
             glfwSwapBuffers(window);
         }

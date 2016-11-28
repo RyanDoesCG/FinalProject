@@ -16,7 +16,6 @@
 		624F49AD1DCBE7CE0065CE1A /* MeshComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A71DCBE7CE0065CE1A /* MeshComponent.cpp */; };
 		624F49AE1DCBE7CE0065CE1A /* ShaderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A81DCBE7CE0065CE1A /* ShaderComponent.cpp */; };
 		625F01E21DCE38BB005DB61D /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 625F01E01DCE38BB005DB61D /* HUD.cpp */; };
-		629998FD1DE777000059827E /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 629998FB1DE776780059827E /* libassimp.dylib */; };
 		62A907F01DEB00960008796D /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907EF1DEB00960008796D /* SceneCamera.cpp */; };
 		62A907F21DEB3A2C0008796D /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907F11DEB3A2C0008796D /* Cube.cpp */; };
 		CE2697351DAEADE600F9833E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697281DAEADE600F9833E /* Game.cpp */; };
@@ -25,6 +24,7 @@
 		CE53A5B71DCD6C1F00393AD4 /* TextRenderingComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE53A5B51DCD6C1F00393AD4 /* TextRenderingComponent.cpp */; };
 		CE6DE44F1DB1870B00B5A1AD /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */; };
 		CE71EFCB1D89AE4D00A638DD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */; };
+		CECAABFB1DEBB17900E16E6A /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */; };
 		CED62A9F1D89A7BD00805C8E /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */; };
 		CED62ABC1D89AC6300805C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62ABB1D89AC6300805C8E /* Cocoa.framework */; };
 		CED62ABE1D89ACF900805C8E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62ABD1D89ACF900805C8E /* IOKit.framework */; };
@@ -65,6 +65,7 @@
 		CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../../Library/Frameworks/libfreetype.dylib; sourceTree = "<group>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CEB56C781DAEAA1E00840F6B /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Headers; sourceTree = "<group>"; };
+		CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../Library/Frameworks/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.dylib; path = ../../../../../../../Library/Frameworks/libglfw3.dylib; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -76,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECAABFB1DEBB17900E16E6A /* libassimp.3.3.1.dylib in Frameworks */,
 				CE71EFCB1D89AE4D00A638DD /* CoreVideo.framework in Frameworks */,
 				45C117951D78005500FE98A9 /* OpenGL.framework in Frameworks */,
 				CED62ABC1D89AC6300805C8E /* Cocoa.framework in Frameworks */,
@@ -83,7 +85,6 @@
 				CE6DE44F1DB1870B00B5A1AD /* libfreetype.dylib in Frameworks */,
 				45C117A11D7805E700FE98A9 /* libGLEW.dylib in Frameworks */,
 				CED62A9F1D89A7BD00805C8E /* libglfw3.dylib in Frameworks */,
-				629998FD1DE777000059827E /* libassimp.dylib in Frameworks */,
 				CE3852881D8C3DC5006A104C /* libSOIL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +134,7 @@
 		45C117931D78005500FE98A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */,
 				CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */,
 				45C117941D78005500FE98A9 /* OpenGL.framework */,
 				CED62ABB1D89AC6300805C8E /* Cocoa.framework */,

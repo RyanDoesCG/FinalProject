@@ -14,11 +14,12 @@
  **/
 #include "../Headers/Engine/Model.hpp"
 #include "../Headers/soil/SOIL.h"
+#include "../Headers/glm/gtc/type_ptr.hpp"
 
 void Model::loadModel(string path) {
     Assimp::Importer importer;
     
-    const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate);
+    const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
     
     // error check
     if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
@@ -27,6 +28,8 @@ void Model::loadModel(string path) {
     }
     
     processNode(scene->mRootNode, scene);
+    
+    shader = new ShaderComponent("Model");
 }
 
 void Model::processNode (aiNode* node, const aiScene* scene) {
@@ -37,7 +40,7 @@ void Model::processNode (aiNode* node, const aiScene* scene) {
     }
     
     // recurse on children
-    for (GLuint i = 1; i < node->mNumChildren; i++) {
+    for (GLuint i = 0; i < node->mNumChildren; i++) {
         processNode(node->mChildren[i], scene);
     }
 }
@@ -57,18 +60,27 @@ MeshComponent Model::processMesh (aiMesh* mesh, const aiScene* scene) {
     // process vertices
     for (GLuint i = 0; i < mesh->mNumVertices; i++) {
         Vertex vertex;
-        // position
-        vec3 vector;
+        glm::vec3 vector; // We declare a placeholder vector since assimp uses its own vector class that doesn't directly convert to glm's vec3 class so we transfer the data to this placeholder glm::vec3 first.
+        // Positions
         vector.x = mesh->mVertices[i].x;
         vector.y = mesh->mVertices[i].y;
         vector.z = mesh->mVertices[i].z;
-        vertex.Position = vector;
-        // normal
+        vertex.position = vector;
+        // Normals
         vector.x = mesh->mNormals[i].x;
         vector.y = mesh->mNormals[i].y;
         vector.z = mesh->mNormals[i].z;
-        vertex.Normal = vector;
-        // tc (skip)
+        vertex.normal = vector;
+        // tc
+        if (mesh->mTextureCoords[0]) {
+            glm::vec2 vec;
+            vec.x = mesh->mTextureCoords[0][i].x;
+            vec.y = mesh->mTextureCoords[0][i].y;
+            vertex.tc = vec;
+        } else {
+            vertex.tc = glm::vec2(0.0f, 0.0f);
+        }
+        
         vertices.push_back(vertex);
     }
     
@@ -81,12 +93,29 @@ MeshComponent Model::processMesh (aiMesh* mesh, const aiScene* scene) {
     }
     
     // materials (skip for now)
-
     
     return MeshComponent(vertices, indices, textures);
 }
 
-
-void Model::draw(ShaderComponent* shader, SceneCamera* camera) {
+void Model::update(GameState state, SceneCamera *camera) {
+    for(GLuint i = 0; i < meshes.size(); i++) {
+        meshes[i].position = this->position;
+        meshes[i].scale    = this->scale;
+        meshes[i].colour   = this->colour;
     
+        shader->update();
+        
+        // Lighting data to GPU
+        vec3 viewPos = camera->getPosition();
+        glUniform3fv(glGetUniformLocation(shader->getProgramID(), "viewPosition"), 1, glm::value_ptr(viewPos));
+        if (lightSource!=nullptr) {
+            glm::vec3 lightPosition = lightSource->getPosition();
+            glm::vec3 lightColour   = lightSource->getColour();
+            
+            glUniform3fv(glGetUniformLocation(shader->getProgramID(), "lightPosition"), 1, glm::value_ptr(lightPosition));
+            glUniform3fv(glGetUniformLocation(shader->getProgramID(), "lightColour"), 1, glm::value_ptr(lightColour));
+        }
+    
+        meshes[i].draw(shader, camera);
+    }
 }
