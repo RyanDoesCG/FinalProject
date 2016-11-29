@@ -1,58 +1,60 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  SubMenu.cpp
+ *  Menu.cpp
  *
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "../Headers/Engine/SubMenu.hpp"
+#include "../Headers/Engine/Menu.hpp"
+#include "../Headers/Engine/Game.hpp"
 
-SubMenu::SubMenu (float width, float height, Game* game) {
-    
+Menu::Menu (float width, float height, Game* game) {
+
     windowWidth  = width;
     windowHeight = height;
-    bassline     = height * 0.16;
     textPipeline = new TextRenderingComponent();
+    bassline     = height * 0.16;
     this->game   = game;
     
-    isHidden     = true;
-
-    selectedItem = items.size()-1;
-}
-
-SubMenu::~SubMenu () {
+    hide();
+    
+    selectedItem = items.size() - 1;
     
 }
 
-void SubMenu::hide () { isHidden = true;}
-void SubMenu::show () { isHidden = false;selectedItem = items.size()-1;}
-
-void SubMenu::addItem(std::string item) {
-    MenuItem holder;
-    holder.label = item;
-    holder.index = items.size();
-    items.push_back(holder);
-}
-
-void SubMenu::removeItem(std::string item) {
+Menu::~Menu () {
     
 }
 
-void SubMenu::update () {
+void Menu::hide () {isHidden = true;}
+void Menu::show () {isHidden = false;}
+
+void Menu::update () {
+
+    /* *
+     *  Unlike sub menus, a main menu must listen to events
+     *  even when it isn't shown.
+     */
     handleEvents();
     
     if (!isHidden) {
         for (int i = items.size()-1; i >= 0; i--) {
-            glm::vec2 position = glm::vec2(100, bassline + (10 * (12 * items[i].index)));
+            glm::vec2 position = glm::vec2(84, bassline + (10 * (12 * items[i].index)));
             
             if (i == selectedItem)
                 textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.75, 0.75, 0.75), 0.72);
             else
                 textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.32, 0.32, 0.32), 0.6);
         }
+        
         textPipeline->update();
+    }
+    
+    // update sub menus
+    for (int i = 0; i < children.size(); i++) {
+        children[i]->update();
     }
 }
 
-void SubMenu::handleEvents () {
+void Menu::handleEvents () {
     if (!isHidden) {
         // scroll up
         if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP)) {
@@ -69,18 +71,6 @@ void SubMenu::handleEvents () {
             
             keyboard->keyHandled(GLFW_KEY_S);
             keyboard->keyHandled(GLFW_KEY_DOWN);
-        }
-        
-        // select
-        if (keyboard->isKeyDown(GLFW_KEY_ENTER)) {
-            switch (selectedItem) {
-                case 0: std::cout << "quit" << std::endl; break;
-                case 1:  hide(); break;
-                case 2:  hide(); break;
-                case 3:  hide(); break;
-            }
-            
-            keyboard->keyHandled(GLFW_KEY_ENTER);
         }
     }
 }

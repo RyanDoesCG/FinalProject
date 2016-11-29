@@ -90,11 +90,12 @@ void TextRenderingComponent::init () {
 }
 
 void TextRenderingComponent::update() {
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glDisable(GL_DEPTH_TEST);
+    textShader->update();
+
     while (!drawQueue.empty()) {
         DrawCall current = drawQueue.front();
-        
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        textShader->update();
         
         glUniform3f(glGetUniformLocation(textShader->getProgramID(), "textColor"), current.col.r, current.col.g, current.col.b);
         glActiveTexture(GL_TEXTURE0);
@@ -140,6 +141,8 @@ void TextRenderingComponent::update() {
         
         drawQueue.pop();
     }
+    
+    glEnable(GL_DEPTH_TEST);
 }
 
 void TextRenderingComponent::renderTextAs2D(std::string text, glm::vec2 position, glm::vec3 colour, float scale) {

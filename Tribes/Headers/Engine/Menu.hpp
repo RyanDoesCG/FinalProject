@@ -1,43 +1,42 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  SubMenu.hpp
+ *  Menu.hpp
  *
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef SubMenu_hpp
-#define SubMenu_hpp
+#ifndef Menu_hpp
+#define Menu_hpp
 
 #include "KeyboardInputComponent.hpp"
 #include "TextRenderingComponent.hpp"
 #include "MenuItem.hpp"
 #include <iostream>
 
-class SubMenu {
+class Game;
+class Menu {
     public:
-        SubMenu (float width, float height);
-        SubMenu () {}
-       ~SubMenu ();
+        Menu (float width, float height, Game* game);
+       ~Menu ();
     
         void update();
     
         void hide();
         void show();
-    
-        void addItem(std::string item);
-        void removeItem(std::string item);
-    
-    private:
+
+    protected:
         float windowWidth;
         float windowHeight;
         float bassline;
     
+        Game* game;
+    
         KeyboardInputComponent* keyboard;
         TextRenderingComponent* textPipeline;
-        int selectedItem;
-    
-        bool isHidden;
-    
+
         std::vector<MenuItem> items;
-        void handleEvents ();
+        std::vector<Menu*> children;
+        virtual void handleEvents ();
+        int selectedItem;
+        bool isHidden;
 };
 
-#endif /* SubMenu_hpp */
+#endif /* MainMenu_hpp */

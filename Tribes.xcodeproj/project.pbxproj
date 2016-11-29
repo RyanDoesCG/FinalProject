@@ -17,8 +17,7 @@
 		624F49AE1DCBE7CE0065CE1A /* ShaderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A81DCBE7CE0065CE1A /* ShaderComponent.cpp */; };
 		62A907F01DEB00960008796D /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907EF1DEB00960008796D /* SceneCamera.cpp */; };
 		62A907F21DEB3A2C0008796D /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907F11DEB3A2C0008796D /* Cube.cpp */; };
-		CE208BD61DEC7E2900F1A3A6 /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE208BD41DEC7E2900F1A3A6 /* MainMenu.cpp */; };
-		CE208BD91DEC955400F1A3A6 /* SubMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE208BD71DEC955400F1A3A6 /* SubMenu.cpp */; };
+		CE208BD61DEC7E2900F1A3A6 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE208BD41DEC7E2900F1A3A6 /* Menu.cpp */; };
 		CE2697351DAEADE600F9833E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697281DAEADE600F9833E /* Game.cpp */; };
 		CE2697381DAEADE600F9833E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972B1DAEADE600F9833E /* main.cpp */; };
 		CE3852881D8C3DC5006A104C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
@@ -29,6 +28,10 @@
 		CED62A9F1D89A7BD00805C8E /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */; };
 		CED62ABC1D89AC6300805C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62ABB1D89AC6300805C8E /* Cocoa.framework */; };
 		CED62ABE1D89ACF900805C8E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62ABD1D89ACF900805C8E /* IOKit.framework */; };
+		CEF7744D1DEDD33100CB2CC9 /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEF7744B1DEDD33100CB2CC9 /* MainMenu.cpp */; };
+		CEF774501DEDD33E00CB2CC9 /* SeedMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEF7744E1DEDD33E00CB2CC9 /* SeedMenu.cpp */; };
+		CEF774531DEDD34F00CB2CC9 /* OptionsMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEF774511DEDD34F00CB2CC9 /* OptionsMenu.cpp */; };
+		CEF774561DEDD36400CB2CC9 /* LoadMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEF774541DEDD36400CB2CC9 /* LoadMenu.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,8 +60,7 @@
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A907EF1DEB00960008796D /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneCamera.cpp; path = Source/SceneCamera.cpp; sourceTree = "<group>"; };
 		62A907F11DEB3A2C0008796D /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cube.cpp; path = Source/Cube.cpp; sourceTree = "<group>"; };
-		CE208BD41DEC7E2900F1A3A6 /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainMenu.cpp; path = Source/MainMenu.cpp; sourceTree = "<group>"; };
-		CE208BD71DEC955400F1A3A6 /* SubMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SubMenu.cpp; path = Source/SubMenu.cpp; sourceTree = "<group>"; };
+		CE208BD41DEC7E2900F1A3A6 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Menu.cpp; path = Source/Menu.cpp; sourceTree = "<group>"; };
 		CE2697281DAEADE600F9833E /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Game.cpp; path = Source/Game.cpp; sourceTree = "<group>"; };
 		CE26972B1DAEADE600F9833E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
@@ -70,6 +72,10 @@
 		CED62A9E1D89A7BD00805C8E /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.dylib; path = ../../../../../../../Library/Frameworks/libglfw3.dylib; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		CEF7744B1DEDD33100CB2CC9 /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainMenu.cpp; path = Source/MainMenu.cpp; sourceTree = "<group>"; };
+		CEF7744E1DEDD33E00CB2CC9 /* SeedMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SeedMenu.cpp; path = Source/SeedMenu.cpp; sourceTree = "<group>"; };
+		CEF774511DEDD34F00CB2CC9 /* OptionsMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OptionsMenu.cpp; path = Source/OptionsMenu.cpp; sourceTree = "<group>"; };
+		CEF774541DEDD36400CB2CC9 /* LoadMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadMenu.cpp; path = Source/LoadMenu.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,12 +124,15 @@
 				624F49A51DCBE7CE0065CE1A /* Player.cpp */,
 				624F49A61DCBE7CE0065CE1A /* MouseInputComponent.cpp */,
 				62A907F11DEB3A2C0008796D /* Cube.cpp */,
+				CEF7744B1DEDD33100CB2CC9 /* MainMenu.cpp */,
+				CEF7744E1DEDD33E00CB2CC9 /* SeedMenu.cpp */,
 				62256AAA1DE73BA700BF0E96 /* Model.cpp */,
 				624F49A71DCBE7CE0065CE1A /* MeshComponent.cpp */,
-				CE208BD41DEC7E2900F1A3A6 /* MainMenu.cpp */,
-				CE208BD71DEC955400F1A3A6 /* SubMenu.cpp */,
+				CE208BD41DEC7E2900F1A3A6 /* Menu.cpp */,
+				CEF774511DEDD34F00CB2CC9 /* OptionsMenu.cpp */,
 				CE53A5B51DCD6C1F00393AD4 /* TextRenderingComponent.cpp */,
 				62A907EF1DEB00960008796D /* SceneCamera.cpp */,
+				CEF774541DEDD36400CB2CC9 /* LoadMenu.cpp */,
 				624F49A81DCBE7CE0065CE1A /* ShaderComponent.cpp */,
 				CE2697281DAEADE600F9833E /* Game.cpp */,
 				CE26972B1DAEADE600F9833E /* main.cpp */,
@@ -207,14 +216,17 @@
 			files = (
 				62A907F21DEB3A2C0008796D /* Cube.cpp in Sources */,
 				624F49AB1DCBE7CE0065CE1A /* Player.cpp in Sources */,
+				CEF774561DEDD36400CB2CC9 /* LoadMenu.cpp in Sources */,
+				CEF774531DEDD34F00CB2CC9 /* OptionsMenu.cpp in Sources */,
 				624F49AA1DCBE7CE0065CE1A /* KeyboardInputComponent.cpp in Sources */,
+				CEF774501DEDD33E00CB2CC9 /* SeedMenu.cpp in Sources */,
 				62A907F01DEB00960008796D /* SceneCamera.cpp in Sources */,
-				CE208BD91DEC955400F1A3A6 /* SubMenu.cpp in Sources */,
 				CE2697351DAEADE600F9833E /* Game.cpp in Sources */,
 				62256AAB1DE73BA700BF0E96 /* Model.cpp in Sources */,
 				CE2697381DAEADE600F9833E /* main.cpp in Sources */,
-				CE208BD61DEC7E2900F1A3A6 /* MainMenu.cpp in Sources */,
+				CE208BD61DEC7E2900F1A3A6 /* Menu.cpp in Sources */,
 				624F49AD1DCBE7CE0065CE1A /* MeshComponent.cpp in Sources */,
+				CEF7744D1DEDD33100CB2CC9 /* MainMenu.cpp in Sources */,
 				624F49AE1DCBE7CE0065CE1A /* ShaderComponent.cpp in Sources */,
 				624F49AC1DCBE7CE0065CE1A /* MouseInputComponent.cpp in Sources */,
 				CE53A5B71DCD6C1F00393AD4 /* TextRenderingComponent.cpp in Sources */,

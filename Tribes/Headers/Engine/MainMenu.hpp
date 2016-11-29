@@ -1,52 +1,28 @@
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  MainMenu.hpp
- *
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+//
+//  MainMenu.hpp
+//  Tribes
+//
+//  Created by user on 29/11/2016.
+//  Copyright © 2016 Dissertation. All rights reserved.
+//
+
 #ifndef MainMenu_hpp
 #define MainMenu_hpp
 
-#include "KeyboardInputComponent.hpp"
-#include "TextRenderingComponent.hpp"
-#include "MenuItem.hpp"
-#include "SubMenu.hpp"
-#include <iostream>
+#include "Menu.hpp"
 
-class MainMenu {
+class MainMenu : public Menu {
     public:
-        MainMenu (float width, float height);
-       ~MainMenu ();
-    
-        void update();
-    
-        void hide();
-        void show();
+        MainMenu(float width, float height, Game* game);
+       ~MainMenu();
     
     private:
-        float windowWidth;
-        float windowHeight;
-        float bassline;
-    
-        KeyboardInputComponent* keyboard;
-        TextRenderingComponent* textPipeline;
-        bool isHidden;
-    
-        MenuItem newgame;
-        SubMenu  newgameSub;
-    
-        MenuItem loadgame;
-        SubMenu  loadgameSub;
-    
-        MenuItem options;
-        SubMenu  optionsSub;
+        virtual void handleEvents() override;
     
         MenuItem quit;
-        int selectedItem;
-    
-        std::vector<MenuItem> items;
-        std::vector<SubMenu*> children;
-    
-        void handleEvents ();
+        MenuItem options;
+        MenuItem loadGame;
+        MenuItem newGame;
 };
 
 #endif /* MainMenu_hpp */

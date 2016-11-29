@@ -1,121 +1,64 @@
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  MainMenu.cpp
- *
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "../Headers/Engine/MainMenu.hpp"
+//
+//  MainMenu.cpp
+//  Tribes
+//
+//  Created by user on 29/11/2016.
+//  Copyright © 2016 Dissertation. All rights reserved.
+//
 
-MainMenu::MainMenu (float width, float height) {
+#include "../Headers/Engine/MainMenu.hpp"
+#include "../Headers/Engine/OptionsMenu.hpp"
+#include "../Headers/Engine/LoadMenu.hpp"
+#include "../Headers/Engine/SeedMenu.hpp"
+
+MainMenu::MainMenu (float width, float height, Game* game):
+    Menu(width, height, game) {
     
     // QUIT
     quit.label      = "quit";
-    quit.index      = 0;
+    quit.index      = items.size();
     items.push_back(quit);
     
     // OPTIONS
     options.label   = "options";
-    options.index   = 1;
+    options.index   = items.size();
+    options.menu    = new OptionsMenu(width, height, game);
+    children.push_back(options.menu);
     items.push_back(options);
 
-    optionsSub = SubMenu(width, height);
-    optionsSub.addItem("audio");
-    optionsSub.addItem("gameplay");
-    optionsSub.addItem("graphics");
-    children.push_back(&optionsSub);
-
     // LOAD GAME
-    loadgame.label  = "load game";
-    loadgame.index  = 2;
-    items.push_back(loadgame);
-    
-    loadgameSub = SubMenu(width, height);
-    loadgameSub.addItem("example save 1");
-    loadgameSub.addItem("example save 2");
-    loadgameSub.addItem("example save 3");
-    children.push_back(&loadgameSub);
+    loadGame.label  = "load game";
+    loadGame.index  = items.size();
+    loadGame.menu   = new LoadMenu(width, height, game);
+    children.push_back(loadGame.menu);
+    items.push_back(loadGame);
     
     // NEW GAME
-    newgame.label   = "new game";
-    newgame.index   = 3;
-    items.push_back(newgame);
-    
-    newgameSub = SubMenu(width, height);
-    newgameSub.addItem("custom seed");
-    newgameSub.addItem("random seed");
-    children.push_back(&newgameSub);
-    
-    // ADMIN
-    windowWidth  = width;
-    windowHeight = height;
-    bassline     = height * 0.16;
-    textPipeline = new TextRenderingComponent();
-    isHidden     = true;
-    
-    selectedItem = newgame.index;
-    
-    
+    newGame.label   = "new game";
+    newGame.index   = items.size();
+    newGame.menu    = new SeedMenu(width, height, game);
+    children.push_back(newGame.menu);
+    items.push_back(newGame);
+
+    selectedItem = items.size()-1;
+    show();
 }
 
 MainMenu::~MainMenu () {
     
 }
 
-void MainMenu::hide () {isHidden = true;}
-void MainMenu::show () {isHidden = false;}
-
-void MainMenu::update () {
-
-    /* *
-     *  Unlike sub menus, a main menu must listen to events
-     *  even when it isn't shown.
-     */
-    handleEvents();
+void MainMenu::handleEvents() {
+    Menu::handleEvents();
     
     if (!isHidden) {
-        for (int i = items.size()-1; i >= 0; i--) {
-            glm::vec2 position = glm::vec2(84, bassline + (10 * (12 * items[i].index)));
-            
-            if (i == selectedItem)
-                textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.75, 0.75, 0.75), 0.72);
-            else
-                textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.32, 0.32, 0.32), 0.6);
-        }
-        
-        textPipeline->update();
-    }
-    
-    // update sub menus
-    for (int i = 0; i < children.size(); i++) {
-        children[i]->update();
-    }
-}
-
-void MainMenu::handleEvents () {
-    if (!isHidden) {
-        // scroll up
-        if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP)) {
-            selectedItem = (selectedItem + 1) % items.size();
-            
-            keyboard->keyHandled(GLFW_KEY_W);
-            keyboard->keyHandled(GLFW_KEY_UP);
-        }
-        
-        // scroll down
-        if (keyboard->isKeyDown(GLFW_KEY_S) || keyboard->isKeyDown(GLFW_KEY_DOWN)) {
-            if (selectedItem == 0) selectedItem = items.size()-1;
-            else selectedItem -= 1;
-            
-            keyboard->keyHandled(GLFW_KEY_S);
-            keyboard->keyHandled(GLFW_KEY_DOWN);
-        }
-        
         // select
         if (keyboard->isKeyDown(GLFW_KEY_ENTER)) {
             switch (selectedItem) {
-                case 0: std::cout << "quit" << std::endl; break;
-                case 1: optionsSub.show(); hide(); break;
-                case 2: loadgameSub.show(); hide(); break;
-                case 3: newgameSub.show(); hide(); break;
+                case 0: game->end(); break;
+                case 1: options.menu->show(); hide(); break;
+                case 2: loadGame.menu->show(); hide(); break;
+                case 3: newGame.menu->show(); hide(); break;
             }
             
             keyboard->keyHandled(GLFW_KEY_ENTER);
@@ -125,9 +68,6 @@ void MainMenu::handleEvents () {
     // back
     if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {
         for (int i = 0; i < children.size(); i++) { children[i]->hide(); }
-    
         show();
-        
-        keyboard->keyHandled(GLFW_KEY_ESCAPE);
     }
 }

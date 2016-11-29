@@ -1,9 +1,15 @@
 #ifndef MenuItem_hpp
 #define MenuItem_hpp
+
 #include <string>
-struct MenuItem {
+
+class Menu;
+
+class MenuItem {
+public:
     std::string label;
-    int index;
+    int         index;
+    Menu*       menu;
 };
 
 #endif /* MenuItem.hpp */

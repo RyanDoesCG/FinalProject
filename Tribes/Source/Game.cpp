@@ -49,7 +49,7 @@ Game::~Game() {
 void Game::begin() {
     glClearColor (0.12f, 0.12f, 0.12f, 1.0f);
     
-    MainMenu menu = MainMenu(windowWidth, windowHeight);
+    MainMenu menu = MainMenu(windowWidth, windowHeight, this);
     menu.show();
     
     Player player = Player(window, this);
