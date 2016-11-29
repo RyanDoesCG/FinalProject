@@ -44,9 +44,9 @@ void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
 void SceneCamera::update (GameState state, SceneCamera* camera) {
     // USE DELTA TIMING TO SMOOTH MOVEMENT ACROSS CPUs
     
-    if (!idling) {
-        if (pitch > 90) { pitch = 90; }
-        if (pitch < -90) { pitch = -90; }
+    if (state == RUNNING) {
+        if (pitch > 40) { pitch = 40; }
+        if (pitch < -40) { pitch = -40; }
         
         //relativeFront.x = cos(radians(pitch)) * cos(radians(yaw));
         //relativeFront.y = sin(radians(pitch));
@@ -58,10 +58,7 @@ void SceneCamera::update (GameState state, SceneCamera* camera) {
         view = glm::lookAt(position, position + relativeFront, relativeUp);
     }
     
-    else {
-        GLfloat radius = 5.0f;
-        position.x = sin(glfwGetTime()/2) * radius;
-        position.z = cos(glfwGetTime()/2) * radius;
+    else if (state == MAIN_MENU) {
         
         relativeFront   = normalize((position - vec3(0.0, 0.0, 0.0))); // always face origin
         relativeFront.x = relativeFront.x - (relativeFront.x * 2);

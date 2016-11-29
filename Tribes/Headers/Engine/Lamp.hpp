@@ -9,15 +9,12 @@ class Lamp: public Cube {
         Lamp() {
             dropComponent(shader->componentID);
             shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("lightSource"));
+            
+            lightSource = this;
         }
     
        ~Lamp() {}
-    
-        void explore (double animationTimer) {
-            GLfloat radius = 6.0f;
-            position.x = sin(animationTimer) * radius;
-            position.z = cos(animationTimer) * radius;
-        }
+
 };
 
 #endif

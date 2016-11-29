@@ -12,17 +12,17 @@ LoadMenu::LoadMenu (float width, float height, Game* game):
     Menu(width, height, game) {
     
     // EXAMPLE 3
-    example2.label = "example 2";
+    example2.label = "example save 3:   31/12/1999";
     example2.index = items.size();
     items.push_back(example2);
     
     // EXAMPLE 2
-    example2.label = "example 2";
+    example2.label = "example save 2:   31/12/2003";
     example2.index = items.size();
     items.push_back(example2);
     
     // EXAMPLE 1
-    example1.label = "example 1";
+    example1.label = "example save 1:   31/12/2007";
     example1.index = items.size();
     items.push_back(example1);
     

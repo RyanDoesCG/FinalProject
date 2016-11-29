@@ -35,17 +35,12 @@ void SeedMenu::handleEvents() {
         // select
         if (keyboard->isKeyDown(GLFW_KEY_ENTER)) {
             switch (selectedItem) {
-                case 0: std::cout << "custom seed" << std::endl; break;
-                case 1: std::cout << "random seed" << std::endl; break;
+                case 0: game->setState(RUNNING); break;
+                case 1: game->setState(RUNNING); break;
             }
             
             keyboard->keyHandled(GLFW_KEY_ENTER);
+            hide();
         }
-    }
-    
-    // back
-    if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {
-        for (int i = 0; i < children.size(); i++) { children[i]->hide(); }
-        hide();
     }
 }

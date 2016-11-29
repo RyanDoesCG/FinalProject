@@ -32,6 +32,8 @@ class Player : public Actor {
         SceneCamera*            camera;
         MouseInputComponent*    mouse;
         KeyboardInputComponent* keyboard;
+    
+        Game* game;
 };
 
 #endif /* Player_hpp */

@@ -72,5 +72,11 @@ void Menu::handleEvents () {
             keyboard->keyHandled(GLFW_KEY_S);
             keyboard->keyHandled(GLFW_KEY_DOWN);
         }
+        
+        // back
+        if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {
+            for (int i = 0; i < children.size(); i++) { children[i]->hide(); }
+            hide();
+        }
     }
 }

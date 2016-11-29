@@ -54,14 +54,16 @@ void Game::begin() {
     
     Player player = Player(window, this);
     Lamp   lamp   = Lamp();
-    Model  sphere = Model("sphere/sphere2");
     
-    lamp.setPosition (glm::vec3(-1, 1, 0.5));
+    Model  sphere = Model("sphere/sphere");
+    Cube   theGreatCubeOfDebug = Cube();
+    
+    lamp.setPosition (glm::vec3(-2.0, 0.0, 0.0));
     lamp.setScale    (0.25f);
     lamp.setColour   (glm::vec3(0.75, 0.32, 0.46));
     
     // position needs to be from centre
-    sphere.setPosition(glm::vec3(0.80, 0.0, 0.0));
+    sphere.setPosition(glm::vec3(1.0, 0.0, 0.0));
     sphere.setRotation(glm::vec3(0.0, 0.0, 0.0));
     sphere.setScale(1.0);
     sphere.setColour(glm::vec3(1.0, 0.5, 0.5));
@@ -76,17 +78,23 @@ void Game::begin() {
         else {
             glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             
-            lamp.explore(glfwGetTime());
-            
             player.update  (state, player.getView());
-            //lamp.update    (state, player.getView());
+            
+            sphere.setRotation(glm::vec3(0.0, sphere.getRotation().y + 0.0005, 0.0));
             sphere.update  (state, player.getView());
+  
+            // DEBUG
+           // lamp.update    (state, player.getView());
             
             menu.update();
             
             glfwSwapBuffers(window);
         }
     }
+}
+
+void Game::setState(GameState nextState) {
+    state = nextState;
 }
 
 void Game::end() {

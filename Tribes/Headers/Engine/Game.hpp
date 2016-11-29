@@ -42,12 +42,13 @@ class Game {
         int windowWidth;
         int windowHeight;
     
+        void setState (GameState nextState);
+    
     private:
         typedef int actorID;
     
         int initGLFW ();
         int initGLEW ();
-
 
         GLFWwindow* window;
         GameState state;

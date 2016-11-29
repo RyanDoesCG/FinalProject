@@ -38,10 +38,7 @@ class SceneCamera: public Actor {
         GLfloat pitch;
         GLfloat yaw;
     
-        bool idling = false;
-    
     private:
-    
         vec3 relativeFront; // Where we are looking
         vec3 relativeRight; // right from the camera
         vec3 relativeUp;    // up from the camrea
@@ -49,6 +46,7 @@ class SceneCamera: public Actor {
 
         mat4 projection;    // Projection Matrix for Shaders
         mat4 view;          // View Matrix for Shaders
+
 };
 
 #endif

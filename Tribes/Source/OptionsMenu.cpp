@@ -22,13 +22,12 @@ OptionsMenu::OptionsMenu (float width, float height, Game* game):
     items.push_back(controller);
 
     // QUALITY
-    quality.label = "quality";
+    quality.label    = "quality     < highest >";
     quality.index = items.size();
     items.push_back(quality);
-
     
     // RESOLUTION
-    resolution.label = "resolution";
+    resolution.label = "resolution < 1920 x 1080 >";
     resolution.index = items.size();
     items.push_back(resolution);
         

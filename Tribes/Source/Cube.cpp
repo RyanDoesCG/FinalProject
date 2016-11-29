@@ -69,6 +69,7 @@ Cube::~Cube() {
 
 void Cube::update(GameState state, SceneCamera* camera) {
     mesh->position = position;
+    mesh->rotation = rotation;
     mesh->scale    = scale;
     mesh->colour   = colour;
     
@@ -77,7 +78,7 @@ void Cube::update(GameState state, SceneCamera* camera) {
     // Lighting data to GPU
     vec3 viewPos = camera->getPosition();
     glUniform3fv(glGetUniformLocation(shader->getProgramID(), "viewPosition"), 1, glm::value_ptr(viewPos));
-    if (lightSource!=nullptr) {
+    if (lightSource) {
         glm::vec3 lightPosition = lightSource->getPosition();
         glm::vec3 lightColour   = lightSource->getColour();
         
