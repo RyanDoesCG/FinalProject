@@ -230,7 +230,7 @@ void Planet::distortMesh () {
     for (int i = 0; i < vertices.size(); i += 3) {
         if (!normalised[i/3]) {
             srand(i);
-            float length = 0.9 + sin((float)(rand() % 10) / 100;
+            float length = 0.9 + sin((float)(rand() % 10) / 100);
             
             glm::vec3 a = glm::vec3(0.0, 0.0, 0.0);                                         // center
             glm::vec3 b = glm::vec3(vertices.at(i+0), vertices.at(i+1), vertices.at(i+2));  // point to normalise
