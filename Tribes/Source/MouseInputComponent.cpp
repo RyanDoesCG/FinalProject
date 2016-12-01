@@ -28,6 +28,8 @@ double  mouseY  = 0;
 GLfloat xoffset = 0;
 GLfloat yoffset = 0;
 
+GLfloat sensitivity = 0.05f;
+
 void mouseActionCallback   (GLFWwindow* window, int button, int action, int mods);
 void mouseScrollCallback   (GLFWwindow* window, double xoffset, double yoffset);
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos);
@@ -45,13 +47,13 @@ MouseInputComponent::MouseInputComponent (GLFWwindow* window, Game* game) {
     image.height = 4;
     image.pixels = pixels;
     GLFWcursor* cursor = glfwCreateCursor(&image, 0, 0);
-    
+
     glfwSetCursor(window, cursor);
 
     glfwSetCursorPosCallback   (window, mouseMovementCallback);
     glfwSetMouseButtonCallback (window, mouseActionCallback);
     glfwSetScrollCallback      (window, mouseScrollCallback);
-    
+
 }
 
 MouseInputComponent::~MouseInputComponent () {
@@ -87,6 +89,19 @@ void MouseInputComponent::update() {
             }
         }
     }
+}
+
+void MouseInputComponent::placeMouse (int x, int y) {
+    glfwSetCursorPos(window, x, y);
+}
+
+void MouseInputComponent::centerMouse () {
+    /*
+    int centreX = glfwGetVideoMode(glfwGetPrimaryMonitor())->width/2;
+    int centreY = glfwGetVideoMode(glfwGetPrimaryMonitor())->height/2;
+    
+    glfwSetCursorPos(window, centreX, centreY);
+     */
 }
 
 float MouseInputComponent::getMouseX  () { return mouseX; }
@@ -131,7 +146,6 @@ void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos) {
     lastX = xpos;
     lastY = ypos;
 
-    GLfloat sensitivity = 0.05f;
     xoffset *= sensitivity;
     yoffset *= sensitivity;
 }

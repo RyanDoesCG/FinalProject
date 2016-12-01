@@ -116,12 +116,14 @@ int Game::initGLFW () {
     glfwWindowHint   (GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // OpenGL Profile
     glfwWindowHint   (GLFW_RESIZABLE, GL_TRUE);                        // Resizable Window
     glfwWindowHint   (GLFW_DOUBLEBUFFER, GL_TRUE);                     // Double Buffering
-    //glfwWindowHint   (GLFW_MAXIMIZED, GL_TRUE);                        // Stick to corner
     glfwWindowHint   (GLFW_SAMPLES, 4);                                // Multisampling
     glfwWindowHint   (GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // macOS requires this
     glfwSwapInterval (1);                                              // enable VSYNC
-    
+
+    // FULLSCREEN (buggy)
+    //window = glfwCreateWindow(windowWidth, windowHeight, "Tribes - OpenGL", glfwGetPrimaryMonitor(), nullptr);
     window = glfwCreateWindow(windowWidth, windowHeight, "Tribes - OpenGL", nullptr, nullptr);
+    
     if (!window) return 1;
     
     glfwMakeContextCurrent(window);

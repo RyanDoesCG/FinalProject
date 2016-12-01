@@ -34,6 +34,8 @@ class Player : public Actor {
         KeyboardInputComponent* keyboard;
     
         Game* game;
+    
+        bool inGame = false;
 };
 
 #endif /* Player_hpp */
