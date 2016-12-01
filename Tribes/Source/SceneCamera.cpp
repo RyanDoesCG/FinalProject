@@ -45,6 +45,9 @@ void SceneCamera::moveForward  () { position += movementSpeed * relativeFront; }
 void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
 
 void SceneCamera::update (GameState state, SceneCamera* camera) {
+    if (pitch >  89) pitch = 89;
+    if (pitch < -89) pitch = -89;
+    
     switch (state) {
         case MAIN_MENU:
             // lock position
