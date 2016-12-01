@@ -15,5 +15,5 @@ void main() {
 
     // pass through
     worldPosition = vec3(model * vec4(position, 1.0f));
-    norm = normal;
+    norm = mat3(transpose(inverse(model))) * normal;
 }

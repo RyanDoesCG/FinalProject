@@ -11,7 +11,7 @@
 #include "../Headers/Engine/Game.hpp"
 #include "../Headers/Engine/Player.hpp"
 #include "../Headers/Engine/Lamp.hpp"
-#include "../Headers/Engine/Model.hpp"
+#include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/MainMenu.hpp"
 
 // Deterines window size/debug hud
@@ -43,7 +43,7 @@ Game::~Game() {
 
 }
 
-/** 
+/**
  *  Game Loop
  */
 void Game::begin() {
@@ -53,21 +53,16 @@ void Game::begin() {
     menu.show();
     
     Player player = Player(window, this);
+    Planet planet = Planet();
     Lamp   lamp   = Lamp();
     
-    Model  sphere = Model("sphere/sphere");
     Cube   theGreatCubeOfDebug = Cube();
     
-    lamp.setPosition (glm::vec3(-2.0, 0.0, 0.0));
+    lamp.setPosition (glm::vec3(-5, 0.0, 1.5));
     lamp.setScale    (0.25f);
     lamp.setColour   (glm::vec3(0.75, 0.32, 0.46));
     
-    // position needs to be from centre
-    sphere.setPosition(glm::vec3(1.0, 0.0, 0.0));
-    sphere.setRotation(glm::vec3(0.0, 0.0, 0.0));
-    sphere.setScale(1.0);
-    sphere.setColour(glm::vec3(1.0, 0.5, 0.5));
-    sphere.setLightSource(&lamp);
+    planet.setLightSource(&lamp);
 
     while (windowIsAlive()) {
 
@@ -79,12 +74,10 @@ void Game::begin() {
             glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             
             player.update  (state, player.getView());
-            
-            sphere.setRotation(glm::vec3(0.0, sphere.getRotation().y + 0.0005, 0.0));
-            sphere.update  (state, player.getView());
+            planet.update  (state, player.getView());
   
             // DEBUG
-           // lamp.update    (state, player.getView());
+            //lamp.update    (state, player.getView());
             
             menu.update();
             

@@ -42,28 +42,28 @@ void SceneCamera::moveForward  () { position += movementSpeed * relativeFront; }
 void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
 
 void SceneCamera::update (GameState state, SceneCamera* camera) {
-    // USE DELTA TIMING TO SMOOTH MOVEMENT ACROSS CPUs
-    
-    if (state == RUNNING) {
-        if (pitch > 40) { pitch = 40; }
-        if (pitch < -40) { pitch = -40; }
-        
-        //relativeFront.x = cos(radians(pitch)) * cos(radians(yaw));
-        //relativeFront.y = sin(radians(pitch));
-        //relativeFront.z = cos(radians(pitch)) * sin(radians(yaw));
-
-        relativeFront = normalize(relativeFront);
-        relativeRight = normalize(cross(relativeFront, worldUp));
-        relativeUp    = normalize(cross(relativeRight, relativeFront));
-        view = glm::lookAt(position, position + relativeFront, relativeUp);
-    }
-    
-    else if (state == MAIN_MENU) {
-        
-        relativeFront   = normalize((position - vec3(0.0, 0.0, 0.0))); // always face origin
-        relativeFront.x = relativeFront.x - (relativeFront.x * 2);
-        relativeFront.y = relativeFront.y - (relativeFront.y * 2);
-        relativeFront.z = relativeFront.z - (relativeFront.z * 2);
-        view = glm::lookAt(position, position + relativeFront, relativeUp);
+    switch (state) {
+        case RUNNING:
+            if (pitch > 40) { pitch = 40; }
+            if (pitch < -40) { pitch = -40; }
+            
+                //relativeFront.x = cos(radians(pitch)) * cos(radians(yaw));
+                //relativeFront.y = sin(radians(pitch));
+                //relativeFront.z = cos(radians(pitch)) * sin(radians(yaw));
+            
+            relativeFront = normalize(relativeFront);
+            relativeRight = normalize(cross(relativeFront, worldUp));
+            relativeUp    = normalize(cross(relativeRight, relativeFront));
+            view = glm::lookAt(position, position + relativeFront, relativeUp);
+            break;
+        case MAIN_MENU:
+            position = vec3(0.0f, 0.0f, 3.0f);
+            
+            relativeFront   = normalize((position - vec3(0.0, 0.0, 0.0))); // always face origin
+            relativeFront.x = relativeFront.x - (relativeFront.x * 2);
+            relativeFront.y = relativeFront.y - (relativeFront.y * 2);
+            relativeFront.z = relativeFront.z - (relativeFront.z * 2);
+            view = glm::lookAt(position, position + relativeFront, relativeUp);
+            break;
     }
 }

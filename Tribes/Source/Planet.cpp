@@ -8,7 +8,7 @@
 
 #include "../Headers/Engine/Planet.hpp"
 
-Planet::Planet (): frame("sphere/sphere2") {
+Planet::Planet (): frame("sphere/sphere") {
     addChild(&frame);
     
     setColour(glm::vec3(1.0, 0.5, 0.5));
