@@ -24,6 +24,7 @@
 		CE4E8DA51DEE6AEE00C3D842 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
 		CE4E8DA81DEE6E0600C3D842 /* Planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE4E8DA61DEE6E0600C3D842 /* Planet.cpp */; };
 		CE53A5B71DCD6C1F00393AD4 /* TextRenderingComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE53A5B51DCD6C1F00393AD4 /* TextRenderingComponent.cpp */; };
+		CE5FAE721DF10A0200D7634C /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 45C117A31D78084800FE98A9 /* Assets */; };
 		CE6DE44F1DB1870B00B5A1AD /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */; };
 		CE71EFCB1D89AE4D00A638DD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */; };
 		CECAABFB1DEBB17900E16E6A /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */; };
@@ -38,12 +39,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		45C117841D77FF6200FE98A9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				CE5FAE721DF10A0200D7634C /* Assets in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
