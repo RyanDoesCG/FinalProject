@@ -30,6 +30,8 @@ class SceneCamera: public Actor {
     
         virtual void update (GameState state, SceneCamera* camera) override;
     
+        void reset ();
+    
         mat4 getProjectionTransform ();
         mat4 getViewTransform       ();
     

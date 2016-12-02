@@ -47,7 +47,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Final Project/Tribes/Tribes"
+      customWorkingDirectory = "/Users/user/Desktop/finalproject/Tribes"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"

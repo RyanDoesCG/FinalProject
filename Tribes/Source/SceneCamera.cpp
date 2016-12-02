@@ -28,8 +28,7 @@ SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
     
     view = glm::lookAt(position, position + relativeFront, relativeUp);
     
-    pitch = 0;
-    yaw = -90.0f;
+    reset();
 }
 
 SceneCamera::~SceneCamera () {
@@ -43,6 +42,11 @@ void SceneCamera::moveLeft     () { position -= normalize(cross(relativeFront, r
 void SceneCamera::moveRight    () { position += normalize(cross(relativeFront, relativeUp)) * movementSpeed; }
 void SceneCamera::moveForward  () { position += movementSpeed * relativeFront; }
 void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
+
+void SceneCamera::reset () {
+    pitch = 0;
+    yaw = -90.0f;
+}
 
 void SceneCamera::update (GameState state, SceneCamera* camera) {
     if (pitch >  89) pitch = 89;

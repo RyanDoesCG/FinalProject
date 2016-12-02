@@ -28,7 +28,9 @@ void Player::init () {
 void Player::update(GameState state, SceneCamera* camera) {
     switch (state) {
         case MAIN_MENU:
-            inGame = false;
+            if (inGame) {
+                camera->reset();
+            }
         
             camera->pitch += mouse->getYoffset() * 0.1;
             camera->yaw   += mouse->getXoffset() * 0.1;
