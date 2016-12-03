@@ -11,7 +11,7 @@
 #include "../assimp/postprocess.h"
 
 #include "MeshComponent.hpp"
-#include "ShaderComponent.hpp"
+#include "ShaderCache.hpp"
 #include <iostream>
 #include <vector>
 
@@ -25,9 +25,11 @@ class Model : public Actor {
         virtual void update (GameState state, SceneCamera* camera) override;
     
         void setLightSource (Actor* light) {lightSource = light;}
+        void setShader      (string path);
     
-    private:
         vector<MeshComponent> meshes;
+    
+    protected:
         string directory;
     
         Actor* lightSource;

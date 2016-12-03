@@ -7,11 +7,12 @@
 //
 
 #include "../Headers/Engine/Planet.hpp"
+#include "../Headers/Engine/ShaderCache.hpp"
 
-Planet::Planet (): frame("sphere/sphere") {
-    addChild(&frame);
-    
+Planet::Planet (): Model("sphere/sphere") {
+
     setColour(glm::vec3(1.0, 0.5, 0.5));
+    setShader("Planet");
 }
 
 Planet::~Planet () {
@@ -22,14 +23,16 @@ void Planet::update(GameState state, SceneCamera *camera) {
     
     switch (state) {
         case MAIN_MENU:
-            frame.setRotation(glm::vec3(0.0, frame.getRotation().y + 0.001, 0.0));
-            frame.setPosition(glm::vec3(1.0, 0.0, 0.0));
+            setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
+            setPosition(glm::vec3(1.0, 0.0, 0.0));
             break;
-        case RUNNING:
-            frame.setRotation(glm::vec3(0.0, frame.getRotation().y + 0.001, 0.0));
-            frame.setPosition(glm::vec3(0.0, 0.0, 0.0));
+        case RUNNING_FREEMODE:
+            setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
+            setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
     }
     
-    Actor::update(state, camera);
+    shader->update();
+
+    Model::update(state, camera);
 }

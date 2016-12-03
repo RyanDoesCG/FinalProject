@@ -30,18 +30,20 @@ void Player::update(GameState state, SceneCamera* camera) {
         case MAIN_MENU:
             if (inGame) {
                 camera->reset();
+                inGame = false;
             }
         
             camera->pitch += mouse->getYoffset() * 0.1;
             camera->yaw   += mouse->getXoffset() * 0.1;
             break;
-        case RUNNING:
+        case RUNNING_FREEMODE:
             if (!inGame) {mouse->centerMouse(); inGame = true;}
         
             if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP))    camera->moveForward();
             if (keyboard->isKeyDown(GLFW_KEY_S) || keyboard->isKeyDown(GLFW_KEY_DOWN))  camera->moveBackward();
             if (keyboard->isKeyDown(GLFW_KEY_A) || keyboard->isKeyDown(GLFW_KEY_LEFT))  camera->moveLeft();
             if (keyboard->isKeyDown(GLFW_KEY_D) || keyboard->isKeyDown(GLFW_KEY_RIGHT)) camera->moveRight();
+            if (keyboard->isKeyDown(GLFW_KEY_R)) { camera->reset(); mouse->centerMouse();}
             if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {game->setState(MAIN_MENU);}
             
             camera->pitch += mouse->getYoffset();

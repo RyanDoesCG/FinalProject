@@ -19,6 +19,11 @@ class Cube : public Actor {
     
         void setLightSource (Actor* light) {lightSource = light;}
     
+        void resize (float size) {
+            vec3 conversion = vec3(size, size, size);
+            Actor::scale = conversion;
+        }
+    
     protected:
         MeshComponent* mesh;
         ShaderComponent* shader;

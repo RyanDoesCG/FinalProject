@@ -13,6 +13,7 @@
 #include "../Headers/Engine/Lamp.hpp"
 #include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/MainMenu.hpp"
+#include "../Headers/Engine/Skybox.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 0
@@ -54,6 +55,8 @@ void Game::begin() {
     
     Player player = Player(window, this);
     Planet planet = Planet();
+    Skybox universe = Skybox();
+    
     Lamp   lamp   = Lamp();
     
     Cube   theGreatCubeOfDebug = Cube();
@@ -75,7 +78,8 @@ void Game::begin() {
             
             player.update  (state, player.getView());
             planet.update  (state, player.getView());
-  
+            universe.update(state, player.getView());
+            
             // DEBUG
             //lamp.update    (state, player.getView());
             
@@ -97,7 +101,7 @@ void Game::end() {
 
 void Game::pause() {
     // toggle pause on and off
-    (state == RUNNING) ? state = PAUSED : state = RUNNING;
+    (state == RUNNING_FREEMODE || state == RUNNING_EDITMODE) ? state = PAUSED : state = RUNNING_FREEMODE;
 }
 
 long Game::generateSeed() {

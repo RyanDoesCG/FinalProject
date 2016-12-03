@@ -69,7 +69,7 @@ void SceneCamera::update (GameState state, SceneCamera* camera) {
             relativeUp    = normalize(cross(relativeRight, relativeFront));
             view = glm::lookAt(position, position + relativeFront, relativeUp);
             break;
-        case RUNNING:
+        case RUNNING_FREEMODE:
             relativeFront.x = cos(radians(yaw)) * cos(radians(pitch));
             relativeFront.y = sin(radians(pitch));
             relativeFront.z = sin(radians(yaw)) * cos(radians(pitch));

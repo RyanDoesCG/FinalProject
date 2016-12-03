@@ -12,17 +12,15 @@
 #include "Actor.hpp"
 #include "Model.hpp"
 
-class Planet : public Actor {
+class Planet : public Model {
     public:
         Planet ();
        ~Planet ();
     
-       virtual void update (GameState state, SceneCamera* camera) override;
-    
-        void setLightSource (Actor* light) {frame.setLightSource(light);}
+        virtual void update (GameState state, SceneCamera* camera) override;
     
     private:
-        Model frame;
+
 };
 
 #endif /* Planet_hpp */

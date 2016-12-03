@@ -35,8 +35,8 @@ void SeedMenu::handleEvents() {
         // select
         if (keyboard->isKeyDown(GLFW_KEY_ENTER)) {
             switch (selectedItem) {
-                case 0: game->setState(RUNNING); break;
-                case 1: game->setState(RUNNING); break;
+                case 0: game->setState(RUNNING_FREEMODE); break;
+                case 1: game->setState(RUNNING_FREEMODE); break;
             }
             
             keyboard->keyHandled(GLFW_KEY_ENTER);

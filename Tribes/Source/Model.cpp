@@ -16,6 +16,8 @@
 #include "../Headers/soil/SOIL.h"
 #include "../Headers/glm/gtc/type_ptr.hpp"
 
+void Model::setShader(string path) { shader = ShaderCache::loadShaderComponent(path); }
+
 void Model::loadModel(string path) {
     Assimp::Importer importer;
     
@@ -28,8 +30,8 @@ void Model::loadModel(string path) {
     }
     
     processNode(scene->mRootNode, scene);
-    
-    shader = new ShaderComponent("Model");
+    setShader("Model");
+
 }
 
 void Model::processNode (aiNode* node, const aiScene* scene) {
