@@ -19,10 +19,6 @@ Planet::Planet (): Model("sphere/sphere"), water("sphere/sphere") {
     water.setScale(0.94);
     water.setRotation(glm::vec3(0.15, 0.23, 0));
     
-    shader->update();
-    glUniform1f(glGetUniformLocation(shader->getProgramID(), "ting"), rand() % 100);
-    
-    PerlinNoiseMachine::distortMe(&(meshes.back().vertices));
     generateName();
     
     /*

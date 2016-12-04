@@ -1,6 +1,7 @@
 #version 330 core
 
 in vec3  worldPosition;
+in vec3  vertexColour;
 in vec3  norm;
 
 uniform vec3 viewPosition;
@@ -32,6 +33,6 @@ void main (void) {
     vec3  specular            = specStrength * spec * lightColour;
     
         // stacked result
-    vec3 result = (ambient + diffuse + specular) * objectColour;
+    vec3 result = (ambient + diffuse + specular) * vertexColour;
     color = vec4(result, 0.75f);
 }
