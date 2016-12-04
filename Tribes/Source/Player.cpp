@@ -27,22 +27,23 @@ void Player::init () {
 
 void Player::update(GameState state, SceneCamera* camera) {
     switch (state) {
-        case MAIN_MENU:
+        case MAIN_MENU: {
             mouse->showMouse();
             
             if (inGame) {
                 camera->reset();
                 inGame = false;
             }
-        
+            
             camera->pitch += mouse->getYoffset() * 0.1;
             camera->yaw   += mouse->getXoffset() * 0.1;
             break;
-        case RUNNING_FREEMODE:
+        }
+        case RUNNING_FREEMODE: {
             mouse->hideMouse();
             
             if (!inGame) {mouse->centerMouse(); inGame = true;}
-        
+            
             if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP))    camera->moveForward();
             if (keyboard->isKeyDown(GLFW_KEY_S) || keyboard->isKeyDown(GLFW_KEY_DOWN))  camera->moveBackward();
             if (keyboard->isKeyDown(GLFW_KEY_A) || keyboard->isKeyDown(GLFW_KEY_LEFT))  camera->moveLeft();
@@ -50,19 +51,20 @@ void Player::update(GameState state, SceneCamera* camera) {
             if (keyboard->isKeyDown(GLFW_KEY_R)) { camera->reset(); mouse->centerMouse();}
             if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {game->setState(MAIN_MENU);}
             
-            // SWITCH MODE
+                // SWITCH MODE
             if (keyboard->isKeyDown(GLFW_KEY_Q)) {
                 camera->reset();
-
+                
                 game->setState(RUNNING_EDITMODE);
                 keyboard->keyHandled(GLFW_KEY_Q);
             }
             
             camera->yaw   += mouse->getXoffset();
             camera->pitch += mouse->getYoffset();
-
+            
             break;
-        case RUNNING_EDITMODE:
+        }
+        case RUNNING_EDITMODE: {
             mouse->showMouse();
             
             if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {game->setState(MAIN_MENU); camera->reset();}
@@ -73,6 +75,7 @@ void Player::update(GameState state, SceneCamera* camera) {
             }
             
             break;
+        }
     }
     
     Actor::update(state, camera);

@@ -22,14 +22,14 @@ GameHUD::~GameHUD () {
 
 void GameHUD::update(GameState state, SceneCamera *camera) {
     switch (state) {
-        case RUNNING_EDITMODE:
-            //textPipeline->renderTextAs2D("Planet Name", glm::vec2(20, 1000), vec3(0.55, 0.55, 0.55), 0.65);
-            
+        case RUNNING_EDITMODE: {
             textPipeline->renderTextAs2D("edit mode", glm::vec2(10, 10), vec3(0.32, 0.32, 0.32), 0.35);
             break;
-        case RUNNING_FREEMODE:
+        }
+        case RUNNING_FREEMODE: {
             textPipeline->renderTextAs2D("explore mode", glm::vec2(10, 10), vec3(0.32, 0.32, 0.32), 0.35);
             break;
+        }
     }
     
     Actor::update(state, camera);

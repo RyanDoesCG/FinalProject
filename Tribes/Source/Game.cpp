@@ -15,6 +15,7 @@
 #include "../Headers/Engine/MainMenu.hpp"
 #include "../Headers/Engine/GameHUD.hpp"
 #include "../Headers/Engine/Skybox.hpp"
+#include "../Headers/Engine/Moon.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 0
@@ -59,6 +60,7 @@ void Game::begin() {
     Player player = Player(window, this);
     Planet planet = Planet();
     Skybox universe = Skybox();
+    Moon   moon     = Moon();
     
     Lamp   lamp   = Lamp();
     
@@ -69,37 +71,45 @@ void Game::begin() {
     lamp.setColour   (glm::vec3(1.0, 1.0, 1.0));
     
     planet.setLight(&lamp);
-
+    moon.setLightSource(&lamp);
+    
     while (windowIsAlive()) {
         switch (state) {
-            case MAIN_MENU: case LOAD_GAME: case OPTIONS:
-                glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            
-                player.update  (state, player.getView());
-                planet.update  (state, player.getView());
-                universe.update(state, player.getView());
-            
-                menu.update();
-            
-                glfwSwapBuffers(window);
-                break;
-            case RUNNING_EDITMODE: case RUNNING_FREEMODE:
+            case MAIN_MENU: case LOAD_GAME: case OPTIONS: {
                 glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 
                 player.update  (state, player.getView());
                 planet.update  (state, player.getView());
                 universe.update(state, player.getView());
+                moon.update(state, player.getView());
+                
+                menu.update();
+                
+                glfwSwapBuffers(window);
+                break;
+            }
+            case RUNNING_EDITMODE: case RUNNING_FREEMODE: {
+                glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                
+                player.update  (state, player.getView());
+                planet.update  (state, player.getView());
+                universe.update(state, player.getView());
+                moon.update(state, player.getView());
+                
                 lamp.update(state, player.getView());
                 
                 hud.update(state, player.getView());
                 
                 glfwSwapBuffers(window);
                 break;
-            case PAUSED:
+            }
+            case PAUSED: {
                 break;
-            case OVER:
+            }
+            case OVER: {
                 glfwTerminate();
                 break;
+            }
         }
     }
 }

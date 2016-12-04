@@ -36,27 +36,30 @@ void Planet::setLight(Actor * light) {
 void Planet::update(GameState state, SceneCamera *camera) {
     
     switch (state) {
-        case MAIN_MENU:
+        case MAIN_MENU: {
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
             setPosition(glm::vec3(1.0, 0.0, 0.0));
             
             water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.001, 0.0));
             water.setPosition(glm::vec3(1.0, 0.0, 0.0));
             break;
-        case RUNNING_FREEMODE:
+        }
+        case RUNNING_FREEMODE: {
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
             setPosition(glm::vec3(0.0, 0.0, 0.0));
             
             water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.001, 0.0));
             water.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
-        case RUNNING_EDITMODE:
+        }
+        case RUNNING_EDITMODE: {
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
             setPosition(glm::vec3(0.0, 0.0, 0.0));
             
             water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.001, 0.0));
             water.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
+        }
     }
     
     shader->update();

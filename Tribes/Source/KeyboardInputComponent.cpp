@@ -33,14 +33,6 @@ void KeyboardInputComponent::init () {
 
 void KeyboardInputComponent::update () {
     glfwPollEvents();
-    
-    for (int i = 0; i < KEYCOUNT; i++) {
-        if (activeKeys[i]) {
-            switch(i) {
-
-            }
-        }
-    }
 }
 
 bool KeyboardInputComponent::isKeyDown(int keycode) {
