@@ -29,6 +29,8 @@ class MeshComponent : public ActorComponent {
         glm::vec3 scale;
         glm::vec3 colour;
     
+        bool wireframe = true;
+    
     private:
         GLuint VAO;
         GLuint VBO;
@@ -42,6 +44,8 @@ class MeshComponent : public ActorComponent {
         // quick test MeshComponent
         vector<GLfloat> testVertices;
         void setupTestMeshComponent  ();
+    
+        ShaderComponent* wireframeShader;
 };
 
 #endif

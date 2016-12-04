@@ -1,50 +1,23 @@
 #version 330 core
-
 layout (location = 0) in vec3 position;
+layout (location = 1) in vec3 normal;
+layout (location = 2) in vec2 texCoords;
 
-uniform mat4 modelMat;
-uniform mat4 viewMat;
-uniform mat4 projectionMat;
+out vec3 worldPosition;
+out vec3 norm;
 
-uniform float wave;
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
 
-out vec3  FRAG_position;
 
-highp float rand(vec2 co) {
-    highp float a = 12.9898;
-    highp float b = 78.233;
-    highp float c = 43758.5453;
-    highp float dt= dot(co.xy ,vec2(a,b));
-    highp float sn= mod(dt,3.14);
-    return fract(sin(sn) * c);
+void main() {
+
+        // set position
+    gl_Position = projection * view * model * vec4(position, 1.0f);
+    
+        // pass through
+    worldPosition = vec3(model * vec4(position, 1.0f));
+    norm = mat3(transpose(inverse(model))) * normal;
 }
 
-void main (void) {
-    gl_Position = modelMat * vec4(position.x, position.y, position.z, 1.0f);
-    /*
-    float len = cos(wave) * 0.95;
-    
-    vec3 a = vec3(0.0, 0.0, 0.0);
-    vec3 b = position;
-    
-    float distX = b.x - a.x;
-    float distY = b.y - a.y;
-    float distZ = b.z - a.z;
-    
-    float a_b = sqrt(distX * distX + distY * distY + distZ * distZ);
-    
-    distX = distX * len / a_b;
-    distY = distY * len / a_b;
-    distZ = distZ * len / a_b;
-    
-
-    gl_Position = modelMat * vec4 (
-        a.x + distX,
-        a.y + distY,
-        a.z + distZ,
-        1.0f
-    );
-     */
-    
-    FRAG_position = position;
-}

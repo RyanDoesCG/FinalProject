@@ -21,5 +21,5 @@ void main (void) {
     //color = vec4(proceduralColour.r, proceduralColour.g, proceduralColour.b, 1.0);
 
     // hard coded color from me
-    color = vec4(0.64, 0.1,  0.24, 1.0);
+    color = vec4(1.0, 1.0,  1.0, 1.0);
 }

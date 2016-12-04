@@ -68,7 +68,7 @@ void Game::begin() {
     lamp.setScale    (0.25f);
     lamp.setColour   (glm::vec3(1.0, 1.0, 1.0));
     
-    planet.setLightSource(&lamp);
+    planet.setLight(&lamp);
 
     while (windowIsAlive()) {
         switch (state) {
@@ -89,6 +89,7 @@ void Game::begin() {
                 player.update  (state, player.getView());
                 planet.update  (state, player.getView());
                 universe.update(state, player.getView());
+                lamp.update(state, player.getView());
                 
                 hud.update(state, player.getView());
                 

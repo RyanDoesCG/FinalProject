@@ -19,8 +19,14 @@ class Planet : public Model {
        ~Planet ();
     
         virtual void update (GameState state, SceneCamera* camera) override;
-    
+        void setLight (Actor* );
+
+        std::string getName ();
     private:
+        void generateName();
+        std::string name;
+    
+        Model water;
 
 };
 

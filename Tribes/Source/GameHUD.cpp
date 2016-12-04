@@ -23,6 +23,8 @@ GameHUD::~GameHUD () {
 void GameHUD::update(GameState state, SceneCamera *camera) {
     switch (state) {
         case RUNNING_EDITMODE:
+            //textPipeline->renderTextAs2D("Planet Name", glm::vec2(20, 1000), vec3(0.55, 0.55, 0.55), 0.65);
+            
             textPipeline->renderTextAs2D("edit mode", glm::vec2(10, 10), vec3(0.32, 0.32, 0.32), 0.35);
             break;
         case RUNNING_FREEMODE:

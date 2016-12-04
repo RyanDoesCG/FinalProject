@@ -10,11 +10,14 @@
 #include "../Headers/glm/glm.hpp"
 #include "../Headers/glm/gtc/type_ptr.hpp"
 #include "../Headers/glm/gtc/matrix_transform.hpp"
+#include "../Headers/Engine/ShaderCache.hpp"
 
 MeshComponent::MeshComponent (vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures) {
     this->vertices = vertices;
     this->indices  = indices;
     this->textures = textures;
+    
+    this->wireframeShader = ShaderCache::loadShaderComponent("BasicWhite");
     
     this->setupModelMeshComponent();
 }
@@ -104,10 +107,10 @@ void MeshComponent::draw(ShaderComponent* shader, SceneCamera* camera) {
     glUniformMatrix4fv(glGetUniformLocation(shader->getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(modelTransform));
     
     // Draw that bitch
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
+
 }
 
 void MeshComponent::testdraw(ShaderComponent* shader, SceneCamera* camera) {

@@ -9,17 +9,28 @@
 #include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/ShaderCache.hpp"
 
-Planet::Planet (): Model("sphere/sphere") {
+Planet::Planet (): Model("sphere/sphere"), water("sphere/sphere") {
 
-    setColour(glm::vec3(1.0, 0.5, 0.5));
+    setColour(glm::vec3(1.0, 0.29, 0.347));
     setShader("Planet");
-    scale = glm::vec3(1.2, 1.2, 1.2);
+    setScale(1.2);
+    
+    water = Model("sphere/sphere");
+    water.setShader("water");
+    water.setScale(0.94);
+    water.setRotation(glm::vec3(0.15, 0.23, 0));
     
     PerlinNoiseMachine::distortMe(&(meshes.back().vertices));
+    generateName();
 }
 
 Planet::~Planet () {
     
+}
+
+void Planet::setLight(Actor * light) {
+    this->setLightSource(light);
+    water.setLightSource(light);
 }
 
 void Planet::update(GameState state, SceneCamera *camera) {
@@ -28,18 +39,67 @@ void Planet::update(GameState state, SceneCamera *camera) {
         case MAIN_MENU:
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
             setPosition(glm::vec3(1.0, 0.0, 0.0));
+            
+            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.001, 0.0));
+            water.setPosition(glm::vec3(1.0, 0.0, 0.0));
             break;
         case RUNNING_FREEMODE:
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
             setPosition(glm::vec3(0.0, 0.0, 0.0));
+            
+            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.001, 0.0));
+            water.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
         case RUNNING_EDITMODE:
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
             setPosition(glm::vec3(0.0, 0.0, 0.0));
+            
+            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.001, 0.0));
+            water.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
     }
     
     shader->update();
 
     Model::update(state, camera);
+    water.update(state, camera);
+}
+
+std::string Planet::getName() {return name;}
+
+void Planet::generateName() {
+    name = "";
+    
+    const char* upperVowels = "AEIOU";
+    const char* lowerVowels = "aeiou";
+    const char* upperCons   = "BCDFGHJKLMNPQRSTVXZW";
+    const char* lowerCons   = "bcdfghjklmnpqrstvxzw";
+    int         length = (rand() % 4) + 2;
+    
+    for (int i = 0; i < length; i++) {
+        int ting = rand() % 100;
+        
+        if (i > 0) {
+            if (ting < 36) name += lowerCons  [(rand() % 20)];
+            else           name += lowerVowels[(rand() % 5)];
+        }
+        
+        else {
+            if (ting < 36) name += upperCons  [rand() % 20];
+            else           name += upperVowels[rand() % 5];
+        }
+    }
+    
+    int ting = rand() % 200;
+    
+    if      (ting >= 0   && ting <= 24 ) name += " Alpha";
+    else if (ting >= 25  && ting <= 49 ) name += " Beta";
+    else if (ting >= 50  && ting <= 74 ) name += " Prime";
+    else if (ting >= 75  && ting <= 99 ) name += "";
+    else if (ting >= 100 && ting <= 124) name += "-Nova";
+    else if (ting >= 125 && ting <= 149) name += "-Maxim";
+    else if (ting >= 150 && ting <= 174) name += "-X";
+    else if (ting >= 175 && ting <= 200) name += "s";
+    
+    std::cout << "NAME: " << name << std::endl;
 }
