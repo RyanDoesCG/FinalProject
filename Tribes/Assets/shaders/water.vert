@@ -20,13 +20,13 @@ void main() {
     
     // pass through
     if (texCoords.x == 1) {
-        vertexColour = vec3(0.4, 0.4, 0.85) * 0.75;
+        vertexColour = vec3(0.70, 0.89, 0.98);
     }
     else if (texCoords.x == 2) {
-        vertexColour = vec3(0.4, 0.4, 0.85) * 0.85;
+        vertexColour = vec3(0.50, 0.83, 0.98);
     }
     else {
-        vertexColour = vec3(0.4, 0.4, 0.85) * 0.95;
+        vertexColour = vec3(0.69, 0.92, 0.94);
     }
     
     worldPosition = vec3(model * vec4(position, 1.0f));
