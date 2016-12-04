@@ -1,16 +1,19 @@
 #version 330 core
 layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
-layout (location = 2) in vec2 texCoords;
+layout (location = 2) in vec3 texCoords;
 
 out vec3 worldPosition;
+out vec3 vertexColour;
 out vec3 norm;
 
+uniform vec3 objectColour;
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
+uniform float ting;
 
-highp float rand(vec2 co);
+mediump float rand(vec2 co);
 
 void main() {
     
@@ -37,7 +40,22 @@ void main() {
     // set position
     gl_Position = projection * view * model * vec4(b, 1.0f);
     
+    float ting2 = rand(vec2(norm.z, cos(position.x*200)));
+    
     // pass through
+    
+    if (texCoords.x == 1) {
+        vertexColour = objectColour * 0.8;
+    }
+    else if (texCoords.x == 2) {
+        vertexColour = objectColour * 0.85;
+    }
+    else {
+        vertexColour = objectColour * 0.9;
+    }
+    
+    
+    vertexColour = vertexColour;
     worldPosition = vec3(model * vec4(b, 1.0f));
     norm = mat3(transpose(inverse(model))) * normal;
 }
@@ -51,6 +69,5 @@ highp float rand(vec2 co) {
     highp float b = 78.233;
     highp float c = 43758.5453;
     highp float dt= dot(co.xy ,vec2(a,b));
-    highp float sn= mod(dt,3.14);
-    return fract(sin(sn) * c);
+    return fract(sin(dt) * c);
 }

@@ -73,15 +73,28 @@ MeshComponent Model::processMesh (aiMesh* mesh, const aiScene* scene) {
         vector.y = mesh->mNormals[i].y;
         vector.z = mesh->mNormals[i].z;
         vertex.normal = vector;
-        // tc
-        if (mesh->mTextureCoords[0]) {
-            glm::vec2 vec;
-            vec.x = mesh->mTextureCoords[0][i].x;
-            vec.y = mesh->mTextureCoords[0][i].y;
-            vertex.tc = vec;
-        } else {
-            vertex.tc = glm::vec2(0.0f, 0.0f);
+        // tcww
+        static glm::vec3 colour;
+        if (i % 3 == 0) {
+            int ting = rand() % 100;
+            
+            if (ting > 0 && ting < 33) {
+                colour.r = 1;
+                colour.g = 1;
+                colour.b = 1;
+            }
+            else if (ting > 33 && ting < 66) {
+                colour.r = 2;
+                colour.g = 2;
+                colour.b = 2;
+            }
+            else {
+                colour.r = 3;
+                colour.g = 3;
+                colour.b = 3;
+            }
         }
+        vertex.colour = colour;
         
         vertices.push_back(vertex);
     }

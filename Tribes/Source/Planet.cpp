@@ -15,13 +15,27 @@ Planet::Planet (): Model("sphere/sphere"), water("sphere/sphere") {
     setShader("Planet");
     setScale(1.2);
     
-    water = Model("sphere/sphere");
     water.setShader("water");
     water.setScale(0.94);
     water.setRotation(glm::vec3(0.15, 0.23, 0));
     
+    shader->update();
+    glUniform1f(glGetUniformLocation(shader->getProgramID(), "ting"), rand() % 100);
+    
     PerlinNoiseMachine::distortMe(&(meshes.back().vertices));
     generateName();
+    
+    /*
+    std::cout << "\n\n";
+    std::cout << "o Icosphere\n";
+    for (int i = 0; i < meshes.back().indices.size(); i++) {
+        std::cout << "v ";
+        std::cout << meshes.back().vertices.at(meshes.back().indices.at(i)).position.x << " ";
+        std::cout << meshes.back().vertices.at(meshes.back().indices.at(i)).position.y << " ";
+        std::cout << meshes.back().vertices.at(meshes.back().indices.at(i)).position.z << "\n";
+    }
+    std::cout << "\n\n";
+     */
 }
 
 Planet::~Planet () {
@@ -63,7 +77,7 @@ void Planet::update(GameState state, SceneCamera *camera) {
     }
     
     shader->update();
-
+    
     Model::update(state, camera);
     water.update(state, camera);
 }
