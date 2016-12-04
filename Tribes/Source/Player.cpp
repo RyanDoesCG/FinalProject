@@ -58,8 +58,9 @@ void Player::update(GameState state, SceneCamera* camera) {
                 keyboard->keyHandled(GLFW_KEY_Q);
             }
             
-            camera->pitch += mouse->getYoffset();
             camera->yaw   += mouse->getXoffset();
+            camera->pitch += mouse->getYoffset();
+
             break;
         case RUNNING_EDITMODE:
             mouse->showMouse();

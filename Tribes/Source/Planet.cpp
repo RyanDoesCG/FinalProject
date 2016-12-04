@@ -11,7 +11,7 @@
 
 Planet::Planet (): Model("sphere/sphere"), water("sphere/sphere") {
 
-    setColour(glm::vec3(1.0, 0.29, 0.347));
+    setColour(glm::vec3(0.75, 0.66, 0.5));
     setShader("Planet");
     setScale(1.2);
     
