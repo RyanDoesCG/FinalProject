@@ -13,16 +13,12 @@ uniform mat4 projection;
 highp float rand(vec2 co);
 
 void main() {
-
-    vec3 a = vec3(0.0f, 0.0f, 0.0f);    // origin
-    vec3 b = position;                  // point to normalise
     
-
     // set position
-    gl_Position = projection * view * model * vec4(b, 1.0f);
+    gl_Position = projection * view * model * vec4(position, 1.0f);
     
     // pass through
-    worldPosition = vec3(model * vec4(b, 1.0f));
+    worldPosition = vec3(model * vec4(position, 1.0f));
     norm = mat3(transpose(inverse(model))) * normal;
 }
 

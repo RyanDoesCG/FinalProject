@@ -63,11 +63,29 @@ void Game::begin() {
     
     lamp.setPosition (glm::vec3(-5, 0.0, 1.5));
     lamp.setScale    (0.25f);
-    lamp.setColour   (glm::vec3(0.75, 0.32, 0.46));
+    lamp.setColour   (glm::vec3(1.0, 1.0, 1.0));
     
     planet.setLightSource(&lamp);
 
     while (windowIsAlive()) {
+        switch (state) {
+            case MAIN_MENU: case RUNNING_EDITMODE: case RUNNING_FREEMODE: case LOAD_GAME: case OPTIONS:
+                glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            
+                player.update  (state, player.getView());
+                planet.update  (state, player.getView());
+                universe.update(state, player.getView());
+            
+                menu.update();
+            
+                glfwSwapBuffers(window);
+                break;
+            case PAUSED:
+                break;
+            case OVER:
+                glfwTerminate();
+                break;
+        }
 
         if (state == OVER) {
             glfwTerminate();
@@ -79,9 +97,6 @@ void Game::begin() {
             player.update  (state, player.getView());
             planet.update  (state, player.getView());
             universe.update(state, player.getView());
-            
-            // DEBUG
-            //lamp.update    (state, player.getView());
             
             menu.update();
             

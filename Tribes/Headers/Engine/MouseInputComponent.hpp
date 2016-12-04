@@ -20,6 +20,9 @@ class MouseInputComponent : public ActorComponent {
         virtual void init() override;
         virtual void update() override;
     
+        void hideMouse ();
+        void showMouse ();
+    
         void placeMouse(int x, int y);
         void centerMouse();
     

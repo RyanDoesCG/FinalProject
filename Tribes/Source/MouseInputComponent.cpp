@@ -91,6 +91,14 @@ void MouseInputComponent::update() {
     }
 }
 
+void MouseInputComponent::hideMouse() {
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+}
+
+void MouseInputComponent::showMouse() {
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+}
+
 void MouseInputComponent::placeMouse (int x, int y) {
     glfwSetCursorPos(window, x, y);
 }

@@ -7,14 +7,13 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/PerlinNoiseMachine.hpp"
+#include <iostream>
+#include <math.h>   // fmod
 
-PerlinNoiseMachine::PerlinNoiseMachine () {}
-PerlinNoiseMachine::~PerlinNoiseMachine () {}
+float PerlinNoiseMachine::unitRandom() { return float(rand() % 100) / 200; }
+float PerlinNoiseMachine::random(int floor, int roof) { return float(fmod(rand(), roof) + floor); }
+float PerlinNoiseMachine::noise(double time) { return 0; }
 
-float PerlinNoiseMachine::random(float floor, float roof) {
-    return 0;
-}
+void PerlinNoiseMachine::distortMe(std::vector<Vertex> *vertices) {
 
-float PerlinNoiseMachine::noise(double time) {
-    return 0;
 }

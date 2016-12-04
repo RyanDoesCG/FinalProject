@@ -11,8 +11,10 @@
 
 Planet::Planet (): Model("sphere/sphere") {
 
-    setColour(glm::vec3(1.0, 0.5, 0.5));
+    setColour(glm::vec3(0.5, 0.5, 0.5));
     setShader("Planet");
+    
+    PerlinNoiseMachine::distortMe(&(meshes.back().vertices));
 }
 
 Planet::~Planet () {

@@ -9,6 +9,7 @@
 #ifndef Planet_hpp
 #define Planet_hpp
 
+#include "PerlinNoiseMachine.hpp"
 #include "Actor.hpp"
 #include "Model.hpp"
 
