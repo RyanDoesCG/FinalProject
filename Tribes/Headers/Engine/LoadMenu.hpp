@@ -1,11 +1,11 @@
-//
-//  LoadMenu.hpp
-//  Tribes
-//
-//  Created by user on 29/11/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Actor.hpp
+ *  Tribes
+ *
+ *  Created by Ryan Needham on 29/11/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef LoadMenu_hpp
 #define LoadMenu_hpp
 

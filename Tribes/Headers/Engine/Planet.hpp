@@ -1,11 +1,11 @@
-//
-//  Planet.hpp
-//  Tribes
-//
-//  Created by user on 30/11/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Planet.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 30/11/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Planet_hpp
 #define Planet_hpp
 

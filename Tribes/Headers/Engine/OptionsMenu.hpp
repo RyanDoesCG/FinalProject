@@ -1,11 +1,11 @@
-//
-//  OptionsMenu.hpp
-//  Tribes
-//
-//  Created by user on 29/11/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  OptionsMenu.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 29/11/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef OptionsMenu_hpp
 #define OptionsMenu_hpp
 

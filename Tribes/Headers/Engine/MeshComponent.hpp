@@ -1,3 +1,11 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  MeshComponent.hpp
+ *  Tribes
+ *
+ *  Created by Ryan Needham on 15/11/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef MeshComponent_HPP
 #define MeshComponent_HPP
 

@@ -1,11 +1,11 @@
-//
-//  Flag.hpp
-//  Tribes
-//
-//  Created by Ryan Needham on 04/12/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Actor.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 04/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Flag_hpp
 #define Flag_hpp
 

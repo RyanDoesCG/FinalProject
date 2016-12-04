@@ -1,3 +1,11 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  PhysicsBox2D.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 04/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef PhysicsBox2D_hpp
 #define PhysicsBox2D_hpp
 

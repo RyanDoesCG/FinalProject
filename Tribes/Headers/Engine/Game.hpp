@@ -2,7 +2,7 @@
  *  Game.hpp
  *  Tribes
  *
- *  Created by ryan needham on 02/09/2016.
+ *  Created by Ryan Needham on 02/09/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */

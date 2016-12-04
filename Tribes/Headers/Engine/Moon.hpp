@@ -1,4 +1,11 @@
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Moon.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 04/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Moon_hpp
 #define Moon_hpp
 
