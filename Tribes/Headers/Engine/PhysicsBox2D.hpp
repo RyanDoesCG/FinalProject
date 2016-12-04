@@ -1,0 +1,26 @@
+#ifndef PhysicsBox2D_hpp
+#define PhysicsBox2D_hpp
+
+#include "ActorComponent.hpp"
+#include "Intersection.hpp"
+#include "../GLM/glm.hpp"
+
+class PhysicsBox2D : public ActorComponent {
+    public:
+        PhysicsBox2D(glm::vec3 minExtents, glm::vec3 maxExtents);
+        ~PhysicsBox2D();
+    
+        virtual void init () override;
+        virtual void update () override;
+    
+        Intersection detectIntersection (PhysicsBox2D* other);
+    
+        glm::vec3 getMinimumExtents () { return minimumExtents; }
+        glm::vec3 getMaximumExtents () { return maximumExtents; }
+
+    private:
+        glm::vec3 maximumExtents;
+        glm::vec3 minimumExtents;
+};
+
+#endif

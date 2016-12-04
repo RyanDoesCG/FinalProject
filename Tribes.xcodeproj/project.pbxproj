@@ -19,6 +19,7 @@
 		624F49AD1DCBE7CE0065CE1A /* MeshComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A71DCBE7CE0065CE1A /* MeshComponent.cpp */; };
 		624F49AE1DCBE7CE0065CE1A /* ShaderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A81DCBE7CE0065CE1A /* ShaderComponent.cpp */; };
 		627C138F1DF4542500DCCDF7 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 627C138D1DF4542500DCCDF7 /* Flag.cpp */; };
+		627C13911DF4727A00DCCDF7 /* PhysicsBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 627C13901DF4727A00DCCDF7 /* PhysicsBox2D.cpp */; };
 		62A907F01DEB00960008796D /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907EF1DEB00960008796D /* SceneCamera.cpp */; };
 		62A907F21DEB3A2C0008796D /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907F11DEB3A2C0008796D /* Cube.cpp */; };
 		CE208BD61DEC7E2900F1A3A6 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE208BD41DEC7E2900F1A3A6 /* Menu.cpp */; };
@@ -68,6 +69,7 @@
 		624F49A71DCBE7CE0065CE1A /* MeshComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshComponent.cpp; path = Source/MeshComponent.cpp; sourceTree = "<group>"; };
 		624F49A81DCBE7CE0065CE1A /* ShaderComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderComponent.cpp; path = Source/ShaderComponent.cpp; sourceTree = "<group>"; };
 		627C138D1DF4542500DCCDF7 /* Flag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Flag.cpp; path = Source/Flag.cpp; sourceTree = "<group>"; };
+		627C13901DF4727A00DCCDF7 /* PhysicsBox2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhysicsBox2D.cpp; path = Source/PhysicsBox2D.cpp; sourceTree = "<group>"; };
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A907EF1DEB00960008796D /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneCamera.cpp; path = Source/SceneCamera.cpp; sourceTree = "<group>"; };
 		62A907F11DEB3A2C0008796D /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cube.cpp; path = Source/Cube.cpp; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				62A907F11DEB3A2C0008796D /* Cube.cpp */,
 				CEF7744B1DEDD33100CB2CC9 /* MainMenu.cpp */,
 				CEF7744E1DEDD33E00CB2CC9 /* SeedMenu.cpp */,
+				627C13901DF4727A00DCCDF7 /* PhysicsBox2D.cpp */,
 				CE4E8DA61DEE6E0600C3D842 /* Planet.cpp */,
 				627C138D1DF4542500DCCDF7 /* Flag.cpp */,
 				62256AAA1DE73BA700BF0E96 /* Model.cpp */,
@@ -236,6 +239,7 @@
 				CEF774561DEDD36400CB2CC9 /* LoadMenu.cpp in Sources */,
 				627C138F1DF4542500DCCDF7 /* Flag.cpp in Sources */,
 				CEF774531DEDD34F00CB2CC9 /* OptionsMenu.cpp in Sources */,
+				627C13911DF4727A00DCCDF7 /* PhysicsBox2D.cpp in Sources */,
 				624F49AA1DCBE7CE0065CE1A /* KeyboardInputComponent.cpp in Sources */,
 				620D55E91DF2074D00F63334 /* Skybox.cpp in Sources */,
 				CEF774501DEDD33E00CB2CC9 /* SeedMenu.cpp in Sources */,
