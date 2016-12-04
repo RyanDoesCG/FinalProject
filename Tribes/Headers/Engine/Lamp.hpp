@@ -1,15 +1,14 @@
 #ifndef Lamp_hpp
 #define Lamp_hpp
 
-#include "Cube.hpp"
+#include "Model.hpp"
 #include "ShaderCache.hpp"
 
-class Lamp: public Cube {
+class Lamp: public Model {
     public:
-        Lamp() {
-            dropComponent(shader->componentID);
+        Lamp() : Model("sphere/sphere") {
             shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("lightSource"));
-            
+            setScale(0.2);
             lightSource = this;
         }
     

@@ -23,9 +23,9 @@ Moon::~Moon () {
 void Moon::update(GameState state, SceneCamera *camera) {
     switch (state) {
         case MAIN_MENU: {
-            GLfloat radius = 0.5f;
-            position.x = (sin(glfwGetTime()/24) * radius) + 0.5;
-            position.z = cos(glfwGetTime()/24) * radius;
+            GLfloat radius = 2;
+            position.x = (sin(glfwGetTime()/24) * radius) + 1;
+            position.z = (cos(glfwGetTime()/24) * radius) + 1;
             
             break;
         }
