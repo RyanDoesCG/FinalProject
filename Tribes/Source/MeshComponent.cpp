@@ -104,6 +104,7 @@ void MeshComponent::draw(ShaderComponent* shader, SceneCamera* camera) {
     glUniformMatrix4fv(glGetUniformLocation(shader->getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(modelTransform));
     
     // Draw that bitch
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);

@@ -37,9 +37,7 @@ void KeyboardInputComponent::update () {
     for (int i = 0; i < KEYCOUNT; i++) {
         if (activeKeys[i]) {
             switch(i) {
-                case GLFW_KEY_Q:
-                    game->end();
-                    break;
+
             }
         }
     }

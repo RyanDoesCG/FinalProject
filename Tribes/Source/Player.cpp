@@ -28,6 +28,8 @@ void Player::init () {
 void Player::update(GameState state, SceneCamera* camera) {
     switch (state) {
         case MAIN_MENU:
+            mouse->showMouse();
+            
             if (inGame) {
                 camera->reset();
                 inGame = false;
@@ -37,6 +39,8 @@ void Player::update(GameState state, SceneCamera* camera) {
             camera->yaw   += mouse->getXoffset() * 0.1;
             break;
         case RUNNING_FREEMODE:
+            mouse->hideMouse();
+            
             if (!inGame) {mouse->centerMouse(); inGame = true;}
         
             if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP))    camera->moveForward();
@@ -46,8 +50,27 @@ void Player::update(GameState state, SceneCamera* camera) {
             if (keyboard->isKeyDown(GLFW_KEY_R)) { camera->reset(); mouse->centerMouse();}
             if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {game->setState(MAIN_MENU);}
             
+            // SWITCH MODE
+            if (keyboard->isKeyDown(GLFW_KEY_Q)) {
+                camera->reset();
+
+                game->setState(RUNNING_EDITMODE);
+                keyboard->keyHandled(GLFW_KEY_Q);
+            }
+            
             camera->pitch += mouse->getYoffset();
             camera->yaw   += mouse->getXoffset();
+            break;
+        case RUNNING_EDITMODE:
+            mouse->showMouse();
+            
+            if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {game->setState(MAIN_MENU); camera->reset();}
+            if (keyboard->isKeyDown(GLFW_KEY_Q)) {
+                camera->reset();
+                game->setState(RUNNING_FREEMODE);
+                keyboard->keyHandled(GLFW_KEY_Q);
+            }
+            
             break;
     }
     

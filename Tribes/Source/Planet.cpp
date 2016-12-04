@@ -11,8 +11,9 @@
 
 Planet::Planet (): Model("sphere/sphere") {
 
-    setColour(glm::vec3(0.5, 0.5, 0.5));
+    setColour(glm::vec3(1.0, 0.5, 0.5));
     setShader("Planet");
+    scale = glm::vec3(1.2, 1.2, 1.2);
     
     PerlinNoiseMachine::distortMe(&(meshes.back().vertices));
 }
@@ -29,6 +30,10 @@ void Planet::update(GameState state, SceneCamera *camera) {
             setPosition(glm::vec3(1.0, 0.0, 0.0));
             break;
         case RUNNING_FREEMODE:
+            setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
+            setPosition(glm::vec3(0.0, 0.0, 0.0));
+            break;
+        case RUNNING_EDITMODE:
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
             setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;

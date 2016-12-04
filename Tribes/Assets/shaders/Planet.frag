@@ -23,10 +23,10 @@ void main (void) {
     vec3  diffuse        = diffStrength * lightColour;
     
         // specular lighting
-    float specStrength        = 0.5f;
+    float specStrength        = 0.2f;
     vec3  viewDirection       = normalize(viewPosition - worldPosition);
     vec3  reflectionDirection = reflect(-lightDirection, norm);
-    float spec                = pow(max(dot(viewDirection, reflectionDirection), 0.0), 32);
+    float spec                = pow(max(dot(viewDirection, reflectionDirection), 0.0), 26);
     vec3  specular            = specStrength * spec * lightColour;
     
         // stacked result

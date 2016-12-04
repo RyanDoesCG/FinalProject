@@ -15,5 +15,12 @@ float PerlinNoiseMachine::random(int floor, int roof) { return float(fmod(rand()
 float PerlinNoiseMachine::noise(double time) { return 0; }
 
 void PerlinNoiseMachine::distortMe(std::vector<Vertex> *vertices) {
-
+    for (int i = 0; i < vertices->size(); i++) {
+        Vertex placeholder = Vertex();
+        placeholder.position.x = vertices->at(i).position.x + unitRandom();
+        placeholder.position.y = vertices->at(i).position.y + unitRandom();
+        placeholder.position.z = vertices->at(i).position.z + unitRandom();
+        
+        vertices->at(i) = placeholder;
+    }
 }

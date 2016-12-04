@@ -10,7 +10,7 @@
 #include "../Headers/glfw/glfw3.h"
 
 SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
-    movementSpeed = 0.05f;
+    movementSpeed = 0.025f;
     
     position      = vec3(0.0f, 0.0f, 3.0f);   // in world space
     relativeFront = normalize(vec3(position - vec3(0.0, 0.0, 0.0)));  // front from camera
@@ -42,8 +42,11 @@ void SceneCamera::moveLeft     () { position -= normalize(cross(relativeFront, r
 void SceneCamera::moveRight    () { position += normalize(cross(relativeFront, relativeUp)) * movementSpeed; }
 void SceneCamera::moveForward  () { position += movementSpeed * relativeFront; }
 void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
+void SceneCamera::speedUp      () { movementSpeed = 0.05f;}
+void SceneCamera::slowDown     () { movementSpeed = 0.025f;}
 
 void SceneCamera::reset () {
+    position = vec3(0.0f, 0.0f, 3.0f);
     pitch = 0;
     yaw = -90.0f;
 }
@@ -57,9 +60,9 @@ void SceneCamera::update (GameState state, SceneCamera* camera) {
             // lock position
             position = vec3(0.0f, 0.0f, 3.0f);
         
-            relativeFront.x = cos(radians(yaw)) * cos(radians(pitch));
-            relativeFront.y = sin(radians(pitch));
-            relativeFront.z = sin(radians(yaw)) * cos(radians(pitch));
+            relativeFront.x = 0.2 * (cos(radians(yaw)) * cos(radians(pitch)));
+            relativeFront.y = 0.2 * (sin(radians(pitch)));
+            relativeFront.z = 0.2 * (sin(radians(yaw)) * cos(radians(pitch)));
         
             // limit movement
             // TO DO

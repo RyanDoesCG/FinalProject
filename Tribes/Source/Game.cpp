@@ -13,6 +13,7 @@
 #include "../Headers/Engine/Lamp.hpp"
 #include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/MainMenu.hpp"
+#include "../Headers/Engine/GameHUD.hpp"
 #include "../Headers/Engine/Skybox.hpp"
 
 // Deterines window size/debug hud
@@ -53,6 +54,8 @@ void Game::begin() {
     MainMenu menu = MainMenu(windowWidth, windowHeight, this);
     menu.show();
     
+    GameHUD hud = GameHUD(windowWidth, windowHeight, this);
+    
     Player player = Player(window, this);
     Planet planet = Planet();
     Skybox universe = Skybox();
@@ -69,7 +72,7 @@ void Game::begin() {
 
     while (windowIsAlive()) {
         switch (state) {
-            case MAIN_MENU: case RUNNING_EDITMODE: case RUNNING_FREEMODE: case LOAD_GAME: case OPTIONS:
+            case MAIN_MENU: case LOAD_GAME: case OPTIONS:
                 glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             
                 player.update  (state, player.getView());
@@ -80,27 +83,22 @@ void Game::begin() {
             
                 glfwSwapBuffers(window);
                 break;
+            case RUNNING_EDITMODE: case RUNNING_FREEMODE:
+                glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                
+                player.update  (state, player.getView());
+                planet.update  (state, player.getView());
+                universe.update(state, player.getView());
+                
+                hud.update(state, player.getView());
+                
+                glfwSwapBuffers(window);
+                break;
             case PAUSED:
                 break;
             case OVER:
                 glfwTerminate();
                 break;
-        }
-
-        if (state == OVER) {
-            glfwTerminate();
-        }
-
-        else {
-            glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            
-            player.update  (state, player.getView());
-            planet.update  (state, player.getView());
-            universe.update(state, player.getView());
-            
-            menu.update();
-            
-            glfwSwapBuffers(window);
         }
     }
 }
