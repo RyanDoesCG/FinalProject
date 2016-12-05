@@ -13,9 +13,14 @@
 #include "../GLEW/glew.h"
 #include <iostream>
 
+enum ProgramType {
+    BASIC,
+    GEOM
+};
+
 class ShaderComponent : public ActorComponent {
     public:
-        ShaderComponent (const std::string& name);
+        ShaderComponent (const std::string& name, ProgramType type);
        ~ShaderComponent ();
     
         virtual void init() override;
@@ -27,6 +32,7 @@ class ShaderComponent : public ActorComponent {
     private:
         GLuint programID;
         GLuint vertexShaderID;
+        GLuint geometryShaderID;
         GLuint fragmentShaderID;
     
         std::string loadSource (const std::string& path);

@@ -14,10 +14,10 @@
 Planet::Planet (): Model("sphere/sphere"), water("sphere/sphere") {
 
     setColour(glm::vec3(0.75, 0.66, 0.5));
-    setShader("Planet");
+    setShader("Planet", BASIC);
     setScale(1.2);
     
-    water.setShader("water");
+    water.setShader("water", BASIC);
     water.setScale(0.94);
     water.setRotation(glm::vec3(0.15, 0.23, 0));
     

@@ -14,7 +14,7 @@
 
 class ShaderCache {
 public:
-    static ShaderComponent* loadShaderComponent (std::string path) {
+    static ShaderComponent* loadShaderComponent (std::string path, ProgramType type) {
         static std::vector<ShaderComponent*> cache = std::vector<ShaderComponent*>();
         
         for (int i = 0; i < cache.size(); i++) {
@@ -25,7 +25,7 @@ public:
         }
         
         // shader not in memory, make it
-        cache.push_back(new ShaderComponent(path));
+        cache.push_back(new ShaderComponent(path, type));
         return cache.back();
     }
 };

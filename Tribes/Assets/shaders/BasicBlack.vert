@@ -11,5 +11,5 @@ out vec4 FRAG_pos;
 
 void main (void) {
     gl_Position = projection * view * model * vec4(position, 1.0f);
-    FRAG_pos = model * vec4(position, 1.0f);
+    FRAG_pos = view * model * vec4(position, 1.0f);
 }

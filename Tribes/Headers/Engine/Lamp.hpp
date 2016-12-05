@@ -15,7 +15,7 @@
 class Lamp: public Model {
     public:
         Lamp() : Model("sphere/sphere") {
-            shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("lightSource"));
+            shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("lightSource", BASIC));
             setScale(0.2);
             lightSource = this;
         }

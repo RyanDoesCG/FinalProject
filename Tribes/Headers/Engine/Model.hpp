@@ -25,7 +25,7 @@ class Model : public Actor {
         virtual void update (GameState state, SceneCamera* camera) override;
     
         void setLightSource (Actor* light) {lightSource = light;}
-        void setShader      (string path);
+        void setShader      (string path, ProgramType type);
         ShaderComponent* getShader () {return shader;}
     
         vector<MeshComponent> meshes;

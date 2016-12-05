@@ -17,7 +17,7 @@ MeshComponent::MeshComponent (vector<Vertex> vertices, vector<GLuint> indices, v
     this->indices  = indices;
     this->textures = textures;
     
-    this->wireframeShader = ShaderCache::loadShaderComponent("BasicWhite");
+    this->wireframeShader = ShaderCache::loadShaderComponent("BasicWhite", BASIC);
     
     this->setupModelMeshComponent();
 }

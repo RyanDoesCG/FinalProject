@@ -9,17 +9,36 @@
 #include "../Headers/Engine/ShaderComponent.hpp"
 #include <fstream>
 
-ShaderComponent::ShaderComponent (const std::string& name) {
+ShaderComponent::ShaderComponent (const std::string& name, ProgramType type) {
     programID = glCreateProgram();
     title = name;
     
-    // create a fragment and vertex shader
-    vertexShaderID   = createShader(loadSource("Assets/shaders/" + name + ".vert"), GL_VERTEX_SHADER);
-    fragmentShaderID = createShader(loadSource("Assets/shaders/" + name + ".frag"), GL_FRAGMENT_SHADER);
-    
-    // attach said shaders
-    glAttachShader (programID, vertexShaderID);
-    glAttachShader (programID, fragmentShaderID);
+    switch (type) {
+        case BASIC: {
+            // create a fragment and vertex shader
+            vertexShaderID   = createShader(loadSource("Assets/shaders/" + name + ".vert"), GL_VERTEX_SHADER);
+            fragmentShaderID = createShader(loadSource("Assets/shaders/" + name + ".frag"), GL_FRAGMENT_SHADER);
+            
+            // attach said shaders
+            glAttachShader (programID, vertexShaderID);
+            glAttachShader (programID, fragmentShaderID);
+            break;
+        }
+        
+        case GEOM: {
+            // create a fragment and vertex shader
+            vertexShaderID   = createShader(loadSource("Assets/shaders/" + name + ".vert"), GL_VERTEX_SHADER);
+            geometryShaderID = createShader(loadSource("Assets/shaders/" + name + ".geom"), GL_GEOMETRY_SHADER);
+            fragmentShaderID = createShader(loadSource("Assets/shaders/" + name + ".frag"), GL_FRAGMENT_SHADER);
+            
+            // attach said shaders
+            glAttachShader (programID, vertexShaderID);
+            glAttachShader (programID, geometryShaderID);
+            glAttachShader (programID, fragmentShaderID);
+            break;
+        }
+    }
+
     
     // link program
     glLinkProgram  (programID);
@@ -35,9 +54,20 @@ ShaderComponent::ShaderComponent (const std::string& name) {
     
     update(); // is this necessary???????
     
-    // delete shaders
-    glDeleteShader(vertexShaderID);
-    glDeleteShader(fragmentShaderID);
+    switch (type) {
+        case BASIC: {
+            // delete shaders
+            glDeleteShader(vertexShaderID);
+            glDeleteShader(fragmentShaderID);
+        }
+        
+        case GEOM: {
+            // delete shaders
+            glDeleteShader(vertexShaderID);
+            glDeleteShader(geometryShaderID);
+            glDeleteShader(fragmentShaderID);
+        }
+    }
 }
 
 ShaderComponent::~ShaderComponent () {
