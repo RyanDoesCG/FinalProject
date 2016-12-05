@@ -9,6 +9,8 @@
 #include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/ShaderCache.hpp"
 
+#include "../GLFW/glfw3.h"
+
 Planet::Planet (): Model("sphere/sphere"), water("sphere/sphere") {
 
     setColour(glm::vec3(0.75, 0.66, 0.5));
@@ -44,7 +46,6 @@ void Planet::setLight(Actor * light) {
 }
 
 void Planet::update(GameState state, SceneCamera *camera) {
-    
     switch (state) {
         case MAIN_MENU: {
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
@@ -71,8 +72,10 @@ void Planet::update(GameState state, SceneCamera *camera) {
             break;
         }
     }
-    
-    shader->update();
+
+
+    water.getShader()->update();
+    glUniform1f(glGetUniformLocation(water.getShader()->getProgramID(), "time"), glfwGetTime());
     
     Model::update(state, camera);
     water.update(state, camera);

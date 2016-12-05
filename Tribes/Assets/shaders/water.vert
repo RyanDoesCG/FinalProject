@@ -10,13 +10,43 @@ out vec3 norm;
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
+uniform float time;
+
+const float PI = 3.141592653589;
+const float AMPLITUDE = 0.002;
+
+float generateHeight(){
+    float component1 = sin(2.0 * PI * (time/2) + (position.x * 16.0)) * AMPLITUDE;
+    float component2 = sin(2.0 * PI * (time/2) + (position.y * position.x * 8.0)) * AMPLITUDE;
+    return component1 + component2;
+}
 
 
 void main() {
-
-
+    float height = 1.185 + generateHeight();
+    vec3 a = vec3(0, 0, 0);
+    vec3 b = position;
+    
+    // get the distance between the center of the structure
+    // and the point on the x, y and z axes.
+    float distX = b.x - a.x;
+    float distY = b.y - a.y;
+    float distZ = b.z - a.z;
+    
+    float a_b = sqrt(distX * distX + distY * distY + distZ * distZ);
+    
+    distX = distX * height / a_b;
+    distY = distY * height / a_b;
+    distZ = distZ * height / a_b;
+    
+    b.x = (a.x + distX);
+    b.y = (a.y + distY);
+    b.z = (a.z + distZ);
+    
     // set position
-    gl_Position = projection * view * model * vec4(position, 1.0f);
+    gl_Position = projection * view * model * vec4(b, 1.0f);
+    // set position
+   // gl_Position = projection * view * model * vec4(position.x, height, position.y, 1.0f);
     
     // pass through
     if (texCoords.x == 1) {

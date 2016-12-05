@@ -64,8 +64,6 @@ void Game::begin() {
     
     Lamp   lamp   = Lamp();
     
-    Cube   theGreatCubeOfDebug = Cube();
-    
     lamp.setPosition (glm::vec3(-50, 0.0, 1.5));
     lamp.setScale    (0.25f);
     lamp.setColour   (glm::vec3(1.0, 1.0, 1.0));

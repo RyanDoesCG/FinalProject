@@ -26,6 +26,7 @@ class Model : public Actor {
     
         void setLightSource (Actor* light) {lightSource = light;}
         void setShader      (string path);
+        ShaderComponent* getShader () {return shader;}
     
         vector<MeshComponent> meshes;
     

@@ -10,5 +10,6 @@ uniform mat4 projection;
 out vec4 FRAG_pos;
 
 void main (void) {
-    gl_Position = FRAG_pos = projection * view * model * vec4(position, 1.0f);
+    gl_Position = projection * view * model * vec4(position, 1.0f);
+    FRAG_pos = model * vec4(position, 1.0f);
 }
