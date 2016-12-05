@@ -14,6 +14,7 @@ Player::Player (GLFWwindow* window, Game* game) {
     camera = (SceneCamera*)addChild(new SceneCamera(game->windowWidth, game->windowHeight));
     
     this->game = game;
+    inGame = false;
 }
 
 Player::~Player () {
@@ -42,7 +43,7 @@ void Player::update(GameState state, SceneCamera* camera) {
         case RUNNING_FREEMODE: {
             mouse->hideMouse();
             
-            if (!inGame) {mouse->centerMouse(); inGame = true;}
+            if (!inGame) {camera->reset(); inGame = true;}
             
             if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP))    camera->moveForward();
             if (keyboard->isKeyDown(GLFW_KEY_S) || keyboard->isKeyDown(GLFW_KEY_DOWN))  camera->moveBackward();
@@ -53,8 +54,6 @@ void Player::update(GameState state, SceneCamera* camera) {
             
                 // SWITCH MODE
             if (keyboard->isKeyDown(GLFW_KEY_Q)) {
-                camera->reset();
-                
                 game->setState(RUNNING_EDITMODE);
                 keyboard->keyHandled(GLFW_KEY_Q);
             }
@@ -69,7 +68,6 @@ void Player::update(GameState state, SceneCamera* camera) {
             
             if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {game->setState(MAIN_MENU); camera->reset();}
             if (keyboard->isKeyDown(GLFW_KEY_Q)) {
-                camera->reset();
                 game->setState(RUNNING_FREEMODE);
                 keyboard->keyHandled(GLFW_KEY_Q);
             }

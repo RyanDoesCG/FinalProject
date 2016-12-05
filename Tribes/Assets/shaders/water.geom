@@ -3,19 +3,24 @@
 layout ( triangles ) in;
 layout ( triangle_strip, max_vertices = 3) out;
 
-out vec3 vertexColour;
+in vec3 vertexColour[];
 
-uniform mat4 projectionMatrix;
-uniform mat4 viewMatrix;
-uniform vec3 viewPosition;
+out vec3 finalColour;
 
-const vec3 lightDirection = normalize(vec3(0.4, -1.0, 0.8));
-const vec3 waterColour = vec3(0.2, 0.4, 0.45);
-const vec3 lightColour = vec3(1.0, 0.6, 0.6);
-const float reflectivity = 0.5;
-const float shineDamper = 14.0;
+uniform mat4 projection;
+uniform mat4 view;
+uniform vec3 cameraPosition;
+uniform vec3 lightColour;
+uniform vec3 lightPosition;
+
+const float reflectivity = 0.32;
+const float shineDamper = 16.0;
 const float ambientLighting = 0.3;
 
+/**
+ *  CREDIT: https://www.youtube.com/watch?v=r2hue52wLF4
+ *  adapted by Ryan Needham
+ */
 vec3 calculateTriangleNormal(){
     vec3 tangent = gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz;
     vec3 bitangent = gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz;
@@ -24,7 +29,8 @@ vec3 calculateTriangleNormal(){
 }
 
 vec3 calculateSpecular(vec4 worldPosition, vec3 normal){
-    vec3 viewVector = normalize(viewPosition - worldPosition.xyz);
+    vec3 lightDirection = normalize(lightPosition - vec3(worldPosition.xyz));
+    vec3 viewVector = normalize(cameraPosition - worldPosition.xyz);
     vec3 reflectedLightDirection = reflect(lightDirection, normal);
     float specularFactor = dot(reflectedLightDirection, viewVector);
     specularFactor = max(pow(specularFactor, shineDamper), 0.0);
@@ -32,25 +38,35 @@ vec3 calculateSpecular(vec4 worldPosition, vec3 normal){
 }
 
 void main(void){
-    mat4 projectionViewMatrix = projectionMatrix * viewMatrix;
-    
-    vec3 normal = calculateTriangleNormal();
-    float brightness = max(dot(-lightDirection, normal), ambientLighting);
-    vec3 colour = waterColour * brightness;
     
     vec4 worldPosition = gl_in[0].gl_Position;
-    gl_Position = projectionViewMatrix * worldPosition;
-    vertexColour = colour + calculateSpecular(worldPosition, normal);
+    vec3 normal = calculateTriangleNormal();
+    vec3 lightDirection = normalize(lightPosition - vec3(worldPosition.xyz));
+    float brightness = max(dot(-lightDirection, normal), ambientLighting);
+    vec3 colour = vertexColour[0] * brightness;
+    
+    gl_Position = projection * view * worldPosition;
+    finalColour = colour + calculateSpecular(worldPosition, normal);
     EmitVertex();
     
     worldPosition = gl_in[1].gl_Position;
-    gl_Position = projectionViewMatrix * worldPosition;
-    vertexColour = colour+ calculateSpecular(worldPosition, normal);
+    normal = calculateTriangleNormal();
+    lightDirection = normalize(lightPosition - vec3(worldPosition.xyz));
+    brightness = max(dot(-lightDirection, normal), ambientLighting);
+    colour = vertexColour[0] * brightness;
+    
+    gl_Position = projection * view * worldPosition;
+    finalColour = colour + calculateSpecular(worldPosition, normal);
     EmitVertex();
     
     worldPosition = gl_in[2].gl_Position;
-    gl_Position = projectionViewMatrix * worldPosition;
-    vertexColour = colour+ calculateSpecular(worldPosition, normal);
+    normal = calculateTriangleNormal();
+    lightDirection = normalize(lightPosition - vec3(worldPosition.xyz));
+    brightness = max(dot(-lightDirection, normal), ambientLighting);
+    colour = vertexColour[0] * brightness;
+    
+    gl_Position = projection * view * worldPosition;
+    finalColour = colour + calculateSpecular(worldPosition, normal);
     EmitVertex();
     
     EndPrimitive();

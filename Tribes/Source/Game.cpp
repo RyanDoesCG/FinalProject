@@ -66,7 +66,7 @@ void Game::begin() {
     
     lamp.setPosition (glm::vec3(-50, 0.0, 1.5));
     lamp.setScale    (0.25f);
-    lamp.setColour   (glm::vec3(1.0, 1.0, 1.0));
+    lamp.setColour   (glm::vec3(1.0, 0.9, 0.9));    // slight red tinge to light
     
     planet.setLight(&lamp);
     moon.setLightSource(&lamp);
@@ -80,6 +80,8 @@ void Game::begin() {
                 planet.update  (state, player.getView());
                 universe.update(state, player.getView());
                 moon.update(state, player.getView());
+                
+                lamp.update(state, player.getView());
                 
                 menu.update();
                 

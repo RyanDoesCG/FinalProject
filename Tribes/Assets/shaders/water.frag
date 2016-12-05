@@ -1,17 +1,24 @@
 #version 330 core
 
+in vec3  finalColour;
+
+/*
 in vec3  worldPosition;
-in vec3  vertexColour;
 in vec3  norm;
 
 uniform vec3 viewPosition;
 uniform vec3 lightPosition;
 uniform vec3 lightColour;
+*/
 
 out vec4 color;
 
+/**
+ *  CREDIT: https://www.youtube.com/watch?v=r2hue52wLF4
+ *  adapted by Ryan Needham
+ */
 void main (void) {
-
+/*
     vec3 objectColour = vec3(0.52f, 0.64f, 0.94f);
     
     
@@ -34,5 +41,6 @@ void main (void) {
     
         // stacked result
     vec3 result = (ambient + diffuse + specular) * vertexColour;
-    color = vec4(result, 0.75f);
+ */
+    color = vec4(finalColour, 0.75f);
 }

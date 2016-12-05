@@ -3,27 +3,27 @@ layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
 layout (location = 2) in vec3 texCoords;
 
-out vec3 worldPosition;
-out vec3 vertexColour;
-out vec3 norm;
-
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
 uniform float time;
+uniform mat4 model;
 
 const float PI = 3.141592653589;
 const float AMPLITUDE = 0.002;
 
+out vec3 vertexColour;
+
+/** 
+ *  CREDIT: https://www.youtube.com/watch?v=r2hue52wLF4
+ *  adapted by Ryan Needham
+ */
 float generateHeight(){
-    float component1 = sin(2.0 * PI * (time/2) + (position.x * 16.0)) * AMPLITUDE;
-    float component2 = sin(2.0 * PI * (time/2) + (position.y * position.x * 8.0)) * AMPLITUDE;
+    float component1 = sin(2.0 * PI * (time * 0.75) + (position.x * 16.0)) * AMPLITUDE;
+    float component2 = sin(2.0 * PI * (time * 0.75) + (position.y * position.x * 8.0)) * AMPLITUDE;
     return component1 + component2;
 }
 
 
 void main() {
-    float height = 1.185 + generateHeight();
+    float height = 1.19 + generateHeight();
     vec3 a = vec3(0, 0, 0);
     vec3 b = position;
     
@@ -44,22 +44,12 @@ void main() {
     b.z = (a.z + distZ);
     
     // set position
-    gl_Position = projection * view * model * vec4(b, 1.0f);
-    // set position
-   // gl_Position = projection * view * model * vec4(position.x, height, position.y, 1.0f);
-    
+    gl_Position = model * vec4(b, 1.0f);
+
     // pass through
-    if (texCoords.x == 1) {
-        vertexColour = vec3(0.70, 0.89, 0.98);
-    }
-    else if (texCoords.x == 2) {
-        vertexColour = vec3(0.50, 0.83, 0.98);
-    }
-    else {
-        vertexColour = vec3(0.69, 0.92, 0.94);
-    }
-    
-    worldPosition = vec3(model * vec4(position, 1.0f));
-    norm = mat3(transpose(inverse(model))) * normal;
+    if      (texCoords.x == 1) { vertexColour = vec3(0.2, 0.4, 0.45); }
+    else if (texCoords.x == 2) { vertexColour = vec3(0.22, 0.42, 0.47); }
+    else                       { vertexColour = vec3(0.24, 0.44, 0.49); }
+
 }
 

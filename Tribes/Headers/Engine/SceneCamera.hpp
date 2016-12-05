@@ -26,7 +26,8 @@ class SceneCamera: public Actor {
     
         void speedUp  ();
         void slowDown ();
-        void idle     (double animationTimer);
+    
+        bool orbiting;
     
         virtual void update (GameState state, SceneCamera* camera) override;
     

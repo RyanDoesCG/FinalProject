@@ -84,5 +84,14 @@ void SceneCamera::update (GameState state, SceneCamera* camera) {
             view = glm::lookAt(position, position + relativeFront, relativeUp);
             break;
         }
+        
+        case RUNNING_EDITMODE: {
+            
+            relativeFront = normalize(relativeFront);
+            relativeRight = normalize(cross(relativeFront, worldUp));
+            relativeUp    = normalize(cross(relativeRight, relativeFront));
+            view = glm::lookAt(position, position + relativeFront, relativeUp);
+            break;
+        }
     }
 }

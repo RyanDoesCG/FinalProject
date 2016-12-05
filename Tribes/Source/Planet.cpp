@@ -9,31 +9,20 @@
 #include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/ShaderCache.hpp"
 
-#include "../GLFW/glfw3.h"
+#include "../Headers/GLFW/glfw3.h"
 
-Planet::Planet (): Model("sphere/sphere"), water("sphere/sphere") {
+Planet::Planet (): Model("sphere/sphere"), water("sphere/sphereDETAILED") {
 
     setColour(glm::vec3(0.75, 0.66, 0.5));
     setShader("Planet", BASIC);
     setScale(1.2);
     
-    water.setShader("water", BASIC);
+    water.setShader("water", GEOM);
     water.setScale(0.94);
     water.setRotation(glm::vec3(0.15, 0.23, 0));
     
     generateName();
-    
-    /*
-    std::cout << "\n\n";
-    std::cout << "o Icosphere\n";
-    for (int i = 0; i < meshes.back().indices.size(); i++) {
-        std::cout << "v ";
-        std::cout << meshes.back().vertices.at(meshes.back().indices.at(i)).position.x << " ";
-        std::cout << meshes.back().vertices.at(meshes.back().indices.at(i)).position.y << " ";
-        std::cout << meshes.back().vertices.at(meshes.back().indices.at(i)).position.z << "\n";
-    }
-    std::cout << "\n\n";
-     */
+
 }
 
 Planet::~Planet () {
@@ -51,23 +40,15 @@ void Planet::update(GameState state, SceneCamera *camera) {
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
             setPosition(glm::vec3(1.0, 0.0, 0.0));
             
-            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.001, 0.0));
+            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
             water.setPosition(glm::vec3(1.0, 0.0, 0.0));
             break;
         }
-        case RUNNING_FREEMODE: {
+        case RUNNING_FREEMODE: case RUNNING_EDITMODE: {
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
             setPosition(glm::vec3(0.0, 0.0, 0.0));
             
-            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.001, 0.0));
-            water.setPosition(glm::vec3(0.0, 0.0, 0.0));
-            break;
-        }
-        case RUNNING_EDITMODE: {
-            setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
-            setPosition(glm::vec3(0.0, 0.0, 0.0));
-            
-            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.001, 0.0));
+            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
             water.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
         }

@@ -35,7 +35,7 @@ class Player : public Actor {
     
         Game* game;
     
-        bool inGame = false;
+        bool inGame;
 };
 
 #endif /* Player_hpp */
