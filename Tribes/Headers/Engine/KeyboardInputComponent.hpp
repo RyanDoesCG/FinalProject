@@ -26,7 +26,6 @@ class KeyboardInputComponent : public ActorComponent {
     private:
         GLFWwindow* window;
         Game* game;
-    
 };
 
 #endif /* KeyboardInputComponent_hpp */

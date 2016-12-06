@@ -14,7 +14,7 @@
 Planet::Planet (): Model("sphere/sphere"), water("sphere/sphereDETAILED") {
 
     setColour(glm::vec3(0.75, 0.66, 0.5));
-    setShader("Planet", BASIC);
+    setShader("Planet", GEOM);
     setScale(1.2);
     
     water.setShader("water", GEOM);
@@ -38,10 +38,10 @@ void Planet::update(GameState state, SceneCamera *camera) {
     switch (state) {
         case MAIN_MENU: {
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
-            setPosition(glm::vec3(1.0, 0.0, 0.0));
+            setPosition(glm::vec3(0.0, 0.0, 0.0));
             
             water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
-            water.setPosition(glm::vec3(1.0, 0.0, 0.0));
+            water.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
         }
         case RUNNING_FREEMODE: case RUNNING_EDITMODE: {

@@ -10,7 +10,7 @@
 #include "../Headers/glfw/glfw3.h"
 
 SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
-    movementSpeed = 0.0025f;
+    movementSpeed = 0.004f;
     
     position      = vec3(0.0f, 0.0f, 3.0f);   // in world space
     relativeFront = normalize(vec3(position - vec3(0.0, 0.0, 0.0)));  // front from camera
@@ -40,10 +40,12 @@ mat4 SceneCamera::getViewTransform       () { return view; }
 
 void SceneCamera::moveLeft     () { position -= normalize(cross(relativeFront, relativeUp)) * movementSpeed; }
 void SceneCamera::moveRight    () { position += normalize(cross(relativeFront, relativeUp)) * movementSpeed; }
-void SceneCamera::moveForward  () { position += movementSpeed * relativeFront; }
+
+void SceneCamera::moveForward   () { position += movementSpeed * relativeFront; }
+void SceneCamera::moveForwardAt (float speed) { position += speed * movementSpeed * relativeFront; }
+
 void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
-void SceneCamera::speedUp      () { movementSpeed = 0.05f;}
-void SceneCamera::slowDown     () { movementSpeed = 0.025f;}
+void SceneCamera::moveBackwardAt (float speed) { position -= speed * movementSpeed * relativeFront; }
 
 void SceneCamera::reset () {
     position = vec3(0.0f, 0.0f, 3.0f);
@@ -52,13 +54,11 @@ void SceneCamera::reset () {
 }
 
 void SceneCamera::update (GameState state, SceneCamera* camera) {
-    if (pitch >  89) pitch = 89;
-    if (pitch < -89) pitch = -89;
     
     switch (state) {
         case MAIN_MENU: {
             // lock position
-            position = vec3(0.0f, 0.0f, 3.0f);
+            position = vec3(-1.0f, 0.0f, 3.0f);
             
             relativeFront.x = 0.2 * (cos(radians(yaw)) * cos(radians(pitch)));
             relativeFront.y = 0.2 * (sin(radians(pitch)));

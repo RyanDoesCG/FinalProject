@@ -23,6 +23,7 @@
 		627C13931DF47CD000DCCDF7 /* Moon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 627C13921DF47CD000DCCDF7 /* Moon.cpp */; };
 		62A907F01DEB00960008796D /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907EF1DEB00960008796D /* SceneCamera.cpp */; };
 		62A907F21DEB3A2C0008796D /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907F11DEB3A2C0008796D /* Cube.cpp */; };
+		62E876581DF75EB900C0D596 /* GamepadComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62E876571DF75EB900C0D596 /* GamepadComponent.cpp */; };
 		CE208BD61DEC7E2900F1A3A6 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE208BD41DEC7E2900F1A3A6 /* Menu.cpp */; };
 		CE2697351DAEADE600F9833E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697281DAEADE600F9833E /* Game.cpp */; };
 		CE2697381DAEADE600F9833E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972B1DAEADE600F9833E /* main.cpp */; };
@@ -75,6 +76,7 @@
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A907EF1DEB00960008796D /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneCamera.cpp; path = Source/SceneCamera.cpp; sourceTree = "<group>"; };
 		62A907F11DEB3A2C0008796D /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cube.cpp; path = Source/Cube.cpp; sourceTree = "<group>"; };
+		62E876571DF75EB900C0D596 /* GamepadComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GamepadComponent.cpp; path = Source/GamepadComponent.cpp; sourceTree = "<group>"; };
 		CE208BD41DEC7E2900F1A3A6 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Menu.cpp; path = Source/Menu.cpp; sourceTree = "<group>"; };
 		CE2697281DAEADE600F9833E /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Game.cpp; path = Source/Game.cpp; sourceTree = "<group>"; };
 		CE26972B1DAEADE600F9833E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				624F49A61DCBE7CE0065CE1A /* MouseInputComponent.cpp */,
 				621448DF1DF44AE700861BB4 /* GameHUD.cpp */,
 				62A907F11DEB3A2C0008796D /* Cube.cpp */,
+				62E876571DF75EB900C0D596 /* GamepadComponent.cpp */,
 				627C13921DF47CD000DCCDF7 /* Moon.cpp */,
 				CEF7744B1DEDD33100CB2CC9 /* MainMenu.cpp */,
 				CEF7744E1DEDD33E00CB2CC9 /* SeedMenu.cpp */,
@@ -244,6 +247,7 @@
 				CEF774531DEDD34F00CB2CC9 /* OptionsMenu.cpp in Sources */,
 				627C13911DF4727A00DCCDF7 /* PhysicsBox2D.cpp in Sources */,
 				624F49AA1DCBE7CE0065CE1A /* KeyboardInputComponent.cpp in Sources */,
+				62E876581DF75EB900C0D596 /* GamepadComponent.cpp in Sources */,
 				620D55E91DF2074D00F63334 /* Skybox.cpp in Sources */,
 				CEF774501DEDD33E00CB2CC9 /* SeedMenu.cpp in Sources */,
 				621448E11DF44AE700861BB4 /* GameHUD.cpp in Sources */,

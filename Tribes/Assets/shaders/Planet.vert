@@ -3,9 +3,7 @@ layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
 layout (location = 2) in vec3 texCoords;
 
-out vec3 worldPosition;
 out vec3 vertexColour;
-out vec3 norm;
 
 uniform vec3 objectColour;
 uniform mat4 model;
@@ -37,25 +35,18 @@ void main() {
     b.z = (a.z + distZ);
     
     // set position
-    gl_Position = projection * view * model * vec4(b, 1.0f);
-    
+    gl_Position = model * vec4(b, 1.0f);
     
     // pass through
-    
     if (texCoords.x == 1) {
-        vertexColour = objectColour * 0.8;
+        vertexColour = objectColour * 0.86;
     }
     else if (texCoords.x == 2) {
-        vertexColour = objectColour * 0.85;
+        vertexColour = objectColour * 0.88;
     }
     else {
         vertexColour = objectColour * 0.9;
     }
-    
-    
-    vertexColour = vertexColour;
-    worldPosition = vec3(model * vec4(b, 1.0f));
-    norm = mat3(transpose(inverse(model))) * normal;
 }
 
 /**

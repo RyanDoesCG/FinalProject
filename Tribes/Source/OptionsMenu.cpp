@@ -17,7 +17,7 @@ OptionsMenu::OptionsMenu (float width, float height, Game* game):
     items.push_back(about);
         
     // CONTROLLER
-    controller.label = "controller";
+    controller.label = "controller      ";
     controller.index = items.size();
     items.push_back(controller);
 

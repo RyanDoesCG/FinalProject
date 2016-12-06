@@ -13,6 +13,7 @@
 #include "TextRenderingComponent.hpp"
 #include "KeyboardInputComponent.hpp"
 #include "MouseInputComponent.hpp"
+#include "GamepadComponent.hpp"
 
 #include "Game.hpp"
 
@@ -30,6 +31,7 @@ class Player : public Actor {
     
     private:
         SceneCamera*            camera;
+        GamepadComponent*       gamepad;
         MouseInputComponent*    mouse;
         KeyboardInputComponent* keyboard;
     

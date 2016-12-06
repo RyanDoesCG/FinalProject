@@ -22,7 +22,7 @@ float generateHeight(){
 }
 
 void main() {
-    float height = 1.19 + generateHeight();
+    float height = 1.2 + generateHeight();
     vec3 a = vec3(0, 0, 0);
     vec3 b = position;
     

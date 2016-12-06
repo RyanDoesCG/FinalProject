@@ -56,27 +56,35 @@ void Menu::update () {
 
 void Menu::handleEvents () {
     if (!isHidden) {
-        // scroll up
-        if (keyboard->isKeyDown(GLFW_KEY_W) || keyboard->isKeyDown(GLFW_KEY_UP)) {
+        
+        if (keyboard->isKeyDown(GLFW_KEY_W)  ||
+            keyboard->isKeyDown(GLFW_KEY_UP) ||
+            gamepad->isButtonDown(GAMEPAD_DPAD_UP)) {
+            // scroll up
             selectedItem = (selectedItem + 1) % items.size();
-            
             keyboard->keyHandled(GLFW_KEY_W);
             keyboard->keyHandled(GLFW_KEY_UP);
+            gamepad->buttonHandled(GAMEPAD_DPAD_UP);
         }
         
-        // scroll down
-        if (keyboard->isKeyDown(GLFW_KEY_S) || keyboard->isKeyDown(GLFW_KEY_DOWN)) {
+        if (keyboard->isKeyDown(GLFW_KEY_S)     ||
+            keyboard->isKeyDown(GLFW_KEY_DOWN)  ||
+            gamepad->isButtonDown(GAMEPAD_DPAD_DOWN)) {
+            // scroll down
             if (selectedItem == 0) selectedItem = items.size()-1;
             else selectedItem -= 1;
-            
             keyboard->keyHandled(GLFW_KEY_S);
             keyboard->keyHandled(GLFW_KEY_DOWN);
+            gamepad->buttonHandled(GAMEPAD_DPAD_DOWN);
         }
         
-        // back
-        if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {
+        if (keyboard->isKeyDown(GLFW_KEY_ESCAPE) ||
+            gamepad->isButtonDown(GAMEPAD_BUTTON_B)) {
+            // back
             for (int i = 0; i < children.size(); i++) { children[i]->hide(); }
             hide();
+            keyboard->keyHandled(GLFW_KEY_ESCAPE);
+            gamepad->buttonHandled(GAMEPAD_BUTTON_B);
         }
     }
 }

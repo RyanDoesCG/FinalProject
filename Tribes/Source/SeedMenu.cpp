@@ -33,13 +33,15 @@ void SeedMenu::handleEvents() {
     
     if (!isHidden) {
         // select
-        if (keyboard->isKeyDown(GLFW_KEY_ENTER)) {
+        if (keyboard->isKeyDown(GLFW_KEY_ENTER) ||
+            gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
             switch (selectedItem) {
                 case 0: game->setState(RUNNING_FREEMODE); break;
                 case 1: game->setState(RUNNING_FREEMODE); break;
             }
             
             keyboard->keyHandled(GLFW_KEY_ENTER);
+            gamepad->buttonHandled(GAMEPAD_BUTTON_A);
             hide();
         }
     }

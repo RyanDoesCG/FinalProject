@@ -21,11 +21,12 @@ class SceneCamera: public Actor {
 
         void moveLeft     ();
         void moveRight    ();
-        void moveForward  ();
-        void moveBackward ();
     
-        void speedUp  ();
-        void slowDown ();
+        void moveForward   ();
+        void moveForwardAt (float speed);
+    
+        void moveBackward   ();
+        void moveBackwardAt (float speed);
     
         bool orbiting;
     

@@ -22,26 +22,10 @@ Moon::~Moon () {
 
 void Moon::update(GameState state, SceneCamera *camera) {
     switch (state) {
-        case MAIN_MENU: {
+        case MAIN_MENU: case RUNNING_FREEMODE: case RUNNING_EDITMODE: {
             GLfloat radius = 2;
-            position.x = (sin(glfwGetTime()/24) * radius) + 1;
-            position.z = (cos(glfwGetTime()/24) * radius) + 1;
-            
-            break;
-        }
-        case RUNNING_FREEMODE: {
-            GLfloat radius = 2;
-            position.x = sin(glfwGetTime()/24) * radius;
-            position.z = cos(glfwGetTime()/24) * radius;
-            
-            break;
-        }
-        case RUNNING_EDITMODE: {
-            GLfloat radius = 2;
-            position.x = sin(glfwGetTime()/24) * radius;
-            position.z = cos(glfwGetTime()/24) * radius;
-            
-            setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
+            position.x = (sin(glfwGetTime()/24) * radius);
+            position.z = (cos(glfwGetTime()/24) * radius);
             
             break;
         }

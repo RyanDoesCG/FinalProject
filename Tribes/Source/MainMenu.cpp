@@ -53,7 +53,8 @@ void MainMenu::handleEvents() {
     
     if (!isHidden) {
         // select
-        if (keyboard->isKeyDown(GLFW_KEY_ENTER)) {
+        if (keyboard->isKeyDown(GLFW_KEY_ENTER) ||
+            gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
             switch (selectedItem) {
                 case 0: game->end(); break;
                 case 1: options.menu->show(); hide(); break;
@@ -62,12 +63,19 @@ void MainMenu::handleEvents() {
             }
             
             keyboard->keyHandled(GLFW_KEY_ENTER);
+            gamepad->buttonHandled(GAMEPAD_BUTTON_A);
         }
     }
     
     // back
-    if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {
+    if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)    ||
+        gamepad->isButtonDown(GAMEPAD_BUTTON_B) ||
+        gamepad->isButtonDown(GAMEPAD_SPECIAL_HOME)) {
         for (int i = 0; i < children.size(); i++) { children[i]->hide(); }
         show();
+        
+        keyboard->keyHandled(GLFW_KEY_ESCAPE);
+        gamepad->buttonHandled(GAMEPAD_BUTTON_B);
+        gamepad->buttonHandled(GAMEPAD_SPECIAL_HOME);
     }
 }

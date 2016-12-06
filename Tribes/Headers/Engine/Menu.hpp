@@ -6,6 +6,7 @@
 #ifndef Menu_hpp
 #define Menu_hpp
 
+#include "GamepadComponent.hpp"
 #include "KeyboardInputComponent.hpp"
 #include "TextRenderingComponent.hpp"
 #include "MenuItem.hpp"
@@ -29,6 +30,7 @@ class Menu {
     
         Game* game;
     
+        GamepadComponent*       gamepad;
         KeyboardInputComponent* keyboard;
         TextRenderingComponent* textPipeline;
 
