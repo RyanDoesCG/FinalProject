@@ -1,4 +1,4 @@
-#version 150
+#version 330 core
 
 layout ( triangles ) in;
 layout ( triangle_strip, max_vertices = 3) out;
@@ -17,17 +17,19 @@ const float reflectivity = 0.32;
 const float shineDamper = 16.0;
 const float ambientLighting = 0.3;
 
+vec3 calculateTriangleNormal(){
+    vec3 a = gl_in[1].gl_Position.xyz;
+    vec3 b = gl_in[0].gl_Position.xyz;
+    vec3 c = gl_in[2].gl_Position.xyz;
+    
+    vec3 direction = cross(b - a, c - a);
+    return normalize(direction);
+}
+
 /**
  *  CREDIT: https://www.youtube.com/watch?v=r2hue52wLF4
  *  adapted by Ryan Needham
  */
-vec3 calculateTriangleNormal(){
-    vec3 tangent = gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz;
-    vec3 bitangent = gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz;
-    vec3 normal = cross(tangent, bitangent);
-    return normalize(normal);
-}
-
 vec3 calculateSpecular(vec4 worldPosition, vec3 normal){
     vec3 lightDirection = normalize(lightPosition - vec3(worldPosition.xyz));
     vec3 viewVector = normalize(cameraPosition - worldPosition.xyz);
