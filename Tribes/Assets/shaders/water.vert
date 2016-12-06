@@ -21,7 +21,6 @@ float generateHeight(){
     return component1 + component2;
 }
 
-
 void main() {
     float height = 1.19 + generateHeight();
     vec3 a = vec3(0, 0, 0);
