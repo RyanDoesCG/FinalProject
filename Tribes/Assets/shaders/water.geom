@@ -15,7 +15,7 @@ uniform vec3 lightPosition;
 
 const float reflectivity = 0.32;
 const float shineDamper = 16.0;
-const float ambientLighting = 0.3;
+const float ambientLighting = 0.24;
 
 vec3 calculateTriangleNormal(){
     vec3 a = gl_in[1].gl_Position.xyz;
@@ -32,7 +32,7 @@ vec3 calculateTriangleNormal(){
 vec3 calculateSpecular(vec4 worldPosition, vec3 normal){
     vec3 lightDirection = normalize(lightPosition - vec3(worldPosition.xyz));
     vec3 viewVector = normalize(cameraPosition - worldPosition.xyz);
-    vec3 reflectedLightDirection = reflect(lightDirection, normal);
+    vec3 reflectedLightDirection = reflect(-lightDirection, normal);
     float specularFactor = dot(reflectedLightDirection, viewVector);
     specularFactor = max(pow(specularFactor, shineDamper), 0.0);
     return lightColour * specularFactor * reflectivity;

@@ -14,18 +14,26 @@ Moon::Moon () : Model("sphere/sphere") {
     setColour(glm::vec3(0.175, 0.175, 0.175));
     setShader("Moon", BASIC);
     setScale(0.1);
+    
+    speed = 24;
 }
 
 Moon::~Moon () {
     
 }
 
+void Moon::setSpeed(int s) {
+    if (s != 0) {
+        speed = s;
+    }
+}
+
 void Moon::update(GameState state, SceneCamera *camera) {
     switch (state) {
         case MAIN_MENU: case RUNNING_FREEMODE: case RUNNING_EDITMODE: {
             GLfloat radius = 2;
-            position.x = (sin(glfwGetTime()/24) * radius);
-            position.z = (cos(glfwGetTime()/24) * radius);
+            position.x = (sin(glfwGetTime()/speed) * radius);
+            position.z = (cos(glfwGetTime()/speed) * radius);
             
             break;
         }

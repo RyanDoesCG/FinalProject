@@ -28,7 +28,7 @@ void main (void) {
     // specular lighting
     float specStrength        = 0.2f;
     vec3  viewDirection       = normalize(viewPosition - vec3(worldPos.xyz));
-    vec3  reflectionDirection = reflect(lightDirection, normal);
+    vec3  reflectionDirection = reflect(-lightDirection, normal);
     float spec                = pow(max(dot(viewDirection, reflectionDirection), 0.0), 16);
     vec3  specular            = specStrength * spec * lightColour;
     

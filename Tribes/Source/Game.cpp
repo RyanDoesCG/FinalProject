@@ -60,7 +60,8 @@ void Game::begin() {
     Player player = Player(window, this);
     Planet planet = Planet();
     Skybox universe = Skybox();
-    Moon   moon     = Moon();
+    Moon   moon1     = Moon();
+    Moon   moon2     = Moon();
     
     Lamp   lamp   = Lamp();
     
@@ -69,8 +70,11 @@ void Game::begin() {
     lamp.setColour   (glm::vec3(1.0, 0.9, 0.9));    // slight red tinge to light
     
     planet.setLight(&lamp);
-    moon.setLightSource(&lamp);
-    
+    moon1.setLightSource(&lamp);
+    moon2.setLightSource(&lamp);
+    moon2.setPosition(glm::vec3(-1, -0.2, 0.0));
+    moon2.setSpeed(12);
+    moon2.setColour(glm::vec3(0.4525, 0.175, 0.175));
     while (windowIsAlive()) {
         switch (state) {
             case MAIN_MENU: case LOAD_GAME: case OPTIONS: {
@@ -79,7 +83,8 @@ void Game::begin() {
                 player.update  (state, player.getView());
                 planet.update  (state, player.getView());
                 universe.update(state, player.getView());
-                moon.update(state, player.getView());
+                moon1.update(state, player.getView());
+                moon2.update(state, player.getView());
                 
                 lamp.update(state, player.getView());
                 
@@ -94,7 +99,8 @@ void Game::begin() {
                 player.update  (state, player.getView());
                 planet.update  (state, player.getView());
                 universe.update(state, player.getView());
-                moon.update(state, player.getView());
+                moon1.update(state, player.getView());
+                moon2.update(state, player.getView());
                 
                 lamp.update(state, player.getView());
                 

@@ -1,4 +1,5 @@
 #version 330 core
+
 layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
 layout (location = 2) in vec3 texCoords;
@@ -14,7 +15,18 @@ mediump float rand(vec2 co);
 
 void main() {
     
-    float lift = 0.86 + 0.1 * (cos(rand(vec2(position.y * 1000, position.z * 24753))));
+    // cosine generation
+    float lift = 0.865 + 0.1 * (cos(rand(vec2(position.y * 1000, position.z * 24753))));
+    
+    // sine generation
+    //float lift = 0.9 + 0.1 * (sin(rand(vec2(position.y * 1000, position.z * 24753))));
+    
+    // tangent generation
+    //float lift = 0.875 + 0.1 * (tan(rand(vec2(position.y * 1000, position.z * 24753))));
+    
+    // square root generation
+    //float lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 1000, position.z * 24753))));
+    
     vec3 a = vec3(0, 0, 0);
     vec3 b = position;
     
