@@ -16,7 +16,7 @@ uniform vec3 cameraPosition;
 uniform vec3 lightColour;
 uniform vec3 lightPosition;
 
-const float ambientLighting = 0.8;
+const float ambientLighting = 0.6;
 
 vec3 calculateTriangleNormal(){
     vec3 a = gl_in[0].gl_Position.xyz;

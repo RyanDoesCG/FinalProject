@@ -50,6 +50,7 @@ void SceneCamera::moveBackwardAt (float speed) { position -= speed * movementSpe
 void SceneCamera::reset () {
     position = vec3(0.0f, 0.0f, 3.0f);
     pitch = 0;
+    roll = 0;
     yaw = -90.0f;
 }
 

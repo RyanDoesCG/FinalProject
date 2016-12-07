@@ -98,6 +98,15 @@ void Player::update(GameState state, SceneCamera* camera) {
                 camera->pitch += gamepad->getAxisState(LEFT_STICK_Y_AXIS);
             }
             
+            // ROLL
+            if (gamepad->isButtonDown(GAMEPAD_RIGHT_BUMPER)) {
+                camera->roll += 10;
+            }
+            
+            if (gamepad->isButtonDown(GAMEPAD_LEFT_BUMPER)) {
+                camera->roll += 10;
+            }
+            
             break;
         }
         case RUNNING_EDITMODE: {

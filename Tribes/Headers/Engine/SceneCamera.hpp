@@ -39,7 +39,9 @@ class SceneCamera: public Actor {
     
         GLfloat movementSpeed;
         GLfloat sensitivity;
+    
         GLfloat pitch;
+        GLfloat roll;
         GLfloat yaw;
     
     private:
