@@ -55,8 +55,6 @@ class GamepadComponent : public ActorComponent {
         GLFWwindow* window;
         Game* game;
     
-        int connected = 0;
-    
         // storing button states
         void logButtonPollData(int size, const unsigned char pollData[size]);
         unsigned char lastButtonPollData[GAMEPAD_MAX] = {};

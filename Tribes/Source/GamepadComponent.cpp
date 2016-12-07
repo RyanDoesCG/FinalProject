@@ -11,14 +11,22 @@
 float         * axes;
 bool buttons[GAMEPAD_MAX] = {};
 
+int connected;
+
+void callback (int joy, int event) {
+    switch (event) {
+        case GLFW_CONNECTED: connected = GLFW_TRUE;
+        case GLFW_DISCONNECTED: connected = GLFW_FALSE;
+    }
+}
+
 GamepadComponent::GamepadComponent (GLFWwindow* window, Game* game) {
     this->window = window;
     this->game = game;
     
     connected = glfwJoystickPresent(GLFW_JOYSTICK_1);
     
-    if (connected == GLFW_TRUE) std::cout << "GAMEPAD FOUND: " << glfwGetJoystickName(GLFW_JOYSTICK_1) << std::endl;
-    if (connected == GLFW_FALSE) std::cout << "GAMEPAD NOT FOUND" << std::endl;
+    glfwSetJoystickCallback(callback);
 }
 
 GamepadComponent::~GamepadComponent () {
