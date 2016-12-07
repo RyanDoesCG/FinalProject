@@ -7,7 +7,7 @@
 #define Menu_hpp
 
 #include "GamepadComponent.hpp"
-#include "KeyboardInputComponent.hpp"
+#include "KeyboardComponent.hpp"
 #include "TextRenderingComponent.hpp"
 #include "MenuItem.hpp"
 #include <iostream>
@@ -31,7 +31,7 @@ class Menu {
         Game* game;
     
         GamepadComponent*       gamepad;
-        KeyboardInputComponent* keyboard;
+        KeyboardCopmonent* keyboard;
         TextRenderingComponent* textPipeline;
 
         std::vector<MenuItem> items;

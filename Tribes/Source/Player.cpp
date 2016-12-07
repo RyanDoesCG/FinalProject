@@ -9,8 +9,8 @@
 #include "../Headers/Engine/Player.hpp"
 
 Player::Player (GLFWwindow* window, Game* game) {
-    mouse = (MouseInputComponent*)addComponent(new MouseInputComponent(window, game));
-    keyboard = (KeyboardInputComponent*)addComponent(new KeyboardInputComponent(window, game));
+    mouse = (MouseComponent*)addComponent(new MouseComponent(window, game));
+    keyboard = (KeyboardCopmonent*)addComponent(new KeyboardCopmonent(window, game));
     camera = (SceneCamera*)addChild(new SceneCamera(game->windowWidth, game->windowHeight));
     
     gamepad = (GamepadComponent*)addComponent(new GamepadComponent(window, game));

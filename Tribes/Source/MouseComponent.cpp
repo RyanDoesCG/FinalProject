@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  MouseInputComponent.cpp
+ *  MouseComponent.cpp
  *  Tribes
  *
  *  Created by Ryan Needham on 03/11/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "../Headers/Engine/MouseInputComponent.hpp"
+#include "../Headers/Engine/MouseComponent.hpp"
 
 enum MouseEvent {
     MOUSE_CLICK_LEFT,
@@ -34,7 +34,7 @@ void mouseActionCallback   (GLFWwindow* window, int button, int action, int mods
 void mouseScrollCallback   (GLFWwindow* window, double xoffset, double yoffset);
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos);
 
-MouseInputComponent::MouseInputComponent (GLFWwindow* window, Game* game) {
+MouseComponent::MouseComponent (GLFWwindow* window, Game* game) {
     this->window = window;
     this->game = game;
     
@@ -56,15 +56,15 @@ MouseInputComponent::MouseInputComponent (GLFWwindow* window, Game* game) {
 
 }
 
-MouseInputComponent::~MouseInputComponent () {
+MouseComponent::~MouseComponent () {
 
 }
 
-void MouseInputComponent::init () {
+void MouseComponent::init () {
 
 }
 
-void MouseInputComponent::update() {
+void MouseComponent::update() {
     glfwPollEvents();
     
     for (int i = 0; i < MOUSE_EVENTS_MAX; i++) {
@@ -91,19 +91,19 @@ void MouseInputComponent::update() {
     }
 }
 
-void MouseInputComponent::hideMouse() {
+void MouseComponent::hideMouse() {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
-void MouseInputComponent::showMouse() {
+void MouseComponent::showMouse() {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 }
 
-void MouseInputComponent::placeMouse (int x, int y) {
+void MouseComponent::placeMouse (int x, int y) {
     glfwSetCursorPos(window, x, y);
 }
 
-void MouseInputComponent::centerMouse () {
+void MouseComponent::centerMouse () {
     /*
     int centreX = glfwGetVideoMode(glfwGetPrimaryMonitor())->width/2;
     int centreY = glfwGetVideoMode(glfwGetPrimaryMonitor())->height/2;
@@ -112,10 +112,10 @@ void MouseInputComponent::centerMouse () {
      */
 }
 
-float MouseInputComponent::getMouseX  () { return mouseX; }
-float MouseInputComponent::getMouseY  () { return mouseY; }
-float MouseInputComponent::getXoffset () { return xoffset; }
-float MouseInputComponent::getYoffset () { return yoffset; }
+float MouseComponent::getMouseX  () { return mouseX; }
+float MouseComponent::getMouseY  () { return mouseY; }
+float MouseComponent::getXoffset () { return xoffset; }
+float MouseComponent::getYoffset () { return yoffset; }
 
 void mouseActionCallback (GLFWwindow* window, int button, int action, int mods) {
     mouseEvents[button] = action;

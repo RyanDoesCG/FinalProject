@@ -11,8 +11,8 @@
 
 #include "Actor.hpp"
 #include "TextRenderingComponent.hpp"
-#include "KeyboardInputComponent.hpp"
-#include "MouseInputComponent.hpp"
+#include "KeyboardComponent.hpp"
+#include "MouseComponent.hpp"
 #include "GamepadComponent.hpp"
 
 #include "Game.hpp"
@@ -32,8 +32,8 @@ class Player : public Actor {
     private:
         SceneCamera*            camera;
         GamepadComponent*       gamepad;
-        MouseInputComponent*    mouse;
-        KeyboardInputComponent* keyboard;
+        MouseComponent*    mouse;
+        KeyboardCopmonent* keyboard;
     
         Game* game;
     

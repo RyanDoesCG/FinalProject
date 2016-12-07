@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  KeyboardInputComponent.cpp
+ *  KeyboardCopmonent.cpp
  *  Tribes
  *
  *  Created by Ryan Needham on 03/11/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "../Headers/Engine/KeyboardInputComponent.hpp"
+#include "../Headers/Engine/KeyboardComponent.hpp"
 
 #define KEYCOUNT 348
 
@@ -16,30 +16,30 @@ void keyboardCallback (GLFWwindow* window, int key, int scancode, int action, in
     activeKeys[key] = action;
 }
 
-KeyboardInputComponent::KeyboardInputComponent (GLFWwindow* window, Game* game) {
+KeyboardCopmonent::KeyboardCopmonent (GLFWwindow* window, Game* game) {
     this->window = window;
     this->game = game;
     
     glfwSetKeyCallback (window, keyboardCallback);
 }
 
-KeyboardInputComponent::~KeyboardInputComponent () {
+KeyboardCopmonent::~KeyboardCopmonent () {
     
 }
 
-void KeyboardInputComponent::init () {
+void KeyboardCopmonent::init () {
 
 }
 
-void KeyboardInputComponent::update () {
+void KeyboardCopmonent::update () {
     glfwPollEvents();
 }
 
-bool KeyboardInputComponent::isKeyDown(int keycode) {
+bool KeyboardCopmonent::isKeyDown(int keycode) {
     if (activeKeys[keycode]) return true;
     else return false;
 }
 
-void KeyboardInputComponent::keyHandled(int keycode) {
+void KeyboardCopmonent::keyHandled(int keycode) {
     activeKeys[keycode] = false;
 }

@@ -1,21 +1,21 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  KeyboardInputComponent.hpp
+ *  KeyboardCopmonent.hpp
  *  Tribes
  *
  *  Created by Ryan Needham on 03/11/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef KeyboardInputComponent_hpp
-#define KeyboardInputComponent_hpp
+#ifndef KeyboardCopmonent_hpp
+#define KeyboardCopmonent_hpp
 
 #include "ActorComponent.hpp"
 #include "Game.hpp"
 
-class KeyboardInputComponent : public ActorComponent {
+class KeyboardCopmonent : public ActorComponent {
     public:
-        KeyboardInputComponent (GLFWwindow* window, Game* game);
-       ~KeyboardInputComponent ();
+        KeyboardCopmonent (GLFWwindow* window, Game* game);
+       ~KeyboardCopmonent ();
     
         virtual void init() override;
         virtual void update() override;
@@ -28,4 +28,4 @@ class KeyboardInputComponent : public ActorComponent {
         Game* game;
 };
 
-#endif /* KeyboardInputComponent_hpp */
+#endif /* KeyboardCopmonent_hpp */

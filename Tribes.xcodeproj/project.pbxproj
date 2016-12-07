@@ -13,9 +13,9 @@
 		621448E11DF44AE700861BB4 /* GameHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 621448DF1DF44AE700861BB4 /* GameHUD.cpp */; };
 		6221B1311DF309B000B12FC5 /* PerlinNoiseMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6221B1301DF309B000B12FC5 /* PerlinNoiseMachine.cpp */; };
 		62256AAB1DE73BA700BF0E96 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62256AAA1DE73BA700BF0E96 /* Model.cpp */; };
-		624F49AA1DCBE7CE0065CE1A /* KeyboardInputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A41DCBE7CE0065CE1A /* KeyboardInputComponent.cpp */; };
+		624F49AA1DCBE7CE0065CE1A /* KeyboardComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A41DCBE7CE0065CE1A /* KeyboardComponent.cpp */; };
 		624F49AB1DCBE7CE0065CE1A /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A51DCBE7CE0065CE1A /* Player.cpp */; };
-		624F49AC1DCBE7CE0065CE1A /* MouseInputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A61DCBE7CE0065CE1A /* MouseInputComponent.cpp */; };
+		624F49AC1DCBE7CE0065CE1A /* MouseComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A61DCBE7CE0065CE1A /* MouseComponent.cpp */; };
 		624F49AD1DCBE7CE0065CE1A /* MeshComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A71DCBE7CE0065CE1A /* MeshComponent.cpp */; };
 		624F49AE1DCBE7CE0065CE1A /* ShaderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A81DCBE7CE0065CE1A /* ShaderComponent.cpp */; };
 		627C138F1DF4542500DCCDF7 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 627C138D1DF4542500DCCDF7 /* Flag.cpp */; };
@@ -65,9 +65,9 @@
 		621448DF1DF44AE700861BB4 /* GameHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameHUD.cpp; path = Source/GameHUD.cpp; sourceTree = "<group>"; };
 		6221B1301DF309B000B12FC5 /* PerlinNoiseMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PerlinNoiseMachine.cpp; path = Source/PerlinNoiseMachine.cpp; sourceTree = "<group>"; };
 		62256AAA1DE73BA700BF0E96 /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = Source/Model.cpp; sourceTree = "<group>"; };
-		624F49A41DCBE7CE0065CE1A /* KeyboardInputComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyboardInputComponent.cpp; path = Source/KeyboardInputComponent.cpp; sourceTree = "<group>"; };
+		624F49A41DCBE7CE0065CE1A /* KeyboardComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyboardComponent.cpp; path = Source/KeyboardComponent.cpp; sourceTree = "<group>"; };
 		624F49A51DCBE7CE0065CE1A /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = Source/Player.cpp; sourceTree = "<group>"; };
-		624F49A61DCBE7CE0065CE1A /* MouseInputComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MouseInputComponent.cpp; path = Source/MouseInputComponent.cpp; sourceTree = "<group>"; };
+		624F49A61DCBE7CE0065CE1A /* MouseComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MouseComponent.cpp; path = Source/MouseComponent.cpp; sourceTree = "<group>"; };
 		624F49A71DCBE7CE0065CE1A /* MeshComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshComponent.cpp; path = Source/MeshComponent.cpp; sourceTree = "<group>"; };
 		624F49A81DCBE7CE0065CE1A /* ShaderComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderComponent.cpp; path = Source/ShaderComponent.cpp; sourceTree = "<group>"; };
 		627C138D1DF4542500DCCDF7 /* Flag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Flag.cpp; path = Source/Flag.cpp; sourceTree = "<group>"; };
@@ -138,9 +138,9 @@
 			children = (
 				45C117A31D78084800FE98A9 /* Assets */,
 				CEB56C781DAEAA1E00840F6B /* Headers */,
-				624F49A41DCBE7CE0065CE1A /* KeyboardInputComponent.cpp */,
+				624F49A41DCBE7CE0065CE1A /* KeyboardComponent.cpp */,
 				624F49A51DCBE7CE0065CE1A /* Player.cpp */,
-				624F49A61DCBE7CE0065CE1A /* MouseInputComponent.cpp */,
+				624F49A61DCBE7CE0065CE1A /* MouseComponent.cpp */,
 				621448DF1DF44AE700861BB4 /* GameHUD.cpp */,
 				62A907F11DEB3A2C0008796D /* Cube.cpp */,
 				62E876571DF75EB900C0D596 /* GamepadComponent.cpp */,
@@ -246,7 +246,7 @@
 				627C138F1DF4542500DCCDF7 /* Flag.cpp in Sources */,
 				CEF774531DEDD34F00CB2CC9 /* OptionsMenu.cpp in Sources */,
 				627C13911DF4727A00DCCDF7 /* PhysicsBox2D.cpp in Sources */,
-				624F49AA1DCBE7CE0065CE1A /* KeyboardInputComponent.cpp in Sources */,
+				624F49AA1DCBE7CE0065CE1A /* KeyboardComponent.cpp in Sources */,
 				62E876581DF75EB900C0D596 /* GamepadComponent.cpp in Sources */,
 				620D55E91DF2074D00F63334 /* Skybox.cpp in Sources */,
 				CEF774501DEDD33E00CB2CC9 /* SeedMenu.cpp in Sources */,
@@ -261,7 +261,7 @@
 				624F49AD1DCBE7CE0065CE1A /* MeshComponent.cpp in Sources */,
 				CEF7744D1DEDD33100CB2CC9 /* MainMenu.cpp in Sources */,
 				624F49AE1DCBE7CE0065CE1A /* ShaderComponent.cpp in Sources */,
-				624F49AC1DCBE7CE0065CE1A /* MouseInputComponent.cpp in Sources */,
+				624F49AC1DCBE7CE0065CE1A /* MouseComponent.cpp in Sources */,
 				CE53A5B71DCD6C1F00393AD4 /* TextRenderingComponent.cpp in Sources */,
 				627C13931DF47CD000DCCDF7 /* Moon.cpp in Sources */,
 			);

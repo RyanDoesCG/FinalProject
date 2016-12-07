@@ -9,7 +9,7 @@
 #ifndef GameHUD_hpp
 #define GameHUD_hpp
 
-#include "KeyboardInputComponent.hpp"
+#include "KeyboardComponent.hpp"
 #include "TextRenderingComponent.hpp"
 #include "Actor.hpp"
 
@@ -27,7 +27,7 @@ class GameHUD : public Actor {
     
         Game* game;
     
-        KeyboardInputComponent* keyboard;
+        KeyboardCopmonent* keyboard;
         TextRenderingComponent* textPipeline;
 };
 

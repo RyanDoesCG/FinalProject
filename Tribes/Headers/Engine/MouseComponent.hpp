@@ -1,21 +1,21 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  MouseInputComponent.hpp
+ *  MouseComponent.hpp
  *  Tribes
  *
  *  Created by Ryan Needham on 03/11/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef MouseInputComponent_hpp
-#define MouseInputComponent_hpp
+#ifndef MouseComponent_hpp
+#define MouseComponent_hpp
 
 #include "ActorComponent.hpp"
 #include "Game.hpp"
 
-class MouseInputComponent : public ActorComponent {
+class MouseComponent : public ActorComponent {
     public:
-        MouseInputComponent (GLFWwindow* window, Game* game);
-       ~MouseInputComponent ();
+        MouseComponent (GLFWwindow* window, Game* game);
+       ~MouseComponent ();
 
         virtual void init() override;
         virtual void update() override;
@@ -37,4 +37,4 @@ class MouseInputComponent : public ActorComponent {
         Game* game;
 };
 
-#endif /* MouseInputComponent_hpp */
+#endif /* MouseComponent_hpp */
