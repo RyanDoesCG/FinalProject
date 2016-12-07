@@ -14,7 +14,7 @@ mediump float rand(vec2 co);
 
 void main() {
     
-    float lift = 0.9 + 0.1 * (sin(rand(vec2(position.y * 1000, position.z * 24753))));
+    float lift = 0.86 + 0.1 * (cos(rand(vec2(position.y * 1000, position.z * 24753))));
     vec3 a = vec3(0, 0, 0);
     vec3 b = position;
     
