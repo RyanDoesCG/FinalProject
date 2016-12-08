@@ -46,7 +46,7 @@ void GameHUD::update(GameState state, SceneCamera *camera) {
             
             // draw
             menubarTop.update(state, camera);
-            menubarBottom.update(state, camera);
+           // menubarBottom.update(state, camera);
             textPipeline->renderTextAs2D(planet->getName(), glm::vec2(25, 1000), vec3(0.9), 0.4);
             textPipeline->renderTextAs2D("edit mode", glm::vec2(10, 10), vec3(0.4, 0.4, 0.4), 0.35);
             
