@@ -13,6 +13,7 @@
 		621448E11DF44AE700861BB4 /* GameHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 621448DF1DF44AE700861BB4 /* GameHUD.cpp */; };
 		6221B1311DF309B000B12FC5 /* PerlinNoiseMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6221B1301DF309B000B12FC5 /* PerlinNoiseMachine.cpp */; };
 		62256AAB1DE73BA700BF0E96 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62256AAA1DE73BA700BF0E96 /* Model.cpp */; };
+		624DF0D31DF9F4B900587D21 /* Quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624DF0D21DF9F4B900587D21 /* Quad.cpp */; };
 		624F49AA1DCBE7CE0065CE1A /* KeyboardComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A41DCBE7CE0065CE1A /* KeyboardComponent.cpp */; };
 		624F49AB1DCBE7CE0065CE1A /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A51DCBE7CE0065CE1A /* Player.cpp */; };
 		624F49AC1DCBE7CE0065CE1A /* MouseComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 624F49A61DCBE7CE0065CE1A /* MouseComponent.cpp */; };
@@ -65,6 +66,7 @@
 		621448DF1DF44AE700861BB4 /* GameHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameHUD.cpp; path = Source/GameHUD.cpp; sourceTree = "<group>"; };
 		6221B1301DF309B000B12FC5 /* PerlinNoiseMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PerlinNoiseMachine.cpp; path = Source/PerlinNoiseMachine.cpp; sourceTree = "<group>"; };
 		62256AAA1DE73BA700BF0E96 /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = Source/Model.cpp; sourceTree = "<group>"; };
+		624DF0D21DF9F4B900587D21 /* Quad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Quad.cpp; path = Source/Quad.cpp; sourceTree = "<group>"; };
 		624F49A41DCBE7CE0065CE1A /* KeyboardComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyboardComponent.cpp; path = Source/KeyboardComponent.cpp; sourceTree = "<group>"; };
 		624F49A51DCBE7CE0065CE1A /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = Source/Player.cpp; sourceTree = "<group>"; };
 		624F49A61DCBE7CE0065CE1A /* MouseComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MouseComponent.cpp; path = Source/MouseComponent.cpp; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				CEF7744B1DEDD33100CB2CC9 /* MainMenu.cpp */,
 				CEF7744E1DEDD33E00CB2CC9 /* SeedMenu.cpp */,
 				627C13901DF4727A00DCCDF7 /* PhysicsBox2D.cpp */,
+				624DF0D21DF9F4B900587D21 /* Quad.cpp */,
 				CE4E8DA61DEE6E0600C3D842 /* Planet.cpp */,
 				627C138D1DF4542500DCCDF7 /* Flag.cpp */,
 				62256AAA1DE73BA700BF0E96 /* Model.cpp */,
@@ -249,6 +252,7 @@
 				624F49AA1DCBE7CE0065CE1A /* KeyboardComponent.cpp in Sources */,
 				62E876581DF75EB900C0D596 /* GamepadComponent.cpp in Sources */,
 				620D55E91DF2074D00F63334 /* Skybox.cpp in Sources */,
+				624DF0D31DF9F4B900587D21 /* Quad.cpp in Sources */,
 				CEF774501DEDD33E00CB2CC9 /* SeedMenu.cpp in Sources */,
 				621448E11DF44AE700861BB4 /* GameHUD.cpp in Sources */,
 				6221B1311DF309B000B12FC5 /* PerlinNoiseMachine.cpp in Sources */,

@@ -21,7 +21,9 @@
 #define BUILD_MODE 0
 
 Game::Game() {
-    srand(generateSeed());
+    //srand(
+    generateSeed();
+    //);
     
     // decide what window to build
     switch (BUILD_MODE) {
@@ -52,18 +54,20 @@ Game::~Game() {
 void Game::begin() {
     glClearColor (0.12f, 0.12f, 0.12f, 1.0f);
     
-    MainMenu menu = MainMenu(windowWidth, windowHeight, this);
-    menu.show();
-    
-    GameHUD hud = GameHUD(windowWidth, windowHeight, this);
-    
-    Player player = Player(window, this);
     Planet planet = Planet();
+    Player player = Player(window, this);
     Skybox universe = Skybox();
     Moon   moon1     = Moon();
     Moon   moon2     = Moon();
     
     Lamp   lamp   = Lamp();
+    
+    MainMenu menu = MainMenu(windowWidth, windowHeight, this);
+    menu.show();
+    
+    GameHUD hud = GameHUD(windowWidth, windowHeight, this, &player, &planet);
+    
+
     
     lamp.setPosition (glm::vec3(-50, 0.0, 1.5));
     lamp.setScale    (0.25f);
@@ -82,7 +86,7 @@ void Game::begin() {
                 
                 player.update  (state, player.getView());
                 planet.update  (state, player.getView());
-                universe.update(state, player.getView());
+               // universe.update(state, player.getView());
                 moon1.update(state, player.getView());
                 moon2.update(state, player.getView());
                 
@@ -98,7 +102,7 @@ void Game::begin() {
                 
                 player.update  (state, player.getView());
                 planet.update  (state, player.getView());
-                universe.update(state, player.getView());
+               // universe.update(state, player.getView());
                 moon1.update(state, player.getView());
                 moon2.update(state, player.getView());
                 

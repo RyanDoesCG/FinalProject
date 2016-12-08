@@ -12,10 +12,14 @@
 #include "KeyboardComponent.hpp"
 #include "TextRenderingComponent.hpp"
 #include "Actor.hpp"
+#include "Quad.hpp"
+
+#include "Player.hpp"
+#include "Planet.hpp"
 
 class GameHUD : public Actor {
     public:
-        GameHUD  (float width, float height, Game* game);
+        GameHUD  (float width, float height, Game* game, Player* player, Planet* planet);
         ~GameHUD ();
     
         virtual void update (GameState state, SceneCamera* camera) override;
@@ -29,6 +33,15 @@ class GameHUD : public Actor {
     
         KeyboardCopmonent* keyboard;
         TextRenderingComponent* textPipeline;
+    
+        Quad leftUI;
+        Quad rightUI;
+    
+        Quad menubarTop;
+        Quad menubarBottom;
+    
+        Player* player;
+        Planet* planet;
 };
 
 #endif /* GameHUD_hpp */

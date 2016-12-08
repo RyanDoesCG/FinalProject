@@ -44,6 +44,7 @@ class Actor {
         virtual void moveBackward () { position.z -= 0.1; }
     
         void setScale    (float s)          { scale = glm::vec3(s, s, s);}
+        void setScale    (glm::vec3 s)      { scale = s; }
         void setParent   (Actor* parent)    { this->parent = parent; }
         void setColour   (glm::vec3 col)    { colour = col;}
         void setPosition (glm::vec3 newPos) { this->position = newPos; }

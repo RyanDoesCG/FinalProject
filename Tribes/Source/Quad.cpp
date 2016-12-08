@@ -1,26 +1,27 @@
-//
-//  Quad.cpp
-//  Tribes
-//
-//  Created by user on 05/12/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Quad.cpp
+ *  Tribes
+ *
+ *  Created by Ryan Needham on 08/12/2016.
+ *    Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Quad.hpp"
+#include "../Headers/Engine/ShaderCache.hpp"
+#include "../Headers/glm/gtc/type_ptr.hpp"
 
 Quad::Quad () {
-    std::vector<GLfloat> vertices = {   // Vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
-        // Positions   // TexCoords
-        -1.0f,  1.0f, 0.0f,  0.0f, 1.0f,
-        -1.0f, -1.0f, 0.0f,  0.0f, 0.0f,
-        1.0f, -1.0f,  0.0f, 1.0f, 0.0f,
+    std::vector<GLfloat> vertices = {
+        -0.5, 0.5, 0.0,         0.0, 0.0, 0.0,
+        0.5, 0.5, 0.0,          0.0, 0.0, 0.0,
+        -0.5, -0.5, 0.0,        0.0, 0.0, 0.0,
         
-        -1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
-        1.0f, -1.0f,  0.0f, 1.0f, 0.0f,
-        1.0f,  1.0f,  0.0f, 1.0f, 1.0f
+        -0.5, -0.5, 0.0,        0.0, 0.0, 0.0,
+        0.5, -0.5, 0.0,         0.0, 0.0, 0.0,
+        0.5, 0.5, 0.5,          0.0, 0.0, 0.0
     };
     
-    shader = (ShaderComponent*)addComponent(new ShaderComponent("PostProcess", BASIC));
+    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("HUDPane", BASIC));
     mesh = (MeshComponent*)addComponent(new MeshComponent(vertices));
 }
 
@@ -28,12 +29,17 @@ Quad::~Quad () {
     
 }
 
-void Quad::setTexture (GLuint tex) {
-    texture = tex;
-}
-
-void Quad::update(GameState state, SceneCamera *camera) {
+void Quad::update (GameState state, SceneCamera* camera) {
+    mesh->position = position;
+    mesh->rotation = rotation;
+    mesh->scale    = scale;
+    mesh->colour   = colour;
+    
     shader->update();
-    glBindTexture(GL_TEXTURE_2D, texture);
-    mesh->quaddraw(shader, camera, texture);
+    
+    // Lighting data to GPU
+    vec3 viewPos = camera->getPosition();
+    glUniform3fv(glGetUniformLocation(shader->getProgramID(), "viewPosition"), 1, glm::value_ptr(viewPos));
+
+    mesh->testdraw(shader, camera);
 }

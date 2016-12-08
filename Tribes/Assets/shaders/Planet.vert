@@ -11,18 +11,29 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
+uniform int generationType;
+
 mediump float rand(vec2 co);
 
 void main() {
-    
-    // cosine generation
-    float lift = 0.865 + 0.1 * (cos(rand(vec2(position.y * 1000, position.z * 24753))));
-    
-    // sine generation
-    //float lift = 0.9 + 0.1 * (sin(rand(vec2(position.y * 1000, position.z * 24753))));
-    
-    // tangent generation
-    //float lift = 0.875 + 0.1 * (tan(rand(vec2(position.y * 1000, position.z * 24753))));
+    float lift;
+
+    if (generationType == 1.0) {
+        // cosine generation
+        lift = 0.865 + 0.1 * (cos(rand(vec2(position.y * 1000, position.z * 24753))));
+    }
+    else if (generationType == 2.0) {
+        // sine generation
+        lift = 0.9 + 0.1 * (sin(rand(vec2(position.y * 1000, position.z * 24753))));
+    }
+    else if (generationType == 3.0) {
+        // square root generation
+        lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 1000, position.z * 24753))));
+    }
+    else if (generationType == 4.0) {
+        // square root generation
+        lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 1000, position.z * 24753))));
+    }
     
     // square root generation
     //float lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 1000, position.z * 24753))));

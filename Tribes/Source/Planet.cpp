@@ -14,6 +14,7 @@
 Planet::Planet (): Model("sphere/sphere"), water("sphere/sphereDETAILED") {
 
     setColour(glm::vec3(0.75, 0.66, 0.5));
+    
     setShader("Planet", GEOM);
     setScale(1.2);
     
@@ -22,11 +23,27 @@ Planet::Planet (): Model("sphere/sphere"), water("sphere/sphereDETAILED") {
     water.setRotation(glm::vec3(0.15, 0.23, 0));
     
     generateName();
+    
+    getShader()->update();
+    glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1);
 
 }
 
 Planet::~Planet () {
     
+}
+
+void Planet::randomise () {
+    getShader()->update();
+    glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1 + (rand() % 4));
+    
+    setColour(glm::vec3(
+        0.20 + (rand() % 60 / 10),
+        0.20 + (rand() % 60 / 10),
+        0.20 + (rand() % 60 / 10)
+    ));
+    
+    generateName();
 }
 
 void Planet::setLight(Actor * light) {

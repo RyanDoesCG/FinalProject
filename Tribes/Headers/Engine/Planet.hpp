@@ -21,6 +21,8 @@ class Planet : public Model {
         virtual void update (GameState state, SceneCamera* camera) override;
         void setLight (Actor* );
 
+        void randomise();
+    
         std::string getName ();
     private:
         void generateName();

@@ -87,14 +87,14 @@ void Player::update(GameState state, SceneCamera* camera) {
             if (gamepad->getAxisState(LEFT_TRIGGER) > 0.01) { camera->moveBackwardAt(gamepad->getAxisState(LEFT_TRIGGER)); }
             
             // YAW
-            if (gamepad->getAxisState(LEFT_STICK_X_AXIS) > 0.01 ||
-                gamepad->getAxisState(LEFT_STICK_X_AXIS) < -0.01) {
+            if (gamepad->getAxisState(LEFT_STICK_X_AXIS) > 0.03 ||
+                gamepad->getAxisState(LEFT_STICK_X_AXIS) < -0.03) {
                 camera->yaw += gamepad->getAxisState(LEFT_STICK_X_AXIS);
             }
             
             // PITCH
-            if (gamepad->getAxisState(LEFT_STICK_Y_AXIS) > 0.01 ||
-                gamepad->getAxisState(LEFT_STICK_Y_AXIS) < -0.01) {
+            if (gamepad->getAxisState(LEFT_STICK_Y_AXIS) > 0.03 ||
+                gamepad->getAxisState(LEFT_STICK_Y_AXIS) < -0.03) {
                 camera->pitch += gamepad->getAxisState(LEFT_STICK_Y_AXIS);
             }
             
@@ -106,6 +106,7 @@ void Player::update(GameState state, SceneCamera* camera) {
             if (gamepad->isButtonDown(GAMEPAD_LEFT_BUMPER)) {
                 camera->roll += 10;
             }
+            
             
             break;
         }

@@ -11,7 +11,7 @@
 float         * axes;
 bool buttons[GAMEPAD_MAX] = {};
 
-int connected;
+int connected = 0;
 
 void callback (int joy, int event) {
     switch (event) {
