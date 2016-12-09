@@ -100,6 +100,17 @@ void Game::begin() {
                 physics.simulate(glfwGetTime(), state);
                 graphics.drawScene(state);
                 
+                // TEST
+                vec3 a = planet.getPosition();
+                vec3 b = player.getPosition();
+                
+                vec3 dist = b - a;
+                
+                float a_to_b = sqrt(dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
+                
+                std::cout << "distance: " << a_to_b << std::endl;
+                // TEST
+                
                 // draw UI
                 hud.update(state, player.getView());
                 

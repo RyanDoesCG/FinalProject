@@ -107,7 +107,8 @@ void Player::update(GameState state, SceneCamera* camera) {
                 camera->roll += 10;
             }
             
-            
+            // BAD BAD BAD
+            setPosition(camera->getPosition());
             break;
         }
         case RUNNING_EDITMODE: {

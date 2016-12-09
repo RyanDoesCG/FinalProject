@@ -31,7 +31,8 @@ class GameHUD : public Actor {
     
         Game* game;
     
-        KeyboardCopmonent* keyboard;
+        GamepadComponent*       gamepad;
+        KeyboardCopmonent*      keyboard;
         TextRenderingComponent* textPipeline;
     
         Quad leftUI;

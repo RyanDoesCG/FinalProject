@@ -35,13 +35,13 @@ Planet::~Planet () {
 }
 
 void Planet::randomise () {
-    //getShader()->update();
-    //glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1 + (rand() % 4));
-    //lightSource->setColour(glm::vec3(
-    //    0.20 + (rand() % 60 / 10),
-    //    0.20 + (rand() % 60 / 10),
-    //    0.20 + (rand() % 60 / 10)
-    //));
+    getShader()->update();
+    glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1 + (rand() % 4));
+    lightSource->setColour(glm::vec3(
+        0.20 + (rand() % 60 / 10),
+        0.20 + (rand() % 60 / 10),
+        0.20 + (rand() % 60 / 10)
+    ));
     
     generateName();
 }

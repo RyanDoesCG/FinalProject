@@ -61,6 +61,11 @@ void GameHUD::update(GameState state, SceneCamera *camera) {
         }
         case RUNNING_FREEMODE: {
             textPipeline->renderTextAs2D("explore mode", glm::vec2(10, 10), vec3(0.32, 0.32, 0.32), 0.35);
+            
+            if (gamepad->isButtonDown(GAMEPAD_BUTTON_Y)) {
+                planet->randomise();
+                gamepad->buttonHandled(GAMEPAD_BUTTON_Y);
+            }
             break;
         }
     }
