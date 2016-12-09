@@ -7,11 +7,12 @@
 //
 
 #include "../Headers/Engine/Moon.hpp"
+#include "../Headers/Engine/ColourPalette.hpp"
 #include "../Headers/GLFW/glfw3.h"
 
 Moon::Moon () : Model("sphere/sphere") {
     setPosition(glm::vec3(-1, 0.4, 0.0));
-    setColour(glm::vec3(0.175, 0.175, 0.175));
+    setColour(ColourPalette::getColour(DarkGray));
     setShader("Moon", BASIC);
     setScale(0.1);
     

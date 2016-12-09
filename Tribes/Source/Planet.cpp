@@ -8,12 +8,13 @@
 
 #include "../Headers/Engine/Planet.hpp"
 #include "../Headers/Engine/ShaderCache.hpp"
+#include "../Headers/Engine/ColourPalette.hpp"
 
 #include "../Headers/GLFW/glfw3.h"
 
 Planet::Planet (): Model("sphere/sphere"), water("sphere/sphereDETAILED") {
 
-    setColour(glm::vec3(0.75, 0.66, 0.5));
+    setColour(ColourPalette::getColour(Sand));
     
     setShader("Planet", GEOM);
     setScale(1.2);
@@ -34,13 +35,13 @@ Planet::~Planet () {
 }
 
 void Planet::randomise () {
-    getShader()->update();
-    glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1 + (rand() % 4));
-    lightSource->setColour(glm::vec3(
-        0.20 + (rand() % 60 / 10),
-        0.20 + (rand() % 60 / 10),
-        0.20 + (rand() % 60 / 10)
-    ));
+    //getShader()->update();
+    //glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1 + (rand() % 4));
+    //lightSource->setColour(glm::vec3(
+    //    0.20 + (rand() % 60 / 10),
+    //    0.20 + (rand() % 60 / 10),
+    //    0.20 + (rand() % 60 / 10)
+    //));
     
     generateName();
 }

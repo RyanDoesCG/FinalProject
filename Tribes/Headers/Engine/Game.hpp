@@ -35,7 +35,8 @@ class Game {
         void pause();
         void end();
 
-        inline long getSeed ();
+        inline int getSeed ();
+        inline void setSeed (int s) {seed = s;}
     
         bool windowIsAlive();
     
@@ -52,12 +53,10 @@ class Game {
 
         GLFWwindow* window;
         GameState state;
-
-        std::map<actorID, Actor*> worldActors;
     
         // world seed
-        long generateSeed();
-        long seed;
+        int generateSeed();
+        int seed;
     
 };
 

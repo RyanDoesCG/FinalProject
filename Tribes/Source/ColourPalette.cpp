@@ -8,20 +8,12 @@
 
 #include "../Headers/Engine/ColourPalette.hpp"
 
-typedef std::pair<std::string, glm::vec3> Colour;
-
-ColourPalette::ColourPalette () {
-    palette = std::map<std::string, glm::vec3>();
-    
-    palette.insert(Colour("black", glm::vec3(0.0, 0.0, 0.0)));
-    palette.insert(Colour("white", glm::vec3(1.0, 1.0, 1.0)));
-    palette.insert(Colour("gray", glm::vec3(0.5, 0.5, 0.5)));
-}
-
-ColourPalette::~ColourPalette () {
-    
-}
-
-glm::vec3 ColourPalette::getColour (std::string name) {
-    return palette.at(name);
-}
+const std::map<ColourID, glm::vec3> ColourPalette::palette = {
+    Colour(Black,     glm::vec3(0.0, 0.0, 0.0)),
+    Colour(White,     glm::vec3(1.0, 1.0, 1.0)),
+    Colour(LightGray, glm::vec3(0.75, 0.75, 0.75)),
+    Colour(Gray,      glm::vec3(0.5, 0.5, 0.5)),
+    Colour(DarkGray,  glm::vec3(0.15, 0.15, 0.15)),
+    Colour(Sand,      glm::vec3(0.75, 0.66, 0.5)),
+    Colour(Red,       glm::vec3(0.45, 0.175, 0.175))
+};

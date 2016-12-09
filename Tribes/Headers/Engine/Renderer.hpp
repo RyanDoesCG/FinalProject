@@ -1,14 +1,14 @@
 #ifndef Renderer_hpp
 #define Renderer_hpp
 
-#include "Player.hpp"
+#include "SceneCamera.hpp"
 #include <vector>
 
 typedef std::vector<Actor*> Scene;
 
 class Renderer {
     public:
-        Renderer(Player* p);
+        Renderer(SceneCamera* cam);
         ~Renderer();
     
         void addToScene (Actor* actor);
@@ -16,7 +16,7 @@ class Renderer {
     
     private:
         Scene scene;
-        Player* player;
+        SceneCamera* camera;
     
 };
 

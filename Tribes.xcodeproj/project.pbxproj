@@ -25,8 +25,10 @@
 		62A907F01DEB00960008796D /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907EF1DEB00960008796D /* SceneCamera.cpp */; };
 		62A907F21DEB3A2C0008796D /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A907F11DEB3A2C0008796D /* Cube.cpp */; };
 		62E876581DF75EB900C0D596 /* GamepadComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62E876571DF75EB900C0D596 /* GamepadComponent.cpp */; };
+		CE0B83EF1DFA9B1500CD0EE0 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0B83EE1DFA9B1500CD0EE0 /* Renderer.cpp */; };
+		CE0B83F11DFA9E4D00CD0EE0 /* PhysicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0B83F01DFA9E4D00CD0EE0 /* PhysicsEngine.cpp */; };
 		CE208BD61DEC7E2900F1A3A6 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE208BD41DEC7E2900F1A3A6 /* Menu.cpp */; };
-		CE25FCB71DFA15860092E038 /* ColourPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE25FCB61DFA15860092E038 /* ColourPalette.cpp */; };
+		CE25FCBA1DFA1B080092E038 /* ColourPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE25FCB81DFA1B080092E038 /* ColourPalette.cpp */; };
 		CE2697351DAEADE600F9833E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2697281DAEADE600F9833E /* Game.cpp */; };
 		CE2697381DAEADE600F9833E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE26972B1DAEADE600F9833E /* main.cpp */; };
 		CE3852881D8C3DC5006A104C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
@@ -80,8 +82,10 @@
 		62A907EF1DEB00960008796D /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneCamera.cpp; path = Source/SceneCamera.cpp; sourceTree = "<group>"; };
 		62A907F11DEB3A2C0008796D /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cube.cpp; path = Source/Cube.cpp; sourceTree = "<group>"; };
 		62E876571DF75EB900C0D596 /* GamepadComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GamepadComponent.cpp; path = Source/GamepadComponent.cpp; sourceTree = "<group>"; };
+		CE0B83EE1DFA9B1500CD0EE0 /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Renderer.cpp; path = Source/Renderer.cpp; sourceTree = "<group>"; };
+		CE0B83F01DFA9E4D00CD0EE0 /* PhysicsEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhysicsEngine.cpp; path = Source/PhysicsEngine.cpp; sourceTree = "<group>"; };
 		CE208BD41DEC7E2900F1A3A6 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Menu.cpp; path = Source/Menu.cpp; sourceTree = "<group>"; };
-		CE25FCB61DFA15860092E038 /* ColourPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ColourPalette.cpp; path = Source/ColourPalette.cpp; sourceTree = "<group>"; };
+		CE25FCB81DFA1B080092E038 /* ColourPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ColourPalette.cpp; path = Source/ColourPalette.cpp; sourceTree = "<group>"; };
 		CE2697281DAEADE600F9833E /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Game.cpp; path = Source/Game.cpp; sourceTree = "<group>"; };
 		CE26972B1DAEADE600F9833E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
@@ -148,12 +152,14 @@
 				621448DF1DF44AE700861BB4 /* GameHUD.cpp */,
 				62A907F11DEB3A2C0008796D /* Cube.cpp */,
 				62E876571DF75EB900C0D596 /* GamepadComponent.cpp */,
+				CE25FCB81DFA1B080092E038 /* ColourPalette.cpp */,
 				627C13921DF47CD000DCCDF7 /* Moon.cpp */,
 				CEF7744B1DEDD33100CB2CC9 /* MainMenu.cpp */,
 				CEF7744E1DEDD33E00CB2CC9 /* SeedMenu.cpp */,
 				627C13901DF4727A00DCCDF7 /* PhysicsBox2D.cpp */,
+				CE0B83F01DFA9E4D00CD0EE0 /* PhysicsEngine.cpp */,
+				CE0B83EE1DFA9B1500CD0EE0 /* Renderer.cpp */,
 				624DF0D21DF9F4B900587D21 /* Quad.cpp */,
-				CE25FCB61DFA15860092E038 /* ColourPalette.cpp */,
 				CE4E8DA61DEE6E0600C3D842 /* Planet.cpp */,
 				627C138D1DF4542500DCCDF7 /* Flag.cpp */,
 				62256AAA1DE73BA700BF0E96 /* Model.cpp */,
@@ -264,12 +270,14 @@
 				CE4E8DA81DEE6E0600C3D842 /* Planet.cpp in Sources */,
 				62256AAB1DE73BA700BF0E96 /* Model.cpp in Sources */,
 				CE2697381DAEADE600F9833E /* main.cpp in Sources */,
+				CE0B83EF1DFA9B1500CD0EE0 /* Renderer.cpp in Sources */,
+				CE0B83F11DFA9E4D00CD0EE0 /* PhysicsEngine.cpp in Sources */,
 				CE208BD61DEC7E2900F1A3A6 /* Menu.cpp in Sources */,
 				624F49AD1DCBE7CE0065CE1A /* MeshComponent.cpp in Sources */,
 				CEF7744D1DEDD33100CB2CC9 /* MainMenu.cpp in Sources */,
 				624F49AE1DCBE7CE0065CE1A /* ShaderComponent.cpp in Sources */,
 				624F49AC1DCBE7CE0065CE1A /* MouseComponent.cpp in Sources */,
-				CE25FCB71DFA15860092E038 /* ColourPalette.cpp in Sources */,
+				CE25FCBA1DFA1B080092E038 /* ColourPalette.cpp in Sources */,
 				CE53A5B71DCD6C1F00393AD4 /* TextRenderingComponent.cpp in Sources */,
 				627C13931DF47CD000DCCDF7 /* Moon.cpp in Sources */,
 			);

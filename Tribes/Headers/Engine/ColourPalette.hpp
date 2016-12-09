@@ -5,16 +5,26 @@
 #include <string>
 #include <map>
 
+enum ColourID {
+    Black,
+    White,
+    LightGray,
+    Gray,
+    DarkGray,
+    Sand,
+    Red,
+    COLOUR_LIMIT
+};
+
 class ColourPalette {
     public:
-        ColourPalette ();
-       ~ColourPalette ();
+        typedef std::pair<ColourID, glm::vec3> Colour;
     
-        glm::vec3 getColour (std::string name);
-        glm::vec3 getAnyColour ();
+        static glm::vec3 getColour (ColourID id) { return palette.at(id); }
+        static glm::vec3 getAnyColour () { return palette.at((ColourID)(rand() % COLOUR_LIMIT)); }
     
     private:
-        std::map<std::string, glm::vec3> palette;
+        static const std::map<ColourID, glm::vec3> palette;
 };
 
 #endif /* ColourPalette.hpp */
