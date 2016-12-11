@@ -12,21 +12,29 @@
 
 Quad::Quad () {
     std::vector<GLfloat> vertices = {
-        -0.5, 0.5, 0.0,         0.0, 0.0, 0.0,
-        0.5, 0.5, 0.0,          0.0, 0.0, 0.0,
-        -0.5, -0.5, 0.0,        0.0, 0.0, 0.0,
+        -1.0, 1.0,        -1.0, 1.0,
+        1.0, 1.0,           1.0, 1.0,
+        -1.0, -1.0,        -1.0,-1.0,
         
-        -0.5, -0.5, 0.0,        0.0, 0.0, 0.0,
-        0.5, -0.5, 0.0,         0.0, 0.0, 0.0,
-        0.5, 0.5, 0.5,          0.0, 0.0, 0.0
+        -1.0, -1.0,        -1.0, -1.0,
+        1.0, -1.0,          1.0, -1.0,
+        1.0, 1.0,           1.0, 1.0,
     };
     
     shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("HUDPane", BASIC));
-    mesh = (MeshComponent*)addComponent(new MeshComponent(vertices));
+    mesh = (MeshComponent*)addComponent(new MeshComponent(vertices, 0));
 }
 
 Quad::~Quad () {
     
+}
+
+void Quad::setTexture(GLuint tex) {
+    texture = tex;
+}
+
+void Quad::setShader(std::string name) {
+    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent(name, BASIC));
 }
 
 void Quad::update (GameState state, SceneCamera* camera) {
@@ -36,10 +44,6 @@ void Quad::update (GameState state, SceneCamera* camera) {
     mesh->colour   = colour;
     
     shader->update();
-    
-    // Lighting data to GPU
-    vec3 viewPos = camera->getPosition();
-    glUniform3fv(glGetUniformLocation(shader->getProgramID(), "viewPosition"), 1, glm::value_ptr(viewPos));
 
-    mesh->testdraw(shader, camera);
+    mesh->texturedDraw(shader, camera, texture);
 }

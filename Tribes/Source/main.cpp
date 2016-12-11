@@ -8,8 +8,11 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../Headers/Engine/Game.hpp"
 
+#include "../Headers/Engine/SimplexNoiseMachine.hpp"
+
 int main (int argc, const char * argv[]) {
     Game game;
     game.begin();
+
     return 0;
 }

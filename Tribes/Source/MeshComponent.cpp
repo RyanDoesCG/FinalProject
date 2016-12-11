@@ -22,6 +22,12 @@ MeshComponent::MeshComponent (vector<Vertex> vertices, vector<GLuint> indices, v
     this->setupModelMeshComponent();
 }
 
+MeshComponent::MeshComponent (std::vector<GLfloat> vertices, int MESSY_TEXTURE_FIX) {
+    this->testVertices = vertices;
+    
+    this->setupTexturedMeshComponent();
+}
+
 MeshComponent::MeshComponent (std::vector<GLfloat> vertices) {
     this->testVertices = vertices;
     
@@ -33,6 +39,27 @@ MeshComponent::~MeshComponent () {
     //glDeleteVertexArrays (1, &this->VAO);
     //glDeleteBuffers      (1, &this->VBO);
     //glDeleteBuffers      (1, &this->EBO);
+}
+
+void MeshComponent::setupTexturedMeshComponent () {
+    glGenVertexArrays (1, &this->VAO);
+    glGenBuffers      (1, &this->VBO);
+    
+    glBindVertexArray (this->VAO);
+    
+    // Send VBO to GPU
+    glBindBuffer (GL_ARRAY_BUFFER, this->VBO);
+    glBufferData (GL_ARRAY_BUFFER, this->testVertices.size() * sizeof(GLfloat), &this->testVertices[0], GL_STATIC_DRAW);
+    
+    // Position attribute
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
+    glEnableVertexAttribArray(0);
+    
+    // Normal attribute
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)(2 * sizeof(GLfloat)));
+    glEnableVertexAttribArray(1);
+    
+    glBindVertexArray(0);
 }
 
 void MeshComponent::setupTestMeshComponent () {
@@ -135,6 +162,13 @@ void MeshComponent::testdraw(ShaderComponent* shader, SceneCamera* camera) {
     // render
     glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+}
+
+void MeshComponent::texturedDraw(ShaderComponent *shader, SceneCamera *camera, GLuint texture) {
+    glBindVertexArray (VAO);
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
 }
 

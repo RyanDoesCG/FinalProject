@@ -75,9 +75,15 @@ void SceneCamera::update (GameState state, SceneCamera* camera) {
             break;
         }
         case RUNNING_FREEMODE: {
+            
+            // 0 radians causes flip
             relativeFront.x = cos(radians(yaw)) * cos(radians(pitch));
             relativeFront.y = sin(radians(pitch));
             relativeFront.z = sin(radians(yaw)) * cos(radians(pitch));
+            
+            std::cout << "\npitch: " << pitch << std::endl;
+            std::cout << "roll:  " <<   roll << std::endl;
+            std::cout << "yaw:   " << yaw << std::endl;
             
             relativeFront = normalize(relativeFront);
             relativeRight = normalize(cross(relativeFront, worldUp));

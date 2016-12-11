@@ -17,7 +17,7 @@ void main (void) {
     vec3 normal = normalize(norm);
     
     // ambient lighting
-    float ambStrength = 0.35f;
+    float ambStrength = 0.30f;
     vec3  ambient     = ambStrength * lightColour;
     
     // diffuse lighting
@@ -26,10 +26,10 @@ void main (void) {
     vec3  diffuse        = diffStrength * lightColour;
     
     // specular lighting
-    float specStrength        = 0.2f;
+    float specStrength        = 0.4f;
     vec3  viewDirection       = normalize(viewPosition - vec3(worldPos.xyz));
     vec3  reflectionDirection = reflect(-lightDirection, normal);
-    float spec                = pow(max(dot(viewDirection, reflectionDirection), 0.0), 16);
+    float spec                = pow(max(dot(viewDirection, reflectionDirection), 0.2), 8);
     vec3  specular            = specStrength * spec * lightColour;
     
     // stacked result

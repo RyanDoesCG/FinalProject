@@ -13,14 +13,16 @@ class Quad : public Actor {
        virtual void update (GameState state, SceneCamera* camera) override;
     
         ShaderComponent* getShader() {return shader;}
-    //    void setTexture (GLuint tex);
+    
+        void setShader (std::string name);
+        void setTexture (GLuint tex);
     
     protected:
         MeshComponent* mesh;
         ShaderComponent* shader;
     
     
-        //  GLuint texture;
+        GLuint texture;
 };
 
 #endif /* Quad.hpp */

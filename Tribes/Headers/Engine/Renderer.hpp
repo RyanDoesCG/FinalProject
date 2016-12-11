@@ -2,13 +2,14 @@
 #define Renderer_hpp
 
 #include "SceneCamera.hpp"
+#include "../GLFW/glfw3.h"
 #include <vector>
 
 typedef std::vector<Actor*> Scene;
 
 class Renderer {
     public:
-        Renderer(SceneCamera* cam);
+        Renderer(int width, int height, SceneCamera* cam);
         ~Renderer();
     
         void addToScene (Actor* actor);
@@ -17,6 +18,11 @@ class Renderer {
     private:
         Scene scene;
         SceneCamera* camera;
+    
+        GLuint FBO; // FrameBufferObject
+        GLuint RBO; // RenderBufferObject
+    
+        GLuint colourAttachment;
     
 };
 

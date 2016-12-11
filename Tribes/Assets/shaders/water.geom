@@ -13,8 +13,8 @@ uniform vec3 cameraPosition;
 uniform vec3 lightColour;
 uniform vec3 lightPosition;
 
-const float reflectivity = 0.32;
-const float shineDamper = 16.0;
+const float reflectivity = 0.45;
+const float shineDamper = 8.0;
 const float ambientLighting = 0.24;
 
 vec3 calculateTriangleNormal(){

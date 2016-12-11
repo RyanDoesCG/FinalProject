@@ -22,6 +22,7 @@ using namespace std;
 class MeshComponent : public ActorComponent {
     public:
         MeshComponent (vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures);
+        MeshComponent (vector<GLfloat> vertices, int MESSY_TEXTURE_FIX);
         MeshComponent (vector<GLfloat> vertices);
         ~MeshComponent ();
     
@@ -31,6 +32,7 @@ class MeshComponent : public ActorComponent {
     
         void draw (ShaderComponent* shader, SceneCamera* camera);
         void testdraw (ShaderComponent* shader, SceneCamera* camera);
+        void texturedDraw (ShaderComponent* shader, SceneCamera* camera, GLuint texture);
 
         glm::vec3 position;
         glm::vec3 rotation;
@@ -52,6 +54,7 @@ class MeshComponent : public ActorComponent {
         // quick test MeshComponent
         vector<GLfloat> testVertices;
         void setupTestMeshComponent  ();
+        void setupTexturedMeshComponent ();
     
         ShaderComponent* wireframeShader;
 };

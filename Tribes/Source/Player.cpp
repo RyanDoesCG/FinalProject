@@ -100,11 +100,11 @@ void Player::update(GameState state, SceneCamera* camera) {
             
             // ROLL
             if (gamepad->isButtonDown(GAMEPAD_RIGHT_BUMPER)) {
-                camera->roll += 10;
+                camera->roll += 1;
             }
             
             if (gamepad->isButtonDown(GAMEPAD_LEFT_BUMPER)) {
-                camera->roll += 10;
+                camera->roll -= 1;
             }
             
             // BAD BAD BAD

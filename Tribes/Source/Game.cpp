@@ -55,7 +55,7 @@ void Game::begin() {
     
     GameHUD hud = GameHUD(windowWidth, windowHeight, this, &player, &planet);
     
-    Renderer graphics = Renderer(player.getView());
+    Renderer graphics = Renderer(windowWidth, windowHeight, player.getView());
     graphics.addToScene(&player);
     graphics.addToScene(&planet);
     graphics.addToScene(&moon1);
@@ -108,7 +108,7 @@ void Game::begin() {
                 
                 float a_to_b = sqrt(dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
                 
-                std::cout << "distance: " << a_to_b << std::endl;
+                //std::cout << "distance: " << a_to_b << std::endl;
                 // TEST
                 
                 // draw UI
@@ -182,9 +182,8 @@ int Game::initGLEW () {
     glfwGetFramebufferSize (window, &windowWidth, &windowHeight);
     glViewport (0, 0, windowWidth, windowHeight);
     
-    glEnable    (GL_DEPTH_TEST);    // Z BUFFERING
     glEnable    (GL_MULTISAMPLE);   // MULTISAMPLING
-    glEnable    (GL_BLEND);         // TEXT BLENDING
+    glEnable    (GL_BLEND);         // ALPHA BLENDING
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     return 0;
