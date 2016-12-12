@@ -1,6 +1,7 @@
 #ifndef Renderer_hpp
 #define Renderer_hpp
 
+#include "Quad.hpp"
 #include "SceneCamera.hpp"
 #include "../GLFW/glfw3.h"
 #include <vector>
@@ -23,6 +24,7 @@ class Renderer {
         GLuint RBO; // RenderBufferObject
     
         GLuint colourAttachment;
+        Quad processedScene;
     
 };
 

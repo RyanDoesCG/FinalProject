@@ -32,9 +32,9 @@ void main() {
     }
     else if (generationType == 4.0) {
         // square root generation
-        lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 1000, position.z * 24753))));
+        lift = 0.875 + 0.1 * (tan(rand(vec2(position.y * 1000, position.z * 24753))));
     }
-    
+ 
     // square root generation
     //float lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 1000, position.z * 24753))));
     
