@@ -37,7 +37,7 @@ void Player::update(GameState state, SceneCamera* camera) {
                 camera->reset();
                 inGame = false;
             }
-
+/*
             camera->pitch += mouse->getYoffset() * 0.1;
             camera->yaw   += mouse->getXoffset() * 0.1;
             // YAW
@@ -50,6 +50,7 @@ void Player::update(GameState state, SceneCamera* camera) {
                 gamepad->getAxisState(RIGHT_STICK_Y_AXIS) < -0.01) {
                 camera->pitch += gamepad->getAxisState(RIGHT_STICK_Y_AXIS) * 0.1;
             }
+ */
             break;
         }
         case RUNNING_FREEMODE: {
@@ -67,6 +68,10 @@ void Player::update(GameState state, SceneCamera* camera) {
                 // switch mode
                 game->setState(RUNNING_EDITMODE);
                 keyboard->keyHandled(GLFW_KEY_Q);
+            }
+            
+            if (keyboard->isKeyDown(GLFW_KEY_P)) {
+                game->pause();
             }
             
             // MOUSE
@@ -133,6 +138,12 @@ void Player::update(GameState state, SceneCamera* camera) {
             if (gamepad->isButtonDown(GAMEPAD_SPECIAL_HOME)) {game->setState(MAIN_MENU); camera->reset();}
             
             break;
+        }
+            
+        case PAUSED: {
+            if (keyboard->isKeyDown(GLFW_KEY_P)) {
+                game->pause();
+            }
         }
     }
     

@@ -44,23 +44,24 @@ void Renderer::addToScene(Actor* actor) {
 }
 
 void Renderer::drawScene(GameState state) {
-
+/*
     // render off screen
     glBindFramebuffer (GL_FRAMEBUFFER, FBO);
     glClearColor(0.16, 0.16, 0.16, 1.0);
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
-    
-    // draw
+*/
+
+        // draw
     for (int i = 0; i < scene.size(); i++) {
         scene.at(i)->update(state, camera);
     }
 
+/*
     // render to screen
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glClearColor(0.16, 0.16, 0.16, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
-    
     processedScene.update(state, camera);
-
+*/
 }

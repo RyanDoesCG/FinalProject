@@ -161,7 +161,7 @@ void MeshComponent::testdraw(ShaderComponent* shader, SceneCamera* camera) {
     
     // render
     glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glDrawArrays(GL_TRIANGLES, 0, testVertices.size() / 3);
     glBindVertexArray(0);
 }
 

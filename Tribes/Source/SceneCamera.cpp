@@ -81,10 +81,6 @@ void SceneCamera::update (GameState state, SceneCamera* camera) {
             relativeFront.y = sin(radians(pitch));
             relativeFront.z = sin(radians(yaw)) * cos(radians(pitch));
             
-            std::cout << "\npitch: " << pitch << std::endl;
-            std::cout << "roll:  " <<   roll << std::endl;
-            std::cout << "yaw:   " << yaw << std::endl;
-            
             relativeFront = normalize(relativeFront);
             relativeRight = normalize(cross(relativeFront, worldUp));
             relativeUp    = normalize(cross(relativeRight, relativeFront));

@@ -100,16 +100,18 @@ void Game::begin() {
                 physics.simulate(glfwGetTime(), state);
                 graphics.drawScene(state);
                 
-                // TEST
-                vec3 a = planet.getPosition();
-                vec3 b = player.getPosition();
-                
-                vec3 dist = b - a;
-                
+                // get some distances
+                vec3 dist = player.getPosition() - planet.getPosition();
                 float a_to_b = sqrt(dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
+
+                vec3 dist2 = player.getPosition() - moon1.getPosition();
+                float a_to_c = sqrt(dist2.x * dist2.x + dist2.y * dist2.y + dist2.z * dist2.z);
                 
-                //std::cout << "distance: " << a_to_b << std::endl;
-                // TEST
+                // print the closest
+                (a_to_b < a_to_c) ?
+                    player.setPosition(planet.getPosition())
+                :
+                    player.setPosition(moon1.getPosition());
                 
                 // draw UI
                 hud.update(state, player.getView());
@@ -118,6 +120,7 @@ void Game::begin() {
                 break;
             }
             case PAUSED: {
+                glfwPollEvents();
                 break;
             }
             case OVER: {
