@@ -58,8 +58,8 @@ void Game::begin() {
     GameHUD hud = GameHUD(windowWidth, windowHeight, this, &player, &planet);
     
     Renderer graphics = Renderer(windowWidth, windowHeight, player.getView());
-    graphics.addToScene(&player);
     graphics.addToScene(&planet);
+    graphics.addToScene(&player);
     graphics.addToScene(&moon1);
     graphics.addToScene(&moon2);
     graphics.addToScene(&lamp);
