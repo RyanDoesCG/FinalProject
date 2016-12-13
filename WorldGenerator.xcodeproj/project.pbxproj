@@ -46,7 +46,6 @@
 		CEDD0E6D1E00AACE0078469C /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDD0E6C1E00AACE0078469C /* libglfw3.dylib */; };
 		CEDD0E6E1E00AADB0078469C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
 		CEDD0F1A1E00AC990078469C /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = CEDD0F191E00AC990078469C /* Assets */; };
-		CEDD0F1F1E00ADA60078469C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEDD0F1E1E00ADA60078469C /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1403,7 +1402,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDD0F1F1E00ADA60078469C /* Info.plist in Resources */,
 				CEDD0F1A1E00AC990078469C /* Assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1596,6 +1594,7 @@
 				CEDD0BBF1E00A9020078469C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
