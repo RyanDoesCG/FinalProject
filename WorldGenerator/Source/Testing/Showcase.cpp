@@ -1,11 +1,11 @@
-//
-//  Showcase.cpp
-//  Tribes
-//
-//  Created by user on 09/12/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Showcase.cpp
+ *  Tribes
+ *
+ *  Created by user on 09/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Testing/Showcase.hpp"
 
 #include "../../Headers/Engine/Core/Renderer.hpp"

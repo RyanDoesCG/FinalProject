@@ -1,11 +1,11 @@
-//
-//  SeedMenu.cpp
-//  Tribes
-//
-//  Created by user on 29/11/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  SeedMenu.cpp
+ *  Tribes
+ *
+ *  Created by user on 29/11/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/UI/SeedMenu.hpp"
 
 SeedMenu::SeedMenu (float width, float height, Game* game):

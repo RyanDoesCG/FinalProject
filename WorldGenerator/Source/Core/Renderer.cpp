@@ -1,3 +1,11 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Renderer.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 01/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Core/Renderer.hpp"
 
 Renderer::Renderer (int width, int height, SceneCamera* cam) {

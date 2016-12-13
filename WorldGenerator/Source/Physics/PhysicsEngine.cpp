@@ -1,11 +1,11 @@
-//
-//  PhysicsEngine.cpp
-//  Tribes
-//
-//  Created by user on 09/12/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  PhysicsEngine.cpp
+ *  Tribes
+ *
+ *  Created by user on 09/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Physics/PhysicsEngine.hpp"
 
 PhysicsEngine::PhysicsEngine () {

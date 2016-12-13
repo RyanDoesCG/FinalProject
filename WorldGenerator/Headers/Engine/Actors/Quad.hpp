@@ -1,3 +1,11 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Quad.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 30/11/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Quad_hpp
 #define Quad_hpp
 

@@ -3,7 +3,7 @@
  *  Tribes
  *
  *  Created by Ryan Needham on 02/12/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Skybox_hpp

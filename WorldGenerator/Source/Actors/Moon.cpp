@@ -1,11 +1,11 @@
-//
-//  Moon.cpp
-//  Tribes
-//
-//  Created by Ryan Needham on 04/12/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Moon.cpp
+ *  Tribes
+ *
+ *  Created by Ryan Needham on 04/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Actors/Moon.hpp"
 #include "../../Headers/Engine/Utility/ColourPalette.hpp"
 #include "../../Headers/GLFW/glfw3.h"

@@ -1,11 +1,11 @@
-//
-//  ColourPalette.cpp
-//  Tribes
-//
-//  Created by user on 08/12/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  ColourPalette.cpp
+ *  Tribes
+ *
+ *  Created by user on 08/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Utility/ColourPalette.hpp"
 
 const std::map<ColourID, glm::vec3> ColourPalette::palette = {

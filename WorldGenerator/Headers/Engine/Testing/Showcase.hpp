@@ -1,11 +1,11 @@
-//
-//  Showcase.hpp
-//  Tribes
-//
-//  Created by user on 09/12/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *   Showcase.hpp
+ *   Tribes
+ *
+ *   Created by user on 09/12/2016.
+ *   Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Showcase_hpp
 #define Showcase_hpp
 

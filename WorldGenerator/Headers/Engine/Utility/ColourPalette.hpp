@@ -1,3 +1,11 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  ColourPalette.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 05/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef ColourPalette_hpp
 #define ColourPalette_hpp
 

@@ -1,11 +1,11 @@
-//
-//  SeedMenu.hpp
-//  Tribes
-//
-//  Created by user on 29/11/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  SeedMenu.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 29/11/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef SeedMenu_hpp
 #define SeedMenu_hpp
 

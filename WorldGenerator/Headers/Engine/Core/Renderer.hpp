@@ -1,3 +1,11 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Renderer.hpp
+ *  Tribes
+ *
+ *  Created by ryan needham on 01/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #ifndef Renderer_hpp
 #define Renderer_hpp
 

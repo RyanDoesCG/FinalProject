@@ -3,15 +3,9 @@
  *  Tribes
  *
  *  Created by Ryan Needham on 24/11/2016.
- *    Copyright © 2016 Dissertation. All rights reserved.
+ *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-/**
-    Note on import flags:
-        - aiProcess_GenNormals : actually creates normals for each vertex if the model didn’t contain normal vectors.
- 
- **/
 #include "../../Headers/Engine/Actors/Model.hpp"
 #include "../../Headers/soil/SOIL.h"
 #include "../../Headers/glm/gtc/type_ptr.hpp"
@@ -21,6 +15,11 @@ void Model::setShader(string path, ProgramType type) { shader = ShaderCache::loa
 void Model::loadModel(string path) {
     Assimp::Importer importer;
     
+    /**
+     Note on import flags:
+     - aiProcess_GenNormals : actually creates normals for each vertex if the model didn’t contain normal vectors.
+     
+     **/
     const aiScene* scene = importer.ReadFile(path, aiProcess_GenNormals);
     
     // error check

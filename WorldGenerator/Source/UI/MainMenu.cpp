@@ -1,11 +1,11 @@
-//
-//  MainMenu.cpp
-//  Tribes
-//
-//  Created by user on 29/11/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  MainMenu.cpp
+ *  Tribes
+ *
+ *  Created by user on 29/11/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/UI/MainMenu.hpp"
 #include "../../Headers/Engine/UI/OptionsMenu.hpp"
 #include "../../Headers/Engine/UI/LoadMenu.hpp"

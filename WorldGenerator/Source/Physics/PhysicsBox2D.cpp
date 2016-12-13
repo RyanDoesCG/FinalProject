@@ -1,11 +1,11 @@
-//
-//  PhysicsBox2D.cpp
-//  Tribes
-//
-//  Created by Ryan Needham on 04/12/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  PhysicsBox2D.cpp
+ *  Tribes
+ *
+ *  Created by Ryan Needham on 04/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Physics/PhysicsBox2D.hpp"
 
 PhysicsBox2D::PhysicsBox2D (glm::vec3 minExtents, glm::vec3 maxExtents) {

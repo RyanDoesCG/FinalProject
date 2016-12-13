@@ -1,11 +1,11 @@
-//
-//  Planet.cpp
-//  Tribes
-//
-//  Created by user on 30/11/2016.
-//  Copyright © 2016 Dissertation. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Planet.cpp
+ *  Tribes
+ *
+ *  Created by Ryan Needham on 04/12/2016.
+ *  Copyright © 2016 Dissertation. All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Actors/Planet.hpp"
 #include "../../Headers/Engine/Utility/ShaderCache.hpp"
 #include "../../Headers/Engine/Utility/ColourPalette.hpp"
