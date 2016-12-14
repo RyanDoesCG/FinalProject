@@ -11,7 +11,7 @@ const float AMPLITUDE = 0.00175;
 
 out vec3 vertexColour;
 
-/** 
+/**
  *  CREDIT: https://www.youtube.com/watch?v=r2hue52wLF4
  *  adapted by Ryan Needham
  */
@@ -26,8 +26,8 @@ void main() {
     vec3 a = vec3(0, 0, 0);
     vec3 b = position;
     
-    // get the distance between the center of the structure
-    // and the point on the x, y and z axes.
+        // get the distance between the center of the structure
+        // and the point on the x, y and z axes.
     float distX = b.x - a.x;
     float distY = b.y - a.y;
     float distZ = b.z - a.z;
@@ -42,13 +42,13 @@ void main() {
     b.y = (a.y + distY);
     b.z = (a.z + distZ);
     
-    // set position
+        // set position
     gl_Position = model * vec4(b, 1.0f);
-
-    // pass through
+    
+        // pass through
     if      (texCoords.x == 1) { vertexColour = vec3(0.2, 0.4, 0.45); }
     else if (texCoords.x == 2) { vertexColour = vec3(0.22, 0.42, 0.47); }
     else                       { vertexColour = vec3(0.24, 0.44, 0.49); }
-
+    
 }
 
