@@ -40,7 +40,7 @@ void Menu::update () {
             glm::vec2 position = glm::vec2(84, bassline + (10 * (12 * items[i].index)));
             
             if (i == selectedItem)
-                textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.75, 0.75, 0.75), 0.72);
+                textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.4, 0.2, 0.2), 0.72);
             else
                 textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.32, 0.32, 0.32), 0.6);
         }
