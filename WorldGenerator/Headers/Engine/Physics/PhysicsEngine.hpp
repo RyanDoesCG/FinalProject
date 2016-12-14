@@ -12,18 +12,18 @@
 #include "../Actors/Actor.hpp"
 #include <vector>
 
-typedef std::vector<Actor*> Scene;
+typedef std::vector<Actor*> World;
 
 class PhysicsEngine {
-public:
-     PhysicsEngine();
-    ~PhysicsEngine();
+    public:
+         PhysicsEngine();
+        ~PhysicsEngine();
     
-    void addToSimulation (Actor* actor);
-    void simulate        (double time, GameState state);
+        void addToSimulation (Actor* actor);
+        void simulate        (double time, GameState state);
     
-private:
-    Scene scene;
+    private:
+        World physicsWorld;
 
 };
 

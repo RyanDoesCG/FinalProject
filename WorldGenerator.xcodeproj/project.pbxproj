@@ -26,7 +26,6 @@
 		CEDD0E581E00AA0B0078469C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DBE1E00AA0A0078469C /* main.cpp */; };
 		CEDD0E591E00AA0B0078469C /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DBF1E00AA0A0078469C /* Renderer.cpp */; };
 		CEDD0E5A1E00AA0B0078469C /* SimplexMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DC11E00AA0A0078469C /* SimplexMachine.cpp */; };
-		CEDD0E5B1E00AA0B0078469C /* PhysicsBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DC31E00AA0A0078469C /* PhysicsBox2D.cpp */; };
 		CEDD0E5C1E00AA0B0078469C /* PhysicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DC41E00AA0A0078469C /* PhysicsEngine.cpp */; };
 		CEDD0E5D1E00AA0B0078469C /* Showcase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DC61E00AA0A0078469C /* Showcase.cpp */; };
 		CEDD0E5E1E00AA0B0078469C /* GameHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DC81E00AA0A0078469C /* GameHUD.cpp */; };
@@ -127,8 +126,6 @@
 		CEDD0C261E00AA0A0078469C /* GameState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameState.hpp; sourceTree = "<group>"; };
 		CEDD0C271E00AA0A0078469C /* Renderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
 		CEDD0C291E00AA0A0078469C /* SimplexMachine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SimplexMachine.hpp; sourceTree = "<group>"; };
-		CEDD0C2B1E00AA0A0078469C /* Intersection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Intersection.hpp; sourceTree = "<group>"; };
-		CEDD0C2C1E00AA0A0078469C /* PhysicsBox2D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhysicsBox2D.hpp; sourceTree = "<group>"; };
 		CEDD0C2D1E00AA0A0078469C /* PhysicsEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhysicsEngine.hpp; sourceTree = "<group>"; };
 		CEDD0C2F1E00AA0A0078469C /* Showcase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Showcase.hpp; sourceTree = "<group>"; };
 		CEDD0C311E00AA0A0078469C /* GameHUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameHUD.hpp; sourceTree = "<group>"; };
@@ -513,7 +510,6 @@
 		CEDD0DBE1E00AA0A0078469C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		CEDD0DBF1E00AA0A0078469C /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
 		CEDD0DC11E00AA0A0078469C /* SimplexMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimplexMachine.cpp; sourceTree = "<group>"; };
-		CEDD0DC31E00AA0A0078469C /* PhysicsBox2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsBox2D.cpp; sourceTree = "<group>"; };
 		CEDD0DC41E00AA0A0078469C /* PhysicsEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsEngine.cpp; sourceTree = "<group>"; };
 		CEDD0DC61E00AA0A0078469C /* Showcase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Showcase.cpp; sourceTree = "<group>"; };
 		CEDD0DC81E00AA0A0078469C /* GameHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameHUD.cpp; sourceTree = "<group>"; };
@@ -752,8 +748,6 @@
 		CEDD0C2A1E00AA0A0078469C /* Physics */ = {
 			isa = PBXGroup;
 			children = (
-				CEDD0C2B1E00AA0A0078469C /* Intersection.hpp */,
-				CEDD0C2C1E00AA0A0078469C /* PhysicsBox2D.hpp */,
 				CEDD0C2D1E00AA0A0078469C /* PhysicsEngine.hpp */,
 			);
 			path = Physics;
@@ -1308,7 +1302,6 @@
 		CEDD0DC21E00AA0A0078469C /* Physics */ = {
 			isa = PBXGroup;
 			children = (
-				CEDD0DC31E00AA0A0078469C /* PhysicsBox2D.cpp */,
 				CEDD0DC41E00AA0A0078469C /* PhysicsEngine.cpp */,
 			);
 			path = Physics;
@@ -1420,7 +1413,6 @@
 				CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */,
 				CEDD0E501E00AA0A0078469C /* Skybox.cpp in Sources */,
 				CEDD0E521E00AA0A0078469C /* KeyboardComponent.cpp in Sources */,
-				CEDD0E5B1E00AA0B0078469C /* PhysicsBox2D.cpp in Sources */,
 				CEDD0E4F1E00AA0A0078469C /* SceneCamera.cpp in Sources */,
 				CEDD0E601E00AA0B0078469C /* MainMenu.cpp in Sources */,
 				CEDD0E531E00AA0A0078469C /* MeshComponent.cpp in Sources */,
