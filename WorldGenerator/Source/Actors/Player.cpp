@@ -83,6 +83,13 @@ void Player::update (GameState state) {
             camera->pitch += mouse->getYoffset();
             
             // GAMEPAD
+            std::cout << std::endl;
+            std::cout << "right trigger: " << gamepad->getAxisState(RIGHT_TRIGGER) << std::endl;
+            std::cout << "left trigger: " << gamepad->getAxisState(LEFT_TRIGGER) << std::endl;
+            std::cout << "right stick: (" << gamepad->getAxisState(LEFT_STICK_X_AXIS) << ", " << gamepad->getAxisState(LEFT_STICK_Y_AXIS) << std::endl;
+            std::cout << "left stick: (" << gamepad->getAxisState(RIGHT_STICK_X_AXIS) << ", " << gamepad->getAxisState(RIGHT_STICK_Y_AXIS) << std::endl;
+            std::cout << std::endl;
+            
             if (gamepad->isButtonDown(GAMEPAD_SPECIAL_BACK)) {
                 // switch mode
                 game->setState(RUNNING_EDITMODE);
@@ -92,18 +99,18 @@ void Player::update (GameState state) {
             if (gamepad->isButtonDown(GAMEPAD_SPECIAL_HOME)) {game->setState(MAIN_MENU); camera->reset();}
             
             // forward/backward
-            if (gamepad->getAxisState(RIGHT_TRIGGER) > 0.01) { camera->moveForwardAt(gamepad->getAxisState(RIGHT_TRIGGER)); }
-            if (gamepad->getAxisState(LEFT_TRIGGER) > 0.01) { camera->moveBackwardAt(gamepad->getAxisState(LEFT_TRIGGER)); }
+            if (gamepad->getAxisState(RIGHT_TRIGGER) > 0.20) { camera->moveForwardAt(gamepad->getAxisState(RIGHT_TRIGGER)); }
+            if (gamepad->getAxisState(LEFT_TRIGGER) > 0.20) { camera->moveBackwardAt(gamepad->getAxisState(LEFT_TRIGGER)); }
             
             // YAW
-            if (gamepad->getAxisState(LEFT_STICK_X_AXIS) > 0.03 ||
-                gamepad->getAxisState(LEFT_STICK_X_AXIS) < -0.03) {
+            if (gamepad->getAxisState(LEFT_STICK_X_AXIS) > 0.20 ||
+                gamepad->getAxisState(LEFT_STICK_X_AXIS) < -0.20) {
                 camera->yaw += gamepad->getAxisState(LEFT_STICK_X_AXIS);
             }
             
             // PITCH
-            if (gamepad->getAxisState(LEFT_STICK_Y_AXIS) > 0.03 ||
-                gamepad->getAxisState(LEFT_STICK_Y_AXIS) < -0.03) {
+            if (gamepad->getAxisState(LEFT_STICK_Y_AXIS) > 0.20 ||
+                gamepad->getAxisState(LEFT_STICK_Y_AXIS) < -0.20) {
                 camera->pitch += gamepad->getAxisState(LEFT_STICK_Y_AXIS);
             }
             
