@@ -25,6 +25,9 @@ class Renderer {
         void drawScene (SceneCamera* camera);
     
     private:
+        void setupColourBuffer();
+        void setupDepthBuffer();
+    
         Scene scene;
         SceneCamera* camera;
     
@@ -33,6 +36,9 @@ class Renderer {
     
         GLuint colourAttachment;
         Quad processedScene;
+    
+        int width;
+        int height;
     
 };
 
