@@ -33,9 +33,9 @@ class Actor {
             initChildren();
         }
     
-        virtual void update (GameState state, SceneCamera* camera) {
+        virtual void draw (GameState state, SceneCamera* camera) {
             updateComponents();
-            updateChildren(state, camera);
+            drawChildren(state, camera);
         }
     
         virtual void moveLeft     () { position.x -= 0.1; }
@@ -88,9 +88,9 @@ class Actor {
                 components.at(i)->update();
         }
     
-        void updateChildren   (GameState state, SceneCamera* camera) {
+        void drawChildren (GameState state, SceneCamera* camera) {
             for (int i = 0; i < children.size(); i++)
-                children.at(i)->update(state, camera);
+                children.at(i)->draw(state, camera);
         }
     
         std::map<ComponentID, Component*> components;

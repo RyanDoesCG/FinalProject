@@ -28,7 +28,7 @@ void Player::init () {
 
 }
 
-void Player::update(GameState state, SceneCamera* camera) {
+void Player::draw (GameState state, SceneCamera* camera) {
     switch (state) {
         case MAIN_MENU: {
             mouse->showMouse();
@@ -147,5 +147,5 @@ void Player::update(GameState state, SceneCamera* camera) {
         }
     }
     
-    Actor::update(state, camera);
+    Actor::draw (state, camera);
 }

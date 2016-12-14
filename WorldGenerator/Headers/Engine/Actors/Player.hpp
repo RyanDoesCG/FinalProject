@@ -28,7 +28,7 @@ class Player : public Actor {
         SceneCamera* getView () {return this->camera;}
     
         virtual void init() override;
-        virtual void update(GameState state, SceneCamera* camera) override;
+        virtual void draw (GameState state, SceneCamera* camera) override;
     
     private:
         SceneCamera*       camera;

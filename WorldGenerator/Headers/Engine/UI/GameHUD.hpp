@@ -22,7 +22,7 @@ class GameHUD : public Actor {
         GameHUD  (float width, float height, Game* game, Player* player, Planet* planet);
         ~GameHUD ();
     
-        virtual void update (GameState state, SceneCamera* camera) override;
+        virtual void draw (GameState state, SceneCamera* camera) override;
 
     
     private:

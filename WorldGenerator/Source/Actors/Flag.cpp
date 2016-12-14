@@ -16,6 +16,6 @@ Flag::~Flag() {
     
 }
 
-void Flag::update(GameState state, SceneCamera *camera) {
+void Flag::draw (GameState state, SceneCamera *camera) {
     
 }

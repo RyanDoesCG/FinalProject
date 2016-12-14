@@ -40,12 +40,12 @@ GameHUD::~GameHUD () {
 
 }
 
-void GameHUD::update(GameState state, SceneCamera *camera) {
+void GameHUD::draw (GameState state, SceneCamera *camera) {
     switch (state) {
         case RUNNING_EDITMODE: {
             
             // draw
-            menubarTop.update(state, camera);
+            menubarTop.draw (state, camera);
            // menubarBottom.update(state, camera);
             textPipeline->renderTextAs2D(planet->getName(), glm::vec2(25, 1000), vec3(0.9), 0.4);
             textPipeline->renderTextAs2D("edit mode", glm::vec2(10, 10), vec3(0.4, 0.4, 0.4), 0.35);
@@ -70,5 +70,5 @@ void GameHUD::update(GameState state, SceneCamera *camera) {
         }
     }
     
-    Actor::update(state, camera);
+    Actor::draw (state, camera);
 }

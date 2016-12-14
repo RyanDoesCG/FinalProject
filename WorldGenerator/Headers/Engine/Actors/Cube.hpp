@@ -15,7 +15,7 @@ class Cube : public Actor {
         Cube();
        ~Cube();
     
-        virtual void update(GameState state, SceneCamera* camera) override;
+        virtual void draw (GameState state, SceneCamera* camera) override;
     
         void setLightSource (Actor* light) {lightSource = light;}
     

@@ -29,7 +29,7 @@ void Moon::setSpeed(int s) {
     }
 }
 
-void Moon::update(GameState state, SceneCamera *camera) {
+void Moon::draw (GameState state, SceneCamera *camera) {
     switch (state) {
         case MAIN_MENU: case RUNNING_FREEMODE: case RUNNING_EDITMODE: {
             GLfloat radius = 2;
@@ -41,5 +41,5 @@ void Moon::update(GameState state, SceneCamera *camera) {
     }
     
     shader->update();
-    Model::update(state, camera);
+    Model::draw (state, camera);
 }

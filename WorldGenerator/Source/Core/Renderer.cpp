@@ -62,7 +62,7 @@ void Renderer::drawScene(GameState state) {
 
         // draw
     for (int i = 0; i < scene.size(); i++) {
-        scene.at(i)->update(state, camera);
+        scene.at(i)->draw (state, camera);
     }
 
 /*

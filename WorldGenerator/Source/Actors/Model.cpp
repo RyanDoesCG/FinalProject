@@ -111,7 +111,7 @@ MeshComponent Model::processMesh (aiMesh* mesh, const aiScene* scene) {
     return MeshComponent(vertices, indices, textures);
 }
 
-void Model::update(GameState state, SceneCamera *camera) {
+void Model::draw (GameState state, SceneCamera *camera) {
     for(GLuint i = 0; i < meshes.size(); i++) {
         meshes[i].position = this->position;
         meshes[i].rotation = this->rotation;

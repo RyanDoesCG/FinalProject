@@ -16,7 +16,7 @@ class Moon : public Model {
         Moon ();
        ~Moon ();
     
-        virtual void update (GameState state, SceneCamera* camera) override;
+        virtual void draw (GameState state, SceneCamera* camera) override;
     
         void setSpeed (int s);
     

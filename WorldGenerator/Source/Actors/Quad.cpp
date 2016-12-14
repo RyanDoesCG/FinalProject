@@ -37,7 +37,7 @@ void Quad::setShader(std::string name) {
     shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent(name, BASIC));
 }
 
-void Quad::update (GameState state, SceneCamera* camera) {
+void Quad::draw (GameState state, SceneCamera* camera) {
     mesh->position = position;
     mesh->rotation = rotation;
     mesh->scale    = scale;

@@ -67,7 +67,7 @@ Cube::~Cube() {
     
 }
 
-void Cube::update(GameState state, SceneCamera* camera) {
+void Cube::draw (GameState state, SceneCamera* camera) {
     mesh->position = position;
     mesh->rotation = rotation;
     mesh->scale    = scale;

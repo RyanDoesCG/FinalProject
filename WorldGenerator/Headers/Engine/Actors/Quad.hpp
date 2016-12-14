@@ -18,7 +18,7 @@ class Quad : public Actor {
         Quad();
        ~Quad();
     
-       virtual void update (GameState state, SceneCamera* camera) override;
+       virtual void draw (GameState state, SceneCamera* camera) override;
     
         ShaderComponent* getShader() {return shader;}
     

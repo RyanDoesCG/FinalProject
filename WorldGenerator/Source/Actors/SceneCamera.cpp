@@ -54,7 +54,7 @@ void SceneCamera::reset () {
     yaw = -90.0f;
 }
 
-void SceneCamera::update (GameState state, SceneCamera* camera) {
+void SceneCamera::draw (GameState state, SceneCamera* camera) {
     
     switch (state) {
         case MAIN_MENU: {

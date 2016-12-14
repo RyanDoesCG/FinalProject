@@ -116,7 +116,7 @@ void Game::begin() {
                     player.setPosition(moon1.getPosition());
                 
                 // draw UI
-                hud.update(state, player.getView());
+                hud.draw (state, player.getView());
                 
                 glfwSwapBuffers(window);
                 break;

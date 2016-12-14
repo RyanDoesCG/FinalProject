@@ -31,7 +31,7 @@ class SceneCamera: public Actor {
     
         bool orbiting;
     
-        virtual void update (GameState state, SceneCamera* camera) override;
+        virtual void draw (GameState state, SceneCamera* camera) override;
     
         void reset ();
     
