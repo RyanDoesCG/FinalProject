@@ -1,21 +1,23 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  KeyboardCopmonent.hpp
+ *  KeyboardComponent.hpp
  *  Tribes
  *
  *  Created by Ryan Needham on 03/11/2016.
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef KeyboardCopmonent_hpp
-#define KeyboardCopmonent_hpp
+#ifndef KeyboardComponent_hpp
+#define KeyboardComponent_hpp
 
 #include "Component.hpp"
 #include "../Core/Game.hpp"
 
-class KeyboardCopmonent : public Component {
+class KeyboardComponent : public Component {
     public:
-        KeyboardCopmonent (GLFWwindow* window, Game* game);
-       ~KeyboardCopmonent ();
+        KeyboardComponent ();
+       ~KeyboardComponent ();
+    
+        void attach (GLFWwindow* window);
     
         virtual void init() override;
         virtual void update() override;
@@ -23,9 +25,6 @@ class KeyboardCopmonent : public Component {
         bool isKeyDown (int keycode);
         void keyHandled (int keycode);
     
-    private:
-        GLFWwindow* window;
-        Game* game;
 };
 
-#endif /* KeyboardCopmonent_hpp */
+#endif /* KeyboardComponent_hpp */

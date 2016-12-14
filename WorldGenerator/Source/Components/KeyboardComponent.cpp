@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  KeyboardCopmonent.cpp
+ *  KeyboardComponent.cpp
  *  Tribes
  *
  *  Created by Ryan Needham on 03/11/2016.
@@ -16,30 +16,31 @@ void keyboardCallback (GLFWwindow* window, int key, int scancode, int action, in
     activeKeys[key] = action;
 }
 
-KeyboardCopmonent::KeyboardCopmonent (GLFWwindow* window, Game* game) {
-    this->window = window;
-    this->game = game;
+KeyboardComponent::KeyboardComponent () {
+
+}
+
+KeyboardComponent::~KeyboardComponent () {
     
+}
+
+void KeyboardComponent::attach(GLFWwindow *window) {
     glfwSetKeyCallback (window, keyboardCallback);
 }
 
-KeyboardCopmonent::~KeyboardCopmonent () {
-    
-}
-
-void KeyboardCopmonent::init () {
+void KeyboardComponent::init () {
 
 }
 
-void KeyboardCopmonent::update () {
+void KeyboardComponent::update () {
     glfwPollEvents();
 }
 
-bool KeyboardCopmonent::isKeyDown(int keycode) {
+bool KeyboardComponent::isKeyDown(int keycode) {
     if (activeKeys[keycode]) return true;
     else return false;
 }
 
-void KeyboardCopmonent::keyHandled(int keycode) {
+void KeyboardComponent::keyHandled(int keycode) {
     activeKeys[keycode] = false;
 }

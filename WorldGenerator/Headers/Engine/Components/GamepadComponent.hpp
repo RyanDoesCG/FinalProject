@@ -40,8 +40,10 @@
 
 class GamepadComponent : public Component {
     public:
-        GamepadComponent (GLFWwindow* window, Game* game);
+        GamepadComponent ();
        ~GamepadComponent ();
+    
+        void attach();
     
         virtual void init () override;
         virtual void update () override;
@@ -50,10 +52,9 @@ class GamepadComponent : public Component {
         void buttonHandled (int button);
     
         float getAxisState (int axis);
+        void resetAxisState (int axis);
     
     private:
-        GLFWwindow* window;
-        Game* game;
     
         // storing button states
         void logButtonPollData(int size, const unsigned char pollData[size]);

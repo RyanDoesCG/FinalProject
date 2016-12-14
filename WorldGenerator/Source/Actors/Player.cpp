@@ -7,14 +7,15 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Actors/Player.hpp"
+#include "../../Headers/Engine/Utility/Input.hpp"
 
 Player::Player (GLFWwindow* window, Game* game) {
-    mouse = (MouseComponent*)addComponent(new MouseComponent(window, game));
-    keyboard = (KeyboardCopmonent*)addComponent(new KeyboardCopmonent(window, game));
+    mouse    = Input::getMouseHandle();
+    keyboard = Input::getKeyboardHandle();
+    gamepad  = Input::getGamepadHandle();
+    
     camera = (SceneCamera*)addChild(new SceneCamera(game->windowWidth, game->windowHeight));
-    
-    gamepad = (GamepadComponent*)addComponent(new GamepadComponent(window, game));
-    
+
     this->game = game;
     inGame = false;
 }

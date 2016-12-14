@@ -8,6 +8,7 @@
 
 #include "../Components/GamepadComponent.hpp"
 #include "../Components/KeyboardComponent.hpp"
+#include "../Components/MouseComponent.hpp"
 #include "../Components/TextRenderingComponent.hpp"
 
 #include "MenuItem.hpp"
@@ -32,7 +33,9 @@ class Menu {
         Game* game;
     
         GamepadComponent*       gamepad;
-        KeyboardCopmonent* keyboard;
+        KeyboardComponent*      keyboard;
+        MouseComponent*         mouse;
+    
         TextRenderingComponent* textPipeline;
 
         std::vector<MenuItem> items;

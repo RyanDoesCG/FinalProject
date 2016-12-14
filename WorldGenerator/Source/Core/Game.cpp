@@ -21,6 +21,8 @@
 #include "../../Headers/Engine/UI/GameHUD.hpp"
 #include "../../Headers/Engine/UI/MainMenu.hpp"
 
+#include "../../Headers/Engine/Utility/Input.hpp"
+
 // Deterines window size/debug hud
 #define BUILD_MODE 0
 
@@ -46,6 +48,7 @@ Game::~Game() {
  */
 void Game::begin() {
     glClearColor (0.12f, 0.12f, 0.12f, 1.0f);
+    Input::initialise(window);
     
     Player player = Player(window, this);
     Planet planet = Planet();
@@ -94,6 +97,7 @@ void Game::begin() {
             case MAIN_MENU: case LOAD_GAME: case OPTIONS: {
                 glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 
+                Input::update();
                 physics.simulate(glfwGetTime(), state);
                 graphics.drawScene(player.getView());
                 
@@ -106,6 +110,7 @@ void Game::begin() {
             case RUNNING_EDITMODE: case RUNNING_FREEMODE: {
                 glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 
+                Input::update();
                 physics.simulate(glfwGetTime(), state);
                 graphics.drawScene(player.getView());
                 

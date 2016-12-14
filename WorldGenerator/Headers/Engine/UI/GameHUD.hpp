@@ -9,7 +9,6 @@
 #ifndef GameHUD_hpp
 #define GameHUD_hpp
 
-#include "../Components/KeyboardComponent.hpp"
 #include "../Components/TextRenderingComponent.hpp"
 #include "../Actors/Actor.hpp"
 #include "../Actors/Quad.hpp"
@@ -32,7 +31,8 @@ class GameHUD : public Actor {
         Game* game;
     
         GamepadComponent*       gamepad;
-        KeyboardCopmonent*      keyboard;
+        KeyboardComponent*      keyboard;
+        MouseComponent*         mouse;
         TextRenderingComponent* textPipeline;
     
         Quad leftUI;

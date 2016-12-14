@@ -34,12 +34,15 @@ void mouseActionCallback   (GLFWwindow* window, int button, int action, int mods
 void mouseScrollCallback   (GLFWwindow* window, double xoffset, double yoffset);
 void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos);
 
-MouseComponent::MouseComponent (GLFWwindow* window, Game* game) {
-    this->window = window;
-    this->game = game;
-    
-   // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    
+MouseComponent::MouseComponent () {
+
+}
+
+MouseComponent::~MouseComponent () {
+
+}
+
+void MouseComponent::attach(GLFWwindow *window) {
     unsigned char pixels[4 * 4 * 4];
     memset(pixels, 0xfa, sizeof(pixels));
     GLFWimage image;
@@ -47,17 +50,14 @@ MouseComponent::MouseComponent (GLFWwindow* window, Game* game) {
     image.height = 4;
     image.pixels = pixels;
     GLFWcursor* cursor = glfwCreateCursor(&image, 0, 0);
-
+    
     glfwSetCursor(window, cursor);
-
+    
     glfwSetCursorPosCallback   (window, mouseMovementCallback);
     glfwSetMouseButtonCallback (window, mouseActionCallback);
     glfwSetScrollCallback      (window, mouseScrollCallback);
-
-}
-
-MouseComponent::~MouseComponent () {
-
+    
+    this->window = window;
 }
 
 void MouseComponent::init () {

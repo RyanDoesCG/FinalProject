@@ -35,7 +35,7 @@ class Player : public Actor {
         SceneCamera*       camera;
         GamepadComponent*  gamepad;
         MouseComponent*    mouse;
-        KeyboardCopmonent* keyboard;
+        KeyboardComponent* keyboard;
     
         Game* game;
     

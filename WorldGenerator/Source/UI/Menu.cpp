@@ -5,6 +5,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/UI/Menu.hpp"
 #include "../../Headers/Engine/Core/Game.hpp"
+#include "../../Headers/Engine/Utility/Input.hpp"
 
 Menu::Menu (float width, float height, Game* game) {
 
@@ -17,6 +18,10 @@ Menu::Menu (float width, float height, Game* game) {
     hide();
     
     selectedItem = items.size() - 1;
+    
+    gamepad  = Input::getGamepadHandle();
+    keyboard = Input::getKeyboardHandle();
+    mouse    = Input::getMouseHandle();
     
 }
 

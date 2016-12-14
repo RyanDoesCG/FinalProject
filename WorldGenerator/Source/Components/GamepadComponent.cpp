@@ -20,17 +20,18 @@ void callback (int joy, int event) {
     }
 }
 
-GamepadComponent::GamepadComponent (GLFWwindow* window, Game* game) {
-    this->window = window;
-    this->game = game;
+GamepadComponent::GamepadComponent () {
     
-    connected = glfwJoystickPresent(GLFW_JOYSTICK_1);
-    
-    glfwSetJoystickCallback(callback);
 }
 
 GamepadComponent::~GamepadComponent () {
     
+}
+
+void GamepadComponent::attach() {
+    connected = glfwJoystickPresent(GLFW_JOYSTICK_1);
+    
+    glfwSetJoystickCallback(callback);
 }
 
 void GamepadComponent::init() {
@@ -76,6 +77,10 @@ void GamepadComponent::buttonHandled (int button) {
 
 float GamepadComponent::getAxisState(int axis) {
     return axesStates[axis];
+}
+
+void GamepadComponent::resetAxisState(int axis) {
+    axesStates[axis] = 0;
 }
 
 void GamepadComponent::logButtonPollData(int size, const unsigned char pollData[size]) {

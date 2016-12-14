@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6215D2951E01AA6C00AAC9C3 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D2941E01AA6C00AAC9C3 /* Cursor.cpp */; };
+		6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D29A1E01B3A100AAC9C3 /* Input.cpp */; };
 		62F401CC1E0160FF0069B079 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
 		CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAC1E00AA0A0078469C /* Cube.cpp */; };
 		CEDD0E491E00AA0A0078469C /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAD1E00AA0A0078469C /* Flag.cpp */; };
@@ -50,6 +52,10 @@
 /* Begin PBXFileReference section */
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
+		6215D2931E01A9A700AAC9C3 /* Cursor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cursor.hpp; sourceTree = "<group>"; };
+		6215D2941E01AA6C00AAC9C3 /* Cursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cursor.cpp; sourceTree = "<group>"; };
+		6215D2961E01ABE200AAC9C3 /* Input.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
+		6215D29A1E01B3A100AAC9C3 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../../Library/Frameworks/libglfw3.a; sourceTree = "<group>"; };
@@ -698,6 +704,7 @@
 		CEDD0C101E00AA0A0078469C /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				6215D2931E01A9A700AAC9C3 /* Cursor.hpp */,
 				CEDD0C111E00AA0A0078469C /* Actor.hpp */,
 				CEDD0C121E00AA0A0078469C /* Cube.hpp */,
 				CEDD0C131E00AA0A0078469C /* Flag.hpp */,
@@ -780,6 +787,7 @@
 			children = (
 				CEDD0C391E00AA0A0078469C /* ColourPalette.hpp */,
 				CEDD0C3A1E00AA0A0078469C /* ShaderCache.hpp */,
+				6215D2961E01ABE200AAC9C3 /* Input.hpp */,
 				CEDD0C3B1E00AA0A0078469C /* Texture.hpp */,
 				CEDD0C3C1E00AA0A0078469C /* TextureCache.hpp */,
 				CEDD0C3D1E00AA0A0078469C /* Vertex.hpp */,
@@ -1256,6 +1264,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDD0DAC1E00AA0A0078469C /* Cube.cpp */,
+				6215D2941E01AA6C00AAC9C3 /* Cursor.cpp */,
 				CEDD0DAD1E00AA0A0078469C /* Flag.cpp */,
 				CEDD0DAE1E00AA0A0078469C /* Model.cpp */,
 				CEDD0DAF1E00AA0A0078469C /* Moon.cpp */,
@@ -1332,6 +1341,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDD0DCF1E00AA0A0078469C /* ColourPalette.cpp */,
+				6215D29A1E01B3A100AAC9C3 /* Input.cpp */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1415,6 +1425,7 @@
 				CEDD0E521E00AA0A0078469C /* KeyboardComponent.cpp in Sources */,
 				CEDD0E4F1E00AA0A0078469C /* SceneCamera.cpp in Sources */,
 				CEDD0E601E00AA0B0078469C /* MainMenu.cpp in Sources */,
+				6215D2951E01AA6C00AAC9C3 /* Cursor.cpp in Sources */,
 				CEDD0E531E00AA0A0078469C /* MeshComponent.cpp in Sources */,
 				CEDD0E571E00AA0B0078469C /* Game.cpp in Sources */,
 				CEDD0E511E00AA0A0078469C /* GamepadComponent.cpp in Sources */,
@@ -1429,6 +1440,7 @@
 				CEDD0E621E00AA0B0078469C /* OptionsMenu.cpp in Sources */,
 				CEDD0E591E00AA0B0078469C /* Renderer.cpp in Sources */,
 				CEDD0E551E00AA0B0078469C /* ShaderComponent.cpp in Sources */,
+				6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */,
 				CEDD0E5E1E00AA0B0078469C /* GameHUD.cpp in Sources */,
 				CEDD0E631E00AA0B0078469C /* SeedMenu.cpp in Sources */,
 				CEDD0E5A1E00AA0B0078469C /* SimplexMachine.cpp in Sources */,

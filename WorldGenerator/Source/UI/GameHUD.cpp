@@ -7,7 +7,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/UI/GameHUD.hpp"
-
+#include "../../Headers/Engine/Utility/Input.hpp"
 GameHUD::GameHUD  (float width, float height, Game* game, Player* player, Planet* planet) {
     windowWidth  = width;
     windowHeight = height;
@@ -16,24 +16,10 @@ GameHUD::GameHUD  (float width, float height, Game* game, Player* player, Planet
     this->player = player;
     this->planet = planet;
     this->game   = game;
-    
-    /*
-    leftUI = Quad();
-    leftUI.setPosition(glm::vec3(-0.7, 0.0, 0));
-    leftUI.setScale(glm::vec3(0.5, 1.75, 1.0));
-    
-    rightUI = Quad();
-    rightUI.setPosition(glm::vec3(0.7, 0.0, 0));
-    rightUI.setScale(glm::vec3(0.5, 1.75, 1.0));
-     */
-    
-    menubarTop = Quad();
-    menubarTop.setPosition(glm::vec3(0.0, 1.0, 0.0));
-    menubarTop.setScale(glm::vec3(10, 0.5, 1.0));
-    
-    menubarBottom = Quad();
-    menubarBottom.setPosition(glm::vec3(0.0, -1.15, 0.0));
-    menubarBottom.setScale(glm::vec3(10, 0.5, 1.0));
+
+    gamepad  = Input::getGamepadHandle();
+    keyboard = Input::getKeyboardHandle();
+    mouse    = Input::getMouseHandle();
 }
 
 GameHUD::~GameHUD () {

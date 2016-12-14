@@ -14,9 +14,11 @@
 
 class MouseComponent : public Component {
     public:
-        MouseComponent (GLFWwindow* window, Game* game);
+        MouseComponent ();
        ~MouseComponent ();
 
+        void attach (GLFWwindow* window);
+    
         virtual void init() override;
         virtual void update() override;
     
@@ -34,7 +36,6 @@ class MouseComponent : public Component {
     
     private:
         GLFWwindow* window;
-        Game* game;
 };
 
 #endif /* MouseComponent_hpp */
