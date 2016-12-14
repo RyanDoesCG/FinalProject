@@ -67,12 +67,7 @@ Cube::~Cube() {
     
 }
 
-void Cube::draw (GameState state, SceneCamera* camera) {
-    mesh->position = position;
-    mesh->rotation = rotation;
-    mesh->scale    = scale;
-    mesh->colour   = colour;
-    
+void Cube::draw (SceneCamera* camera) {
     shader->update();
     
     // Lighting data to GPU
@@ -89,3 +84,9 @@ void Cube::draw (GameState state, SceneCamera* camera) {
     mesh->testdraw(shader, camera);
 }
 
+void Cube::update (GameState state) {
+    mesh->position = position;
+    mesh->rotation = rotation;
+    mesh->scale    = scale;
+    mesh->colour   = colour;
+}

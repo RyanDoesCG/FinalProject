@@ -18,11 +18,11 @@ typedef std::vector<Actor*> Scene;
 
 class Renderer {
     public:
-        Renderer(int width, int height, SceneCamera* cam);
+        Renderer(int width, int height);
         ~Renderer();
     
         void addToScene (Actor* actor);
-        void drawScene (GameState state);
+        void drawScene (SceneCamera* camera);
     
     private:
         Scene scene;

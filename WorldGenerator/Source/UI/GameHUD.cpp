@@ -40,35 +40,41 @@ GameHUD::~GameHUD () {
 
 }
 
-void GameHUD::draw (GameState state, SceneCamera *camera) {
-    switch (state) {
-        case RUNNING_EDITMODE: {
-            
-            // draw
-            menubarTop.draw (state, camera);
-           // menubarBottom.update(state, camera);
+void GameHUD::draw (SceneCamera *camera) {
+    switch (mode) {
+        case 0: {
+            textPipeline->renderTextAs2D("explore mode", glm::vec2(10, 10), vec3(0.32, 0.32, 0.32), 0.35);
+            break;
+        }
+        case 1: {
             textPipeline->renderTextAs2D(planet->getName(), glm::vec2(25, 1000), vec3(0.9), 0.4);
             textPipeline->renderTextAs2D("edit mode", glm::vec2(10, 10), vec3(0.4, 0.4, 0.4), 0.35);
-            
-            // poll input
+            break;
+        }
+    }
+}
+
+void GameHUD::update (GameState state) {
+    switch (state) {
+        case RUNNING_EDITMODE: {
+            mode = 1;
             if (keyboard->isKeyDown(GLFW_KEY_E)) {
                 planet->randomise();
-                
                 keyboard->keyHandled(GLFW_KEY_E);
             }
             
             break;
         }
         case RUNNING_FREEMODE: {
-            textPipeline->renderTextAs2D("explore mode", glm::vec2(10, 10), vec3(0.32, 0.32, 0.32), 0.35);
-            
+            mode = 0;
             if (gamepad->isButtonDown(GAMEPAD_BUTTON_Y)) {
                 planet->randomise();
                 gamepad->buttonHandled(GAMEPAD_BUTTON_Y);
             }
+            
             break;
         }
     }
     
-    Actor::draw (state, camera);
+    Actor::updateComponents();
 }

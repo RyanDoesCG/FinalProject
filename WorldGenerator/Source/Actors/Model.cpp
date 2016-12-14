@@ -111,26 +111,30 @@ MeshComponent Model::processMesh (aiMesh* mesh, const aiScene* scene) {
     return MeshComponent(vertices, indices, textures);
 }
 
-void Model::draw (GameState state, SceneCamera *camera) {
+void Model::draw (SceneCamera *camera) {
+    shader->update();
+    
+    // Lighting data to GPU
+    vec3 viewPos = camera->getPosition();
+    glUniform3fv(glGetUniformLocation(shader->getProgramID(), "viewPosition"), 1, glm::value_ptr(viewPos));
+    if (lightSource!=nullptr) {
+        glm::vec3 lightPosition = lightSource->getPosition();
+        glm::vec3 lightColour   = lightSource->getColour();
+        
+        glUniform3fv(glGetUniformLocation(shader->getProgramID(), "lightPosition"), 1, glm::value_ptr(lightPosition));
+        glUniform3fv(glGetUniformLocation(shader->getProgramID(), "lightColour"), 1, glm::value_ptr(lightColour));
+    }
+    
+    for(GLuint i = 0; i < meshes.size(); i++) {
+        meshes[i].draw(shader, camera);
+    }
+}
+
+void Model::update (GameState state) {
     for(GLuint i = 0; i < meshes.size(); i++) {
         meshes[i].position = this->position;
         meshes[i].rotation = this->rotation;
         meshes[i].scale    = this->scale;
         meshes[i].colour   = this->colour;
-    
-        shader->update();
-        
-        // Lighting data to GPU
-        vec3 viewPos = camera->getPosition();
-        glUniform3fv(glGetUniformLocation(shader->getProgramID(), "viewPosition"), 1, glm::value_ptr(viewPos));
-        if (lightSource!=nullptr) {
-            glm::vec3 lightPosition = lightSource->getPosition();
-            glm::vec3 lightColour   = lightSource->getColour();
-            
-            glUniform3fv(glGetUniformLocation(shader->getProgramID(), "lightPosition"), 1, glm::value_ptr(lightPosition));
-            glUniform3fv(glGetUniformLocation(shader->getProgramID(), "lightColour"), 1, glm::value_ptr(lightColour));
-        }
-    
-        meshes[i].draw(shader, camera);
     }
 }

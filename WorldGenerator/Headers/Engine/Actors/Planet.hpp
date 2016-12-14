@@ -17,7 +17,9 @@ class Planet : public Model {
         Planet ();
        ~Planet ();
     
-        virtual void draw (GameState state, SceneCamera* camera) override;
+        virtual void draw (SceneCamera* camera) override;
+        virtual void update (GameState state) override;
+    
         void setLight (Actor* );
 
         void randomise();

@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WorldGenerator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>45C117851D77FF6200FE98A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEDD0BAE1E00A9020078469C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

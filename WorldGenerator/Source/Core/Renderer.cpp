@@ -8,9 +8,9 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Core/Renderer.hpp"
 
-Renderer::Renderer (int width, int height, SceneCamera* cam) {
-    camera = cam;
+Renderer::Renderer (int width, int height) {
 
+/*
     // POST PROCESSING
     // generate framebuffer
     glGenFramebuffers(1, &FBO);
@@ -40,18 +40,18 @@ Renderer::Renderer (int width, int height, SceneCamera* cam) {
     processedScene = Quad();
     processedScene.setShader("PostProcess");
     processedScene.setTexture(colourAttachment);
-
+*/
 }
 
 Renderer::~Renderer () {
-    glDeleteFramebuffers(1, &FBO);
+    //glDeleteFramebuffers(1, &FBO);
 }
 
 void Renderer::addToScene(Actor* actor) {
     scene.push_back(actor);
 }
 
-void Renderer::drawScene(GameState state) {
+void Renderer::drawScene(SceneCamera* camera) {
 /*
     // render off screen
     glBindFramebuffer (GL_FRAMEBUFFER, FBO);
@@ -62,7 +62,7 @@ void Renderer::drawScene(GameState state) {
 
         // draw
     for (int i = 0; i < scene.size(); i++) {
-        scene.at(i)->draw (state, camera);
+        scene.at(i)->draw (camera);
     }
 
 /*

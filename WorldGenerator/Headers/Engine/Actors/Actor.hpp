@@ -33,10 +33,8 @@ class Actor {
             initChildren();
         }
     
-        virtual void draw (GameState state, SceneCamera* camera) {
-            updateComponents();
-            drawChildren(state, camera);
-        }
+        virtual void draw (SceneCamera* camera) = 0;
+        virtual void update (GameState state) = 0;
     
         virtual void moveLeft     () { position.x -= 0.1; }
         virtual void moveRight    () { position.x += 0.1; }
@@ -88,9 +86,14 @@ class Actor {
                 components.at(i)->update();
         }
     
-        void drawChildren (GameState state, SceneCamera* camera) {
+        void drawChildren (SceneCamera* camera) {
             for (int i = 0; i < children.size(); i++)
-                children.at(i)->draw(state, camera);
+                children.at(i)->draw(camera);
+        }
+    
+        void updateChildren (GameState state) {
+            for (int i = 0; i < children.size(); i++)
+                children.at(i)->update(state);
         }
     
         std::map<ComponentID, Component*> components;

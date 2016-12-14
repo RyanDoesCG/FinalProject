@@ -20,18 +20,19 @@ class SceneCamera: public Actor {
         SceneCamera(GLfloat width, GLfloat height);
        ~SceneCamera();
 
-        void moveLeft     ();
-        void moveRight    ();
+        void moveLeft () override;
+        void moveRight () override;
     
-        void moveForward   ();
+        void moveForward   () override;
         void moveForwardAt (float speed);
     
-        void moveBackward   ();
+        void moveBackward   () override;
         void moveBackwardAt (float speed);
     
         bool orbiting;
     
-        virtual void draw (GameState state, SceneCamera* camera) override;
+        virtual void draw (SceneCamera* camera) override;
+        virtual void update (GameState state) override;
     
         void reset ();
     

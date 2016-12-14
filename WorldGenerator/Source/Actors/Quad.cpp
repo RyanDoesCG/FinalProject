@@ -37,13 +37,14 @@ void Quad::setShader(std::string name) {
     shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent(name, BASIC));
 }
 
-void Quad::draw (GameState state, SceneCamera* camera) {
+void Quad::draw (SceneCamera* camera) {
+    shader->update();
+    mesh->texturedDraw(shader, camera, texture);
+}
+
+void Quad::update (GameState state) {
     mesh->position = position;
     mesh->rotation = rotation;
     mesh->scale    = scale;
     mesh->colour   = colour;
-    
-    shader->update();
-
-    mesh->texturedDraw(shader, camera, texture);
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62F401CC1E0160FF0069B079 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
 		CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAC1E00AA0A0078469C /* Cube.cpp */; };
 		CEDD0E491E00AA0A0078469C /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAD1E00AA0A0078469C /* Flag.cpp */; };
 		CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAE1E00AA0A0078469C /* Model.cpp */; };
@@ -42,7 +43,6 @@
 		CEDD0E691E00AAA40078469C /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */; };
 		CEDD0E6A1E00AAB80078469C /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */; };
 		CEDD0E6B1E00AAC10078469C /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1179F1D7805E700FE98A9 /* libGLEW.dylib */; };
-		CEDD0E6D1E00AACE0078469C /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDD0E6C1E00AACE0078469C /* libglfw3.dylib */; };
 		CEDD0E6E1E00AADB0078469C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
 		CEDD0F1A1E00AC990078469C /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = CEDD0F191E00AC990078469C /* Assets */; };
 /* End PBXBuildFile section */
@@ -529,8 +529,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F401CC1E0160FF0069B079 /* libglfw3.a in Frameworks */,
 				CEDD0E6E1E00AADB0078469C /* libSOIL.a in Frameworks */,
-				CEDD0E6D1E00AACE0078469C /* libglfw3.dylib in Frameworks */,
 				CEDD0E6B1E00AAC10078469C /* libGLEW.dylib in Frameworks */,
 				CEDD0E6A1E00AAB80078469C /* libfreetype.dylib in Frameworks */,
 				CEDD0E691E00AAA40078469C /* libassimp.3.3.1.dylib in Frameworks */,

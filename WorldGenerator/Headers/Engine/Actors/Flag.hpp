@@ -17,7 +17,8 @@ class Flag : public Actor {
         ~Flag();
     
     private:
-        virtual void draw (GameState state, SceneCamera* camera) override;
+        virtual void draw (SceneCamera* camera) override;
+        virtual void update (GameState state) override;
 };
 
 #endif /* Flag_hpp */

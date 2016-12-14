@@ -22,7 +22,8 @@ class Model : public Actor {
         Model (const string& path) { this->loadModel("Assets/models/" + path + ".obj"); }
        ~Model () {}
        
-        virtual void draw (GameState state, SceneCamera* camera) override;
+        virtual void draw (SceneCamera* camera) override;
+        virtual void update (GameState state) override;
     
         void setLightSource (Actor* light) {lightSource = light;}
         void setShader      (string path, ProgramType type);

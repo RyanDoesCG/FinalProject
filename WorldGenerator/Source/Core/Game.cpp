@@ -16,6 +16,7 @@
 #include "../../Headers/Engine/Actors/Planet.hpp"
 #include "../../Headers/Engine/Actors/Skybox.hpp"
 #include "../../Headers/Engine/Actors/Moon.hpp"
+#include "../../Headers/Engine/Actors/Cube.hpp"
 
 #include "../../Headers/Engine/UI/GameHUD.hpp"
 #include "../../Headers/Engine/UI/MainMenu.hpp"
@@ -57,12 +58,17 @@ void Game::begin() {
     
     GameHUD hud = GameHUD(windowWidth, windowHeight, this, &player, &planet);
     
-    Renderer graphics = Renderer(windowWidth, windowHeight, player.getView());
+    Cube cube = Cube();
+    cube.setScale(2);
+    cube.setColour(glm::vec3(1.0, 0.0, 0.0));
+    
+    Renderer graphics = Renderer(windowWidth, windowHeight);
     graphics.addToScene(&planet);
     graphics.addToScene(&player);
     graphics.addToScene(&moon1);
     graphics.addToScene(&moon2);
     graphics.addToScene(&lamp);
+    //graphics.addToScene(&cube);
     
     PhysicsEngine physics = PhysicsEngine();
     physics.addToSimulation(&player);
@@ -70,6 +76,7 @@ void Game::begin() {
     physics.addToSimulation(&moon1);
     physics.addToSimulation(&moon2);
     physics.addToSimulation(&lamp);
+    //physics.addToSimulation(&cube);
 
     lamp.setPosition (glm::vec3(-50, 0.0, 1.5));
     lamp.setScale    (0.25f);
@@ -88,7 +95,7 @@ void Game::begin() {
                 glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 
                 physics.simulate(glfwGetTime(), state);
-                graphics.drawScene(state);
+                graphics.drawScene(player.getView());
                 
                 // draw UI
                 menu.update();
@@ -100,23 +107,11 @@ void Game::begin() {
                 glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 
                 physics.simulate(glfwGetTime(), state);
-                graphics.drawScene(state);
-                
-                // get some distances
-                vec3 dist = player.getPosition() - planet.getPosition();
-                float a_to_b = sqrt(dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
-
-                vec3 dist2 = player.getPosition() - moon1.getPosition();
-                float a_to_c = sqrt(dist2.x * dist2.x + dist2.y * dist2.y + dist2.z * dist2.z);
-                
-                // print the closest
-                (a_to_b < a_to_c) ?
-                    player.setPosition(planet.getPosition())
-                :
-                    player.setPosition(moon1.getPosition());
+                graphics.drawScene(player.getView());
                 
                 // draw UI
-                hud.draw (state, player.getView());
+                hud.update(state);
+                hud.draw (player.getView());
                 
                 glfwSwapBuffers(window);
                 break;

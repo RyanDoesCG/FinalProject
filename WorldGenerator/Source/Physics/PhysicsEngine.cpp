@@ -22,8 +22,6 @@ void PhysicsEngine::addToSimulation(Actor* actor) {
 
 void PhysicsEngine::simulate(double time, GameState state) {
     for (int i = 0; i < physicsWorld.size(); i++) {
-    
-        // SEPERATE RENDERING AND PHYSICS UPDATE IN ACTOR
-        //physicsWorld.at(i)->update(state, SceneCamera *camera)
+        physicsWorld.at(i)->update(state);
     }
 }

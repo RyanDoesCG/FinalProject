@@ -54,8 +54,12 @@ void SceneCamera::reset () {
     yaw = -90.0f;
 }
 
-void SceneCamera::draw (GameState state, SceneCamera* camera) {
+void SceneCamera::draw (SceneCamera* camera) {
     
+
+}
+
+void SceneCamera::update (GameState state) {
     switch (state) {
         case MAIN_MENU: {
             // lock position
@@ -87,7 +91,7 @@ void SceneCamera::draw (GameState state, SceneCamera* camera) {
             view = glm::lookAt(position, position + relativeFront, relativeUp);
             break;
         }
-        
+            
         case RUNNING_EDITMODE: {
             
             relativeFront = normalize(relativeFront);

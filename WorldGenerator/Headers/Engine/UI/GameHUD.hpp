@@ -22,8 +22,8 @@ class GameHUD : public Actor {
         GameHUD  (float width, float height, Game* game, Player* player, Planet* planet);
         ~GameHUD ();
     
-        virtual void draw (GameState state, SceneCamera* camera) override;
-
+        virtual void draw (SceneCamera* camera) override;
+        virtual void update (GameState state) override;
     
     private:
         float windowWidth;
@@ -43,6 +43,8 @@ class GameHUD : public Actor {
     
         Player* player;
         Planet* planet;
+    
+        int mode = 0; // 0 - explore / 1 - edit
 };
 
 #endif /* GameHUD_hpp */

@@ -51,7 +51,15 @@ void Planet::setLight(Actor * light) {
     water.setLightSource(light);
 }
 
-void Planet::draw (GameState state, SceneCamera *camera) {
+void Planet::draw (SceneCamera *camera) {
+    water.getShader()->update();
+    glUniform1f(glGetUniformLocation(water.getShader()->getProgramID(), "time"), glfwGetTime());
+    
+    Model::draw (camera);
+    water.draw (camera);
+}
+
+void Planet::update (GameState state) {
     switch (state) {
         case MAIN_MENU: {
             setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
@@ -70,13 +78,9 @@ void Planet::draw (GameState state, SceneCamera *camera) {
             break;
         }
     }
-
-
-    water.getShader()->update();
-    glUniform1f(glGetUniformLocation(water.getShader()->getProgramID(), "time"), glfwGetTime());
     
-    Model::draw (state, camera);
-    water.draw (state, camera);
+    Model::update(state);
+    water.update(state);
 }
 
 std::string Planet::getName() {return name;}

@@ -28,7 +28,11 @@ void Player::init () {
 
 }
 
-void Player::draw (GameState state, SceneCamera* camera) {
+void Player::draw (SceneCamera* camera) {
+
+}
+
+void Player::update (GameState state) {
     switch (state) {
         case MAIN_MENU: {
             mouse->showMouse();
@@ -37,20 +41,20 @@ void Player::draw (GameState state, SceneCamera* camera) {
                 camera->reset();
                 inGame = false;
             }
-/*
-            camera->pitch += mouse->getYoffset() * 0.1;
-            camera->yaw   += mouse->getXoffset() * 0.1;
-            // YAW
-            if (gamepad->getAxisState(RIGHT_STICK_X_AXIS) > 0.01 ||
-                gamepad->getAxisState(RIGHT_STICK_X_AXIS) < -0.01) {
-                camera->yaw += gamepad->getAxisState(RIGHT_STICK_X_AXIS) * 0.1;
-            }
-            // PITCH
-            if (gamepad->getAxisState(RIGHT_STICK_Y_AXIS) > 0.01 ||
-                gamepad->getAxisState(RIGHT_STICK_Y_AXIS) < -0.01) {
-                camera->pitch += gamepad->getAxisState(RIGHT_STICK_Y_AXIS) * 0.1;
-            }
- */
+            /*
+             camera->pitch += mouse->getYoffset() * 0.1;
+             camera->yaw   += mouse->getXoffset() * 0.1;
+             // YAW
+             if (gamepad->getAxisState(RIGHT_STICK_X_AXIS) > 0.01 ||
+             gamepad->getAxisState(RIGHT_STICK_X_AXIS) < -0.01) {
+             camera->yaw += gamepad->getAxisState(RIGHT_STICK_X_AXIS) * 0.1;
+             }
+             // PITCH
+             if (gamepad->getAxisState(RIGHT_STICK_Y_AXIS) > 0.01 ||
+             gamepad->getAxisState(RIGHT_STICK_Y_AXIS) < -0.01) {
+             camera->pitch += gamepad->getAxisState(RIGHT_STICK_Y_AXIS) * 0.1;
+             }
+             */
             break;
         }
         case RUNNING_FREEMODE: {
@@ -147,5 +151,6 @@ void Player::draw (GameState state, SceneCamera* camera) {
         }
     }
     
-    Actor::draw (state, camera);
+    Actor::updateComponents();
+    Actor::updateChildren(state);
 }
