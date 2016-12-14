@@ -30,7 +30,7 @@ class Planet : public Model {
         std::string name;
     
         Model water;
-
+        Model atmosphere;
 };
 
 #endif /* Planet_hpp */

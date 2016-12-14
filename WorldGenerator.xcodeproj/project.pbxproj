@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6215D2951E01AA6C00AAC9C3 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D2941E01AA6C00AAC9C3 /* Cursor.cpp */; };
 		6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D29A1E01B3A100AAC9C3 /* Input.cpp */; };
+		6215D29D1E01DB7E00AAC9C3 /* Sun.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */; };
+		6215D29F1E01DBE200AAC9C3 /* Sun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D29E1E01DBE200AAC9C3 /* Sun.cpp */; };
 		62F401CC1E0160FF0069B079 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
 		CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAC1E00AA0A0078469C /* Cube.cpp */; };
 		CEDD0E491E00AA0A0078469C /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAD1E00AA0A0078469C /* Flag.cpp */; };
@@ -56,6 +58,8 @@
 		6215D2941E01AA6C00AAC9C3 /* Cursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cursor.cpp; sourceTree = "<group>"; };
 		6215D2961E01ABE200AAC9C3 /* Input.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
 		6215D29A1E01B3A100AAC9C3 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
+		6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sun.hpp; sourceTree = "<group>"; };
+		6215D29E1E01DBE200AAC9C3 /* Sun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sun.cpp; sourceTree = "<group>"; };
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../../Library/Frameworks/libglfw3.a; sourceTree = "<group>"; };
@@ -709,6 +713,7 @@
 				CEDD0C121E00AA0A0078469C /* Cube.hpp */,
 				CEDD0C131E00AA0A0078469C /* Flag.hpp */,
 				CEDD0C141E00AA0A0078469C /* Lamp.hpp */,
+				6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */,
 				CEDD0C151E00AA0A0078469C /* Model.hpp */,
 				CEDD0C161E00AA0A0078469C /* Moon.hpp */,
 				CEDD0C171E00AA0A0078469C /* Planet.hpp */,
@@ -1267,6 +1272,7 @@
 				6215D2941E01AA6C00AAC9C3 /* Cursor.cpp */,
 				CEDD0DAD1E00AA0A0078469C /* Flag.cpp */,
 				CEDD0DAE1E00AA0A0078469C /* Model.cpp */,
+				6215D29E1E01DBE200AAC9C3 /* Sun.cpp */,
 				CEDD0DAF1E00AA0A0078469C /* Moon.cpp */,
 				CEDD0DB01E00AA0A0078469C /* Planet.cpp */,
 				CEDD0DB11E00AA0A0078469C /* Player.cpp */,
@@ -1405,6 +1411,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6215D29D1E01DB7E00AAC9C3 /* Sun.hpp in Resources */,
 				CEDD0F1A1E00AC990078469C /* Assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1431,6 +1438,7 @@
 				CEDD0E511E00AA0A0078469C /* GamepadComponent.cpp in Sources */,
 				CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */,
 				CEDD0E4C1E00AA0A0078469C /* Planet.cpp in Sources */,
+				6215D29F1E01DBE200AAC9C3 /* Sun.cpp in Sources */,
 				CEDD0E5C1E00AA0B0078469C /* PhysicsEngine.cpp in Sources */,
 				CEDD0E581E00AA0B0078469C /* main.cpp in Sources */,
 				CEDD0E611E00AA0B0078469C /* Menu.cpp in Sources */,

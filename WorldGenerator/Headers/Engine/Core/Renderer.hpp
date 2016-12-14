@@ -25,6 +25,7 @@ class Renderer {
         void drawScene (SceneCamera* camera);
     
     private:
+        void setupFrameBufferObject(int width, int height);
         void setupColourBuffer();
         void setupDepthBuffer();
     

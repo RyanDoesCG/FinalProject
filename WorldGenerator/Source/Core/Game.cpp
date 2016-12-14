@@ -12,7 +12,7 @@
 #include "../../Headers/Engine/Core/Renderer.hpp"
 #include "../../Headers/Engine/Physics/PhysicsEngine.hpp"
 
-#include "../../Headers/Engine/Actors/Lamp.hpp"
+#include "../../Headers/Engine/Actors/Sun.hpp"
 #include "../../Headers/Engine/Actors/Planet.hpp"
 #include "../../Headers/Engine/Actors/Skybox.hpp"
 #include "../../Headers/Engine/Actors/Moon.hpp"
@@ -54,7 +54,7 @@ void Game::begin() {
     Planet planet = Planet();
     Moon   moon1  = Moon();
     Moon   moon2  = Moon();
-    Lamp   lamp   = Lamp();
+    Sun    sun    = Sun();
     
     MainMenu menu = MainMenu(windowWidth, windowHeight, this);
     menu.show();
@@ -66,11 +66,12 @@ void Game::begin() {
     cube.setColour(glm::vec3(1.0, 0.0, 0.0));
     
     Renderer graphics = Renderer(windowWidth, windowHeight);
+    
     graphics.addToScene(&planet);
     graphics.addToScene(&player);
     graphics.addToScene(&moon1);
     graphics.addToScene(&moon2);
-    graphics.addToScene(&lamp);
+    graphics.addToScene(&sun);
     //graphics.addToScene(&cube);
     
     PhysicsEngine physics = PhysicsEngine();
@@ -78,16 +79,16 @@ void Game::begin() {
     physics.addToSimulation(&planet);
     physics.addToSimulation(&moon1);
     physics.addToSimulation(&moon2);
-    physics.addToSimulation(&lamp);
+    physics.addToSimulation(&sun);
     //physics.addToSimulation(&cube);
 
-    lamp.setPosition (glm::vec3(-50, 0.0, 1.5));
-    lamp.setScale    (0.25f);
-    lamp.setColour   (glm::vec3(1.0, 0.9, 0.9));    // slight red tinge to light
+    sun.setPosition (glm::vec3(-50, 0.0, 1.5));
+    sun.setScale    (0.25f);
+    sun.setColour   (glm::vec3(1.0, 0.9, 0.9));    // slight red tinge to light
     
-    planet.setLight(&lamp);
-    moon1.setLightSource(&lamp);
-    moon2.setLightSource(&lamp);
+    planet.setLight(&sun);
+    moon1.setLightSource(&sun);
+    moon2.setLightSource(&sun);
     moon2.setPosition(glm::vec3(-1, -0.2, 0.0));
     moon2.setSpeed(12);
     moon2.setColour(glm::vec3(0.45, 0.175, 0.175));
@@ -154,6 +155,10 @@ int Game::generateSeed() {
     return seed;
 }
 
+void resizeFunction (GLFWwindow* window, int width, int height) {
+
+}
+
 int Game::initGLFW () {
     // start glfw Subsystem
     if (glfwInit() == GLFW_FALSE) return 1;
@@ -170,6 +175,7 @@ int Game::initGLFW () {
     // FULLSCREEN (buggy)
     //window = glfwCreateWindow(windowWidth, windowHeight, "Tribes - OpenGL", glfwGetPrimaryMonitor(), nullptr);
     window = glfwCreateWindow(windowWidth, windowHeight, "Tribes - OpenGL", nullptr, nullptr);
+    
     
     if (!window) return 1;
     

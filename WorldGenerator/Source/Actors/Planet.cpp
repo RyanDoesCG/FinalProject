@@ -12,7 +12,9 @@
 
 #include "../../Headers/GLFW/glfw3.h"
 
-Planet::Planet (): Model("sphere/sphere"), water("sphere/sphereDETAILED") {
+Planet::Planet (): Model("sphere/sphere"),
+                   water("sphere/sphereDETAILED"),
+                   atmosphere("sphere/sphereDETAILED") {
 
     setColour(ColourPalette::getColour(Sand));
     
@@ -22,7 +24,11 @@ Planet::Planet (): Model("sphere/sphere"), water("sphere/sphereDETAILED") {
     water.setShader("water", GEOM);
     water.setScale(0.94);
     water.setRotation(glm::vec3(0.15, 0.23, 0));
-    
+                       
+    atmosphere.setShader("Atmosphere", BASIC);
+    atmosphere.setScale(1.025);
+    atmosphere.setColour(glm::vec3(1.0, 0.0, 0.0));
+                       
     generateName();
     
     getShader()->update();
@@ -49,14 +55,19 @@ void Planet::randomise () {
 void Planet::setLight(Actor * light) {
     this->setLightSource(light);
     water.setLightSource(light);
+    atmosphere.setLightSource(light);
 }
 
 void Planet::draw (SceneCamera *camera) {
     water.getShader()->update();
     glUniform1f(glGetUniformLocation(water.getShader()->getProgramID(), "time"), glfwGetTime());
     
-    Model::draw (camera);
-    water.draw (camera);
+    Model::draw     (camera);
+    water.draw      (camera);
+    
+    glDisable(GL_DEPTH_TEST);
+    atmosphere.draw (camera);
+    glEnable(GL_DEPTH_TEST);
 }
 
 void Planet::update (GameState state) {
@@ -67,6 +78,9 @@ void Planet::update (GameState state) {
             
             water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
             water.setPosition(glm::vec3(0.0, 0.0, 0.0));
+            
+            atmosphere.setRotation(glm::vec3(0.0, 0, 0.0));
+            atmosphere.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
         }
         case RUNNING_FREEMODE: case RUNNING_EDITMODE: {
@@ -75,12 +89,16 @@ void Planet::update (GameState state) {
             
             water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
             water.setPosition(glm::vec3(0.0, 0.0, 0.0));
+            
+            atmosphere.setRotation(glm::vec3(0.0, 0, 0.0));
+            atmosphere.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
         }
     }
     
     Model::update(state);
     water.update(state);
+    atmosphere.update(state);
 }
 
 std::string Planet::getName() {return name;}

@@ -39,6 +39,8 @@ class Game {
     
         void setState (GameState nextState);
     
+        void resize (int width, int height);
+    
     private:
         typedef int actorID;
     

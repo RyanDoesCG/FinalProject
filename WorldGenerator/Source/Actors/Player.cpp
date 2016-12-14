@@ -117,11 +117,11 @@ void Player::update (GameState state) {
             
             // ROLL
             if (gamepad->isButtonDown(GAMEPAD_RIGHT_BUMPER)) {
-                camera->roll += 1;
+                camera->roll += 0.01;
             }
             
             if (gamepad->isButtonDown(GAMEPAD_LEFT_BUMPER)) {
-                camera->roll -= 1;
+                camera->roll -= 0.01;
             }
             
             // BAD BAD BAD
@@ -130,7 +130,7 @@ void Player::update (GameState state) {
         }
         case RUNNING_EDITMODE: {
             mouse->showMouse();
-            
+
             // KEYBOARD
             if (keyboard->isKeyDown(GLFW_KEY_ESCAPE)) {game->setState(MAIN_MENU); camera->reset();}
             if (keyboard->isKeyDown(GLFW_KEY_Q)) {
@@ -148,7 +148,7 @@ void Player::update (GameState state) {
             }
             
             if (gamepad->isButtonDown(GAMEPAD_SPECIAL_HOME)) {game->setState(MAIN_MENU); camera->reset();}
-            
+
             break;
         }
             

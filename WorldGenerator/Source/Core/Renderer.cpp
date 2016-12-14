@@ -8,19 +8,13 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Core/Renderer.hpp"
 
+bool actorDepthComparator (Actor* a, Actor* b) {
+    return (a->getPosition().z < b->getPosition().z);
+}
+
 Renderer::Renderer (int width, int height) {
-    this->width = width;
-    this->height = height;
     
-    // generate framebuffer
-    glGenFramebuffers(1, &FBO);
-    glBindFramebuffer(GL_FRAMEBUFFER, FBO);
-
-        // generate attachments
-        setupColourBuffer();
-        setupDepthBuffer();
-
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    setupFrameBufferObject(width, height);
     
     // target quad
     processedScene = Quad();
@@ -37,11 +31,14 @@ void Renderer::addToScene(Actor* actor) {
 }
 
 void Renderer::drawScene(SceneCamera* camera) {
+    std::sort(scene.begin(), scene.end(), actorDepthComparator);
+    
     // render off screen
     glBindFramebuffer (GL_FRAMEBUFFER, FBO);
     glClearColor(0.16, 0.16, 0.16, 1.0);
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
 
     // draw
     for (int i = 0; i < scene.size(); i++) {
@@ -58,6 +55,21 @@ void Renderer::drawScene(SceneCamera* camera) {
     processedScene.draw(camera);
 }
 
+void Renderer::setupFrameBufferObject(int width, int height) {
+    this->width = width;
+    this->height = height;
+    
+    // generate framebuffer
+    glGenFramebuffers(1, &FBO);
+    glBindFramebuffer(GL_FRAMEBUFFER, FBO);
+    
+        // generate attachments
+        setupColourBuffer();
+        setupDepthBuffer();
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
 void Renderer::setupColourBuffer() {
     glGenTextures   (1, &colourAttachment);
     glBindTexture   (GL_TEXTURE_2D, colourAttachment);
@@ -72,7 +84,7 @@ void Renderer::setupColourBuffer() {
 void Renderer::setupDepthBuffer() {
     glGenRenderbuffers      (1, &RBO);
     glBindRenderbuffer      (GL_RENDERBUFFER, RBO);
-    glRenderbufferStorage   (GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
+    glRenderbufferStorage   (GL_RENDERBUFFER, GL_DEPTH32F_STENCIL8, width, height);
     glBindRenderbuffer      (GL_RENDERBUFFER, 0);
     
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RBO);

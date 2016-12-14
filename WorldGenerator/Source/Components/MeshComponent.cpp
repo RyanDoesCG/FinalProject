@@ -167,6 +167,23 @@ void MeshComponent::testdraw(ShaderComponent* shader, SceneCamera* camera) {
 }
 
 void MeshComponent::texturedDraw(ShaderComponent *shader, SceneCamera *camera, GLuint texture) {
+        // upload colour to shader
+    glUniform3fv(glGetUniformLocation(shader->getProgramID(), "objectColour"), 1, glm::value_ptr(colour));
+    
+        // Give camera transforms to shader
+    glm::mat4 view = camera->getViewTransform();
+    glm::mat4 projection = camera->getProjectionTransform();
+    glUniformMatrix4fv(glGetUniformLocation(shader->getProgramID(), "view"), 1, GL_FALSE,       glm::value_ptr(view));
+    glUniformMatrix4fv(glGetUniformLocation(shader->getProgramID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    
+        // Give model transform to shader
+    modelTransform = glm::translate(glm::mat4(), position);
+    modelTransform = glm::rotate(modelTransform, rotation.x, glm::vec3(1.0, 0.0, 0.0));
+    modelTransform = glm::rotate(modelTransform, rotation.y, glm::vec3(0.0, 1.0, 0.0));
+    modelTransform = glm::rotate(modelTransform, rotation.z, glm::vec3(0.0, 0.0, 1.0));
+    modelTransform = glm::scale(modelTransform,  scale);
+    glUniformMatrix4fv(glGetUniformLocation(shader->getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(modelTransform));
+    
     glBindVertexArray (VAO);
         glBindTexture(GL_TEXTURE_2D, texture);
         glDrawArrays(GL_TRIANGLES, 0, testVertices.size() / 3);

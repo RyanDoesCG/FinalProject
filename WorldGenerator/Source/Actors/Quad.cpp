@@ -20,7 +20,7 @@ Quad::Quad () {
         -1.0f,  1.0f, 0.0f,   0.0f, 1.0f  // Top Left
     };
     
-    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("HUDPane", BASIC));
+    //shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("HUDPane", BASIC));
     mesh = (MeshComponent*)addComponent(new MeshComponent(vertices, 0));
 }
 

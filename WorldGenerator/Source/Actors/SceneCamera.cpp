@@ -22,7 +22,7 @@ SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
     projection = glm::perspective (
         45.0f,
         width / height,
-        0.01f,
+        0.001f,
         100.0f
     );
     
