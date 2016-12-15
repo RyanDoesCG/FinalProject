@@ -3,7 +3,8 @@
  *  Tribes
  *
  *  Created by Ryan Needham on 02/12/2016.
- *  Copyright © 2016 Dissertation. All rights reserved.
+ *  
+ *  ADAPTED TO C++ FROM: http://weber.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Noise/SimplexMachine.hpp"
