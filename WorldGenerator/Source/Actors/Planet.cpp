@@ -26,7 +26,7 @@ Planet::Planet (): Model("sphere/sphere"),
     water.setRotation(glm::vec3(0.15, 0.23, 0));
                        
     atmosphere.setShader("Atmosphere", BASIC);
-    atmosphere.setScale(1.125);
+    atmosphere.setScale(1.1175);
     atmosphere.setColour(glm::vec3(1.0, 0.0, 0.0));
                        
     generateName();
@@ -47,6 +47,12 @@ void Planet::randomise () {
         0.20 + (rand() % 60 / 10),
         0.20 + (rand() % 60 / 10),
         0.20 + (rand() % 60 / 10)
+    ));
+    
+    atmosphere.setColour(glm::vec3(
+        0.20 + (rand() % 20 / 10),
+        0.20 + (rand() % 20 / 10),
+        0.20 + (rand() % 20 / 10)
     ));
     
     generateName();

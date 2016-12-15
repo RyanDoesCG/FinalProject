@@ -14,7 +14,7 @@ void WorleyMachine::initialise() {
 }
 
 double WorleyMachine::noise(double xin, double yin) {
-
+    return 0;
 }
 
 double WorleyMachine::noise(double xin, double yin, double zin) {
@@ -23,9 +23,9 @@ double WorleyMachine::noise(double xin, double yin, double zin) {
     // then for every point in space take the distance to the
     // nth-closest point (e.g. the second-closest point) as some
     // kind of color information
-    
+    return 0;
 }
 
 double WorleyMachine::noise(double xin, double yin, double zin, double win) {
-
+    return 0;
 }

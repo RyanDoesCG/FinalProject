@@ -2,7 +2,7 @@
  *  SimplexMachine.cpp
  *  Tribes
  *
- *  Created by Ryan Needham on 02/12/2016.
+ *  Created on 02/12/2016.
  *  
  *  ADAPTED TO C++ FROM: http://weber.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf
  *

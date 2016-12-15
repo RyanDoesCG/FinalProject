@@ -20,19 +20,19 @@ void main() {
 
     if (generationType == 1.0) {
         // cosine generation
-        lift = 0.865 + 0.1 * (cos(rand(vec2(position.y * 1000, position.z * 24753))));
+        lift = 0.865 + 0.1 * (cos(rand(vec2(position.y * 1000, position.z * 247))));
     }
     else if (generationType == 2.0) {
         // sine generation
-        lift = 0.9 + 0.1 * (sin(rand(vec2(position.y * 1000, position.z * 24753))));
+        lift = 0.9 + 0.1 * (sin(rand(vec2(position.y * 1234, position.z * 1442))));
     }
     else if (generationType == 3.0) {
         // square root generation
-        lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 1000, position.z * 24753))));
+        lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 4000, position.z * 643))));
     }
     else if (generationType == 4.0) {
         // square root generation
-        lift = 0.875 + 0.1 * (tan(rand(vec2(position.y * 1000, position.z * 24753))));
+        lift = 0.875 + 0.1 * (tan(rand(vec2(position.y * 2400, position.z * 11753))));
     }
  
     // square root generation
