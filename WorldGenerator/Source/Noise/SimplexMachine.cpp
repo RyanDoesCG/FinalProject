@@ -275,10 +275,10 @@ double SimplexMachine::noise(double xin, double yin, double zin, double win) {
     double z4 = z0 - 1.0 + 4.0*G4;
     double w4 = w0 - 1.0 + 4.0*G4;
     // Work out the hashed gradient indices of the five simplex corners
-    int ii = i & 255;
-    int jj = j & 255;
-    int kk = k & 255;
-    int ll = l & 255;
+    int ii  = i & 255;
+    int jj  = j & 255;
+    int kk  = k & 255;
+    int ll  = l & 255;
     int gi0 = perm[ii+perm[jj+perm[kk+perm[ll]]]] % 32;
     int gi1 = perm[ii+i1+perm[jj+j1+perm[kk+k1+perm[ll+l1]]]] % 32;
     int gi2 = perm[ii+i2+perm[jj+j2+perm[kk+k2+perm[ll+l2]]]] % 32;

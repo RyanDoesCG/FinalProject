@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		620C0F1B1E030CC900ED7745 /* WorleyMachine.cpp in Resources */ = {isa = PBXBuildFile; fileRef = 620C0F1A1E030CC900ED7745 /* WorleyMachine.cpp */; };
 		6215D2951E01AA6C00AAC9C3 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D2941E01AA6C00AAC9C3 /* Cursor.cpp */; };
 		6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D29A1E01B3A100AAC9C3 /* Input.cpp */; };
 		6215D29D1E01DB7E00AAC9C3 /* Sun.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */; };
@@ -54,6 +55,8 @@
 /* Begin PBXFileReference section */
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
+		620C0F191E030C4B00ED7745 /* WorleyMachine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WorleyMachine.hpp; sourceTree = "<group>"; };
+		620C0F1A1E030CC900ED7745 /* WorleyMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorleyMachine.cpp; sourceTree = "<group>"; };
 		6215D2931E01A9A700AAC9C3 /* Cursor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cursor.hpp; sourceTree = "<group>"; };
 		6215D2941E01AA6C00AAC9C3 /* Cursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cursor.cpp; sourceTree = "<group>"; };
 		6215D2961E01ABE200AAC9C3 /* Input.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
@@ -755,6 +758,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDD0C291E00AA0A0078469C /* SimplexMachine.hpp */,
+				620C0F191E030C4B00ED7745 /* WorleyMachine.hpp */,
 			);
 			path = Noise;
 			sourceTree = "<group>";
@@ -1312,6 +1316,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDD0DC11E00AA0A0078469C /* SimplexMachine.cpp */,
+				620C0F1A1E030CC900ED7745 /* WorleyMachine.cpp */,
 			);
 			path = Noise;
 			sourceTree = "<group>";
@@ -1415,6 +1420,7 @@
 			files = (
 				6215D29D1E01DB7E00AAC9C3 /* Sun.hpp in Resources */,
 				CEDD0F1A1E00AC990078469C /* Assets in Resources */,
+				620C0F1B1E030CC900ED7745 /* WorleyMachine.cpp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
