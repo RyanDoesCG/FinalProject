@@ -17,6 +17,9 @@ public:
     Skybox  ();
     ~Skybox ();
     
+    virtual void draw (SceneCamera* camera) override;
+    virtual void update (GameState state) override;
+    
 private:
     
 };

@@ -17,6 +17,8 @@
 #include "../../Headers/Engine/Actors/Skybox.hpp"
 #include "../../Headers/Engine/Actors/Moon.hpp"
 #include "../../Headers/Engine/Actors/Cube.hpp"
+#include "../../Headers/Engine/Actors/Skybox.hpp"
+#include "../../Headers/Engine/Actors/Cursor.hpp"
 
 #include "../../Headers/Engine/UI/GameHUD.hpp"
 #include "../../Headers/Engine/UI/MainMenu.hpp"
@@ -50,7 +52,9 @@ void Game::begin() {
     glClearColor (0.12f, 0.12f, 0.12f, 1.0f);
     Input::initialise(window);
     
+    Skybox skybox = Skybox();
     Player player = Player(window, this);
+    Cursor cursor = Cursor();
     Planet planet = Planet();
     Moon   moon1  = Moon();
     Moon   moon2  = Moon();
@@ -66,7 +70,7 @@ void Game::begin() {
     cube.setColour(glm::vec3(1.0, 0.0, 0.0));
     
     Renderer graphics = Renderer(windowWidth, windowHeight);
-    
+    //graphics.addToScene(&skybox);
     graphics.addToScene(&planet);
     graphics.addToScene(&player);
     graphics.addToScene(&moon1);
@@ -75,6 +79,7 @@ void Game::begin() {
     //graphics.addToScene(&cube);
     
     PhysicsEngine physics = PhysicsEngine();
+    //physics.addToSimulation(&skybox);
     physics.addToSimulation(&player);
     physics.addToSimulation(&planet);
     physics.addToSimulation(&moon1);

@@ -10,12 +10,13 @@
 #define Cursor_hpp
 
 #include "Actor.hpp"
+#include "Quad.hpp"
 #include "../Components/MouseComponent.hpp"
 #include "../Components/GamepadComponent.hpp"
 
 class Cursor : public Actor {
     public:
-        Cursor (GLFWwindow* window, Game* game);
+        Cursor ();
        ~Cursor ();
     
         virtual void draw (SceneCamera* camera) override;
@@ -24,6 +25,8 @@ class Cursor : public Actor {
     private:
         MouseComponent* mouse;
         GamepadComponent* gamepad;
+    
+        Quad sprite;
     
 };
 

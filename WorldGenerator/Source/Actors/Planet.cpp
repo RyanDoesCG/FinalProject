@@ -26,7 +26,7 @@ Planet::Planet (): Model("sphere/sphere"),
     water.setRotation(glm::vec3(0.15, 0.23, 0));
                        
     atmosphere.setShader("Atmosphere", BASIC);
-    atmosphere.setScale(1.025);
+    atmosphere.setScale(1.125);
     atmosphere.setColour(glm::vec3(1.0, 0.0, 0.0));
                        
     generateName();

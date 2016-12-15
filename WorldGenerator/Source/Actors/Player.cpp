@@ -100,7 +100,13 @@ void Player::update (GameState state) {
             if (gamepad->isButtonDown(GAMEPAD_SPECIAL_HOME)) {game->setState(MAIN_MENU); camera->reset();}
             
             // forward/backward
-            if (gamepad->getAxisState(RIGHT_TRIGGER) > 0.20) { camera->moveForwardAt(gamepad->getAxisState(RIGHT_TRIGGER)); }
+            if (gamepad->getAxisState(RIGHT_TRIGGER) > 0.20) {
+                if (gamepad->isButtonDown(GAMEPAD_BUTTON_B)) {
+                    camera->moveForwardAt(gamepad->getAxisState(RIGHT_TRIGGER) * 4);
+                } else {
+                    camera->moveForwardAt(gamepad->getAxisState(RIGHT_TRIGGER) * 0.75);
+                }
+            }
             if (gamepad->getAxisState(LEFT_TRIGGER) > 0.20) { camera->moveBackwardAt(gamepad->getAxisState(LEFT_TRIGGER)); }
             
             // YAW

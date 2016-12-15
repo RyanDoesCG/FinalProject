@@ -7,10 +7,13 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Actors/Cursor.hpp"
+#include "../../Headers/Engine/Utility/Input.hpp"
 
-Cursor::Cursor (GLFWwindow* window, Game* game) {
-    gamepad = new GamepadComponent();
-    mouse   = new MouseComponent();
+Cursor::Cursor () {
+    gamepad = Input::getGamepadHandle();
+    mouse   = Input::getMouseHandle();
+    
+    sprite = Quad();
 }
 
 Cursor::~Cursor () {
@@ -18,11 +21,13 @@ Cursor::~Cursor () {
 }
 
 void Cursor::draw(SceneCamera *camera) {
-    
+    sprite.draw(camera);
 }
 
 void Cursor::update(GameState state) {
     
     gamepad->update();
     mouse->update();
+    
+    sprite.update(state);
 }
