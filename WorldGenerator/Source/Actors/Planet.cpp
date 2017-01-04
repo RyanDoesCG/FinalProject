@@ -42,11 +42,11 @@ Planet::Planet (): Model("sphere/sphereDETAILED"),
      *  PARRALLELIZE?
      */
     FastNoise noise = FastNoise(rand());
-    noise.SetFrequency(1);
+    noise.SetFrequency(0.75);
     noise.SetFractalOctaves(2);
                        
-                           // FMOD - roof
-                           // FABS - strip signing
+    // FMOD - roof
+    // FABS - strip signing
                        
     // OCTAVE 1: LOW RES, HIGH AMPLITUDE
     for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
@@ -141,7 +141,7 @@ void Planet::update (GameState state) {
     
     Model::update(state);
     water.update(state);
-    atmosphere.update(state);
+    //atmosphere.update(state);
 }
 
 std::string Planet::getName() {return name;}

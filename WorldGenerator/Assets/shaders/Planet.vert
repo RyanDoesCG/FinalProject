@@ -41,7 +41,7 @@ void main() {
     gl_Position = model * vec4(b, 1.0f);
     
     // pass through
-        vertexColour = vec3(1.0, 1.0, 1.0);
+        vertexColour = objectColour*0.85;
 }
 
 /**
