@@ -73,27 +73,7 @@ MeshComponent Model::processMesh (aiMesh* mesh, const aiScene* scene) {
         vector.z = mesh->mNormals[i].z;
         vertex.normal = vector;
         // tcww
-        static glm::vec3 colour;
-        if (i % 3 == 0) {
-            int ting = rand() % 100;
-            
-            if (ting > 0 && ting < 33) {
-                colour.r = 1;
-                colour.g = 1;
-                colour.b = 1;
-            }
-            else if (ting > 33 && ting < 66) {
-                colour.r = 2;
-                colour.g = 2;
-                colour.b = 2;
-            }
-            else {
-                colour.r = 3;
-                colour.g = 3;
-                colour.b = 3;
-            }
-        }
-        vertex.colour = colour;
+        static glm::vec3 noise;
         
         vertices.push_back(vertex);
     }

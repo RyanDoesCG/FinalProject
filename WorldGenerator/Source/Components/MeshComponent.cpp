@@ -42,6 +42,16 @@ MeshComponent::~MeshComponent () {
     //glDeleteBuffers      (1, &this->EBO);
 }
 
+void MeshComponent::updateModelMesh () {
+    setupModelMeshComponent();
+}
+void MeshComponent::updateTestMesh () {
+    setupTestMeshComponent();
+}
+void MeshComponent::updateTexturedMesh () {
+    setupTexturedMeshComponent();
+}
+
 void MeshComponent::setupTexturedMeshComponent () {
     glGenVertexArrays (1, &this->VAO);
     glGenBuffers      (1, &this->VBO);
@@ -108,7 +118,7 @@ void MeshComponent::setupModelMeshComponent() {
         glEnableVertexAttribArray(1);
     
         // Vertex Texture Coordinate
-        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, colour));
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, noise));
         glEnableVertexAttribArray(2);
     
     glBindVertexArray(0);

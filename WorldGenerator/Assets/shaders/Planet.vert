@@ -2,7 +2,7 @@
 
 layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
-layout (location = 2) in vec3 texCoords;
+layout (location = 2) in vec3 noise;
 
 out vec3 vertexColour;
 
@@ -16,27 +16,7 @@ uniform int generationType;
 mediump float rand(vec2 co);
 
 void main() {
-    float lift;
-
-    if (generationType == 1.0) {
-        // cosine generation
-        lift = 0.865 + 0.1 * (cos(rand(vec2(position.y * 1000, position.z * 247))));
-    }
-    else if (generationType == 2.0) {
-        // sine generation
-        lift = 0.9 + 0.1 * (sin(rand(vec2(position.y * 1234, position.z * 1442))));
-    }
-    else if (generationType == 3.0) {
-        // square root generation
-        lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 4000, position.z * 643))));
-    }
-    else if (generationType == 4.0) {
-        // square root generation
-        lift = 0.875 + 0.1 * (tan(rand(vec2(position.y * 2400, position.z * 11753))));
-    }
- 
-    // square root generation
-    //float lift = 0.875 + 0.1 * (sqrt(rand(vec2(position.y * 1000, position.z * 24753))));
+    float lift = 0.9 + (noise.x + noise.y + noise.z);
     
     vec3 a = vec3(0, 0, 0);
     vec3 b = position;
@@ -61,15 +41,7 @@ void main() {
     gl_Position = model * vec4(b, 1.0f);
     
     // pass through
-    if (texCoords.x == 1) {
-        vertexColour = objectColour * 0.86;
-    }
-    else if (texCoords.x == 2) {
-        vertexColour = objectColour * 0.88;
-    }
-    else {
-        vertexColour = objectColour * 0.9;
-    }
+        vertexColour = vec3(1.0, 1.0, 1.0);
 }
 
 /**

@@ -35,6 +35,10 @@ class MeshComponent : public Component {
         void testdraw (ShaderComponent* shader, SceneCamera* camera);
         void texturedDraw (ShaderComponent* shader, SceneCamera* camera, GLuint texture);
 
+        void updateModelMesh ();
+        void updateTestMesh ();
+        void updateTexturedMesh ();
+    
         glm::vec3 position;
         glm::vec3 rotation;
         glm::vec3 scale;

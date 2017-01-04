@@ -9,10 +9,14 @@
 #include "../../Headers/Engine/Actors/Planet.hpp"
 #include "../../Headers/Engine/Utility/ShaderCache.hpp"
 #include "../../Headers/Engine/Utility/ColourPalette.hpp"
+#include "../../Headers/Engine/Noise/NoiseInterface.hpp"
+#include "../../Headers/FastNoise/FastNoise.h"
 
 #include "../../Headers/GLFW/glfw3.h"
 
-Planet::Planet (): Model("sphere/sphere"),
+#include <math.h>
+
+Planet::Planet (): Model("sphere/sphereDETAILED"),
                    water("sphere/sphereDETAILED"),
                    atmosphere("sphere/sphereDETAILED") {
 
@@ -22,7 +26,7 @@ Planet::Planet (): Model("sphere/sphere"),
     setScale(1.2);
     
     water.setShader("water", GEOM);
-    water.setScale(0.94);
+    water.setScale(0.96);
     water.setRotation(glm::vec3(0.15, 0.23, 0));
                        
     atmosphere.setShader("Atmosphere", BASIC);
@@ -33,7 +37,40 @@ Planet::Planet (): Model("sphere/sphere"),
     
     getShader()->update();
     glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1);
+                       
+    /** 
+     *  PARRALLELIZE?
+     */
+    FastNoise noise = FastNoise(rand());
+    noise.SetFrequency(1);
+    noise.SetFractalOctaves(2);
+                       
+                           // FMOD - roof
+                           // FABS - strip signing
+                       
+    // OCTAVE 1: LOW RES, HIGH AMPLITUDE
+    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
+        Model::meshes.at(0).vertices.at(i).noise.x = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 6);//NoiseInterface::getSimplexNoise(0.25, 2, i);
+    }
+    
+    noise.SetFrequency(2);
+                       
+    // OCTAVE 2: MEDIUM RES, MEDIUM AMPLITUDE
+    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
+        Model::meshes.at(0).vertices.at(i).noise.y = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 30);
+    }
 
+    noise.SetFrequency(4);
+                       
+    // OCTAVE 3: HIGH RES, MEDIUM AMPLITUDE
+    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
+        Model::meshes.at(0).vertices.at(i).noise.z = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 150);
+    }
+                       
+    Model::meshes.at(0).updateModelMesh();
 }
 
 Planet::~Planet () {

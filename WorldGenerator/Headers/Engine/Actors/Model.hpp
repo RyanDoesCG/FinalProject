@@ -3,8 +3,8 @@
  *
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#ifndef Model_HPP
-#define Model_HPP
+#ifndef Model_hpp
+#define Model_hpp
 
 #include "../../assimp/Importer.hpp"
 #include "../../assimp/scene.h"
