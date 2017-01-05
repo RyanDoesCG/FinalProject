@@ -25,12 +25,19 @@ class Planet : public Model {
         void randomise();
     
         std::string getName ();
+    
+        void toggleWater () {waterActive=!waterActive;}
+        void toggleAtmos () {atmosActive=!atmosActive;}
+    
     private:
         void generateName();
         std::string name;
     
         Model water;
         Model atmosphere;
+
+        bool waterActive = true;
+        bool atmosActive = true;
 };
 
 #endif /* Planet_hpp */

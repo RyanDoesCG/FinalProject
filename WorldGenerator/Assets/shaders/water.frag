@@ -32,5 +32,5 @@ void main (void) {
     
         // stacked result
     vec3 result = (ambient + diffuse + specular) * finalColour;
-    color = vec4(result, 0.8f);
+    color = vec4(result, 0.88f);
 }

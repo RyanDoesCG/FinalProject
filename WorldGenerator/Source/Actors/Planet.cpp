@@ -45,6 +45,8 @@ Planet::Planet (): Model("sphere/sphereDETAILED"),
     noise.SetFrequency(0.65);
     noise.SetFractalOctaves(2);
                        
+    noise.SetCellularDistanceFunction(FastNoise::Euclidean);
+                       
     // FMOD - roof
     // FABS - strip signing
                        
@@ -52,8 +54,7 @@ Planet::Planet (): Model("sphere/sphereDETAILED"),
     for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
         glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
         Model::meshes.at(0).vertices.at(i).noise.x = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 6);//NoiseInterface::getSimplexNoise(0.25, 2, i);
-        
-        std::cout << "cell noise output: " << noise.GetCellular(pos.x, pos.y, pos.z) << std::endl;
+        Model::meshes.at(0).vertices.at(i).biome   = fabs(noise.GetCellular(pos.x, pos.y, pos.z) + 0.33);
     }
     
     noise.SetFrequency(6);
@@ -94,6 +95,40 @@ void Planet::randomise () {
         0.20 + (rand() % 20 / 10)
     ));
     
+    FastNoise noise = FastNoise(rand());
+    noise.SetFrequency(0.65);
+    noise.SetFractalOctaves(2);
+    
+    noise.SetCellularDistanceFunction(FastNoise::Euclidean);
+    
+        // FMOD - roof
+        // FABS - strip signing
+    
+        // OCTAVE 1: LOW RES, HIGH AMPLITUDE
+    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
+        Model::meshes.at(0).vertices.at(i).noise.x = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 6);//NoiseInterface::getSimplexNoise(0.25, 2, i);
+        Model::meshes.at(0).vertices.at(i).biome   = fabs(noise.GetCellular(pos.x, pos.y, pos.z) + 0.33);
+    }
+    
+    noise.SetFrequency(6);
+    
+        // OCTAVE 2: MEDIUM RES, MEDIUM AMPLITUDE
+    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
+        Model::meshes.at(0).vertices.at(i).noise.y = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 30);
+    }
+    
+    noise.SetFrequency(12);
+    
+        // OCTAVE 3: HIGH RES, MEDIUM AMPLITUDE
+    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
+        Model::meshes.at(0).vertices.at(i).noise.z = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 100);
+    }
+    
+    Model::meshes.at(0).updateModelMesh();
+    
     generateName();
 }
 
@@ -107,11 +142,11 @@ void Planet::draw (SceneCamera *camera) {
     water.getShader()->update();
     glUniform1f(glGetUniformLocation(water.getShader()->getProgramID(), "time"), glfwGetTime());
     
-    Model::draw     (camera);
-    water.draw      (camera);
+    Model::draw (camera);
+    if (waterActive) water.draw  (camera);
     
     glDisable(GL_DEPTH_TEST);
-    atmosphere.draw (camera);
+    if (atmosActive) atmosphere.draw (camera);
     glEnable(GL_DEPTH_TEST);
 }
 
@@ -142,8 +177,8 @@ void Planet::update (GameState state) {
     }
     
     Model::update(state);
-    water.update(state);
-    //atmosphere.update(state);
+    if (waterActive) water.update(state);
+    if (atmosActive) atmosphere.update(state);
 }
 
 std::string Planet::getName() {return name;}

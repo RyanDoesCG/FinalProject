@@ -48,15 +48,24 @@ void GameHUD::update (GameState state) {
                 planet->randomise();
                 keyboard->keyHandled(GLFW_KEY_E);
             }
+            if (gamepad->isButtonDown(GAMEPAD_BUTTON_Y)) {
+                planet->randomise();
+                gamepad->buttonHandled(GAMEPAD_BUTTON_Y);
+            }
+            if (gamepad->isButtonDown(GAMEPAD_BUTTON_X)) {
+                planet->toggleWater();
+                gamepad->buttonHandled(GAMEPAD_BUTTON_X);
+            }
+            if (gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
+                planet->toggleAtmos();
+                gamepad->buttonHandled(GAMEPAD_BUTTON_A);
+            }
             
             break;
         }
         case RUNNING_FREEMODE: {
             mode = 0;
-            if (gamepad->isButtonDown(GAMEPAD_BUTTON_Y)) {
-                planet->randomise();
-                gamepad->buttonHandled(GAMEPAD_BUTTON_Y);
-            }
+
             
             break;
         }

@@ -154,7 +154,7 @@ void Player::update (GameState state) {
             }
             
             if (gamepad->isButtonDown(GAMEPAD_SPECIAL_HOME)) {game->setState(MAIN_MENU); camera->reset();}
-
+            
             break;
         }
             

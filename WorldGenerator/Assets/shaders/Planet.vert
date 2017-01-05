@@ -3,6 +3,7 @@
 layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
 layout (location = 2) in vec3 noise;
+layout (location = 3) in float biome;
 
 out vec3 vertexColour;
 
@@ -17,6 +18,8 @@ mediump float rand(vec2 co);
 
 void main() {
     float lift = 0.9 + (noise.x + noise.y + noise.z);
+    //float lift = biome + (noise.x + noise.y + noise.z);
+    
     
     vec3 a = vec3(0, 0, 0);
     vec3 b = position;
@@ -41,7 +44,7 @@ void main() {
     gl_Position = model * vec4(b, 1.0f);
     
     // pass through
-        vertexColour = objectColour*0.85;
+    vertexColour = objectColour * biome;
 }
 
 /**
