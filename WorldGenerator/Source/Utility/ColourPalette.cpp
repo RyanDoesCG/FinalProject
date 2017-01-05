@@ -14,6 +14,6 @@ const std::map<ColourID, glm::vec3> ColourPalette::palette = {
     Colour(LightGray, glm::vec3(0.75, 0.75, 0.75)),
     Colour(Gray,      glm::vec3(0.5, 0.5, 0.5)),
     Colour(DarkGray,  glm::vec3(0.15, 0.15, 0.15)),
-    Colour(Sand,      glm::vec3(0.75, 0.66, 0.5)),
+    Colour(Sand,      glm::vec3(0.77, 0.69, 0.53)),
     Colour(Red,       glm::vec3(0.45, 0.175, 0.175))
 };

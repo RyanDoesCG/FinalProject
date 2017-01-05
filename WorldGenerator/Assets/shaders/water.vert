@@ -7,7 +7,7 @@ uniform float time;
 uniform mat4 model;
 
 const float PI = 3.141592653589;
-const float AMPLITUDE = 0.00175;
+const float AMPLITUDE = 0.00160;
 
 out vec3 vertexColour;
 
@@ -16,8 +16,8 @@ out vec3 vertexColour;
  *  adapted by Ryan Needham
  */
 float generateHeight(){
-    float component1 = sin(2.0 * PI * (time * 0.75) + (position.x * 24.0)) * AMPLITUDE;
-    float component2 = sin(2.0 * PI * (time * 0.75) + (position.y * position.x * 12.0)) * AMPLITUDE;
+    float component1 = sin(2.0 * PI * (time * 0.75) + (position.x * 12.0)) * AMPLITUDE;
+    float component2 = sin(2.0 * PI * (time * 0.75) + (position.y * position.x * 6.0)) * AMPLITUDE;
     return component1 + component2;
 }
 

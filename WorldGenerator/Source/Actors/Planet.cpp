@@ -42,7 +42,7 @@ Planet::Planet (): Model("sphere/sphereDETAILED"),
      *  PARRALLELIZE?
      */
     FastNoise noise = FastNoise(rand());
-    noise.SetFrequency(0.75);
+    noise.SetFrequency(0.65);
     noise.SetFractalOctaves(2);
                        
     // FMOD - roof
@@ -52,9 +52,11 @@ Planet::Planet (): Model("sphere/sphereDETAILED"),
     for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
         glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
         Model::meshes.at(0).vertices.at(i).noise.x = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 6);//NoiseInterface::getSimplexNoise(0.25, 2, i);
+        
+        std::cout << "cell noise output: " << noise.GetCellular(pos.x, pos.y, pos.z) << std::endl;
     }
     
-    noise.SetFrequency(2);
+    noise.SetFrequency(6);
                        
     // OCTAVE 2: MEDIUM RES, MEDIUM AMPLITUDE
     for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
@@ -62,12 +64,12 @@ Planet::Planet (): Model("sphere/sphereDETAILED"),
         Model::meshes.at(0).vertices.at(i).noise.y = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 30);
     }
 
-    noise.SetFrequency(4);
+    noise.SetFrequency(12);
                        
     // OCTAVE 3: HIGH RES, MEDIUM AMPLITUDE
     for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
         glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
-        Model::meshes.at(0).vertices.at(i).noise.z = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 150);
+        Model::meshes.at(0).vertices.at(i).noise.z = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 100);
     }
                        
     Model::meshes.at(0).updateModelMesh();
