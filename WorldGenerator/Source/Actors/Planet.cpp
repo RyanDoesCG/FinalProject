@@ -16,18 +16,18 @@
 
 #include <math.h>
 
-Planet::Planet (): Model("sphere/sphereDETAILED"),
-                   water("sphere/sphereDETAILED"),
+Planet::Planet (): Model("plane/plane3"),
+                   water("plane/plane3"),
                    atmosphere("sphere/sphereDETAILED") {
 
     setColour(ColourPalette::getColour(Sand));
     
-    setShader("Planet", GEOM);
+    setShader("FlatWorld", GEOM);
     setScale(1.2);
     
-    water.setShader("water", GEOM);
-    water.setScale(0.96);
-    water.setRotation(glm::vec3(0.15, 0.23, 0));
+    water.setShader("waterFlat", GEOM);
+    water.setScale(2);
+    //water.setRotation(glm::vec3(0.15, 0.23, 0));
                        
     atmosphere.setShader("Atmosphere", BASIC);
     atmosphere.setScale(1.1175);
@@ -84,9 +84,9 @@ void Planet::randomise () {
     getShader()->update();
     glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1 + (rand() % 4));
     lightSource->setColour(glm::vec3(
-        0.20 + (rand() % 60 / 10),
-        0.20 + (rand() % 60 / 10),
-        0.20 + (rand() % 60 / 10)
+        0.20 + (rand() % 40 / 10),
+        0.20 + (rand() % 40 / 10),
+        0.20 + (rand() % 40 / 10)
     ));
     
     atmosphere.setColour(glm::vec3(
@@ -142,6 +142,7 @@ void Planet::draw (SceneCamera *camera) {
     water.getShader()->update();
     glUniform1f(glGetUniformLocation(water.getShader()->getProgramID(), "time"), glfwGetTime());
     
+    glDisable(GL_CULL_FACE);
     Model::draw (camera);
     if (waterActive) water.draw  (camera);
     
@@ -153,22 +154,22 @@ void Planet::draw (SceneCamera *camera) {
 void Planet::update (GameState state) {
     switch (state) {
         case MAIN_MENU: {
-            setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
-            setPosition(glm::vec3(0.0, 0.0, 0.0));
+            //setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
+            setPosition(glm::vec3(0.0, -1, 0.0));
             
-            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
-            water.setPosition(glm::vec3(0.0, 0.0, 0.0));
+//            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
+            water.setPosition(glm::vec3(0.0, -1, 0.0));
             
             atmosphere.setRotation(glm::vec3(0.0, 0, 0.0));
             atmosphere.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
         }
         case RUNNING_FREEMODE: case RUNNING_EDITMODE: {
-            setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
-            setPosition(glm::vec3(0.0, 0.0, 0.0));
+            //setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
+            setPosition(glm::vec3(0.0, -1, 0.0));
             
-            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
-            water.setPosition(glm::vec3(0.0, 0.0, 0.0));
+//            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
+            water.setPosition(glm::vec3(0.0, -1, 0.0));
             
             atmosphere.setRotation(glm::vec3(0.0, 0, 0.0));
             atmosphere.setPosition(glm::vec3(0.0, 0.0, 0.0));

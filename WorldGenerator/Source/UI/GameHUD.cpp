@@ -44,21 +44,21 @@ void GameHUD::update (GameState state) {
     switch (state) {
         case RUNNING_EDITMODE: {
             mode = 1;
-            if (keyboard->isKeyDown(GLFW_KEY_E)) {
-                planet->randomise();
-                keyboard->keyHandled(GLFW_KEY_E);
-            }
-            if (gamepad->isButtonDown(GAMEPAD_BUTTON_Y)) {
+
+            if (gamepad->isButtonDown(GAMEPAD_BUTTON_Y) || keyboard->isKeyDown(GLFW_KEY_E)) {
                 planet->randomise();
                 gamepad->buttonHandled(GAMEPAD_BUTTON_Y);
+                keyboard->keyHandled(GLFW_KEY_E);
             }
-            if (gamepad->isButtonDown(GAMEPAD_BUTTON_X)) {
+            if (gamepad->isButtonDown(GAMEPAD_BUTTON_X) || keyboard->isKeyDown(GLFW_KEY_W)) {
                 planet->toggleWater();
                 gamepad->buttonHandled(GAMEPAD_BUTTON_X);
+                keyboard->keyHandled(GLFW_KEY_W);
             }
-            if (gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
+            if (gamepad->isButtonDown(GAMEPAD_BUTTON_A) || keyboard->isKeyDown(GLFW_KEY_A)) {
                 planet->toggleAtmos();
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
+                keyboard->keyHandled(GLFW_KEY_A);
             }
             
             break;
