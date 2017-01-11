@@ -23,7 +23,7 @@ Planet::Planet (): Model("plane/plane3"),
     setColour(ColourPalette::getColour(Sand));
     
     setShader("FlatWorld", GEOM);
-    setScale(1.2);
+    setScale(2);
     
     water.setShader("waterFlat", GEOM);
     water.setScale(2);

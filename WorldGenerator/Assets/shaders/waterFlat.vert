@@ -22,7 +22,7 @@ float generateHeight(){
 }
 
 void main() {
-    float height = 0.02 + generateHeight();
+    float height = 0.05 + generateHeight();
     // set position
     gl_Position = model * vec4(position.x, position.y + height, position.z, 1.0f);
     
