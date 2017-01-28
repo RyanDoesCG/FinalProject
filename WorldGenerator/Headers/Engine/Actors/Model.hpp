@@ -20,6 +20,7 @@ using namespace std;
 class Model : public Actor {
     public:
         Model (const string& path) { this->loadModel("Assets/models/" + path + ".obj"); }
+        Model () {}
        ~Model () {}
        
         virtual void draw (SceneCamera* camera) override;
@@ -30,11 +31,10 @@ class Model : public Actor {
         ShaderComponent* getShader () {return shader;}
     
         vector<MeshComponent> meshes;
+        Actor* lightSource;
     
     protected:
         string directory;
-    
-        Actor* lightSource;
     
         void loadModel            (string path);
         void processNode          (aiNode* node, const aiScene* scene);

@@ -16,24 +16,25 @@
 
 #include <math.h>
 
-Planet::Planet (): Model("plane/plane3"),
-                   atmosphere("sphere/sphereDETAILED") {
+Planet::Planet ():  sphereRepresentation("sphere/sphereDETAILED"),
+
+                    atmosphere("sphere/sphereDETAILED") {
 
     setColour(ColourPalette::getColour(Sand));
     
-    setShader("FlatWorld", GEOM);
-    setScale(2);
+    sphereRepresentation.setShader("Planet", GEOM);
+    sphereRepresentation.setScale(2);
                        
     water = Water();
                        
     atmosphere.setShader("Atmosphere", BASIC);
-    atmosphere.setScale(1.1175);
+    atmosphere.setScale(2.1);
     atmosphere.setColour(glm::vec3(1.0, 0.0, 0.0));
                        
     generateName();
     
-    getShader()->update();
-    glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1);
+    sphereRepresentation.getShader()->update();
+    glUniform1i(glGetUniformLocation(sphereRepresentation.getShader()->getProgramID(), "generationType"), 1);
                        
     /** 
      *  PARRALLELIZE?
@@ -48,29 +49,29 @@ Planet::Planet (): Model("plane/plane3"),
     // FABS - strip signing
                        
     // OCTAVE 1: LOW RES, HIGH AMPLITUDE
-    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
-        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
-        Model::meshes.at(0).vertices.at(i).noise.x = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 6);//NoiseInterface::getSimplexNoise(0.25, 2, i);
-        Model::meshes.at(0).vertices.at(i).biome   = fabs(noise.GetCellular(pos.x, pos.y, pos.z) + 0.33);
+    for (int i = 0; i < sphereRepresentation.meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = sphereRepresentation.meshes.at(0).vertices.at(i).position;
+        sphereRepresentation.meshes.at(0).vertices.at(i).noise.x = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 6);//NoiseInterface::getSimplexNoise(0.25, 2, i);
+        sphereRepresentation.meshes.at(0).vertices.at(i).biome   = fabs(noise.GetCellular(pos.x, pos.y, pos.z) + 0.33);
     }
     
     noise.SetFrequency(6);
                        
     // OCTAVE 2: MEDIUM RES, MEDIUM AMPLITUDE
-    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
-        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
-        Model::meshes.at(0).vertices.at(i).noise.y = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 30);
+    for (int i = 0; i < sphereRepresentation.meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = sphereRepresentation.meshes.at(0).vertices.at(i).position;
+        sphereRepresentation.meshes.at(0).vertices.at(i).noise.y = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 30);
     }
 
     noise.SetFrequency(12);
                        
     // OCTAVE 3: HIGH RES, MEDIUM AMPLITUDE
-    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
-        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
-        Model::meshes.at(0).vertices.at(i).noise.z = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 100);
+    for (int i = 0; i < sphereRepresentation.meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = sphereRepresentation.meshes.at(0).vertices.at(i).position;
+        sphereRepresentation.meshes.at(0).vertices.at(i).noise.z = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 100);
     }
                        
-    Model::meshes.at(0).updateModelMesh();
+    sphereRepresentation.meshes.at(0).updateModelMesh();
 }
 
 Planet::~Planet () {
@@ -78,9 +79,9 @@ Planet::~Planet () {
 }
 
 void Planet::randomise () {
-    getShader()->update();
-    glUniform1i(glGetUniformLocation(getShader()->getProgramID(), "generationType"), 1 + (rand() % 4));
-    lightSource->setColour(glm::vec3(
+    sphereRepresentation.getShader()->update();
+    glUniform1i(glGetUniformLocation(sphereRepresentation.getShader()->getProgramID(), "generationType"), 1 + (rand() % 4));
+    sphereRepresentation.lightSource->setColour(glm::vec3(
         0.20 + (rand() % 40 / 10),
         0.20 + (rand() % 40 / 10),
         0.20 + (rand() % 40 / 10)
@@ -102,35 +103,35 @@ void Planet::randomise () {
         // FABS - strip signing
     
         // OCTAVE 1: LOW RES, HIGH AMPLITUDE
-    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
-        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
-        Model::meshes.at(0).vertices.at(i).noise.x = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 6);//NoiseInterface::getSimplexNoise(0.25, 2, i);
-        Model::meshes.at(0).vertices.at(i).biome   = fabs(noise.GetCellular(pos.x, pos.y, pos.z) + 0.33);
+    for (int i = 0; i < sphereRepresentation.meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = sphereRepresentation.meshes.at(0).vertices.at(i).position;
+        sphereRepresentation.meshes.at(0).vertices.at(i).noise.x = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 6);//NoiseInterface::getSimplexNoise(0.25, 2, i);
+        sphereRepresentation.meshes.at(0).vertices.at(i).biome   = fabs(noise.GetCellular(pos.x, pos.y, pos.z) + 0.33);
     }
     
     noise.SetFrequency(6);
     
         // OCTAVE 2: MEDIUM RES, MEDIUM AMPLITUDE
-    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
-        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
-        Model::meshes.at(0).vertices.at(i).noise.y = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 30);
+    for (int i = 0; i < sphereRepresentation.meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = sphereRepresentation.meshes.at(0).vertices.at(i).position;
+        sphereRepresentation.meshes.at(0).vertices.at(i).noise.y = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 30);
     }
     
     noise.SetFrequency(12);
     
         // OCTAVE 3: HIGH RES, MEDIUM AMPLITUDE
-    for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
-        glm::vec3 pos = Model::meshes.at(0).vertices.at(i).position;
-        Model::meshes.at(0).vertices.at(i).noise.z = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 100);
+    for (int i = 0; i < sphereRepresentation.meshes.at(0).vertices.size(); i++) {
+        glm::vec3 pos = sphereRepresentation.meshes.at(0).vertices.at(i).position;
+        sphereRepresentation.meshes.at(0).vertices.at(i).noise.z = fabs(noise.GetSimplexFractal(pos.x, pos.y, pos.z) / 100);
     }
     
-    Model::meshes.at(0).updateModelMesh();
+    sphereRepresentation.meshes.at(0).updateModelMesh();
     
     generateName();
 }
 
 void Planet::setLight(Actor * light) {
-    this->setLightSource(light);
+    sphereRepresentation.setLightSource(light);
     water.setLightSource(light);
     atmosphere.setLightSource(light);
 }
@@ -140,7 +141,7 @@ void Planet::draw (SceneCamera *camera) {
     glUniform1f(glGetUniformLocation(water.getShader()->getProgramID(), "time"), glfwGetTime());
     
     glDisable(GL_CULL_FACE);
-    Model::draw (camera);
+    sphereRepresentation.draw (camera);
     if (waterActive) water.draw  (camera);
     
     glDisable(GL_DEPTH_TEST);
@@ -151,30 +152,26 @@ void Planet::draw (SceneCamera *camera) {
 void Planet::update (GameState state) {
     switch (state) {
         case MAIN_MENU: {
-            //setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
-            setPosition(glm::vec3(0.0, -1, 0.0));
+            sphereRepresentation.setRotation(glm::vec3(0.0, sphereRepresentation.getRotation().y + 0.0001, 0.0));
+            sphereRepresentation.setPosition(glm::vec3(0.0, -1, 0.0));
+            atmosphere.setPosition(glm::vec3(0.0, -1, 0.0));
             
 //            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
             water.setPosition(glm::vec3(0.0, -1, 0.0));
-            
-            atmosphere.setRotation(glm::vec3(0.0, 0, 0.0));
-            atmosphere.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
         }
         case RUNNING_FREEMODE: case RUNNING_EDITMODE: {
             //setRotation(glm::vec3(0.0, getRotation().y + 0.001, 0.0));
-            setPosition(glm::vec3(0.0, -1, 0.0));
+            sphereRepresentation.setPosition(glm::vec3(0.0, -1, 0.0));
+            atmosphere.setPosition(glm::vec3(0.0, -1, 0.0));
             
 //            water.setRotation(glm::vec3(0.0, water.getRotation().y + 0.00125, 0.0));
             water.setPosition(glm::vec3(0.0, -1, 0.0));
-            
-            atmosphere.setRotation(glm::vec3(0.0, 0, 0.0));
-            atmosphere.setPosition(glm::vec3(0.0, 0.0, 0.0));
             break;
         }
     }
     
-    Model::update(state);
+    sphereRepresentation.update(state);
     if (waterActive) water.update(state);
     if (atmosActive) atmosphere.update(state);
 }

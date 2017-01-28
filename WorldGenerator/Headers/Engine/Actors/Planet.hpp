@@ -13,7 +13,7 @@
 #include "Model.hpp"
 #include "Water.hpp"
 
-class Planet : public Model {
+class Planet : public Actor {
     public:
         Planet ();
        ~Planet ();
@@ -33,6 +33,9 @@ class Planet : public Model {
     private:
         void generateName();
         std::string name;
+    
+        Model sphereRepresentation;
+        Model flatRepresentation;
     
         Water water;
         Model atmosphere;

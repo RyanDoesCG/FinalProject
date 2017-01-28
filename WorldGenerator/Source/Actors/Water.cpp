@@ -8,8 +8,8 @@
 
 #include "../../Headers/Engine/Actors/Water.hpp"
 
-Water::Water () : Model("plane/plane3") {
-    setShader("waterFlat", GEOM);
+Water::Water () : Model("sphere/sphereDETAILED") {
+    setShader("water", GEOM);
     setScale(2);
     
     for (int i = 0; i < Model::meshes.at(0).vertices.size(); i++) {
