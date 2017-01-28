@@ -11,6 +11,7 @@
 		6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D29A1E01B3A100AAC9C3 /* Input.cpp */; };
 		6215D29D1E01DB7E00AAC9C3 /* Sun.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */; };
 		6215D29F1E01DBE200AAC9C3 /* Sun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D29E1E01DBE200AAC9C3 /* Sun.cpp */; };
+		62380B671E3CC19C00A197A9 /* Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62380B661E3CC19C00A197A9 /* Water.cpp */; };
 		62A37E891E1D18190052D84E /* FastNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E881E1D18190052D84E /* FastNoise.cpp */; };
 		62A37E8B1E1D18E50052D84E /* NoiseInterface.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 62A37E8A1E1D18E50052D84E /* NoiseInterface.hpp */; };
 		62A37E8D1E1D19920052D84E /* NoiseInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */; };
@@ -62,6 +63,8 @@
 		6215D29A1E01B3A100AAC9C3 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
 		6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sun.hpp; sourceTree = "<group>"; };
 		6215D29E1E01DBE200AAC9C3 /* Sun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sun.cpp; sourceTree = "<group>"; };
+		62380B651E3CC13A00A197A9 /* Water.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Water.hpp; sourceTree = "<group>"; };
+		62380B661E3CC19C00A197A9 /* Water.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Water.cpp; sourceTree = "<group>"; };
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A37E851E1D17EA0052D84E /* FastNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastNoise.h; path = FastNoise/FastNoise.h; sourceTree = "<group>"; };
 		62A37E881E1D18190052D84E /* FastNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FastNoise.cpp; path = FastNoise/FastNoise.cpp; sourceTree = "<group>"; };
@@ -737,6 +740,7 @@
 				CEDD0C141E00AA0A0078469C /* Lamp.hpp */,
 				6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */,
 				CEA45D0F1E01EFF70089B2E5 /* AsteroidBelt.hpp */,
+				62380B651E3CC13A00A197A9 /* Water.hpp */,
 				CEDD0C151E00AA0A0078469C /* Model.hpp */,
 				CEDD0C161E00AA0A0078469C /* Moon.hpp */,
 				CEDD0C171E00AA0A0078469C /* Planet.hpp */,
@@ -1298,6 +1302,7 @@
 				CEDD0DAE1E00AA0A0078469C /* Model.cpp */,
 				6215D29E1E01DBE200AAC9C3 /* Sun.cpp */,
 				CEDD0DAF1E00AA0A0078469C /* Moon.cpp */,
+				62380B661E3CC19C00A197A9 /* Water.cpp */,
 				CEDD0DB01E00AA0A0078469C /* Planet.cpp */,
 				CEDD0DB11E00AA0A0078469C /* Player.cpp */,
 				CEDD0DB21E00AA0A0078469C /* Quad.cpp */,
@@ -1463,6 +1468,7 @@
 				CEDD0E571E00AA0B0078469C /* Game.cpp in Sources */,
 				CEDD0E511E00AA0A0078469C /* GamepadComponent.cpp in Sources */,
 				CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */,
+				62380B671E3CC19C00A197A9 /* Water.cpp in Sources */,
 				CEDD0E4C1E00AA0A0078469C /* Planet.cpp in Sources */,
 				6215D29F1E01DBE200AAC9C3 /* Sun.cpp in Sources */,
 				CEDD0E5C1E00AA0B0078469C /* PhysicsEngine.cpp in Sources */,

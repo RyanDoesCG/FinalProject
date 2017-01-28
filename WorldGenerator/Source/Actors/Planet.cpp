@@ -17,17 +17,14 @@
 #include <math.h>
 
 Planet::Planet (): Model("plane/plane3"),
-                   water("plane/plane3"),
                    atmosphere("sphere/sphereDETAILED") {
 
     setColour(ColourPalette::getColour(Sand));
     
     setShader("FlatWorld", GEOM);
     setScale(2);
-    
-    water.setShader("waterFlat", GEOM);
-    water.setScale(2);
-    //water.setRotation(glm::vec3(0.15, 0.23, 0));
+                       
+    water = Water();
                        
     atmosphere.setShader("Atmosphere", BASIC);
     atmosphere.setScale(1.1175);

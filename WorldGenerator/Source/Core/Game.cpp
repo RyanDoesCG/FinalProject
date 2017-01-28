@@ -87,7 +87,7 @@ void Game::begin() {
     physics.addToSimulation(&sun);
     //physics.addToSimulation(&cube);
 
-    sun.setPosition (glm::vec3(-50, 1.0, 1.5));
+    sun.setPosition (glm::vec3(-50, 10.0, 1.5));
     sun.setScale    (0.25f);
     sun.setColour   (glm::vec3(1.0, 0.9, 0.9));    // slight red tinge to light
     

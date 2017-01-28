@@ -11,6 +11,7 @@
 
 #include "Actor.hpp"
 #include "Model.hpp"
+#include "Water.hpp"
 
 class Planet : public Model {
     public:
@@ -33,7 +34,7 @@ class Planet : public Model {
         void generateName();
         std::string name;
     
-        Model water;
+        Water water;
         Model atmosphere;
 
         bool waterActive = true;

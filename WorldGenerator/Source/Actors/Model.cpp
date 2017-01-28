@@ -73,7 +73,6 @@ MeshComponent Model::processMesh (aiMesh* mesh, const aiScene* scene) {
         vector.z = mesh->mNormals[i].z;
         vertex.normal = vector;
         // tcww
-        static glm::vec3 noise;
         
         vertices.push_back(vertex);
     }

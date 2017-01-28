@@ -1,7 +1,7 @@
 #version 330 core
 layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
-layout (location = 2) in vec3 texCoords;
+layout (location = 2) in vec3 noise;
 
 uniform float time;
 uniform mat4 model;
@@ -27,9 +27,9 @@ void main() {
     gl_Position = model * vec4(position.x, position.y + height, position.z, 1.0f);
     
     // pass through
-    if      (texCoords.x == 1) { vertexColour = vec3(0.2, 0.4, 0.45); }
-    else if (texCoords.x == 2) { vertexColour = vec3(0.22, 0.42, 0.47); }
-    else                       { vertexColour = vec3(0.24, 0.44, 0.49); }
+    if      (noise.x == 1) { vertexColour = vec3(0.4, 0.6, 0.8); }
+    else if (noise.x == 2) { vertexColour = vec3(0.4, 0.6, 0.8) * 1.1; }
+    else                   { vertexColour = vec3(0.4, 0.6, 0.8) * 1.1; }
     
 }
 
