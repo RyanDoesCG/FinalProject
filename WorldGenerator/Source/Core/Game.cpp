@@ -10,20 +10,10 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Core/Game.hpp"
 #include "../../Headers/Engine/Core/Renderer.hpp"
-#include "../../Headers/Engine/Physics/PhysicsEngine.hpp"
-
-#include "../../Headers/Engine/Actors/Sun.hpp"
-#include "../../Headers/Engine/Actors/Planet.hpp"
-#include "../../Headers/Engine/Actors/Skybox.hpp"
-#include "../../Headers/Engine/Actors/Moon.hpp"
-#include "../../Headers/Engine/Actors/Cube.hpp"
-#include "../../Headers/Engine/Actors/Skybox.hpp"
-#include "../../Headers/Engine/Actors/Cursor.hpp"
-
-#include "../../Headers/Engine/UI/GameHUD.hpp"
 #include "../../Headers/Engine/UI/MainMenu.hpp"
-
 #include "../../Headers/Engine/Utility/Input.hpp"
+#include "../../Headers/Engine/Actors/Player.hpp"
+#include "../../Headers/Engine/Physics/PhysicsEngine.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 0
@@ -31,8 +21,8 @@
 Game::Game() {
     srand(generateSeed());
     
-    windowWidth  = 1920;
-    windowHeight = 1080;
+    windowWidth  = 1280;
+    windowHeight = 800;
     
     // Initialise Subsystems
     if (initGLFW()) {std::cout << "GLFW initialisation failure. Exiting\n"; exit(1);}
@@ -49,54 +39,15 @@ Game::~Game() {
  *  Game Loop
  */
 void Game::begin() {
-    glClearColor (0.12f, 0.12f, 0.12f, 1.0f);
+    glClearColor (0.93f, 0.90f, 0.83f, 1.0f);
     Input::initialise(window);
-    
-    Skybox skybox = Skybox();
+
     Player player = Player(window, this);
-    Cursor cursor = Cursor();
-    Planet planet = Planet();
-    Moon   moon1  = Moon();
-    Moon   moon2  = Moon();
-    Sun    sun    = Sun();
-    
     MainMenu menu = MainMenu(windowWidth, windowHeight, this);
     menu.show();
     
-    GameHUD hud = GameHUD(windowWidth, windowHeight, this, &player, &planet);
-    
-    Cube cube = Cube();
-    cube.setScale(2);
-    cube.setColour(glm::vec3(1.0, 0.0, 0.0));
-    
     Renderer graphics = Renderer(windowWidth, windowHeight);
-    //graphics.addToScene(&skybox);
-    graphics.addToScene(&planet);
-    graphics.addToScene(&player);
-    graphics.addToScene(&moon1);
-    graphics.addToScene(&moon2);
-    graphics.addToScene(&sun);
-    //graphics.addToScene(&cube);
-    
     PhysicsEngine physics = PhysicsEngine();
-    //physics.addToSimulation(&skybox);
-    physics.addToSimulation(&player);
-    physics.addToSimulation(&planet);
-    physics.addToSimulation(&moon1);
-    physics.addToSimulation(&moon2);
-    physics.addToSimulation(&sun);
-    //physics.addToSimulation(&cube);
-
-    sun.setPosition (glm::vec3(-50, 10.0, 1.5));
-    sun.setScale    (0.25f);
-    sun.setColour   (glm::vec3(1.0, 0.9, 0.9));    // slight red tinge to light
-    
-    planet.setLight(&sun);
-    moon1.setLightSource(&sun);
-    moon2.setLightSource(&sun);
-    moon2.setPosition(glm::vec3(-1, -0.2, 0.0));
-    moon2.setSpeed(12);
-    moon2.setColour(glm::vec3(0.45, 0.175, 0.175));
     
     while (windowIsAlive()) {
         switch (state) {
@@ -119,10 +70,6 @@ void Game::begin() {
                 Input::update();
                 physics.simulate(glfwGetTime(), state);
                 graphics.drawScene(player.getView());
-                
-                // draw UI
-                hud.update(state);
-                hud.draw (player.getView());
                 
                 glfwSwapBuffers(window);
                 break;

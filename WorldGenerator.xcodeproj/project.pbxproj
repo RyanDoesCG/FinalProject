@@ -11,7 +11,6 @@
 		6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D29A1E01B3A100AAC9C3 /* Input.cpp */; };
 		6215D29D1E01DB7E00AAC9C3 /* Sun.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */; };
 		6215D29F1E01DBE200AAC9C3 /* Sun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D29E1E01DBE200AAC9C3 /* Sun.cpp */; };
-		62380B671E3CC19C00A197A9 /* Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62380B661E3CC19C00A197A9 /* Water.cpp */; };
 		62A37E891E1D18190052D84E /* FastNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E881E1D18190052D84E /* FastNoise.cpp */; };
 		62A37E8B1E1D18E50052D84E /* NoiseInterface.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 62A37E8A1E1D18E50052D84E /* NoiseInterface.hpp */; };
 		62A37E8D1E1D19920052D84E /* NoiseInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */; };
@@ -20,7 +19,6 @@
 		CEDD0E491E00AA0A0078469C /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAD1E00AA0A0078469C /* Flag.cpp */; };
 		CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAE1E00AA0A0078469C /* Model.cpp */; };
 		CEDD0E4B1E00AA0A0078469C /* Moon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAF1E00AA0A0078469C /* Moon.cpp */; };
-		CEDD0E4C1E00AA0A0078469C /* Planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DB01E00AA0A0078469C /* Planet.cpp */; };
 		CEDD0E4D1E00AA0A0078469C /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DB11E00AA0A0078469C /* Player.cpp */; };
 		CEDD0E4E1E00AA0A0078469C /* Quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DB21E00AA0A0078469C /* Quad.cpp */; };
 		CEDD0E4F1E00AA0A0078469C /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DB31E00AA0A0078469C /* SceneCamera.cpp */; };
@@ -36,7 +34,6 @@
 		CEDD0E591E00AA0B0078469C /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DBF1E00AA0A0078469C /* Renderer.cpp */; };
 		CEDD0E5C1E00AA0B0078469C /* PhysicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DC41E00AA0A0078469C /* PhysicsEngine.cpp */; };
 		CEDD0E5D1E00AA0B0078469C /* Showcase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DC61E00AA0A0078469C /* Showcase.cpp */; };
-		CEDD0E5E1E00AA0B0078469C /* GameHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DC81E00AA0A0078469C /* GameHUD.cpp */; };
 		CEDD0E5F1E00AA0B0078469C /* LoadMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DC91E00AA0A0078469C /* LoadMenu.cpp */; };
 		CEDD0E601E00AA0B0078469C /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DCA1E00AA0A0078469C /* MainMenu.cpp */; };
 		CEDD0E611E00AA0B0078469C /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DCB1E00AA0A0078469C /* Menu.cpp */; };
@@ -63,8 +60,6 @@
 		6215D29A1E01B3A100AAC9C3 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
 		6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sun.hpp; sourceTree = "<group>"; };
 		6215D29E1E01DBE200AAC9C3 /* Sun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sun.cpp; sourceTree = "<group>"; };
-		62380B651E3CC13A00A197A9 /* Water.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Water.hpp; sourceTree = "<group>"; };
-		62380B661E3CC19C00A197A9 /* Water.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Water.cpp; sourceTree = "<group>"; };
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A37E851E1D17EA0052D84E /* FastNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastNoise.h; path = FastNoise/FastNoise.h; sourceTree = "<group>"; };
 		62A37E881E1D18190052D84E /* FastNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FastNoise.cpp; path = FastNoise/FastNoise.cpp; sourceTree = "<group>"; };
@@ -74,7 +69,6 @@
 		CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../../Library/Frameworks/libglfw3.a; sourceTree = "<group>"; };
 		CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../../Library/Frameworks/libfreetype.dylib; sourceTree = "<group>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		CEA45D0F1E01EFF70089B2E5 /* AsteroidBelt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AsteroidBelt.hpp; sourceTree = "<group>"; };
 		CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../Library/Frameworks/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -130,7 +124,6 @@
 		CEDD0C141E00AA0A0078469C /* Lamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Lamp.hpp; sourceTree = "<group>"; };
 		CEDD0C151E00AA0A0078469C /* Model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		CEDD0C161E00AA0A0078469C /* Moon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Moon.hpp; sourceTree = "<group>"; };
-		CEDD0C171E00AA0A0078469C /* Planet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Planet.hpp; sourceTree = "<group>"; };
 		CEDD0C181E00AA0A0078469C /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		CEDD0C191E00AA0A0078469C /* Quad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Quad.hpp; sourceTree = "<group>"; };
 		CEDD0C1A1E00AA0A0078469C /* SceneCamera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SceneCamera.hpp; sourceTree = "<group>"; };
@@ -147,7 +140,6 @@
 		CEDD0C271E00AA0A0078469C /* Renderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
 		CEDD0C2D1E00AA0A0078469C /* PhysicsEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PhysicsEngine.hpp; sourceTree = "<group>"; };
 		CEDD0C2F1E00AA0A0078469C /* Showcase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Showcase.hpp; sourceTree = "<group>"; };
-		CEDD0C311E00AA0A0078469C /* GameHUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameHUD.hpp; sourceTree = "<group>"; };
 		CEDD0C321E00AA0A0078469C /* LoadMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoadMenu.hpp; sourceTree = "<group>"; };
 		CEDD0C331E00AA0A0078469C /* MainMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainMenu.hpp; sourceTree = "<group>"; };
 		CEDD0C341E00AA0A0078469C /* Menu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
@@ -514,7 +506,6 @@
 		CEDD0DAD1E00AA0A0078469C /* Flag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flag.cpp; sourceTree = "<group>"; };
 		CEDD0DAE1E00AA0A0078469C /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		CEDD0DAF1E00AA0A0078469C /* Moon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Moon.cpp; sourceTree = "<group>"; };
-		CEDD0DB01E00AA0A0078469C /* Planet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Planet.cpp; sourceTree = "<group>"; };
 		CEDD0DB11E00AA0A0078469C /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		CEDD0DB21E00AA0A0078469C /* Quad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quad.cpp; sourceTree = "<group>"; };
 		CEDD0DB31E00AA0A0078469C /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneCamera.cpp; sourceTree = "<group>"; };
@@ -530,7 +521,6 @@
 		CEDD0DBF1E00AA0A0078469C /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
 		CEDD0DC41E00AA0A0078469C /* PhysicsEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsEngine.cpp; sourceTree = "<group>"; };
 		CEDD0DC61E00AA0A0078469C /* Showcase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Showcase.cpp; sourceTree = "<group>"; };
-		CEDD0DC81E00AA0A0078469C /* GameHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameHUD.cpp; sourceTree = "<group>"; };
 		CEDD0DC91E00AA0A0078469C /* LoadMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMenu.cpp; sourceTree = "<group>"; };
 		CEDD0DCA1E00AA0A0078469C /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
 		CEDD0DCB1E00AA0A0078469C /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
@@ -739,11 +729,8 @@
 				CEDD0C131E00AA0A0078469C /* Flag.hpp */,
 				CEDD0C141E00AA0A0078469C /* Lamp.hpp */,
 				6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */,
-				CEA45D0F1E01EFF70089B2E5 /* AsteroidBelt.hpp */,
-				62380B651E3CC13A00A197A9 /* Water.hpp */,
 				CEDD0C151E00AA0A0078469C /* Model.hpp */,
 				CEDD0C161E00AA0A0078469C /* Moon.hpp */,
-				CEDD0C171E00AA0A0078469C /* Planet.hpp */,
 				CEDD0C181E00AA0A0078469C /* Player.hpp */,
 				CEDD0C191E00AA0A0078469C /* Quad.hpp */,
 				CEDD0C1A1E00AA0A0078469C /* SceneCamera.hpp */,
@@ -803,7 +790,6 @@
 		CEDD0C301E00AA0A0078469C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CEDD0C311E00AA0A0078469C /* GameHUD.hpp */,
 				CEDD0C321E00AA0A0078469C /* LoadMenu.hpp */,
 				CEDD0C331E00AA0A0078469C /* MainMenu.hpp */,
 				CEDD0C341E00AA0A0078469C /* Menu.hpp */,
@@ -1302,8 +1288,6 @@
 				CEDD0DAE1E00AA0A0078469C /* Model.cpp */,
 				6215D29E1E01DBE200AAC9C3 /* Sun.cpp */,
 				CEDD0DAF1E00AA0A0078469C /* Moon.cpp */,
-				62380B661E3CC19C00A197A9 /* Water.cpp */,
-				CEDD0DB01E00AA0A0078469C /* Planet.cpp */,
 				CEDD0DB11E00AA0A0078469C /* Player.cpp */,
 				CEDD0DB21E00AA0A0078469C /* Quad.cpp */,
 				CEDD0DB31E00AA0A0078469C /* SceneCamera.cpp */,
@@ -1362,7 +1346,6 @@
 		CEDD0DC71E00AA0A0078469C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CEDD0DC81E00AA0A0078469C /* GameHUD.cpp */,
 				CEDD0DC91E00AA0A0078469C /* LoadMenu.cpp */,
 				CEDD0DCA1E00AA0A0078469C /* MainMenu.cpp */,
 				CEDD0DCB1E00AA0A0078469C /* Menu.cpp */,
@@ -1468,8 +1451,6 @@
 				CEDD0E571E00AA0B0078469C /* Game.cpp in Sources */,
 				CEDD0E511E00AA0A0078469C /* GamepadComponent.cpp in Sources */,
 				CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */,
-				62380B671E3CC19C00A197A9 /* Water.cpp in Sources */,
-				CEDD0E4C1E00AA0A0078469C /* Planet.cpp in Sources */,
 				6215D29F1E01DBE200AAC9C3 /* Sun.cpp in Sources */,
 				CEDD0E5C1E00AA0B0078469C /* PhysicsEngine.cpp in Sources */,
 				62A37E8D1E1D19920052D84E /* NoiseInterface.cpp in Sources */,
@@ -1482,7 +1463,6 @@
 				CEDD0E591E00AA0B0078469C /* Renderer.cpp in Sources */,
 				CEDD0E551E00AA0B0078469C /* ShaderComponent.cpp in Sources */,
 				6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */,
-				CEDD0E5E1E00AA0B0078469C /* GameHUD.cpp in Sources */,
 				CEDD0E631E00AA0B0078469C /* SeedMenu.cpp in Sources */,
 				CEDD0E491E00AA0A0078469C /* Flag.cpp in Sources */,
 				CEDD0E641E00AA0B0078469C /* ColourPalette.cpp in Sources */,

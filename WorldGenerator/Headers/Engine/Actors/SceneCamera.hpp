@@ -42,6 +42,7 @@ class SceneCamera: public Actor {
         GLfloat movementSpeed;
         GLfloat sensitivity;
     
+        // MOVE TO QUATERNIONS
         GLfloat pitch;
         GLfloat roll;
         GLfloat yaw;

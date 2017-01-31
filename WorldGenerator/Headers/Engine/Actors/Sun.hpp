@@ -10,7 +10,6 @@
 #define Sun_hpp
 
 #include "Model.hpp"
-#include "Quad.hpp"
 #include "../Utility/ShaderCache.hpp"
 
 class Sun: public Model {
@@ -22,10 +21,6 @@ class Sun: public Model {
         virtual void update (GameState state) override;
     
     private:
-        Quad flare1;
-        Quad flare2;
-        Quad flare3;
-        Quad flare4;
     
 };
 
