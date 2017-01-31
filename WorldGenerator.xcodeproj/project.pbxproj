@@ -15,6 +15,7 @@
 		62A37E8B1E1D18E50052D84E /* NoiseInterface.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 62A37E8A1E1D18E50052D84E /* NoiseInterface.hpp */; };
 		62A37E8D1E1D19920052D84E /* NoiseInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */; };
 		62F401CC1E0160FF0069B079 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
+		CE6662171E411A2E0005E830 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE6662151E411A2E0005E830 /* Diorama.cpp */; };
 		CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAC1E00AA0A0078469C /* Cube.cpp */; };
 		CEDD0E491E00AA0A0078469C /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAD1E00AA0A0078469C /* Flag.cpp */; };
 		CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAE1E00AA0A0078469C /* Model.cpp */; };
@@ -68,6 +69,8 @@
 		62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoiseInterface.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../../Library/Frameworks/libglfw3.a; sourceTree = "<group>"; };
+		CE6662151E411A2E0005E830 /* Diorama.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Diorama.cpp; sourceTree = "<group>"; };
+		CE6662181E411A5E0005E830 /* Diorama.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Diorama.hpp; sourceTree = "<group>"; };
 		CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../../Library/Frameworks/libfreetype.dylib; sourceTree = "<group>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../Library/Frameworks/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
@@ -726,6 +729,7 @@
 		CEDD0C101E00AA0A0078469C /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				CE6662181E411A5E0005E830 /* Diorama.hpp */,
 				6215D2931E01A9A700AAC9C3 /* Cursor.hpp */,
 				CEDD0C111E00AA0A0078469C /* Actor.hpp */,
 				CEDD0C121E00AA0A0078469C /* Cube.hpp */,
@@ -1293,6 +1297,7 @@
 				6215D29E1E01DBE200AAC9C3 /* Sun.cpp */,
 				CEDD0DAF1E00AA0A0078469C /* Moon.cpp */,
 				CEDD0DB11E00AA0A0078469C /* Player.cpp */,
+				CE6662151E411A2E0005E830 /* Diorama.cpp */,
 				CEE0D2E41E4107F600A718B7 /* GridPlane.cpp */,
 				CEDD0DB21E00AA0A0078469C /* Quad.cpp */,
 				CEDD0DB31E00AA0A0078469C /* SceneCamera.cpp */,
@@ -1466,6 +1471,7 @@
 				CEDD0E5D1E00AA0B0078469C /* Showcase.cpp in Sources */,
 				CEDD0E621E00AA0B0078469C /* OptionsMenu.cpp in Sources */,
 				CEDD0E591E00AA0B0078469C /* Renderer.cpp in Sources */,
+				CE6662171E411A2E0005E830 /* Diorama.cpp in Sources */,
 				CEDD0E551E00AA0B0078469C /* ShaderComponent.cpp in Sources */,
 				6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */,
 				CEDD0E631E00AA0B0078469C /* SeedMenu.cpp in Sources */,

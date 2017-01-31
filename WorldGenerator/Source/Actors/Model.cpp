@@ -20,7 +20,7 @@ void Model::loadModel(string path) {
      - aiProcess_GenNormals : actually creates normals for each vertex if the model didn’t contain normal vectors.
      
      **/
-    const aiScene* scene = importer.ReadFile(path, aiProcess_GenNormals);
+    const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate);
     
     // error check
     if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {

@@ -23,7 +23,7 @@ SceneCamera::SceneCamera (GLfloat width, GLfloat height) {
         45.0f,
         width / height,
         0.001f,
-        100.0f
+        1000.0f
     );
     
     view = glm::lookAt(position, position + relativeFront, relativeUp);
@@ -48,10 +48,10 @@ void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
 void SceneCamera::moveBackwardAt (float speed) { position -= speed * movementSpeed * relativeFront; }
 
 void SceneCamera::reset () {
-    position = vec3(-1.48968, 25.1779, 38.4063);
-    pitch = -40;
+    position = vec3(71.0869, 15.5143, 29.0421);
+    pitch = -20.65;
     roll = 0;
-    yaw = -75.0f;
+    yaw = -159;
 }
 
 void SceneCamera::draw (SceneCamera* camera) {
@@ -102,5 +102,8 @@ void SceneCamera::update (GameState state) {
         }
     }
     
+    std::cout << std::endl;
     std::cout << position.x << ", " << position.y << ", " << position.z << std::endl;
+    std::cout << pitch << ", " << yaw << ", " << roll << std::endl;
+    std::cout << std::endl;
 }

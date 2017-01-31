@@ -15,8 +15,8 @@
 #include "../../Headers/Engine/Actors/Player.hpp"
 #include "../../Headers/Engine/Physics/PhysicsEngine.hpp"
 
-#include "../../Headers/Engine/Actors/GridPlane.hpp"
-#include "../../Headers/Engine/Actors/Cube.hpp"
+#include "../../Headers/Engine/Actors/Sun.hpp"
+#include "../../Headers/Engine/Actors/Diorama.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 0
@@ -53,13 +53,21 @@ void Game::begin() {
     PhysicsEngine physics = PhysicsEngine();
     
     // Skyland
-    GridPlane worldGrid = GridPlane(24, 24);
+    Sun     sun;
+    Diorama diorama;
 
-    graphics.addToScene(&worldGrid);
-    physics.addToSimulation(&worldGrid);
+    graphics.addToScene(&sun);
+    physics.addToSimulation(&sun);
 
+    graphics.addToScene(&diorama);
+    physics.addToSimulation(&diorama);
+    
     graphics.addToScene(&player);
     physics.addToSimulation(&player);
+    
+    diorama.setLightSource(&sun);
+    
+    sun.setPosition(vec3(2.0, 0.75, 0.0));
     
     state = RUNNING_FREEMODE;
     
@@ -140,7 +148,7 @@ int Game::initGLFW () {
 
     // FULLSCREEN (buggy)
     //window = glfwCreateWindow(windowWidth, windowHeight, "Tribes - OpenGL", glfwGetPrimaryMonitor(), nullptr);
-    window = glfwCreateWindow(windowWidth, windowHeight, "Tribes - OpenGL", nullptr, nullptr);
+    window = glfwCreateWindow(windowWidth, windowHeight, "Project Skyland", nullptr, nullptr);
     
     
     if (!window) return 1;
@@ -159,6 +167,7 @@ int Game::initGLEW () {
     glfwGetFramebufferSize (window, &windowWidth, &windowHeight);
     glViewport (0, 0, windowWidth, windowHeight);
     
+    glEnable    (GL_DEPTH_TEST);
     glEnable    (GL_MULTISAMPLE);   // MULTISAMPLING
     glEnable    (GL_BLEND);         // ALPHA BLENDING
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

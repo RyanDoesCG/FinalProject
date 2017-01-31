@@ -58,7 +58,6 @@ GridPlane::GridPlane(float width, float height) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
-            
             // TRIANGLE 2 VERT 3
             vertices.push_back(x + 0.5);    // position x
             vertices.push_back(0.0f);       // position y
@@ -69,7 +68,7 @@ GridPlane::GridPlane(float width, float height) {
         }
     }
     
-    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("litObject", BASIC));
+    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("DioramaSurface", GEOM));
     mesh = (MeshComponent*)addComponent(new MeshComponent(vertices));
 }
 
@@ -97,7 +96,10 @@ void GridPlane::draw(SceneCamera *camera) {
         glUniform3fv(glGetUniformLocation(shader->getProgramID(), "lightColour"), 1, glm::value_ptr(lightColour));
     }
     
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // random
+    glUniform1f(glGetUniformLocation(shader->getProgramID(), "randomSeed"), rand());
+    
+   // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     mesh->testdraw(shader, camera);
 }
 
