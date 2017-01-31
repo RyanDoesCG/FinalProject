@@ -24,11 +24,20 @@ class Diorama : public Actor {
         void setLightSource (Actor* light) {
             surface.setLightSource(light);
             base.setLightSource(light);
+            tree.setLightSource(light);
         }
     
     private:
         GridPlane surface;
         Model     base;
+    
+        // trees
+        Model     tree;
+        std::vector<glm::vec3> treeFlyweightTransforms;
+    
+        // model
+        Model     rock;
+        std::vector<glm::vec3> rockFlyweightTransforms;
 };
 
 #endif /* Diorama_hpp */
