@@ -17,14 +17,11 @@ GridPlane::GridPlane(float width, float height) {
     
     std::vector<GLfloat> vertices = {};
     
-    float startX = (width / 2) * 1;
-    float startZ = (height / 2) * 1;
-    
-    std::cout << "startX: " << startX << std::endl;
-    std::cout << "startZ: " << startZ << std::endl;
+    float startX = (width / 2) * -1;
+    float endZ = (height / 2) * -1;
     
     for (float x = startX; x < width; x += 1.0) {
-        for (float z = startZ; z < height; z += 1.0) {
+        for (float z = height; z > endZ; z -= 1.0) {
             // TRIANGLE 1 VERT 1
             vertices.push_back(x - 0.5);    // position x
             vertices.push_back(0.0f);       // position y

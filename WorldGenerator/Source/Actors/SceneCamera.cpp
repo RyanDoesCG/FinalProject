@@ -48,10 +48,10 @@ void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
 void SceneCamera::moveBackwardAt (float speed) { position -= speed * movementSpeed * relativeFront; }
 
 void SceneCamera::reset () {
-    position = vec3(0.0f, 0.0f, 3.0f);
-    pitch = 0;
+    position = vec3(-1.48968, 25.1779, 38.4063);
+    pitch = -40;
     roll = 0;
-    yaw = -90.0f;
+    yaw = -75.0f;
 }
 
 void SceneCamera::draw (SceneCamera* camera) {
@@ -63,7 +63,7 @@ void SceneCamera::update (GameState state) {
     switch (state) {
         case MAIN_MENU: {
             // lock position
-            position = vec3(-1.0f, 0.0f, 3.0f);
+            position = vec3(-1.48968, 25.1779, 38.4063);
             
             relativeFront.x = 0.2 * (cos(radians(yaw)) * cos(radians(pitch)));
             relativeFront.y = 0.2 * (sin(radians(pitch)));
@@ -101,4 +101,6 @@ void SceneCamera::update (GameState state) {
             break;
         }
     }
+    
+    std::cout << position.x << ", " << position.y << ", " << position.z << std::endl;
 }

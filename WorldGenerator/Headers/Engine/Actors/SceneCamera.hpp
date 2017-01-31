@@ -13,6 +13,10 @@
 
 #include "Actor.hpp"
 
+// !!!!!
+// https://www.gamedev.net/resources/_/technical/math-and-physics/a-simple-quaternion-based-camera-r1997
+// !!!!!
+
 using namespace glm;
 
 class SceneCamera: public Actor {

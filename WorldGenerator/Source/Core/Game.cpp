@@ -53,14 +53,10 @@ void Game::begin() {
     PhysicsEngine physics = PhysicsEngine();
     
     // Skyland
-    GridPlane worldGrid = GridPlane(56, 56);
-    Cube cube = Cube();
-    
+    GridPlane worldGrid = GridPlane(24, 24);
+
     graphics.addToScene(&worldGrid);
     physics.addToSimulation(&worldGrid);
-    
-    graphics.addToScene(&cube);
-    physics.addToSimulation(&cube);
 
     graphics.addToScene(&player);
     physics.addToSimulation(&player);
