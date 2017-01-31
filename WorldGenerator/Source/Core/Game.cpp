@@ -15,6 +15,9 @@
 #include "../../Headers/Engine/Actors/Player.hpp"
 #include "../../Headers/Engine/Physics/PhysicsEngine.hpp"
 
+#include "../../Headers/Engine/Actors/GridPlane.hpp"
+#include "../../Headers/Engine/Actors/Cube.hpp"
+
 // Deterines window size/debug hud
 #define BUILD_MODE 0
 
@@ -48,6 +51,21 @@ void Game::begin() {
     
     Renderer graphics = Renderer(windowWidth, windowHeight);
     PhysicsEngine physics = PhysicsEngine();
+    
+    // Skyland
+    GridPlane worldGrid = GridPlane(56, 56);
+    Cube cube = Cube();
+    
+    graphics.addToScene(&worldGrid);
+    physics.addToSimulation(&worldGrid);
+    
+    graphics.addToScene(&cube);
+    physics.addToSimulation(&cube);
+
+    graphics.addToScene(&player);
+    physics.addToSimulation(&player);
+    
+    state = RUNNING_FREEMODE;
     
     while (windowIsAlive()) {
         switch (state) {

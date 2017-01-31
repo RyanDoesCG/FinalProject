@@ -49,6 +49,7 @@
 		CEDD0E6B1E00AAC10078469C /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1179F1D7805E700FE98A9 /* libGLEW.dylib */; };
 		CEDD0E6E1E00AADB0078469C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
 		CEDD0F1A1E00AC990078469C /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = CEDD0F191E00AC990078469C /* Assets */; };
+		CEE0D2E51E4107F600A718B7 /* GridPlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEE0D2E41E4107F600A718B7 /* GridPlane.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -530,6 +531,8 @@
 		CEDD0E6C1E00AACE0078469C /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.dylib; path = ../../../../../../../Library/Frameworks/libglfw3.dylib; sourceTree = "<group>"; };
 		CEDD0F191E00AC990078469C /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		CEDD0F1E1E00ADA60078469C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WorldGenerator/Info.plist; sourceTree = "<group>"; };
+		CEE0D2E31E4106BA00A718B7 /* GridPlane.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GridPlane.hpp; sourceTree = "<group>"; };
+		CEE0D2E41E4107F600A718B7 /* GridPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridPlane.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -727,6 +730,7 @@
 				CEDD0C111E00AA0A0078469C /* Actor.hpp */,
 				CEDD0C121E00AA0A0078469C /* Cube.hpp */,
 				CEDD0C131E00AA0A0078469C /* Flag.hpp */,
+				CEE0D2E31E4106BA00A718B7 /* GridPlane.hpp */,
 				CEDD0C141E00AA0A0078469C /* Lamp.hpp */,
 				6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */,
 				CEDD0C151E00AA0A0078469C /* Model.hpp */,
@@ -1289,6 +1293,7 @@
 				6215D29E1E01DBE200AAC9C3 /* Sun.cpp */,
 				CEDD0DAF1E00AA0A0078469C /* Moon.cpp */,
 				CEDD0DB11E00AA0A0078469C /* Player.cpp */,
+				CEE0D2E41E4107F600A718B7 /* GridPlane.cpp */,
 				CEDD0DB21E00AA0A0078469C /* Quad.cpp */,
 				CEDD0DB31E00AA0A0078469C /* SceneCamera.cpp */,
 				CEDD0DB41E00AA0A0078469C /* Skybox.cpp */,
@@ -1465,6 +1470,7 @@
 				6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */,
 				CEDD0E631E00AA0B0078469C /* SeedMenu.cpp in Sources */,
 				CEDD0E491E00AA0A0078469C /* Flag.cpp in Sources */,
+				CEE0D2E51E4107F600A718B7 /* GridPlane.cpp in Sources */,
 				CEDD0E641E00AA0B0078469C /* ColourPalette.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
