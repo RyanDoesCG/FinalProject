@@ -24,8 +24,8 @@
 Game::Game() {
     srand(generateSeed());
     
-    windowWidth  = 1920;
-    windowHeight = 1080;
+    windowWidth  = 1400;
+    windowHeight = 800;
     
     // Initialise Subsystems
     if (initGLFW()) {std::cout << "GLFW initialisation failure. Exiting\n"; exit(1);}
