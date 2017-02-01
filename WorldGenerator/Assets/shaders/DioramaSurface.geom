@@ -19,18 +19,17 @@ uniform vec3 lightPosition;
 const float ambientLighting = 0.4;
 
 vec3 calculateTriangleNormal(){
-    vec3 a = gl_in[0].gl_Position.xyz;
-    vec3 b = gl_in[1].gl_Position.xyz;
-    vec3 c = gl_in[2].gl_Position.xyz;
-    
-    return normalize(cross(b - a, c - a));
+    vec3 tangent = gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+    vec3 bitangent = gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+    vec3 normal = cross(tangent, bitangent);
+    return normalize(mat3(transpose(inverse(model))) * normal);
 }
 
 void main(void){
     
     vec4 worldPosition  = gl_in[0].gl_Position;
     vec3 normal         = calculateTriangleNormal();
-    vec3 lightDirection = normalize(vec3(worldPosition.xyz) - lightPosition);
+    vec3 lightDirection = normalize(lightPosition - vec3(worldPosition.xyz));
     float brightness    = max(dot(-lightDirection, normal), ambientLighting);
     vec3 colour         = vertexColour[0] * brightness;
     
@@ -42,7 +41,7 @@ void main(void){
     
     worldPosition   = gl_in[1].gl_Position;
     normal          = calculateTriangleNormal();
-    lightDirection  = normalize(vec3(worldPosition.xyz) - lightPosition);
+    lightDirection  = normalize(lightPosition - vec3(worldPosition.xyz));
     brightness      = max(dot(-lightDirection, normal), ambientLighting);
     colour          = vertexColour[0] * brightness;
     
@@ -54,7 +53,7 @@ void main(void){
     
     worldPosition   = gl_in[2].gl_Position;
     normal          = calculateTriangleNormal();
-    lightDirection  = normalize(vec3(worldPosition.xyz) - lightPosition);
+    lightDirection  = normalize(lightPosition - vec3(worldPosition.xyz));
     brightness      = max(dot(-lightDirection, normal), ambientLighting);
     colour          = vertexColour[0] * brightness;
     

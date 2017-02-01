@@ -21,7 +21,7 @@ class Sun: public Model {
         virtual void update (GameState state) override;
     
     private:
-    
+
 };
 
 #endif

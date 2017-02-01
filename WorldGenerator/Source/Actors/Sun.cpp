@@ -8,6 +8,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Actors/Sun.hpp"
 #include "../../Headers/Engine/Utility/TextureCache.hpp"
+#include "../../Headers/GLFW/glfw3.h"
 
 Sun::Sun () : Model("sphere/sphere") {
     shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("lightSource", BASIC));
@@ -25,5 +26,22 @@ void Sun::draw(SceneCamera *camera) {
 }
 
 void Sun::update(GameState state) {
+    
+    float radius = 80;
+    float speed = 4;
+    
+    setPosition(glm::vec3(0, sin(glfwGetTime()/speed) * radius, cos(glfwGetTime()/speed) * radius));
+    
+    if (position.y > 0) {
+        glClearColor (
+            (0.81f * (position.y/100)) + 0.12,
+            (0.78f * (position.y/100)) + 0.12,
+            (0.71f * (position.y/100)) + 0.12,
+            1.0f
+        );
+    } else {
+        glClearColor(0.12, 0.12, 0.12, 1.0f);
+    }
+    
     Model::update(state);
 }

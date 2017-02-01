@@ -48,9 +48,9 @@ class Actor {
         void setPosition (glm::vec3 newPos) { this->position = newPos; }
         void setRotation (glm::vec3 rot)    { this->rotation = rot;}
     
-        glm::vec3 getPosition () { return this->position; }
-        glm::vec3 getRotation () { return this->rotation; }
-        glm::vec3 getColour   () { return colour; }
+        virtual glm::vec3 getPosition () { return this->position; }
+        virtual glm::vec3 getRotation () { return this->rotation; }
+        virtual glm::vec3 getColour   () { return colour; }
     
     protected:
         Component* addComponent (Component* comp) {
