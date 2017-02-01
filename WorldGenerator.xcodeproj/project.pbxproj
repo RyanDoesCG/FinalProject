@@ -14,6 +14,7 @@
 		62A37E891E1D18190052D84E /* FastNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E881E1D18190052D84E /* FastNoise.cpp */; };
 		62A37E8B1E1D18E50052D84E /* NoiseInterface.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 62A37E8A1E1D18E50052D84E /* NoiseInterface.hpp */; };
 		62A37E8D1E1D19920052D84E /* NoiseInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */; };
+		62AAB8181E42265C00DFB0DF /* Stars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB8171E42265C00DFB0DF /* Stars.cpp */; };
 		62F401CC1E0160FF0069B079 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
 		CE6662171E411A2E0005E830 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE6662151E411A2E0005E830 /* Diorama.cpp */; };
 		CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAC1E00AA0A0078469C /* Cube.cpp */; };
@@ -67,6 +68,9 @@
 		62A37E881E1D18190052D84E /* FastNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FastNoise.cpp; path = FastNoise/FastNoise.cpp; sourceTree = "<group>"; };
 		62A37E8A1E1D18E50052D84E /* NoiseInterface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NoiseInterface.hpp; sourceTree = "<group>"; };
 		62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoiseInterface.cpp; sourceTree = "<group>"; };
+		62AAB8161E42258800DFB0DF /* Stars.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stars.hpp; sourceTree = "<group>"; };
+		62AAB8171E42265C00DFB0DF /* Stars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stars.cpp; sourceTree = "<group>"; };
+		62AAB8191E4227E500DFB0DF /* BetterRand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BetterRand.hpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../../Library/Frameworks/libglfw3.a; sourceTree = "<group>"; };
 		CE6662151E411A2E0005E830 /* Diorama.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Diorama.cpp; sourceTree = "<group>"; };
@@ -737,6 +741,7 @@
 				CEE0D2E31E4106BA00A718B7 /* GridPlane.hpp */,
 				CEDD0C141E00AA0A0078469C /* Lamp.hpp */,
 				6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */,
+				62AAB8161E42258800DFB0DF /* Stars.hpp */,
 				CEDD0C151E00AA0A0078469C /* Model.hpp */,
 				CEDD0C161E00AA0A0078469C /* Moon.hpp */,
 				CEDD0C181E00AA0A0078469C /* Player.hpp */,
@@ -814,6 +819,7 @@
 				CEDD0C391E00AA0A0078469C /* ColourPalette.hpp */,
 				CEDD0C3A1E00AA0A0078469C /* ShaderCache.hpp */,
 				6215D2961E01ABE200AAC9C3 /* Input.hpp */,
+				62AAB8191E4227E500DFB0DF /* BetterRand.hpp */,
 				CEDD0C3B1E00AA0A0078469C /* Texture.hpp */,
 				CEDD0C3C1E00AA0A0078469C /* TextureCache.hpp */,
 				CEDD0C3D1E00AA0A0078469C /* Vertex.hpp */,
@@ -1298,6 +1304,7 @@
 				CEDD0DAF1E00AA0A0078469C /* Moon.cpp */,
 				CEDD0DB11E00AA0A0078469C /* Player.cpp */,
 				CE6662151E411A2E0005E830 /* Diorama.cpp */,
+				62AAB8171E42265C00DFB0DF /* Stars.cpp */,
 				CEE0D2E41E4107F600A718B7 /* GridPlane.cpp */,
 				CEDD0DB21E00AA0A0078469C /* Quad.cpp */,
 				CEDD0DB31E00AA0A0078469C /* SceneCamera.cpp */,
@@ -1457,6 +1464,7 @@
 				CEDD0E601E00AA0B0078469C /* MainMenu.cpp in Sources */,
 				6215D2951E01AA6C00AAC9C3 /* Cursor.cpp in Sources */,
 				62A37E891E1D18190052D84E /* FastNoise.cpp in Sources */,
+				62AAB8181E42265C00DFB0DF /* Stars.cpp in Sources */,
 				CEDD0E531E00AA0A0078469C /* MeshComponent.cpp in Sources */,
 				CEDD0E571E00AA0B0078469C /* Game.cpp in Sources */,
 				CEDD0E511E00AA0A0078469C /* GamepadComponent.cpp in Sources */,

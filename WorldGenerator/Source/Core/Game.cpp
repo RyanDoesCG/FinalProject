@@ -15,6 +15,7 @@
 #include "../../Headers/Engine/Actors/Player.hpp"
 #include "../../Headers/Engine/Physics/PhysicsEngine.hpp"
 
+#include "../../Headers/Engine/Actors/Stars.hpp"
 #include "../../Headers/Engine/Actors/Sun.hpp"
 #include "../../Headers/Engine/Actors/Diorama.hpp"
 
@@ -53,6 +54,7 @@ void Game::begin() {
     PhysicsEngine physics = PhysicsEngine();
     
     // Skyland
+    Stars   stars;
     Sun     sun;
     Diorama diorama;
 
@@ -64,6 +66,11 @@ void Game::begin() {
     
     graphics.addToScene(&player);
     physics.addToSimulation(&player);
+    
+    graphics.addToScene(&stars);
+    physics.addToSimulation(&stars);
+    
+    //stars.addLightSource(&sun);
     
     diorama.setLightSource(&sun);
     

@@ -9,6 +9,7 @@
 #include "../Components/ShaderComponent.hpp"
 #include "../Components/MeshComponent.hpp"
 #include "Actor.hpp"
+#include <iostream>
 
 class Cube : public Actor {
     public:
@@ -18,6 +19,7 @@ class Cube : public Actor {
         virtual void draw (SceneCamera* camera) override;
         virtual void update (GameState state) override;
     
+        void setShader      (std::string path, ProgramType type);
         void setLightSource (Actor* light) {lightSource = light;}
     
         void resize (float size) {
@@ -29,7 +31,7 @@ class Cube : public Actor {
         MeshComponent* mesh;
         ShaderComponent* shader;
     
-        Actor* lightSource;
+        Actor* lightSource = nullptr;
 };
 
 #endif
