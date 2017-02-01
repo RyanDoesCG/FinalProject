@@ -40,6 +40,8 @@ void Menu::update () {
      */
     handleEvents();
     
+    //textPipeline->renderTextAs2D("Project Skyland", glm::vec2(20, windowHeight * 0.44), glm::vec3(0.2, 0.2, 0.2), 0.82);
+    
     if (!isHidden) {
         for (int i = items.size()-1; i >= 0; i--) {
             glm::vec2 position = glm::vec2(84, bassline + (10 * (12 * items[i].index)));

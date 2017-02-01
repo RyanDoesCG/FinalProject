@@ -9,7 +9,7 @@
 #include "../../Headers/Engine/Components/TextRenderingComponent.hpp"
 #include "../../Headers/Engine/Utility/ShaderCache.hpp"
 
-TextRenderingComponent::TextRenderingComponent (): textShader(ShaderCache::loadShaderComponent("Text", BASIC)) {
+TextRenderingComponent::TextRenderingComponent (): textShader(ShaderCache::loadShaderComponent("text", BASIC)) {
     if (FT_Init_FreeType(&ft))
         std::cout << "ERROR: Could not init FreeType Library" << std::endl;
     

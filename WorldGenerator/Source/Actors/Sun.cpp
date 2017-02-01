@@ -28,7 +28,7 @@ void Sun::draw(SceneCamera *camera) {
 void Sun::update(GameState state) {
     
     float radius = 80;
-    float speed = 4;
+    float speed = 12;
     
     setPosition(glm::vec3(0, sin(glfwGetTime()/speed) * radius, cos(glfwGetTime()/speed) * radius));
     

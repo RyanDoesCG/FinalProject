@@ -13,7 +13,7 @@
 
 MainMenu::MainMenu (float width, float height, Game* game):
     Menu(width, height, game) {
-    
+    /*
     // QUIT
     quit.label      = "quit";
     quit.index      = items.size();
@@ -41,7 +41,8 @@ MainMenu::MainMenu (float width, float height, Game* game):
     items.push_back(newGame);
 
     selectedItem = items.size()-1;
-    show();
+     */
+    //qshow();
 }
 
 MainMenu::~MainMenu () {
@@ -49,6 +50,7 @@ MainMenu::~MainMenu () {
 }
 
 void MainMenu::handleEvents() {
+    /*
     Menu::handleEvents();
     
     if (!isHidden) {
@@ -78,4 +80,5 @@ void MainMenu::handleEvents() {
         gamepad->buttonHandled(GAMEPAD_BUTTON_B);
         gamepad->buttonHandled(GAMEPAD_SPECIAL_HOME);
     }
+     */
 }

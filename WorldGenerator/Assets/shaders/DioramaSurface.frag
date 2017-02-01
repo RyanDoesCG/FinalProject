@@ -22,7 +22,7 @@ void main (void) {
     
     // diffuse lighting
     vec3  lightDirection = normalize(lightPosition - vec3(worldPos.xyz));
-    float diffStrength   = max(dot(normal, lightDirection), 0.0f);
+    float diffStrength   = max(dot(norm, lightDirection), 0.0f);
     vec3  diffuse        = diffStrength * lightColour;
     
     // specular lighting

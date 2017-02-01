@@ -24,8 +24,8 @@
 Game::Game() {
     srand(generateSeed());
     
-    windowWidth  = 1280;
-    windowHeight = 800;
+    windowWidth  = 1920;
+    windowHeight = 1080;
     
     // Initialise Subsystems
     if (initGLFW()) {std::cout << "GLFW initialisation failure. Exiting\n"; exit(1);}
@@ -70,7 +70,7 @@ void Game::begin() {
     sun.setPosition(vec3(2.0, 0.75, 0.0));
     sun.setScale(6);
     
-    state = RUNNING_FREEMODE;
+    state = RUNNING_EDITMODE;
     
     while (windowIsAlive()) {
         switch (state) {
@@ -87,12 +87,25 @@ void Game::begin() {
                 glfwSwapBuffers(window);
                 break;
             }
-            case RUNNING_EDITMODE: case RUNNING_FREEMODE: {
+            case RUNNING_FREEMODE: {
                 glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 
                 Input::update();
                 physics.simulate(glfwGetTime(), state);
                 graphics.drawScene(player.getView());
+            
+                
+                glfwSwapBuffers(window);
+                break;
+            }
+            case RUNNING_EDITMODE: {
+                glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                
+                Input::update();
+                physics.simulate(glfwGetTime(), state);
+                graphics.drawScene(player.getView());
+                menu.update();
+                
                 
                 glfwSwapBuffers(window);
                 break;

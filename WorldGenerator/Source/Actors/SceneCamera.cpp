@@ -48,10 +48,18 @@ void SceneCamera::moveBackward () { position -= movementSpeed * relativeFront; }
 void SceneCamera::moveBackwardAt (float speed) { position -= speed * movementSpeed * relativeFront; }
 
 void SceneCamera::reset () {
+    
+    position = vec3(18.5231, 2.43705, 38.3647);
+    pitch = 1.05256;
+    yaw = -101.74;
+    roll = 0;
+    
+    /*
     position = vec3(71.0869, 15.5143, 29.0421);
     pitch = -20.65;
     roll = 0;
     yaw = -159;
+    */
 }
 
 void SceneCamera::draw (SceneCamera* camera) {
@@ -93,6 +101,12 @@ void SceneCamera::update (GameState state) {
         }
             
         case RUNNING_EDITMODE: {
+            
+            yaw += 0.01;
+            
+            relativeFront.x = cos(radians(yaw)) * cos(radians(pitch));
+            relativeFront.y = sin(radians(pitch));
+            relativeFront.z = sin(radians(yaw)) * cos(radians(pitch));
             
             relativeFront = normalize(relativeFront);
             relativeRight = normalize(cross(relativeFront, worldUp));

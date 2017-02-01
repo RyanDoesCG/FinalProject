@@ -16,7 +16,7 @@ uniform vec3 cameraPosition;
 uniform vec3 lightColour;
 uniform vec3 lightPosition;
 
-const float ambientLighting = 0.4;
+const float ambientLighting = 0.32;
 
 vec3 calculateTriangleNormal(){
     vec3 tangent = gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz;
@@ -27,7 +27,7 @@ vec3 calculateTriangleNormal(){
 
 void main(void){
     
-    vec4 worldPosition  = gl_in[0].gl_Position;
+    vec4 worldPosition  = model * gl_in[0].gl_Position;
     vec3 normal         = calculateTriangleNormal();
     vec3 lightDirection = normalize(lightPosition - vec3(worldPosition.xyz));
     float brightness    = max(dot(-lightDirection, normal), ambientLighting);
@@ -39,7 +39,7 @@ void main(void){
     norm        = normal;
     EmitVertex();
     
-    worldPosition   = gl_in[1].gl_Position;
+    worldPosition   = model * gl_in[1].gl_Position;
     normal          = calculateTriangleNormal();
     lightDirection  = normalize(lightPosition - vec3(worldPosition.xyz));
     brightness      = max(dot(-lightDirection, normal), ambientLighting);
