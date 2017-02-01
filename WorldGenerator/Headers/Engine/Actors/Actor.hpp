@@ -43,13 +43,13 @@ class Actor {
     
         void setScale    (float s)          { scale = glm::vec3(s, s, s);}
         void setScale    (glm::vec3 s)      { scale = s; }
-        void setParent   (Actor* parent)    { this->parent = parent; }
+        void setParent   (Actor* parent)    { parent = parent; }
         void setColour   (glm::vec3 col)    { colour = col;}
-        void setPosition (glm::vec3 newPos) { this->position = newPos; }
-        void setRotation (glm::vec3 rot)    { this->rotation = rot;}
+        void setPosition (glm::vec3 newPos) { position = newPos; }
+        void setRotation (glm::vec3 rot)    { rotation = rot;}
     
-        virtual glm::vec3 getPosition () { return this->position; }
-        virtual glm::vec3 getRotation () { return this->rotation; }
+        virtual glm::vec3 getPosition () { return position; }
+        virtual glm::vec3 getRotation () { return rotation; }
         virtual glm::vec3 getColour   () { return colour; }
     
     protected:

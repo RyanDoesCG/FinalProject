@@ -9,6 +9,7 @@
 #ifndef Diorama_hpp
 #define Diorama_hpp
 
+#include "../../FastNoise/FastNoise.h"
 #include "GridPlane.hpp"
 #include "Model.hpp"
 #include "Actor.hpp"
@@ -25,9 +26,12 @@ class Diorama : public Actor {
             surface.setLightSource(light);
             base.setLightSource(light);
             tree.setLightSource(light);
+            rock.setLightSource(light);
         }
     
     private:
+    
+        // main diorama
         GridPlane surface;
         Model     base;
     
@@ -38,6 +42,9 @@ class Diorama : public Actor {
         // model
         Model     rock;
         std::vector<glm::vec3> rockFlyweightTransforms;
+
+        // Noise Library
+        FastNoise noiseMachine;
 };
 
 #endif /* Diorama_hpp */

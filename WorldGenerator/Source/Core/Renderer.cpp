@@ -32,18 +32,20 @@ void Renderer::addToScene(Actor* actor) {
 
 void Renderer::drawScene(SceneCamera* camera) {
     std::sort(scene.begin(), scene.end(), actorDepthComparator);
-    
+    /*
     // render off screen
     glBindFramebuffer (GL_FRAMEBUFFER, FBO);
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
+    */
     
     // draw
     for (int i = 0; i < scene.size(); i++) {
         scene.at(i)->draw (camera);
     }
     
+    /*
     // render to screen quad
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -52,6 +54,7 @@ void Renderer::drawScene(SceneCamera* camera) {
     // draw
   //  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     processedScene.draw(camera);
+*/
 }
 
 void Renderer::setupFrameBufferObject(int width, int height) {

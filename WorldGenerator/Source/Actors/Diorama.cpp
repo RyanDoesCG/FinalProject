@@ -12,6 +12,9 @@ Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
     int width = 40;
     int height = width;
     
+    // Init Noise Machine
+    //noiseMachine = FastNoise(rand());
+    
     // main terrain
     surface = GridPlane(width, height);
     surface.setColour(glm::vec3(0.96f, 0.87f, 0.70f));
@@ -53,7 +56,9 @@ void Diorama::draw(SceneCamera *camera) {
         tree.setPosition(treeFlyweightTransforms.at(i));
         tree.update(RUNNING_FREEMODE);
         tree.draw(camera);
-        
+    }
+    
+    for (int i = 0; i < rockFlyweightTransforms.size(); i++) {
         rock.setPosition(rockFlyweightTransforms.at(i));
         rock.update(RUNNING_FREEMODE);
         rock.draw(camera);
@@ -63,6 +68,4 @@ void Diorama::draw(SceneCamera *camera) {
 void Diorama::update(GameState state) {
     surface.update(state);
     base.update(state);
-    
-    tree.update(state);
 }
