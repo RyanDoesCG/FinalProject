@@ -14,6 +14,8 @@
 #include "Model.hpp"
 #include "Actor.hpp"
 
+#include "Biome.hpp"
+
 class Diorama : public Actor {
     public:
         Diorama();
@@ -32,6 +34,7 @@ class Diorama : public Actor {
     private:
     
         // main diorama
+        Biome     biome;
         GridPlane surface;
         Model     base;
     

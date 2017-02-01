@@ -12,7 +12,7 @@
 
 Moon::Moon () : Model("sphere/sphere") {
     setPosition(glm::vec3(-1, 0.4, 0.0));
-    setColour(ColourPalette::getColour(DarkGray));
+    //setColour(ColourPalette::getColour(DarkGray));
     setShader("Moon", BASIC);
     setScale(0.1);
     

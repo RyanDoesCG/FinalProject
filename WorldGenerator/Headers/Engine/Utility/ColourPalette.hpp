@@ -14,14 +14,25 @@
 #include <map>
 
 enum ColourID {
-    Black,
-    White,
-    LightGray,
-    Gray,
-    DarkGray,
-    Sand,
-    Red,
+    Error,
+    ArcticWhite,                // arctic
+    ArcticLightGrey,            // arctic
+    ArcticGrey,                 // arctic
+    ArcticBabyBlue,             // arctic
+    ArcticLightBrown,           // arctic
+    DesertSand,                 // desert
+    DesertLightSand,            // desert
+    DesertGoldenSand,           // desert
+    DesertPaleLime,             // desert
+    DesertGrayGreen,            // desert
+    DesertpaleSand,             // desert
+    ForestGreen,                // forest
+    ForestGreenTheReturn,       // forest
+    ForestBrown,
+    ForestSand,             
+    ForestGreenTheReReturn,
     COLOUR_LIMIT
+
 };
 
 class ColourPalette {

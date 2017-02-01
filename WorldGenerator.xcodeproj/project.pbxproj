@@ -17,6 +17,7 @@
 		62AAB8181E42265C00DFB0DF /* Stars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB8171E42265C00DFB0DF /* Stars.cpp */; };
 		62F401CC1E0160FF0069B079 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
 		CE6662171E411A2E0005E830 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE6662151E411A2E0005E830 /* Diorama.cpp */; };
+		CE7E45CC1E426DB9005BF4CC /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7E45CB1E426DB9005BF4CC /* Biome.cpp */; };
 		CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAC1E00AA0A0078469C /* Cube.cpp */; };
 		CEDD0E491E00AA0A0078469C /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAD1E00AA0A0078469C /* Flag.cpp */; };
 		CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAE1E00AA0A0078469C /* Model.cpp */; };
@@ -77,6 +78,8 @@
 		CE6662181E411A5E0005E830 /* Diorama.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Diorama.hpp; sourceTree = "<group>"; };
 		CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../../Library/Frameworks/libfreetype.dylib; sourceTree = "<group>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CE7E45CA1E426A98005BF4CC /* Biome.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Biome.hpp; sourceTree = "<group>"; };
+		CE7E45CB1E426DB9005BF4CC /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Biome.cpp; sourceTree = "<group>"; };
 		CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../Library/Frameworks/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -735,6 +738,7 @@
 			children = (
 				CE6662181E411A5E0005E830 /* Diorama.hpp */,
 				6215D2931E01A9A700AAC9C3 /* Cursor.hpp */,
+				CE7E45CA1E426A98005BF4CC /* Biome.hpp */,
 				CEDD0C111E00AA0A0078469C /* Actor.hpp */,
 				CEDD0C121E00AA0A0078469C /* Cube.hpp */,
 				CEDD0C131E00AA0A0078469C /* Flag.hpp */,
@@ -1304,6 +1308,7 @@
 				CEDD0DAF1E00AA0A0078469C /* Moon.cpp */,
 				CEDD0DB11E00AA0A0078469C /* Player.cpp */,
 				CE6662151E411A2E0005E830 /* Diorama.cpp */,
+				CE7E45CB1E426DB9005BF4CC /* Biome.cpp */,
 				62AAB8171E42265C00DFB0DF /* Stars.cpp */,
 				CEE0D2E41E4107F600A718B7 /* GridPlane.cpp */,
 				CEDD0DB21E00AA0A0078469C /* Quad.cpp */,
@@ -1453,6 +1458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7E45CC1E426DB9005BF4CC /* Biome.cpp in Sources */,
 				CEDD0E5F1E00AA0B0078469C /* LoadMenu.cpp in Sources */,
 				CEDD0E4E1E00AA0A0078469C /* Quad.cpp in Sources */,
 				CEDD0E4D1E00AA0A0078469C /* Player.cpp in Sources */,

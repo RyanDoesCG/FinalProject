@@ -25,7 +25,7 @@
 Game::Game() {
     srand(generateSeed());
     
-    windowWidth  = 1400;
+    windowWidth  = 1280;
     windowHeight = 800;
     
     // Initialise Subsystems
