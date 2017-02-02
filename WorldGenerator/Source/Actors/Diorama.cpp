@@ -11,8 +11,8 @@
 const int width = 40;
 const int height = 40;
 
-float heightMap [width*10] [height*10] [3]; // r = octave 1, g = octave 2, b = octave 3
-float dipMap    [width*10] [height*10] [3]; // 1 value, drop level
+GLubyte heightMap [width*10] [height*10] [3]; // r = octave 1, g = octave 2, b = octave 3
+GLubyte dipMap    [width*10] [height*10] [3]; // 1 value, drop level
 
 Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
     
@@ -64,14 +64,30 @@ Diorama::~Diorama () {
 void Diorama::generateHeightMap () {
     for (int x = 0; x < width*10; x++) {
         for (int y = 0; y < height*10; y++) {
+            float amplitude;
             
             // write majorly (only?) positive values
             // for form mountains etc.
-            heightMap[x][y][0] = 0.0f;  // low frequency, high amplitude
-            heightMap[x][y][1] = 0.0f;  // medium frequency, medium amplitude
-            heightMap[x][y][2] = 0.0f;  // high frequency, low amplitude
+            noiseMachine.SetFrequency(2);
+            amplitude = 20;
+            heightMap[x][y][0] = static_cast<GLubyte>(noiseMachine.GetSimplex(x, y) / amplitude * 255.f);  // low frequency, high amplitude
+            
+            noiseMachine.SetFrequency(6);
+            amplitude = 5;
+            heightMap[x][y][0] = static_cast<GLubyte>(noiseMachine.GetSimplex(x, y) / amplitude * 255.f);    // medium frequency, medium amplitude
+            
+            noiseMachine.SetFrequency(12);
+            amplitude = 2;
+            heightMap[x][y][0] = static_cast<GLubyte>(noiseMachine.GetSimplex(x, y) / amplitude * 255.f);    // high frequency, low amplitude
         }
     }
+    
+    glGenTextures   (1, &heightMapTexture);
+    glBindTexture   (GL_TEXTURE_2D, heightMapTexture);
+    glTexImage2D    (GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, heightMap);
+    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glBindTexture   (GL_TEXTURE_2D, 0);
 }
 
 /**
@@ -81,6 +97,8 @@ void Diorama::generateHeightMap () {
  *  vertex shader.
  */
 void Diorama::generateDipMap () {
+
+    
     for (int x = 0; x < width*10; x++) {
         for (int y = 0; y < height*10; y++) {
             
@@ -93,7 +111,11 @@ void Diorama::generateDipMap () {
 }
 
 void Diorama::draw(SceneCamera *camera) {
-    surface.draw(camera);
+
+    glBindTexture(GL_TEXTURE_2D, heightMapTexture);
+        surface.draw(camera);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    
     base.draw(camera);
     
     for (int i = 0; i < treeFlyweightTransforms.size(); i++) {

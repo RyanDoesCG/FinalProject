@@ -19,9 +19,11 @@ float rand(vec2 co){
 }
 
 void main (void) {
+    vec4 heightData = texture(heightMap, tc);
+
     gl_Position = model * vec4(
         position.x,
-        position.y + rand(vec2(position.z, position.x)),
+        position.y,// + heightData.r + heightData.g + heightData.b + heightData.a,
         position.z,
         1.0f
     );
