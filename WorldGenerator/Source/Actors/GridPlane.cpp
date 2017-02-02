@@ -10,15 +10,17 @@
 #include "../../Headers/Engine/Utility/ShaderCache.hpp"
 #include "../../Headers/glm/gtc/type_ptr.hpp"
 
-GridPlane::GridPlane(float width, float height) {
+GridPlane::GridPlane(float w, float h) {
     position = glm::vec3(0.0, 0.0, 0.0);
     scale    = glm::vec3(1.0, 1.0, 1.0);
     colour   = glm::vec3(0.4, 0.4, 0.4);
     
     std::vector<GLfloat> vertices = {};
     
-    float startX = (width / 2) * -1;
-    float endZ = (height / 2) * -1;
+    width = w;
+    height = h;
+    startX = (width / 2) * -1;
+    endZ = (height / 2) * -1;
     
     for (float x = startX; x < width; x += 1.0) {
         for (float z = height; z > endZ; z -= 1.0) {
@@ -29,6 +31,9 @@ GridPlane::GridPlane(float width, float height) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
+            vertices.push_back(0.0f);       // tc u PLACEHOLDER
+            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            
             // TRIANGLE 1 VERT 2
             vertices.push_back(x - 0.5);    // position x
             vertices.push_back(0.0f);       // position y
@@ -36,6 +41,9 @@ GridPlane::GridPlane(float width, float height) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
+            vertices.push_back(0.0f);       // tc u PLACEHOLDER
+            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            
             // TRIANGLE 1 VERT 3
             vertices.push_back(x + 0.5);    // position x
             vertices.push_back(0.0f);       // position y
@@ -43,6 +51,8 @@ GridPlane::GridPlane(float width, float height) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
+            vertices.push_back(0.0f);       // tc u PLACEHOLDER
+            vertices.push_back(0.0f);       // tc v PLACEHOLDER
             
             // TRIANGLE 2 VERT 1
             vertices.push_back(x + 0.5);    // position x
@@ -51,6 +61,9 @@ GridPlane::GridPlane(float width, float height) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
+            vertices.push_back(0.0f);       // tc u PLACEHOLDER
+            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            
             // TRIANGLE 2 VERT 2
             vertices.push_back(x - 0.5);    // position x
             vertices.push_back(0.0f);       // position y
@@ -58,6 +71,9 @@ GridPlane::GridPlane(float width, float height) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
+            vertices.push_back(0.0f);       // tc u PLACEHOLDER
+            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            
             // TRIANGLE 2 VERT 3
             vertices.push_back(x + 0.5);    // position x
             vertices.push_back(0.0f);       // position y
@@ -65,6 +81,8 @@ GridPlane::GridPlane(float width, float height) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
+            vertices.push_back(0.0f);       // tc u PLACEHOLDER
+            vertices.push_back(0.0f);       // tc v PLACEHOLDER
         }
     }
     

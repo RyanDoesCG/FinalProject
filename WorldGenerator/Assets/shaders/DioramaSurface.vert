@@ -1,18 +1,18 @@
 #version 330 core
 layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
-layout (location = 2) in vec3 color;
+layout (location = 2) in vec2 tc;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
-
 uniform vec3 objectColour;
 
-out vec3 vertexColour;
+// height map
+uniform sampler2D heightMap;
+uniform sampler2D dipMap;
 
-//out vec3 worldPosition;
-//out vec3 norm;
+out vec3 vertexColour;
 
 float rand(vec2 co){
     return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
@@ -28,7 +28,4 @@ void main (void) {
     
     // pass through
     vertexColour = objectColour;
-    
-    //worldPosition = vec3(model * vec4(position, 1.0f));
-    //norm = mat3(transpose(inverse(model))) * normal;
 }

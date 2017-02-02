@@ -84,12 +84,16 @@ void MeshComponent::setupTestMeshComponent () {
         glBufferData (GL_ARRAY_BUFFER, this->testVertices.size() * sizeof(GLfloat), &this->testVertices[0], GL_STATIC_DRAW);
     
         // Position attribute
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
         glEnableVertexAttribArray(0);
     
         // Normal attribute
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
         glEnableVertexAttribArray(1);
+    
+        // Texture Coordinates
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(2 * sizeof(GLfloat)));
+        glEnableVertexAttribArray(2);
     
     glBindVertexArray(0);
 }

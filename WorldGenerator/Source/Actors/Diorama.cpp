@@ -8,18 +8,26 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Actors/Diorama.hpp"
 
+const int width = 40;
+const int height = width;
+
+int heightMap [width*10] [height*10] [3]; // r = octave 1, g = octave 2, b = octave 3
+int dipMap    [width*10] [height*10] [1]; // 1 value, drop level
+
 Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
-    int width = 40;
-    int height = width;
     
     biome = Biome();
     
     // Init Noise Machine
     noiseMachine = FastNoise(rand());
     
-    // main terrain
+    /** 
+     * Terrain Generation
+     */
     surface = GridPlane(width, height);
     surface.setColour(biome.getPrimaryColour());
+    
+    
     
     // base
     base.setShader("litObject", BASIC);
