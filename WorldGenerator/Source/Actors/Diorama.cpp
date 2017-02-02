@@ -9,10 +9,10 @@
 #include "../../Headers/Engine/Actors/Diorama.hpp"
 
 const int width = 40;
-const int height = width;
+const int height = 40;
 
-int heightMap [width*10] [height*10] [3]; // r = octave 1, g = octave 2, b = octave 3
-int dipMap    [width*10] [height*10] [3]; // 1 value, drop level
+float heightMap [width*10] [height*10] [3]; // r = octave 1, g = octave 2, b = octave 3
+float dipMap    [width*10] [height*10] [3]; // 1 value, drop level
 
 Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
     
@@ -40,42 +40,51 @@ Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
     tree.setShader("litObject", BASIC);
     tree.setColour(biome.getSecondaryColour());
     tree.setScale(0.64);
-    
-    for (int i = 0; i < height; i++) {
+    for (int i = 0; i < height; i++)
         treeFlyweightTransforms.push_back(glm::vec3(rand() % width, (rand() % 10) / 10, rand() % width));
-    }
     
     // rock
     rock.setShader("litObject", BASIC);
     rock.setColour(glm::vec3(0.50, 0.50, 0.50));
     rock.setScale(0.42);
-    
-    for (int i = 0; i < height; i++) {
+    for (int i = 0; i < height; i++)
         rockFlyweightTransforms.push_back(glm::vec3(rand() % width, 0.5 + ((rand() % 10) / 10), rand() % width));
-    }
 }
 
 Diorama::~Diorama () {
     
 }
 
+/** 
+ *  generateHeightMap
+ *
+ *  Writes a series of noise values to a texture for the
+ *  vertex shader.
+ */
 void Diorama::generateHeightMap () {
     for (int x = 0; x < width*10; x++) {
         for (int y = 0; y < height*10; y++) {
             
-            // write noise values to texture data
-            heightMap[x][y][0] = 0.0f;
-            heightMap[x][y][1] = 0.0f;
-            heightMap[x][y][2] = 0.0f;
+            // write majorly (only?) positive values
+            // for form mountains etc.
+            heightMap[x][y][0] = 0.0f;  // low frequency, high amplitude
+            heightMap[x][y][1] = 0.0f;  // medium frequency, medium amplitude
+            heightMap[x][y][2] = 0.0f;  // high frequency, low amplitude
         }
     }
 }
 
+/**
+ *  generateDipMap
+ *
+ *  Writes a series of noise values to a texture for the
+ *  vertex shader.
+ */
 void Diorama::generateDipMap () {
     for (int x = 0; x < width*10; x++) {
         for (int y = 0; y < height*10; y++) {
             
-            // write noise values to texture data
+            // write negative values to give water areas
             dipMap[x][y][0] = 0.0f;
             dipMap[x][y][1] = 0.0f;
             dipMap[x][y][2] = 0.0f;
