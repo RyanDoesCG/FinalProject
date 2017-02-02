@@ -12,7 +12,7 @@ const int width = 40;
 const int height = width;
 
 int heightMap [width*10] [height*10] [3]; // r = octave 1, g = octave 2, b = octave 3
-int dipMap    [width*10] [height*10] [1]; // 1 value, drop level
+int dipMap    [width*10] [height*10] [3]; // 1 value, drop level
 
 Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
     
@@ -27,7 +27,8 @@ Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
     surface = GridPlane(width, height);
     surface.setColour(biome.getPrimaryColour());
     
-    
+    generateHeightMap();
+    generateDipMap();
     
     // base
     base.setShader("litObject", BASIC);
@@ -56,6 +57,30 @@ Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
 
 Diorama::~Diorama () {
     
+}
+
+void Diorama::generateHeightMap () {
+    for (int x = 0; x < width*10; x++) {
+        for (int y = 0; y < height*10; y++) {
+            
+            // write noise values to texture data
+            heightMap[x][y][0] = 0.0f;
+            heightMap[x][y][1] = 0.0f;
+            heightMap[x][y][2] = 0.0f;
+        }
+    }
+}
+
+void Diorama::generateDipMap () {
+    for (int x = 0; x < width*10; x++) {
+        for (int y = 0; y < height*10; y++) {
+            
+            // write noise values to texture data
+            dipMap[x][y][0] = 0.0f;
+            dipMap[x][y][1] = 0.0f;
+            dipMap[x][y][2] = 0.0f;
+        }
+    }
 }
 
 void Diorama::draw(SceneCamera *camera) {

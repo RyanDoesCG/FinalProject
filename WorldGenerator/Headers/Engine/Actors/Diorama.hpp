@@ -41,6 +41,9 @@ class Diorama : public Actor {
         GLuint heightMapTexture;   // hills & mountains
         GLuint dipMapTexture;      // rivers & lakes
     
+        void generateHeightMap();
+        void generateDipMap();
+    
         // trees
         Model     tree;
         std::vector<glm::vec3> treeFlyweightTransforms;
