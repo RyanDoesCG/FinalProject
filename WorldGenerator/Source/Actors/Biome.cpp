@@ -10,8 +10,8 @@
 #include "../../Headers/Engine/Utility/ColourPalette.hpp"
 
 Biome::Biome() {
-    variation = static_cast<Type>(rand() % max);
-    //variation = DESERT;
+    //variation = static_cast<Type>(rand() % max);
+    variation = DESERT;
 }
 
 Biome::Biome(Type type) {
