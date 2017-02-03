@@ -84,12 +84,12 @@ void Player::update (GameState state) {
             camera->pitch += mouse->getYoffset();
             
             // GAMEPAD
-            std::cout << std::endl;
-            std::cout << "right trigger: " << gamepad->getAxisState(RIGHT_TRIGGER) << std::endl;
-            std::cout << "left trigger: " << gamepad->getAxisState(LEFT_TRIGGER) << std::endl;
-            std::cout << "right stick: (" << gamepad->getAxisState(LEFT_STICK_X_AXIS) << ", " << gamepad->getAxisState(LEFT_STICK_Y_AXIS) << std::endl;
-            std::cout << "left stick: (" << gamepad->getAxisState(RIGHT_STICK_X_AXIS) << ", " << gamepad->getAxisState(RIGHT_STICK_Y_AXIS) << std::endl;
-            std::cout << std::endl;
+            //std::cout << std::endl;
+            //std::cout << "right trigger: " << gamepad->getAxisState(RIGHT_TRIGGER) << std::endl;
+            //std::cout << "left trigger: " << gamepad->getAxisState(LEFT_TRIGGER) << std::endl;
+            //std::cout << "right stick: (" << gamepad->getAxisState(LEFT_STICK_X_AXIS) << ", " << gamepad->getAxisState(LEFT_STICK_Y_AXIS) << std::endl;
+            //std::cout << "left stick: (" << gamepad->getAxisState(RIGHT_STICK_X_AXIS) << ", " << gamepad->getAxisState(RIGHT_STICK_Y_AXIS) << std::endl;
+            //std::cout << std::endl;
             
             if (gamepad->isButtonDown(GAMEPAD_SPECIAL_BACK)) {
                 // switch mode

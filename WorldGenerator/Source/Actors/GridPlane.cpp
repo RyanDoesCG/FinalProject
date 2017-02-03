@@ -22,8 +22,11 @@ GridPlane::GridPlane(float w, float h) {
     startX = (width / 2) * -1;
     endZ = (height / 2) * -1;
     
-    for (float x = startX; x < width; x += 1.0) {
-        for (float z = height; z > endZ; z -= 1.0) {
+    float xIndex = 0;
+    float zIndex = height;
+    
+    for (float x = startX; x < width; x += 1.0, xIndex++) {
+        for (float z = height; z > endZ; z -= 1.0, zIndex--) {
             // TRIANGLE 1 VERT 1
             vertices.push_back(x - 0.5);    // position x
             vertices.push_back(0.0f);       // position y
@@ -31,8 +34,8 @@ GridPlane::GridPlane(float w, float h) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
-            vertices.push_back(0.0f);       // tc u PLACEHOLDER
-            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            vertices.push_back(xIndex/width);       // tc u PLACEHOLDER
+            vertices.push_back((zIndex-1)/height);       // tc v PLACEHOLDER
             
             // TRIANGLE 1 VERT 2
             vertices.push_back(x - 0.5);    // position x
@@ -41,8 +44,8 @@ GridPlane::GridPlane(float w, float h) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
-            vertices.push_back(0.0f);       // tc u PLACEHOLDER
-            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            vertices.push_back(xIndex/width);       // tc u PLACEHOLDER
+            vertices.push_back(zIndex/height);       // tc v PLACEHOLDER
             
             // TRIANGLE 1 VERT 3
             vertices.push_back(x + 0.5);    // position x
@@ -51,8 +54,8 @@ GridPlane::GridPlane(float w, float h) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
-            vertices.push_back(0.0f);       // tc u PLACEHOLDER
-            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            vertices.push_back((xIndex+1)/width);       // tc u PLACEHOLDER
+            vertices.push_back((zIndex-1)/height);       // tc v PLACEHOLDER
             
             // TRIANGLE 2 VERT 1
             vertices.push_back(x + 0.5);    // position x
@@ -61,8 +64,8 @@ GridPlane::GridPlane(float w, float h) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
-            vertices.push_back(0.0f);       // tc u PLACEHOLDER
-            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            vertices.push_back((xIndex+1)/width);       // tc u PLACEHOLDER
+            vertices.push_back((zIndex-1)/height);       // tc v PLACEHOLDER
             
             // TRIANGLE 2 VERT 2
             vertices.push_back(x - 0.5);    // position x
@@ -71,8 +74,8 @@ GridPlane::GridPlane(float w, float h) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
-            vertices.push_back(0.0f);       // tc u PLACEHOLDER
-            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            vertices.push_back(xIndex/width);       // tc u PLACEHOLDER
+            vertices.push_back(zIndex/height);       // tc v PLACEHOLDER
             
             // TRIANGLE 2 VERT 3
             vertices.push_back(x + 0.5);    // position x
@@ -81,8 +84,8 @@ GridPlane::GridPlane(float w, float h) {
             vertices.push_back(0.0f);       // normal x
             vertices.push_back(1.0f);       // normal y
             vertices.push_back(0.0f);       // normal z
-            vertices.push_back(0.0f);       // tc u PLACEHOLDER
-            vertices.push_back(0.0f);       // tc v PLACEHOLDER
+            vertices.push_back((xIndex+1)/width);       // tc u PLACEHOLDER
+            vertices.push_back(zIndex/height);       // tc v PLACEHOLDER
         }
     }
     

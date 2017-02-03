@@ -7,6 +7,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Actors/Diorama.hpp"
+#include "../../Headers/soil/SOIL.h"
 
 const int width = 40;
 const int height = 40;
@@ -37,14 +38,14 @@ Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
     base.setPosition(glm::vec3(height * 0.25, (height * 0.76) * -1, height * 0.25));
     
     // tree
-    tree.setShader("litObject", BASIC);
+    tree.setShader("proceduralGen", BASIC);
     tree.setColour(biome.getSecondaryColour());
     tree.setScale(0.64);
     for (int i = 0; i < height; i++)
         treeFlyweightTransforms.push_back(glm::vec3(rand() % width, (rand() % 10) / 10, rand() % width));
     
     // rock
-    rock.setShader("litObject", BASIC);
+    rock.setShader("proceduralGen", BASIC);
     rock.setColour(glm::vec3(0.50, 0.50, 0.50));
     rock.setScale(0.42);
     for (int i = 0; i < height; i++)
@@ -84,10 +85,21 @@ void Diorama::generateHeightMap () {
     
     glGenTextures   (1, &heightMapTexture);
     glBindTexture   (GL_TEXTURE_2D, heightMapTexture);
-    glTexImage2D    (GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, heightMap);
-    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glBindTexture   (GL_TEXTURE_2D, 0);
+    
+    // TEST
+    int imageWidth,imageHeight;
+    unsigned char* image = SOIL_load_image("../textures/rock.jpg", &imageWidth, &imageHeight, 0, SOIL_LOAD_RGB);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    SOIL_free_image_data(image);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    // TEST
+    
+    //glTexImage2D    (GL_TEXTURE_2D, 0, GL_RGB, width*10, height*10, 0, GL_RGB, GL_UNSIGNED_BYTE, heightMap);
+    //glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    //glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    //glBindTexture   (GL_TEXTURE_2D, 0);
 }
 
 /**

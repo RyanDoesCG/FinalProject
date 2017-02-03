@@ -24,25 +24,25 @@ out vec4 color;
 
 void main (void) {
     
-    // ambient lighting
+        // ambient lighting
     float ambStrength = 0.25f;
     vec3  ambient     = ambStrength * lightColour;
     
-    // diffuse lighting
+        // diffuse lighting
     vec3  normal         = normalize(norm);
     vec3  lightDirection = normalize(lightPosition - worldPosition);
     float diffStrength   = max(dot(norm, lightDirection), 0.0f);
     vec3  diffuse        = diffStrength * lightColour;
     
-    // specular lighting
+        // specular lighting
     float specStrength        = 0.2f;
     vec3  viewDirection       = normalize(viewPosition - worldPosition);
     vec3  reflectionDirection = reflect(-lightDirection, norm);
     float spec                = pow(max(dot(viewDirection, reflectionDirection), 0.0), 16);
     vec3  specular            = specStrength * spec * lightColour;
     
-    // stacked result
+        // stacked result
     vec3 result = (ambient + diffuse + specular) * objectColour;
     color = vec4(result, 1.0f);
-    //color = texture(height, fragTc);
+        //color = texture(height, fragTc);
 }

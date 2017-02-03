@@ -116,8 +116,8 @@ void SceneCamera::update (GameState state) {
         }
     }
     
-    std::cout << std::endl;
-    std::cout << position.x << ", " << position.y << ", " << position.z << std::endl;
-    std::cout << pitch << ", " << yaw << ", " << roll << std::endl;
-    std::cout << std::endl;
+    //std::cout << std::endl;
+    //std::cout << position.x << ", " << position.y << ", " << position.z << std::endl;
+    //std::cout << pitch << ", " << yaw << ", " << roll << std::endl;
+    //std::cout << std::endl;
 }
