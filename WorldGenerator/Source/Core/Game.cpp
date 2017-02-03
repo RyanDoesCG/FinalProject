@@ -18,6 +18,7 @@
 #include "../../Headers/Engine/Actors/Stars.hpp"
 #include "../../Headers/Engine/Actors/Sun.hpp"
 #include "../../Headers/Engine/Actors/Diorama.hpp"
+#include "../../Headers/Engine/Actors/ParticleSystem.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 0
@@ -78,6 +79,14 @@ void Game::begin() {
     sun.setScale(6);
     
     state = RUNNING_EDITMODE;
+    
+    /*
+    ParticleSystem ps;
+    
+    graphics.addToScene(&ps);
+    physics.addToSimulation(&ps);
+    ps.setPosition(vec3(0.0f, 4.0f, 0.0f));
+    */
     
     while (windowIsAlive()) {
         switch (state) {

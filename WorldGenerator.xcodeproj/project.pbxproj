@@ -16,6 +16,7 @@
 		62A37E8D1E1D19920052D84E /* NoiseInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */; };
 		62AAB8181E42265C00DFB0DF /* Stars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB8171E42265C00DFB0DF /* Stars.cpp */; };
 		62F401CC1E0160FF0069B079 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
+		CE2499D81E440B1C003CDC11 /* ParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2499D71E440B1C003CDC11 /* ParticleSystem.cpp */; };
 		CE6662171E411A2E0005E830 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE6662151E411A2E0005E830 /* Diorama.cpp */; };
 		CE7E45CC1E426DB9005BF4CC /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7E45CB1E426DB9005BF4CC /* Biome.cpp */; };
 		CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAC1E00AA0A0078469C /* Cube.cpp */; };
@@ -72,6 +73,8 @@
 		62AAB8161E42258800DFB0DF /* Stars.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stars.hpp; sourceTree = "<group>"; };
 		62AAB8171E42265C00DFB0DF /* Stars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stars.cpp; sourceTree = "<group>"; };
 		62AAB8191E4227E500DFB0DF /* BetterRand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BetterRand.hpp; sourceTree = "<group>"; };
+		CE2499D61E4408C3003CDC11 /* ParticleSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleSystem.hpp; sourceTree = "<group>"; };
+		CE2499D71E440B1C003CDC11 /* ParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleSystem.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../../Library/Frameworks/libglfw3.a; sourceTree = "<group>"; };
 		CE6662151E411A2E0005E830 /* Diorama.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Diorama.cpp; sourceTree = "<group>"; };
@@ -747,6 +750,7 @@
 				6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */,
 				62AAB8161E42258800DFB0DF /* Stars.hpp */,
 				CEDD0C151E00AA0A0078469C /* Model.hpp */,
+				CE2499D61E4408C3003CDC11 /* ParticleSystem.hpp */,
 				CEDD0C161E00AA0A0078469C /* Moon.hpp */,
 				CEDD0C181E00AA0A0078469C /* Player.hpp */,
 				CEDD0C191E00AA0A0078469C /* Quad.hpp */,
@@ -1308,6 +1312,7 @@
 				CEDD0DAF1E00AA0A0078469C /* Moon.cpp */,
 				CEDD0DB11E00AA0A0078469C /* Player.cpp */,
 				CE6662151E411A2E0005E830 /* Diorama.cpp */,
+				CE2499D71E440B1C003CDC11 /* ParticleSystem.cpp */,
 				CE7E45CB1E426DB9005BF4CC /* Biome.cpp */,
 				62AAB8171E42265C00DFB0DF /* Stars.cpp */,
 				CEE0D2E41E4107F600A718B7 /* GridPlane.cpp */,
@@ -1481,6 +1486,7 @@
 				CEDD0E581E00AA0B0078469C /* main.cpp in Sources */,
 				CEDD0E611E00AA0B0078469C /* Menu.cpp in Sources */,
 				CEDD0E561E00AA0B0078469C /* TextRenderingComponent.cpp in Sources */,
+				CE2499D81E440B1C003CDC11 /* ParticleSystem.cpp in Sources */,
 				CEDD0E541E00AA0A0078469C /* MouseComponent.cpp in Sources */,
 				CEDD0E5D1E00AA0B0078469C /* Showcase.cpp in Sources */,
 				CEDD0E621E00AA0B0078469C /* OptionsMenu.cpp in Sources */,

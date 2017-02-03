@@ -12,7 +12,7 @@
 
 Sun::Sun () : Model("sphere/sphere") {
     shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("lightSource", BASIC));
-    Model::setScale(0.1);
+    Model::setScale(0.01);
     lightSource = this;
     setColour(vec3(1.0f, 1.0f, 1.0f));
 }
