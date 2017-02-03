@@ -18,7 +18,7 @@
 #include "../../Headers/Engine/Actors/Stars.hpp"
 #include "../../Headers/Engine/Actors/Sun.hpp"
 #include "../../Headers/Engine/Actors/Diorama.hpp"
-#include "../../Headers/Engine/Actors/ParticleSystem.hpp"
+#include "../../Headers/Engine/Actors/ProceduralShowcase.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 0
@@ -55,29 +55,31 @@ void Game::begin() {
     PhysicsEngine physics = PhysicsEngine();
     
     // Skyland
-    Stars   stars;
+    //Stars   stars;
+    
     Sun     sun;
+    /*
     Diorama diorama;
-
+*/
     graphics.addToScene(&sun);
     physics.addToSimulation(&sun);
-
+/*
     graphics.addToScene(&diorama);
     physics.addToSimulation(&diorama);
-    
+*/
     graphics.addToScene(&player);
     physics.addToSimulation(&player);
-    
+/*
     graphics.addToScene(&stars);
     physics.addToSimulation(&stars);
-    
+*/
     //stars.addLightSource(&sun);
     
-    diorama.setLightSource(&sun);
-    
+  //  diorama.setLightSource(&sun);
+  
     sun.setPosition(vec3(2.0, 0.75, 0.0));
     sun.setScale(6);
-    
+
     state = RUNNING_EDITMODE;
     
     /*
@@ -87,6 +89,13 @@ void Game::begin() {
     physics.addToSimulation(&ps);
     ps.setPosition(vec3(0.0f, 4.0f, 0.0f));
     */
+    
+    ProceduralShowcase showcase("trees/rock");
+    
+    graphics.addToScene(&showcase);
+    physics.addToSimulation(&showcase);
+    
+    showcase.setLightSource(&sun);
     
     while (windowIsAlive()) {
         switch (state) {

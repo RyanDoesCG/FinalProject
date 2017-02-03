@@ -73,6 +73,7 @@
 		62AAB8161E42258800DFB0DF /* Stars.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stars.hpp; sourceTree = "<group>"; };
 		62AAB8171E42265C00DFB0DF /* Stars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stars.cpp; sourceTree = "<group>"; };
 		62AAB8191E4227E500DFB0DF /* BetterRand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BetterRand.hpp; sourceTree = "<group>"; };
+		CE028F601E441A070057BB93 /* ProceduralShowcase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ProceduralShowcase.hpp; sourceTree = "<group>"; };
 		CE2499D61E4408C3003CDC11 /* ParticleSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleSystem.hpp; sourceTree = "<group>"; };
 		CE2499D71E440B1C003CDC11 /* ParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleSystem.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
@@ -744,6 +745,7 @@
 				CE7E45CA1E426A98005BF4CC /* Biome.hpp */,
 				CEDD0C111E00AA0A0078469C /* Actor.hpp */,
 				CEDD0C121E00AA0A0078469C /* Cube.hpp */,
+				CE028F601E441A070057BB93 /* ProceduralShowcase.hpp */,
 				CEDD0C131E00AA0A0078469C /* Flag.hpp */,
 				CEE0D2E31E4106BA00A718B7 /* GridPlane.hpp */,
 				CEDD0C141E00AA0A0078469C /* Lamp.hpp */,
