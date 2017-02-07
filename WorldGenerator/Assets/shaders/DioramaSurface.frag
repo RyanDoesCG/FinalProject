@@ -13,6 +13,10 @@ uniform mat4 model;
 
 out vec4 color;
 
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
 void main (void) {
     vec3 normal = normalize(norm);
     
