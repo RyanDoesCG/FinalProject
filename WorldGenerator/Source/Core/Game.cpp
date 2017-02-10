@@ -89,6 +89,17 @@ void Game::begin() {
     //physics.addToSimulation(&showcase);
     //showcase.setLightSource(&sun);
     
+    ParticleSystem particle;
+    graphics.addToScene(&particle);
+    physics.addToSimulation(&particle);
+    
+    Cube ref;
+    graphics.addToScene(&ref);
+    physics.addToSimulation(&ref);
+    
+    particle.setPosition(glm::vec3(0, 24, 0));
+    ref.setPosition(particle.getPosition());
+    
     while (windowIsAlive()) {
         switch (state) {
             case MAIN_MENU: case LOAD_GAME: case OPTIONS: {
@@ -202,6 +213,10 @@ int Game::initGLEW () {
     glEnable    (GL_MULTISAMPLE);   // MULTISAMPLING
     glEnable    (GL_BLEND);         // ALPHA BLENDING
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    int vertexTexUnits;
+    glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &vertexTexUnits);
+    std::cout << "VERTEX TEXTURE UNITS: " << vertexTexUnits << std::endl;
     
     return 0;
 }

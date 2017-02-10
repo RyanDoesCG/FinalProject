@@ -7,13 +7,29 @@
 //
 
 #include "ParticleSystem.hpp"
+#include "../../Headers/Engine/Utility/BetterRand.hpp"
 
 ParticleSystem::ParticleSystem () {
-    numberToProduce = 50;
-    spawnRate = 2;
+    // graphics component
+    sprite = Cube();
+    sprite.setShader("unlitObject", BASIC);
+    sprite.setColour(vec3(1.0f));
+    sprite.setScale(0.05);
     
-    for (int i = 0; i < numberToProduce; i++)
-        particles.push_back(Particle());
+    // data model
+    numParticles = 4000;
+    particleRange = 100;
+    xSpan = 100;
+    ySpan = 100;
+    zSpan = 100;
+    
+    for (int i = 0; i < numParticles; i++)
+        particles.push_back(Particle(
+            glm::vec3(this->getPosition().x + (rand() % xSpan), this->getPosition().y + (rand() % ySpan), this->getPosition().z + (rand() % zSpan)), // position
+            glm::vec3(0.1, unsignedRand() * -1, 0),
+            glm::vec3(xSpan, ySpan, zSpan),
+            particleRange
+        ));
 }
 
 ParticleSystem::~ParticleSystem () {
@@ -21,24 +37,14 @@ ParticleSystem::~ParticleSystem () {
 }
 
 void ParticleSystem::draw (SceneCamera* camera) {
-    // draw all particles
-    for (int i = 0; i < numberToProduce; i++)
-        if (particles.at(i).isAlive())
-            particles.at(i).draw(camera);
+    for (int i = 0; i < numParticles; i++) {
+        sprite.setPosition(particles.at(i).pos);
+        sprite.update(RUNNING_FREEMODE);
+        sprite.draw(camera);
+    }
 }
 
 void ParticleSystem::update (GameState state) {
-    // spawn new particles
-    for (int i = 0; i < spawnRate; i++) {
-        
-    }
-    
-    // update all particles
-    for (int i = 0; i < numberToProduce; i++) {
-        particles.at(i).ttl -= 0.1f;
-        
-        if (particles.at(i).isAlive()) {
-            particles.at(i).position += particles.at(i).velocity;
-        }
-    }
+    for (int i = 0; i < numParticles; i++)
+        particles.at(i).update(this->getPosition());
 }

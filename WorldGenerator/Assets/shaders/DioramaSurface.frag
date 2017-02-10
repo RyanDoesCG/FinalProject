@@ -11,6 +11,8 @@ uniform vec3 lightColour;
 
 uniform mat4 model;
 
+uniform sampler2D heightMap;
+
 out vec4 color;
 
 float rand(vec2 co){
@@ -38,5 +40,5 @@ void main (void) {
     
     // stacked result
     vec3 result = (ambient + diffuse + specular) * finalColour;
-    color = vec4(finalColour, 1.0f);
+    color = vec4(result, 1.0f);
 }

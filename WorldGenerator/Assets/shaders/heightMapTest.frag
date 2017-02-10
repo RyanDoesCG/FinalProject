@@ -43,6 +43,6 @@ void main (void) {
     
     // stacked result
     vec3 result = (ambient + diffuse + specular) * objectColour;
-    color = vec4(result, 1.0f);
-    //color = texture(height, fragTc);
+    //color = vec4(result, 1.0f);
+    color = texture(height, fragTc);
 }

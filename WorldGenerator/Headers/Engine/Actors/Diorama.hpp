@@ -38,8 +38,8 @@ class Diorama : public Actor {
         GridPlane surface;
         Model     base;
     
-        GLuint heightMapTexture;   // hills & mountains
-        GLuint dipMapTexture;      // rivers & lakes
+        GLuint heightMapTextureID;   // hills & mountains
+        GLuint dipMapTextureID;      // rivers & lakes
     
         void generateHeightMap();
         void generateDipMap();

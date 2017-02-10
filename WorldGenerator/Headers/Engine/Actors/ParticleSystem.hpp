@@ -9,47 +9,36 @@
 #ifndef ParticleSystem_hpp
 #define ParticleSystem_hpp
 
+#include "../Utility/Maths.hpp"
 #include "Actor.hpp"
-#include "Quad.hpp"
+#include "Cube.hpp"
 #include <vector>
 
-class Particle {
-public:
-    glm::vec2 position;
-    glm::vec2 velocity;
-    glm::vec3 colour;
-    float     ttl;
-    Quad      sprite;
-    
-    Particle () :
-        position(0.0f),
-        velocity(1.0f),
-        colour(0.12f),
-        ttl(10.0f) {
-        sprite.setShader("particle");
-    }
-    
-    bool isAlive () {return ttl>0;}
-    void draw (SceneCamera*camera) {
-        sprite.setPosition(vec3(position.x, position.y, 0));
-        sprite.setColour(colour);
-        sprite.setScale(10);
-        sprite.draw(camera);
-    }
-};
+#include "Particle.hpp"
 
 class ParticleSystem : public Actor {
     public:
         ParticleSystem();
        ~ParticleSystem();
     
-        void draw (SceneCamera* camera) override;
-        void update (GameState state) override;
+        virtual void draw (SceneCamera* camera) override;
+        virtual void update (GameState state) override;
+    
+        void addLightSource (Actor* light) {
+            sprite.setLightSource(light);
+        }
     
     private:
-        uint numberToProduce;   // total particles
-        uint spawnRate;         // release per frame
+        Cube sprite;
+        uint numParticles;
+        int particleRange;
+        int xSpan;
+        int ySpan;
+        int zSpan;
+    
         std::vector<Particle> particles;
+    
+        Actor* lightSource;
 };
 
 #endif /* ParticleSystem_hpp */

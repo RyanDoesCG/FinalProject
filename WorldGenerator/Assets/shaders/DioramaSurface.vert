@@ -10,7 +10,6 @@ uniform vec3 objectColour;
 
 // height map
 uniform sampler2D heightMap;
-uniform sampler2D dipMap;
 
 out vec3 vertexColour;
 
@@ -23,7 +22,7 @@ void main (void) {
 
     gl_Position = model * vec4(
         position.x,
-        position.y + rand(vec2(position.x, position.z)),// + heightData.r + heightData.g + heightData.b + heightData.a,
+        position.y + rand(vec2(position.x, position.z)), //+ heightData.r + heightData.g + heightData.b + heightData.a,
         position.z,
         1.0f
     );

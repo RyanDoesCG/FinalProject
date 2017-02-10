@@ -84,6 +84,8 @@
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CE7E45CA1E426A98005BF4CC /* Biome.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Biome.hpp; sourceTree = "<group>"; };
 		CE7E45CB1E426DB9005BF4CC /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Biome.cpp; sourceTree = "<group>"; };
+		CE805D8A1E4E3E7E0066B677 /* Maths.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Maths.hpp; sourceTree = "<group>"; };
+		CE805D8B1E4E44540066B677 /* Particle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Particle.hpp; sourceTree = "<group>"; };
 		CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../Library/Frameworks/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -753,6 +755,7 @@
 				62AAB8161E42258800DFB0DF /* Stars.hpp */,
 				CEDD0C151E00AA0A0078469C /* Model.hpp */,
 				CE2499D61E4408C3003CDC11 /* ParticleSystem.hpp */,
+				CE805D8B1E4E44540066B677 /* Particle.hpp */,
 				CEDD0C161E00AA0A0078469C /* Moon.hpp */,
 				CEDD0C181E00AA0A0078469C /* Player.hpp */,
 				CEDD0C191E00AA0A0078469C /* Quad.hpp */,
@@ -829,6 +832,7 @@
 				CEDD0C391E00AA0A0078469C /* ColourPalette.hpp */,
 				CEDD0C3A1E00AA0A0078469C /* ShaderCache.hpp */,
 				6215D2961E01ABE200AAC9C3 /* Input.hpp */,
+				CE805D8A1E4E3E7E0066B677 /* Maths.hpp */,
 				62AAB8191E4227E500DFB0DF /* BetterRand.hpp */,
 				CEDD0C3B1E00AA0A0078469C /* Texture.hpp */,
 				CEDD0C3C1E00AA0A0078469C /* TextureCache.hpp */,
