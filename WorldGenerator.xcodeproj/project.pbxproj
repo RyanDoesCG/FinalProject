@@ -12,9 +12,9 @@
 		6215D29D1E01DB7E00AAC9C3 /* Sun.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */; };
 		6215D29F1E01DBE200AAC9C3 /* Sun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6215D29E1E01DBE200AAC9C3 /* Sun.cpp */; };
 		62A37E891E1D18190052D84E /* FastNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E881E1D18190052D84E /* FastNoise.cpp */; };
-		62A37E8B1E1D18E50052D84E /* NoiseInterface.hpp in Resources */ = {isa = PBXBuildFile; fileRef = 62A37E8A1E1D18E50052D84E /* NoiseInterface.hpp */; };
-		62A37E8D1E1D19920052D84E /* NoiseInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */; };
 		62AAB8181E42265C00DFB0DF /* Stars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB8171E42265C00DFB0DF /* Stars.cpp */; };
+		62DA34211E4F3ADA00FE7EB2 /* RainEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62DA34201E4F3ADA00FE7EB2 /* RainEffect.cpp */; };
+		62DA34251E4F40A900FE7EB2 /* HeightMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62DA34231E4F40A900FE7EB2 /* HeightMap.cpp */; };
 		62F401CC1E0160FF0069B079 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
 		CE2499D81E440B1C003CDC11 /* ParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2499D71E440B1C003CDC11 /* ParticleSystem.cpp */; };
 		CE6662171E411A2E0005E830 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE6662151E411A2E0005E830 /* Diorama.cpp */; };
@@ -68,11 +68,13 @@
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A37E851E1D17EA0052D84E /* FastNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastNoise.h; path = FastNoise/FastNoise.h; sourceTree = "<group>"; };
 		62A37E881E1D18190052D84E /* FastNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FastNoise.cpp; path = FastNoise/FastNoise.cpp; sourceTree = "<group>"; };
-		62A37E8A1E1D18E50052D84E /* NoiseInterface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NoiseInterface.hpp; sourceTree = "<group>"; };
-		62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoiseInterface.cpp; sourceTree = "<group>"; };
 		62AAB8161E42258800DFB0DF /* Stars.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stars.hpp; sourceTree = "<group>"; };
 		62AAB8171E42265C00DFB0DF /* Stars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stars.cpp; sourceTree = "<group>"; };
 		62AAB8191E4227E500DFB0DF /* BetterRand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BetterRand.hpp; sourceTree = "<group>"; };
+		62DA341F1E4F38EF00FE7EB2 /* RainEffect.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RainEffect.hpp; sourceTree = "<group>"; };
+		62DA34201E4F3ADA00FE7EB2 /* RainEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RainEffect.cpp; sourceTree = "<group>"; };
+		62DA34221E4F3F6F00FE7EB2 /* HeightMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HeightMap.hpp; sourceTree = "<group>"; };
+		62DA34231E4F40A900FE7EB2 /* HeightMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeightMap.cpp; sourceTree = "<group>"; };
 		CE028F601E441A070057BB93 /* ProceduralShowcase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ProceduralShowcase.hpp; sourceTree = "<group>"; };
 		CE2499D61E4408C3003CDC11 /* ParticleSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleSystem.hpp; sourceTree = "<group>"; };
 		CE2499D71E440B1C003CDC11 /* ParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleSystem.cpp; sourceTree = "<group>"; };
@@ -755,6 +757,7 @@
 				62AAB8161E42258800DFB0DF /* Stars.hpp */,
 				CEDD0C151E00AA0A0078469C /* Model.hpp */,
 				CE2499D61E4408C3003CDC11 /* ParticleSystem.hpp */,
+				62DA341F1E4F38EF00FE7EB2 /* RainEffect.hpp */,
 				CE805D8B1E4E44540066B677 /* Particle.hpp */,
 				CEDD0C161E00AA0A0078469C /* Moon.hpp */,
 				CEDD0C181E00AA0A0078469C /* Player.hpp */,
@@ -792,7 +795,7 @@
 		CEDD0C281E00AA0A0078469C /* Noise */ = {
 			isa = PBXGroup;
 			children = (
-				62A37E8A1E1D18E50052D84E /* NoiseInterface.hpp */,
+				62DA34221E4F3F6F00FE7EB2 /* HeightMap.hpp */,
 			);
 			path = Noise;
 			sourceTree = "<group>";
@@ -1319,6 +1322,7 @@
 				CEDD0DB11E00AA0A0078469C /* Player.cpp */,
 				CE6662151E411A2E0005E830 /* Diorama.cpp */,
 				CE2499D71E440B1C003CDC11 /* ParticleSystem.cpp */,
+				62DA34201E4F3ADA00FE7EB2 /* RainEffect.cpp */,
 				CE7E45CB1E426DB9005BF4CC /* Biome.cpp */,
 				62AAB8171E42265C00DFB0DF /* Stars.cpp */,
 				CEE0D2E41E4107F600A718B7 /* GridPlane.cpp */,
@@ -1355,7 +1359,7 @@
 		CEDD0DC01E00AA0A0078469C /* Noise */ = {
 			isa = PBXGroup;
 			children = (
-				62A37E8C1E1D19920052D84E /* NoiseInterface.cpp */,
+				62DA34231E4F40A900FE7EB2 /* HeightMap.cpp */,
 			);
 			path = Noise;
 			sourceTree = "<group>";
@@ -1457,7 +1461,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6215D29D1E01DB7E00AAC9C3 /* Sun.hpp in Resources */,
-				62A37E8B1E1D18E50052D84E /* NoiseInterface.hpp in Resources */,
 				CEDD0F1A1E00AC990078469C /* Assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1471,6 +1474,7 @@
 			files = (
 				CE7E45CC1E426DB9005BF4CC /* Biome.cpp in Sources */,
 				CEDD0E5F1E00AA0B0078469C /* LoadMenu.cpp in Sources */,
+				62DA34211E4F3ADA00FE7EB2 /* RainEffect.cpp in Sources */,
 				CEDD0E4E1E00AA0A0078469C /* Quad.cpp in Sources */,
 				CEDD0E4D1E00AA0A0078469C /* Player.cpp in Sources */,
 				CEDD0E4B1E00AA0A0078469C /* Moon.cpp in Sources */,
@@ -1488,7 +1492,6 @@
 				CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */,
 				6215D29F1E01DBE200AAC9C3 /* Sun.cpp in Sources */,
 				CEDD0E5C1E00AA0B0078469C /* PhysicsEngine.cpp in Sources */,
-				62A37E8D1E1D19920052D84E /* NoiseInterface.cpp in Sources */,
 				CEDD0E581E00AA0B0078469C /* main.cpp in Sources */,
 				CEDD0E611E00AA0B0078469C /* Menu.cpp in Sources */,
 				CEDD0E561E00AA0B0078469C /* TextRenderingComponent.cpp in Sources */,
@@ -1498,6 +1501,7 @@
 				CEDD0E621E00AA0B0078469C /* OptionsMenu.cpp in Sources */,
 				CEDD0E591E00AA0B0078469C /* Renderer.cpp in Sources */,
 				CE6662171E411A2E0005E830 /* Diorama.cpp in Sources */,
+				62DA34251E4F40A900FE7EB2 /* HeightMap.cpp in Sources */,
 				CEDD0E551E00AA0B0078469C /* ShaderComponent.cpp in Sources */,
 				6215D29B1E01B3A100AAC9C3 /* Input.cpp in Sources */,
 				CEDD0E631E00AA0B0078469C /* SeedMenu.cpp in Sources */,

@@ -89,7 +89,7 @@ GridPlane::GridPlane(float w, float h) {
         }
     }
     
-    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("DioramaSurface", GEOM));
+    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("heightMapTest", BASIC));
     mesh = (MeshComponent*)addComponent(new MeshComponent(vertices));
 }
 
@@ -104,7 +104,6 @@ GridPlane::~GridPlane() {
 }
 
 void GridPlane::draw(SceneCamera *camera) {
-    shader->update();
     
     // Lighting data to GPU
     vec3 viewPos = camera->getPosition();

@@ -9,7 +9,7 @@
 #ifndef Diorama_hpp
 #define Diorama_hpp
 
-#include "../../FastNoise/FastNoise.h"
+#include "../Noise/HeightMap.hpp"
 #include "GridPlane.hpp"
 #include "Model.hpp"
 #include "Actor.hpp"
@@ -38,11 +38,9 @@ class Diorama : public Actor {
         GridPlane surface;
         Model     base;
     
-        GLuint heightMapTextureID;   // hills & mountains
-        GLuint dipMapTextureID;      // rivers & lakes
-    
-        void generateHeightMap();
-        void generateDipMap();
+        // Height Maps
+        HeightMap landscape;
+        HeightMap waterscape;
     
         // trees
         Model     tree;

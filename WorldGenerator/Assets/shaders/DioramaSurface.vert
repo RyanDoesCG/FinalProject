@@ -9,7 +9,7 @@ uniform mat4 projection;
 uniform vec3 objectColour;
 
 // height map
-uniform sampler2D heightMap;
+uniform sampler2D Texture0;
 
 out vec3 vertexColour;
 
@@ -18,11 +18,11 @@ float rand(vec2 co){
 }
 
 void main (void) {
-    vec4 heightData = texture(heightMap, tc);
+    vec4 heightData = texture(Texture0, tc);
 
     gl_Position = model * vec4(
         position.x,
-        position.y + rand(vec2(position.x, position.z)), //+ heightData.r + heightData.g + heightData.b + heightData.a,
+        position.y /* + rand(vec2(position.x, position.z)) */ + heightData.r + heightData.g + heightData.b + heightData.a,
         position.z,
         1.0f
     );

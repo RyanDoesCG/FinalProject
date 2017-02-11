@@ -11,14 +11,17 @@ out vec3 worldPosition;
 out vec3 norm;
 out vec2 fragTc;
 
+uniform sampler2D height;
+
 float rand(vec2 co){
     return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
 }
 
 void main (void) {
+    
     gl_Position = projection * view * model * vec4(
                                                    position.x,
-                                                   position.y,
+                                                   position.y + texture(height, tc).r + texture(height, tc).g + texture(height, tc).b,
                                                    position.z,
                                                    1.0f
                                                    );

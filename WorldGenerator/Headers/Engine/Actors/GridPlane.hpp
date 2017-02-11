@@ -31,6 +31,8 @@ class GridPlane : public Actor {
         virtual void draw (SceneCamera* camera) override;
         virtual void update (GameState state) override;
     
+        void updateShader() {shader->update();}
+    
         void setLightSource (Actor* light) {lightSource = light;}
     
     private:

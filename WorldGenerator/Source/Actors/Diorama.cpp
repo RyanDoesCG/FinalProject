@@ -8,13 +8,12 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include "../../Headers/Engine/Actors/Diorama.hpp"
 #include "../../Headers/soil/SOIL.h"
+#include "../../Headers/Engine/Noise/HeightMap.hpp"
 
 const int width = 40;
 const int height = 40;
 
-GLfloat data[width*10][height*10] = {};
-
-Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
+Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock"), landscape(width * 10, height * 10), waterscape(width * 10, height * 10) {
     
     biome = Biome();
     
@@ -26,9 +25,6 @@ Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock") {
      */
     surface = GridPlane(width, height);
     surface.setColour(biome.getPrimaryColour());
-    
-    generateHeightMap();
-    generateDipMap();
     
     // base
     base.setShader("litObject", BASIC);
@@ -55,44 +51,10 @@ Diorama::~Diorama () {
     
 }
 
-/** 
- *  generateHeightMap
- *
- *  Writes a series of noise values to a texture for the
- *  vertex shader.
- */
-void Diorama::generateHeightMap () {
-    for (int i = 0; i < width*10; i++) {
-        for (int j = 0; j < height*10; j++) {
-            data[i][j] = 0.5f;
-            //std::cout << data[i][j] << ", ";
-        }
-        std::cout << std::endl;
-    }
-
-    glGenTextures(1, &heightMapTextureID);
-    glBindTexture(GL_TEXTURE_2D, heightMapTextureID);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP_TO_EDGE);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_FLOAT32_ATI, width * 10, height * 10, 0, GL_LUMINANCE, GL_FLOAT, data);
-}
-
-/**
- *  generateDipMap
- *
- *  Writes a series of noise values to a texture for the
- *  vertex shader.
- */
-void Diorama::generateDipMap () {
-    
-}
-
 void Diorama::draw(SceneCamera *camera) {
 
-    //glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, heightMapTextureID);
+    surface.updateShader();
+    landscape.bind();
     surface.draw(camera);
     
     base.draw(camera);

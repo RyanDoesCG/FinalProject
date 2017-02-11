@@ -21,6 +21,7 @@
 #include "../../Headers/Engine/Actors/ProceduralShowcase.hpp"
 
 #include "../../Headers/Engine/Actors/ParticleSystem.hpp"
+#include "../../Headers/Engine/Actors/RainEffect.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 0
@@ -99,6 +100,18 @@ void Game::begin() {
     
     particle.setPosition(glm::vec3(0, 24, 0));
     ref.setPosition(particle.getPosition());
+    
+    HeightMap testMap(1920, 1080);
+    //Quad test;
+    
+    //test.setShader("PostProcess");
+    //test.setTexture(testMap.getID());
+    
+   // graphics.addToScene(&test);
+   // physics.addToSimulation(&test);
+    
+    //test.setPosition(ref.getPosition());
+    //test.setScale(0.2);
     
     while (windowIsAlive()) {
         switch (state) {
