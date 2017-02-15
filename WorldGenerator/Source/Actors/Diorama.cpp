@@ -10,8 +10,8 @@
 #include "../../Headers/soil/SOIL.h"
 #include "../../Headers/Engine/Noise/HeightMap.hpp"
 
-const int width = 40;
-const int height = 40;
+const int width = 10;
+const int height = 10;
 
 Diorama::Diorama() : base("base/base"), tree("trees/tree"), rock("trees/rock"), landscape(width * 10, height * 10), waterscape(width * 10, height * 10) {
     

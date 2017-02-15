@@ -14,7 +14,7 @@
 
 #include "Actor.hpp"
 #include "Actor.hpp"
-#include "Cube.hpp"
+#include "Triangle.hpp"
 #include <vector>
 
 #include "Particle.hpp"
@@ -32,7 +32,7 @@ public:
     }
     
 private:
-    Cube sprite;
+    Triangle sprite;
     uint numParticles;
     int particleRange;
     int xSpan;

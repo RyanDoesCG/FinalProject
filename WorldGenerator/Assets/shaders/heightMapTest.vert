@@ -18,10 +18,11 @@ float rand(vec2 co){
 }
 
 void main (void) {
+    float height = texture(height, tc).r;
     
     gl_Position = projection * view * model * vec4(
                                                    position.x,
-                                                   position.y + texture(height, tc).r + texture(height, tc).g + texture(height, tc).b,
+                                                   position.y + height,
                                                    position.z,
                                                    1.0f
                                                    );

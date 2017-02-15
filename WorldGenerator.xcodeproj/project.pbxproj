@@ -19,6 +19,8 @@
 		CE2499D81E440B1C003CDC11 /* ParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE2499D71E440B1C003CDC11 /* ParticleSystem.cpp */; };
 		CE6662171E411A2E0005E830 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE6662151E411A2E0005E830 /* Diorama.cpp */; };
 		CE7E45CC1E426DB9005BF4CC /* Biome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7E45CB1E426DB9005BF4CC /* Biome.cpp */; };
+		CE8083AF1E54835B00749B52 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8083AE1E54835B00749B52 /* Triangle.cpp */; };
+		CE8083B21E54852A00749B52 /* Pyramid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8083B11E54852A00749B52 /* Pyramid.cpp */; };
 		CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAC1E00AA0A0078469C /* Cube.cpp */; };
 		CEDD0E491E00AA0A0078469C /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAD1E00AA0A0078469C /* Flag.cpp */; };
 		CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDD0DAE1E00AA0A0078469C /* Model.cpp */; };
@@ -88,6 +90,10 @@
 		CE7E45CB1E426DB9005BF4CC /* Biome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Biome.cpp; sourceTree = "<group>"; };
 		CE805D8A1E4E3E7E0066B677 /* Maths.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Maths.hpp; sourceTree = "<group>"; };
 		CE805D8B1E4E44540066B677 /* Particle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Particle.hpp; sourceTree = "<group>"; };
+		CE8083AD1E54830B00749B52 /* Triangle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Triangle.hpp; sourceTree = "<group>"; };
+		CE8083AE1E54835B00749B52 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
+		CE8083B01E5484C900749B52 /* Pyramid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pyramid.hpp; sourceTree = "<group>"; };
+		CE8083B11E54852A00749B52 /* Pyramid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pyramid.cpp; sourceTree = "<group>"; };
 		CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../Library/Frameworks/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -750,10 +756,12 @@
 				CEDD0C111E00AA0A0078469C /* Actor.hpp */,
 				CEDD0C121E00AA0A0078469C /* Cube.hpp */,
 				CE028F601E441A070057BB93 /* ProceduralShowcase.hpp */,
+				CE8083AD1E54830B00749B52 /* Triangle.hpp */,
 				CEDD0C131E00AA0A0078469C /* Flag.hpp */,
 				CEE0D2E31E4106BA00A718B7 /* GridPlane.hpp */,
 				CEDD0C141E00AA0A0078469C /* Lamp.hpp */,
 				6215D29C1E01DB7E00AAC9C3 /* Sun.hpp */,
+				CE8083B01E5484C900749B52 /* Pyramid.hpp */,
 				62AAB8161E42258800DFB0DF /* Stars.hpp */,
 				CEDD0C151E00AA0A0078469C /* Model.hpp */,
 				CE2499D61E4408C3003CDC11 /* ParticleSystem.hpp */,
@@ -1323,8 +1331,10 @@
 				CE6662151E411A2E0005E830 /* Diorama.cpp */,
 				CE2499D71E440B1C003CDC11 /* ParticleSystem.cpp */,
 				62DA34201E4F3ADA00FE7EB2 /* RainEffect.cpp */,
+				CE8083B11E54852A00749B52 /* Pyramid.cpp */,
 				CE7E45CB1E426DB9005BF4CC /* Biome.cpp */,
 				62AAB8171E42265C00DFB0DF /* Stars.cpp */,
+				CE8083AE1E54835B00749B52 /* Triangle.cpp */,
 				CEE0D2E41E4107F600A718B7 /* GridPlane.cpp */,
 				CEDD0DB21E00AA0A0078469C /* Quad.cpp */,
 				CEDD0DB31E00AA0A0078469C /* SceneCamera.cpp */,
@@ -1480,6 +1490,7 @@
 				CEDD0E4B1E00AA0A0078469C /* Moon.cpp in Sources */,
 				CEDD0E481E00AA0A0078469C /* Cube.cpp in Sources */,
 				CEDD0E501E00AA0A0078469C /* Skybox.cpp in Sources */,
+				CE8083B21E54852A00749B52 /* Pyramid.cpp in Sources */,
 				CEDD0E521E00AA0A0078469C /* KeyboardComponent.cpp in Sources */,
 				CEDD0E4F1E00AA0A0078469C /* SceneCamera.cpp in Sources */,
 				CEDD0E601E00AA0B0078469C /* MainMenu.cpp in Sources */,
@@ -1487,6 +1498,7 @@
 				62A37E891E1D18190052D84E /* FastNoise.cpp in Sources */,
 				62AAB8181E42265C00DFB0DF /* Stars.cpp in Sources */,
 				CEDD0E531E00AA0A0078469C /* MeshComponent.cpp in Sources */,
+				CE8083AF1E54835B00749B52 /* Triangle.cpp in Sources */,
 				CEDD0E571E00AA0B0078469C /* Game.cpp in Sources */,
 				CEDD0E511E00AA0A0078469C /* GamepadComponent.cpp in Sources */,
 				CEDD0E4A1E00AA0A0078469C /* Model.cpp in Sources */,
@@ -1615,6 +1627,7 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Needham.WorldGenerator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "/usr/local/ /usr/local/include/ /usr/local/include/freetype2";
@@ -1635,6 +1648,7 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Needham.WorldGenerator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "/usr/local/ /usr/local/include/ /usr/local/include/freetype2";

@@ -10,7 +10,7 @@
 
 RainEffect::RainEffect () {
         // graphics component
-    sprite = Cube();
+    sprite = Triangle();
     sprite.setShader("unlitObject", BASIC);
     sprite.setColour(vec3(0.8, 0.8, 0.9));
     sprite.setScale(glm::vec3(0.01, 0.2, 0.01));

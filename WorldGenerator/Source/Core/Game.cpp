@@ -22,6 +22,7 @@
 
 #include "../../Headers/Engine/Actors/ParticleSystem.hpp"
 #include "../../Headers/Engine/Actors/RainEffect.hpp"
+#include "../../Headers/Engine/Actors/Pyramid.hpp"
 
 // Deterines window size/debug hud
 #define BUILD_MODE 0
@@ -66,14 +67,14 @@ void Game::begin() {
     graphics.addToScene(&sun);
     physics.addToSimulation(&sun);
 
-    graphics.addToScene(&diorama);
-    physics.addToSimulation(&diorama);
+    //graphics.addToScene(&diorama);
+    //physics.addToSimulation(&diorama);
 
     graphics.addToScene(&player);
     physics.addToSimulation(&player);
     
-    graphics.addToScene(&stars);
-    physics.addToSimulation(&stars);
+    //graphics.addToScene(&stars);
+    //physics.addToSimulation(&stars);
  
     stars.addLightSource(&sun);
     
@@ -90,11 +91,11 @@ void Game::begin() {
     //physics.addToSimulation(&showcase);
     //showcase.setLightSource(&sun);
     
-    ParticleSystem particle;
+    RainEffect particle;
     graphics.addToScene(&particle);
     physics.addToSimulation(&particle);
     
-    Cube ref;
+    Pyramid ref;
     graphics.addToScene(&ref);
     physics.addToSimulation(&ref);
     

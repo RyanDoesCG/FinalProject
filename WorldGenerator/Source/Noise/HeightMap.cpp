@@ -22,7 +22,7 @@ HeightMap::HeightMap (int w, int h): width(w), height(h) {
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_FLOAT, textureData);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA_FLOAT32_ATI, width, height, 0, GL_RGB, GL_FLOAT, textureData);
     
 }
 
