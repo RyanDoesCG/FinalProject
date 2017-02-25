@@ -67,14 +67,14 @@ void Game::begin() {
     graphics.addToScene(&sun);
     physics.addToSimulation(&sun);
 
-    //graphics.addToScene(&diorama);
-    //physics.addToSimulation(&diorama);
+    graphics.addToScene(&diorama);
+    physics.addToSimulation(&diorama);
 
     graphics.addToScene(&player);
     physics.addToSimulation(&player);
     
-    //graphics.addToScene(&stars);
-    //physics.addToSimulation(&stars);
+    graphics.addToScene(&stars);
+    physics.addToSimulation(&stars);
  
     stars.addLightSource(&sun);
     

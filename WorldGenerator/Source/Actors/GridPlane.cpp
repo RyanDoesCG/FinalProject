@@ -89,7 +89,7 @@ GridPlane::GridPlane(float w, float h) {
         }
     }
     
-    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("heightMapTest", BASIC));
+    shader = (ShaderComponent*)addComponent(ShaderCache::loadShaderComponent("DioramaSurface", GEOM));
     mesh = (MeshComponent*)addComponent(new MeshComponent(vertices));
 }
 

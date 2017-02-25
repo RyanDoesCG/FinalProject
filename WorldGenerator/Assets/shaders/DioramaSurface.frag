@@ -1,7 +1,6 @@
 #version 330 core
 
 in vec4 worldPos;
-in vec3 finalColour;
 in vec3 norm;
 
 uniform vec3 objectColour;
@@ -39,6 +38,6 @@ void main (void) {
     vec3  specular            = specStrength * spec * lightColour;
     
     // stacked result
-    vec3 result = (ambient + diffuse + specular) * finalColour;
+    vec3 result = (ambient + diffuse + specular) * objectColour;
     color = vec4(result, 1.0f);
 }
