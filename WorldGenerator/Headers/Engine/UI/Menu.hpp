@@ -11,6 +11,8 @@
 #include "../Components/MouseComponent.hpp"
 #include "../Components/TextRenderingComponent.hpp"
 
+#include "../Actors/Quad.hpp"
+
 #include "MenuItem.hpp"
 #include <iostream>
 
@@ -43,6 +45,8 @@ class Menu {
         virtual void handleEvents ();
         int selectedItem;
         bool isHidden;
+    
+        Quad underline;
 };
 
 #endif /* MainMenu_hpp */

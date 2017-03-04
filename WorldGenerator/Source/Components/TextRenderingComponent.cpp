@@ -9,7 +9,7 @@
 #include "../../Headers/Engine/Components/TextRenderingComponent.hpp"
 #include "../../Headers/Engine/Utility/ShaderCache.hpp"
 
-TextRenderingComponent::TextRenderingComponent (): textShader(ShaderCache::loadShaderComponent("text", BASIC)) {
+TextRenderingComponent::TextRenderingComponent (int width, int height): textShader(ShaderCache::loadShaderComponent("text", BASIC)) {
     if (FT_Init_FreeType(&ft))
         std::cout << "ERROR: Could not init FreeType Library" << std::endl;
     
@@ -18,7 +18,7 @@ TextRenderingComponent::TextRenderingComponent (): textShader(ShaderCache::loadS
 
     FT_Set_Pixel_Sizes(face, 0, 120);
     
-    projection = glm::ortho(0.0f, 1920.0f, 0.0f, 1080.0f);
+    projection = glm::ortho(0.0f, (float)width, 0.0f, (float)height);
     glUniformMatrix4fv(glGetUniformLocation(textShader->getProgramID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     
     // construct character map

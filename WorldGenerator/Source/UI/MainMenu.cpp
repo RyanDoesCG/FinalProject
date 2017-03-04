@@ -13,7 +13,7 @@
 
 MainMenu::MainMenu (float width, float height, Game* game):
     Menu(width, height, game) {
-    /*
+
     // QUIT
     quit.label      = "quit";
     quit.index      = items.size();
@@ -25,7 +25,19 @@ MainMenu::MainMenu (float width, float height, Game* game):
     options.menu    = new OptionsMenu(width, height, game);
     children.push_back(options.menu);
     items.push_back(options);
-
+    
+    // BIOME GENERATOR
+    biomes.label    = "Biomes";
+    biomes.index    = items.size();
+    items.push_back(biomes);
+    
+    
+    // PLANET GENERATOR
+    planets.label    = "Planet";
+    planets.index    = items.size();
+    items.push_back(planets);
+    
+    /*
     // LOAD GAME
     loadGame.label  = "load game";
     loadGame.index  = items.size();
@@ -39,10 +51,11 @@ MainMenu::MainMenu (float width, float height, Game* game):
     newGame.menu    = new SeedMenu(width, height, game);
     children.push_back(newGame.menu);
     items.push_back(newGame);
-
+    */
+    
     selectedItem = items.size()-1;
-     */
-    //qshow();
+
+    show();
 }
 
 MainMenu::~MainMenu () {
@@ -50,7 +63,7 @@ MainMenu::~MainMenu () {
 }
 
 void MainMenu::handleEvents() {
-    /*
+
     Menu::handleEvents();
     
     if (!isHidden) {
@@ -60,8 +73,8 @@ void MainMenu::handleEvents() {
             switch (selectedItem) {
                 case 0: game->end(); break;
                 case 1: options.menu->show(); hide(); break;
-                case 2: loadGame.menu->show(); hide(); break;
-                case 3: newGame.menu->show(); hide(); break;
+                //case 2: loadGame.menu->show(); hide(); break;
+                //case 3: newGame.menu->show(); hide(); break;
             }
             
             keyboard->keyHandled(GLFW_KEY_ENTER);
@@ -80,5 +93,4 @@ void MainMenu::handleEvents() {
         gamepad->buttonHandled(GAMEPAD_BUTTON_B);
         gamepad->buttonHandled(GAMEPAD_SPECIAL_HOME);
     }
-     */
 }

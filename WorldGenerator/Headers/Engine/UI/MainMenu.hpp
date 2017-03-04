@@ -21,8 +21,10 @@ class MainMenu : public Menu {
     
         MenuItem quit;
         MenuItem options;
-        MenuItem loadGame;
-        MenuItem newGame;
+        MenuItem biomes;
+        MenuItem planets;
+        //MenuItem loadGame;
+        //MenuItem newGame;
 };
 
 #endif /* MainMenu_hpp */

@@ -31,7 +31,7 @@
 
 class TextRenderingComponent : public Component {
 public:
-     TextRenderingComponent ();
+     TextRenderingComponent (int width, int height);
     ~TextRenderingComponent ();
     
     virtual void init() override;

@@ -11,7 +11,7 @@ Menu::Menu (float width, float height, Game* game) {
 
     windowWidth  = width;
     windowHeight = height;
-    textPipeline = new TextRenderingComponent();
+    textPipeline = new TextRenderingComponent(width, height);
     bassline     = height * 0.16;
     this->game   = game;
     
@@ -40,16 +40,18 @@ void Menu::update () {
      */
     handleEvents();
     
-    //textPipeline->renderTextAs2D("Project Skyland", glm::vec2(20, windowHeight * 0.44), glm::vec3(0.2, 0.2, 0.2), 0.82);
+    textPipeline->renderTextAs2D("Project Skyland", glm::vec2(84, windowHeight * 0.48), glm::vec3(0.2, 0.2, 0.2), 0.8);
     
     if (!isHidden) {
         for (int i = items.size()-1; i >= 0; i--) {
-            glm::vec2 position = glm::vec2(84, bassline + (10 * (12 * items[i].index)));
+            glm::vec2 position = glm::vec2(windowWidth * 0.5 - (items[i].label.length() * 20), bassline + (12 * (12 * items[i].index)));
             
-            if (i == selectedItem)
-                textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.4, 0.2, 0.2), 0.72);
-            else
-                textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.32, 0.32, 0.32), 0.6);
+            if (i == selectedItem) {
+                textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.4, 0.2, 0.2), 0.8);
+            }
+            else {
+                textPipeline->renderTextAs2D(items[i].label, position, glm::vec3(0.32, 0.32, 0.32), 0.8);
+            }
         }
         
         textPipeline->update();

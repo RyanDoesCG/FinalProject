@@ -83,7 +83,7 @@ void Game::begin() {
     sun.setPosition(vec3(2.0, 0.75, 0.0));
     sun.setScale(6);
 
-    state = RUNNING_EDITMODE;
+    //state = RUNNING_EDITMODE;
     
     // showcase
     //ProceduralShowcase showcase("trees/tree");
