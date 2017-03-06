@@ -1,58 +1,31 @@
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  Game.hpp
- *  Tribes
- *
- *  Created by Ryan Needham on 02/09/2016.
- *  Copyright © 2016 Dissertation. All rights reserved.
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+//
+//  Game.hpp
+//  WorldGenerator
+//
+//  Created by user on 06/03/2017.
+//  Copyright © 2017 Dissertation. All rights reserved.
+//
+
 #ifndef Game_hpp
 #define Game_hpp
+#include "GraphicsEngine.hpp"
+#include "PhysicsEngine.hpp"
+#include "InputManager.hpp"
+#include "Window.hpp"
 
-#include "../../GLEW/glew.h"
-#include "../../GLFW/glfw3.h"
-
-#include "GameState.hpp"
-
-enum Build { CINEMATIC, DEVELOPMENT };
-
-    /**
-     *  Game Class
-     *
-     */
 class Game {
     public:
         Game ();
        ~Game ();
-
-        void begin();
-        void pause();
-        void end();
-
-        inline int getSeed ();
-        inline void setSeed (int s) {seed = s;}
     
-        bool windowIsAlive();
+        void boot ();
     
-        int windowWidth;
-        int windowHeight;
+    protected:
+        GraphicsEngine graphics;
+        PhysicsEngine  physics;
     
-        void setState (GameState nextState);
-    
-        void resize (int width, int height);
-    
-    private:
-        typedef int actorID;
-    
-        int initGLFW ();
-        int initGLEW ();
-
-        GLFWwindow* window;
-        GameState state;
-    
-        // world seed
-        int generateSeed();
-        int seed;
+        InputManager input;
+        Window window;
     
 };
 

@@ -6,10 +6,13 @@
  *  Copyright © 2016 Dissertation. All rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#include "../../Headers/Engine/Core/Game.hpp"
+#include "Game.hpp"
+#include <iostream>
 
 int main (int argc, const char * argv[]) {
     Game game;
-    game.begin();
+    game.boot();
+
+    std::cout << "Hello, world!" << std::endl;
     return 0;
 }
