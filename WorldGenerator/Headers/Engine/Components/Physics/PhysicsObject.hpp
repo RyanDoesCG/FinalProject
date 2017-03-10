@@ -11,10 +11,14 @@
 
 class PhysicsObject {
     public:
-        PhysicsObject ();
-       ~PhysicsObject ();
+        PhysicsObject () {}
+       ~PhysicsObject () {}
     
         virtual void simulate (double time) = 0;
+    
+        glm::vec3 position;
+        glm::vec3 velocity;
+        glm::vec3 dampening;
 };
 
 #endif /* PhysicsObject_hpp */

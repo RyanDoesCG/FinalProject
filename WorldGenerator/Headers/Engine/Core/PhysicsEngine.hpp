@@ -20,6 +20,9 @@ class PhysicsEngine {
     
         void simulate (double time);
     
+        void addTo2D (PhysicsObject2D* object);
+        void addTo3D (PhysicsObject3D* object);
+    
     private:
         std::vector<PhysicsObject2D*> world2D;
         std::vector<PhysicsObject3D*> world3D;

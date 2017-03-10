@@ -12,7 +12,9 @@
 #include "Geometry.hpp"
 
 class QuadGeometry: public Geometry {
-    
+    public:
+        QuadGeometry();
+       ~QuadGeometry();
 };
 
 #endif /* QuadGeometry_hpp */

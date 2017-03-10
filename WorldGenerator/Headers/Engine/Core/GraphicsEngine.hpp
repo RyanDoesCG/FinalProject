@@ -9,17 +9,22 @@
 #ifndef GraphicsEngine_hpp
 #define GraphicsEngine_hpp
 #include "GraphicsObject.hpp"
+#include "Camera.hpp"
 #include <vector>
 
 class GraphicsEngine {
     public:
-        GraphicsEngine ();
+        GraphicsEngine (float width, float height);
        ~GraphicsEngine ();
     
         void render();
     
+        void add (GraphicsObject* object);
+    
     private:
         std::vector<GraphicsObject*> scene;
+    
+        Camera* camera;
 };
 
 #endif /* GraphicsEngine_hpp */

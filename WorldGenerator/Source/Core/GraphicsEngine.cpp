@@ -8,10 +8,22 @@
 
 #include "GraphicsEngine.hpp"
 
-GraphicsEngine::GraphicsEngine () {
+GraphicsEngine::GraphicsEngine (float width, float height) {
+    camera = new Camera(width / height);
     
+    camera->moveTo(0.0, 0.0, 4.0);
 }
 
 GraphicsEngine::~GraphicsEngine () {
     
+}
+
+void GraphicsEngine::add(GraphicsObject *object) {
+    scene.push_back(object);
+}
+
+void GraphicsEngine::render() {
+    // draw scene
+    for (int i = 0; i < scene.size(); i++)
+        scene.at(i)->draw(camera);
 }

@@ -9,6 +9,7 @@
 #ifndef PhysicsObject3D_hpp
 #define PhysicsObject3D_hpp
 
+#include "glm.hpp"
 #include "PhysicsObject.hpp"
 
 class PhysicsObject3D: public PhysicsObject {
@@ -17,11 +18,8 @@ class PhysicsObject3D: public PhysicsObject {
        ~PhysicsObject3D ();
     
         virtual void simulate (double time) = 0;
+        virtual void isColliding (PhysicsObject3D* other) = 0;
 
-    private:
-        glm::vec3 position;
-        glm::vec3 velocity;
-        glm::vec3 dampening;
 };
 
 #endif /* PhysicsObject3D_hpp */

@@ -7,6 +7,7 @@
 //
 #ifndef Geometry_hpp
 #define Geometry_hpp
+
 #include "Vertex.hpp"
 #include "glew.h"
 #include <vector>
@@ -22,9 +23,13 @@ class Geometry {
     
         void render ();
     
-    private:
+        bool wireframe;
+    
+    protected:
         std::vector<Vertex> vertices;
         std::vector<GLuint> indices;
+    
+        void setup ();
 };
 
 #endif /* Geometry_hpp */

@@ -23,6 +23,7 @@ void InputManager::initialise (GLFWwindow* window) {
 }
 
 void InputManager::update () {
+    glfwPollEvents();
     gamepad   .update ();
     keyboard  .update ();
     mouse     .update ();

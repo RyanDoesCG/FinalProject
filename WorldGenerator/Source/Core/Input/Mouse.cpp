@@ -69,12 +69,8 @@ void Mouse::update() {
         if (mouseEvents[i]) {
             switch(i) {
                 case MOUSE_CLICK_LEFT:
-                    std::cout << "mouse left" << std::endl;
-                    std::cout << "x: " << mouseX << "\ty: " << mouseY << std::endl;
                     break;
                 case MOUSE_CLICK_RIGHT:
-                    std::cout << "mouse right" << std::endl;
-                    std::cout << "x: " << mouseX << "\ty: " << mouseY << std::endl;
                     break;
                 case MOUSE_SCROLL_LEFT:
                     break;

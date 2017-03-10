@@ -7,12 +7,13 @@
 //
 
 #include "Game.hpp"
+#include "EngineTest.hpp"
 
-Game::Game (): window(1920, 1080) {
-    graphics = GraphicsEngine ();
-    physics  = PhysicsEngine  ();
-    
-    
+#define WIDTH 600
+#define HEIGHT 400
+
+Game::Game (): window(WIDTH, HEIGHT), graphics (WIDTH, HEIGHT), physics() {
+
 }
 
 Game::~Game () {
@@ -22,11 +23,19 @@ Game::~Game () {
 void Game::boot () {
     glClearColor (0.93f, 0.90f, 0.83f, 1.0f);
     InputManager::initialise(window.asGLFW());
+    
+    /* * * * * * * * * * * * * * * * *
+     *  Objects
+     * * * * * * * * * * * * * * * * */
+    EngineTest test = EngineTest(&graphics);
 
     while (window.isAlive()) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
         InputManager::update();
+        
+        physics.simulate(glfwGetTime());
+        graphics.render();
 
         window.swapBuffers();
         

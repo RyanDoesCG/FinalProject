@@ -12,7 +12,9 @@
 #include "Geometry.hpp"
 
 class DiscGeometry: public Geometry {
-    
+    public:
+        DiscGeometry();
+       ~DiscGeometry();
 };
 
 #endif /* DiscGeometry_hpp */

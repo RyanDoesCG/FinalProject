@@ -12,7 +12,9 @@
 #include "Geometry.hpp"
 
 class TriGeometry: public Geometry {
-    
+    public:
+        TriGeometry();
+       ~TriGeometry();
 };
 
 #endif /* TriGeometry_hpp */
