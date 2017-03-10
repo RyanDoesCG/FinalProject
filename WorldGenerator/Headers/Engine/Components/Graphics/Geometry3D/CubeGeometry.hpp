@@ -12,7 +12,9 @@
 #include "Geometry.hpp"
 
 class CubeGeometry: public Geometry {
-    
+    public:
+        CubeGeometry ();
+       ~CubeGeometry ();
 };
 
 #endif /* CubeGeometry_hpp */

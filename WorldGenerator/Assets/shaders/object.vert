@@ -15,7 +15,7 @@ uniform mat4 projection;
 uniform vec4 colour;
 
 void main (void) {
-    gl_Position = vec4(position.x, position.y, 0.0, 1.0);
+    gl_Position = vec4(position.x, position.y, position.z, 1.0);
     
     frag_colour = colour;
     frag_normal = normal;

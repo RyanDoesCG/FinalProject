@@ -17,10 +17,8 @@ class AACollisionBox2D: public PhysicsObject2D {
        ~AACollisionBox2D ();
     
         virtual void simulate (double time) override;
-        virtual void isColliding (PhysicsObject2D* other) override;
-    
-        bool isColliding (AACollisionBox2D* other);
-    
+        virtual bool isColliding (PhysicsObject2D* other) override;
+
     private:
         float width;
         float height;

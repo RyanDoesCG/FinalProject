@@ -27,7 +27,7 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    EngineTest test = EngineTest(&graphics);
+    EngineTest test = EngineTest(&graphics, &physics);
 
     while (window.isAlive()) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

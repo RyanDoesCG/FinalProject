@@ -19,6 +19,11 @@ class PhysicsObject {
         glm::vec3 position;
         glm::vec3 velocity;
         glm::vec3 dampening;
+    
+        bool colliding;
+        int  type;
+    
+        // 0 indicates AABB
 };
 
 #endif /* PhysicsObject_hpp */

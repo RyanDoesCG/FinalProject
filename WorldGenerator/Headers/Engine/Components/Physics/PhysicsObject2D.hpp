@@ -18,7 +18,7 @@ class PhysicsObject2D: public PhysicsObject {
        ~PhysicsObject2D ();
     
         virtual void simulate (double time) = 0;
-        virtual void isColliding (PhysicsObject2D* other) = 0;
+        virtual bool isColliding (PhysicsObject2D* other) = 0;
 
 };
 

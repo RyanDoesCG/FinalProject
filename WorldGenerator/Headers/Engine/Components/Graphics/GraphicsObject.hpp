@@ -24,7 +24,7 @@ class GraphicsObject {
             
             // upload colour to shader
             glUniform4fv(glGetUniformLocation(material.getProgramID(), "colour"), 1, glm::value_ptr(colour));
-            /*
+            
             // Give camera transforms to shader
             glm::mat4 view = cam->getViewMatrix();
             glm::mat4 projection = cam->getProjectionMatrix();
@@ -38,9 +38,11 @@ class GraphicsObject {
             model = glm::rotate (model, rotation.z, glm::vec3(0.0, 0.0, 1.0));
             model = glm::scale  (model, scale);
             glUniformMatrix4fv(glGetUniformLocation(material.getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(model));
-            */
+            
             geometry.render();
         }
+    
+        void wireframe (bool b) {geometry.wireframe = b;}
     
         Geometry geometry;
         Material material;

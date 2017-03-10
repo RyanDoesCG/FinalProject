@@ -11,6 +11,8 @@
 		6248E9381E72BEF200B17855 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6248E9371E72BEF200B17855 /* Camera.cpp */; };
 		CE5A222A1E731A0B00235110 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A22291E731A0B00235110 /* GameObject.cpp */; };
 		CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222C1E73421C00235110 /* EngineTest.cpp */; };
+		CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222E1E7351D900235110 /* CubeGeometry.cpp */; };
+		CE5A22321E735A2500235110 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A22311E735A2500235110 /* Cursor.cpp */; };
 		CEC838051E6DA19F0033CC10 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838041E6DA19F0033CC10 /* main.cpp */; };
 		CEC838091E6DA29F0033CC10 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838081E6DA29F0033CC10 /* Game.cpp */; };
 		CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC8380A1E6DA2AA0033CC10 /* Window.cpp */; };
@@ -51,6 +53,9 @@
 		CE5A22291E731A0B00235110 /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		CE5A222B1E7341BD00235110 /* EngineTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EngineTest.hpp; sourceTree = "<group>"; };
 		CE5A222C1E73421C00235110 /* EngineTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EngineTest.cpp; sourceTree = "<group>"; };
+		CE5A222E1E7351D900235110 /* CubeGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CubeGeometry.cpp; path = Graphics/Geometry3D/CubeGeometry.cpp; sourceTree = "<group>"; };
+		CE5A22301E7359AD00235110 /* Cursor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cursor.hpp; sourceTree = "<group>"; };
+		CE5A22311E735A2500235110 /* Cursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cursor.cpp; sourceTree = "<group>"; };
 		CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../../Library/Frameworks/libfreetype.dylib; sourceTree = "<group>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CEC838041E6DA19F0033CC10 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -683,6 +688,7 @@
 		CEC838421E6DC9D20033CC10 /* Geometry3D */ = {
 			isa = PBXGroup;
 			children = (
+				CE5A222E1E7351D900235110 /* CubeGeometry.cpp */,
 			);
 			name = Geometry3D;
 			sourceTree = "<group>";
@@ -823,6 +829,7 @@
 				CEEF73931E6EC23D00B36E03 /* InterfaceBox.hpp */,
 				CE5A22281E7316FA00235110 /* GameObject.hpp */,
 				CE5A222B1E7341BD00235110 /* EngineTest.hpp */,
+				CE5A22301E7359AD00235110 /* Cursor.hpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -1347,6 +1354,7 @@
 				CEEF73941E6EC3F000B36E03 /* InterfaceBox.cpp */,
 				CE5A22291E731A0B00235110 /* GameObject.cpp */,
 				CE5A222C1E73421C00235110 /* EngineTest.cpp */,
+				CE5A22311E735A2500235110 /* Cursor.cpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -1471,6 +1479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */,
 				CEC8384D1E6DD2530033CC10 /* PhysicsObject2D.cpp in Sources */,
 				CEC8383B1E6DB17D0033CC10 /* Mouse.cpp in Sources */,
 				CEC838371E6DB1630033CC10 /* Gamepad.cpp in Sources */,
@@ -1486,6 +1495,7 @@
 				CEEF73951E6EC3F000B36E03 /* InterfaceBox.cpp in Sources */,
 				6248E9381E72BEF200B17855 /* Camera.cpp in Sources */,
 				CEC838331E6DB0EF0033CC10 /* InputManager.cpp in Sources */,
+				CE5A22321E735A2500235110 /* Cursor.cpp in Sources */,
 				CEC838401E6DBF9A0033CC10 /* Geometry.cpp in Sources */,
 				CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */,
 				CEC838391E6DB1710033CC10 /* Keyboard.cpp in Sources */,
