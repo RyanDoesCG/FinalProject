@@ -11,7 +11,7 @@
 #include "AACollisionBox2D.hpp"
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
-    triangle = new GraphicsObject(QuadGeometry(), Material("object", ""));
+    triangle = new GraphicsObject(QuadGeometry(), Material("object", "rock.jpg"));
     collider = new AACollisionBox2D(1, 1);
     g->add(triangle);
     p->addTo2D(collider);

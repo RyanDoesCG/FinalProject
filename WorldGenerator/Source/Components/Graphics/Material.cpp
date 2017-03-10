@@ -55,7 +55,8 @@ Material::Material(const std::string& shaderName, std::string textureName) {
      * * * * * * * */
     int width;
     int height;
-    unsigned char* image = SOIL_load_image("Assets/textures/rock.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    std::string path = "Assets/textures/" + textureName;
+    unsigned char* image = SOIL_load_image(path.c_str(), &width, &height, 0, SOIL_LOAD_RGB);
     
     glGenTextures(1, &textureID);
     
