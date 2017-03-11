@@ -10,31 +10,16 @@
 
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
-#include "GameObject.hpp"
+#include "GameHUD.hpp"
 
-#include "InputManager.hpp"
-#include "Mouse.hpp"
-#include "UIBoxBackground.hpp"
-#include "UIBox.hpp"
-
-class planetHUD: public GameObject {
+class planetHUD: public GameHUD {
     public:
         planetHUD (GraphicsEngine* graph, PhysicsEngine* phys);
        ~planetHUD ();
     
         virtual void update () override;
-    
-        void hide ();
-        void show ();
-    
-        UIBox back;
-    
-    public:
-        UIBoxBackground background;
-        std::vector<UIBox*> items;
-    
-        Gamepad* gamepad;
-        Mouse* mouse;
+        virtual void hide   () override;
+        virtual void show   () override;
 };
 
 

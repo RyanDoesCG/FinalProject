@@ -15,6 +15,7 @@
 #include "GameObject.hpp"
 #include "Menu.hpp"
 #include "dioramaHUD.hpp"
+#include "Options.hpp"
 #include "planetHUD.hpp"
 #include "Game.hpp"
 
@@ -37,6 +38,7 @@ class UIDelegate: public GameObject {
     
         UIState state;
         Menu mainMenu;
+        Options optionsMenu;
         dioramaHUD  dHUD;
         planetHUD   pHUD;
     

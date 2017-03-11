@@ -21,7 +21,7 @@
 class GameHUD: public GameObject {
     public:
         GameHUD (GraphicsEngine* graph, PhysicsEngine* phys):
-            background(graph), back(graph, phys, -1.25) {
+            background(graph), back(graph, phys) {
             // backdrop
             background.scaleTo(glm::vec3(1.5, 3, 0.0));
             background.moveTo(glm::vec3(-2, 0.0, 0.1));
@@ -29,7 +29,7 @@ class GameHUD: public GameObject {
             // back button
             items.push_back(&back);
             items.at(0)->scaleTo(glm::vec3(0.5, 0.15, 0));
-            items.at(0)->moveTo(glm::vec3(-2.075, -20, 0.2));
+            items.at(0)->moveTo(glm::vec3(-2.075, -1.25, 0.2));
             items.at(0)->update();
                 
             // input

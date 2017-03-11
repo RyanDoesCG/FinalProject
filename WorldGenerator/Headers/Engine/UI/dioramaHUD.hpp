@@ -11,31 +11,18 @@
 
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
-#include "GameObject.hpp"
+#include "GameHUD.hpp"
 
-#include "InputManager.hpp"
-#include "Mouse.hpp"
-#include "UIBoxBackground.hpp"
-#include "UIBox.hpp"
 
-class dioramaHUD: public GameObject {
+class dioramaHUD: public GameHUD {
     public:
         dioramaHUD (GraphicsEngine* graph, PhysicsEngine* phys);
        ~dioramaHUD ();
     
         virtual void update () override;
-    
-        void hide ();
-        void show ();
-    
-        UIBox back;
-    
-    public:
-        UIBoxBackground background;
-        std::vector<UIBox*> items;
-    
-        Gamepad* gamepad;
-        Mouse* mouse;
+        virtual void hide   () override;
+        virtual void show   () override;
+
 };
 
 

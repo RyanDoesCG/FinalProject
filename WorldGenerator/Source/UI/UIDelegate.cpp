@@ -10,6 +10,7 @@
 
 UIDelegate::UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g):
     mainMenu (graph, phys),
+    optionsMenu(graph, phys),
     dHUD     (graph, phys),
     pHUD     (graph, phys) {
     
@@ -29,6 +30,7 @@ void UIDelegate::update() {
     switch (state) {
         case main_menu: {
             mainMenu.show();
+            optionsMenu.hide();
             dHUD.hide();
             pHUD.hide();
             
@@ -41,6 +43,7 @@ void UIDelegate::update() {
                 if (mainMenu.quit     .isSelected()) { state = over; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
+                mouse->leftButtonHandled();
             }
             break;
         }
@@ -56,6 +59,7 @@ void UIDelegate::update() {
                 if (dHUD.back.isSelected()) { state = main_menu; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
+                mouse->leftButtonHandled();
             }
             break;
         }
@@ -71,11 +75,25 @@ void UIDelegate::update() {
                 if (pHUD.back.isSelected()) { state = main_menu; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
+                mouse->leftButtonHandled();
             }
             break;
         }
             
         case options: {
+            mainMenu.hide();
+            optionsMenu.show();
+            dHUD.hide();
+            pHUD.hide();
+            
+            optionsMenu.update();
+            
+            if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
+                if (optionsMenu.back.isSelected()) { state = main_menu; }
+                
+                gamepad->buttonHandled(GAMEPAD_BUTTON_A);
+                mouse->leftButtonHandled();
+            }
             break;
         }
             
