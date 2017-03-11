@@ -16,7 +16,7 @@ Cursor::Cursor(GraphicsEngine* g, PhysicsEngine* p) {
     g->add(quad);
     p->addTo2D(collider);
     
-    quad->position = glm::vec3(0, 0, 0.1);
+    quad->position = glm::vec3(0, 0, 0.2);
     quad->colour   = glm::vec4(0.81, 0.81, 0.81, 1);
     quad->scale    = glm::vec3(0.05, 0.05, 0.05);
     

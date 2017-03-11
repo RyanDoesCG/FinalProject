@@ -15,7 +15,7 @@ planetHUD::planetHUD (GraphicsEngine* graph, PhysicsEngine* phys): background(gr
     // back button
     items.push_back(&back);
     items.at(0)->scaleTo(glm::vec3(0.5, 0.15, 0));
-    items.at(0)->moveTo(glm::vec3(-2.075, -0.75, 1));
+    items.at(0)->moveTo(glm::vec3(-2.075, -0.75, 0.2));
     items.at(0)->update();
     
     // input
