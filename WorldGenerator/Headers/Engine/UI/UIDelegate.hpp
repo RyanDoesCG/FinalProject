@@ -11,15 +11,16 @@
 
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
-
+#include "InputManager.hpp"
 #include "GameObject.hpp"
-
 #include "Menu.hpp"
-#include "HUD.hpp"
+#include "dioramaHUD.hpp"
+#include "planetHUD.hpp"
+#include "Game.hpp"
 
 class UIDelegate: public GameObject {
     public:
-        UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys);
+        UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g);
        ~UIDelegate ();
     
         virtual void update () override;
@@ -30,12 +31,19 @@ class UIDelegate: public GameObject {
             diorama,
             planet,
             options,
-            hidden
+            hidden,
+            over
         };
     
         UIState state;
         Menu mainMenu;
-        HUD  gameHud;
+        dioramaHUD  dHUD;
+        planetHUD   pHUD;
+    
+        Gamepad* gamepad;
+        Mouse* mouse;
+    
+        Game* game;
 };
 
 #endif /* UIDelegate_hpp */

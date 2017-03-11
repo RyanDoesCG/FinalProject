@@ -1,13 +1,13 @@
 //
-//  HUD.hpp
+//  dioramaHUD.hpp
 //  WorldGenerator
 //
 //  Created by Ryan Needham on 11/03/2017.
 //  Copyright © 2017 Dissertation. All rights reserved.
 //
 
-#ifndef HUD_hpp
-#define HUD_hpp
+#ifndef dioramaHUD_hpp
+#define dioramaHUD_hpp
 
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
@@ -18,23 +18,25 @@
 #include "UIBoxBackground.hpp"
 #include "UIBox.hpp"
 
-class HUD: public GameObject {
+class dioramaHUD: public GameObject {
     public:
-        HUD (GraphicsEngine* graph, PhysicsEngine* phys);
-       ~HUD ();
+        dioramaHUD (GraphicsEngine* graph, PhysicsEngine* phys);
+       ~dioramaHUD ();
     
         virtual void update () override;
     
         void hide ();
         void show ();
     
+        UIBox back;
+    
     public:
         UIBoxBackground background;
-        std::vector<UIBox> items;
+        std::vector<UIBox*> items;
     
         Gamepad* gamepad;
         Mouse* mouse;
 };
 
 
-#endif /* HUD_hpp */
+#endif /* dioramaHUD_hpp */

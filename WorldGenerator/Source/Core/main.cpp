@@ -12,7 +12,5 @@
 int main (int argc, const char * argv[]) {
     Game game;
     game.boot();
-
-    std::cout << "Hello, world!" << std::endl;
     return 0;
 }

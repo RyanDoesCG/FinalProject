@@ -31,6 +31,9 @@ class UIBox: public GameObject {
     
         bool isSelected ();
     
+        void fadeIn  ();
+        void fadeOut ();
+    
     private:
         GraphicsObject* graphics;
         PhysicsObject2D* physics;

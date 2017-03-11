@@ -13,8 +13,8 @@
 #include "EngineTest.hpp"
 #include <algorithm>
 
-#define WIDTH 1920/2
-#define HEIGHT 1080/2
+#define WIDTH 1920
+#define HEIGHT 1080
 
 Game::Game (): window(WIDTH, HEIGHT), graphics (WIDTH, HEIGHT), physics() {
 
@@ -36,7 +36,7 @@ void Game::boot () {
      *  Objects
      * * * * * * * * * * * * * * * * */
     Cursor     cursor = Cursor(&graphics, &physics);
-    UIDelegate interface = UIDelegate(&graphics, &physics);
+    UIDelegate interface = UIDelegate(&graphics, &physics, this);
     
     EngineTest test   = EngineTest(&graphics, &physics);
     
@@ -58,4 +58,8 @@ void Game::boot () {
     }
     
     glfwTerminate();
+}
+
+void Game::stop () {
+    window.close();
 }

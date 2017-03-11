@@ -19,6 +19,7 @@ class Game {
        ~Game ();
     
         void boot ();
+        void stop ();
     
     protected:
         GraphicsEngine graphics;
