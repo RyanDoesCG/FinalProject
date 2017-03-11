@@ -52,7 +52,7 @@ class GraphicsObject {
                 model = glm::rotate (model, rotation.x, glm::vec3(1.0, 0.0, 0.0));
                 model = glm::rotate (model, rotation.y, glm::vec3(0.0, 1.0, 0.0));
                 model = glm::rotate (model, rotation.z, glm::vec3(0.0, 0.0, 1.0));
-                model = glm::scale  (model, glm::vec3(scale.x+0.01, scale.y+0.01, scale.z+0.01));
+                model = glm::scale  (model, scale + glm::vec3(0.01));
                 glUniformMatrix4fv(glGetUniformLocation(material.getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(model));
                 
                 glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);

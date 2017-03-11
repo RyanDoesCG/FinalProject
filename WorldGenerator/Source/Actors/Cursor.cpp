@@ -20,6 +20,8 @@ Cursor::Cursor(GraphicsEngine* g, PhysicsEngine* p) {
     quad->colour   = glm::vec4(0.81, 0.81, 0.81, 1);
     quad->scale    = glm::vec3(0.05, 0.05, 0.05);
     
+    gamepad = InputManager::getGamepadHandle();
+    
     mouse = InputManager::getMouseHandle();
     mouse->hide();
 }
@@ -31,8 +33,12 @@ Cursor::~Cursor() {
 void Cursor::update() {
     quad->position.x += (mouse->getXoffset() == lastXoffset) ? 0 : mouse->getXoffset();
     quad->position.y += (mouse->getYoffset() == lastYoffset) ? 0 : mouse->getYoffset();
+    quad->position.x += gamepad->getAxisState(LEFT_STICK_X_AXIS) * 0.05; gamepad->resetAxisState(LEFT_STICK_X_AXIS);
+    quad->position.y -= gamepad->getAxisState(LEFT_STICK_Y_AXIS) * 0.05; gamepad->resetAxisState(LEFT_STICK_Y_AXIS);
+    
     collider->position = quad->position;
     collider->position = quad->position;
+    
     lastXoffset = mouse->getXoffset();
     lastYoffset = mouse->getYoffset();
     

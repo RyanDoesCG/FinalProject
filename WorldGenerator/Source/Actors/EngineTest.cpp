@@ -17,8 +17,9 @@ EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     
     triangle->colour = glm::vec4(0.31,0.31,0.31, 1);
     
-    triangle->position = glm::vec3(0, 0, -6);
-    triangle->scale    = glm::vec3(4, 4, 4);
+    triangle->position = glm::vec3(0, 0, -8);
+    triangle->scale    = glm::vec3(6, 6, 6
+                                   );
     
     triangle->wireframe(true);
 }

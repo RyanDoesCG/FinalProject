@@ -28,6 +28,7 @@ class Cursor: public GameObject {
         GraphicsObject* quad;
         PhysicsObject2D* collider;
     
+        Gamepad* gamepad;
         Mouse* mouse;
     
         float lastXoffset;

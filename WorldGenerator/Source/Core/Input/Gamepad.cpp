@@ -5,7 +5,7 @@
 //  Created by user on 06/03/2017.
 //  Copyright © 2017 Dissertation. All rights reserved.
 //
-
+#include <math.h>
 #include "Gamepad.hpp"
 
 float         * axes;
@@ -72,7 +72,7 @@ void Gamepad::buttonHandled (int button) {
 }
 
 float Gamepad::getAxisState(int axis) {
-    return axesStates[axis];
+    return (fabs(axesStates[axis]) > 0.05) ? axesStates[axis] : 0;
 }
 
 void Gamepad::resetAxisState(int axis) {
