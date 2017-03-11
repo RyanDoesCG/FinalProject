@@ -7,7 +7,7 @@
 //
 
 #include "Game.hpp"
-#include "EngineTest.hpp"
+#include "UIBox.hpp"
 #include "Cursor.hpp"
 #include <algorithm>
 
@@ -33,11 +33,11 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    EngineTest test = EngineTest(&graphics, &physics);
     Cursor     cursor = Cursor(&graphics, &physics);
-    
-    objects.push_back(&test);
+    UIBox      box    = UIBox(&graphics, &physics);
+
     objects.push_back(&cursor);
+    objects.push_back(&box);
     
     while (window.isAlive()) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

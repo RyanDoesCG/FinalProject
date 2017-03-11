@@ -10,6 +10,7 @@
 #define AACollisionBox2D_hpp
 
 #include "PhysicsObject2D.hpp"
+#include <string>
 
 class AACollisionBox2D: public PhysicsObject2D {
     public:

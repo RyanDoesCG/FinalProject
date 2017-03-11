@@ -47,10 +47,10 @@ class GraphicsObject {
         Geometry geometry;
         Material material;
     
-        glm::vec3 position;
-        glm::vec3 rotation;
-        glm::vec4 colour;
-        glm::vec3 scale;
+        glm::vec3 position = glm::vec3(0.00, 0.00, 0.00);
+        glm::vec3 rotation = glm::vec3(0.00, 0.00, 0.00);
+        glm::vec4 colour   = glm::vec4(0.21, 0.21, 0.21, 1.0);
+        glm::vec3 scale    = glm::vec3(1.00, 1.00, 1.00);
     
         glm::mat4 model;
     
