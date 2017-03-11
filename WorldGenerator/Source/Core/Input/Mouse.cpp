@@ -30,7 +30,7 @@ double  mouseY  = 0;
 GLfloat xoffset = 0;
 GLfloat yoffset = 0;
 
-GLfloat sensitivity = 0.05f;
+GLfloat sensitivity = 0.005f;
 
 void mouseActionCallback   (GLFWwindow* window, int button, int action, int mods);
 void mouseScrollCallback   (GLFWwindow* window, double xoffset, double yoffset);
@@ -85,25 +85,22 @@ void Mouse::update() {
     }
 }
 
-void Mouse::hideMouse() {
+void Mouse::hide () {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
-void Mouse::showMouse() {
+void Mouse::show () {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 }
 
-void Mouse::placeMouse (int x, int y) {
+void Mouse::place (int x, int y) {
     glfwSetCursorPos(window, x, y);
 }
 
 void Mouse::centerMouse () {
-    /*
-     int centreX = glfwGetVideoMode(glfwGetPrimaryMonitor())->width/2;
-     int centreY = glfwGetVideoMode(glfwGetPrimaryMonitor())->height/2;
-     
-     glfwSetCursorPos(window, centreX, centreY);
-     */
+
+
+
 }
 
 float Mouse::getMouseX  () { return mouseX; }
@@ -150,4 +147,5 @@ void mouseMovementCallback (GLFWwindow* window, double xpos, double ypos) {
     
     xoffset *= sensitivity;
     yoffset *= sensitivity;
+    
 }

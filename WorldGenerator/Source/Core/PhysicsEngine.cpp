@@ -33,9 +33,14 @@ void PhysicsEngine::simulate(double time) {
     // detect collisions (ORDER N, NOT GOOD)
     for (int i = 0; i < world2D.size(); i++) {
         for (int j = 0; j < world2D.size(); j++) {
-            if (world2D.at(i)->isColliding(world2D.at(j))) {
-                world2D.at(i)->colliding = true;
-                world2D.at(j)->colliding = true;
+            if (world2D.at(i) != world2D.at(j)) {
+                if (world2D.at(i)->isColliding(world2D.at(j))) {
+                    world2D.at(i)->colliding = true;
+                    world2D.at(j)->colliding = true;
+                } else {
+                    world2D.at(i)->colliding = false;
+                    world2D.at(j)->colliding = false;
+                }
             }
         }
     }

@@ -10,8 +10,6 @@
 
 GraphicsEngine::GraphicsEngine (float width, float height) {
     camera = new Camera(width / height);
-    
-    camera->moveTo(0.0, 0.0, 4.0);
 }
 
 GraphicsEngine::~GraphicsEngine () {

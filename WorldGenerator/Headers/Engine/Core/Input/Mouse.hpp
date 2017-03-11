@@ -17,10 +17,10 @@ class Mouse {
         void attach (GLFWwindow* window);
         void update ();
     
-        void hideMouse ();
-        void showMouse ();
+        void hide ();
+        void show ();
     
-        void placeMouse(int x, int y);
+        void place (int x, int y);
         void centerMouse();
     
         float getMouseX ();

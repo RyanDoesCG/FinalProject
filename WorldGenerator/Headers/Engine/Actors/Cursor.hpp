@@ -14,6 +14,7 @@
 #include "GraphicsEngine.hpp"
 #include "GraphicsObject.hpp"
 #include "GameObject.hpp"
+#include "InputManager.hpp"
 
 class Cursor: public GameObject {
     public:
@@ -26,6 +27,11 @@ class Cursor: public GameObject {
     
         GraphicsObject* quad;
         PhysicsObject2D* collider;
+    
+        Mouse* mouse;
+    
+        float lastXoffset;
+        float lastYoffset;
 };
 
 #endif /* Cursor_hpp */

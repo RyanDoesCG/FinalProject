@@ -18,6 +18,8 @@ class AACollisionBox2D: public PhysicsObject2D {
     
         virtual void simulate (double time) override;
         virtual bool isColliding (PhysicsObject2D* other) override;
+    
+        std::string string ();
 
     private:
         float width;
