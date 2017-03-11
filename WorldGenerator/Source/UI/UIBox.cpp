@@ -44,13 +44,13 @@ void UIBox::setAlpha(GLfloat a) {
     graphics->colour.a = a;
 }
 
-bool UIBox::isColliding() {
+bool UIBox::isSelected() {
     return physics->colliding;
 }
 
 void UIBox::update () {
     graphics->position = physics->pos ();
     
-    if (physics->colliding) graphics->colour = glm::vec4(0.41, 0.41, 0.41, 1.0);
-    else                    graphics->colour = glm::vec4(0.21, 0.21, 0.21, 1.0);
+    if (physics->colliding) graphics->colour = glm::vec4(0.41, 0.41, 0.41, graphics->colour.a);
+    else                    graphics->colour = glm::vec4(0.21, 0.21, 0.21, graphics->colour.a);
 }

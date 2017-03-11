@@ -29,7 +29,7 @@ class UIBox: public GameObject {
         void setColour (glm::vec4 c);
         void setAlpha  (GLfloat a);
     
-        bool isColliding ();
+        bool isSelected ();
     
     private:
         GraphicsObject* graphics;

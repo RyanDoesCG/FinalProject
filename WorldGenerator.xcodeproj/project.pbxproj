@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6219A7C51E743D4F000E2B92 /* UIBoxBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */; };
 		6219A7C81E7440AA000E2B92 /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C71E7440AA000E2B92 /* HUD.cpp */; };
+		6233CEC51E7453370014055F /* UIDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6233CEC31E7453370014055F /* UIDelegate.cpp */; };
 		6248E9331E72B8BF00B17855 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
 		6248E9381E72BEF200B17855 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6248E9371E72BEF200B17855 /* Camera.cpp */; };
 		62864DC91E7421F800C957D0 /* UIBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62864DC81E7421F800C957D0 /* UIBox.cpp */; };
@@ -50,6 +51,8 @@
 		6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBoxBackground.cpp; sourceTree = "<group>"; };
 		6219A7C61E744047000E2B92 /* HUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HUD.hpp; sourceTree = "<group>"; };
 		6219A7C71E7440AA000E2B92 /* HUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
+		6233CEC21E7453020014055F /* UIDelegate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIDelegate.hpp; sourceTree = "<group>"; };
+		6233CEC31E7453370014055F /* UIDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIDelegate.cpp; sourceTree = "<group>"; };
 		6248E9361E72B96A00B17855 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = Graphics/Camera.hpp; sourceTree = "<group>"; };
 		6248E9371E72BEF200B17855 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = Graphics/Camera.cpp; sourceTree = "<group>"; };
 		62864DC71E7421E200C957D0 /* UIBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIBox.hpp; sourceTree = "<group>"; };
@@ -884,6 +887,7 @@
 				6219A7C31E743CED000E2B92 /* UIBoxBackground.hpp */,
 				62864DCA1E74252300C957D0 /* Menu.hpp */,
 				6219A7C61E744047000E2B92 /* HUD.hpp */,
+				6233CEC21E7453020014055F /* UIDelegate.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1413,6 +1417,7 @@
 				62864DCB1E74258500C957D0 /* Menu.cpp */,
 				6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */,
 				6219A7C71E7440AA000E2B92 /* HUD.cpp */,
+				6233CEC31E7453370014055F /* UIDelegate.cpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1513,6 +1518,7 @@
 				CE5A22321E735A2500235110 /* Cursor.cpp in Sources */,
 				62864DCC1E74258500C957D0 /* Menu.cpp in Sources */,
 				CEC838401E6DBF9A0033CC10 /* Geometry.cpp in Sources */,
+				6233CEC51E7453370014055F /* UIDelegate.cpp in Sources */,
 				62864DC91E7421F800C957D0 /* UIBox.cpp in Sources */,
 				CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */,
 				CEC838391E6DB1710033CC10 /* Keyboard.cpp in Sources */,

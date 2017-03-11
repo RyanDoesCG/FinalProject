@@ -38,6 +38,7 @@ HUD::HUD (GraphicsEngine* graph, PhysicsEngine* phys): background(graph) {
     items.at(3).update();
     
     // input
+    gamepad = InputManager::getGamepadHandle();
     mouse = InputManager::getMouseHandle();
 }
 
@@ -67,12 +68,4 @@ void HUD::update () {
     for_each(items.begin(), items.end(), [](UIBox box) {
         box.update();
     });
-    
-    if (mouse->leftButtonDown() || mouse->rightButtonDown()) {
-        if (items.at(3).isColliding()) {
-            hide();   
-        } else {
-            show();
-        }
-    }
 }

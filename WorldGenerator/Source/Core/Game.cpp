@@ -7,8 +7,7 @@
 //
 
 #include "Game.hpp"
-#include "Menu.hpp"
-#include "HUD.hpp"
+#include "UIDelegate.hpp"
 #include "Cursor.hpp"
 
 #include "EngineTest.hpp"
@@ -37,14 +36,12 @@ void Game::boot () {
      *  Objects
      * * * * * * * * * * * * * * * * */
     Cursor     cursor = Cursor(&graphics, &physics);
-    Menu       menu   = Menu (&graphics, &physics);
-    HUD         hud   = HUD(&graphics, &physics);
+    UIDelegate interface = UIDelegate(&graphics, &physics);
     
     EngineTest test   = EngineTest(&graphics, &physics);
     
     objects.push_back(&cursor);
-    objects.push_back(&menu);
-    objects.push_back(&hud);
+    objects.push_back(&interface);
     objects.push_back(&test);
     
     while (window.isAlive()) {

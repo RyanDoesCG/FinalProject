@@ -38,6 +38,18 @@ Menu::~Menu () {
     
 }
 
+void Menu::hide () {
+    for_each(items.begin(), items.end(), [](UIBox box) {
+        box.setAlpha (0);
+    });
+}
+
+void Menu::show () {
+    for_each(items.begin(), items.end(), [](UIBox box) {
+        box.setAlpha (1);
+    });
+}
+
 void Menu::update () {
     for_each(items.begin(), items.end(), [](UIBox box) {
         box.update();

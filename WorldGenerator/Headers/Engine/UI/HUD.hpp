@@ -32,6 +32,7 @@ class HUD: public GameObject {
         UIBoxBackground background;
         std::vector<UIBox> items;
     
+        Gamepad* gamepad;
         Mouse* mouse;
 };
 

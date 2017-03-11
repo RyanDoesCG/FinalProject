@@ -21,6 +21,9 @@ class Menu: public GameObject {
     
         virtual void update () override;
     
+        void hide ();
+        void show ();
+    
     public:
     
         std::vector<UIBox> items;
