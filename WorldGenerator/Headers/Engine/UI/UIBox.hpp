@@ -34,6 +34,9 @@ class UIBox: public GameObject {
         void fadeIn  ();
         void fadeOut ();
     
+        void activatePhysics   ();
+        void deactivatePhysics ();
+    
     private:
         GraphicsObject* graphics;
         PhysicsObject2D* physics;

@@ -45,12 +45,14 @@ Menu::~Menu () {
 
 void Menu::hide () {
     for_each(items.begin(), items.end(), [](UIBox* box) {
+        box->deactivatePhysics();
         box->setAlpha (0);
     });
 }
 
 void Menu::show () {
     for_each(items.begin(), items.end(), [](UIBox* box) {
+        box->activatePhysics();
         box->setAlpha (1);
     });
 }

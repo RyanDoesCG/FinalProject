@@ -49,6 +49,9 @@ void UIBox::setAlpha(GLfloat a) {
     graphics->colour.a = a;
 }
 
+void UIBox::activatePhysics   () { physics->active = true; }
+void UIBox::deactivatePhysics () { physics->active = false; }
+
 bool UIBox::isSelected() {
     return physics->colliding;
 }

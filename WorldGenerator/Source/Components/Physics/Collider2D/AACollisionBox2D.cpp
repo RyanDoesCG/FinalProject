@@ -46,17 +46,19 @@ glm::vec3 AACollisionBox2D::pos () {
 }
 
 bool AACollisionBox2D::isColliding(PhysicsObject2D* other) {
-    if (other->type == 0) {
-        if (this->position.x < static_cast<AACollisionBox2D*>(other)->position.x + static_cast<AACollisionBox2D*>(other)->width &&
-            this->position.x + this->width > static_cast<AACollisionBox2D*>(other)->position.x &&
-            this->position.y < static_cast<AACollisionBox2D*>(other)->position.y + static_cast<AACollisionBox2D*>(other)->height &&
-            this->height + this->position.y > static_cast<AACollisionBox2D*>(other)->position.y) {
-            std::cout << std::endl;
-            std::cout << "a: " << this->string() << std::endl;
-            std::cout << "b: " << static_cast<AACollisionBox2D*>(other)->string() << std::endl;
-            std::cout << std::endl;
-            return true;
-        }
+    if (active && other->active) {
+        if (other->type == 0) {
+            if (this->position.x < static_cast<AACollisionBox2D*>(other)->position.x + static_cast<AACollisionBox2D*>(other)->width &&
+                this->position.x + this->width > static_cast<AACollisionBox2D*>(other)->position.x &&
+                this->position.y < static_cast<AACollisionBox2D*>(other)->position.y + static_cast<AACollisionBox2D*>(other)->height &&
+                this->height + this->position.y > static_cast<AACollisionBox2D*>(other)->position.y) {
+                std::cout << std::endl;
+                std::cout << "a: " << this->string() << std::endl;
+                std::cout << "b: " << static_cast<AACollisionBox2D*>(other)->string() << std::endl;
+                std::cout << std::endl;
+                return true;
+            }
+        }   
     }
     return false;
 }

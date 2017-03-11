@@ -26,6 +26,7 @@ class PhysicsObject {
         virtual void scaleTo (glm::vec3 s) = 0;
         virtual void moveTo  (glm::vec3 p) = 0;
     
+        bool active = true;
         bool colliding;
         int  type;
     
