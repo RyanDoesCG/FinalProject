@@ -34,6 +34,9 @@ class UIBox: public GameObject {
     private:
         GraphicsObject* graphics;
         PhysicsObject2D* physics;
+
+        glm::vec3 litColour;
+        glm::vec3 unlitColour;
 };
 
 #endif /* UIBox_hpp */

@@ -20,6 +20,11 @@ UIBox::UIBox (GraphicsEngine* graph, PhysicsEngine* phys) {
     
     graph->add(graphics);
     phys->addTo2D(physics);
+    
+    litColour = glm::vec3(0.41, 0.41, 0.41);
+    unlitColour = glm::vec3(0.21, 0.21, 0.21);
+    
+    graphics->colour = glm::vec4(unlitColour.x, unlitColour.y, unlitColour.z, 1.0);
 }
 
 UIBox::~UIBox () {
@@ -51,6 +56,24 @@ bool UIBox::isSelected() {
 void UIBox::update () {
     graphics->position = physics->pos ();
     
+    // fade in
+    if (physics->colliding) {
+        if (graphics->colour.r < litColour.r) {
+            graphics->colour.r += 0.01;
+            graphics->colour.g += 0.01;
+            graphics->colour.b += 0.01;
+        }
+    }
+    // fade out
+    if (!physics->colliding) {
+        if (graphics->colour.r > unlitColour.r) {
+            graphics->colour.r -= 0.01;
+            graphics->colour.g -= 0.01;
+            graphics->colour.b -= 0.01;
+        }
+    }
+    /*
     if (physics->colliding) graphics->colour = glm::vec4(0.41, 0.41, 0.41, graphics->colour.a);
     else                    graphics->colour = glm::vec4(0.21, 0.21, 0.21, graphics->colour.a);
+     */
 }
