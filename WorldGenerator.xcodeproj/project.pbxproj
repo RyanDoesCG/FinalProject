@@ -33,6 +33,7 @@
 		CEC838461E6DCC6E0033CC10 /* TriGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838451E6DCC6E0033CC10 /* TriGeometry.cpp */; };
 		CEC8384B1E6DD0020033CC10 /* AACollisionBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC8384A1E6DD0020033CC10 /* AACollisionBox2D.cpp */; };
 		CEC8384D1E6DD2530033CC10 /* PhysicsObject2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC8384C1E6DD2530033CC10 /* PhysicsObject2D.cpp */; };
+		CED405801E74925A001ED29B /* Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CED4057F1E74925A001ED29B /* Options.cpp */; };
 		CEDD0E651E00AA800078469C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */; };
 		CEDD0E661E00AA860078469C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117941D78005500FE98A9 /* OpenGL.framework */; };
 		CEDD0E671E00AA8B0078469C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED62ABB1D89AC6300805C8E /* Cocoa.framework */; };
@@ -111,6 +112,9 @@
 		CEC8384A1E6DD0020033CC10 /* AACollisionBox2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AACollisionBox2D.cpp; path = Physics/Collider2D/AACollisionBox2D.cpp; sourceTree = "<group>"; };
 		CEC8384C1E6DD2530033CC10 /* PhysicsObject2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhysicsObject2D.cpp; path = Physics/PhysicsObject2D.cpp; sourceTree = "<group>"; };
 		CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../Library/Frameworks/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
+		CED4057B1E748B2D001ED29B /* GameHUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameHUD.hpp; sourceTree = "<group>"; };
+		CED4057E1E7491E5001ED29B /* Options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Options.hpp; sourceTree = "<group>"; };
+		CED4057F1E74925A001ED29B /* Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Options.cpp; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		CEDD0BAF1E00A9020078469C /* WorldGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -892,6 +896,8 @@
 				6219A7C61E744047000E2B92 /* dioramaHUD.hpp */,
 				6233CEC61E7474810014055F /* planetHUD.hpp */,
 				6233CEC21E7453020014055F /* UIDelegate.hpp */,
+				CED4057B1E748B2D001ED29B /* GameHUD.hpp */,
+				CED4057E1E7491E5001ED29B /* Options.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1423,6 +1429,7 @@
 				6219A7C71E7440AA000E2B92 /* dioramaHUD.cpp */,
 				6233CEC31E7453370014055F /* UIDelegate.cpp */,
 				6233CEC71E7474BD0014055F /* planetHUD.cpp */,
+				CED4057F1E74925A001ED29B /* Options.cpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1515,6 +1522,7 @@
 				CEC838441E6DC9F00033CC10 /* QuadGeometry.cpp in Sources */,
 				6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */,
 				CE5A222A1E731A0B00235110 /* GameObject.cpp in Sources */,
+				CED405801E74925A001ED29B /* Options.cpp in Sources */,
 				CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */,
 				CEC838261E6DAC240033CC10 /* PhysicsEngine.cpp in Sources */,
 				CEC838461E6DCC6E0033CC10 /* TriGeometry.cpp in Sources */,

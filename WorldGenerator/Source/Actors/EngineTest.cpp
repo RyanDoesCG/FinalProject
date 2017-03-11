@@ -18,8 +18,7 @@ EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     triangle->colour = glm::vec4(0.31,0.31,0.31, 1);
     
     triangle->position = glm::vec3(0, 0, -8);
-    triangle->scale    = glm::vec3(6, 6, 6
-                                   );
+    triangle->scale    = glm::vec3(6, 6, 6);
     
     triangle->wireframe(true);
 }
@@ -30,5 +29,5 @@ EngineTest::~EngineTest () {
 
 void EngineTest::update() {
     triangle->rotation.x = 0.25;
-    triangle->rotation.y += 0.001;
+    triangle->rotation.y += 0.01;
 }

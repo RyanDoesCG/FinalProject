@@ -65,6 +65,7 @@ void Mouse::attach(GLFWwindow *window) {
     this->window = window;
 }
 
+
 void Mouse::update() {
     glfwPollEvents();
     
@@ -113,6 +114,9 @@ float Mouse::getYoffset () { return yoffset; }
 
 bool Mouse::leftButtonDown  () { return leftButton; }
 bool Mouse::rightButtonDown () { return rightButton; }
+
+void Mouse::leftButtonHandled  () {leftButton = false; }
+void Mouse::rightButtonHandled () {rightButton = false; }
 
 void mouseActionCallback (GLFWwindow* window, int button, int action, int mods) {
     mouseEvents[button] = action;

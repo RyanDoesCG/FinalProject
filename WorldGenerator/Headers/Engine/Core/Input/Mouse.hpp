@@ -32,6 +32,9 @@ class Mouse {
         bool leftButtonDown  ();
         bool rightButtonDown ();
     
+        void leftButtonHandled  ();
+        void rightButtonHandled ();
+    
     private:
         GLFWwindow* window;
 };

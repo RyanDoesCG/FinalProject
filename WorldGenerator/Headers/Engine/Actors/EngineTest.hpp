@@ -21,9 +21,7 @@ class EngineTest: public GameObject {
        ~EngineTest ();
     
     private:
-    
         virtual void update () override;
-    
         GraphicsObject* triangle;
         PhysicsObject2D* collider;
     
