@@ -14,11 +14,16 @@
 
 class AACollisionBox2D: public PhysicsObject2D {
     public:
-        AACollisionBox2D (int w, int h);
+        AACollisionBox2D (glm::vec2 scale);
        ~AACollisionBox2D ();
     
         virtual void simulate (double time) override;
         virtual bool isColliding (PhysicsObject2D* other) override;
+    
+        virtual void scaleTo (glm::vec3 s) override;
+        virtual void moveTo  (glm::vec3 p) override;
+    
+        virtual glm::vec3 pos () override;
     
         std::string string ();
 

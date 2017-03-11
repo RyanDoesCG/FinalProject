@@ -8,6 +8,10 @@
 
 #include "GraphicsEngine.hpp"
 
+bool depthComparator (GraphicsObject* a, GraphicsObject* b) {
+    return (a->position.z < b->position.z);
+}
+
 GraphicsEngine::GraphicsEngine (float width, float height) {
     camera = new Camera(width / height);
 }
@@ -21,6 +25,9 @@ void GraphicsEngine::add(GraphicsObject *object) {
 }
 
 void GraphicsEngine::render() {
+    std::sort(scene.begin(), scene.end(), depthComparator);
+    camera->update();
+    
     // draw scene
     for (int i = 0; i < scene.size(); i++)
         scene.at(i)->draw(camera);

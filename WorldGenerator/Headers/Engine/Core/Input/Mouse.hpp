@@ -29,6 +29,9 @@ class Mouse {
         float getXoffset ();
         float getYoffset ();
     
+        bool leftButtonDown  ();
+        bool rightButtonDown ();
+    
     private:
         GLFWwindow* window;
 };

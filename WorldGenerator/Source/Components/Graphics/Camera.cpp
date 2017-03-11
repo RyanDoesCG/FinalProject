@@ -24,7 +24,9 @@ Camera::Camera(GLfloat aspect) {
     yaw = -90.0f;
     pitch = 0.0f;
     zoom = 45.0f;
-
+    
+    view = glm::lookAt(position, position + relativeFront, relativeUp);
+    proj = glm::perspective(zoom, aspectRatio, 0.01f, 100.0f);
 }
 
 Camera::~Camera() {
@@ -46,6 +48,6 @@ void Camera::update () {
     relativeRight = glm::normalize(glm::cross(relativeFront, worldUp));
     relativeUp    = glm::normalize(glm::cross(relativeRight, relativeFront));
     
-    view = glm::perspective(zoom, aspectRatio, 0.1f, 100.0f);
-    proj = glm::lookAt(position, position + relativeFront, relativeUp);
+    view = glm::lookAt(position, position + relativeFront, relativeUp);
+    proj = glm::perspective(zoom, aspectRatio, 0.01f, 100.0f);
 }

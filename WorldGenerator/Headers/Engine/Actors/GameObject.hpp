@@ -16,9 +16,10 @@ class GameObject {
         GameObject ();
        ~GameObject ();
     
-       glm::vec3 position;
+        glm::vec3 position;
+        glm::vec3 scale;
     
-       virtual void update () = 0;
+        virtual void update () = 0;
 
 };
 

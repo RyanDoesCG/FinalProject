@@ -37,9 +37,6 @@ void PhysicsEngine::simulate(double time) {
                 if (world2D.at(i)->isColliding(world2D.at(j))) {
                     world2D.at(i)->colliding = true;
                     world2D.at(j)->colliding = true;
-                } else {
-                    world2D.at(i)->colliding = false;
-                    world2D.at(j)->colliding = false;
                 }
             }
         }

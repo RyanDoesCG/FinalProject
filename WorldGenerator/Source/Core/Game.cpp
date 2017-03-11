@@ -7,12 +7,15 @@
 //
 
 #include "Game.hpp"
-#include "UIBox.hpp"
+#include "Menu.hpp"
+#include "HUD.hpp"
 #include "Cursor.hpp"
+
+#include "EngineTest.hpp"
 #include <algorithm>
 
-#define WIDTH 600
-#define HEIGHT 400
+#define WIDTH 1920/2
+#define HEIGHT 1080/2
 
 Game::Game (): window(WIDTH, HEIGHT), graphics (WIDTH, HEIGHT), physics() {
 
@@ -34,10 +37,15 @@ void Game::boot () {
      *  Objects
      * * * * * * * * * * * * * * * * */
     Cursor     cursor = Cursor(&graphics, &physics);
-    UIBox      box    = UIBox(&graphics, &physics);
-
+    Menu       menu   = Menu (&graphics, &physics);
+    HUD         hud   = HUD(&graphics, &physics);
+    
+    EngineTest test   = EngineTest(&graphics, &physics);
+    
     objects.push_back(&cursor);
-    objects.push_back(&box);
+    objects.push_back(&menu);
+    objects.push_back(&hud);
+    objects.push_back(&test);
     
     while (window.isAlive()) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

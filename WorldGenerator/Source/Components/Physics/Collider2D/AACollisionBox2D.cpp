@@ -8,9 +8,9 @@
 #include <iostream>
 #include "AACollisionBox2D.hpp"
 
-AACollisionBox2D::AACollisionBox2D (int w, int h) {
-    width  = w;
-    height = h;
+AACollisionBox2D::AACollisionBox2D (glm::vec2 scale) {
+    width  = scale.x;
+    height = scale.y;
     
     position.x = 0 - (width * 0.5);
     position.y = 0 - (height * 0.5);
@@ -24,14 +24,26 @@ AACollisionBox2D::~AACollisionBox2D () {
 }
 
 void AACollisionBox2D::simulate(double time) {
+    colliding = false;
+}
+
+void AACollisionBox2D::scaleTo(glm::vec3 s) {
+    this->width = s.x;
+    this->height = s.y;
     
+    position.x = 0 - (width * 0.5);
+    position.y = 0 - (height * 0.5);
 }
 
-/*
-bool AACollisionBox2D::isColliding(AACollisionBox2D *other) {
-
+void AACollisionBox2D::moveTo(glm::vec3 p) {
+    position.x = p.x - (width * 0.5);
+    position.y = p.y - (height * 0.5);
+    position.z = p.z;
 }
-*/
+
+glm::vec3 AACollisionBox2D::pos () {
+    return glm::vec3(position.x + (width * 0.5), position.y + (height * 0.5), 0.0);
+}
 
 bool AACollisionBox2D::isColliding(PhysicsObject2D* other) {
     if (other->type == 0) {

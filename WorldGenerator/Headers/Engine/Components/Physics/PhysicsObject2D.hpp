@@ -19,6 +19,11 @@ class PhysicsObject2D: public PhysicsObject {
     
         virtual void simulate (double time) = 0;
         virtual bool isColliding (PhysicsObject2D* other) = 0;
+    
+        virtual void scaleTo (glm::vec3 s) override = 0;
+        virtual void moveTo  (glm::vec3 p) override = 0;
+    
+        virtual glm::vec3 pos () override = 0;
 
 };
 

@@ -12,17 +12,15 @@
 #include "AACollisionBox2D.hpp"
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
-    triangle = new GraphicsObject(QuadGeometry(), Material("object", "rock.jpg"));
-    collider = new AACollisionBox2D(1, 1);
+    triangle = new GraphicsObject(CubeGeometry(), Material("object", "rock.jpg"));
     g->add(triangle);
-    p->addTo2D(collider);
     
-    triangle->colour = glm::vec4(0.21,0.21,0.21,1);
+    triangle->colour = glm::vec4(0.31,0.31,0.31, 1);
     
-    triangle->position = glm::vec3(0, 0, 0);
-    triangle->scale    = glm::vec3(1, 1, 1);
+    triangle->position = glm::vec3(0, 0, -6);
+    triangle->scale    = glm::vec3(4, 4, 4);
     
-    triangle->wireframe(false);
+    triangle->wireframe(true);
 }
 
 EngineTest::~EngineTest () {
@@ -30,6 +28,6 @@ EngineTest::~EngineTest () {
 }
 
 void EngineTest::update() {
-    
-
+    triangle->rotation.x = 0.25;
+    triangle->rotation.y += 0.001;
 }

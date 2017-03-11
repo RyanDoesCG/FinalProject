@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6219A7C51E743D4F000E2B92 /* UIBoxBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */; };
+		6219A7C81E7440AA000E2B92 /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C71E7440AA000E2B92 /* HUD.cpp */; };
 		6248E9331E72B8BF00B17855 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */; };
 		6248E9381E72BEF200B17855 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6248E9371E72BEF200B17855 /* Camera.cpp */; };
 		62864DC91E7421F800C957D0 /* UIBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62864DC81E7421F800C957D0 /* UIBox.cpp */; };
+		62864DCC1E74258500C957D0 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62864DCB1E74258500C957D0 /* Menu.cpp */; };
 		CE5A222A1E731A0B00235110 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A22291E731A0B00235110 /* GameObject.cpp */; };
 		CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222C1E73421C00235110 /* EngineTest.cpp */; };
 		CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222E1E7351D900235110 /* CubeGeometry.cpp */; };
@@ -43,10 +46,16 @@
 /* Begin PBXFileReference section */
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
+		6219A7C31E743CED000E2B92 /* UIBoxBackground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIBoxBackground.hpp; sourceTree = "<group>"; };
+		6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBoxBackground.cpp; sourceTree = "<group>"; };
+		6219A7C61E744047000E2B92 /* HUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HUD.hpp; sourceTree = "<group>"; };
+		6219A7C71E7440AA000E2B92 /* HUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
 		6248E9361E72B96A00B17855 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = Graphics/Camera.hpp; sourceTree = "<group>"; };
 		6248E9371E72BEF200B17855 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = Graphics/Camera.cpp; sourceTree = "<group>"; };
 		62864DC71E7421E200C957D0 /* UIBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIBox.hpp; sourceTree = "<group>"; };
 		62864DC81E7421F800C957D0 /* UIBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBox.cpp; sourceTree = "<group>"; };
+		62864DCA1E74252300C957D0 /* Menu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
+		62864DCB1E74258500C957D0 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A37E851E1D17EA0052D84E /* FastNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastNoise.h; path = FastNoise/FastNoise.h; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
@@ -872,6 +881,9 @@
 			isa = PBXGroup;
 			children = (
 				62864DC71E7421E200C957D0 /* UIBox.hpp */,
+				6219A7C31E743CED000E2B92 /* UIBoxBackground.hpp */,
+				62864DCA1E74252300C957D0 /* Menu.hpp */,
+				6219A7C61E744047000E2B92 /* HUD.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1398,6 +1410,9 @@
 			isa = PBXGroup;
 			children = (
 				62864DC81E7421F800C957D0 /* UIBox.cpp */,
+				62864DCB1E74258500C957D0 /* Menu.cpp */,
+				6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */,
+				6219A7C71E7440AA000E2B92 /* HUD.cpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1488,6 +1503,7 @@
 				CEC8384B1E6DD0020033CC10 /* AACollisionBox2D.cpp in Sources */,
 				CEC838241E6DAC160033CC10 /* GraphicsEngine.cpp in Sources */,
 				CEC838441E6DC9F00033CC10 /* QuadGeometry.cpp in Sources */,
+				6219A7C81E7440AA000E2B92 /* HUD.cpp in Sources */,
 				CE5A222A1E731A0B00235110 /* GameObject.cpp in Sources */,
 				CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */,
 				CEC838261E6DAC240033CC10 /* PhysicsEngine.cpp in Sources */,
@@ -1495,10 +1511,12 @@
 				6248E9381E72BEF200B17855 /* Camera.cpp in Sources */,
 				CEC838331E6DB0EF0033CC10 /* InputManager.cpp in Sources */,
 				CE5A22321E735A2500235110 /* Cursor.cpp in Sources */,
+				62864DCC1E74258500C957D0 /* Menu.cpp in Sources */,
 				CEC838401E6DBF9A0033CC10 /* Geometry.cpp in Sources */,
 				62864DC91E7421F800C957D0 /* UIBox.cpp in Sources */,
 				CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */,
 				CEC838391E6DB1710033CC10 /* Keyboard.cpp in Sources */,
+				6219A7C51E743D4F000E2B92 /* UIBoxBackground.cpp in Sources */,
 				CEC838091E6DA29F0033CC10 /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

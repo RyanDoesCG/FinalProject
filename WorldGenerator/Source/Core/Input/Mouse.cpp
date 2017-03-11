@@ -30,6 +30,9 @@ double  mouseY  = 0;
 GLfloat xoffset = 0;
 GLfloat yoffset = 0;
 
+bool leftButton = false;
+bool rightButton = false;
+
 GLfloat sensitivity = 0.005f;
 
 void mouseActionCallback   (GLFWwindow* window, int button, int action, int mods);
@@ -108,8 +111,14 @@ float Mouse::getMouseY  () { return mouseY; }
 float Mouse::getXoffset () { return xoffset; }
 float Mouse::getYoffset () { return yoffset; }
 
+bool Mouse::leftButtonDown  () { return leftButton; }
+bool Mouse::rightButtonDown () { return rightButton; }
+
 void mouseActionCallback (GLFWwindow* window, int button, int action, int mods) {
     mouseEvents[button] = action;
+    
+    leftButton  = (button == GLFW_MOUSE_BUTTON_1) && (action == GLFW_PRESS);
+    rightButton = (button == GLFW_MOUSE_BUTTON_2) && (action == GLFW_PRESS);
 }
 
 void mouseScrollCallback (GLFWwindow* window, double xoffset, double yoffset) {
