@@ -40,6 +40,25 @@ class GraphicsObject {
             glUniformMatrix4fv(glGetUniformLocation(material.getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(model));
             
             geometry.render();
+            
+            // EXTERNAL WIREFRAME
+            if (geometry.wireframe) {
+                // upload colour to shader
+                glm::vec4 col = glm::vec4(1.0, 1.0, 1.0, 1.0);
+                glUniform4fv(glGetUniformLocation(material.getProgramID(), "colour"), 1, glm::value_ptr(col));
+                
+                // Give model transform to shader
+                model = glm::translate(glm::mat4(), position);
+                model = glm::rotate (model, rotation.x, glm::vec3(1.0, 0.0, 0.0));
+                model = glm::rotate (model, rotation.y, glm::vec3(0.0, 1.0, 0.0));
+                model = glm::rotate (model, rotation.z, glm::vec3(0.0, 0.0, 1.0));
+                model = glm::scale  (model, glm::vec3(scale.x+0.01, scale.y+0.01, scale.z+0.01));
+                glUniformMatrix4fv(glGetUniformLocation(material.getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(model));
+                
+                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+                    geometry.render();
+                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            }
         }
     
         void wireframe (bool b) {geometry.wireframe = b;}

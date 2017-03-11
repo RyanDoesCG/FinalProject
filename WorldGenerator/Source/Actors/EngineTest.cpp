@@ -12,7 +12,7 @@
 #include "AACollisionBox2D.hpp"
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
-    triangle = new GraphicsObject(CubeGeometry(), Material("object", "rock.jpg"));
+    triangle = new GraphicsObject(CubeGeometry(), Material("object"));
     g->add(triangle);
     
     triangle->colour = glm::vec4(0.31,0.31,0.31, 1);
