@@ -30,7 +30,6 @@ class Menu: public GameObject {
         UIBox quit;
     
     public:
-    
         std::vector<UIBox*> items;
     
 };

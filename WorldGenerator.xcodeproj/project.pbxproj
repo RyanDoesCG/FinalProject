@@ -19,11 +19,9 @@
 		CE0288031E75CD81001B4DF8 /* PlaneGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0288021E75CD81001B4DF8 /* PlaneGeometry.cpp */; };
 		CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */; };
 		CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE3B75431E75F3E300539CB9 /* AsteroidGeometry.cpp */; };
-		CE5A222A1E731A0B00235110 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A22291E731A0B00235110 /* GameObject.cpp */; };
 		CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222C1E73421C00235110 /* EngineTest.cpp */; };
 		CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222E1E7351D900235110 /* CubeGeometry.cpp */; };
 		CE5A22321E735A2500235110 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A22311E735A2500235110 /* Cursor.cpp */; };
-		CEBE9F2F1E74D4FD0043B02E /* ComplexMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEBE9F2E1E74D4FD0043B02E /* ComplexMaterial.cpp */; };
 		CEC838051E6DA19F0033CC10 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838041E6DA19F0033CC10 /* main.cpp */; };
 		CEC838091E6DA29F0033CC10 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838081E6DA29F0033CC10 /* Game.cpp */; };
 		CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC8380A1E6DA2AA0033CC10 /* Window.cpp */; };
@@ -37,7 +35,6 @@
 		CEC838441E6DC9F00033CC10 /* QuadGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838431E6DC9F00033CC10 /* QuadGeometry.cpp */; };
 		CEC838461E6DCC6E0033CC10 /* TriGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838451E6DCC6E0033CC10 /* TriGeometry.cpp */; };
 		CEC8384B1E6DD0020033CC10 /* AACollisionBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC8384A1E6DD0020033CC10 /* AACollisionBox2D.cpp */; };
-		CEC8384D1E6DD2530033CC10 /* PhysicsObject2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC8384C1E6DD2530033CC10 /* PhysicsObject2D.cpp */; };
 		CED405801E74925A001ED29B /* Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CED4057F1E74925A001ED29B /* Options.cpp */; };
 		CEDD0E651E00AA800078469C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */; };
 		CEDD0E661E00AA860078469C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C117941D78005500FE98A9 /* OpenGL.framework */; };
@@ -85,7 +82,6 @@
 		CE3B75461E75F63700539CB9 /* ModelGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModelGeometry.hpp; path = Graphics/Geometry3D/ModelGeometry.hpp; sourceTree = "<group>"; };
 		CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../../Library/Frameworks/libglfw3.a; sourceTree = "<group>"; };
 		CE5A22281E7316FA00235110 /* GameObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
-		CE5A22291E731A0B00235110 /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		CE5A222B1E7341BD00235110 /* EngineTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EngineTest.hpp; sourceTree = "<group>"; };
 		CE5A222C1E73421C00235110 /* EngineTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EngineTest.cpp; sourceTree = "<group>"; };
 		CE5A222E1E7351D900235110 /* CubeGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CubeGeometry.cpp; path = Graphics/Geometry3D/CubeGeometry.cpp; sourceTree = "<group>"; };
@@ -129,7 +125,6 @@
 		CEC838451E6DCC6E0033CC10 /* TriGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TriGeometry.cpp; path = Graphics/Geometry2D/TriGeometry.cpp; sourceTree = "<group>"; };
 		CEC838471E6DCE880033CC10 /* AACollisionBox2D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AACollisionBox2D.hpp; path = Physics/Collider2D/AACollisionBox2D.hpp; sourceTree = "<group>"; };
 		CEC8384A1E6DD0020033CC10 /* AACollisionBox2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AACollisionBox2D.cpp; path = Physics/Collider2D/AACollisionBox2D.cpp; sourceTree = "<group>"; };
-		CEC8384C1E6DD2530033CC10 /* PhysicsObject2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhysicsObject2D.cpp; path = Physics/PhysicsObject2D.cpp; sourceTree = "<group>"; };
 		CECAABFA1DEBB17900E16E6A /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../Library/Frameworks/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		CED4057B1E748B2D001ED29B /* GameHUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameHUD.hpp; sourceTree = "<group>"; };
 		CED4057E1E7491E5001ED29B /* Options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Options.hpp; sourceTree = "<group>"; };
@@ -708,7 +703,6 @@
 			children = (
 				CEC838491E6DCFDD0033CC10 /* Collider3D */,
 				CEC838481E6DCFD60033CC10 /* Collider2D */,
-				CEC8384C1E6DD2530033CC10 /* PhysicsObject2D.cpp */,
 			);
 			name = Physics;
 			sourceTree = "<group>";
@@ -1414,7 +1408,6 @@
 		CEDD0DAB1E00AA0A0078469C /* Actors */ = {
 			isa = PBXGroup;
 			children = (
-				CE5A22291E731A0B00235110 /* GameObject.cpp */,
 				CE5A222C1E73421C00235110 /* EngineTest.cpp */,
 				CE5A22311E735A2500235110 /* Cursor.cpp */,
 			);
@@ -1568,10 +1561,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */,
-				CEC8384D1E6DD2530033CC10 /* PhysicsObject2D.cpp in Sources */,
 				CE0288031E75CD81001B4DF8 /* PlaneGeometry.cpp in Sources */,
 				CEC8383B1E6DB17D0033CC10 /* Mouse.cpp in Sources */,
-				CEBE9F2F1E74D4FD0043B02E /* ComplexMaterial.cpp in Sources */,
 				CEC838371E6DB1630033CC10 /* Gamepad.cpp in Sources */,
 				CEC838051E6DA19F0033CC10 /* main.cpp in Sources */,
 				CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */,
@@ -1580,7 +1571,6 @@
 				CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */,
 				CEC838441E6DC9F00033CC10 /* QuadGeometry.cpp in Sources */,
 				6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */,
-				CE5A222A1E731A0B00235110 /* GameObject.cpp in Sources */,
 				CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */,
 				CED405801E74925A001ED29B /* Options.cpp in Sources */,
 				CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */,

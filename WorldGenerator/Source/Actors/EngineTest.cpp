@@ -16,22 +16,22 @@
 #include "ModelGeometry.hpp"
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
-    triangle = new GraphicsObject(ModelGeometry("sphere/sphere"), Material("object"));
-    g->add(triangle);
+    graphics = new GraphicsObject(
+        ModelGeometry ("sphere/sphere"),
+        Material      ("object")
+    );
     
-    triangle->colour = glm::vec4(0.31,0.31,0.31, 1);
+    graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
+    graphics->position = glm::vec3(0, 0, -30);
+    graphics->scale    = glm::vec3(10, 10, 10);
+    graphics->wireframe(true);
     
-    triangle->position = glm::vec3(0, 0, -30);
-    triangle->scale    = glm::vec3(10, 10, 10);
-    
-    triangle->wireframe(true);
+    g->add(graphics);
 }
 
-EngineTest::~EngineTest () {
-    
-}
+EngineTest::~EngineTest () {}
 
 void EngineTest::update() {
-    triangle->rotation.x = 0.25;
-    triangle->rotation.y += 0.001;
+    graphics->rotation.x = 0.25;
+    graphics->rotation.y += 0.001;
 }

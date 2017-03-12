@@ -18,9 +18,7 @@ Geometry::Geometry() {
     setup();
 }
 
-Geometry::~Geometry() {
-
-}
+Geometry::~Geometry() {}
 
 void Geometry::setup() {
     glGenVertexArrays (1, &VAO);
@@ -29,29 +27,27 @@ void Geometry::setup() {
     
     glBindVertexArray(VAO);
     
-    // Send VBO to GPU
-    glBindBuffer (GL_ARRAY_BUFFER, VBO);
-    glBufferData (GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &this->vertices[0], GL_STATIC_DRAW);
+        // Send VBO to GPU
+        glBindBuffer (GL_ARRAY_BUFFER, VBO);
+        glBufferData (GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &this->vertices[0], GL_STATIC_DRAW);
     
-    // send EBO to GPU
-    glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData (GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &this->indices[0], GL_STATIC_DRAW);
+        // send EBO to GPU
+        glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, EBO);
+        glBufferData (GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &this->indices[0], GL_STATIC_DRAW);
     
-    // Vertex Position (try swapping calls)
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)0);
-    glEnableVertexAttribArray(0);
+        // Vertex Position
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)0);
+        glEnableVertexAttribArray(0);
     
-    // Vertex Normal
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
-    glEnableVertexAttribArray(1);
+        // Vertex Normal
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
+        glEnableVertexAttribArray(1);
     
-    // Vertex uvs
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, uv));
-    glEnableVertexAttribArray(2);
+        // Vertex uvs
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, uv));
+        glEnableVertexAttribArray(2);
 
     glBindVertexArray(0);
-    
-    //for (int i = 0; i < vertices.size(); i++) std::cout << vertices.at(i).string() << ", " << std::endl;
 }
 
 void Geometry::render() {

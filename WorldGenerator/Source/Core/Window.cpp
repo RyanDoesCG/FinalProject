@@ -75,7 +75,7 @@ int Window::initGLFW () {
     glfwSwapInterval (1);                                              // enable VSYNC
     
     // FULLSCREEN (buggy)
-    //window = glfwCreateWindow(windowWidth, windowHeight, "Tribes - OpenGL", glfwGetPrimaryMonitor(), nullptr);
+    //window = glfwCreateWindow(width, height, "Tribes - OpenGL", glfwGetPrimaryMonitor(), nullptr);
     window = glfwCreateWindow(width, height, "UIEngine", nullptr, nullptr);
     
     if (!window) return 1;

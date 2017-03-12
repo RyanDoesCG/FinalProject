@@ -13,8 +13,8 @@
 
 class GameObject {
     public:
-        GameObject ();
-       ~GameObject ();
+        GameObject () {}
+       ~GameObject () {}
     
         glm::vec3 position;
         glm::vec3 scale;

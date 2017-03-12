@@ -14,8 +14,8 @@
 
 class PhysicsObject3D: public PhysicsObject {
     public:
-        PhysicsObject3D ();
-       ~PhysicsObject3D ();
+        PhysicsObject3D () {}
+       ~PhysicsObject3D () {}
     
         virtual void simulate (double time) = 0;
         virtual void isColliding (PhysicsObject3D* other) = 0;

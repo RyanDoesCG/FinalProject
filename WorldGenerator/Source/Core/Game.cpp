@@ -13,8 +13,8 @@
 #include "EngineTest.hpp"
 #include <algorithm>
 
-#define WIDTH 1920 / 2
-#define HEIGHT 1080 / 2
+#define WIDTH 1920
+#define HEIGHT 1080
 
 Game::Game (): window(WIDTH, HEIGHT), graphics (WIDTH, HEIGHT), physics() {
 
@@ -33,14 +33,14 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    Cursor     cursor = Cursor(&graphics, &physics);
     UIDelegate interface = UIDelegate(&graphics, &physics, this);
+    Cursor     cursor    = Cursor(&graphics, &physics);
     
     EngineTest test   = EngineTest(&graphics, &physics);
     
-    objects.push_back(&cursor);
-    objects.push_back(&interface);
-    objects.push_back(&test);
+    objects.push_back (&interface);
+    objects.push_back (&cursor);
+    objects.push_back (&test);
     
     while (window.isAlive()) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -48,7 +48,11 @@ void Game::boot () {
         InputManager::update();
         
         physics.simulate(glfwGetTime());
-        for_each(objects.begin(), objects.end(), [](GameObject* o) { o-> update(); });
+        
+        for_each(objects.begin(), objects.end(), [](GameObject* o) {
+            o-> update();
+        });
+        
         graphics.render();
 
         window.swapBuffers();

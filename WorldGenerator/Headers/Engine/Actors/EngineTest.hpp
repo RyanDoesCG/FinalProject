@@ -20,11 +20,11 @@ class EngineTest: public GameObject {
         EngineTest (GraphicsEngine* g, PhysicsEngine* p);
        ~EngineTest ();
     
-    private:
         virtual void update () override;
-        GraphicsObject* triangle;
-        PhysicsObject2D* collider;
     
+    private:
+        GraphicsObject* graphics;
+        PhysicsObject2D* collider;
 };
 
 #endif /* EngineTest_hpp */

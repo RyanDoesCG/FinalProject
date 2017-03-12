@@ -20,10 +20,9 @@ class Geometry {
         glm::vec3 position;
         glm::vec3 rotation;
         glm::vec3 scale;
+        bool wireframe;
     
         void render ();
-    
-        bool wireframe;
     
     protected:
         std::vector<Vertex> vertices;

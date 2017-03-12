@@ -20,20 +20,16 @@ class Mouse {
         void hide ();
         void show ();
     
+        float getMouseX          ();
+        float getMouseY          ();
+        float getXoffset         ();
+        float getYoffset         ();
+        bool  leftButtonDown     ();
+        bool  rightButtonDown    ();
+        void  leftButtonHandled  ();
+        void  rightButtonHandled ();
+    
         void place (int x, int y);
-        void centerMouse();
-    
-        float getMouseX ();
-        float getMouseY ();
-    
-        float getXoffset ();
-        float getYoffset ();
-    
-        bool leftButtonDown  ();
-        bool rightButtonDown ();
-    
-        void leftButtonHandled  ();
-        void rightButtonHandled ();
     
     private:
         GLFWwindow* window;

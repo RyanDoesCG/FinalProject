@@ -21,10 +21,9 @@ class Cursor: public GameObject {
         Cursor (GraphicsEngine* g, PhysicsEngine* p);
        ~Cursor ();
     
-    private:
-    
         virtual void update () override;
     
+    private:
         GraphicsObject* quad;
         PhysicsObject2D* collider;
     

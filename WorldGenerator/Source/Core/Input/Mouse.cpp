@@ -48,16 +48,6 @@ Mouse::~Mouse () {
 }
 
 void Mouse::attach(GLFWwindow *window) {
-    unsigned char pixels[4 * 4 * 4];
-    memset(pixels, 0xfa, sizeof(pixels));
-    GLFWimage image;
-    image.width = 4;
-    image.height = 4;
-    image.pixels = pixels;
-    GLFWcursor* cursor = glfwCreateCursor(&image, 0, 0);
-    
-    glfwSetCursor(window, cursor);
-    
     glfwSetCursorPosCallback   (window, mouseMovementCallback);
     glfwSetMouseButtonCallback (window, mouseActionCallback);
     glfwSetScrollCallback      (window, mouseScrollCallback);
@@ -68,25 +58,6 @@ void Mouse::attach(GLFWwindow *window) {
 
 void Mouse::update() {
     glfwPollEvents();
-    
-    for (int i = 0; i < MOUSE_EVENTS_MAX; i++) {
-        if (mouseEvents[i]) {
-            switch(i) {
-                case MOUSE_CLICK_LEFT:
-                    break;
-                case MOUSE_CLICK_RIGHT:
-                    break;
-                case MOUSE_SCROLL_LEFT:
-                    break;
-                case MOUSE_SCROLL_RIGHT:
-                    break;
-                case MOUSE_SCROLL_UP:
-                    break;
-                case MOUSE_SCROLL_DOWN:
-                    break;
-            }
-        }
-    }
 }
 
 void Mouse::hide () {
@@ -99,12 +70,6 @@ void Mouse::show () {
 
 void Mouse::place (int x, int y) {
     glfwSetCursorPos(window, x, y);
-}
-
-void Mouse::centerMouse () {
-
-
-
 }
 
 float Mouse::getMouseX  () { return mouseX; }

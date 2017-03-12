@@ -25,13 +25,21 @@ UITextNode::~UITextNode () {
 }
 
 void UITextNode::update () {
-    
+
 }
 
-void UITextNode::fadeIn  () {
-    
+void UITextNode::fadeIn() {
+    if (graphics->colour.r < litColour.r) {
+        graphics->colour.r += 0.01;
+        graphics->colour.g += 0.01;
+        graphics->colour.b += 0.01;
+    }
 }
 
-void UITextNode::fadeOut () {
-    
+void UITextNode::fadeOut() {
+    if (graphics->colour.r > unlitColour.r) {
+        graphics->colour.r -= 0.01;
+        graphics->colour.g -= 0.01;
+        graphics->colour.b -= 0.01;
+    }
 }

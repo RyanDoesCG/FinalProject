@@ -22,7 +22,6 @@ class dioramaHUD: public GameHUD {
         virtual void update () override;
         virtual void hide   () override;
         virtual void show   () override;
-
 };
 
 
