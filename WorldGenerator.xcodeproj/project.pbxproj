@@ -19,6 +19,7 @@
 		CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222C1E73421C00235110 /* EngineTest.cpp */; };
 		CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222E1E7351D900235110 /* CubeGeometry.cpp */; };
 		CE5A22321E735A2500235110 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A22311E735A2500235110 /* Cursor.cpp */; };
+		CEBE9F2F1E74D4FD0043B02E /* ComplexMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEBE9F2E1E74D4FD0043B02E /* ComplexMaterial.cpp */; };
 		CEC838051E6DA19F0033CC10 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838041E6DA19F0033CC10 /* main.cpp */; };
 		CEC838091E6DA29F0033CC10 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838081E6DA29F0033CC10 /* Game.cpp */; };
 		CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC8380A1E6DA2AA0033CC10 /* Window.cpp */; };
@@ -76,6 +77,8 @@
 		CE5A22311E735A2500235110 /* Cursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cursor.cpp; sourceTree = "<group>"; };
 		CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../../Library/Frameworks/libfreetype.dylib; sourceTree = "<group>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CEBE9F2C1E74D45C0043B02E /* ComplexMaterial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ComplexMaterial.hpp; path = Graphics/ComplexMaterial.hpp; sourceTree = "<group>"; };
+		CEBE9F2E1E74D4FD0043B02E /* ComplexMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ComplexMaterial.cpp; path = Graphics/ComplexMaterial.cpp; sourceTree = "<group>"; };
 		CEC838041E6DA19F0033CC10 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		CEC838061E6DA1F90033CC10 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		CEC838071E6DA2010033CC10 /* Window.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
@@ -601,6 +604,7 @@
 				CEC838151E6DA6770033CC10 /* Material.hpp */,
 				CEC838271E6DADBB0033CC10 /* Vertex.hpp */,
 				6248E9361E72B96A00B17855 /* Camera.hpp */,
+				CEBE9F2C1E74D45C0043B02E /* ComplexMaterial.hpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -691,6 +695,7 @@
 				CEC8383F1E6DBF9A0033CC10 /* Geometry.cpp */,
 				CEEF73911E6EC03E00B36E03 /* Material.cpp */,
 				6248E9371E72BEF200B17855 /* Camera.cpp */,
+				CEBE9F2E1E74D4FD0043B02E /* ComplexMaterial.cpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -1514,6 +1519,7 @@
 				CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */,
 				CEC8384D1E6DD2530033CC10 /* PhysicsObject2D.cpp in Sources */,
 				CEC8383B1E6DB17D0033CC10 /* Mouse.cpp in Sources */,
+				CEBE9F2F1E74D4FD0043B02E /* ComplexMaterial.cpp in Sources */,
 				CEC838371E6DB1630033CC10 /* Gamepad.cpp in Sources */,
 				CEC838051E6DA19F0033CC10 /* main.cpp in Sources */,
 				CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */,
