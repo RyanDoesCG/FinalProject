@@ -48,6 +48,7 @@
 		CEDD0E6B1E00AAC10078469C /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1179F1D7805E700FE98A9 /* libGLEW.dylib */; };
 		CEDD0E6E1E00AADB0078469C /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3852871D8C3DC5006A104C /* libSOIL.a */; };
 		CEDD0F1A1E00AC990078469C /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = CEDD0F191E00AC990078469C /* Assets */; };
+		CEEAF6EE1E75F68E00FFADAE /* ModelGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEEAF6ED1E75F68E00FFADAE /* ModelGeometry.cpp */; };
 		CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEEF73911E6EC03E00B36E03 /* Material.cpp */; };
 		CEFFC2F41E759AAF0029F621 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEFFC2F31E759AAF0029F621 /* Shader.cpp */; };
 		CEFFC2F81E759ADD0029F621 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEFFC2F61E759ADD0029F621 /* Texture.cpp */; };
@@ -81,6 +82,7 @@
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE3B75431E75F3E300539CB9 /* AsteroidGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AsteroidGeometry.cpp; path = Graphics/Geometry3D/AsteroidGeometry.cpp; sourceTree = "<group>"; };
 		CE3B75451E75F3F100539CB9 /* AsteroidGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AsteroidGeometry.hpp; path = Graphics/Geometry3D/AsteroidGeometry.hpp; sourceTree = "<group>"; };
+		CE3B75461E75F63700539CB9 /* ModelGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModelGeometry.hpp; path = Graphics/Geometry3D/ModelGeometry.hpp; sourceTree = "<group>"; };
 		CE4E8DA41DEE6AEE00C3D842 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../../Library/Frameworks/libglfw3.a; sourceTree = "<group>"; };
 		CE5A22281E7316FA00235110 /* GameObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 		CE5A22291E731A0B00235110 /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 		CEDD0E6C1E00AACE0078469C /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.dylib; path = ../../../../../../../Library/Frameworks/libglfw3.dylib; sourceTree = "<group>"; };
 		CEDD0F191E00AC990078469C /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		CEDD0F1E1E00ADA60078469C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WorldGenerator/Info.plist; sourceTree = "<group>"; };
+		CEEAF6ED1E75F68E00FFADAE /* ModelGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModelGeometry.cpp; path = Graphics/Geometry3D/ModelGeometry.cpp; sourceTree = "<group>"; };
 		CEEF73911E6EC03E00B36E03 /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = Graphics/Material.cpp; sourceTree = "<group>"; };
 		CEFFC2F11E759A610029F621 /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Texture.hpp; path = Graphics/Material/Texture.hpp; sourceTree = "<group>"; };
 		CEFFC2F21E759A860029F621 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Shader.hpp; path = Graphics/Material/Shader.hpp; sourceTree = "<group>"; };
@@ -658,6 +661,7 @@
 				CE0288011E75CD75001B4DF8 /* PlaneGeometry.hpp */,
 				CEC8381F1E6DA9810033CC10 /* CubeGeometry.hpp */,
 				CEC838201E6DA9A90033CC10 /* SphereGeometry.hpp */,
+				CE3B75461E75F63700539CB9 /* ModelGeometry.hpp */,
 			);
 			name = Geometry3D;
 			sourceTree = "<group>";
@@ -739,6 +743,7 @@
 				CE3B75431E75F3E300539CB9 /* AsteroidGeometry.cpp */,
 				CE0288021E75CD81001B4DF8 /* PlaneGeometry.cpp */,
 				CE5A222E1E7351D900235110 /* CubeGeometry.cpp */,
+				CEEAF6ED1E75F68E00FFADAE /* ModelGeometry.cpp */,
 			);
 			name = Geometry3D;
 			sourceTree = "<group>";
@@ -1580,6 +1585,7 @@
 				CED405801E74925A001ED29B /* Options.cpp in Sources */,
 				CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */,
 				CEC838261E6DAC240033CC10 /* PhysicsEngine.cpp in Sources */,
+				CEEAF6EE1E75F68E00FFADAE /* ModelGeometry.cpp in Sources */,
 				CEFFC2F81E759ADD0029F621 /* Texture.cpp in Sources */,
 				CEFFC2F41E759AAF0029F621 /* Shader.cpp in Sources */,
 				CE0288001E75CC62001B4DF8 /* TextGeometry.cpp in Sources */,

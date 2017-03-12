@@ -13,15 +13,16 @@
 #include "AACollisionBox2D.hpp"
 
 #include "AsteroidGeometry.hpp"
+#include "ModelGeometry.hpp"
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
-    triangle = new GraphicsObject(AsteroidGeometry(), Material("object", "rock.jpg"));
+    triangle = new GraphicsObject(ModelGeometry("sphere/sphere"), Material("object"));
     g->add(triangle);
     
     triangle->colour = glm::vec4(0.31,0.31,0.31, 1);
     
-    triangle->position = glm::vec3(0, 0, -10);
-    triangle->scale    = glm::vec3(6, 6, 6);
+    triangle->position = glm::vec3(0, -10, -30);
+    triangle->scale    = glm::vec3(20, 20, 20);
     
     triangle->wireframe(true);
 }
@@ -32,5 +33,5 @@ EngineTest::~EngineTest () {
 
 void EngineTest::update() {
     triangle->rotation.x = 0.25;
-    triangle->rotation.y += 0.01;
+    triangle->rotation.y += 0.001;
 }
