@@ -48,7 +48,7 @@ void Geometry::setup() {
     // Vertex uvs
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, uv));
     glEnableVertexAttribArray(2);
-    
+
     glBindVertexArray(0);
     
     //for (int i = 0; i < vertices.size(); i++) std::cout << vertices.at(i).string() << ", " << std::endl;

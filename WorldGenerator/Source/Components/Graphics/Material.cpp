@@ -36,4 +36,9 @@ void Material::bind() {
     texture.bind();
 }
 
+void Material::unbind() {
+    shader.unbind();
+    texture.unbind();
+}
+
 

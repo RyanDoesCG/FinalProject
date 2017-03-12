@@ -21,7 +21,8 @@ class Material {
         Material(const std::string& name);
        ~Material();
     
-        void bind();
+        void bind   ();
+        void unbind ();
     
         GLuint getProgramID();
         std::string getTitle();

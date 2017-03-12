@@ -11,7 +11,6 @@
 
 GLuint programID;
 GLuint vertexShaderID;
-GLuint geometryShaderID;
 GLuint fragmentShaderID;
 
 Shader::Shader(const std::string& name) {

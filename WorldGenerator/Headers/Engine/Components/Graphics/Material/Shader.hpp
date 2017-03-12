@@ -28,7 +28,6 @@ class Shader {
         GLuint compile   (const std::string& source, GLenum type);
     
         std::string title;
-    
 };
 
 #endif /* Shader_hpp */

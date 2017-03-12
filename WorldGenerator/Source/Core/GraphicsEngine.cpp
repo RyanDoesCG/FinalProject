@@ -29,6 +29,6 @@ void GraphicsEngine::render() {
     camera->update();
     
     // draw scene
-    for (int i = 0; i < scene.size(); i++)
-        scene.at(i)->draw(camera);
+    for (GraphicsObject* object : scene)
+        object->draw(camera);
 }

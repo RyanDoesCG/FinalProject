@@ -24,8 +24,6 @@ Game::~Game () {
     
 }
 
-void updateObjects (GameObject* o) { o->update(); }
-
 void Game::boot () {
     glClearColor (0.93f, 0.90f, 0.83f, 1.0f);
     InputManager::initialise(window.asGLFW());
@@ -50,7 +48,7 @@ void Game::boot () {
         InputManager::update();
         
         physics.simulate(glfwGetTime());
-        for_each(objects.begin(), objects.end(), updateObjects);
+        for_each(objects.begin(), objects.end(), [](GameObject* o) { o-> update(); });
         graphics.render();
 
         window.swapBuffers();
