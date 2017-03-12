@@ -11,7 +11,7 @@
 #include "QuadGeometry.hpp"
 
 Cursor::Cursor(GraphicsEngine* g, PhysicsEngine* p) {
-    quad = new GraphicsObject(QuadGeometry(), Material("object", ""));
+    quad = new GraphicsObject(QuadGeometry(), Material("object"));
     collider = new AACollisionBox2D(glm::vec2(0.05));
     g->add(quad);
     p->addTo2D(collider);

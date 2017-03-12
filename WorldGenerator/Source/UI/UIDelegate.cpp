@@ -9,10 +9,10 @@
 #include "UIDelegate.hpp"
 
 UIDelegate::UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g):
-    mainMenu (graph, phys),
-    optionsMenu(graph, phys),
-    dHUD     (graph, phys),
-    pHUD     (graph, phys) {
+    mainMenu    (graph, phys),
+    optionsMenu (graph, phys),
+    dHUD        (graph, phys),
+    pHUD        (graph, phys) {
     
     game = g;
     

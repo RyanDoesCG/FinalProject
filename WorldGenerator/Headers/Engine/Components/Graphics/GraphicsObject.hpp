@@ -7,6 +7,7 @@
 //
 #ifndef GraphicsObject_hpp
 #define GraphicsObject_hpp
+
 #include "matrix_transform.hpp"
 #include "type_ptr.hpp"
 #include "Geometry.hpp"
@@ -61,7 +62,7 @@ class GraphicsObject {
             }
         }
     
-        void wireframe (bool b) {geometry.wireframe = b;}
+        void wireframe (bool b) { geometry.wireframe = b; }
     
         Geometry geometry;
         Material material;

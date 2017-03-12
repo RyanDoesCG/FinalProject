@@ -30,6 +30,11 @@ class Geometry {
         std::vector<GLuint> indices;
     
         void setup ();
+    
+    private:
+        GLuint VAO;
+        GLuint VBO;
+        GLuint EBO;
 };
 
 #endif /* Geometry_hpp */

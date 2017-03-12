@@ -8,10 +8,6 @@
 #include <iostream>
 #include "Geometry.hpp"
 
-GLuint VAO;
-GLuint VBO;
-GLuint EBO;
-
 Geometry::Geometry() {
     position = glm::vec3(0, 0, 0);
     rotation = glm::vec3(0);
@@ -23,7 +19,7 @@ Geometry::Geometry() {
 }
 
 Geometry::~Geometry() {
-    
+
 }
 
 void Geometry::setup() {
@@ -49,13 +45,13 @@ void Geometry::setup() {
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
     glEnableVertexAttribArray(1);
     
-    // Vertex Noise
+    // Vertex uvs
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, uv));
     glEnableVertexAttribArray(2);
     
     glBindVertexArray(0);
     
-    for (int i = 0; i < vertices.size(); i++) std::cout << vertices.at(i).string() << ", " << std::endl;
+    //for (int i = 0; i < vertices.size(); i++) std::cout << vertices.at(i).string() << ", " << std::endl;
 }
 
 void Geometry::render() {

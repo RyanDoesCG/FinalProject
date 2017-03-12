@@ -44,8 +44,8 @@ int Window::initGLEW () {
     glEnable    (GL_DEPTH_TEST);
     glEnable    (GL_MULTISAMPLE);   // MULTISAMPLING
     glEnable    (GL_BLEND);         // ALPHA BLENDING
-    glEnable    (GL_CULL_FACE);
-    glCullFace(GL_BACK);
+    //glEnable    (GL_CULL_FACE);
+    //glCullFace  (GL_BACK);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     int vertexTexUnits;
@@ -76,7 +76,7 @@ int Window::initGLFW () {
     
     // FULLSCREEN (buggy)
     //window = glfwCreateWindow(windowWidth, windowHeight, "Tribes - OpenGL", glfwGetPrimaryMonitor(), nullptr);
-    window = glfwCreateWindow(width, height, "Blue Engine", nullptr, nullptr);
+    window = glfwCreateWindow(width, height, "UIEngine", nullptr, nullptr);
     
     if (!window) return 1;
     

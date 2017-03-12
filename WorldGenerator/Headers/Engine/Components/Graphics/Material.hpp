@@ -10,6 +10,8 @@
 #define Material_hpp
 
 #include <iostream>
+#include "Shader.hpp"
+#include "Texture.hpp"
 #include "glm.hpp"
 #include "glew.h"
 
@@ -26,11 +28,9 @@ class Material {
     
     private:
         glm::vec4 colour;
-    
-        std::string load (const std::string& path);
-        GLuint create (const std::string& source, GLenum type);
-    
-        std::string title;
+
+        Shader shader;
+        Texture texture;
 };
 
 #endif /* Material_hpp */

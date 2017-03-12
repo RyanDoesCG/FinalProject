@@ -60,8 +60,8 @@ PlaneGeometry::PlaneGeometry (const int size) {
     }
     
     // transfer
-    for (glm::vec3& vec : verts)
-        vertices.push_back(Vertex(vec, glm::vec3(0.0, 1.0, 0.0), glm::vec2(0.0)));
+    for (glm::vec3& pos : verts)
+        vertices.push_back(Vertex(pos, glm::vec3(0.0, 1.0, 0.0), glm::vec2(0.0)));
     
     for (GLuint& in : ind)
         indices.push_back(in);

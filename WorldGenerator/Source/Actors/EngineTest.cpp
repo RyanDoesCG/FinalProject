@@ -8,16 +8,19 @@
 #include "TriGeometry.hpp"
 #include "QuadGeometry.hpp"
 #include "CubeGeometry.hpp"
+#include "PlaneGeometry.hpp"
 #include "EngineTest.hpp"
 #include "AACollisionBox2D.hpp"
 
+#include "AsteroidGeometry.hpp"
+
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
-    triangle = new GraphicsObject(CubeGeometry(), Material("object"));
+    triangle = new GraphicsObject(AsteroidGeometry(), Material("object", "rock.jpg"));
     g->add(triangle);
     
     triangle->colour = glm::vec4(0.31,0.31,0.31, 1);
     
-    triangle->position = glm::vec3(0, 0, -8);
+    triangle->position = glm::vec3(0, 0, -10);
     triangle->scale    = glm::vec3(6, 6, 6);
     
     triangle->wireframe(true);
