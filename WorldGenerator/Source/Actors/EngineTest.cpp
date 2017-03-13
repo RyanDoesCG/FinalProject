@@ -17,8 +17,8 @@
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
-        ModelGeometry ("sphere/sphere"),
-        Material      ("object")
+        new ModelGeometry ("sphere/uvsphere"),
+        new Material      ("object")
     );
     
     graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);

@@ -37,7 +37,7 @@ void AACollisionBox2D::scaleTo(glm::vec3 s) {
 
 void AACollisionBox2D::moveTo(glm::vec3 p) {
     position.x = p.x - (width * 0.5);
-    position.y = p.y - (height * 0.5);
+    position.y = p.y - (height * 0.6);
     position.z = p.z;
 }
 

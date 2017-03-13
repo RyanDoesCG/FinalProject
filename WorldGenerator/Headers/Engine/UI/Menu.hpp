@@ -12,6 +12,8 @@
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
 #include "GameObject.hpp"
+
+#include "UITextNode.hpp"
 #include "UIBox.hpp"
 
 class Menu: public GameObject {

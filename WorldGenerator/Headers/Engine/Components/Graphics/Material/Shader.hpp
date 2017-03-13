@@ -28,6 +28,10 @@ class Shader {
         GLuint compile   (const std::string& source, GLenum type);
     
         std::string title;
+    
+        GLuint programID;
+        GLuint vertexShaderID;
+        GLuint fragmentShaderID;
 };
 
 #endif /* Shader_hpp */

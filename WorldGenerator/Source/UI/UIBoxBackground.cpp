@@ -11,8 +11,8 @@
 
 UIBoxBackground::UIBoxBackground (GraphicsEngine* graph) {
     graphics = new GraphicsObject (
-        QuadGeometry(),
-        Material("object")
+        new QuadGeometry(),
+        new Material("object")
     );
     graphics->colour = glm::vec4(0.16, 0.16, 0.16, 0.5);
     graph->add(graphics);

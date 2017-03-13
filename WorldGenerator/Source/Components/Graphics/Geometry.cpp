@@ -21,14 +21,14 @@ Geometry::Geometry() {
 Geometry::~Geometry() {}
 
 void Geometry::setup() {
-    glGenVertexArrays (1, &VAO);
-    glGenBuffers      (1, &VBO);
-    glGenBuffers      (1, &EBO);
+    glGenVertexArrays (1, &this->VAO);
+    glGenBuffers      (1, &this->VBO);
+    glGenBuffers      (1, &this->EBO);
     
-    glBindVertexArray(VAO);
+    glBindVertexArray(this->VAO);
     
         // Send VBO to GPU
-        glBindBuffer (GL_ARRAY_BUFFER, VBO);
+        glBindBuffer (GL_ARRAY_BUFFER, this->VBO);
         glBufferData (GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &this->vertices[0], GL_STATIC_DRAW);
     
         // send EBO to GPU

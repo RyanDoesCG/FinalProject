@@ -9,10 +9,6 @@
 #include "Shader.hpp"
 #include <fstream>
 
-GLuint programID;
-GLuint vertexShaderID;
-GLuint fragmentShaderID;
-
 Shader::Shader(const std::string& name) {
     /* * * * * * * *
      *  Shader
