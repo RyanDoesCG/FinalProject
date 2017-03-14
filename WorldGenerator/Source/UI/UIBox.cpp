@@ -18,7 +18,7 @@ UIBox::UIBox (GraphicsEngine* graph, PhysicsEngine* phys) {
     
     physics = new AACollisionBox2D(glm::vec2(1, 0.5));
     
-    graph->add(graphics);
+    graph->addToUI(graphics);
     phys->addTo2D(physics);
     
     litColour = glm::vec3(0.41, 0.41, 0.41);

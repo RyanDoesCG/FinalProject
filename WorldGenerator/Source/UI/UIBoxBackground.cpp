@@ -15,7 +15,7 @@ UIBoxBackground::UIBoxBackground (GraphicsEngine* graph) {
         new Material("object")
     );
     graphics->colour = glm::vec4(0.16, 0.16, 0.16, 0.5);
-    graph->add(graphics);
+    graph->addToUI(graphics);
 }
 
 UIBoxBackground::~UIBoxBackground () {

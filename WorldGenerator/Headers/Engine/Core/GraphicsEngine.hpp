@@ -24,13 +24,18 @@ class GraphicsEngine {
         void render();
     
         void add (GraphicsObject* object);
+        void addToUI (GraphicsObject* object);
     
     private:
+        void offScreen ();
+        void onScreen  ();
+    
         void prerender       ();
-        void renderOffScreen ();
-        void renderOnScreen  ();
+        void renderScene     ();
+        void renderUI        ();
     
         std::vector<GraphicsObject*> scene;
+        std::vector<GraphicsObject*> ui;
     
         void buildFrameBuffer  ();
         void buildColourBuffer ();

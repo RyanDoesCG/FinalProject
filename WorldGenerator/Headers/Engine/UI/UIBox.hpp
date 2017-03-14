@@ -24,8 +24,8 @@ class UIBox: public GameObject {
     
         virtual void update () override;
     
-        void moveTo  (glm::vec3 p);
-        void scaleTo (glm::vec3 s);
+        void moveTo    (glm::vec3 p);
+        void scaleTo   (glm::vec3 s);
         void setColour (glm::vec4 c);
         void setAlpha  (GLfloat a);
     

@@ -13,7 +13,7 @@
 Cursor::Cursor(GraphicsEngine* g, PhysicsEngine* p) {
     quad = new GraphicsObject(new QuadGeometry(), new Material("object"));
     collider = new AACollisionBox2D(glm::vec2(0.05));
-    g->add(quad);
+    g->addToUI(quad);
     p->addTo2D(collider);
     
     quad->position = glm::vec3(0, 0, 0.2);

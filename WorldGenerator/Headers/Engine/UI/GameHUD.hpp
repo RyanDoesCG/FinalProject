@@ -20,8 +20,7 @@
 
 class GameHUD: public GameObject {
     public:
-        GameHUD (GraphicsEngine* graph, PhysicsEngine* phys):
-            background(graph), back(graph, phys) {
+        GameHUD (GraphicsEngine* graph, PhysicsEngine* phys): background(graph), back(graph, phys) {
             // backdrop
             background.scaleTo(glm::vec3(1.5, 3, 0.0));
             background.moveTo(glm::vec3(-2, 0.0, 0.1));

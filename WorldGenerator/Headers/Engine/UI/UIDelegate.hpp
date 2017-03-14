@@ -36,9 +36,9 @@ class UIDelegate: public GameObject {
             over
         };
     
-        UIState state;
-        Menu mainMenu;
-        Options optionsMenu;
+        UIState     state;
+        Menu        mainMenu;
+        Options     optionsMenu;
         dioramaHUD  dHUD;
         planetHUD   pHUD;
     

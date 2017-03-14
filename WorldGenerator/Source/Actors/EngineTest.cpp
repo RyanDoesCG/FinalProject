@@ -15,6 +15,8 @@
 #include "AsteroidGeometry.hpp"
 #include "ModelGeometry.hpp"
 
+#include "InputManager.hpp"
+
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
         new ModelGeometry ("sphere/sphere"),
