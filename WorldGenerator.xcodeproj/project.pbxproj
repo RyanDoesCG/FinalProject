@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6217EF391E785AF0003EFAD0 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF381E785AF0003EFAD0 /* Diorama.cpp */; };
 		6217EF3C1E785BDA003EFAD0 /* Planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF3B1E785BDA003EFAD0 /* Planet.cpp */; };
+		6217EF3F1E78697A003EFAD0 /* ParticleEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF3E1E78697A003EFAD0 /* ParticleEmitter.cpp */; };
 		6219A7C51E743D4F000E2B92 /* UIBoxBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */; };
 		6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C71E7440AA000E2B92 /* dioramaHUD.cpp */; };
 		6233CEC51E7453370014055F /* UIDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6233CEC31E7453370014055F /* UIDelegate.cpp */; };
@@ -62,6 +63,12 @@
 		6217EF381E785AF0003EFAD0 /* Diorama.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Diorama.cpp; sourceTree = "<group>"; };
 		6217EF3A1E785B7D003EFAD0 /* Planet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Planet.hpp; sourceTree = "<group>"; };
 		6217EF3B1E785BDA003EFAD0 /* Planet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Planet.cpp; sourceTree = "<group>"; };
+		6217EF3D1E78690C003EFAD0 /* ParticleEmitter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleEmitter.hpp; sourceTree = "<group>"; };
+		6217EF3E1E78697A003EFAD0 /* ParticleEmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEmitter.cpp; sourceTree = "<group>"; };
+		6217EF401E786A65003EFAD0 /* Particle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Particle.hpp; sourceTree = "<group>"; };
+		6217EF411E786DFC003EFAD0 /* FlyweightGraphicsObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlyweightGraphicsObject.hpp; path = Graphics/FlyweightGraphicsObject.hpp; sourceTree = "<group>"; };
+		6217EF421E7871EA003EFAD0 /* FlyweightInstance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlyweightInstance.hpp; path = Graphics/FlyweightInstance.hpp; sourceTree = "<group>"; };
+		6217EF431E7873A4003EFAD0 /* Random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
 		6219A7C31E743CED000E2B92 /* UIBoxBackground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIBoxBackground.hpp; sourceTree = "<group>"; };
 		6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBoxBackground.cpp; sourceTree = "<group>"; };
 		6219A7C61E744047000E2B92 /* dioramaHUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dioramaHUD.hpp; sourceTree = "<group>"; };
@@ -629,6 +636,8 @@
 				CEC838151E6DA6770033CC10 /* Material.hpp */,
 				CEC838271E6DADBB0033CC10 /* Vertex.hpp */,
 				6248E9361E72B96A00B17855 /* Camera.hpp */,
+				6217EF411E786DFC003EFAD0 /* FlyweightGraphicsObject.hpp */,
+				6217EF421E7871EA003EFAD0 /* FlyweightInstance.hpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -886,6 +895,8 @@
 				CE5A22301E7359AD00235110 /* Cursor.hpp */,
 				6217EF371E785A83003EFAD0 /* Diorama.hpp */,
 				6217EF3A1E785B7D003EFAD0 /* Planet.hpp */,
+				6217EF3D1E78690C003EFAD0 /* ParticleEmitter.hpp */,
+				6217EF401E786A65003EFAD0 /* Particle.hpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -946,6 +957,7 @@
 		CEDD0C381E00AA0A0078469C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				6217EF431E7873A4003EFAD0 /* Random.hpp */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1422,6 +1434,7 @@
 				CE5A22311E735A2500235110 /* Cursor.cpp */,
 				6217EF381E785AF0003EFAD0 /* Diorama.cpp */,
 				6217EF3B1E785BDA003EFAD0 /* Planet.cpp */,
+				6217EF3E1E78697A003EFAD0 /* ParticleEmitter.cpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -1607,6 +1620,7 @@
 				CEC838391E6DB1710033CC10 /* Keyboard.cpp in Sources */,
 				6219A7C51E743D4F000E2B92 /* UIBoxBackground.cpp in Sources */,
 				CEF242EA1E77798A00CAC50B /* UIPlusMinus.cpp in Sources */,
+				6217EF3F1E78697A003EFAD0 /* ParticleEmitter.cpp in Sources */,
 				CEC838091E6DA29F0033CC10 /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

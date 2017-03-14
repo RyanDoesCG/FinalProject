@@ -31,13 +31,32 @@ Planet::~Planet () {}
 
 void Planet::update(State state) {
     
-    velocity.y += 0.001;
-    
-    if (mouse->leftButtonDown() || mouse->rightButtonDown()) {
-        velocity.y += 0.5 * mouse->getXoffset();
-        graphics->scale += mouse->getYoffset() * 1.25;
+    switch (state) {
+        case MENU: {
+            GLfloat restx = 0;
+            if (graphics->position.x > restx) { graphics->position.x -= (restx - graphics->position.x) * -0.05; }
+            
+            velocity.y += 0.0001;
+            graphics->rotation += velocity;
+            velocity *= 0.8;
+            break;
+        }
+            
+        case VIEW: {
+            GLfloat restx = 6;
+            if (graphics->position.x < restx) { graphics->position.x += (restx - graphics->position.x) * 0.05; }
+            
+            velocity.y += 0.0001;
+            if (mouse->leftButtonDown() || mouse->rightButtonDown()) {
+                velocity.y += 0.5 * mouse->getXoffset();
+                graphics->scale += mouse->getYoffset() * 1.25;
+            }
+            
+            graphics->rotation += velocity;
+            velocity *= 0.8;
+            break;
+        }
     }
     
-    graphics->rotation += velocity;
-    velocity *= 0.8;
+
 }

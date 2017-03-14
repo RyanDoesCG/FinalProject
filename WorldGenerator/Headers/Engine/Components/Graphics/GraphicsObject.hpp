@@ -20,7 +20,7 @@ class GraphicsObject {
         GraphicsObject (Geometry* geom, Material* mat): geometry(geom), material(mat) {}
        ~GraphicsObject () {}
     
-        void draw (Camera* cam) {
+        virtual void draw (Camera* cam) {
             material->bind();
             
             // Lighting data to GPU
@@ -93,7 +93,7 @@ class GraphicsObject {
     
         void setLightSource(GraphicsObject* light) { lightsource = light; isLit = true; }
     
-    private:
+    protected:
         GraphicsObject* lightsource;
         bool isLit = false;
     

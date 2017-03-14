@@ -28,7 +28,7 @@ Camera::Camera(GLfloat aspect) {
     zoom = movement.rotation.z;
     
     view = glm::lookAt(position, position + relativeFront, relativeUp);
-    proj = glm::perspective(zoom, aspectRatio, 0.01f, 100.0f);
+    proj = glm::perspective(zoom, aspectRatio, 0.01f, 1000.0f);
     
     mouse = InputManager::getMouseHandle();
 }

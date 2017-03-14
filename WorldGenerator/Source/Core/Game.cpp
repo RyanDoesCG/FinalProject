@@ -8,7 +8,7 @@
 
 #include "Game.hpp"
 
-
+#include "ParticleEmitter.hpp"
 #include "EngineTest.hpp"
 #include "Diorama.hpp"
 #include "Planet.hpp"
@@ -21,6 +21,7 @@ Game::Game ():
     window    (WIDTH, HEIGHT),
     graphics  (WIDTH, HEIGHT),
     physics   () {
+        
     graphics.initPostProcessing();
 }
 
@@ -46,11 +47,15 @@ void Game::boot () {
     InputManager::initialise(window.asGLFW());
     interface = new UIDelegate(&graphics, &physics, this);
     cursor    = new Cursor(&graphics, &physics);
+    srand(time(0));
     
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
     showDiorama();
+    
+    ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
+    objects.push_back(&stars);
     
     state = MENU;
     

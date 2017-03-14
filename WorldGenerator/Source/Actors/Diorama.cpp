@@ -41,7 +41,7 @@ void Diorama::update(State state) {
         }
             
         case VIEW: {
-            velocity.y += 0.00001;
+            velocity.y += 0.0001;
             if (mouse->leftButtonDown() || mouse->rightButtonDown()) {
                 velocity.y += 0.5 * mouse->getXoffset();
                 graphics->scale += mouse->getYoffset() * 1.25;
