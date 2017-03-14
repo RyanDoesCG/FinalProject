@@ -5,9 +5,7 @@
 //  Created by user on 06/03/2017.
 //  Copyright © 2017 Dissertation. All rights reserved.
 //
-
 #include "Game.hpp"
-
 #include "ParticleEmitter.hpp"
 #include "EngineTest.hpp"
 #include "Diorama.hpp"
@@ -52,7 +50,7 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    showDiorama();
+    showPlanet();
     
     ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
     objects.push_back(&stars);
@@ -64,6 +62,20 @@ void Game::boot () {
         physics.simulate(glfwGetTime());    // run physics simulation
         for (GameObject* o : objects)       // transfer data
             o-> update(state);
+        
+        // script renderer
+        switch (state) {
+            case MENU: {
+                graphics.setEffect(GraphicsEngine::blur);
+                break;
+            }
+             
+            case VIEW: {
+                graphics.setEffect(GraphicsEngine::fade);
+                break;
+            }
+        }
+        
         graphics.render();                  // draw graphics scene
         window.swapBuffers();
     }

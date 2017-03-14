@@ -22,6 +22,10 @@ class Mouse {
     
         float getMouseX          ();
         float getMouseY          ();
+    
+        float getScrollX         ();
+        float getScrollY         ();
+    
         float getXoffset         ();
         float getYoffset         ();
         bool  leftButtonDown     ();

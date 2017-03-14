@@ -28,6 +28,8 @@ class Material {
         GLuint getProgramID();
         std::string getTitle();
     
+        void setTexture (GLuint id);
+    
     private:
         glm::vec4 colour;
 

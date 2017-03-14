@@ -19,14 +19,23 @@ GraphicsEngine::~GraphicsEngine () {
     glDeleteFramebuffers(1, &FBO);
 }
 
+
+void GraphicsEngine::setEffect (Effect e) {
+    if (currentEffect != e) {
+        frame = new GraphicsObject (
+            new QuadGeometry(),
+            (e == blur) ? new Material ("pp_gaussianBlur", colourAttachment) : new Material("pp_fadeout", colourAttachment)
+        );
+        frame->scale = glm::vec3(5.85, 3.25, 1.0);
+        currentEffect = e;
+    }
+}
+
+
 void GraphicsEngine::initPostProcessing () {
     buildFrameBuffer();
 
-    frame = new GraphicsObject (
-        new QuadGeometry(),
-        new Material ("pp_fadeout", colourAttachment)
-        //new Material ("object_textured", colourAttachment)
-    );
+    setEffect(GraphicsEngine::blur);
     
     frame->scale = glm::vec3(5.85, 3.25, 1.0);
 }
@@ -59,6 +68,24 @@ void GraphicsEngine::buildDepthBuffer () {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RBO);
 }
 
+
+void GraphicsEngine::buildShadowDepthBuffer () {
+    glGenFramebuffers(1, &depthFBO);
+    glGenTextures(1, &depthTexture);
+    glBindTexture(GL_TEXTURE_2D, depthTexture);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, windowWidth, windowHeight, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, depthFBO);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthTexture, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
 void GraphicsEngine::prerender() {
     std::sort(scene.begin(), scene.end(),
         [] (GraphicsObject* a, GraphicsObject* b) -> bool {
@@ -84,7 +111,25 @@ void GraphicsEngine::onScreen () {
     glClearColor        (0.16, 0.16, 0.16, 1.0);
     glClear             (GL_COLOR_BUFFER_BIT);
     glDisable           (GL_DEPTH_TEST);
-    frame->draw(camera);
+    frame->draw         (camera);
+}
+
+void GraphicsEngine::renderShadows () {
+    // 1. first render to depth map
+    glViewport(0, 0, windowWidth, windowHeight);
+    glBindFramebuffer(GL_FRAMEBUFFER, depthFBO);
+    glClear(GL_DEPTH_BUFFER_BIT);
+    
+   // ConfigureShaderAndMatrices();
+    renderScene();
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    
+    // 2. then render scene as normal with shadow mapping (using depth map)
+    glViewport(0, 0, windowWidth, windowHeight);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    glBindTexture(GL_TEXTURE_2D, depthTexture);
+    renderScene();
 }
 
 void GraphicsEngine::render() {

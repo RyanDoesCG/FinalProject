@@ -19,9 +19,13 @@ class GraphicsEngine {
         GraphicsEngine (float width, float height);
        ~GraphicsEngine ();
     
+        enum Effect { blur, fade };
+    
         void initPostProcessing ();
     
         void render();
+    
+        void setEffect (Effect e);
     
         void add     (GraphicsObject* object);
         void addToUI (GraphicsObject* object);
@@ -29,6 +33,7 @@ class GraphicsEngine {
     private:
         void offScreen ();
         void onScreen  ();
+        void renderShadows ();
     
         void prerender       ();
         void renderScene     ();
@@ -41,6 +46,8 @@ class GraphicsEngine {
         void buildColourBuffer ();
         void buildDepthBuffer  ();
     
+        void buildShadowDepthBuffer ();
+    
         Camera* camera;
     
         int windowWidth;
@@ -48,6 +55,11 @@ class GraphicsEngine {
     
         GLuint FBO; // FrameBufferObject
         GLuint RBO; // RenderBufferObject
+    
+        GLuint depthFBO; // for shadow mapping
+        GLuint depthTexture;
+    
+        Effect currentEffect;
     
         GLuint colourAttachment;
         GraphicsObject* frame;

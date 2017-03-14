@@ -22,6 +22,8 @@ class Texture {
         void bind   ();
         void unbind ();
     
+        void setID ();
+    
     private:
     
         GLuint textureID;

@@ -78,6 +78,14 @@ float Mouse::getMouseY  () { return mouseY; }
 float Mouse::getXoffset () { return xoffset; }
 float Mouse::getYoffset () { return yoffset; }
 
+float Mouse::getScrollX() {
+    return (mouseEvents[MOUSE_SCROLL_LEFT]) ? -1.0f : (mouseEvents[MOUSE_SCROLL_RIGHT]) ? 1.0 : 0.0;
+}
+
+float Mouse::getScrollY() {
+    return (mouseEvents[MOUSE_SCROLL_UP]) ? 1.0f : (mouseEvents[MOUSE_SCROLL_DOWN]) ? -1.0 : 0.0;
+}
+
 bool Mouse::leftButtonDown  () { return leftButton; }
 bool Mouse::rightButtonDown () { return rightButton; }
 
@@ -92,6 +100,9 @@ void mouseActionCallback (GLFWwindow* window, int button, int action, int mods) 
 }
 
 void mouseScrollCallback (GLFWwindow* window, double xoffset, double yoffset) {
+    
+    for (int i = 0; i < 6; i++)
+        mouseEvents[i] = false;
     
     // remove signing so both values are positive
     unsigned int xNormalised = xoffset;

@@ -11,8 +11,8 @@
 
 Planet::Planet (GraphicsEngine* g) {
     graphics = new GraphicsObject(
-        new ModelGeometry("sphere/uvsphere"),
-        new Material      ("sphere_vertextextured", "noise/test.jpg")
+        new ModelGeometry("sphere/uvsphere2"),
+        new Material      ("sphere_vertextextured", "noise/2.jpg")
     );
     
     graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
@@ -51,6 +51,9 @@ void Planet::update(State state) {
                 velocity.y += 0.5 * mouse->getXoffset();
                 graphics->scale += mouse->getYoffset() * 1.25;
             }
+            
+            velocity.y += 0.01 * mouse->getScrollX();
+            graphics->scale += mouse->getScrollY() * 0.25;
             
             graphics->rotation += velocity;
             velocity *= 0.8;

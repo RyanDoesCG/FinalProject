@@ -17,6 +17,7 @@ Material::~Material () {}
 
 GLuint      Material::getProgramID () { return shader.getProgramID(); }
 std::string Material::getTitle     () { return shader.getTitle(); }
+void        Material::setTexture(GLuint id) { texture = Texture(id); }
 
 void Material::bind() {
     shader.bind();

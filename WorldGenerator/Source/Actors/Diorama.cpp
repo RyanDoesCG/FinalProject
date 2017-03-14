@@ -12,7 +12,7 @@
 
 Diorama::Diorama (GraphicsEngine* g) {
     terrain = new GraphicsObject(
-        new ModelGeometry("plane/plane"),
+        new ModelGeometry ("plane/plane"),
         new Material      ("plane_vertextextured", "noise/test.jpg")
     );
     
@@ -49,6 +49,10 @@ void Diorama::update(State state) {
                 velocity.y += 0.5 * mouse->getXoffset();
                 terrain->scale += mouse->getYoffset() * 1.25;
             }
+            
+            velocity.y += 0.01 * mouse->getScrollX();
+            terrain->scale += mouse->getScrollY() * 0.25;
+            
             terrain->rotation += velocity;
             velocity *= 0.8;
             break;
