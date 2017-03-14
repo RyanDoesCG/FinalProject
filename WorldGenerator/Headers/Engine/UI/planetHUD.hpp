@@ -17,7 +17,7 @@ class planetHUD: public GameHUD {
         planetHUD (GraphicsEngine* graph, PhysicsEngine* phys);
        ~planetHUD ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
         virtual void hide   () override;
         virtual void show   () override;
 };

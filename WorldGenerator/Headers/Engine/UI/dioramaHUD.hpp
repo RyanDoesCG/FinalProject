@@ -20,7 +20,7 @@ class dioramaHUD: public GameHUD {
         dioramaHUD (GraphicsEngine* graph, PhysicsEngine* phys);
        ~dioramaHUD ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
         virtual void hide   () override;
         virtual void show   () override;
     

@@ -21,13 +21,15 @@ class EngineTest: public GameObject {
         EngineTest (GraphicsEngine* g, PhysicsEngine* p);
        ~EngineTest ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
     
     private:
         GraphicsObject* graphics;
         PhysicsObject2D* collider;
     
         Mouse* mouse;
+    
+        glm::vec3 velocity;
 };
 
 #endif /* EngineTest_hpp */

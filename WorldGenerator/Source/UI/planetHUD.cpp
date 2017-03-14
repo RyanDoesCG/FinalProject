@@ -28,10 +28,9 @@ void planetHUD::show () {
     });
 }
 
-void planetHUD::update () {
-    background.update();
+void planetHUD::update (State state) {
+    background.update(state);
     
-    for_each(items.begin(), items.end(), [](UIBox* box) {
-        box->update();
-    });
+    for (UIBox* box : items)
+        box->update(state);
 }

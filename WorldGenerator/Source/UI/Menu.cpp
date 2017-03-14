@@ -18,25 +18,25 @@ Menu::Menu (GraphicsEngine* graph, PhysicsEngine* phys):
     items.push_back(&dioramas);
     items.at(0)->scaleTo(glm::vec3(1.5, 0.15, 0));
     items.at(0)->moveTo(glm::vec3(0.0, 0.0, 0.0));
-    items.at(0)->update();
+    items.at(0)->update(MENU);
     
     // planet generator
     items.push_back(&planets);
     items.at(1)->scaleTo(glm::vec3(1.5, 0.15, 0));
     items.at(1)->moveTo(glm::vec3(0.0, -0.35, 0.0));
-    items.at(1)->update();
+    items.at(1)->update(MENU);
     
     // options
     items.push_back(&options);
     items.at(2)->scaleTo(glm::vec3(1.5, 0.15, 0));
     items.at(2)->moveTo(glm::vec3(0.0, -0.7, 0.0));
-    items.at(2)->update();
+    items.at(2)->update(MENU);
 
     // quit
     items.push_back(&quit);
     items.at(3)->scaleTo(glm::vec3(1.5, 0.15, 0));
     items.at(3)->moveTo(glm::vec3(0.0, -1.05, 0.0));
-    items.at(3)->update();
+    items.at(3)->update(MENU);
 }
 
 Menu::~Menu () {
@@ -59,8 +59,7 @@ void Menu::show () {
     });
 }
 
-void Menu::update () {
-    for_each(items.begin(), items.end(), [](UIBox* box) {
-        box->update();
-    });
+void Menu::update (State state) {
+    for (UIBox* box : items)
+        box->update(state);
 }

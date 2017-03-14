@@ -21,12 +21,16 @@ Camera::Camera(GLfloat aspect) {
     
     aspectRatio = aspect;
     
-    yaw = -90.0f;
-    pitch = 0.0f;
-    zoom = 45.0f;
+    movement = MovementTarget(position, glm::vec3(-90, 0.0, 45));
+    
+    yaw = movement.rotation.x;
+    pitch = movement.rotation.y;
+    zoom = movement.rotation.z;
     
     view = glm::lookAt(position, position + relativeFront, relativeUp);
     proj = glm::perspective(zoom, aspectRatio, 0.01f, 100.0f);
+    
+    mouse = InputManager::getMouseHandle();
 }
 
 Camera::~Camera() {

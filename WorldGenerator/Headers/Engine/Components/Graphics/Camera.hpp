@@ -8,9 +8,11 @@
 
 #ifndef Camera_hpp
 #define Camera_hpp
+
 #include "matrix_transform.hpp"
 #include "glew.h"
 #include "glm.hpp"
+#include "InputManager.hpp"
 
 class Camera {
     public:
@@ -20,14 +22,15 @@ class Camera {
         glm::mat4 getProjectionMatrix ();
         glm::mat4 getViewMatrix       ();
     
-        void moveTo (float x, float y, float z) { position = glm::vec3(x, y, z); }
+        void teleportTo (float x, float y, float z) { position = glm::vec3(x, y, z); }
+        void moveTo     (float x, float y, float z) {  }
     
         void update ();
     
-    private:
         glm::vec3 position;
         glm::vec3 velocity;
     
+    private:
         glm::vec3 relativeFront;
         glm::vec3 relativeUp;
         glm::vec3 relativeRight;
@@ -44,7 +47,24 @@ class Camera {
         GLfloat mouseSensitivity;
         GLfloat zoom;
     
+        Mouse* mouse;
+    
         GLfloat aspectRatio;
+    
+        struct MovementTarget {
+            MovementTarget (glm::vec3 pos, glm::vec3 rot):
+                position(pos),
+                rotation(rot) {}
+            
+            MovementTarget ():
+                position(0),
+                rotation(0) {}
+            
+            glm::vec3 position;
+            glm::vec3 rotation;
+        };
+    
+        MovementTarget movement;
     
 };
 

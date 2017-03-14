@@ -22,7 +22,7 @@ class UIPlusMinus: public UIBox {
         UIPlusMinus (GraphicsEngine* graph, PhysicsEngine* phys);
        ~UIPlusMinus ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
     
     private:
     

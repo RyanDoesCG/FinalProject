@@ -16,27 +16,27 @@ Options::Options (GraphicsEngine* graph, PhysicsEngine* phys):
     
     // resolution
     items.push_back(&resolution);
-    items.at(0)->scaleTo(glm::vec3(2, 0.15, 0));
-    items.at(0)->moveTo(glm::vec3(0.0, -0.17, -10));
-    items.at(0)->update();
+    items.at(0)->scaleTo (glm::vec3(2, 0.15, 0));
+    items.at(0)->moveTo  (glm::vec3(0.0, -0.17, -10));
+    items.at(0)->update  (MENU);
     
     // sound
     items.push_back(&sound);
-    items.at(1)->scaleTo(glm::vec3(2, 0.15, 0));
-    items.at(1)->moveTo(glm::vec3(0.0, -0.525, -10));
-    items.at(1)->update();
+    items.at(1)->scaleTo (glm::vec3(2, 0.15, 0));
+    items.at(1)->moveTo  (glm::vec3(0.0, -0.525, -10));
+    items.at(1)->update  (MENU);
     
     // about
     items.push_back(&about);
-    items.at(2)->scaleTo(glm::vec3(2, 0.15, 0));
-    items.at(2)->moveTo(glm::vec3(0.0, -0.865, -10));
-    items.at(2)->update();
+    items.at(2)->scaleTo (glm::vec3(2, 0.15, 0));
+    items.at(2)->moveTo  (glm::vec3(0.0, -0.865, -10));
+    items.at(2)->update  (MENU);
     
     // back
     items.push_back(&back);
-    items.at(3)->scaleTo(glm::vec3(1, 0.15, 0));
-    items.at(3)->moveTo(glm::vec3(0.0, -1.25, 10));
-    items.at(3)->update();
+    items.at(3)->scaleTo (glm::vec3(1, 0.15, 0));
+    items.at(3)->moveTo  (glm::vec3(0.0, -1.25, 10));
+    items.at(3)->update  (MENU);
 }
 
 Options::~Options () {}
@@ -57,8 +57,7 @@ void Options::show () {
     });
 }
 
-void Options::update () {
-    for_each(items.begin(), items.end(), [](UIBox* box) {
-        box->update();
-    });
+void Options::update (State state) {
+    for (UIBox* box : items)
+        box->update(state);
 }

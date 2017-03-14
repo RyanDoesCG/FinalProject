@@ -21,7 +21,7 @@ class Cursor: public GameObject {
         Cursor (GraphicsEngine* g, PhysicsEngine* p);
        ~Cursor ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
     
     private:
         GraphicsObject* quad;

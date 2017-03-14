@@ -21,7 +21,7 @@ class Menu: public GameObject {
         Menu (GraphicsEngine* graph, PhysicsEngine* phys);
        ~Menu ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
     
         void hide ();
         void show ();

@@ -85,7 +85,7 @@ UITextNode::~UITextNode () {
     
 }
 
-void UITextNode::update () {
+void UITextNode::update (State state) {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glDisable(GL_DEPTH_TEST);
     material.bind();

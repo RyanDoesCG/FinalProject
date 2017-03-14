@@ -19,27 +19,33 @@
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
-        new ModelGeometry("sphere/uvsphere"),
-        new Material      ("object_vertextextured", "rock.jpg")
+        new ModelGeometry("plane/plane"),
+        new Material      ("plane_vertextextured", "noise/test.jpg")
     );
     
     graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
-    graphics->position = glm::vec3(0, 0, -30);
+    graphics->position = glm::vec3(0, 0, -20);
     graphics->scale    = glm::vec3(10, 10, 10);
     graphics->wireframe(true);
     
     g->add(graphics);
     
     mouse = InputManager::getMouseHandle();
+    
+    graphics->rotation.x = 0.25;
 }
 
 EngineTest::~EngineTest () {}
 
-void EngineTest::update() {
-    graphics->rotation.x = 0.25;
-    graphics->rotation.y += 0.001;
+void EngineTest::update(State state) {
+    
+    velocity.y += 0.001;
     
     if (mouse->leftButtonDown() || mouse->rightButtonDown()) {
-        graphics->rotation.y += 0.5 * mouse->getXoffset();
+        velocity.y += 0.5 * mouse->getXoffset();
+        graphics->scale += mouse->getYoffset() * 1.25;
     }
+    
+    graphics->rotation += velocity;
+    velocity *= 0.8;
 }

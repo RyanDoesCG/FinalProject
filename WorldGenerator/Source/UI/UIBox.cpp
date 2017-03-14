@@ -58,7 +58,7 @@ bool UIBox::isSelected() {
     return physics->colliding;
 }
 
-void UIBox::update () {
+void UIBox::update (State state) {
     graphics->position = physics->pos ();
     
     // visual feedback

@@ -20,6 +20,6 @@ UIPlusMinus::~UIPlusMinus () {
     
 }
 
-void UIPlusMinus::update() {
-    UIBox::update();
+void UIPlusMinus::update(State state) {
+    UIBox::update(state);
 }

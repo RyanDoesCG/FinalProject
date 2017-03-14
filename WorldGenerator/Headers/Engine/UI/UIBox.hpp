@@ -22,7 +22,7 @@ class UIBox: public GameObject {
         UIBox (GraphicsEngine* graph, PhysicsEngine* phys);
        ~UIBox ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
     
         void moveTo    (glm::vec3 p);
         void scaleTo   (glm::vec3 s);

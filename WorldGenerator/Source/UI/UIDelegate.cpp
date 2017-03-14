@@ -19,20 +19,20 @@ UIDelegate::UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g):
     gamepad = InputManager::getGamepadHandle();
     mouse   = InputManager::getMouseHandle();
     
-    state = main_menu;
+    uiState = main_menu;
 }
 
 UIDelegate::~UIDelegate () {
     
 }
 
-void UIDelegate::update() {
-    mainMenu.update();
-    optionsMenu.update();
-    dHUD.update();
-    pHUD.update();
+void UIDelegate::update(State state) {
+    mainMenu.update(state);
+    optionsMenu.update(state);
+    dHUD.update(state);
+    pHUD.update(state);
 
-    switch (state) {
+    switch (uiState) {
         case main_menu: {
             mainMenu.show();
             optionsMenu.hide();
@@ -40,10 +40,10 @@ void UIDelegate::update() {
             pHUD.hide();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (mainMenu.dioramas .isSelected()) { state = diorama; }
-                if (mainMenu.planets  .isSelected()) { state = planet; }
-                if (mainMenu.options  .isSelected()) { state = options; }
-                if (mainMenu.quit     .isSelected()) { state = over; }
+                if (mainMenu.dioramas .isSelected()) { uiState = diorama; }
+                if (mainMenu.planets  .isSelected()) { uiState = planet; }
+                if (mainMenu.options  .isSelected()) { uiState = options; }
+                if (mainMenu.quit     .isSelected()) { uiState = over; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
                 mouse->leftButtonHandled();
@@ -58,7 +58,7 @@ void UIDelegate::update() {
             pHUD.hide();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (dHUD.back.isSelected()) { state = main_menu; }
+                if (dHUD.back.isSelected()) { uiState = main_menu; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
                 mouse->leftButtonHandled();
@@ -73,7 +73,7 @@ void UIDelegate::update() {
             pHUD.show();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (pHUD.back.isSelected()) { state = main_menu; }
+                if (pHUD.back.isSelected()) { uiState = main_menu; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
                 mouse->leftButtonHandled();
@@ -88,7 +88,7 @@ void UIDelegate::update() {
             pHUD.hide();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (optionsMenu.back.isSelected()) { state = main_menu; }
+                if (optionsMenu.back.isSelected()) { uiState = main_menu; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
                 mouse->leftButtonHandled();

@@ -40,7 +40,7 @@ void UIBoxBackground::setAlpha(GLfloat a) {
     graphics->colour.a = a;
 }
 
-void UIBoxBackground::update () {
+void UIBoxBackground::update (State state) {
     // fading
     if (isHidden) fadeOut();
     if (!isHidden) fadeIn();

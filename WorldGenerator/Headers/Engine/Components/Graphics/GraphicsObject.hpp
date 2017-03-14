@@ -23,6 +23,17 @@ class GraphicsObject {
         void draw (Camera* cam) {
             material->bind();
             
+            // Lighting data to GPU
+            glm::vec3 viewPos = cam->position;
+            glUniform3fv(glGetUniformLocation(material->getProgramID(), "viewPosition"), 1, glm::value_ptr(viewPos));
+            if (isLit) {
+                glm::vec3 lightPosition = lightsource->position;
+                glm::vec4 lightColour   = lightsource->colour;
+                
+                glUniform3fv(glGetUniformLocation(material->getProgramID(), "lightPosition"), 1, glm::value_ptr(lightPosition));
+                glUniform4fv(glGetUniformLocation(material->getProgramID(), "lightColour"), 1, glm::value_ptr(lightColour));
+            }
+            
             // upload colour to shader
             glUniform4fv(glGetUniformLocation(material->getProgramID(), "colour"), 1, glm::value_ptr(colour));
             
@@ -73,6 +84,12 @@ class GraphicsObject {
         glm::vec3 scale    = glm::vec3(1.00, 1.00, 1.00);
     
         glm::mat4 model;
+    
+        void setLightSource(GraphicsObject* light) { lightsource = light; isLit = true; }
+    
+    private:
+        GraphicsObject* lightsource;
+        bool isLit = false;
     
 };
 

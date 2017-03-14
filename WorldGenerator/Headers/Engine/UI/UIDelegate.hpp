@@ -24,7 +24,7 @@ class UIDelegate: public GameObject {
         UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g);
        ~UIDelegate ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
     
     private:
         enum UIState {
@@ -36,7 +36,7 @@ class UIDelegate: public GameObject {
             over
         };
     
-        UIState     state;
+        UIState     uiState;
         Menu        mainMenu;
         Options     optionsMenu;
         dioramaHUD  dHUD;

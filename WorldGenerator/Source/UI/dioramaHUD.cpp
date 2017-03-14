@@ -34,10 +34,9 @@ void dioramaHUD::show () {
     });
 }
 
-void dioramaHUD::update () {
-    background.update();
+void dioramaHUD::update (State state) {
+    background.update(state);
     
-    for_each(items.begin(), items.end(), [](UIBox* box) {
-        box->update();
-    });
+    for (UIBox* box : items)
+        box->update(state);
 }

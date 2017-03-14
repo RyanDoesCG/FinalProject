@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6217EF391E785AF0003EFAD0 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF381E785AF0003EFAD0 /* Diorama.cpp */; };
+		6217EF3C1E785BDA003EFAD0 /* Planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF3B1E785BDA003EFAD0 /* Planet.cpp */; };
 		6219A7C51E743D4F000E2B92 /* UIBoxBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */; };
 		6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C71E7440AA000E2B92 /* dioramaHUD.cpp */; };
 		6233CEC51E7453370014055F /* UIDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6233CEC31E7453370014055F /* UIDelegate.cpp */; };
@@ -55,6 +57,11 @@
 /* Begin PBXFileReference section */
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
+		6217EF361E78523A003EFAD0 /* State.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = State.hpp; sourceTree = "<group>"; };
+		6217EF371E785A83003EFAD0 /* Diorama.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Diorama.hpp; sourceTree = "<group>"; };
+		6217EF381E785AF0003EFAD0 /* Diorama.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Diorama.cpp; sourceTree = "<group>"; };
+		6217EF3A1E785B7D003EFAD0 /* Planet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Planet.hpp; sourceTree = "<group>"; };
+		6217EF3B1E785BDA003EFAD0 /* Planet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Planet.cpp; sourceTree = "<group>"; };
 		6219A7C31E743CED000E2B92 /* UIBoxBackground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIBoxBackground.hpp; sourceTree = "<group>"; };
 		6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBoxBackground.cpp; sourceTree = "<group>"; };
 		6219A7C61E744047000E2B92 /* dioramaHUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dioramaHUD.hpp; sourceTree = "<group>"; };
@@ -877,6 +884,8 @@
 				CE5A22281E7316FA00235110 /* GameObject.hpp */,
 				CE5A222B1E7341BD00235110 /* EngineTest.hpp */,
 				CE5A22301E7359AD00235110 /* Cursor.hpp */,
+				6217EF371E785A83003EFAD0 /* Diorama.hpp */,
+				6217EF3A1E785B7D003EFAD0 /* Planet.hpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -898,6 +907,7 @@
 				CEC838071E6DA2010033CC10 /* Window.hpp */,
 				CEC8380C1E6DA47A0033CC10 /* GraphicsEngine.hpp */,
 				CEC8380E1E6DA4A30033CC10 /* PhysicsEngine.hpp */,
+				6217EF361E78523A003EFAD0 /* State.hpp */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1410,6 +1420,8 @@
 			children = (
 				CE5A222C1E73421C00235110 /* EngineTest.cpp */,
 				CE5A22311E735A2500235110 /* Cursor.cpp */,
+				6217EF381E785AF0003EFAD0 /* Diorama.cpp */,
+				6217EF3B1E785BDA003EFAD0 /* Planet.cpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -1565,6 +1577,7 @@
 				CE0288031E75CD81001B4DF8 /* PlaneGeometry.cpp in Sources */,
 				CEC8383B1E6DB17D0033CC10 /* Mouse.cpp in Sources */,
 				CEC838371E6DB1630033CC10 /* Gamepad.cpp in Sources */,
+				6217EF3C1E785BDA003EFAD0 /* Planet.cpp in Sources */,
 				CEC838051E6DA19F0033CC10 /* main.cpp in Sources */,
 				CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */,
 				CEC8384B1E6DD0020033CC10 /* AACollisionBox2D.cpp in Sources */,
@@ -1574,6 +1587,7 @@
 				6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */,
 				CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */,
 				CED405801E74925A001ED29B /* Options.cpp in Sources */,
+				6217EF391E785AF0003EFAD0 /* Diorama.cpp in Sources */,
 				CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */,
 				CEC838261E6DAC240033CC10 /* PhysicsEngine.cpp in Sources */,
 				CEEAF6EE1E75F68E00FFADAE /* ModelGeometry.cpp in Sources */,

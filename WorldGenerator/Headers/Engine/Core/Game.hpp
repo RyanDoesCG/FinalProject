@@ -33,6 +33,7 @@ class Game {
         InputManager input;
         Window window;
     
+        State state;
 };
 
 #endif /* Game_hpp */

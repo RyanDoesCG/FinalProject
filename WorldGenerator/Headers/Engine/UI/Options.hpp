@@ -19,7 +19,7 @@ class Options: public GameObject {
         Options (GraphicsEngine* graph, PhysicsEngine* phys);
        ~Options ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
     
         void hide ();
         void show ();

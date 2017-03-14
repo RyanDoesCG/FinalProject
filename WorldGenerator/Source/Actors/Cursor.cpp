@@ -34,7 +34,7 @@ Cursor::~Cursor() {
     
 }
 
-void Cursor::update() {
+void Cursor::update(State state) {
     quad->position.x += (mouse->getXoffset() == lastXoffset) ? 0 : mouse->getXoffset();
     quad->position.y += (mouse->getYoffset() == lastYoffset) ? 0 : mouse->getYoffset();
     quad->position.x += gamepad->getAxisState(LEFT_STICK_X_AXIS) * 0.05; gamepad->resetAxisState(LEFT_STICK_X_AXIS);

@@ -29,7 +29,7 @@ class GameHUD: public GameObject {
             items.push_back(&back);
             items.at(0)->scaleTo(glm::vec3(0.5, 0.15, 0));
             items.at(0)->moveTo(glm::vec3(-2.075, -1.25, 0.2));
-            items.at(0)->update();
+            items.at(0)->update(MENU);
                 
             // input
             gamepad = InputManager::getGamepadHandle();
@@ -38,7 +38,7 @@ class GameHUD: public GameObject {
     
        ~GameHUD () {}
     
-        virtual void update () override = 0;
+        virtual void update (State state) override = 0;
     
         virtual void hide () = 0;
         virtual void show () = 0;

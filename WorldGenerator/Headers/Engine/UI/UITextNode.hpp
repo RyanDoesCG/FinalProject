@@ -24,7 +24,7 @@ class UITextNode: public GameObject {
         UITextNode (GraphicsEngine* graph);
        ~UITextNode ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
     
         void fadeIn  ();
         void fadeOut ();

@@ -9,6 +9,7 @@
 #ifndef GameObject_hpp
 #define GameObject_hpp
 
+#include "State.hpp"
 #include "glm.hpp"
 
 class GameObject {
@@ -19,7 +20,7 @@ class GameObject {
         glm::vec3 position;
         glm::vec3 scale;
     
-        virtual void update () = 0;
+        virtual void update (State state) = 0;
 
 };
 

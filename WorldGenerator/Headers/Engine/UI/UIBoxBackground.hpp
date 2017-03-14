@@ -21,7 +21,7 @@ class UIBoxBackground: public GameObject {
         UIBoxBackground (GraphicsEngine* graph);
        ~UIBoxBackground ();
     
-        virtual void update () override;
+        virtual void update (State state) override;
     
         void moveTo    (glm::vec3 p);
         void scaleTo   (glm::vec3 s);
