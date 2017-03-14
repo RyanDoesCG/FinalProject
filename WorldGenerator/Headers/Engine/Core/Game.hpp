@@ -24,6 +24,8 @@ class Game {
         void boot ();
         void stop ();
     
+        State state;
+    
     protected:
         std::vector<GameObject*> objects;
     
@@ -32,8 +34,6 @@ class Game {
     
         InputManager input;
         Window window;
-    
-        State state;
 };
 
 #endif /* Game_hpp */

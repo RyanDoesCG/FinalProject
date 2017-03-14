@@ -30,6 +30,7 @@ double  mouseY  = 0;
 GLfloat xoffset = 0;
 GLfloat yoffset = 0;
 
+
 bool leftButton = false;
 bool rightButton = false;
 

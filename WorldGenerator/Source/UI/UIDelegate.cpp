@@ -40,8 +40,8 @@ void UIDelegate::update(State state) {
             pHUD.hide();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (mainMenu.dioramas .isSelected()) { uiState = diorama; }
-                if (mainMenu.planets  .isSelected()) { uiState = planet; }
+                if (mainMenu.dioramas .isSelected()) { uiState = diorama; game->state = VIEW; }
+                if (mainMenu.planets  .isSelected()) { uiState = planet;  game->state = VIEW; }
                 if (mainMenu.options  .isSelected()) { uiState = options; }
                 if (mainMenu.quit     .isSelected()) { uiState = over; }
                 
@@ -58,7 +58,7 @@ void UIDelegate::update(State state) {
             pHUD.hide();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (dHUD.back.isSelected()) { uiState = main_menu; }
+                if (dHUD.back.isSelected()) { uiState = main_menu; game->state = MENU; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
                 mouse->leftButtonHandled();
@@ -73,7 +73,7 @@ void UIDelegate::update(State state) {
             pHUD.show();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (pHUD.back.isSelected()) { uiState = main_menu; }
+                if (pHUD.back.isSelected()) { uiState = main_menu; game->state = MENU; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
                 mouse->leftButtonHandled();
@@ -88,7 +88,7 @@ void UIDelegate::update(State state) {
             pHUD.hide();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (optionsMenu.back.isSelected()) { uiState = main_menu; }
+                if (optionsMenu.back.isSelected()) { uiState = main_menu; game->state = MENU; }
                 
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
                 mouse->leftButtonHandled();
