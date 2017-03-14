@@ -30,6 +30,10 @@ class UIBox: public GameObject {
         void setAlpha  (GLfloat a);
     
         bool isSelected ();
+        bool isHidden = false;
+    
+        void light   ();
+        void unlight ();
     
         void fadeIn  ();
         void fadeOut ();

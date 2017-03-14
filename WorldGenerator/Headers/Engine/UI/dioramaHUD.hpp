@@ -13,6 +13,7 @@
 #include "PhysicsEngine.hpp"
 #include "GameHUD.hpp"
 
+#include "UIPlusMinus.hpp"
 
 class dioramaHUD: public GameHUD {
     public:
@@ -22,6 +23,8 @@ class dioramaHUD: public GameHUD {
         virtual void update () override;
         virtual void hide   () override;
         virtual void show   () override;
+    
+        //UIPlusMinus example;
 };
 
 

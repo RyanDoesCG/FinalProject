@@ -11,7 +11,11 @@
 #include "QuadGeometry.hpp"
 
 Cursor::Cursor(GraphicsEngine* g, PhysicsEngine* p) {
-    quad = new GraphicsObject(new QuadGeometry(), new Material("object"));
+    quad = new GraphicsObject (
+        new QuadGeometry(),
+        new Material("object")
+    );
+    
     collider = new AACollisionBox2D(glm::vec2(0.05));
     g->addToUI(quad);
     p->addTo2D(collider);
@@ -44,9 +48,6 @@ void Cursor::update() {
     
     std::cout << collider->colliding << std::endl;
     
-    if (collider->colliding) {
-        quad->colour = glm::vec4(1.0, 0.81, 0.81, 1);
-    } else {
-        quad->colour   = glm::vec4(0.81, 0.81, 0.81, 1);
-    }
+    if (collider->colliding) quad->colour = glm::vec4(1.0, 0.81, 0.81, 1);
+    else quad->colour = glm::vec4(0.81, 0.81, 0.81, 1);
 }

@@ -16,19 +16,17 @@
 #define WIDTH 1920/2
 #define HEIGHT 1080/2
 
-Game::Game (): window(WIDTH, HEIGHT), graphics (WIDTH, HEIGHT), physics() {
+Game::Game ():
+    window   (WIDTH, HEIGHT),
+    graphics (WIDTH, HEIGHT),
+    physics  () {
     graphics.initPostProcessing();
 }
 
-Game::~Game () {
-    
-}
+Game::~Game () {}
 
 void Game::boot () {
-    glClearColor (0.93f, 0.90f, 0.83f, 1.0f);
     InputManager::initialise(window.asGLFW());
-    
-    std::vector<GameObject*> objects;
     
     /* * * * * * * * * * * * * * * * *
      *  Objects
@@ -43,20 +41,12 @@ void Game::boot () {
     objects.push_back (&test);
     
     while (window.isAlive()) {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
         InputManager::update();
-        
-        physics.simulate(glfwGetTime());
-        
-        for_each(objects.begin(), objects.end(), [](GameObject* o) {
+        physics.simulate(glfwGetTime());    // run physics simulation
+        for (GameObject* o : objects)       // transfer data
             o-> update();
-        });
-        
-        graphics.render();
-
+        graphics.render();                  // draw graphics scene
         window.swapBuffers();
-        
     }
     
     glfwTerminate();

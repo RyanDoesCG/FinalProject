@@ -8,24 +8,29 @@
 
 #include "dioramaHUD.hpp"
 
-dioramaHUD::dioramaHUD  (GraphicsEngine* graph, PhysicsEngine* phys): GameHUD(graph, phys) {}
+dioramaHUD::dioramaHUD  (GraphicsEngine* graph, PhysicsEngine* phys): GameHUD(graph, phys) {
+    
+}
+
 dioramaHUD::~dioramaHUD () {}
 
 void dioramaHUD::hide () {
-    background.setAlpha(0);
+    background.isHidden = true;
     
     for_each(items.begin(), items.end(), [](UIBox* box) {
         box->deactivatePhysics();
-        box->setAlpha (0);
+        //box->setAlpha(0);
+        box->isHidden = true;
     });
 }
 
 void dioramaHUD::show () {
-    background.setAlpha(0.5);
+    background.isHidden = false;
     
     for_each(items.begin(), items.end(), [](UIBox* box) {
         box->activatePhysics();
-        box->setAlpha (1);
+        //box->setAlpha(1);
+        box->isHidden = false;
     });
 }
 

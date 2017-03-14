@@ -31,20 +31,12 @@ void GraphicsEngine::initPostProcessing () {
     frame->scale = glm::vec3(5.85, 3.25, 1.0);
 }
 
-void GraphicsEngine::add(GraphicsObject *object) {
-    scene.push_back(object);
-}
-
-void GraphicsEngine::addToUI(GraphicsObject *object) {
-    ui.push_back(object);
-}
-
 void GraphicsEngine::buildFrameBuffer  () {
     // generate framebuffer
     glGenFramebuffers(1, &FBO);
     glBindFramebuffer(GL_FRAMEBUFFER, FBO);
-        buildColourBuffer();
-        buildDepthBuffer();
+        buildColourBuffer ();
+        buildDepthBuffer  ();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
@@ -72,8 +64,8 @@ void GraphicsEngine::prerender() {
         [] (GraphicsObject* a, GraphicsObject* b) -> bool {
             return a->position.z < b->position.z;
     });
-    
     camera->update();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void GraphicsEngine::offScreen () {
@@ -86,13 +78,10 @@ void GraphicsEngine::offScreen () {
 }
 
 void GraphicsEngine::onScreen () {
-    // render to screen quad
     glBindFramebuffer   (GL_FRAMEBUFFER, 0);
     glClearColor        (0.16, 0.16, 0.16, 1.0);
     glClear             (GL_COLOR_BUFFER_BIT);
     glDisable           (GL_DEPTH_TEST);
-    
-    // draw
     frame->draw(camera);
 }
 
@@ -104,12 +93,8 @@ void GraphicsEngine::render() {
     renderUI    ();
 }
 
-void GraphicsEngine::renderScene() {
-    for (GraphicsObject* object : scene)
-        object->draw(camera);
-}
+void GraphicsEngine::add     (GraphicsObject *object) { scene.push_back(object); }
+void GraphicsEngine::addToUI (GraphicsObject *object) { ui.push_back(object); }
 
-void GraphicsEngine::renderUI() {
-    for (GraphicsObject* object : ui)
-        object->draw(camera);
-}
+void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(camera); }
+void GraphicsEngine::renderUI    () { for (GraphicsObject* object : ui)    object->draw(camera); }

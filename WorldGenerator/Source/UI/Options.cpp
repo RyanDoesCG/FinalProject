@@ -44,14 +44,16 @@ Options::~Options () {}
 void Options::hide () {
     for_each(items.begin(), items.end(), [](UIBox* box) {
         box->deactivatePhysics();
-        box->setAlpha (0);
+        //box->setAlpha(0);
+        box->isHidden = true;
     });
 }
 
 void Options::show () {
     for_each(items.begin(), items.end(), [](UIBox* box) {
         box->activatePhysics();
-        box->setAlpha (1);
+        //box->setAlpha(1);
+        box->isHidden = false;
     });
 }
 

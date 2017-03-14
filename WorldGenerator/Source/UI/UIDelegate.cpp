@@ -27,15 +27,18 @@ UIDelegate::~UIDelegate () {
 }
 
 void UIDelegate::update() {
+    mainMenu.update();
+    optionsMenu.update();
+    dHUD.update();
+    pHUD.update();
+
     switch (state) {
         case main_menu: {
             mainMenu.show();
             optionsMenu.hide();
             dHUD.hide();
             pHUD.hide();
-            
-            mainMenu.update();
-            
+
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
                 if (mainMenu.dioramas .isSelected()) { state = diorama; }
                 if (mainMenu.planets  .isSelected()) { state = planet; }
@@ -50,11 +53,10 @@ void UIDelegate::update() {
             
         case diorama: {
             mainMenu.hide();
+            optionsMenu.hide();
             dHUD.show();
             pHUD.hide();
-            
-            dHUD.update();
-            
+
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
                 if (dHUD.back.isSelected()) { state = main_menu; }
                 
@@ -66,11 +68,10 @@ void UIDelegate::update() {
             
         case planet: {
             mainMenu.hide();
+            optionsMenu.hide();
             dHUD.hide();
             pHUD.show();
-            
-            pHUD.update();
-            
+
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
                 if (pHUD.back.isSelected()) { state = main_menu; }
                 
@@ -85,9 +86,7 @@ void UIDelegate::update() {
             optionsMenu.show();
             dHUD.hide();
             pHUD.hide();
-            
-            optionsMenu.update();
-            
+
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
                 if (optionsMenu.back.isSelected()) { state = main_menu; }
                 

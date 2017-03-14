@@ -10,8 +10,11 @@
 #define Game_hpp
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
+#include "GameObject.hpp"
 #include "InputManager.hpp"
 #include "Window.hpp"
+
+#include <vector>
 
 class Game {
     public:
@@ -22,6 +25,8 @@ class Game {
         void stop ();
     
     protected:
+        std::vector<GameObject*> objects;
+    
         GraphicsEngine graphics;
         PhysicsEngine  physics;
     

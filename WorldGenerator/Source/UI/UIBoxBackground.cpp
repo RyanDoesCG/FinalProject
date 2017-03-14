@@ -16,6 +16,8 @@ UIBoxBackground::UIBoxBackground (GraphicsEngine* graph) {
     );
     graphics->colour = glm::vec4(0.16, 0.16, 0.16, 0.5);
     graph->addToUI(graphics);
+    
+    setAlpha(0);
 }
 
 UIBoxBackground::~UIBoxBackground () {
@@ -38,7 +40,20 @@ void UIBoxBackground::setAlpha(GLfloat a) {
     graphics->colour.a = a;
 }
 
-
 void UIBoxBackground::update () {
+    // fading
+    if (isHidden) fadeOut();
+    if (!isHidden) fadeIn();
+}
 
+void UIBoxBackground::fadeIn () {
+    if (graphics->colour.a < 0.5) {
+        graphics->colour.a += 0.05;
+    }
+}
+
+void UIBoxBackground::fadeOut () {
+    if (graphics->colour.a > 0) {
+        graphics->colour.a -= 0.05;
+    }
 }

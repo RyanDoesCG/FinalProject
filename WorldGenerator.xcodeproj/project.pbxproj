@@ -47,6 +47,7 @@
 		CEDD0F1A1E00AC990078469C /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = CEDD0F191E00AC990078469C /* Assets */; };
 		CEEAF6EE1E75F68E00FFADAE /* ModelGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEEAF6ED1E75F68E00FFADAE /* ModelGeometry.cpp */; };
 		CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEEF73911E6EC03E00B36E03 /* Material.cpp */; };
+		CEF242EA1E77798A00CAC50B /* UIPlusMinus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEF242E91E77798A00CAC50B /* UIPlusMinus.cpp */; };
 		CEFFC2F41E759AAF0029F621 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEFFC2F31E759AAF0029F621 /* Shader.cpp */; };
 		CEFFC2F81E759ADD0029F621 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEFFC2F61E759ADD0029F621 /* Texture.cpp */; };
 /* End PBXBuildFile section */
@@ -531,6 +532,8 @@
 		CEDD0F1E1E00ADA60078469C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WorldGenerator/Info.plist; sourceTree = "<group>"; };
 		CEEAF6ED1E75F68E00FFADAE /* ModelGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModelGeometry.cpp; path = Graphics/Geometry3D/ModelGeometry.cpp; sourceTree = "<group>"; };
 		CEEF73911E6EC03E00B36E03 /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = Graphics/Material.cpp; sourceTree = "<group>"; };
+		CEF242E81E77796600CAC50B /* UIPlusMinus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIPlusMinus.hpp; sourceTree = "<group>"; };
+		CEF242E91E77798A00CAC50B /* UIPlusMinus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIPlusMinus.cpp; sourceTree = "<group>"; };
 		CEFFC2F11E759A610029F621 /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Texture.hpp; path = Graphics/Material/Texture.hpp; sourceTree = "<group>"; };
 		CEFFC2F21E759A860029F621 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Shader.hpp; path = Graphics/Material/Shader.hpp; sourceTree = "<group>"; };
 		CEFFC2F31E759AAF0029F621 /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = Graphics/Material/Shader.cpp; sourceTree = "<group>"; };
@@ -925,6 +928,7 @@
 				CED4057B1E748B2D001ED29B /* GameHUD.hpp */,
 				CED4057E1E7491E5001ED29B /* Options.hpp */,
 				CE06CFDA1E75C91500FF0D2A /* UITextNode.hpp */,
+				CEF242E81E77796600CAC50B /* UIPlusMinus.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1457,6 +1461,7 @@
 				6233CEC71E7474BD0014055F /* planetHUD.cpp */,
 				CED4057F1E74925A001ED29B /* Options.cpp */,
 				CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */,
+				CEF242E91E77798A00CAC50B /* UIPlusMinus.cpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1587,6 +1592,7 @@
 				CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */,
 				CEC838391E6DB1710033CC10 /* Keyboard.cpp in Sources */,
 				6219A7C51E743D4F000E2B92 /* UIBoxBackground.cpp in Sources */,
+				CEF242EA1E77798A00CAC50B /* UIPlusMinus.cpp in Sources */,
 				CEC838091E6DA29F0033CC10 /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

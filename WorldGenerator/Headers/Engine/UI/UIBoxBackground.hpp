@@ -28,6 +28,11 @@ class UIBoxBackground: public GameObject {
         void setColour (glm::vec4 c);
         void setAlpha  (GLfloat a);
     
+        void fadeIn  ();
+        void fadeOut ();
+    
+        bool isHidden;
+    
     private:
         GraphicsObject* graphics;
 };

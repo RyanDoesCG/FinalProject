@@ -23,7 +23,7 @@ class GraphicsEngine {
     
         void render();
     
-        void add (GraphicsObject* object);
+        void add     (GraphicsObject* object);
         void addToUI (GraphicsObject* object);
     
     private:

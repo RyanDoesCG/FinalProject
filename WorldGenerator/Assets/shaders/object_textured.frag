@@ -9,5 +9,5 @@ out vec4 color;
 uniform sampler2D tex;
 
 void main (void) {
-    color = texture(tex, frag_uv);
+    color = vec4(texture(tex, frag_uv).rgb, frag_colour.a);
 }
