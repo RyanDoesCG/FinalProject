@@ -65,15 +65,8 @@ void Game::boot () {
         
         // script renderer
         switch (state) {
-            case MENU: {
-                graphics.setEffect(GraphicsEngine::blur);
-                break;
-            }
-             
-            case VIEW: {
-                graphics.setEffect(GraphicsEngine::fade);
-                break;
-            }
+            case MENU: graphics.setEffect (GraphicsEngine::blur); break;
+            case VIEW: graphics.setEffect (GraphicsEngine::fade); break;
         }
         
         graphics.render(state);                  // draw graphics scene
