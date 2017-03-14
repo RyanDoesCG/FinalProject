@@ -50,7 +50,7 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    showPlanet();
+    showPlanet ();
     
     ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
     objects.push_back(&stars);
@@ -76,7 +76,7 @@ void Game::boot () {
             }
         }
         
-        graphics.render();                  // draw graphics scene
+        graphics.render(state);                  // draw graphics scene
         window.swapBuffers();
     }
     

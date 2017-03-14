@@ -9,8 +9,9 @@
 #include "GraphicsEngine.hpp"
 
 GraphicsEngine::GraphicsEngine (float width, float height) {
-    camera = new Camera(width / height);
-    
+    sceneCamera = new Camera(width / height);
+    frameCamera = new Camera(width / height);
+    frameCamera->update(NONE);
     windowWidth = width;
     windowHeight = height;
 }
@@ -86,14 +87,14 @@ void GraphicsEngine::buildShadowDepthBuffer () {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void GraphicsEngine::prerender() {
+void GraphicsEngine::prerender(State s) {
     std::sort(scene.begin(), scene.end(),
         [] (GraphicsObject* a, GraphicsObject* b) -> bool {
             return a->position.z < b->position.z;
         }
     );
     
-    camera->update();
+    sceneCamera->update(s);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
@@ -111,7 +112,7 @@ void GraphicsEngine::onScreen () {
     glClearColor        (0.16, 0.16, 0.16, 1.0);
     glClear             (GL_COLOR_BUFFER_BIT);
     glDisable           (GL_DEPTH_TEST);
-    frame->draw         (camera);
+    frame->draw         (frameCamera);
 }
 
 void GraphicsEngine::renderShadows () {
@@ -132,8 +133,8 @@ void GraphicsEngine::renderShadows () {
     renderScene();
 }
 
-void GraphicsEngine::render() {
-    prerender   ();
+void GraphicsEngine::render(State s) {
+    prerender   (s);
     offScreen   ();
     renderScene ();
     onScreen    ();
@@ -143,5 +144,5 @@ void GraphicsEngine::render() {
 void GraphicsEngine::add     (GraphicsObject *object) { scene.push_back(object); }
 void GraphicsEngine::addToUI (GraphicsObject *object) { ui.push_back(object); }
 
-void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(camera); }
-void GraphicsEngine::renderUI    () { for (GraphicsObject* object : ui)    object->draw(camera); }
+void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(sceneCamera); }
+void GraphicsEngine::renderUI    () { for (GraphicsObject* object : ui)    object->draw(frameCamera); }

@@ -15,7 +15,6 @@
 #include "GraphicsObject.hpp"
 #include "GameObject.hpp"
 #include "InputManager.hpp"
-
 #include "ObjectSpawner.hpp"
 
 class Diorama: public GameObject {
@@ -27,6 +26,7 @@ class Diorama: public GameObject {
     
     private:
         GraphicsObject* terrain;
+        GraphicsObject* water;
         ObjectSpawner* trees;
         ObjectSpawner* rocks;
     

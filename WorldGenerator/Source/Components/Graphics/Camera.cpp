@@ -40,7 +40,26 @@ Camera::~Camera() {
 glm::mat4 Camera::getProjectionMatrix () { return proj; }
 glm::mat4 Camera::getViewMatrix       () { return view; }
 
-void Camera::update () {
+glm::mat4 Camera::getDefaultProjectionMatrix () { return proj; }
+glm::mat4 Camera::getDefaultViewMatrix       () { return glm::lookAt(position, position + glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0))), glm::vec3(0.0, 1.0, 0.0)); }
+
+void Camera::update (State s) {
+    switch (s) {
+        case MENU: {
+            GLfloat radius = 2;
+            position.x = (sin(glfwGetTime()*0.08) * radius);
+            position.z = (cos(glfwGetTime()*0.08) * radius);
+            relativeFront =  glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0)));
+            break;
+        }
+        
+        case VIEW: {
+            break;
+        }
+        
+        default: break;
+    }
+
     position += velocity;
     
     relativeFront =  glm::normalize(glm::vec3(

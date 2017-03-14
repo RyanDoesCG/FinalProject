@@ -11,7 +11,8 @@
 
 enum State {
     MENU,
-    VIEW
+    VIEW,
+    NONE // ugly
 };
 
 

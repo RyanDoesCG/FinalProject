@@ -16,8 +16,8 @@ Diorama::Diorama (GraphicsEngine* g) {
         new Material      ("plane_vertextextured", "noise/test.jpg")
     );
     
-    //trees = new ObjectSpawner (g, "trees/tree", glm::vec4(0.2, 0.4, 0.0, 1.0), 10);
-    //trees = new ObjectSpawner (g, "trees/rock", glm::vec4(0.21, 0.21, 0.21, 1.0), 25);
+    trees = new ObjectSpawner (g, "trees/tree", glm::vec4(0.2, 0.4, 0.0, 1.0), glm::vec3(0.02), 100);
+    trees = new ObjectSpawner (g, "trees/rock", glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 250);
     
     terrain->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
     terrain->position = glm::vec3(0, 0, -10);
@@ -37,13 +37,16 @@ void Diorama::update(State state) {
     
     switch (state) {
         case MENU: {
+            /*
             velocity.y += 0.0001;
             terrain->rotation += velocity;
             velocity *= 0.6;
+            */
             break;
         }
             
         case VIEW: {
+            
             velocity.y += 0.0001;
             if (mouse->leftButtonDown() || mouse->rightButtonDown()) {
                 velocity.y += 0.5 * mouse->getXoffset();
@@ -55,6 +58,7 @@ void Diorama::update(State state) {
             
             terrain->rotation += velocity;
             velocity *= 0.8;
+            
             break;
         }
     }

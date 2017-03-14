@@ -12,6 +12,7 @@
 #include "QuadGeometry.hpp"
 #include "GraphicsObject.hpp"
 #include "Camera.hpp"
+#include "State.hpp"
 #include <vector>
 
 class GraphicsEngine {
@@ -23,7 +24,7 @@ class GraphicsEngine {
     
         void initPostProcessing ();
     
-        void render();
+        void render(State s);
     
         void setEffect (Effect e);
     
@@ -35,7 +36,7 @@ class GraphicsEngine {
         void onScreen  ();
         void renderShadows ();
     
-        void prerender       ();
+        void prerender       (State s);
         void renderScene     ();
         void renderUI        ();
     
@@ -48,7 +49,8 @@ class GraphicsEngine {
     
         void buildShadowDepthBuffer ();
     
-        Camera* camera;
+        Camera* sceneCamera; // used to render scene
+        Camera* frameCamera; // used to render pp frame quad
     
         int windowWidth;
         int windowHeight;
