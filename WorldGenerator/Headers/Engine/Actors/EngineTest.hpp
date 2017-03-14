@@ -14,6 +14,7 @@
 #include "GraphicsEngine.hpp"
 #include "GraphicsObject.hpp"
 #include "GameObject.hpp"
+#include "InputManager.hpp"
 
 class EngineTest: public GameObject {
     public:
@@ -25,6 +26,8 @@ class EngineTest: public GameObject {
     private:
         GraphicsObject* graphics;
         PhysicsObject2D* collider;
+    
+        Mouse* mouse;
 };
 
 #endif /* EngineTest_hpp */

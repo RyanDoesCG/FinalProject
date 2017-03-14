@@ -29,7 +29,16 @@ struct Vertex {
             std::string("(" +
             std::to_string(position.x) + ", " +
             std::to_string(position.y) + ", " +
-            std::to_string(position.z) + ")");
+            std::to_string(position.z) + ")") +
+        
+            std::string(" | (" +
+            std::to_string(normal.x) + ", " +
+            std::to_string(normal.y) + ", " +
+            std::to_string(normal.z) + ")") +
+        
+            std::string(" | (" +
+            std::to_string(uv.x) + ", " +
+            std::to_string(uv.y) + ")");
     }
 };
 

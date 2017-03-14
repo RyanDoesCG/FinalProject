@@ -6,7 +6,7 @@ layout (location = 2) in vec2 uv;
 
 out vec4 frag_colour;
 out vec3 frag_normal;
-out vec2 frag_uv;
+out  vec2 frag_uv;
 
 uniform mat4 model;
 uniform mat4 view;

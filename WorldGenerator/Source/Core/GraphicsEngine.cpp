@@ -63,7 +63,9 @@ void GraphicsEngine::prerender() {
     std::sort(scene.begin(), scene.end(),
         [] (GraphicsObject* a, GraphicsObject* b) -> bool {
             return a->position.z < b->position.z;
-    });
+        }
+    );
+    
     camera->update();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

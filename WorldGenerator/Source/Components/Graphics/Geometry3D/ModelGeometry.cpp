@@ -21,7 +21,7 @@ void ModelGeometry::loadModel(std::string path) {
     
     std::cout << loader.GetErrorString() << std::endl;
     
-    const aiScene* scene = loader.ReadFile(path, aiProcess_GenNormals | aiProcess_GenUVCoords);
+    const aiScene* scene = loader.ReadFile(path, aiProcess_GenNormals);
     
     // error check
     if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
@@ -51,21 +51,30 @@ void ModelGeometry::processMesh(aiMesh *mesh, const aiScene *scene) {
     static int processed = 0;
     processed++;
     std::cout << "Total Vertices: " << mesh->mNumVertices << std::endl;
-    std::cout << "Total Faces: " << mesh->mNumFaces << std::endl;
+    std::cout << "Total Faces: "    << mesh->mNumFaces    << std::endl;
     // DEBUG
 
     // load vertices
     for (GLuint i = 0; i < mesh->mNumVertices; i++) {
-        Vertex vertex = Vertex(
-            glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z),
-            glm::vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z),
-            glm::vec2(0)
-        );
-        if (mesh->HasTextureCoords(i)) {
-            vertex.uv.x = mesh->mTextureCoords[i]->x;
-            vertex.uv.y = mesh->mTextureCoords[i]->y;
+        if (mesh->mTextureCoords[0]) {
+            glm::vec3 position = glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
+            glm::vec3 normal = glm::vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
+            glm::vec2 uv = glm::vec2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y);
+            
+            vertices.push_back(Vertex(
+                position,
+                normal,
+                uv
+            ));
         }
-        vertices.push_back(vertex);
+        
+        else {
+            vertices.push_back(Vertex(
+                glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z),
+                glm::vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z),
+                glm::vec2(0)
+            ));
+        }
     }
     
     // process indices

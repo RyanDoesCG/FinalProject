@@ -19,8 +19,8 @@
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
-        new ModelGeometry ("sphere/sphere"),
-        new Material      ("object")
+        new ModelGeometry("sphere/uvsphere"),
+        new Material      ("object_vertextextured", "rock.jpg")
     );
     
     graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
@@ -29,6 +29,8 @@ EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics->wireframe(true);
     
     g->add(graphics);
+    
+    mouse = InputManager::getMouseHandle();
 }
 
 EngineTest::~EngineTest () {}
@@ -36,4 +38,8 @@ EngineTest::~EngineTest () {}
 void EngineTest::update() {
     graphics->rotation.x = 0.25;
     graphics->rotation.y += 0.001;
+    
+    if (mouse->leftButtonDown() || mouse->rightButtonDown()) {
+        graphics->rotation.y += 0.5 * mouse->getXoffset();
+    }
 }
