@@ -7,8 +7,7 @@
 //
 
 #include "Game.hpp"
-#include "UIDelegate.hpp"
-#include "Cursor.hpp"
+
 
 #include "EngineTest.hpp"
 #include "Diorama.hpp"
@@ -19,29 +18,39 @@
 #define HEIGHT 1080
 
 Game::Game ():
-    window   (WIDTH, HEIGHT),
-    graphics (WIDTH, HEIGHT),
-    physics  () {
+    window    (WIDTH, HEIGHT),
+    graphics  (WIDTH, HEIGHT),
+    physics   () {
     graphics.initPostProcessing();
 }
 
 Game::~Game () {}
 
+void Game::showPlanet() {
+    objects.clear();
+    
+    objects.push_back (interface);
+    objects.push_back (cursor);
+    objects.push_back (new Planet(&graphics));
+}
+
+void Game::showDiorama() {
+    objects.clear();
+    
+    objects.push_back (interface);
+    objects.push_back (cursor);
+    objects.push_back (new Diorama(&graphics));
+}
+
 void Game::boot () {
     InputManager::initialise(window.asGLFW());
+    interface = new UIDelegate(&graphics, &physics, this);
+    cursor    = new Cursor(&graphics, &physics);
     
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    UIDelegate interface = UIDelegate(&graphics, &physics, this);
-    Cursor     cursor    = Cursor(&graphics, &physics);
-    
-   // Planet planet = Planet (&graphics);
-    Diorama diorama = Diorama (&graphics);
-    
-    objects.push_back (&interface);
-    objects.push_back (&cursor);
-    objects.push_back (&diorama);
+    showDiorama();
     
     state = MENU;
     

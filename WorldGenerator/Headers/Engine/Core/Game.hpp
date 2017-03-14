@@ -11,10 +11,14 @@
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
 #include "GameObject.hpp"
+#include "UIDelegate.hpp"
+#include "Cursor.hpp"
 #include "InputManager.hpp"
 #include "Window.hpp"
 
 #include <vector>
+
+class UIDelegate; // dirty
 
 class Game {
     public:
@@ -24,6 +28,9 @@ class Game {
         void boot ();
         void stop ();
     
+        void showPlanet();
+        void showDiorama();
+    
         State state;
     
     protected:
@@ -31,6 +38,9 @@ class Game {
     
         GraphicsEngine graphics;
         PhysicsEngine  physics;
+    
+        UIDelegate* interface;
+        Cursor*     cursor;
     
         InputManager input;
         Window window;

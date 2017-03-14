@@ -19,6 +19,8 @@
 #include "planetHUD.hpp"
 #include "Game.hpp"
 
+class Game;
+
 class UIDelegate: public GameObject {
     public:
         UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g);

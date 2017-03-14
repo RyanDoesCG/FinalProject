@@ -19,7 +19,7 @@
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
-        new ModelGeometry("plane/plane"),
+        new ModelGeometry ("plane/plane"),
         new Material      ("plane_vertextextured", "noise/test.jpg")
     );
     

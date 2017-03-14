@@ -32,6 +32,12 @@ class GraphicsObject {
                 
                 glUniform3fv(glGetUniformLocation(material->getProgramID(), "lightPosition"), 1, glm::value_ptr(lightPosition));
                 glUniform4fv(glGetUniformLocation(material->getProgramID(), "lightColour"), 1, glm::value_ptr(lightColour));
+            } else {
+                glm::vec3 lightPosition = glm::vec3(0.0, 0.0, 0.0);
+                glm::vec4 lightColour   = glm::vec4(1.0, 1.0, 1.0, 1.0);
+                
+                glUniform3fv(glGetUniformLocation(material->getProgramID(), "lightPosition"), 1, glm::value_ptr(lightPosition));
+                glUniform4fv(glGetUniformLocation(material->getProgramID(), "lightColour"), 1, glm::value_ptr(lightColour));
             }
             
             // upload colour to shader
