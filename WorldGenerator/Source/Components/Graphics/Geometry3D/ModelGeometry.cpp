@@ -21,7 +21,7 @@ void ModelGeometry::loadModel(std::string path) {
     
     std::cout << loader.GetErrorString() << std::endl;
     
-    const aiScene* scene = loader.ReadFile(path, aiProcess_GenNormals);
+    const aiScene* scene = loader.ReadFile(path, aiProcess_Triangulate);
     
     // error check
     if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {

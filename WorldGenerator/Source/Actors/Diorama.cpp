@@ -11,21 +11,24 @@
 #include "ModelGeometry.hpp"
 
 Diorama::Diorama (GraphicsEngine* g) {
-    graphics = new GraphicsObject(
+    terrain = new GraphicsObject(
         new ModelGeometry("plane/plane"),
         new Material      ("plane_vertextextured", "noise/test.jpg")
     );
     
-    graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
-    graphics->position = glm::vec3(0, 0, -10);
-    graphics->scale    = glm::vec3(10, 10, 10);
-    graphics->wireframe(true);
+    //trees = new ObjectSpawner (g, "trees/tree", glm::vec4(0.2, 0.4, 0.0, 1.0), 10);
+    //trees = new ObjectSpawner (g, "trees/rock", glm::vec4(0.21, 0.21, 0.21, 1.0), 25);
     
-    g->add(graphics);
+    terrain->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
+    terrain->position = glm::vec3(0, 0, -10);
+    terrain->scale    = glm::vec3(10, 10, 10);
+    terrain->wireframe(true);
+    
+    g->add(terrain);
     
     mouse = InputManager::getMouseHandle();
     
-    graphics->rotation.x = 0.25;
+    terrain->rotation.x = 0.25;
 }
 
 Diorama::~Diorama () {}
@@ -35,7 +38,7 @@ void Diorama::update(State state) {
     switch (state) {
         case MENU: {
             velocity.y += 0.0001;
-            graphics->rotation += velocity;
+            terrain->rotation += velocity;
             velocity *= 0.6;
             break;
         }
@@ -44,9 +47,9 @@ void Diorama::update(State state) {
             velocity.y += 0.0001;
             if (mouse->leftButtonDown() || mouse->rightButtonDown()) {
                 velocity.y += 0.5 * mouse->getXoffset();
-                graphics->scale += mouse->getYoffset() * 1.25;
+                terrain->scale += mouse->getYoffset() * 1.25;
             }
-            graphics->rotation += velocity;
+            terrain->rotation += velocity;
             velocity *= 0.8;
             break;
         }

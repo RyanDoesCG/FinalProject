@@ -16,6 +16,8 @@
 #include "GameObject.hpp"
 #include "InputManager.hpp"
 
+#include "ObjectSpawner.hpp"
+
 class Diorama: public GameObject {
     public:
         Diorama (GraphicsEngine* g);
@@ -24,7 +26,9 @@ class Diorama: public GameObject {
         virtual void update (State state) override;
     
     private:
-        GraphicsObject* graphics;
+        GraphicsObject* terrain;
+        ObjectSpawner* trees;
+        ObjectSpawner* rocks;
     
         Mouse* mouse;
     

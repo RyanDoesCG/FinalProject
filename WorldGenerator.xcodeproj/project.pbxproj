@@ -10,6 +10,7 @@
 		6217EF391E785AF0003EFAD0 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF381E785AF0003EFAD0 /* Diorama.cpp */; };
 		6217EF3C1E785BDA003EFAD0 /* Planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF3B1E785BDA003EFAD0 /* Planet.cpp */; };
 		6217EF3F1E78697A003EFAD0 /* ParticleEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF3E1E78697A003EFAD0 /* ParticleEmitter.cpp */; };
+		6217EF461E78787D003EFAD0 /* ObjectSpawner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF451E78787D003EFAD0 /* ObjectSpawner.cpp */; };
 		6219A7C51E743D4F000E2B92 /* UIBoxBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */; };
 		6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6219A7C71E7440AA000E2B92 /* dioramaHUD.cpp */; };
 		6233CEC51E7453370014055F /* UIDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6233CEC31E7453370014055F /* UIDelegate.cpp */; };
@@ -69,6 +70,8 @@
 		6217EF411E786DFC003EFAD0 /* FlyweightGraphicsObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlyweightGraphicsObject.hpp; path = Graphics/FlyweightGraphicsObject.hpp; sourceTree = "<group>"; };
 		6217EF421E7871EA003EFAD0 /* FlyweightInstance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlyweightInstance.hpp; path = Graphics/FlyweightInstance.hpp; sourceTree = "<group>"; };
 		6217EF431E7873A4003EFAD0 /* Random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
+		6217EF441E7877F5003EFAD0 /* ObjectSpawner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectSpawner.hpp; sourceTree = "<group>"; };
+		6217EF451E78787D003EFAD0 /* ObjectSpawner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectSpawner.cpp; sourceTree = "<group>"; };
 		6219A7C31E743CED000E2B92 /* UIBoxBackground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIBoxBackground.hpp; sourceTree = "<group>"; };
 		6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBoxBackground.cpp; sourceTree = "<group>"; };
 		6219A7C61E744047000E2B92 /* dioramaHUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dioramaHUD.hpp; sourceTree = "<group>"; };
@@ -897,6 +900,7 @@
 				6217EF3A1E785B7D003EFAD0 /* Planet.hpp */,
 				6217EF3D1E78690C003EFAD0 /* ParticleEmitter.hpp */,
 				6217EF401E786A65003EFAD0 /* Particle.hpp */,
+				6217EF441E7877F5003EFAD0 /* ObjectSpawner.hpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -1435,6 +1439,7 @@
 				6217EF381E785AF0003EFAD0 /* Diorama.cpp */,
 				6217EF3B1E785BDA003EFAD0 /* Planet.cpp */,
 				6217EF3E1E78697A003EFAD0 /* ParticleEmitter.cpp */,
+				6217EF451E78787D003EFAD0 /* ObjectSpawner.cpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -1603,6 +1608,7 @@
 				6217EF391E785AF0003EFAD0 /* Diorama.cpp in Sources */,
 				CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */,
 				CEC838261E6DAC240033CC10 /* PhysicsEngine.cpp in Sources */,
+				6217EF461E78787D003EFAD0 /* ObjectSpawner.cpp in Sources */,
 				CEEAF6EE1E75F68E00FFADAE /* ModelGeometry.cpp in Sources */,
 				CEFFC2F81E759ADD0029F621 /* Texture.cpp in Sources */,
 				CEFFC2F41E759AAF0029F621 /* Shader.cpp in Sources */,
