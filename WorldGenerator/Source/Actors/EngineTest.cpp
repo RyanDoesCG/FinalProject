@@ -17,7 +17,7 @@
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
-        new ModelGeometry ("sphere/uvsphere"),
+        new ModelGeometry ("sphere/sphere"),
         new Material      ("object")
     );
     

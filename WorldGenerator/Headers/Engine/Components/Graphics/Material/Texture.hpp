@@ -15,6 +15,7 @@
 class Texture {
     public:
         Texture (std::string name);
+        Texture (GLuint id);
         Texture ();
        ~Texture ();
     

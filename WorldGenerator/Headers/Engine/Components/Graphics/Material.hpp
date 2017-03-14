@@ -18,6 +18,7 @@
 class Material {
     public:
         Material(const std::string& shaderName, std::string textureName);
+        Material(const std::string& shaderName, GLuint textureID); // for post-processor
         Material(const std::string& name);
        ~Material();
     

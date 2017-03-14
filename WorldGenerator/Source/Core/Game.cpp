@@ -13,11 +13,11 @@
 #include "EngineTest.hpp"
 #include <algorithm>
 
-#define WIDTH 1920
-#define HEIGHT 1080
+#define WIDTH 1920/2
+#define HEIGHT 1080/2
 
 Game::Game (): window(WIDTH, HEIGHT), graphics (WIDTH, HEIGHT), physics() {
-
+    graphics.initPostProcessing();
 }
 
 Game::~Game () {

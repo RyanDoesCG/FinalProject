@@ -28,6 +28,10 @@ Texture::Texture(std::string name) {
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+Texture::Texture (GLuint id) {
+    textureID = id;
+}
+
 Texture::Texture() {
     // do nothing
 }
