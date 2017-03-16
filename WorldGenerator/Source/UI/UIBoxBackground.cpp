@@ -14,7 +14,7 @@ UIBoxBackground::UIBoxBackground (GraphicsEngine* graph) {
         new QuadGeometry(),
         new Material("object")
     );
-    graphics->colour = glm::vec4(0.16, 0.16, 0.16, 0.5);
+    graphics->colour = glm::vec4(0.16, 0.16, 0.16, 0.65);
     graph->addToUI(graphics);
     
     setAlpha(0);
@@ -25,7 +25,7 @@ UIBoxBackground::~UIBoxBackground () {
 }
 
 void UIBoxBackground::moveTo(glm::vec3 p) {
-    graphics->position = p;
+    graphics->position = glm::vec3(p.x, p.y, -0.01);
 }
 
 void UIBoxBackground::scaleTo(glm::vec3 s) {

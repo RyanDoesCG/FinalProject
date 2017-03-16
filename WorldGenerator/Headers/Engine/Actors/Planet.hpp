@@ -24,7 +24,8 @@ class Planet: public GameObject {
         virtual void update (State state) override;
     
     private:
-        GraphicsObject* graphics;
+        GraphicsObject* terrain;
+        GraphicsObject* water;
     
         Mouse* mouse;
     

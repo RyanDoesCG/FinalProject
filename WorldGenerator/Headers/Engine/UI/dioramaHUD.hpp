@@ -9,6 +9,7 @@
 #ifndef dioramaHUD_hpp
 #define dioramaHUD_hpp
 
+#include "UISlider.hpp"
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
 #include "GameHUD.hpp"
@@ -24,7 +25,11 @@ class dioramaHUD: public GameHUD {
         virtual void hide   () override;
         virtual void show   () override;
     
-        //UIPlusMinus example;
+        UISlider amplitude;
+        UISlider example1;
+        UISlider example2;
+        UISlider example3;
+        UISlider example4;
 };
 
 

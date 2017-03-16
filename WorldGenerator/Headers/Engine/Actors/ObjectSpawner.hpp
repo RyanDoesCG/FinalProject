@@ -11,12 +11,12 @@
 
 #include "GraphicsEngine.hpp"
 #include "FlyweightGraphicsObject.hpp"
-
+#include "HeightMap.hpp"
 #include "GameObject.hpp"
 
 class ObjectSpawner: public GameObject {
     public:
-        ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, glm::vec4 col, glm::vec3 scl, int num);
+        ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, HeightMap* map, glm::vec4 col, glm::vec3 scl, int num);
        ~ObjectSpawner ();
     
         virtual void update (State state) override;

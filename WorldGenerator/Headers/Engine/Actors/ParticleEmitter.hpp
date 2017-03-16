@@ -26,7 +26,7 @@ class ParticleEmitter: public GameObject {
     
         virtual void update (State state) override;
     
-    private:
+    protected:
         std::vector<Particle> particles;
         GLfloat numParticles;
     

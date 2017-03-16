@@ -60,8 +60,8 @@ void UIDelegate::update(State state) {
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
                 if (dHUD.back.isSelected()) { uiState = main_menu; game->state = MENU; }
                 
-                gamepad->buttonHandled(GAMEPAD_BUTTON_A);
-                mouse->leftButtonHandled();
+                //gamepad->buttonHandled(GAMEPAD_BUTTON_A);
+                //mouse->leftButtonHandled();
             }
             break;
         }
@@ -75,8 +75,8 @@ void UIDelegate::update(State state) {
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
                 if (pHUD.back.isSelected()) { uiState = main_menu; game->state = MENU; }
                 
-                gamepad->buttonHandled(GAMEPAD_BUTTON_A);
-                mouse->leftButtonHandled();
+                //gamepad->buttonHandled(GAMEPAD_BUTTON_A);
+                //mouse->leftButtonHandled();
             }
             break;
         }

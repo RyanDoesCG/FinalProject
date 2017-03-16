@@ -25,7 +25,9 @@ void GraphicsEngine::setEffect (Effect e) {
     if (currentEffect != e) {
         frame = new GraphicsObject (
             new QuadGeometry(),
-            (e == blur) ? new Material ("pp_gaussianBlur", colourAttachment) : new Material("pp_fadeout", colourAttachment)
+            (e == blur) ? new Material ("pp_gaussianBlur", colourAttachment) :
+            (e == fade) ? new Material ("pp_fadeout",      colourAttachment) :
+                          new Material ("object_textured", colourAttachment)
         );
         frame->scale = glm::vec3(5.85, 3.25, 1.0);
         currentEffect = e;
@@ -117,20 +119,21 @@ void GraphicsEngine::onScreen () {
 
 void GraphicsEngine::renderShadows () {
     // 1. first render to depth map
-    glViewport(0, 0, windowWidth, windowHeight);
-    glBindFramebuffer(GL_FRAMEBUFFER, depthFBO);
-    glClear(GL_DEPTH_BUFFER_BIT);
+    glViewport        (0, 0, windowWidth, windowHeight);
+    glBindFramebuffer (GL_FRAMEBUFFER, depthFBO);
+    glClear           (GL_DEPTH_BUFFER_BIT);
     
-   // ConfigureShaderAndMatrices();
+    // 1.5 pass scene transforms from lights perspective
+    // ConfigureShaderAndMatrices();
     renderScene();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     
     // 2. then render scene as normal with shadow mapping (using depth map)
-    glViewport(0, 0, windowWidth, windowHeight);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glViewport  (0, 0, windowWidth, windowHeight);
+    glClear     (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    glBindTexture(GL_TEXTURE_2D, depthTexture);
-    renderScene();
+    glBindTexture (GL_TEXTURE_2D, depthTexture);
+    renderScene   ();
 }
 
 void GraphicsEngine::render(State s) {
@@ -141,8 +144,9 @@ void GraphicsEngine::render(State s) {
     renderUI    ();
 }
 
-void GraphicsEngine::add     (GraphicsObject *object) { scene.push_back(object); }
-void GraphicsEngine::addToUI (GraphicsObject *object) { ui.push_back(object); }
+void GraphicsEngine::add      (GraphicsObject *object) { scene.push_back(object); }
+void GraphicsEngine::addLight (GraphicsObject *object) { for (GraphicsObject* o : scene) o->setLightSource(object); }
+void GraphicsEngine::addToUI  (GraphicsObject *object) { ui.push_back(object); }
 
 void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(sceneCamera); }
 void GraphicsEngine::renderUI    () { for (GraphicsObject* object : ui)    object->draw(frameCamera); }

@@ -41,7 +41,6 @@ class UIBox: public GameObject {
         void activatePhysics   ();
         void deactivatePhysics ();
     
-    private:
         GraphicsObject* graphics;
         PhysicsObject2D* physics;
 

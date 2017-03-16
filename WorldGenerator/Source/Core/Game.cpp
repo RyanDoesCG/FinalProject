@@ -12,8 +12,8 @@
 #include "Planet.hpp"
 #include <algorithm>
 
-#define WIDTH 1920
-#define HEIGHT 1080
+#define WIDTH 1920  * 0.75
+#define HEIGHT 1080 * 0.75
 
 Game::Game ():
     window    (WIDTH, HEIGHT),
@@ -38,7 +38,7 @@ void Game::showDiorama() {
     
     objects.push_back (interface);
     objects.push_back (cursor);
-    objects.push_back (new Diorama(&graphics));
+    objects.push_back (new Diorama(&graphics, &physics));
 }
 
 void Game::boot () {
@@ -50,10 +50,10 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    showPlanet ();
+    showDiorama ();
     
-    ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
-    objects.push_back(&stars);
+    //ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
+    //objects.push_back(&stars);
     
     state = MENU;
     

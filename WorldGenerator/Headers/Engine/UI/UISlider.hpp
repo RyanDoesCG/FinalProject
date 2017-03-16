@@ -9,7 +9,9 @@
 #ifndef UISlider_hpp
 #define UISlider_hpp
 
+#include "SafeCounter.hpp"
 #include "GameObject.hpp"
+#include "UIBoxBackground.hpp"
 #include "UIBox.hpp"
 
 class UISlider: public GameObject {
@@ -17,14 +19,15 @@ class UISlider: public GameObject {
          UISlider (GraphicsEngine* graph, PhysicsEngine* phys);
         ~UISlider ();
         
-        virtual void update () override;
+        virtual void update (State state) override;
         
-        void moveTo  (glm::vec3 p);
-        void scaleTo (glm::vec3 s);
+        void moveTo    (glm::vec3 p);
+        void scaleTo   (glm::vec3 s);
         void setColour (glm::vec4 c);
         void setAlpha  (GLfloat a);
         
         bool isSelected ();
+        bool isHidden = false;
         
         void fadeIn  ();
         void fadeOut ();
@@ -33,10 +36,16 @@ class UISlider: public GameObject {
         void deactivatePhysics ();
         
     private:
+        SafeCounter counter;
         UIBox marker;
+        UIBoxBackground range;
         
         glm::vec3 litColour;
         glm::vec3 unlitColour;
+    
+        Mouse* mouse;
+        GLfloat lastMouseX;
+
 };
 
 #endif /* UISlider_hpp */

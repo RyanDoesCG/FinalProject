@@ -9,7 +9,7 @@
 #include "TextGeometry.hpp"
 #include "UITextNode.hpp"
 
-UITextNode::UITextNode (GraphicsEngine* graph): material("object") {
+UITextNode::UITextNode (GraphicsEngine* graph): material("text") {
     /* * * * * * * * * * * * * * * * *
      *  Initialise Library
      * * * * * * * * * * * * * * * * */
@@ -19,7 +19,7 @@ UITextNode::UITextNode (GraphicsEngine* graph): material("object") {
     if (FT_New_Face(ft, "Assets/fonts/AndaleMono.ttf", 0, &face))
         std::cout << "ERROR: Failed to load font" << std::endl;
 
-    FT_Set_Pixel_Sizes(face, 0, 120);
+    FT_Set_Pixel_Sizes(face, 0, 48);
 
     // construct character map
     charmap = std::map<GLchar, Character>();

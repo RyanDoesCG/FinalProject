@@ -15,12 +15,12 @@ uniform mat4 projection;
 uniform vec4 colour;
 
 uniform sampler2D tex;
-uniform float amp;
 
 void main (void) {
-    float lift = -0.04 + abs((texture(tex, uv).r) * amp);
-    
-    gl_Position = projection * view * model * vec4(position.x, position.y + lift, position.z, 1.0);
+    vec4 worldPos = model * vec4(position.xyz, 1.0);
+    float height = texture(tex, vec2(worldPos.x / 20, worldPos.z / 20)).r * 10;
+
+    gl_Position = projection * view * model * vec4(position.x, position.y + height, position.z, 1.0);
     
     frag_colour = colour;
     frag_normal = normal;

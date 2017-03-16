@@ -29,7 +29,7 @@ Camera::Camera(GLfloat aspect) {
     
     view = glm::lookAt(position, position + relativeFront, relativeUp);
     proj = glm::perspective(zoom, aspectRatio, 0.01f, 1000.0f);
-    
+    keys = InputManager::getKeyboardHandle();
     mouse = InputManager::getMouseHandle();
 }
 
@@ -54,6 +54,17 @@ void Camera::update (State s) {
         }
         
         case VIEW: {
+            if (!mouse->leftButtonDown()) {
+                yaw += mouse->getXoffset() * 2.5;
+                pitch += mouse->getYoffset() * 2.5;
+                
+                if (keys->isKeyDown(GLFW_KEY_W)) { position += glm::normalize(relativeFront); }
+                if (keys->isKeyDown(GLFW_KEY_A)) { position -= glm::normalize(relativeRight); }
+                if (keys->isKeyDown(GLFW_KEY_S)) { position -= glm::normalize(relativeFront); }
+                if (keys->isKeyDown(GLFW_KEY_D)) { position += glm::normalize(relativeRight); }
+                
+                relativeFront =  glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0)));
+            }
             break;
         }
         

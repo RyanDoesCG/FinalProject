@@ -22,10 +22,13 @@
 		CE0288001E75CC62001B4DF8 /* TextGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0287FE1E75CC62001B4DF8 /* TextGeometry.cpp */; };
 		CE0288031E75CD81001B4DF8 /* PlaneGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0288021E75CD81001B4DF8 /* PlaneGeometry.cpp */; };
 		CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */; };
+		CE1A200F1E78C89000651BB4 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A200E1E78C89000651BB4 /* Rain.cpp */; };
 		CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE3B75431E75F3E300539CB9 /* AsteroidGeometry.cpp */; };
 		CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222C1E73421C00235110 /* EngineTest.cpp */; };
 		CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222E1E7351D900235110 /* CubeGeometry.cpp */; };
 		CE5A22321E735A2500235110 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A22311E735A2500235110 /* Cursor.cpp */; };
+		CE63ED981E799910000C1972 /* UISlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE63ED971E799910000C1972 /* UISlider.cpp */; };
+		CE7CA7371E78D3A9005E9345 /* HeightMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7CA7361E78D3A9005E9345 /* HeightMap.cpp */; };
 		CEC838051E6DA19F0033CC10 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838041E6DA19F0033CC10 /* main.cpp */; };
 		CEC838091E6DA29F0033CC10 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838081E6DA29F0033CC10 /* Game.cpp */; };
 		CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC8380A1E6DA2AA0033CC10 /* Window.cpp */; };
@@ -94,6 +97,8 @@
 		CE06CFDA1E75C91500FF0D2A /* UITextNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UITextNode.hpp; sourceTree = "<group>"; };
 		CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITextNode.cpp; sourceTree = "<group>"; };
 		CE06CFDD1E75CB9100FF0D2A /* TextGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TextGeometry.hpp; path = Graphics/Geometry2D/TextGeometry.hpp; sourceTree = "<group>"; };
+		CE1A200D1E78C82600651BB4 /* Rain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Rain.hpp; sourceTree = "<group>"; };
+		CE1A200E1E78C89000651BB4 /* Rain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rain.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE3B75431E75F3E300539CB9 /* AsteroidGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AsteroidGeometry.cpp; path = Graphics/Geometry3D/AsteroidGeometry.cpp; sourceTree = "<group>"; };
 		CE3B75451E75F3F100539CB9 /* AsteroidGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AsteroidGeometry.hpp; path = Graphics/Geometry3D/AsteroidGeometry.hpp; sourceTree = "<group>"; };
@@ -105,8 +110,13 @@
 		CE5A222E1E7351D900235110 /* CubeGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CubeGeometry.cpp; path = Graphics/Geometry3D/CubeGeometry.cpp; sourceTree = "<group>"; };
 		CE5A22301E7359AD00235110 /* Cursor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cursor.hpp; sourceTree = "<group>"; };
 		CE5A22311E735A2500235110 /* Cursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cursor.cpp; sourceTree = "<group>"; };
+		CE63ED961E799906000C1972 /* UISlider.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UISlider.hpp; sourceTree = "<group>"; };
+		CE63ED971E799910000C1972 /* UISlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UISlider.cpp; sourceTree = "<group>"; };
+		CE63ED991E799B8E000C1972 /* SafeCounter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SafeCounter.hpp; sourceTree = "<group>"; };
 		CE6DE44E1DB1870B00B5A1AD /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../../Library/Frameworks/libfreetype.dylib; sourceTree = "<group>"; };
 		CE71EFCA1D89AE4D00A638DD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CE7CA7351E78D2B4005E9345 /* HeightMap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeightMap.hpp; sourceTree = "<group>"; };
+		CE7CA7361E78D3A9005E9345 /* HeightMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeightMap.cpp; sourceTree = "<group>"; };
 		CEC838041E6DA19F0033CC10 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		CEC838061E6DA1F90033CC10 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		CEC838071E6DA2010033CC10 /* Window.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
@@ -901,6 +911,7 @@
 				6217EF3D1E78690C003EFAD0 /* ParticleEmitter.hpp */,
 				6217EF401E786A65003EFAD0 /* Particle.hpp */,
 				6217EF441E7877F5003EFAD0 /* ObjectSpawner.hpp */,
+				CE1A200D1E78C82600651BB4 /* Rain.hpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -930,6 +941,7 @@
 		CEDD0C281E00AA0A0078469C /* Noise */ = {
 			isa = PBXGroup;
 			children = (
+				CE7CA7351E78D2B4005E9345 /* HeightMap.hpp */,
 			);
 			path = Noise;
 			sourceTree = "<group>";
@@ -944,6 +956,7 @@
 		CEDD0C301E00AA0A0078469C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CE63ED961E799906000C1972 /* UISlider.hpp */,
 				62864DC71E7421E200C957D0 /* UIBox.hpp */,
 				6219A7C31E743CED000E2B92 /* UIBoxBackground.hpp */,
 				62864DCA1E74252300C957D0 /* Menu.hpp */,
@@ -962,6 +975,7 @@
 			isa = PBXGroup;
 			children = (
 				6217EF431E7873A4003EFAD0 /* Random.hpp */,
+				CE63ED991E799B8E000C1972 /* SafeCounter.hpp */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1440,6 +1454,7 @@
 				6217EF3B1E785BDA003EFAD0 /* Planet.cpp */,
 				6217EF3E1E78697A003EFAD0 /* ParticleEmitter.cpp */,
 				6217EF451E78787D003EFAD0 /* ObjectSpawner.cpp */,
+				CE1A200E1E78C89000651BB4 /* Rain.cpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -1469,6 +1484,7 @@
 		CEDD0DC01E00AA0A0078469C /* Noise */ = {
 			isa = PBXGroup;
 			children = (
+				CE7CA7361E78D3A9005E9345 /* HeightMap.cpp */,
 			);
 			path = Noise;
 			sourceTree = "<group>";
@@ -1483,6 +1499,7 @@
 		CEDD0DC71E00AA0A0078469C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CE63ED971E799910000C1972 /* UISlider.cpp */,
 				62864DC81E7421F800C957D0 /* UIBox.cpp */,
 				62864DCB1E74258500C957D0 /* Menu.cpp */,
 				6219A7C41E743D4F000E2B92 /* UIBoxBackground.cpp */,
@@ -1602,6 +1619,7 @@
 				CEC838241E6DAC160033CC10 /* GraphicsEngine.cpp in Sources */,
 				CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */,
 				CEC838441E6DC9F00033CC10 /* QuadGeometry.cpp in Sources */,
+				CE1A200F1E78C89000651BB4 /* Rain.cpp in Sources */,
 				6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */,
 				CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */,
 				CED405801E74925A001ED29B /* Options.cpp in Sources */,
@@ -1612,6 +1630,7 @@
 				CEEAF6EE1E75F68E00FFADAE /* ModelGeometry.cpp in Sources */,
 				CEFFC2F81E759ADD0029F621 /* Texture.cpp in Sources */,
 				CEFFC2F41E759AAF0029F621 /* Shader.cpp in Sources */,
+				CE63ED981E799910000C1972 /* UISlider.cpp in Sources */,
 				CE0288001E75CC62001B4DF8 /* TextGeometry.cpp in Sources */,
 				CEC838461E6DCC6E0033CC10 /* TriGeometry.cpp in Sources */,
 				6248E9381E72BEF200B17855 /* Camera.cpp in Sources */,
@@ -1628,6 +1647,7 @@
 				CEF242EA1E77798A00CAC50B /* UIPlusMinus.cpp in Sources */,
 				6217EF3F1E78697A003EFAD0 /* ParticleEmitter.cpp in Sources */,
 				CEC838091E6DA29F0033CC10 /* Game.cpp in Sources */,
+				CE7CA7371E78D3A9005E9345 /* HeightMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

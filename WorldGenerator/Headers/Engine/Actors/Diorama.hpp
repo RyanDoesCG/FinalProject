@@ -9,6 +9,7 @@
 #ifndef Diorama_hpp
 #define Diorama_hpp
 
+#include "ParticleEmitter.hpp"
 #include "PhysicsEngine.hpp"
 #include "PhysicsObject2D.hpp"
 #include "GraphicsEngine.hpp"
@@ -16,10 +17,11 @@
 #include "GameObject.hpp"
 #include "InputManager.hpp"
 #include "ObjectSpawner.hpp"
+#include "HeightMap.hpp"
 
 class Diorama: public GameObject {
     public:
-        Diorama (GraphicsEngine* g);
+        Diorama (GraphicsEngine* g, PhysicsEngine* p);
        ~Diorama ();
     
         virtual void update (State state) override;
@@ -27,12 +29,19 @@ class Diorama: public GameObject {
     private:
         GraphicsObject* terrain;
         GraphicsObject* water;
+    
         ObjectSpawner* trees;
         ObjectSpawner* rocks;
+    
+        ParticleEmitter* rain;
+    
+        HeightMap* heightmap;
     
         Mouse* mouse;
     
         glm::vec3 velocity;
+    
+        GLfloat amp;
 };
 
 #endif /* Diorama_hpp */

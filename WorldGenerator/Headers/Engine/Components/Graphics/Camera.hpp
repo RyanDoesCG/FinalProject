@@ -51,6 +51,7 @@ class Camera {
         GLfloat mouseSensitivity;
         GLfloat zoom;
     
+        Keyboard* keys;
         Mouse* mouse;
     
         GLfloat aspectRatio;

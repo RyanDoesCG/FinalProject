@@ -10,8 +10,8 @@
 #include "ParticleEmitter.hpp"
 
 ParticleEmitter::ParticleEmitter (GraphicsEngine* graph, PhysicsEngine* phys) {
+/*
     numParticles = 1000;
-    
     for (int i = 0; i < numParticles; i++) {
         particles.push_back(Particle(
             glm::vec3(10 + (100 * betterRand()), 10 + (100 * betterRand()), 10 + (100 * betterRand())),
@@ -34,6 +34,7 @@ ParticleEmitter::ParticleEmitter (GraphicsEngine* graph, PhysicsEngine* phys) {
     for (Particle& p : particles) {
         sprite->instances.push_back(FlyweightInstance (p.position, glm::vec3(0.0), p.colour, p.scale));
     }
+*/
 }
 
 ParticleEmitter::~ParticleEmitter () {

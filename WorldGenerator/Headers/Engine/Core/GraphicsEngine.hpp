@@ -24,20 +24,20 @@ class GraphicsEngine {
     
         void initPostProcessing ();
     
-        void render(State s);
+        void render    (State s);
     
         void setEffect (Effect e);
     
-        void add     (GraphicsObject* object);
-        void addToUI (GraphicsObject* object);
+        void add      (GraphicsObject* object);
+        void addLight (GraphicsObject* object);
+        void addToUI  (GraphicsObject* object);
     
     private:
-        void offScreen ();
-        void onScreen  ();
-        void renderShadows ();
-    
         void prerender       (State s);
+        void offScreen       ();
+        void renderShadows   ();
         void renderScene     ();
+        void onScreen        ();
         void renderUI        ();
     
         std::vector<GraphicsObject*> scene;

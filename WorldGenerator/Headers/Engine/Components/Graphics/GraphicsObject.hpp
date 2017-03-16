@@ -14,14 +14,24 @@
 #include "Material.hpp"
 #include "Camera.hpp"
 #include "glm.hpp"
+#include <vector>
+#include <utility>
+
+typedef std::pair<std::string, GLfloat> uniform1f;
 
 class GraphicsObject {
     public:
         GraphicsObject (Geometry* geom, Material* mat): geometry(geom), material(mat) {}
        ~GraphicsObject () {}
     
+        void addUniform (std::string title, GLfloat value) { uniforms.push_back(uniform1f(title, value)); }
+    
         virtual void draw (Camera* cam) {
             material->bind();
+            
+            // custom uniforms to gpu
+            for (uniform1f u : uniforms) glUniform1f(glGetUniformLocation(material->getProgramID(), u.first.c_str()), u.second);
+            uniforms.clear();
             
             // Lighting data to GPU
             glm::vec3 viewPos = cam->position;
@@ -62,7 +72,7 @@ class GraphicsObject {
             // EXTERNAL WIREFRAME
             if (geometry->wireframe) {
                 // upload colour to shader
-                glm::vec4 col = glm::vec4(1.0, 1.0, 1.0, 1.0);
+                glm::vec4 col = glm::vec4(0, 0, 0, 1.0);
                 glUniform4fv(glGetUniformLocation(material->getProgramID(), "colour"), 1, glm::value_ptr(col));
                 
                 // Give model transform to shader
@@ -97,6 +107,8 @@ class GraphicsObject {
         GraphicsObject* lightsource;
         bool isLit = false;
     
+    private:
+        std::vector<uniform1f> uniforms;
 };
 
 #endif /* GraphicsObject_hpp */
