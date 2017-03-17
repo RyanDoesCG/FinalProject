@@ -18,6 +18,7 @@ HeightMap::HeightMap (std::string name) {
     glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
     
+    /*
     for (int u = 0; u < width; u++) {
         for (int v = 0; v < height; v++) {
             if (data[u + v * width] == 1) {
@@ -28,6 +29,7 @@ HeightMap::HeightMap (std::string name) {
         }
         std::cout << std::endl;
     }
+    */
 }
 
 HeightMap::~HeightMap () {

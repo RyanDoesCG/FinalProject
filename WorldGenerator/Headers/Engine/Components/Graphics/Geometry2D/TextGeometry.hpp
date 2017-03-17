@@ -13,10 +13,14 @@
 #include <include/ft2build.h>
 #include FT_FREETYPE_H
 
+#include "TextDrawCall.hpp"
+
 class TextGeometry: public Geometry {
     public:
-        TextGeometry(std::string text);
+        TextGeometry();
        ~TextGeometry();
+    
+        void print (TextDrawCall text);
     
         void setup  () override;
         void render () override;
@@ -24,6 +28,8 @@ class TextGeometry: public Geometry {
     private:
         FT_Library ft;
         FT_Face  face;
+    
+        std::vector<TextDrawCall> calls;
 };
 
 #endif /* TextGeometry_hpp */

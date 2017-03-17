@@ -52,10 +52,12 @@ bool AACollisionBox2D::isColliding(PhysicsObject2D* other) {
                 this->position.x + this->width > static_cast<AACollisionBox2D*>(other)->position.x &&
                 this->position.y < static_cast<AACollisionBox2D*>(other)->position.y + static_cast<AACollisionBox2D*>(other)->height &&
                 this->height + this->position.y > static_cast<AACollisionBox2D*>(other)->position.y) {
+                /*
                 std::cout << std::endl;
                 std::cout << "a: " << this->string() << std::endl;
                 std::cout << "b: " << static_cast<AACollisionBox2D*>(other)->string() << std::endl;
                 std::cout << std::endl;
+                */
                 return true;
             }
         }   

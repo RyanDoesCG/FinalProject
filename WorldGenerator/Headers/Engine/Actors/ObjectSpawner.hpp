@@ -13,6 +13,7 @@
 #include "FlyweightGraphicsObject.hpp"
 #include "HeightMap.hpp"
 #include "GameObject.hpp"
+#include <vector>
 
 class ObjectSpawner: public GameObject {
     public:
@@ -25,6 +26,8 @@ class ObjectSpawner: public GameObject {
         FlyweightGraphicsObject* sprite;
     
         int numObjects;
+    
+        std::vector<glm::vec3> concentrationPoints;
 };
 
 #endif /* ObjectSpawner_hpp */

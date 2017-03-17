@@ -16,19 +16,23 @@ ObjectSpawner::ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, He
         new Material (new BasicShader("object_spawned"), map->getID())
     );
     
-    sprite->geometry->wireframe = true;
-    
     numObjects = num;
     
-    // Build Instances
-    for (int i = 0; i < numObjects; i++) {
-        glm::vec3 position = glm::vec3(unsignedRand() * 20, 0, unsignedRand() * 20);
-        glm::vec3 rotation = glm::vec3(0);
-        glm::vec4 colour   = col;
-        glm::vec3 scale    = scl;
-
-        std::cout << "  x : " << position.x << "(" << position.x / 20 << ")\t" << "z : " << position.z << std::endl;
-        sprite->instances.push_back(FlyweightInstance(position, rotation, colour, scale));
+    // Pick Concentration Points
+    for (int i = 0; i < numObjects; i++)
+        concentrationPoints.push_back(glm::vec3(unsignedRand() * 20, 0, unsignedRand() * 20));
+    
+    
+    // Scatter Objects around these points
+    for (glm::vec3& point: concentrationPoints) {
+        for (int i = 0; i < (int)(unsignedRand() * 10); i++) {
+            glm::vec3 position = glm::vec3(point.x + betterRand(), 0, point.z + betterRand());
+            glm::vec3 rotation = glm::vec3(0);
+            glm::vec4 colour   = col;
+            glm::vec3 scale    = scl;
+            
+            sprite->instances.push_back(FlyweightInstance(position, rotation, colour, scale));
+        }
     }
     
     graph->add(sprite);

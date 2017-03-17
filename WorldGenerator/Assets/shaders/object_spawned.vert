@@ -13,8 +13,11 @@ uniform mat4 view;
 uniform mat4 projection;
 
 uniform vec4 colour;
-
+uniform vec3 viewPosition;
 uniform sampler2D tex;
+
+
+float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)); }
 
 void main (void) {
     vec4 worldPos = model * vec4(0.0, 0.0, 0.0, 1.0);
@@ -22,7 +25,14 @@ void main (void) {
 
     gl_Position = projection * view * model * vec4(position.x, position.y + height, position.z, 1.0);
     
+        // fade out of view
     frag_colour = colour;
+    vec4 worldPosition = model * vec4(position.x, position.y + height, position.z, 1.0);
+    
+    if (magnitude(viewPosition - vec3(worldPosition.xyz)) > 8) {
+        frag_colour.a = frag_colour.a - (magnitude(viewPosition - vec3(worldPosition.xyz)) - 8) * 0.5;
+    }
+    
     frag_normal = normal;
     frag_uv     = uv;
 }

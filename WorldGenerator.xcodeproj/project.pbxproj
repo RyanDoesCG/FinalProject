@@ -91,6 +91,7 @@
 		62864DC81E7421F800C957D0 /* UIBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBox.cpp; sourceTree = "<group>"; };
 		62864DCA1E74252300C957D0 /* Menu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
 		62864DCB1E74258500C957D0 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
+		6286AD591E7C18DC00888483 /* TextDrawCall.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextDrawCall.hpp; sourceTree = "<group>"; };
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A37E851E1D17EA0052D84E /* FastNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastNoise.h; path = FastNoise/FastNoise.h; sourceTree = "<group>"; };
 		CE0287FE1E75CC62001B4DF8 /* TextGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextGeometry.cpp; path = Graphics/Geometry2D/TextGeometry.cpp; sourceTree = "<group>"; };
@@ -973,6 +974,7 @@
 				CED4057E1E7491E5001ED29B /* Options.hpp */,
 				CE06CFDA1E75C91500FF0D2A /* UITextNode.hpp */,
 				CEF242E81E77796600CAC50B /* UIPlusMinus.hpp */,
+				6286AD591E7C18DC00888483 /* TextDrawCall.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";

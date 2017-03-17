@@ -19,6 +19,8 @@
 #include <vector>
 #include <map>
 
+#include "TextGeometry.hpp"
+
 class UITextNode: public GameObject {
     public:
         UITextNode (GraphicsEngine* graph);
@@ -30,7 +32,7 @@ class UITextNode: public GameObject {
         void fadeOut ();
     
         void renderText (std::string text, glm::vec2 position, glm::vec4 colour, float scale) {
-            DrawCall call;
+            TextDrawCall call;
         
             call.text  = text;
             call.pos   = position;
@@ -48,13 +50,6 @@ class UITextNode: public GameObject {
             GLuint     Advance;    // Offset to advance to next glyph
         };
     
-        struct DrawCall {
-            std::string text;
-            glm::vec2 pos;
-            glm::vec4 col;
-            float scale;
-        };
-    
         Material material;
     
         glm::vec3 litColour;
@@ -64,10 +59,12 @@ class UITextNode: public GameObject {
         FT_Face face;
     
         std::map<GLchar, Character> charmap;
-        std::vector<DrawCall> drawQueue;
+        std::vector<TextDrawCall> drawQueue;
     
         GLuint VAO;
         GLuint VBO;
+    
+        TextGeometry geometry;
     
 };
 
