@@ -16,13 +16,14 @@ uniform vec4 colour;
 uniform vec3 viewPosition;
 uniform sampler2D tex;
 
-
 float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)); }
 
 void main (void) {
     vec4 worldPos = model * vec4(0.0, 0.0, 0.0, 1.0);
-    float height = -100 + (texture(tex, vec2(worldPos.x / 20, -1 * (worldPos.z / 20))).r * 75);
+    float height = -112 + (texture(tex, vec2(worldPos.x / 20, -1 * (worldPos.z / 20))).r * 98);
 
+    if (height < -90) { height = -1000; }
+    
     gl_Position = projection * view * model * vec4(position.x, position.y + height, position.z, 1.0);
     
         // fade out of view

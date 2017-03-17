@@ -60,7 +60,7 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    showTestCube ();
+    showDiorama ();
     
     ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
     objects.push_back(&stars);
