@@ -28,6 +28,8 @@ UIBox::UIBox (GraphicsEngine* graph, PhysicsEngine* phys) {
     graphics->colour = glm::vec4(0.51, 0.51, 0.51, 1.0);
     
     setAlpha(0);
+    
+    mouse = InputManager::getMouseHandle();
 }
 
 UIBox::~UIBox () {
@@ -55,14 +57,15 @@ void UIBox::setAlpha(GLfloat a) {
 void UIBox::activatePhysics   () { physics->active = true; }
 void UIBox::deactivatePhysics () { physics->active = false; }
 
-bool UIBox::isSelected() {
-    return physics->colliding;
-}
+bool UIBox::isSelected () { return physics->colliding; }
+bool UIBox::isClicked  () { return (isSelected() && (mouse->leftButtonDown() || mouse->rightButtonDown())); }
 
 void UIBox::update (State state) {
     graphics->position = physics->pos ();
     
     // visual feedback
+    if (isClicked() && !isHidden) { graphics->colour *= glm::vec4(1.2, 1.2, 1.2, 1); }
+    
     if (physics->colliding)  { light   ();  }
     if (!physics->colliding) { unlight (); }
     

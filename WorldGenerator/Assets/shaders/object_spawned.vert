@@ -30,7 +30,7 @@ void main (void) {
     vec4 worldPosition = model * vec4(position.x, position.y + height, position.z, 1.0);
     
     if (magnitude(viewPosition - vec3(worldPosition.xyz)) > 8) {
-        frag_colour.a = frag_colour.a - (magnitude(viewPosition - vec3(worldPosition.xyz)) - 8) * 0.5;
+        frag_colour.a = frag_colour.a - (magnitude(viewPosition - vec3(worldPosition.xyz)) - 8) * 0.75;
     }
     
     frag_normal = normal;

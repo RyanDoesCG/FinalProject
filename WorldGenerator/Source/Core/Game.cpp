@@ -12,8 +12,8 @@
 #include "Planet.hpp"
 #include <algorithm>
 
-#define WIDTH 1920  * 0.75
-#define HEIGHT 1080 * 0.75
+#define WIDTH 2560
+#define HEIGHT 1440
 
 Game::Game ():
     window    (WIDTH, HEIGHT),

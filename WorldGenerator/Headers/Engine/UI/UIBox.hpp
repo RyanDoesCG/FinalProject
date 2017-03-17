@@ -17,6 +17,8 @@
 
 #include "GameObject.hpp"
 
+#include "InputManager.hpp"
+
 class UIBox: public GameObject {
     public:
         UIBox (GraphicsEngine* graph, PhysicsEngine* phys);
@@ -30,6 +32,7 @@ class UIBox: public GameObject {
         void setAlpha  (GLfloat a);
     
         bool isSelected ();
+        bool isClicked  ();
         bool isHidden = false;
     
         void light   ();
@@ -46,6 +49,8 @@ class UIBox: public GameObject {
 
         glm::vec3 litColour;
         glm::vec3 unlitColour;
+    
+        Mouse* mouse;
 };
 
 #endif /* UIBox_hpp */

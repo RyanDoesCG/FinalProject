@@ -25,7 +25,7 @@ ObjectSpawner::ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, He
     
     // Scatter Objects around these points
     for (glm::vec3& point: concentrationPoints) {
-        for (int i = 0; i < (int)(unsignedRand() * 10); i++) {
+        for (int i = 0; i < 10; i++) {
             glm::vec3 position = glm::vec3(point.x + betterRand(), 0, point.z + betterRand());
             glm::vec3 rotation = glm::vec3(0);
             glm::vec4 colour   = col;
