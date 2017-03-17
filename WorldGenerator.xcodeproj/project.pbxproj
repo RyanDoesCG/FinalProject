@@ -24,6 +24,7 @@
 		6286AD641E7C2DF300888483 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6286AD631E7C2DF300888483 /* CoreAudio.framework */; };
 		6286AD661E7C2F2500888483 /* AudioObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6286AD651E7C2F2500888483 /* AudioObject.cpp */; };
 		6286AD681E7C329500888483 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6286AD671E7C329500888483 /* AudioToolbox.framework */; };
+		6286AD6B1E7C37A900888483 /* BasicLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6286AD6A1E7C37A900888483 /* BasicLight.cpp */; };
 		CE0288001E75CC62001B4DF8 /* TextGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0287FE1E75CC62001B4DF8 /* TextGeometry.cpp */; };
 		CE0288031E75CD81001B4DF8 /* PlaneGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0288021E75CD81001B4DF8 /* PlaneGeometry.cpp */; };
 		CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */; };
@@ -104,6 +105,8 @@
 		6286AD631E7C2DF300888483 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		6286AD651E7C2F2500888483 /* AudioObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioObject.cpp; path = Audio/AudioObject.cpp; sourceTree = "<group>"; };
 		6286AD671E7C329500888483 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6286AD691E7C371A00888483 /* BasicLight.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BasicLight.hpp; sourceTree = "<group>"; };
+		6286AD6A1E7C37A900888483 /* BasicLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicLight.cpp; sourceTree = "<group>"; };
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A37E851E1D17EA0052D84E /* FastNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastNoise.h; path = FastNoise/FastNoise.h; sourceTree = "<group>"; };
 		CE0287FE1E75CC62001B4DF8 /* TextGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextGeometry.cpp; path = Graphics/Geometry2D/TextGeometry.cpp; sourceTree = "<group>"; };
@@ -953,6 +956,7 @@
 				6217EF401E786A65003EFAD0 /* Particle.hpp */,
 				6217EF441E7877F5003EFAD0 /* ObjectSpawner.hpp */,
 				CE1A200D1E78C82600651BB4 /* Rain.hpp */,
+				6286AD691E7C371A00888483 /* BasicLight.hpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -1499,6 +1503,7 @@
 				6217EF3E1E78697A003EFAD0 /* ParticleEmitter.cpp */,
 				6217EF451E78787D003EFAD0 /* ObjectSpawner.cpp */,
 				CE1A200E1E78C89000651BB4 /* Rain.cpp */,
+				6286AD6A1E7C37A900888483 /* BasicLight.cpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -1694,6 +1699,7 @@
 				62864DCC1E74258500C957D0 /* Menu.cpp in Sources */,
 				CEC838401E6DBF9A0033CC10 /* Geometry.cpp in Sources */,
 				6233CEC51E7453370014055F /* UIDelegate.cpp in Sources */,
+				6286AD6B1E7C37A900888483 /* BasicLight.cpp in Sources */,
 				62864DC91E7421F800C957D0 /* UIBox.cpp in Sources */,
 				CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */,
 				CEC838391E6DB1710033CC10 /* Keyboard.cpp in Sources */,

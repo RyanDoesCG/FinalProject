@@ -40,6 +40,7 @@ class GraphicsEngine {
         void onScreen        ();
         void renderUI        ();
     
+        std::vector<GraphicsObject*> lights;
         std::vector<GraphicsObject*> scene;
         std::vector<GraphicsObject*> ui;
     

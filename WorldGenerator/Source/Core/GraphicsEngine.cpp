@@ -146,8 +146,8 @@ void GraphicsEngine::render(State s) {
 }
 
 void GraphicsEngine::add      (GraphicsObject *object) { scene.push_back(object); }
-void GraphicsEngine::addLight (GraphicsObject *object) { for (GraphicsObject* o : scene) o->setLightSource(object); }
+void GraphicsEngine::addLight (GraphicsObject *object) { lights.push_back(object); for (GraphicsObject* o : scene) o->setLightSource(object); }
 void GraphicsEngine::addToUI  (GraphicsObject *object) { ui.push_back(object); }
 
-void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(sceneCamera); }
+void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(sceneCamera); for (GraphicsObject* light : lights) light->draw(sceneCamera); }
 void GraphicsEngine::renderUI    () { for (GraphicsObject* object : ui)    object->draw(frameCamera); }

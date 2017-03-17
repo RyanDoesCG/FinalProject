@@ -21,8 +21,8 @@
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
-        new ModelGeometry ("plane/plane"),
-        new Material      (new BasicShader("plane_vertextextured"), "noise/test.jpg")
+        new CubeGeometry  (),
+        new Material      (new BasicShader("object_lit"))
     );
     
     graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);

@@ -30,6 +30,7 @@ class Game {
     
         void showPlanet();
         void showDiorama();
+        void showTestCube();
     
         State state;
     

@@ -7,6 +7,7 @@
 //
 #include "Game.hpp"
 #include "ParticleEmitter.hpp"
+#include "BasicLight.hpp"
 #include "EngineTest.hpp"
 #include "Diorama.hpp"
 #include "Planet.hpp"
@@ -41,6 +42,15 @@ void Game::showDiorama() {
     objects.push_back (new Diorama(&graphics, &physics));
 }
 
+void Game::showTestCube () {
+    objects.clear();
+    
+    objects.push_back (interface);
+    objects.push_back (cursor);
+    objects.push_back (new EngineTest(&graphics, &physics));
+    objects.push_back (new BasicLight(&graphics));
+}
+
 void Game::boot () {
     InputManager::initialise(window.asGLFW());
     interface = new UIDelegate(&graphics, &physics, this);
@@ -50,7 +60,7 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    showDiorama ();
+    showTestCube ();
     
     ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
     objects.push_back(&stars);
