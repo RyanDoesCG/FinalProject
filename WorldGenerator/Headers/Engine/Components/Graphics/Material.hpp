@@ -17,9 +17,9 @@
 
 class Material {
     public:
-        Material(const std::string& shaderName, std::string textureName);
-        Material(const std::string& shaderName, GLuint textureID);
-        Material(const std::string& name);
+        Material(Shader* shader, std::string textureName);
+        Material(Shader* shader, GLuint textureID);
+        Material(Shader* shader);
        ~Material();
     
         void bind   ();
@@ -33,7 +33,7 @@ class Material {
     private:
         glm::vec4 colour;
 
-        Shader shader;
+        Shader* shader;
         Texture texture;
 };
 

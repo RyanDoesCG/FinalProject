@@ -8,6 +8,8 @@
 #include "Random.hpp"
 #include "Rain.hpp"
 
+#include "BasicShader.hpp"
+
 Rain::Rain(GraphicsEngine* graph, PhysicsEngine* phys) : ParticleEmitter(graph, phys) {
     numParticles = 1000;
     for (int i = 0; i < numParticles; i++) {
@@ -23,9 +25,9 @@ Rain::Rain(GraphicsEngine* graph, PhysicsEngine* phys) : ParticleEmitter(graph, 
     }
     
     sprite = new FlyweightGraphicsObject(
-                                         new QuadGeometry(),
-                                         new Material ("object")
-                                         );
+        new QuadGeometry(),
+        new Material (new BasicShader("object"))
+    );
     
     graph->add(sprite);
     

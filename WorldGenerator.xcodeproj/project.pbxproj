@@ -23,6 +23,8 @@
 		CE0288031E75CD81001B4DF8 /* PlaneGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0288021E75CD81001B4DF8 /* PlaneGeometry.cpp */; };
 		CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */; };
 		CE1A200F1E78C89000651BB4 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A200E1E78C89000651BB4 /* Rain.cpp */; };
+		CE36D7D91E7B5BBD00951A1A /* BasicShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE36D7D81E7B5BBD00951A1A /* BasicShader.cpp */; };
+		CE36D7DB1E7B5CA300951A1A /* GeometryShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE36D7DA1E7B5CA300951A1A /* GeometryShader.cpp */; };
 		CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE3B75431E75F3E300539CB9 /* AsteroidGeometry.cpp */; };
 		CE5A222D1E73421C00235110 /* EngineTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222C1E73421C00235110 /* EngineTest.cpp */; };
 		CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE5A222E1E7351D900235110 /* CubeGeometry.cpp */; };
@@ -99,6 +101,10 @@
 		CE06CFDD1E75CB9100FF0D2A /* TextGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TextGeometry.hpp; path = Graphics/Geometry2D/TextGeometry.hpp; sourceTree = "<group>"; };
 		CE1A200D1E78C82600651BB4 /* Rain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Rain.hpp; sourceTree = "<group>"; };
 		CE1A200E1E78C89000651BB4 /* Rain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rain.cpp; sourceTree = "<group>"; };
+		CE36D7D61E7B57A300951A1A /* BasicShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BasicShader.hpp; path = Graphics/Material/BasicShader.hpp; sourceTree = "<group>"; };
+		CE36D7D71E7B57BA00951A1A /* GeometryShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GeometryShader.hpp; path = Graphics/Material/GeometryShader.hpp; sourceTree = "<group>"; };
+		CE36D7D81E7B5BBD00951A1A /* BasicShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BasicShader.cpp; path = Graphics/Material/BasicShader.cpp; sourceTree = "<group>"; };
+		CE36D7DA1E7B5CA300951A1A /* GeometryShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GeometryShader.cpp; path = Graphics/Material/GeometryShader.cpp; sourceTree = "<group>"; };
 		CE3852871D8C3DC5006A104C /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = /Library/Frameworks/libSOIL.a; sourceTree = "<absolute>"; };
 		CE3B75431E75F3E300539CB9 /* AsteroidGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AsteroidGeometry.cpp; path = Graphics/Geometry3D/AsteroidGeometry.cpp; sourceTree = "<group>"; };
 		CE3B75451E75F3F100539CB9 /* AsteroidGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AsteroidGeometry.hpp; path = Graphics/Geometry3D/AsteroidGeometry.hpp; sourceTree = "<group>"; };
@@ -1525,6 +1531,8 @@
 			children = (
 				CEFFC2F31E759AAF0029F621 /* Shader.cpp */,
 				CEFFC2F61E759ADD0029F621 /* Texture.cpp */,
+				CE36D7D81E7B5BBD00951A1A /* BasicShader.cpp */,
+				CE36D7DA1E7B5CA300951A1A /* GeometryShader.cpp */,
 			);
 			name = Material;
 			sourceTree = "<group>";
@@ -1534,6 +1542,8 @@
 			children = (
 				CEFFC2F11E759A610029F621 /* Texture.hpp */,
 				CEFFC2F21E759A860029F621 /* Shader.hpp */,
+				CE36D7D61E7B57A300951A1A /* BasicShader.hpp */,
+				CE36D7D71E7B57BA00951A1A /* GeometryShader.hpp */,
 			);
 			name = Material;
 			sourceTree = "<group>";
@@ -1622,6 +1632,7 @@
 				CE1A200F1E78C89000651BB4 /* Rain.cpp in Sources */,
 				6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */,
 				CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */,
+				CE36D7DB1E7B5CA300951A1A /* GeometryShader.cpp in Sources */,
 				CED405801E74925A001ED29B /* Options.cpp in Sources */,
 				6217EF391E785AF0003EFAD0 /* Diorama.cpp in Sources */,
 				CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */,
@@ -1635,6 +1646,7 @@
 				CEC838461E6DCC6E0033CC10 /* TriGeometry.cpp in Sources */,
 				6248E9381E72BEF200B17855 /* Camera.cpp in Sources */,
 				6233CEC81E7474BD0014055F /* planetHUD.cpp in Sources */,
+				CE36D7D91E7B5BBD00951A1A /* BasicShader.cpp in Sources */,
 				CEC838331E6DB0EF0033CC10 /* InputManager.cpp in Sources */,
 				CE5A22321E735A2500235110 /* Cursor.cpp in Sources */,
 				62864DCC1E74258500C957D0 /* Menu.cpp in Sources */,

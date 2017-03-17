@@ -5,11 +5,11 @@
 //  Created by user on 12/03/2017.
 //  Copyright © 2017 Dissertation. All rights reserved.
 //
-
+#include "BasicShader.hpp"
 #include "TextGeometry.hpp"
 #include "UITextNode.hpp"
 
-UITextNode::UITextNode (GraphicsEngine* graph): material("text") {
+UITextNode::UITextNode (GraphicsEngine* graph): material(new BasicShader("text")) {
     /* * * * * * * * * * * * * * * * *
      *  Initialise Library
      * * * * * * * * * * * * * * * * */

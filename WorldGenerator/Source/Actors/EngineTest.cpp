@@ -17,10 +17,12 @@
 
 #include "InputManager.hpp"
 
+#include "BasicShader.hpp"
+
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
         new ModelGeometry ("plane/plane"),
-        new Material      ("plane_vertextextured", "noise/test.jpg")
+        new Material      (new BasicShader("plane_vertextextured"), "noise/test.jpg")
     );
     
     graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);

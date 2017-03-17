@@ -8,11 +8,12 @@
 #include "ModelGeometry.hpp"
 #include "ObjectSpawner.hpp"
 #include "Random.hpp"
+#include "BasicShader.hpp"
 
 ObjectSpawner::ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, HeightMap* map, glm::vec4 col, glm::vec3 scl, int num) {
     sprite = new FlyweightGraphicsObject (
         new ModelGeometry (pathToModel),
-        new Material ("object_spawned", map->getID())
+        new Material (new BasicShader("object_spawned"), map->getID())
     );
     
     numObjects = num;

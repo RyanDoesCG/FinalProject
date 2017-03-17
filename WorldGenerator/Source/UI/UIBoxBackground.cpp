@@ -8,11 +8,11 @@
 #include "QuadGeometry.hpp"
 #include "Material.hpp"
 #include "UIBoxBackground.hpp"
-
+#include "BasicShader.hpp"
 UIBoxBackground::UIBoxBackground (GraphicsEngine* graph) {
     graphics = new GraphicsObject (
         new QuadGeometry(),
-        new Material("object")
+        new Material(new BasicShader("object"))
     );
     graphics->colour = glm::vec4(0.16, 0.16, 0.16, 0.65);
     graph->addToUI(graphics);
@@ -25,7 +25,7 @@ UIBoxBackground::~UIBoxBackground () {
 }
 
 void UIBoxBackground::moveTo(glm::vec3 p) {
-    graphics->position = glm::vec3(p.x, p.y, -0.01);
+    graphics->position = p;
 }
 
 void UIBoxBackground::scaleTo(glm::vec3 s) {

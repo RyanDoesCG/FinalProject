@@ -11,7 +11,7 @@
 #include "UISlider.hpp"
 
 UISlider::UISlider (GraphicsEngine* graph, PhysicsEngine* phys): marker(graph, phys), range (graph), counter(-2.7, -2.095, -1.49) {
-    litColour = glm::vec3(0.41, 0.41, 0.41);
+    litColour   = glm::vec3(0.41, 0.41, 0.41);
     unlitColour = glm::vec3(0.21, 0.21, 0.21);
     
     marker.scaleTo (glm::vec3(0.1, 0.2, 1));
@@ -37,10 +37,12 @@ void UISlider::scaleTo(glm::vec3 s) {
 
 void UISlider::setColour(glm::vec4 c) {
     marker.setColour(c);
+    range.setColour(c);
 }
 
 void UISlider::setAlpha(GLfloat a) {
     marker.setAlpha(a);
+    range.setAlpha(a);
 }
 
 void UISlider::activatePhysics   () { marker.activatePhysics(); }
@@ -61,6 +63,9 @@ void UISlider::update (State state) {
     std::cout << " x: " << marker.graphics->position.x << std::endl;
     
     // fading
+    marker.isHidden = isHidden;
+    range.isHidden = isHidden;
+    
     if (isHidden) fadeOut();
     if (!isHidden) fadeIn();
     

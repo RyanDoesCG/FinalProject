@@ -9,11 +9,12 @@
 #include "QuadGeometry.hpp"
 #include "Material.hpp"
 #include "UIBox.hpp"
+#include "BasicShader.hpp"
 
 UIBox::UIBox (GraphicsEngine* graph, PhysicsEngine* phys) {
     graphics = new GraphicsObject (
         new QuadGeometry(),
-        new Material("object")
+        new Material(new BasicShader("object"))
     );
     
     physics = new AACollisionBox2D(glm::vec2(1, 0.5));

@@ -7,6 +7,7 @@
 //
 
 #include "GraphicsEngine.hpp"
+#include "BasicShader.hpp"
 
 GraphicsEngine::GraphicsEngine (float width, float height) {
     sceneCamera = new Camera(width / height);
@@ -25,9 +26,9 @@ void GraphicsEngine::setEffect (Effect e) {
     if (currentEffect != e) {
         frame = new GraphicsObject (
             new QuadGeometry(),
-            (e == blur) ? new Material ("pp_gaussianBlur", colourAttachment) :
-            (e == fade) ? new Material ("pp_fadeout",      colourAttachment) :
-                          new Material ("object_textured", colourAttachment)
+            (e == blur) ? new Material (new BasicShader("pp_gaussianBlur"), colourAttachment) :
+            (e == fade) ? new Material (new BasicShader("pp_fadeout"),      colourAttachment) :
+                          new Material (new BasicShader("object_textured"), colourAttachment)
         );
         frame->scale = glm::vec3(5.85, 3.25, 1.0);
         currentEffect = e;

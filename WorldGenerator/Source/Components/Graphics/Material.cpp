@@ -10,22 +10,22 @@
 #include "SOIL.h"
 #include <fstream>
 
-Material:: Material (const std::string& shaderName, std::string textureName): shader(shaderName), texture(textureName) {}
-Material:: Material (const std::string& shaderName, GLuint textureID):        shader(shaderName), texture(textureID) {}
-Material:: Material (const std::string& name):                                shader(name) {}
+Material:: Material (Shader* s, std::string textureName): shader(s), texture(textureName) {}
+Material:: Material (Shader* s, GLuint textureID):        shader(s), texture(textureID) {}
+Material:: Material (Shader* s):                          shader(s) {}
 Material::~Material () {}
 
-GLuint      Material::getProgramID () { return shader.getProgramID(); }
-std::string Material::getTitle     () { return shader.getTitle(); }
+GLuint      Material::getProgramID () { return shader->getProgramID(); }
+std::string Material::getTitle     () { return shader->getTitle(); }
 void        Material::setTexture(GLuint id) { texture = Texture(id); }
 
 void Material::bind() {
-    shader.bind();
+    shader->bind();
     texture.bind();
 }
 
 void Material::unbind() {
-    shader.unbind();
+    shader->unbind();
     texture.unbind();
 }
 

@@ -10,18 +10,19 @@
 #include "PlaneGeometry.hpp"
 #include "ModelGeometry.hpp"
 #include "Rain.hpp"
+#include "BasicShader.hpp"
 
 Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     heightmap = new HeightMap( "noise/test.jpg" );
 
     terrain = new GraphicsObject(
-        new ModelGeometry ("plane/plane"),
-        new Material      ("plane_vertextextured", heightmap->getID() )
+        new ModelGeometry ("plane/plane512"),
+        new Material      (new BasicShader("plane_vertextextured"), heightmap->getID() )
     );
     
     water = new GraphicsObject(
         new ModelGeometry ("plane/plane"),
-        new Material      ("object")
+        new Material      (new BasicShader("object"))
     );
     
     //rain = new Rain(g, p);
@@ -32,16 +33,16 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     rocks = new ObjectSpawner (g, "trees/rock", heightmap, glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 250);
     
     terrain->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
-    terrain->position = glm::vec3(10, 0, 10);
+    terrain->position = glm::vec3(10, -2, 10);
     terrain->scale    = glm::vec3(10, 10, 10);
     terrain->wireframe(true);
     
-    amp = 0.025;
+    amp = 0.25;
     terrain->addUniform("amp", amp);
     
     //water->colour   = glm::vec4(0.65, 0.7, 0.88, 0.25);
     water->colour   = glm::vec4(1.0, 0.7, 0.7, 0.25);
-    water->position = glm::vec3(10, 0, 10);
+    water->position = glm::vec3(10, -2, 10);
     water->scale    = glm::vec3(10, 10, 10);
     water->wireframe(false);
     

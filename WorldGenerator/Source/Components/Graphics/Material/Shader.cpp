@@ -9,43 +9,9 @@
 #include "Shader.hpp"
 #include <fstream>
 
-Shader::Shader(const std::string& name) {
-    /* * * * * * * *
-     *  Shader
-     * * * * * * * */
-    programID = glCreateProgram();
-    title = name;
-    
-    // create a fragment and vertex shader
-    vertexShaderID   = compile (load ("Assets/shaders/" + name + ".vert"), GL_VERTEX_SHADER);
-    fragmentShaderID = compile (load ("Assets/shaders/" + name + ".frag"), GL_FRAGMENT_SHADER);
-    
-    // attach said shaders
-    glAttachShader (programID, vertexShaderID);
-    glAttachShader (programID, fragmentShaderID);
-    
-    // link program
-    glLinkProgram  (programID);
-    
-    // ERROR CHECKING
-    GLint  success;
-    GLchar info[512];
-    glGetProgramiv(programID, GL_LINK_STATUS, &success);
-    if (!success) {
-        glGetProgramInfoLog(programID, 512, NULL, info);
-        std::cout << "Shader Program Link Error: " << info << std::endl;
-    }
-    
-    bind();
-    
-    // delete shaders
-    glDeleteShader(vertexShaderID);
-    glDeleteShader(fragmentShaderID);
-}
+Shader::Shader() {}
 
 Shader::~Shader () {
-    glDetachShader  (programID, vertexShaderID);
-    glDetachShader  (programID, fragmentShaderID);
     glDeleteProgram (programID);
 }
 
@@ -103,4 +69,15 @@ GLuint Shader::compile (const std::string& source, GLenum type) {
     }
     
     return shader;
+}
+
+void Shader::checkErrors() {
+    // ERROR CHECKING
+    GLint  success;
+    GLchar info[512];
+    glGetProgramiv(programID, GL_LINK_STATUS, &success);
+    if (!success) {
+        glGetProgramInfoLog(programID, 512, NULL, info);
+        std::cout << "Shader Program Link Error: " << info << std::endl;
+    }
 }

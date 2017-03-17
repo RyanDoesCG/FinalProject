@@ -55,13 +55,13 @@ void Camera::update (State s) {
         
         case VIEW: {
             if (!mouse->leftButtonDown()) {
-                yaw += mouse->getXoffset() * 2.5;
-                pitch += mouse->getYoffset() * 2.5;
+                yaw += mouse->getXoffset() * 4.5;
+                pitch += mouse->getYoffset() * 4.5;
                 
-                if (keys->isKeyDown(GLFW_KEY_W)) { position += glm::normalize(relativeFront); }
-                if (keys->isKeyDown(GLFW_KEY_A)) { position -= glm::normalize(relativeRight); }
-                if (keys->isKeyDown(GLFW_KEY_S)) { position -= glm::normalize(relativeFront); }
-                if (keys->isKeyDown(GLFW_KEY_D)) { position += glm::normalize(relativeRight); }
+                if (keys->isKeyDown(GLFW_KEY_W)) { position += glm::normalize(relativeFront) * glm::vec3(0.25); }
+                if (keys->isKeyDown(GLFW_KEY_A)) { position -= glm::normalize(relativeRight) * glm::vec3(0.25); }
+                if (keys->isKeyDown(GLFW_KEY_S)) { position -= glm::normalize(relativeFront) * glm::vec3(0.25); }
+                if (keys->isKeyDown(GLFW_KEY_D)) { position += glm::normalize(relativeRight) * glm::vec3(0.25); }
                 
                 relativeFront =  glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0)));
             }

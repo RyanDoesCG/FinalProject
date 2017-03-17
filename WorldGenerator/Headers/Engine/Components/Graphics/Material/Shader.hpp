@@ -12,9 +12,11 @@
 #include <iostream>
 #include "glew.h"
 
+// MISSION: BECOME ABSTRACT
+
 class Shader {
     public:
-        Shader (const std::string& name);
+        Shader ();
        ~Shader ();
     
        void bind   ();
@@ -23,15 +25,15 @@ class Shader {
        GLuint getProgramID  ();
        std::string getTitle ();
     
-    private:
+    protected:
         std::string load (const std::string& path);
         GLuint compile   (const std::string& source, GLenum type);
+        void checkErrors ();
     
         std::string title;
     
         GLuint programID;
-        GLuint vertexShaderID;
-        GLuint fragmentShaderID;
+
 };
 
 #endif /* Shader_hpp */

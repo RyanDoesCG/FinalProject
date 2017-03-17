@@ -8,16 +8,16 @@
 #include "Planet.hpp"
 #include "PlaneGeometry.hpp"
 #include "ModelGeometry.hpp"
-
+#include "BasicShader.hpp"
 Planet::Planet (GraphicsEngine* g) {
     terrain = new GraphicsObject(
-        new ModelGeometry("sphere/uvsphere2"),
-        new Material      ("sphere_vertextextured", "noise/2.jpg")
+        new ModelGeometry ("sphere/uvsphere2"),
+        new Material      (new BasicShader("object"), "noise/2.jpg")
     );
     
     water = new GraphicsObject (
         new ModelGeometry ("sphere/uvsphere2"),
-        new Material      ("object")
+        new Material      (new BasicShader("object"))
     );
     
     terrain->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
