@@ -26,7 +26,7 @@ class dioramaHUD: public GameHUD {
         virtual void show   () override;
     
         UISlider amplitude;
-        UISlider example1;
+        UIPlusMinus example1;
         UISlider example2;
         UISlider example3;
         UISlider example4;

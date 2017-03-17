@@ -22,15 +22,14 @@ class Geometry {
         glm::vec3 scale;
         bool wireframe;
     
-        void render ();
+        virtual void render ();
     
     protected:
         std::vector<Vertex> vertices;
         std::vector<GLuint> indices;
     
-        void setup ();
-    
-    private:
+        virtual void setup ();
+
         GLuint VAO;
         GLuint VBO;
         GLuint EBO;

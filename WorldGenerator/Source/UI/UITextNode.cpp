@@ -8,6 +8,7 @@
 #include "BasicShader.hpp"
 #include "TextGeometry.hpp"
 #include "UITextNode.hpp"
+#include "Game.hpp"
 
 UITextNode::UITextNode (GraphicsEngine* graph): material(new BasicShader("text")) {
     /* * * * * * * * * * * * * * * * *
@@ -47,6 +48,8 @@ UITextNode::UITextNode (GraphicsEngine* graph): material(new BasicShader("text")
             face->glyph->bitmap.buffer
         );
         
+        material.setTexture(texture);
+        
         // Set texture options
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -79,7 +82,8 @@ UITextNode::UITextNode (GraphicsEngine* graph): material(new BasicShader("text")
     glBindVertexArray (0);
     
     litColour = glm::vec3(0.41, 0.41, 0.41);
-    unlitColour = glm::vec3(0.21, 0.21, 0.21);}
+    unlitColour = glm::vec3(0.21, 0.21, 0.21);
+}
 
 UITextNode::~UITextNode () {
     
@@ -90,7 +94,7 @@ void UITextNode::update (State state) {
     glDisable(GL_DEPTH_TEST);
     material.bind();
     
-    glm::mat4 projection = glm::ortho(0.0f, 1920.0f, 0.0f, 1080.0f);
+    glm::mat4 projection = glm::ortho(0.0f, 1920.0f * 0.75f, 0.0f, 1080.0f * 0.75f);
     glUniformMatrix4fv(glGetUniformLocation(material.getProgramID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     
     for (DrawCall& call : drawQueue) {

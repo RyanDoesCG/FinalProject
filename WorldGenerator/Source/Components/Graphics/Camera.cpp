@@ -47,9 +47,11 @@ void Camera::update (State s) {
     switch (s) {
         case MENU: {
             GLfloat radius = 2;
-            position.x = (sin(glfwGetTime()*0.08) * radius);
-            position.z = (cos(glfwGetTime()*0.08) * radius);
-            relativeFront =  glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0)));
+            position = glm::vec3(10, -1, 10);
+            
+            yaw += 0.05;
+            
+            //relativeFront =  glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0)));
             break;
         }
         
@@ -63,7 +65,7 @@ void Camera::update (State s) {
                 if (keys->isKeyDown(GLFW_KEY_S)) { position -= glm::normalize(relativeFront) * glm::vec3(0.25); }
                 if (keys->isKeyDown(GLFW_KEY_D)) { position += glm::normalize(relativeRight) * glm::vec3(0.25); }
                 
-                relativeFront =  glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0)));
+                //relativeFront =  glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0)));
             }
             break;
         }

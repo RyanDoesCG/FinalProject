@@ -18,6 +18,9 @@ class TextGeometry: public Geometry {
         TextGeometry(std::string text);
        ~TextGeometry();
     
+        void setup  () override;
+        void render () override;
+    
     private:
         FT_Library ft;
         FT_Face  face;

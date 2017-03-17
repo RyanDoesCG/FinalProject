@@ -50,10 +50,10 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    showPlanet ();
+    showDiorama ();
     
-    //ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
-    //objects.push_back(&stars);
+    ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
+    objects.push_back(&stars);
     
     state = MENU;
     

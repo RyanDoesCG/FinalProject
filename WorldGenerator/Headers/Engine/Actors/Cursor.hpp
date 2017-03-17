@@ -30,6 +30,12 @@ class Cursor: public GameObject {
         Gamepad* gamepad;
         Mouse* mouse;
     
+        GLfloat maxX = 2.75;
+        GLfloat minX = maxX * -1;
+    
+        GLfloat maxY = 1.55;
+        GLfloat minY = maxY * -1;
+    
         float lastXoffset;
         float lastYoffset;
 };

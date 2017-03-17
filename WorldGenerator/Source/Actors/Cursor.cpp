@@ -10,6 +10,7 @@
 #include "AACollisionBox2D.hpp"
 #include "QuadGeometry.hpp"
 #include "BasicShader.hpp"
+
 Cursor::Cursor(GraphicsEngine* g, PhysicsEngine* p) {
     quad = new GraphicsObject (
         new QuadGeometry(),
@@ -39,6 +40,11 @@ void Cursor::update(State state) {
     quad->position.y += (mouse->getYoffset() == lastYoffset) ? 0 : mouse->getYoffset();
     quad->position.x += gamepad->getAxisState(LEFT_STICK_X_AXIS) * 0.05; gamepad->resetAxisState(LEFT_STICK_X_AXIS);
     quad->position.y -= gamepad->getAxisState(LEFT_STICK_Y_AXIS) * 0.05; gamepad->resetAxisState(LEFT_STICK_Y_AXIS);
+    
+    if (quad->position.x > maxX) quad->position.x = maxX;
+    if (quad->position.x < minX) quad->position.x = minX;
+    if (quad->position.y > maxY) quad->position.y = maxY;
+    if (quad->position.y < minY) quad->position.y = minY;
     
     collider->position = quad->position;
     collider->position = quad->position;

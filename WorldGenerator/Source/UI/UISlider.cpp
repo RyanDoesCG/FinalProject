@@ -55,7 +55,7 @@ bool UISlider::isSelected() {
 void UISlider::update (State state) {
     if (mouse->leftButtonDown() && marker.isSelected() && mouse->getXoffset() != lastMouseX) {
         if (mouse->getXoffset() > 0) counter.incrementBy(mouse->getXoffset());
-        if (mouse->getXoffset() < 0) counter.decrementBy(mouse->getXoffset());
+        if (mouse->getXoffset() < 0) counter.incrementBy(mouse->getXoffset());
 
         marker.physics->position.x = counter.getValue();
         lastMouseX = mouse->getXoffset();
@@ -71,8 +71,6 @@ void UISlider::update (State state) {
     
     marker.update(state);
     range.update(state);
-    
-   // moveTo(glm::vec3(counter.getValue(), marker.position.y, marker.position.z));
 }
 
 void UISlider::fadeIn() {

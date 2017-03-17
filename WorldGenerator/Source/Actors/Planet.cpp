@@ -12,7 +12,7 @@
 Planet::Planet (GraphicsEngine* g) {
     terrain = new GraphicsObject(
         new ModelGeometry ("sphere/uvsphere2"),
-        new Material      (new BasicShader("object"), "noise/2.jpg")
+        new Material      (new BasicShader("sphere_vertextextured"), "noise/2.jpg")
     );
     
     water = new GraphicsObject (

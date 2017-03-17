@@ -16,6 +16,8 @@ ObjectSpawner::ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, He
         new Material (new BasicShader("object_spawned"), map->getID())
     );
     
+    sprite->geometry->wireframe = true;
+    
     numObjects = num;
     
     // Build Instances
@@ -24,9 +26,7 @@ ObjectSpawner::ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, He
         glm::vec3 rotation = glm::vec3(0);
         glm::vec4 colour   = col;
         glm::vec3 scale    = scl;
-        
-        //position.y += map->getHeightAt((position.x) * 0.1, (1 + position.z) * 0.1) * 10;
-        
+
         std::cout << "  x : " << position.x << "(" << position.x / 20 << ")\t" << "z : " << position.z << std::endl;
         sprite->instances.push_back(FlyweightInstance(position, rotation, colour, scale));
     }

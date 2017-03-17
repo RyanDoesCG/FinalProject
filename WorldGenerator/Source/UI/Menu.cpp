@@ -61,7 +61,7 @@ void Menu::show () {
 }
 
 void Menu::update (State state) {
-    text.renderText("Hello World", glm::vec2(2, 2), glm::vec4(1.0, 1.0, 0.0, 1.0), 0.9);
+    text.renderText("Hello World", glm::vec2(20, 20), glm::vec4(1.0, 1.0, 0.0, 1.0), 1);
 
     for (UIBox* box : items)
         box->update(state);
