@@ -11,7 +11,7 @@
 UIDelegate::UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g):
     mainMenu    (graph, phys),
     optionsMenu (graph, phys),
-    dHUD        (graph, phys),
+    dHUD        (graph, phys, g->getDiorama()),
     pHUD        (graph, phys) {
     
     game = g;

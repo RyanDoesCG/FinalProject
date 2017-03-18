@@ -8,19 +8,21 @@
 
 #include "dioramaHUD.hpp"
 
-dioramaHUD::dioramaHUD  (GraphicsEngine* graph, PhysicsEngine* phys):
+dioramaHUD::dioramaHUD  (GraphicsEngine* graph, PhysicsEngine* phys, Diorama* d):
     GameHUD   (graph, phys),
-    amplitude (graph, phys),
-    example1  (graph, phys),
+    renderDistance (graph, phys),
+    amplitude  (graph, phys),
     example2  (graph, phys),
     example3  (graph, phys),
     example4  (graph, phys) {
     //amplitude.scaleTo(glm::vec3(1, 1, 1));
-    amplitude.moveTo(glm::vec3(-2, 1.25, 0.1));
-    example1.moveTo(glm::vec3(-2, 0.75, 0.1));
+    renderDistance.moveTo(glm::vec3(-2, 1.25, 0.1));
+    amplitude.moveTo(glm::vec3(-2, 0.75, 0.1));
     example2.moveTo(glm::vec3(-2, 0.25, 0.1));
     example3.moveTo(glm::vec3(-2, -0.25, 0.1));
     example4.moveTo(glm::vec3(-2, -0.75, 0.1));
+        
+    diorama = d;
 }
 
 dioramaHUD::~dioramaHUD () {}
@@ -34,11 +36,11 @@ void dioramaHUD::hide () {
         box->isHidden = true;
     });
     
+    renderDistance.deactivatePhysics();
+    renderDistance.isHidden = true;
+    
     amplitude.deactivatePhysics();
     amplitude.isHidden = true;
-    
-    example1.deactivatePhysics();
-    example1.isHidden = true;
     
     example2.deactivatePhysics();
     example2.isHidden = true;
@@ -59,11 +61,11 @@ void dioramaHUD::show () {
         box->isHidden = false;
     });
     
+    renderDistance.activatePhysics();
+    renderDistance.isHidden = false;
+
     amplitude.activatePhysics();
     amplitude.isHidden = false;
-
-    example1.activatePhysics();
-    example1.isHidden = false;
     
     example2.activatePhysics();
     example2.isHidden = false;
@@ -82,9 +84,12 @@ void dioramaHUD::update (State state) {
         box->update(state);   
     }
     
+    renderDistance.update(state);
     amplitude.update(state);
-    example1.update(state);
     example2.update(state);
     example3.update(state);
     example4.update(state);
+    
+    diorama->setRenderDistance(renderDistance.getValue());
+    diorama->setAmplitude(amplitude.getValue() * 0.05);
 }

@@ -10,7 +10,12 @@
 #include "Material.hpp"
 #include "UISlider.hpp"
 
-UISlider::UISlider (GraphicsEngine* graph, PhysicsEngine* phys): marker(graph, phys), range (graph), counter(-2.7, -2.095, -1.49) {
+UISlider::UISlider (GraphicsEngine* graph, PhysicsEngine* phys):
+        marker(graph, phys),
+        range (graph),
+        position_counter(-2.7, -2.095, -1.49),
+        value_counter(5, 0, 10) {
+    
     litColour   = glm::vec3(0.41, 0.41, 0.41);
     unlitColour = glm::vec3(0.21, 0.21, 0.21);
     
@@ -24,6 +29,10 @@ UISlider::UISlider (GraphicsEngine* graph, PhysicsEngine* phys): marker(graph, p
 
 UISlider::~UISlider () {
     
+}
+
+float UISlider::getValue () {
+    return fabs(position_counter.getValue()) * 2;
 }
 
 void UISlider::moveTo(glm::vec3 p) {
@@ -54,13 +63,17 @@ bool UISlider::isSelected() {
 
 void UISlider::update (State state) {
     if (mouse->leftButtonDown() && marker.isSelected() && mouse->getXoffset() != lastMouseX) {
-        if (mouse->getXoffset() > 0) counter.incrementBy(mouse->getXoffset());
-        if (mouse->getXoffset() < 0) counter.incrementBy(mouse->getXoffset());
+        if (mouse->getXoffset() > 0) { position_counter.incrementBy(mouse->getXoffset()); }
+        if (mouse->getXoffset() < 0) { position_counter.incrementBy(mouse->getXoffset()); }
+        
+        value_counter.incrementBy(mouse->getXoffset());
 
-        marker.physics->position.x = counter.getValue();
+        marker.physics->position.x = position_counter.getValue();
         lastMouseX = mouse->getXoffset();
     }
+
     std::cout << " x: " << marker.graphics->position.x << std::endl;
+    std::cout << "VALUE: " << value_counter.getValue() << std::endl;
     
     // fading
     marker.isHidden = isHidden;

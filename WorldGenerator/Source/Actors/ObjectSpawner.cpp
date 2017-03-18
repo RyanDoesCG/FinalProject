@@ -9,6 +9,7 @@
 #include "ObjectSpawner.hpp"
 #include "Random.hpp"
 #include "BasicShader.hpp"
+#include <cmath>
 
 ObjectSpawner::ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, HeightMap* map, glm::vec4 col, glm::vec3 scl, int num) {
     sprite = new FlyweightGraphicsObject (
@@ -28,8 +29,10 @@ ObjectSpawner::ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, He
         for (int i = 0; i < 10; i++) {
             glm::vec3 position = glm::vec3(point.x + betterRand(), 0, point.z + betterRand());
             glm::vec3 rotation = glm::vec3(0);
-            glm::vec4 colour   = col;
+            glm::vec4 colour   = col * glm::vec4(0.75 + (fmod(unsignedRand(), 0.5)));
             glm::vec3 scale    = scl;
+            
+            colour.a = 1.0;
             
             sprite->instances.push_back(FlyweightInstance(position, rotation, colour, scale));
         }

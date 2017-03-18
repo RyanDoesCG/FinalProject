@@ -16,11 +16,14 @@ uniform vec4 colour;
 uniform vec3 viewPosition;
 uniform sampler2D tex;
 
+uniform float renderDistance;
+uniform float amp;
+
 float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)); }
 
 void main (void) {
     vec4 worldPos = model * vec4(0.0, 0.0, 0.0, 1.0);
-    float height = -112 + (texture(tex, vec2(worldPos.x / 20, -1 * (worldPos.z / 20))).r * 98);
+    float height = -112 + abs((texture(tex, vec2(worldPos.x / 20, -1 * (worldPos.z / 20))).r)) * (amp * 420);
 
     if (height < -90) { height = -1000; }
     
@@ -30,8 +33,8 @@ void main (void) {
     frag_colour = colour;
     vec4 worldPosition = model * vec4(position.x, position.y + height, position.z, 1.0);
     
-    if (magnitude(viewPosition - vec3(worldPosition.xyz)) > 8) {
-        frag_colour.a = frag_colour.a - (magnitude(viewPosition - vec3(worldPosition.xyz)) - 8) * 0.75;
+    if (magnitude(viewPosition - vec3(worldPosition.xyz)) > renderDistance) {
+        frag_colour.a = frag_colour.a - (magnitude(viewPosition - vec3(worldPosition.xyz)) - renderDistance) * 0.75;
     }
     
     frag_normal = normal;

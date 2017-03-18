@@ -22,6 +22,10 @@ class ObjectSpawner: public GameObject {
     
         virtual void update (State state) override;
     
+        void addUniform (std::string name, GLfloat value) {
+            sprite->addUniform(name, value);
+        }
+    
     private:
         FlyweightGraphicsObject* sprite;
     

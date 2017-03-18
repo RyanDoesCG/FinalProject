@@ -13,8 +13,8 @@
 #include "Planet.hpp"
 #include <algorithm>
 
-#define WIDTH 2560
-#define HEIGHT 1440
+#define WIDTH 1920
+#define HEIGHT 1080
 
 Game::Game ():
     window    (WIDTH, HEIGHT),
@@ -36,10 +36,10 @@ void Game::showPlanet() {
 
 void Game::showDiorama() {
     objects.clear();
-    
+
     objects.push_back (interface);
     objects.push_back (cursor);
-    objects.push_back (new Diorama(&graphics, &physics));
+    objects.push_back (diorama);
 }
 
 void Game::showTestCube () {
@@ -53,6 +53,9 @@ void Game::showTestCube () {
 
 void Game::boot () {
     InputManager::initialise(window.asGLFW());
+    
+    diorama = new Diorama(&graphics, &physics);
+    
     interface = new UIDelegate(&graphics, &physics, this);
     cursor    = new Cursor(&graphics, &physics);
     srand(time(0));

@@ -34,9 +34,13 @@ class UISlider: public GameObject {
         
         void activatePhysics   ();
         void deactivatePhysics ();
+    
+        float getValue ();
         
     private:
-        SafeCounter counter;
+        SafeCounter value_counter;
+        SafeCounter position_counter;
+    
         UIBox marker;
         UIBoxBackground range;
         

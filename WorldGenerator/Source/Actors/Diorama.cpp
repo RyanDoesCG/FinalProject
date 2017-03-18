@@ -10,6 +10,7 @@
 #include "PlaneGeometry.hpp"
 #include "ModelGeometry.hpp"
 #include "Rain.hpp"
+#include "GeometryShader.hpp"
 #include "BasicShader.hpp"
 
 Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
@@ -21,15 +22,16 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     );
     
     water = new GraphicsObject(
-        new ModelGeometry ("plane/plane"),
-        new Material      (new BasicShader("object"))
+        new ModelGeometry ("plane/plane512"),
+        new Material      (new GeometryShader("sphere_water"))
     );
+
     
     //rain = new Rain(g, p);
     
     //rain->position = glm::vec3(0, 8, -10);
     
-    trees = new ObjectSpawner (g, "trees/tree", heightmap, glm::vec4(0.1, 0.2, 0.0, 1.0), glm::vec3(0.02), 100);
+    trees = new ObjectSpawner (g, "trees/tree", heightmap, glm::vec4(0.05, 0.1, 0.0, 1.0), glm::vec3(0.02), 100);
     rocks = new ObjectSpawner (g, "trees/rock", heightmap, glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 250);
     
     terrain->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
@@ -53,12 +55,34 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     
     //terrain->rotation.x = 0.25;
     //water->rotation.x = 0.25;
+    
+    renderDistance = 10;
 }
 
 Diorama::~Diorama () {}
 
+void Diorama::setRenderDistance(GLfloat val) {
+    renderDistance = val;
+}
+
+void Diorama::setAmplitude(GLfloat val) {
+    amp = val;
+}
+
 void Diorama::update(State state) {
+    terrain->addUniform("renderDistance", renderDistance);
     terrain->addUniform("amp", amp);
+    
+    water->addUniform("renderDistance", renderDistance);
+    water->addUniform("time", glfwGetTime());
+    
+    rocks->addUniform("renderDistance", renderDistance);
+    rocks->addUniform("amp", amp);
+    
+    trees->addUniform("renderDistance", renderDistance);
+    trees->addUniform("amp", amp);
+    
+    std::cout << "  AMP: " << amp << std::endl;
     
     switch (state) {
         case MENU: {

@@ -5,16 +5,19 @@ in vec4 worldPos;
 in vec3 finalColour;
 in vec3 norm;
 
-uniform vec3 objectColour;
+uniform vec4 colour;
 uniform vec3 viewPosition;
 uniform vec3 lightPosition;
 uniform vec3 lightColour;
+uniform float renderDistance;
 
 out vec4 color;
 
+float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)); }
+
 void main (void) {
     vec3 normal = normalize(norm);
-    
+    /*
     // ambient lighting
     float ambStrength = 0.35f;
     vec3  ambient     = ambStrength * lightColour;
@@ -33,5 +36,12 @@ void main (void) {
     
     // stacked result
     vec3 result = (ambient + diffuse + specular) * finalColour;
-    color = vec4(result, 0.88f);
+    */
+    
+    vec4 col = colour;
+    if (magnitude(viewPosition - vec3(worldPos.xyz)) > renderDistance) {
+        col.a = col.a - (magnitude(viewPosition - vec3(worldPos.xyz)) - renderDistance) * 0.75;
+    }
+    
+    color = col;
 }

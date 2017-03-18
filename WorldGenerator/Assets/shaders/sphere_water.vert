@@ -8,47 +8,22 @@ uniform float time;
 uniform mat4 model;
 
 const float PI = 3.141592653589;
-const float AMPLITUDE = 0.00160;
-
-out vec3 vertexColour;
+const float AMPLITUDE = 0.00060;
 
 /**
  *  CREDIT: https://www.youtube.com/watch?v=r2hue52wLF4
  *  adapted by Ryan Needham
  */
 float generateHeight(){
-    float component1 = sin(2.0 * PI * (time * 0.75) + (position.x * 12.0)) * AMPLITUDE;
-    float component2 = sin(2.0 * PI * (time * 0.75) + (position.y * position.x * 6.0)) * AMPLITUDE;
+    float component1 = sin(2.0 * PI * (time * 0.75) + (position.x * 24.0)) * AMPLITUDE;
+    float component2 = sin(2.0 * PI * (time * 0.75) + (position.y * position.x * 12.0)) * AMPLITUDE;
     return component1 + component2;
 }
 
 void main() {
-    float height = 1.2 + generateHeight();
-    vec3 a = vec3(0, 0, 0);
-    vec3 b = position;
-    
-    // get the distance between the center of the structure
-    // and the point on the x, y and z axes.
-    float distX = b.x - a.x;
-    float distY = b.y - a.y;
-    float distZ = b.z - a.z;
-    
-    float a_b = sqrt(distX * distX + distY * distY + distZ * distZ);
-    
-    distX = distX * height / a_b;
-    distY = distY * height / a_b;
-    distZ = distZ * height / a_b;
-    
-    b.x = (a.x + distX);
-    b.y = (a.y + distY);
-    b.z = (a.z + distZ);
+    float height = generateHeight();
     
     // set position
-    gl_Position = model * vec4(b, 1.0f);
-    
-    // pass through
-    if      (uvs.x == 1) { vertexColour = vec3(0.2, 0.4, 0.45); }
-    else if (uvs.x == 2) { vertexColour = vec3(0.22, 0.42, 0.47); }
-    else                 { vertexColour = vec3(0.24, 0.44, 0.49); }
+    gl_Position = model * vec4(position.x, position.y + height, position.z, 1.0f);
     
 }

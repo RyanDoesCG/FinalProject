@@ -13,23 +13,25 @@
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
 #include "GameHUD.hpp"
-
+#include "Diorama.hpp"
 #include "UIPlusMinus.hpp"
 
 class dioramaHUD: public GameHUD {
     public:
-        dioramaHUD (GraphicsEngine* graph, PhysicsEngine* phys);
+        dioramaHUD (GraphicsEngine* graph, PhysicsEngine* phys, Diorama* d);
        ~dioramaHUD ();
     
         virtual void update (State state) override;
         virtual void hide   () override;
         virtual void show   () override;
     
+        UISlider renderDistance;
         UISlider amplitude;
-        UIPlusMinus example1;
         UISlider example2;
         UISlider example3;
         UISlider example4;
+
+        Diorama* diorama;
 };
 
 

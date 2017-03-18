@@ -26,6 +26,9 @@ class Diorama: public GameObject {
     
         virtual void update (State state) override;
     
+        void setRenderDistance (GLfloat val);
+        void setAmplitude      (GLfloat val);
+    
     private:
         GraphicsObject* terrain;
         GraphicsObject* water;
@@ -41,6 +44,7 @@ class Diorama: public GameObject {
     
         glm::vec3 velocity;
     
+        GLfloat renderDistance;
         GLfloat amp;
 };
 

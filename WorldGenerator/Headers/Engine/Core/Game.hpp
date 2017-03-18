@@ -15,7 +15,8 @@
 #include "Cursor.hpp"
 #include "InputManager.hpp"
 #include "Window.hpp"
-
+#include "Planet.hpp"
+#include "Diorama.hpp"
 #include <vector>
 
 class UIDelegate; // dirty
@@ -34,11 +35,16 @@ class Game {
     
         State state;
     
+        Diorama* getDiorama () { return diorama; }
+    
     protected:
         std::vector<GameObject*> objects;
     
         GraphicsEngine graphics;
         PhysicsEngine  physics;
+    
+        Diorama* diorama;
+        Planet*  planet;
     
         UIDelegate* interface;
         Cursor*     cursor;
