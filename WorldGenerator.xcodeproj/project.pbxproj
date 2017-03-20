@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6209A34F1E803006002CA4CB /* ChunkLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6209A34E1E803006002CA4CB /* ChunkLoader.cpp */; };
+		6209A3511E803012002CA4CB /* Chunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6209A3501E803012002CA4CB /* Chunk.cpp */; };
 		6217EF391E785AF0003EFAD0 /* Diorama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF381E785AF0003EFAD0 /* Diorama.cpp */; };
 		6217EF3C1E785BDA003EFAD0 /* Planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF3B1E785BDA003EFAD0 /* Planet.cpp */; };
 		6217EF3F1E78697A003EFAD0 /* ParticleEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6217EF3E1E78697A003EFAD0 /* ParticleEmitter.cpp */; };
@@ -74,6 +76,8 @@
 		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
 		6209A34B1E802ECF002CA4CB /* ChunkLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ChunkLoader.hpp; path = WorldStreaming/ChunkLoader.hpp; sourceTree = "<group>"; };
 		6209A34C1E802EEB002CA4CB /* Chunk.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Chunk.hpp; path = WorldStreaming/Chunk.hpp; sourceTree = "<group>"; };
+		6209A34E1E803006002CA4CB /* ChunkLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChunkLoader.cpp; path = WorldStreaming/ChunkLoader.cpp; sourceTree = "<group>"; };
+		6209A3501E803012002CA4CB /* Chunk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Chunk.cpp; path = WorldStreaming/Chunk.cpp; sourceTree = "<group>"; };
 		620AB6371E7EFEB300ED3EB6 /* cvconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cvconfig.h; path = OpenCV/cvconfig.h; sourceTree = "<group>"; };
 		620AB6381E7EFEB300ED3EB6 /* opencv_modules.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = opencv_modules.hpp; path = OpenCV/opencv_modules.hpp; sourceTree = "<group>"; };
 		6217EF361E78523A003EFAD0 /* State.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = State.hpp; sourceTree = "<group>"; };
@@ -668,6 +672,15 @@
 			children = (
 				6209A34B1E802ECF002CA4CB /* ChunkLoader.hpp */,
 				6209A34C1E802EEB002CA4CB /* Chunk.hpp */,
+			);
+			name = WorldStreaming;
+			sourceTree = "<group>";
+		};
+		6209A34D1E802FEE002CA4CB /* WorldStreaming */ = {
+			isa = PBXGroup;
+			children = (
+				6209A34E1E803006002CA4CB /* ChunkLoader.cpp */,
+				6209A3501E803012002CA4CB /* Chunk.cpp */,
 			);
 			name = WorldStreaming;
 			sourceTree = "<group>";
@@ -1532,6 +1545,7 @@
 		CEDD0DAB1E00AA0A0078469C /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				6209A34D1E802FEE002CA4CB /* WorldStreaming */,
 				CE5A222C1E73421C00235110 /* EngineTest.cpp */,
 				CE5A22311E735A2500235110 /* Cursor.cpp */,
 				6217EF381E785AF0003EFAD0 /* Diorama.cpp */,
@@ -1703,6 +1717,7 @@
 			files = (
 				CE5A222F1E7351D900235110 /* CubeGeometry.cpp in Sources */,
 				CE0288031E75CD81001B4DF8 /* PlaneGeometry.cpp in Sources */,
+				6209A3511E803012002CA4CB /* Chunk.cpp in Sources */,
 				CEC8383B1E6DB17D0033CC10 /* Mouse.cpp in Sources */,
 				CEC838371E6DB1630033CC10 /* Gamepad.cpp in Sources */,
 				6217EF3C1E785BDA003EFAD0 /* Planet.cpp in Sources */,
@@ -1717,6 +1732,7 @@
 				CE1A200F1E78C89000651BB4 /* Rain.cpp in Sources */,
 				6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */,
 				CE0F16E11E7DDF7800635216 /* Butterfly.cpp in Sources */,
+				6209A34F1E803006002CA4CB /* ChunkLoader.cpp in Sources */,
 				CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */,
 				CE36D7DB1E7B5CA300951A1A /* GeometryShader.cpp in Sources */,
 				CED405801E74925A001ED29B /* Options.cpp in Sources */,

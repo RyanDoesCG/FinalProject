@@ -9,6 +9,8 @@
 #ifndef Chunk_hpp
 #define Chunk_hpp
 
+#include "GameObject.hpp"
+
 class Chunk: public GameObject {
     public:
         Chunk ();

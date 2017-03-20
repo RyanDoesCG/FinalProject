@@ -9,12 +9,14 @@
 #ifndef ChunkLoader_hpp
 #define ChunkLoader_hpp
 
+#include "GameObject.hpp"
+
 class ChunkLoader: public GameObject {
     public:
         ChunkLoader ();
        ~ChunkLoader ();
     
-    virtual void update (State state) override;
+        virtual void update (State state) override;
 };
 
 #endif /* ChunkLoader_hpp */
