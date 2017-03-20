@@ -22,7 +22,7 @@ typedef std::pair<std::string, GLfloat> uniform1f;
 class GraphicsObject {
     public:
         GraphicsObject (Geometry* geom, Material* mat): geometry(geom), material(mat) {}
-       ~GraphicsObject () {}
+       ~GraphicsObject () { delete geometry; delete material; }
     
         void addUniform (std::string title, GLfloat value) { uniforms.push_back(uniform1f(title, value)); }
     
@@ -60,7 +60,7 @@ class GraphicsObject {
             glUniformMatrix4fv(glGetUniformLocation(material->getProgramID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
             
             // Give model transform to shader
-            model = glm::translate(glm::mat4(), position);
+            model = glm::translate(model, position);
             model = glm::rotate (model, rotation.x, glm::vec3(1.0, 0.0, 0.0));
             model = glm::rotate (model, rotation.y, glm::vec3(0.0, 1.0, 0.0));
             model = glm::rotate (model, rotation.z, glm::vec3(0.0, 0.0, 1.0));
@@ -76,7 +76,7 @@ class GraphicsObject {
                 glUniform4fv(glGetUniformLocation(material->getProgramID(), "colour"), 1, glm::value_ptr(col));
                 
                 // Give model transform to shader
-                model = glm::translate(glm::mat4(), position);
+                model = glm::translate(model, position);
                 model = glm::rotate (model, rotation.x, glm::vec3(1.0, 0.0, 0.0));
                 model = glm::rotate (model, rotation.y, glm::vec3(0.0, 1.0, 0.0));
                 model = glm::rotate (model, rotation.z, glm::vec3(0.0, 0.0, 1.0));
@@ -87,6 +87,8 @@ class GraphicsObject {
                     geometry->render();
                 glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
             }
+            
+            model = glm::mat4();
         }
     
         void wireframe (bool b) { geometry->wireframe = b; }

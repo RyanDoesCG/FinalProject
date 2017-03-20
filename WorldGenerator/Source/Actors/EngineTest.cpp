@@ -17,12 +17,12 @@
 
 #include "InputManager.hpp"
 
-#include "BasicShader.hpp"
+#include "ShaderCache.hpp"
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
         new CubeGeometry  (),
-        new Material      (new BasicShader("object_lit"))
+        new Material      (ShaderCache::loadBasicShader("object_lit"))
     );
     
     graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);

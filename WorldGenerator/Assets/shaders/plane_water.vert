@@ -4,6 +4,7 @@ layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
 layout (location = 2) in vec2 uvs;
 
+uniform float seaLevel;
 uniform float time;
 uniform mat4 model;
 
@@ -24,6 +25,6 @@ void main() {
     float height = generateHeight();
     
     // set position
-    gl_Position = model * vec4(position.x, position.y + height, position.z, 1.0f);
+    gl_Position = model * vec4(position.x, position.y +     height, position.z, 1.0f);
     
 }

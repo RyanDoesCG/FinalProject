@@ -8,7 +8,7 @@
 #include "Random.hpp"
 #include "Rain.hpp"
 
-#include "BasicShader.hpp"
+#include "ShaderCache.hpp"
 
 Rain::Rain(GraphicsEngine* graph, PhysicsEngine* phys) : ParticleEmitter(graph, phys) {
     numParticles = 1000;
@@ -26,7 +26,7 @@ Rain::Rain(GraphicsEngine* graph, PhysicsEngine* phys) : ParticleEmitter(graph, 
     
     sprite = new FlyweightGraphicsObject(
         new QuadGeometry(),
-        new Material (new BasicShader("object"))
+        new Material (ShaderCache::loadBasicShader("object"))
     );
     
     graph->add(sprite);

@@ -27,7 +27,7 @@ class dioramaHUD: public GameHUD {
     
         UISlider renderDistance;
         UISlider amplitude;
-        UISlider example2;
+        UISlider seaLevel;
         UISlider example3;
         UISlider example4;
 

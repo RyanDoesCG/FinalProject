@@ -11,6 +11,7 @@
 #include "GraphicsEngine.hpp"
 #include "PhysicsEngine.hpp"
 #include "GameHUD.hpp"
+#include "Planet.hpp"
 
 class planetHUD: public GameHUD {
     public:
@@ -20,6 +21,8 @@ class planetHUD: public GameHUD {
         virtual void update (State state) override;
         virtual void hide   () override;
         virtual void show   () override;
+    
+        Planet* planet;
 };
 
 

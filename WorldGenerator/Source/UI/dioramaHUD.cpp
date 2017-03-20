@@ -9,16 +9,17 @@
 #include "dioramaHUD.hpp"
 
 dioramaHUD::dioramaHUD  (GraphicsEngine* graph, PhysicsEngine* phys, Diorama* d):
-    GameHUD   (graph, phys),
+    GameHUD        (graph, phys),
     renderDistance (graph, phys),
-    amplitude  (graph, phys),
-    example2  (graph, phys),
-    example3  (graph, phys),
-    example4  (graph, phys) {
+    amplitude      (graph, phys),
+    seaLevel       (graph, phys),
+    example3       (graph, phys),
+    example4       (graph, phys) {
+    
     //amplitude.scaleTo(glm::vec3(1, 1, 1));
     renderDistance.moveTo(glm::vec3(-2, 1.25, 0.1));
     amplitude.moveTo(glm::vec3(-2, 0.75, 0.1));
-    example2.moveTo(glm::vec3(-2, 0.25, 0.1));
+    seaLevel.moveTo(glm::vec3(-2, 0.25, 0.1));
     example3.moveTo(glm::vec3(-2, -0.25, 0.1));
     example4.moveTo(glm::vec3(-2, -0.75, 0.1));
         
@@ -30,7 +31,7 @@ dioramaHUD::~dioramaHUD () {}
 void dioramaHUD::hide () {
     background.isHidden = true;
     
-    for_each(items.begin(), items.end(), [](UIBox* box) {
+    for_each(items.begin(), items.end(), [] (UIBox* box) {
         box->deactivatePhysics();
         //box->setAlpha(0);
         box->isHidden = true;
@@ -42,8 +43,8 @@ void dioramaHUD::hide () {
     amplitude.deactivatePhysics();
     amplitude.isHidden = true;
     
-    example2.deactivatePhysics();
-    example2.isHidden = true;
+    seaLevel.deactivatePhysics();
+    seaLevel.isHidden = true;
     
     example3.deactivatePhysics();
     example3.isHidden = true;
@@ -55,7 +56,7 @@ void dioramaHUD::hide () {
 void dioramaHUD::show () {
     background.isHidden = false;
     
-    for_each(items.begin(), items.end(), [](UIBox* box) {
+    for_each(items.begin(), items.end(), [] (UIBox* box) {
         box->activatePhysics();
         //box->setAlpha(1);
         box->isHidden = false;
@@ -67,8 +68,8 @@ void dioramaHUD::show () {
     amplitude.activatePhysics();
     amplitude.isHidden = false;
     
-    example2.activatePhysics();
-    example2.isHidden = false;
+    seaLevel.activatePhysics();
+    seaLevel.isHidden = false;
     
     example3.activatePhysics();
     example3.isHidden = false;
@@ -86,10 +87,13 @@ void dioramaHUD::update (State state) {
     
     renderDistance.update(state);
     amplitude.update(state);
-    example2.update(state);
+    seaLevel.update(state);
     example3.update(state);
     example4.update(state);
     
-    diorama->setRenderDistance(renderDistance.getValue());
-    diorama->setAmplitude(amplitude.getValue() * 0.05);
+    /*
+    diorama->setRenderDistance (renderDistance.getValue() * 1.53);
+    diorama->setAmplitude      (amplitude.getValue() * 0.05);
+    diorama->setSeaLevel       (seaLevel.getValue() * 0.25);
+     */
 }

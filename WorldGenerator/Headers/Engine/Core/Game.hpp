@@ -31,11 +31,22 @@ class Game {
     
         void showPlanet();
         void showDiorama();
-        void showTestCube();
+        void showTest();
     
         State state;
     
+        /* * * * *
+         * Diorama
+         */
         Diorama* getDiorama () { return diorama; }
+        //Diorama* makeNewDiorama ();
+        
+    
+        /* * * * *
+         * Diorama
+         */
+        Planet* getPlanet() { return planet; }
+        //Planet* makeNewPlanet ();
     
     protected:
         std::vector<GameObject*> objects;

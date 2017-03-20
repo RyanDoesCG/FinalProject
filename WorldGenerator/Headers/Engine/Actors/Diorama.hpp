@@ -16,7 +16,8 @@
 #include "GraphicsObject.hpp"
 #include "GameObject.hpp"
 #include "InputManager.hpp"
-#include "ObjectSpawner.hpp"
+#include "TreeSpawner.hpp"
+#include "RockSpawner.hpp"
 #include "HeightMap.hpp"
 
 class Diorama: public GameObject {
@@ -28,13 +29,16 @@ class Diorama: public GameObject {
     
         void setRenderDistance (GLfloat val);
         void setAmplitude      (GLfloat val);
+        void setSeaLevel       (GLfloat val);
     
     private:
+        void updateUniforms ();
+    
         GraphicsObject* terrain;
         GraphicsObject* water;
     
-        ObjectSpawner* trees;
-        ObjectSpawner* rocks;
+        TreeSpawner* trees;
+        RockSpawner* rocks;
     
         ParticleEmitter* rain;
     
@@ -45,6 +49,7 @@ class Diorama: public GameObject {
         glm::vec3 velocity;
     
         GLfloat renderDistance;
+        GLfloat seaLevel;
         GLfloat amp;
 };
 

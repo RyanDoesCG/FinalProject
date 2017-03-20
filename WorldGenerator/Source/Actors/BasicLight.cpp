@@ -6,13 +6,13 @@
 //  Copyright © 2017 Dissertation. All rights reserved.
 //
 #include "CubeGeometry.hpp"
-#include "BasicShader.hpp"
+#include "ShaderCache.hpp"
 #include "BasicLight.hpp"
 
 BasicLight::BasicLight (GraphicsEngine* g) {
     graphics = new GraphicsObject(
         new CubeGeometry  (),
-        new Material      (new BasicShader("object"))
+        new Material      (ShaderCache::loadBasicShader("object"))
     );
     
     graphics->colour   = glm::vec4(0.5, 0.31, 0.31, 1);

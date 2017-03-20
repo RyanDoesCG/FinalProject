@@ -9,12 +9,14 @@
 #include "ParticleEmitter.hpp"
 #include "BasicLight.hpp"
 #include "EngineTest.hpp"
+#include "Butterfly.hpp"
 #include "Diorama.hpp"
 #include "Planet.hpp"
+#include "BasicLight.hpp"
 #include <algorithm>
 
-#define WIDTH 1920
-#define HEIGHT 1080
+#define WIDTH 1920 * 0.5
+#define HEIGHT 1080 * 0.5
 
 Game::Game ():
     window    (WIDTH, HEIGHT),
@@ -39,34 +41,30 @@ void Game::showDiorama() {
 
     objects.push_back (interface);
     objects.push_back (cursor);
+    objects.push_back (new BasicLight(&graphics));
     objects.push_back (diorama);
 }
 
-void Game::showTestCube () {
+void Game::showTest () {
     objects.clear();
     
     objects.push_back (interface);
     objects.push_back (cursor);
-    objects.push_back (new EngineTest(&graphics, &physics));
-    objects.push_back (new BasicLight(&graphics));
+    objects.push_back (new Butterfly(&graphics, &physics));
 }
 
 void Game::boot () {
     InputManager::initialise(window.asGLFW());
     
-    diorama = new Diorama(&graphics, &physics);
-    
     interface = new UIDelegate(&graphics, &physics, this);
     cursor    = new Cursor(&graphics, &physics);
+    objects.push_back (interface);
+    objects.push_back (cursor);
     srand(time(0));
     
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    showDiorama ();
-    
-    ParticleEmitter stars = ParticleEmitter(&graphics, &physics);
-    objects.push_back(&stars);
     
     state = MENU;
     

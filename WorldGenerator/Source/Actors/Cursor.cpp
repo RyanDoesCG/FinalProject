@@ -9,12 +9,12 @@
 #include "Cursor.hpp"
 #include "AACollisionBox2D.hpp"
 #include "QuadGeometry.hpp"
-#include "BasicShader.hpp"
+#include "ShaderCache.hpp"
 
 Cursor::Cursor(GraphicsEngine* g, PhysicsEngine* p) {
     quad = new GraphicsObject (
         new QuadGeometry(),
-        new Material(new BasicShader("object"))
+        new Material(ShaderCache::loadBasicShader("object"))
     );
     
     collider = new AACollisionBox2D(glm::vec2(0.05));

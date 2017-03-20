@@ -17,16 +17,16 @@
 
 class ObjectSpawner: public GameObject {
     public:
-        ObjectSpawner (GraphicsEngine* graph, std::string pathToModel, HeightMap* map, glm::vec4 col, glm::vec3 scl, int num);
-       ~ObjectSpawner ();
+        ObjectSpawner () {}
+       ~ObjectSpawner () {}
     
-        virtual void update (State state) override;
+        virtual void update (State state) {}
     
         void addUniform (std::string name, GLfloat value) {
             sprite->addUniform(name, value);
         }
     
-    private:
+    protected:
         FlyweightGraphicsObject* sprite;
     
         int numObjects;

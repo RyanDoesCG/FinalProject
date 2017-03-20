@@ -40,8 +40,8 @@ void UIDelegate::update(State state) {
             pHUD.hide();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (mainMenu.dioramas .isSelected()) { uiState = diorama; game->state = VIEW; /* game->showDiorama(); */ }
-                if (mainMenu.planets  .isSelected()) { uiState = planet;  game->state = VIEW; /* game->showPlanet(); */ }
+                if (mainMenu.dioramas .isSelected()) { uiState = diorama; /*dHUD.diorama = game->makeNewDiorama();*/ game->state = VIEW; /* game->showDiorama(); */ }
+                if (mainMenu.planets  .isSelected()) { uiState = planet;  /*pHUD.planet = game->makeNewPlanet();*/ game->state = VIEW; /* game->showPlanet(); */ }
                 if (mainMenu.options  .isSelected()) { uiState = options; }
                 if (mainMenu.quit     .isSelected()) { uiState = over; }
                 

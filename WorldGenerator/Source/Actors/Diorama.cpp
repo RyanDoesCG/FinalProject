@@ -10,20 +10,19 @@
 #include "PlaneGeometry.hpp"
 #include "ModelGeometry.hpp"
 #include "Rain.hpp"
-#include "GeometryShader.hpp"
-#include "BasicShader.hpp"
+#include "ShaderCache.hpp"
 
 Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     heightmap = new HeightMap( "noise/test.jpg" );
 
-    terrain = new GraphicsObject(
+    terrain = new GraphicsObject (
         new ModelGeometry ("plane/plane512"),
-        new Material      (new BasicShader("plane_vertextextured"), heightmap->getID() )
+        new Material      (ShaderCache::loadBasicShader("plane_vertextextured"), heightmap->getID() )
     );
     
-    water = new GraphicsObject(
+    water = new GraphicsObject (
         new ModelGeometry ("plane/plane512"),
-        new Material      (new GeometryShader("sphere_water"))
+        new Material      (ShaderCache::loadGeometryShader("plane_water"))
     );
 
     
@@ -31,19 +30,18 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     
     //rain->position = glm::vec3(0, 8, -10);
     
-    trees = new ObjectSpawner (g, "trees/tree", heightmap, glm::vec4(0.05, 0.1, 0.0, 1.0), glm::vec3(0.02), 100);
-    rocks = new ObjectSpawner (g, "trees/rock", heightmap, glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 250);
+    // Scale Fucks Placement
+    // Geometry Shader???????????
+    trees = new TreeSpawner (g, "trees/tree", heightmap, glm::vec4(0.05, 0.1, 0.0, 1.0), glm::vec3(0.02), 100);
+    rocks = new RockSpawner (g, "trees/rock", heightmap, glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 100);
     
     terrain->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
     terrain->position = glm::vec3(10, -2, 10);
     terrain->scale    = glm::vec3(10, 10, 10);
     terrain->wireframe(true);
     
-    amp = 0.25;
-    terrain->addUniform("amp", amp);
-    
-    //water->colour   = glm::vec4(0.65, 0.7, 0.88, 0.25);
-    water->colour   = glm::vec4(1.0, 0.7, 0.7, 0.25);
+    water->colour   = glm::vec4(0.65, 0.7, 0.88, 0.25);
+    //water->colour   = glm::vec4(1.0, 0.7, 0.7, 0.25);
     water->position = glm::vec3(10, -2, 10);
     water->scale    = glm::vec3(10, 10, 10);
     water->wireframe(false);
@@ -57,9 +55,19 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     //water->rotation.x = 0.25;
     
     renderDistance = 10;
+    seaLevel = 0;
+    amp = 0.25;
+    
+    updateUniforms();
 }
 
-Diorama::~Diorama () {}
+Diorama::~Diorama () {
+    delete heightmap;
+    delete terrain;
+    delete water;
+    delete trees;
+    delete rocks;
+}
 
 void Diorama::setRenderDistance(GLfloat val) {
     renderDistance = val;
@@ -69,20 +77,33 @@ void Diorama::setAmplitude(GLfloat val) {
     amp = val;
 }
 
-void Diorama::update(State state) {
+void Diorama::setSeaLevel(GLfloat val) {
+    seaLevel = val;
+}
+
+void Diorama::updateUniforms() {
     terrain->addUniform("renderDistance", renderDistance);
+    terrain->addUniform("seaLevel", seaLevel);
     terrain->addUniform("amp", amp);
     
     water->addUniform("renderDistance", renderDistance);
+    water->addUniform("seaLevel", seaLevel);
     water->addUniform("time", glfwGetTime());
     
     rocks->addUniform("renderDistance", renderDistance);
+    rocks->addUniform("seaLevel", seaLevel);
     rocks->addUniform("amp", amp);
     
     trees->addUniform("renderDistance", renderDistance);
+    trees->addUniform("seaLevel", seaLevel);
     trees->addUniform("amp", amp);
     
-    std::cout << "  AMP: " << amp << std::endl;
+}
+
+void Diorama::update(State state) {
+    updateUniforms();
+    
+    std::cout << "  sea: " << seaLevel << std::endl;
     
     switch (state) {
         case MENU: {

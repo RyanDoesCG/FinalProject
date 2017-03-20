@@ -4,6 +4,7 @@ layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
 layout (location = 2) in vec2 uv;
 
+out vec3 frag_worldPos;
 out vec4 frag_colour;
 out vec3 frag_normal;
 out vec2 frag_uv;
@@ -17,6 +18,7 @@ uniform vec3 viewPosition;
 uniform sampler2D tex;
 
 uniform float renderDistance;
+uniform float seaLevel;
 uniform float amp;
 
 float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)); }
@@ -29,6 +31,7 @@ void main (void) {
     
     gl_Position = projection * view * model * vec4(position.x, position.y + height, position.z, 1.0);
     
+    frag_worldPos = vec3(worldPos.xyz);
         // fade out of view
     frag_colour = colour;
     vec4 worldPosition = model * vec4(position.x, position.y + height, position.z, 1.0);

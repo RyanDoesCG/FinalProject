@@ -7,6 +7,9 @@
 //
 #include "SOIL.h"
 #include "HeightMap.hpp"
+#include "cvconfig.h"
+//#include "opencv_modules.hpp"
+
 #include <iostream>
 HeightMap::HeightMap (std::string name) {
     data = SOIL_load_image(("Assets/textures/" + name).c_str(), &width, &height, 0, SOIL_LOAD_RGB);
@@ -14,22 +17,19 @@ HeightMap::HeightMap (std::string name) {
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
     
+    
+    unsigned char (*pixels)[64][3] = (unsigned char (*)[64][3]) data;
+    int y,x,c;
+    for (y = 0; y < 64; y++)
+        for (x = 0; x < 64; x++) {
+            data[(x + y) * 3] = 0;
+            data[(x + y) * 3] = 0;
+            data[(x + y) * 3] = 0;
+        }
+    
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
-    
-    /*
-    for (int u = 0; u < width; u++) {
-        for (int v = 0; v < height; v++) {
-            if (data[u + v * width] == 1) {
-                std::cout << (int)data[(u + v * width) * 3 + 0] << " ";
-                std::cout << (int)data[(u + v * width) * 3 + 1] << " ";
-                std::cout << (int)data[(u + v * width) * 3 + 2] << " ";
-            }
-        }
-        std::cout << std::endl;
-    }
-    */
 }
 
 HeightMap::~HeightMap () {
