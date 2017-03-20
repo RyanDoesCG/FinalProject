@@ -72,6 +72,8 @@
 /* Begin PBXFileReference section */
 		45C117941D78005500FE98A9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		45C1179F1D7805E700FE98A9 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = ../../../../../../../Library/Frameworks/libGLEW.dylib; sourceTree = "<group>"; };
+		6209A34B1E802ECF002CA4CB /* ChunkLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ChunkLoader.hpp; path = WorldStreaming/ChunkLoader.hpp; sourceTree = "<group>"; };
+		6209A34C1E802EEB002CA4CB /* Chunk.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Chunk.hpp; path = WorldStreaming/Chunk.hpp; sourceTree = "<group>"; };
 		620AB6371E7EFEB300ED3EB6 /* cvconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cvconfig.h; path = OpenCV/cvconfig.h; sourceTree = "<group>"; };
 		620AB6381E7EFEB300ED3EB6 /* opencv_modules.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = opencv_modules.hpp; path = OpenCV/opencv_modules.hpp; sourceTree = "<group>"; };
 		6217EF361E78523A003EFAD0 /* State.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = State.hpp; sourceTree = "<group>"; };
@@ -661,6 +663,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6209A34A1E802EB5002CA4CB /* WorldStreaming */ = {
+			isa = PBXGroup;
+			children = (
+				6209A34B1E802ECF002CA4CB /* ChunkLoader.hpp */,
+				6209A34C1E802EEB002CA4CB /* Chunk.hpp */,
+			);
+			name = WorldStreaming;
+			sourceTree = "<group>";
+		};
 		620AB6391E7EFEB700ED3EB6 /* OpenCV */ = {
 			isa = PBXGroup;
 			children = (
@@ -967,6 +978,7 @@
 		CEDD0C101E00AA0A0078469C /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				6209A34A1E802EB5002CA4CB /* WorldStreaming */,
 				CE5A22281E7316FA00235110 /* GameObject.hpp */,
 				CE5A222B1E7341BD00235110 /* EngineTest.hpp */,
 				CE5A22301E7359AD00235110 /* Cursor.hpp */,

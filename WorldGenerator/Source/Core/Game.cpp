@@ -66,7 +66,7 @@ void Game::boot () {
      *  Objects
      * * * * * * * * * * * * * * * * */
     
-    state = MENU;
+    state = VIEW;
     
     while (window.isAlive()) {
         InputManager::update();

@@ -19,7 +19,7 @@ UIDelegate::UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g):
     gamepad = InputManager::getGamepadHandle();
     mouse   = InputManager::getMouseHandle();
     
-    uiState = main_menu;
+    uiState = infinite;
 }
 
 UIDelegate::~UIDelegate () {
@@ -48,6 +48,14 @@ void UIDelegate::update(State state) {
                 gamepad->buttonHandled(GAMEPAD_BUTTON_A);
                 mouse->leftButtonHandled();
             }
+            break;
+        }
+        
+        case infinite: {
+            mainMenu.hide();
+            optionsMenu.hide();
+            dHUD.hide();
+            pHUD.hide();
             break;
         }
             

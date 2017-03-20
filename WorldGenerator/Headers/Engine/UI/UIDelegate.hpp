@@ -31,6 +31,7 @@ class UIDelegate: public GameObject {
     private:
         enum UIState {
             main_menu,
+            infinite,
             diorama,
             planet,
             options,
