@@ -31,6 +31,7 @@
 		CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */; };
 		CE0F16E11E7DDF7800635216 /* Butterfly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0F16E01E7DDF7800635216 /* Butterfly.cpp */; };
 		CE1A200F1E78C89000651BB4 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A200E1E78C89000651BB4 /* Rain.cpp */; };
+		CE322F151E80816B00593536 /* Candidate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE322F141E80816B00593536 /* Candidate.cpp */; };
 		CE36D7D91E7B5BBD00951A1A /* BasicShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE36D7D81E7B5BBD00951A1A /* BasicShader.cpp */; };
 		CE36D7DB1E7B5CA300951A1A /* GeometryShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE36D7DA1E7B5CA300951A1A /* GeometryShader.cpp */; };
 		CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE3B75431E75F3E300539CB9 /* AsteroidGeometry.cpp */; };
@@ -129,6 +130,8 @@
 		CE1A200D1E78C82600651BB4 /* Rain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Rain.hpp; sourceTree = "<group>"; };
 		CE1A200E1E78C89000651BB4 /* Rain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rain.cpp; sourceTree = "<group>"; };
 		CE322F121E7F1B8B00593536 /* ShaderCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderCache.hpp; sourceTree = "<group>"; };
+		CE322F131E80805400593536 /* Candidate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Candidate.hpp; path = WorldStreaming/Candidate.hpp; sourceTree = "<group>"; };
+		CE322F141E80816B00593536 /* Candidate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Candidate.cpp; path = WorldStreaming/Candidate.cpp; sourceTree = "<group>"; };
 		CE36D7D61E7B57A300951A1A /* BasicShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BasicShader.hpp; path = Graphics/Material/BasicShader.hpp; sourceTree = "<group>"; };
 		CE36D7D71E7B57BA00951A1A /* GeometryShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GeometryShader.hpp; path = Graphics/Material/GeometryShader.hpp; sourceTree = "<group>"; };
 		CE36D7D81E7B5BBD00951A1A /* BasicShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BasicShader.cpp; path = Graphics/Material/BasicShader.cpp; sourceTree = "<group>"; };
@@ -672,6 +675,7 @@
 			children = (
 				6209A34B1E802ECF002CA4CB /* ChunkLoader.hpp */,
 				6209A34C1E802EEB002CA4CB /* Chunk.hpp */,
+				CE322F131E80805400593536 /* Candidate.hpp */,
 			);
 			name = WorldStreaming;
 			sourceTree = "<group>";
@@ -681,6 +685,7 @@
 			children = (
 				6209A34E1E803006002CA4CB /* ChunkLoader.cpp */,
 				6209A3501E803012002CA4CB /* Chunk.cpp */,
+				CE322F141E80816B00593536 /* Candidate.cpp */,
 			);
 			name = WorldStreaming;
 			sourceTree = "<group>";
@@ -1740,6 +1745,7 @@
 				CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */,
 				CEC838261E6DAC240033CC10 /* PhysicsEngine.cpp in Sources */,
 				CEEAF6EE1E75F68E00FFADAE /* ModelGeometry.cpp in Sources */,
+				CE322F151E80816B00593536 /* Candidate.cpp in Sources */,
 				CEFFC2F81E759ADD0029F621 /* Texture.cpp in Sources */,
 				CEFFC2F41E759AAF0029F621 /* Shader.cpp in Sources */,
 				CE63ED981E799910000C1972 /* UISlider.cpp in Sources */,

@@ -19,7 +19,8 @@ class GameObject {
     
         glm::vec3 position;
         glm::vec3 scale;
-    
+        glm::vec4 colour;
+        
         virtual void update (State state) = 0;
 
 };

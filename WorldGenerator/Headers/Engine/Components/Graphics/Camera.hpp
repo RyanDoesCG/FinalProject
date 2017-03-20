@@ -26,8 +26,8 @@ class Camera {
         glm::mat4 getDefaultProjectionMatrix (); // for renderer
         glm::mat4 getDefaultViewMatrix       (); // for renderer
     
-        void teleportTo (float x, float y, float z) { position = glm::vec3(x, y, z); }
-        void moveTo     (float x, float y, float z) {  }
+        //void teleportTo (float x, float y, float z) { position = glm::vec3(x, y, z); }
+        //void moveTo     (float x, float y, float z) {  }
     
         void update (State state);
     

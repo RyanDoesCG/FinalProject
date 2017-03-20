@@ -67,25 +67,17 @@ class GraphicsObject {
             model = glm::scale  (model, scale);
             glUniformMatrix4fv(glGetUniformLocation(material->getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(model));
             
-            geometry->render();
-            
             // EXTERNAL WIREFRAME
             if (geometry->wireframe) {
                 // upload colour to shader
-                glm::vec4 col = glm::vec4(0, 0, 0, 1.0);
-                glUniform4fv(glGetUniformLocation(material->getProgramID(), "colour"), 1, glm::value_ptr(col));
-                
-                // Give model transform to shader
-                model = glm::translate(model, position);
-                model = glm::rotate (model, rotation.x, glm::vec3(1.0, 0.0, 0.0));
-                model = glm::rotate (model, rotation.y, glm::vec3(0.0, 1.0, 0.0));
-                model = glm::rotate (model, rotation.z, glm::vec3(0.0, 0.0, 1.0));
-                model = glm::scale  (model, scale + glm::vec3(0.01));
-                glUniformMatrix4fv(glGetUniformLocation(material->getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(model));
+                //glm::vec4 col = glm::vec4(0, 0, 0, 1.0);
+                //glUniform4fv(glGetUniformLocation(material->getProgramID(), "colour"), 1, glm::value_ptr(col));
                 
                 glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
                     geometry->render();
                 glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            } else {
+                geometry->render();
             }
             
             model = glm::mat4();

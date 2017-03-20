@@ -1,27 +1,27 @@
 //
-//  Chunk.hpp
+//  Candidate.hpp
 //  WorldGenerator
 //
-//  Created by Ryan Needham on 20/03/2017.
+//  Created by user on 20/03/2017.
 //  Copyright © 2017 Dissertation. All rights reserved.
 //
 
-#ifndef Chunk_hpp
-#define Chunk_hpp
+#ifndef Candidate_hpp
+#define Candidate_hpp
 
 #include "GraphicsEngine.hpp"
 #include "GraphicsObject.hpp"
 #include "GameObject.hpp"
 
-class Chunk: public GameObject {
+class Candidate: public GameObject {
     public:
-        Chunk (GraphicsEngine* g);
-       ~Chunk ();
+        Candidate (GraphicsEngine* g);
+       ~Candidate ();
     
         void update (State state) override;
         void recycleAt (glm::vec3 newPos);
     
-        bool operator<(const Chunk& rhs) const;
+        bool operator<(const Candidate& that) const;
     
     private:
         GraphicsObject* graphics;
@@ -30,4 +30,5 @@ class Chunk: public GameObject {
     
 };
 
-#endif /* Chunk_hpp */
+
+#endif /* Candidate_hpp */

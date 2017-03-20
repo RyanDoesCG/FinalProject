@@ -13,6 +13,9 @@
 #include "Diorama.hpp"
 #include "Planet.hpp"
 #include "BasicLight.hpp"
+
+#include "ChunkLoader.hpp"
+
 #include <algorithm>
 
 #define WIDTH 1920 * 0.5
@@ -65,6 +68,8 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
+    ChunkLoader loader = ChunkLoader(&graphics);
+    objects.push_back(&loader);
     
     state = VIEW;
     

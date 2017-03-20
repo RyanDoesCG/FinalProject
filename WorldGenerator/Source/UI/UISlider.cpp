@@ -72,10 +72,12 @@ void UISlider::update (State state) {
         lastMouseX = mouse->getXoffset();
     }
 
+    /*
     std::cout << " x: " << marker.graphics->position.x << std::endl;
     std::cout << "VALUE: " << value_counter.getValue() << std::endl;
-    
-    // fading
+    */
+
+        // fading
     marker.isHidden = isHidden;
     range.isHidden = isHidden;
     

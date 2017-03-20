@@ -15,6 +15,8 @@ GraphicsEngine::GraphicsEngine (float width, float height) {
     frameCamera->update(NONE);
     windowWidth = width;
     windowHeight = height;
+    
+    sceneCamera->position = glm::vec3(0);
 }
 
 GraphicsEngine::~GraphicsEngine () {
@@ -27,7 +29,7 @@ void GraphicsEngine::setEffect (Effect e) {
         frame = new GraphicsObject (
             new QuadGeometry(),
             (e == blur) ? new Material (new BasicShader("pp_gaussianBlur"), colourAttachment) :
-            (e == fade) ? new Material (new BasicShader("pp_fadeout"),      colourAttachment) :
+            (e == fade) ? new Material (new BasicShader(/*"pp_fadeout"*/"object_textured"),      colourAttachment) :
                           new Material (new BasicShader("object_textured"), colourAttachment)
         );
         frame->scale = glm::vec3(5.85, 3.25, 1.0);
@@ -151,3 +153,7 @@ void GraphicsEngine::addToUI  (GraphicsObject *object) { ui.push_back(object); }
 
 void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(sceneCamera); for (GraphicsObject* light : lights) light->draw(sceneCamera); }
 void GraphicsEngine::renderUI    () { for (GraphicsObject* object : ui)    object->draw(frameCamera); }
+
+Camera* GraphicsEngine::getSceneCamera() {
+    return sceneCamera;
+}

@@ -20,7 +20,7 @@ class GraphicsEngine {
         GraphicsEngine (float width, float height);
        ~GraphicsEngine ();
     
-        enum Effect { blur, fade };
+        enum Effect { blur, fade, none };
     
         void initPostProcessing ();
     
@@ -31,6 +31,8 @@ class GraphicsEngine {
         void add      (GraphicsObject* object);
         void addLight (GraphicsObject* object);
         void addToUI  (GraphicsObject* object);
+    
+        Camera* getSceneCamera();
     
     private:
         void prerender       (State s);
