@@ -10,18 +10,21 @@
 #include "ModelGeometry.hpp"
 #include "ShaderCache.hpp"
 
-Chunk::Chunk (GraphicsEngine* g) {
+Chunk::Chunk (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject (
         new ModelGeometry("plane/plane"),
         new Material (ShaderCache::loadBasicShader("chunk"))
     );
     
+    
+    physics = new ChunkCollider (position);
     graphics->wireframe(false);
     
     g->add(graphics);
+    p->addTo3D(physics);
 }
 
-Chunk::~Chunk () {
+Chunk::~Chunk () {       
     
 }
 
@@ -33,3 +36,8 @@ bool Chunk::operator<(const Chunk& that) const {
     return this->position.x + this->position.z <
            that .position.x + that .position.z;
 }
+
+bool Chunk::leftSideContact   () { return physics->touchingLeft(); }
+bool Chunk::rightSideContact  () { return physics->touchingRight(); }
+bool Chunk::topSideContact    () { return physics->touchingTop(); }
+bool Chunk::bottomSideContact () { return physics->touchingBottom(); }

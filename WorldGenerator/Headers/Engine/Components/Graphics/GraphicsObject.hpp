@@ -24,6 +24,9 @@ class GraphicsObject {
         GraphicsObject (Geometry* geom, Material* mat): geometry(geom), material(mat) {}
        ~GraphicsObject () { delete geometry; delete material; }
     
+        void setID (int x) { id = x; }
+        int  getID ()      { return id; }
+    
         void addUniform (std::string title, GLfloat value) { uniforms.push_back(uniform1f(title, value)); }
     
         virtual void draw (Camera* cam) {
@@ -103,6 +106,7 @@ class GraphicsObject {
     
     private:
         std::vector<uniform1f> uniforms;
+        int id;
 };
 
 #endif /* GraphicsObject_hpp */

@@ -16,7 +16,7 @@
 
 class ChunkLoader: public GameObject {
     public:
-        ChunkLoader (GraphicsEngine* g);
+        ChunkLoader (GraphicsEngine* g, PhysicsEngine* p);
        ~ChunkLoader ();
     
         void update (State state) override;
@@ -37,12 +37,16 @@ class ChunkLoader: public GameObject {
         std::vector<Chunk*> chunks;
         std::vector<Candidate*> candidates;
     
+        void addCandidateAt(glm::vec3 pos);
+    
         float distanceThreshold;            // distance at which to recycle
         float chunkWidth;                   // size of one chunk on one axis (chunks are square)
         unsigned int maxWorldWidth;
         unsigned int maxWorldDepth;
         float baseY;
     
+        GraphicsEngine* graphics;
+        PhysicsEngine* physics;
         Camera* cam;                        // the camera for retriving its position
 };
 

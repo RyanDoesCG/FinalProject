@@ -21,12 +21,12 @@ class Candidate: public GameObject {
         void update (State state) override;
         void recycleAt (glm::vec3 newPos);
     
+        float distanceToCamera;
+    
         bool operator<(const Candidate& that) const;
     
     private:
         GraphicsObject* graphics;
-    
-        float distanceToCamera;
     
 };
 

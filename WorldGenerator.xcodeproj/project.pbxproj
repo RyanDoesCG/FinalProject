@@ -32,6 +32,7 @@
 		CE0F16E11E7DDF7800635216 /* Butterfly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0F16E01E7DDF7800635216 /* Butterfly.cpp */; };
 		CE1A200F1E78C89000651BB4 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A200E1E78C89000651BB4 /* Rain.cpp */; };
 		CE322F151E80816B00593536 /* Candidate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE322F141E80816B00593536 /* Candidate.cpp */; };
+		CE322F181E80A5BB00593536 /* ChunkCollider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE322F171E80A5BB00593536 /* ChunkCollider.cpp */; };
 		CE36D7D91E7B5BBD00951A1A /* BasicShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE36D7D81E7B5BBD00951A1A /* BasicShader.cpp */; };
 		CE36D7DB1E7B5CA300951A1A /* GeometryShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE36D7DA1E7B5CA300951A1A /* GeometryShader.cpp */; };
 		CE3B75441E75F3E300539CB9 /* AsteroidGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE3B75431E75F3E300539CB9 /* AsteroidGeometry.cpp */; };
@@ -132,6 +133,8 @@
 		CE322F121E7F1B8B00593536 /* ShaderCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderCache.hpp; sourceTree = "<group>"; };
 		CE322F131E80805400593536 /* Candidate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Candidate.hpp; path = WorldStreaming/Candidate.hpp; sourceTree = "<group>"; };
 		CE322F141E80816B00593536 /* Candidate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Candidate.cpp; path = WorldStreaming/Candidate.cpp; sourceTree = "<group>"; };
+		CE322F161E80A4F500593536 /* ChunkCollider.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ChunkCollider.hpp; path = Physics/Collider3D/ChunkCollider.hpp; sourceTree = "<group>"; };
+		CE322F171E80A5BB00593536 /* ChunkCollider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ChunkCollider.cpp; path = Physics/Collider3D/ChunkCollider.cpp; sourceTree = "<group>"; };
 		CE36D7D61E7B57A300951A1A /* BasicShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BasicShader.hpp; path = Graphics/Material/BasicShader.hpp; sourceTree = "<group>"; };
 		CE36D7D71E7B57BA00951A1A /* GeometryShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GeometryShader.hpp; path = Graphics/Material/GeometryShader.hpp; sourceTree = "<group>"; };
 		CE36D7D81E7B5BBD00951A1A /* BasicShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BasicShader.cpp; path = Graphics/Material/BasicShader.cpp; sourceTree = "<group>"; };
@@ -793,6 +796,7 @@
 		CEC838221E6DA9EF0033CC10 /* Collider3D */ = {
 			isa = PBXGroup;
 			children = (
+				CE322F161E80A4F500593536 /* ChunkCollider.hpp */,
 			);
 			name = Collider3D;
 			sourceTree = "<group>";
@@ -873,6 +877,7 @@
 		CEC838491E6DCFDD0033CC10 /* Collider3D */ = {
 			isa = PBXGroup;
 			children = (
+				CE322F171E80A5BB00593536 /* ChunkCollider.cpp */,
 			);
 			name = Collider3D;
 			sourceTree = "<group>";
@@ -1730,6 +1735,7 @@
 				CE720E3C1E7DC1BD0062D240 /* RockSpawner.cpp in Sources */,
 				CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */,
 				CEC8384B1E6DD0020033CC10 /* AACollisionBox2D.cpp in Sources */,
+				CE322F181E80A5BB00593536 /* ChunkCollider.cpp in Sources */,
 				CEC838241E6DAC160033CC10 /* GraphicsEngine.cpp in Sources */,
 				6286AD661E7C2F2500888483 /* AudioObject.cpp in Sources */,
 				CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */,

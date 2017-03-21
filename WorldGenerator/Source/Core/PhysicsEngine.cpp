@@ -42,5 +42,16 @@ void PhysicsEngine::simulate(double time) {
         }
     }
     
+    for (PhysicsObject3D* a : world3D) {
+        for (PhysicsObject3D* b : world3D) {
+            if (a != b) {
+                if (a->isColliding(b)) {
+                    a->colliding = true;
+                    b->colliding = true;
+                }
+            }
+        }
+    }
+    
     // resolve collisions
 }

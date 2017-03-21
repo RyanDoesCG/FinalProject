@@ -68,7 +68,7 @@ void Game::boot () {
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    ChunkLoader loader = ChunkLoader(&graphics);
+    ChunkLoader loader = ChunkLoader(&graphics, &physics);
     objects.push_back(&loader);
     
     state = VIEW;

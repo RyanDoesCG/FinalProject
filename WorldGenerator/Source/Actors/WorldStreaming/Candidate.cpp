@@ -24,7 +24,7 @@ Candidate::Candidate (GraphicsEngine* g) {
 }
 
 Candidate::~Candidate () {
-    
+
 }
 
 void Candidate::update(State state) { graphics->position = position; graphics->colour = colour; }
