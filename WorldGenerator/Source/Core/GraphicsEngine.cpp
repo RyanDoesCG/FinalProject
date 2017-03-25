@@ -29,7 +29,7 @@ void GraphicsEngine::setEffect (Effect e) {
         frame = new GraphicsObject (
             new QuadGeometry(),
             (e == blur) ? new Material (new BasicShader("pp_gaussianBlur"), colourAttachment) :
-            (e == fade) ? new Material (new BasicShader(/*"pp_fadeout"*/"object_textured"),      colourAttachment) :
+            (e == fade) ? new Material (new BasicShader("pp_fadeout"),      colourAttachment) :
                           new Material (new BasicShader("object_textured"), colourAttachment)
         );
         frame->scale = glm::vec3(5.85, 3.25, 1.0);

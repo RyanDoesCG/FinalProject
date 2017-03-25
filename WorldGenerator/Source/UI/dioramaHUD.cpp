@@ -91,9 +91,7 @@ void dioramaHUD::update (State state) {
     example3.update(state);
     example4.update(state);
     
-    /*
     diorama->setRenderDistance (renderDistance.getValue() * 1.53);
     diorama->setAmplitude      (amplitude.getValue() * 0.05);
     diorama->setSeaLevel       (seaLevel.getValue() * 0.25);
-     */
 }

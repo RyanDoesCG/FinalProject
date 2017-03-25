@@ -26,10 +26,7 @@
 		6286AD661E7C2F2500888483 /* AudioObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6286AD651E7C2F2500888483 /* AudioObject.cpp */; };
 		6286AD681E7C329500888483 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6286AD671E7C329500888483 /* AudioToolbox.framework */; };
 		6286AD6B1E7C37A900888483 /* BasicLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6286AD6A1E7C37A900888483 /* BasicLight.cpp */; };
-		62F0CD5C1E854C9E0055BBF4 /* TextObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62F0CD5B1E854C9E0055BBF4 /* TextObject.cpp */; };
-		CE0288001E75CC62001B4DF8 /* TextGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0287FE1E75CC62001B4DF8 /* TextGeometry.cpp */; };
 		CE0288031E75CD81001B4DF8 /* PlaneGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0288021E75CD81001B4DF8 /* PlaneGeometry.cpp */; };
-		CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */; };
 		CE0F16E11E7DDF7800635216 /* Butterfly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0F16E01E7DDF7800635216 /* Butterfly.cpp */; };
 		CE1A200F1E78C89000651BB4 /* Rain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A200E1E78C89000651BB4 /* Rain.cpp */; };
 		CE322F151E80816B00593536 /* Candidate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE322F141E80816B00593536 /* Candidate.cpp */; };
@@ -109,7 +106,6 @@
 		62864DC81E7421F800C957D0 /* UIBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBox.cpp; sourceTree = "<group>"; };
 		62864DCA1E74252300C957D0 /* Menu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
 		62864DCB1E74258500C957D0 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
-		6286AD591E7C18DC00888483 /* TextDrawCall.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextDrawCall.hpp; sourceTree = "<group>"; };
 		6286AD5D1E7C2C2800888483 /* AudioEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioEngine.hpp; sourceTree = "<group>"; };
 		6286AD5E1E7C2CC500888483 /* AudioObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AudioObject.hpp; path = Audio/AudioObject.hpp; sourceTree = "<group>"; };
 		6286AD5F1E7C2CFF00888483 /* AudioEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEngine.cpp; sourceTree = "<group>"; };
@@ -122,14 +118,8 @@
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A37E851E1D17EA0052D84E /* FastNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastNoise.h; path = FastNoise/FastNoise.h; sourceTree = "<group>"; };
 		62A5A8C41E8331C5009DCD4E /* ModelCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ModelCache.hpp; sourceTree = "<group>"; };
-		62F0CD5A1E854AC60055BBF4 /* TextObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TextObject.hpp; path = Graphics/TextObject.hpp; sourceTree = "<group>"; };
-		62F0CD5B1E854C9E0055BBF4 /* TextObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextObject.cpp; path = Graphics/TextObject.cpp; sourceTree = "<group>"; };
-		CE0287FE1E75CC62001B4DF8 /* TextGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextGeometry.cpp; path = Graphics/Geometry2D/TextGeometry.cpp; sourceTree = "<group>"; };
 		CE0288011E75CD75001B4DF8 /* PlaneGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PlaneGeometry.hpp; path = Graphics/Geometry3D/PlaneGeometry.hpp; sourceTree = "<group>"; };
 		CE0288021E75CD81001B4DF8 /* PlaneGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlaneGeometry.cpp; path = Graphics/PlaneGeometry.cpp; sourceTree = "<group>"; };
-		CE06CFDA1E75C91500FF0D2A /* UITextNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UITextNode.hpp; sourceTree = "<group>"; };
-		CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITextNode.cpp; sourceTree = "<group>"; };
-		CE06CFDD1E75CB9100FF0D2A /* TextGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TextGeometry.hpp; path = Graphics/Geometry2D/TextGeometry.hpp; sourceTree = "<group>"; };
 		CE0F16DF1E7DDEC600635216 /* Butterfly.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Butterfly.hpp; sourceTree = "<group>"; };
 		CE0F16E01E7DDF7800635216 /* Butterfly.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Butterfly.cpp; sourceTree = "<group>"; };
 		CE1A200D1E78C82600651BB4 /* Rain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Rain.hpp; sourceTree = "<group>"; };
@@ -750,7 +740,6 @@
 				6248E9361E72B96A00B17855 /* Camera.hpp */,
 				6217EF411E786DFC003EFAD0 /* FlyweightGraphicsObject.hpp */,
 				6217EF421E7871EA003EFAD0 /* FlyweightInstance.hpp */,
-				62F0CD5A1E854AC60055BBF4 /* TextObject.hpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -773,7 +762,6 @@
 				CEC8381A1E6DA8AB0033CC10 /* QuadGeometry.hpp */,
 				CEC8381D1E6DA9370033CC10 /* DiscGeometry.hpp */,
 				CEC8381E1E6DA9550033CC10 /* TriGeometry.hpp */,
-				CE06CFDD1E75CB9100FF0D2A /* TextGeometry.hpp */,
 			);
 			name = Geometry2D;
 			sourceTree = "<group>";
@@ -846,7 +834,6 @@
 				CEC8383F1E6DBF9A0033CC10 /* Geometry.cpp */,
 				CEEF73911E6EC03E00B36E03 /* Material.cpp */,
 				6248E9371E72BEF200B17855 /* Camera.cpp */,
-				62F0CD5B1E854C9E0055BBF4 /* TextObject.cpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -856,7 +843,6 @@
 			children = (
 				CEC838431E6DC9F00033CC10 /* QuadGeometry.cpp */,
 				CEC838451E6DCC6E0033CC10 /* TriGeometry.cpp */,
-				CE0287FE1E75CC62001B4DF8 /* TextGeometry.cpp */,
 			);
 			name = Geometry2D;
 			sourceTree = "<group>";
@@ -1076,9 +1062,7 @@
 				6233CEC21E7453020014055F /* UIDelegate.hpp */,
 				CED4057B1E748B2D001ED29B /* GameHUD.hpp */,
 				CED4057E1E7491E5001ED29B /* Options.hpp */,
-				CE06CFDA1E75C91500FF0D2A /* UITextNode.hpp */,
 				CEF242E81E77796600CAC50B /* UIPlusMinus.hpp */,
-				6286AD591E7C18DC00888483 /* TextDrawCall.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1627,7 +1611,6 @@
 				6233CEC31E7453370014055F /* UIDelegate.cpp */,
 				6233CEC71E7474BD0014055F /* planetHUD.cpp */,
 				CED4057F1E74925A001ED29B /* Options.cpp */,
-				CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */,
 				CEF242E91E77798A00CAC50B /* UIPlusMinus.cpp */,
 			);
 			path = UI;
@@ -1739,14 +1722,12 @@
 				CEC838371E6DB1630033CC10 /* Gamepad.cpp in Sources */,
 				6217EF3C1E785BDA003EFAD0 /* Planet.cpp in Sources */,
 				CEC838051E6DA19F0033CC10 /* main.cpp in Sources */,
-				62F0CD5C1E854C9E0055BBF4 /* TextObject.cpp in Sources */,
 				CE720E3C1E7DC1BD0062D240 /* RockSpawner.cpp in Sources */,
 				CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */,
 				CEC8384B1E6DD0020033CC10 /* AACollisionBox2D.cpp in Sources */,
 				CE322F181E80A5BB00593536 /* ChunkCollider.cpp in Sources */,
 				CEC838241E6DAC160033CC10 /* GraphicsEngine.cpp in Sources */,
 				6286AD661E7C2F2500888483 /* AudioObject.cpp in Sources */,
-				CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */,
 				CEC838441E6DC9F00033CC10 /* QuadGeometry.cpp in Sources */,
 				CE1A200F1E78C89000651BB4 /* Rain.cpp in Sources */,
 				6219A7C81E7440AA000E2B92 /* dioramaHUD.cpp in Sources */,
@@ -1763,7 +1744,6 @@
 				CEFFC2F81E759ADD0029F621 /* Texture.cpp in Sources */,
 				CEFFC2F41E759AAF0029F621 /* Shader.cpp in Sources */,
 				CE63ED981E799910000C1972 /* UISlider.cpp in Sources */,
-				CE0288001E75CC62001B4DF8 /* TextGeometry.cpp in Sources */,
 				CEC838461E6DCC6E0033CC10 /* TriGeometry.cpp in Sources */,
 				6248E9381E72BEF200B17855 /* Camera.cpp in Sources */,
 				6233CEC81E7474BD0014055F /* planetHUD.cpp in Sources */,

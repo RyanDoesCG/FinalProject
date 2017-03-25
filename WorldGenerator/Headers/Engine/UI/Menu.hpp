@@ -13,7 +13,6 @@
 #include "PhysicsEngine.hpp"
 #include "GameObject.hpp"
 
-#include "UITextNode.hpp"
 #include "UIBox.hpp"
 
 class Menu: public GameObject {
@@ -25,8 +24,7 @@ class Menu: public GameObject {
     
         void hide ();
         void show ();
-    
-        UITextNode text;
+
         UIBox dioramas;
         UIBox planets;
         UIBox options;

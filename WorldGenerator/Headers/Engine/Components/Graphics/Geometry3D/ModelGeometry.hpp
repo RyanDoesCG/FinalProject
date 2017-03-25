@@ -25,6 +25,8 @@ class ModelGeometry: public Geometry {
     
     private:
         void loadModel   (std::string path);
+        void processNode (aiNode* node, const aiScene* scene);
+        void processMesh (aiMesh* mesh, const aiScene* scene);
     
         std::string filepath;
 };

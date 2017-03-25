@@ -41,10 +41,10 @@ void Game::showPlanet() {
 
 void Game::showDiorama() {
     objects.clear();
-
+    
     objects.push_back (interface);
     objects.push_back (cursor);
-    objects.push_back (new BasicLight(&graphics));
+    //objects.push_back (new BasicLight(&graphics));
     objects.push_back (diorama);
 }
 
@@ -59,19 +59,20 @@ void Game::showTest () {
 void Game::boot () {
     InputManager::initialise(window.asGLFW());
     
+    diorama   = new Diorama(&graphics, &physics);
     interface = new UIDelegate(&graphics, &physics, this);
     cursor    = new Cursor(&graphics, &physics);
-    objects.push_back (interface);
-    objects.push_back (cursor);
     srand(time(0));
     
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
-    ChunkLoader loader = ChunkLoader(&graphics, &physics);
-    objects.push_back(&loader);
+   // ChunkLoader loader = ChunkLoader(&graphics, &physics);
+   // objects.push_back(&loader);
     
-    state = VIEW;
+    showDiorama();
+    
+    state = MENU;
     
     while (window.isAlive()) {
         InputManager::update();

@@ -19,7 +19,7 @@ UIDelegate::UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g):
     gamepad = InputManager::getGamepadHandle();
     mouse   = InputManager::getMouseHandle();
     
-    uiState = infinite;
+    uiState = main_menu;
 }
 
 UIDelegate::~UIDelegate () {
@@ -40,7 +40,7 @@ void UIDelegate::update(State state) {
             pHUD.hide();
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
-                if (mainMenu.dioramas .isSelected()) { uiState = diorama; /*dHUD.diorama = game->makeNewDiorama();*/ game->state = VIEW; /* game->showDiorama(); */ }
+                if (mainMenu.dioramas .isSelected()) { uiState = diorama; /*dHUD.diorama = game->makeNewDiorama();*/ game->state = VIEW;  game->showDiorama();  }
                 if (mainMenu.planets  .isSelected()) { uiState = planet;  /*pHUD.planet = game->makeNewPlanet();*/ game->state = VIEW; /* game->showPlanet(); */ }
                 if (mainMenu.options  .isSelected()) { uiState = options; }
                 if (mainMenu.quit     .isSelected()) { uiState = over; }

@@ -9,7 +9,6 @@
 #include "Menu.hpp"
 
 Menu::Menu (GraphicsEngine* graph, PhysicsEngine* phys):
-    text     (graph),
     dioramas (graph, phys),
     planets  (graph, phys),
     options  (graph, phys),
@@ -61,8 +60,6 @@ void Menu::show () {
 }
 
 void Menu::update (State state) {
-    text.renderText("Hello World", glm::vec2(20, 20), glm::vec4(1.0, 1.0, 0.0, 1.0), 1);
-
     for (UIBox* box : items)
         box->update(state);
 }

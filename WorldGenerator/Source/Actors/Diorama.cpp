@@ -38,7 +38,7 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     terrain->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
     terrain->position = glm::vec3(10, -2, 10);
     terrain->scale    = glm::vec3(10, 10, 10);
-    terrain->wireframe(true);
+    terrain->wireframe(false);
     
     water->colour   = glm::vec4(0.65, 0.7, 0.88, 0.25);
     //water->colour   = glm::vec4(1.0, 0.7, 0.7, 0.25);
