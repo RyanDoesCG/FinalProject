@@ -21,10 +21,12 @@ class ModelGeometry: public Geometry {
         ModelGeometry (const std::string& path);
        ~ModelGeometry ();
     
-        void loadModel   (std::string path);
-        void processNode (aiNode* node, const aiScene* scene);
-        void processMesh (aiMesh* mesh, const aiScene* scene);
+        std::string getPath ();
     
+    private:
+        void loadModel   (std::string path);
+    
+        std::string filepath;
 };
 
 #endif /* ModelGeometry_hpp */

@@ -26,6 +26,7 @@
 		6286AD661E7C2F2500888483 /* AudioObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6286AD651E7C2F2500888483 /* AudioObject.cpp */; };
 		6286AD681E7C329500888483 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6286AD671E7C329500888483 /* AudioToolbox.framework */; };
 		6286AD6B1E7C37A900888483 /* BasicLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6286AD6A1E7C37A900888483 /* BasicLight.cpp */; };
+		62F0CD5C1E854C9E0055BBF4 /* TextObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62F0CD5B1E854C9E0055BBF4 /* TextObject.cpp */; };
 		CE0288001E75CC62001B4DF8 /* TextGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0287FE1E75CC62001B4DF8 /* TextGeometry.cpp */; };
 		CE0288031E75CD81001B4DF8 /* PlaneGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0288021E75CD81001B4DF8 /* PlaneGeometry.cpp */; };
 		CE06CFDC1E75CA2800FF0D2A /* UITextNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE06CFDB1E75CA2800FF0D2A /* UITextNode.cpp */; };
@@ -120,6 +121,9 @@
 		6286AD6A1E7C37A900888483 /* BasicLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicLight.cpp; sourceTree = "<group>"; };
 		629998FB1DE776780059827E /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = ../../../../../../../Library/Frameworks/libassimp.dylib; sourceTree = "<group>"; };
 		62A37E851E1D17EA0052D84E /* FastNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastNoise.h; path = FastNoise/FastNoise.h; sourceTree = "<group>"; };
+		62A5A8C41E8331C5009DCD4E /* ModelCache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ModelCache.hpp; sourceTree = "<group>"; };
+		62F0CD5A1E854AC60055BBF4 /* TextObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TextObject.hpp; path = Graphics/TextObject.hpp; sourceTree = "<group>"; };
+		62F0CD5B1E854C9E0055BBF4 /* TextObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextObject.cpp; path = Graphics/TextObject.cpp; sourceTree = "<group>"; };
 		CE0287FE1E75CC62001B4DF8 /* TextGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextGeometry.cpp; path = Graphics/Geometry2D/TextGeometry.cpp; sourceTree = "<group>"; };
 		CE0288011E75CD75001B4DF8 /* PlaneGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PlaneGeometry.hpp; path = Graphics/Geometry3D/PlaneGeometry.hpp; sourceTree = "<group>"; };
 		CE0288021E75CD81001B4DF8 /* PlaneGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlaneGeometry.cpp; path = Graphics/PlaneGeometry.cpp; sourceTree = "<group>"; };
@@ -746,6 +750,7 @@
 				6248E9361E72B96A00B17855 /* Camera.hpp */,
 				6217EF411E786DFC003EFAD0 /* FlyweightGraphicsObject.hpp */,
 				6217EF421E7871EA003EFAD0 /* FlyweightInstance.hpp */,
+				62F0CD5A1E854AC60055BBF4 /* TextObject.hpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -841,6 +846,7 @@
 				CEC8383F1E6DBF9A0033CC10 /* Geometry.cpp */,
 				CEEF73911E6EC03E00B36E03 /* Material.cpp */,
 				6248E9371E72BEF200B17855 /* Camera.cpp */,
+				62F0CD5B1E854C9E0055BBF4 /* TextObject.cpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -1083,6 +1089,7 @@
 				6217EF431E7873A4003EFAD0 /* Random.hpp */,
 				CE63ED991E799B8E000C1972 /* SafeCounter.hpp */,
 				CE322F121E7F1B8B00593536 /* ShaderCache.hpp */,
+				62A5A8C41E8331C5009DCD4E /* ModelCache.hpp */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1732,6 +1739,7 @@
 				CEC838371E6DB1630033CC10 /* Gamepad.cpp in Sources */,
 				6217EF3C1E785BDA003EFAD0 /* Planet.cpp in Sources */,
 				CEC838051E6DA19F0033CC10 /* main.cpp in Sources */,
+				62F0CD5C1E854C9E0055BBF4 /* TextObject.cpp in Sources */,
 				CE720E3C1E7DC1BD0062D240 /* RockSpawner.cpp in Sources */,
 				CEC8380B1E6DA2AA0033CC10 /* Window.cpp in Sources */,
 				CEC8384B1E6DD0020033CC10 /* AACollisionBox2D.cpp in Sources */,

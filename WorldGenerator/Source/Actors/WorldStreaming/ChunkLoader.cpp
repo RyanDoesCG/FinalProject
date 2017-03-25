@@ -7,6 +7,7 @@
 //
 
 #include "ChunkLoader.hpp"
+#include <numeric>
 #include "Random.hpp"
 
 ChunkLoader::ChunkLoader (GraphicsEngine* g, PhysicsEngine* p) {
@@ -34,20 +35,13 @@ ChunkLoader::ChunkLoader (GraphicsEngine* g, PhysicsEngine* p) {
     for (int x = 0; x <= maxWorldWidth+1; x++) {
         if (x == 0 || x == maxWorldWidth+1) {
             for (int z = 0; z <= maxWorldDepth+1; z++) {
-                Candidate* c = new Candidate(g);
-                c->position = glm::vec3(x * chunkWidth, baseY, z * chunkWidth);
-                candidates.push_back(c);
+                addCandidateAt(glm::vec3(x * chunkWidth, baseY, z * chunkWidth));
             }
         }
         
         else {
-            Candidate* c1 = new Candidate(g);
-            c1->position = glm::vec3(x * chunkWidth, baseY, 0 * chunkWidth);
-            candidates.push_back(c1);
-            
-            Candidate* c2 = new Candidate(g);
-            c2->position = glm::vec3(x * chunkWidth, baseY, (maxWorldWidth+1) * chunkWidth);
-            candidates.push_back(c2);
+            addCandidateAt(glm::vec3(x * chunkWidth, baseY, 0 * chunkWidth));
+            addCandidateAt(glm::vec3(x * chunkWidth, baseY, (maxWorldWidth+1) * chunkWidth));
         }
     }
     
@@ -57,8 +51,8 @@ ChunkLoader::ChunkLoader (GraphicsEngine* g, PhysicsEngine* p) {
     int sum = 0;
     for (Chunk* c : chunks) sum += c->distanceToCamera;
     sum /= chunks.size();
-    sum -= 2;
-    
+    sum -= 1;
+
     distanceThreshold = sum;
     
     // translate to centered
@@ -79,32 +73,36 @@ void ChunkLoader::update(State state) {
 }
 
 void ChunkLoader::seekCandidates() {
-    //candidates.clear();
+    candidates.clear();
     
     // any chunk edge not touching another edge is a candidate
     for (Chunk* c : chunks) {
-    /*
-        if (!c->leftSideContact   ()) addCandidateAt(glm::vec3(c->position.x - chunkWidth, c->position.y, c->position.z));
-        if (!c->rightSideContact  ()) addCandidateAt(glm::vec3(c->position.x + chunkWidth, c->position.y, c->position.z));
-        if (!c->topSideContact    ()) addCandidateAt(glm::vec3(c->position.x, c->position.y, c->position.z + chunkWidth));
-        if (!c->bottomSideContact ()) addCandidateAt(glm::vec3(c->position.x, c->position.y, c->position.z - chunkWidth));
-    */
+        if (/* ! */ c->leftSideContact   ()) addCandidateAt(glm::vec3(c->position.x - chunkWidth, c->position.y, c->position.z));
+        if (/* ! */ c->rightSideContact  ()) addCandidateAt(glm::vec3(c->position.x + chunkWidth, c->position.y, c->position.z));
+        if (/* ! */ c->topSideContact    ()) addCandidateAt(glm::vec3(c->position.x, c->position.y, c->position.z + chunkWidth));
+        if (/* ! */ c->bottomSideContact ()) addCandidateAt(glm::vec3(c->position.x, c->position.y, c->position.z - chunkWidth));
     }
     
+    // sort
+    for (Candidate* c : candidates) c->distanceToCamera = glm::length(c->position - cam->position);
+    std::sort(candidates.begin(), candidates.end(),
+        [] (Candidate* a, Candidate* b) -> bool {
+            return a->distanceToCamera > b->distanceToCamera;
+        }
+    );
 }
 
 void ChunkLoader::fillCandidates() {
     for (Chunk* c : chunks) c->distanceToCamera = glm::length(c->position - cam->position);
     
     // find any chunks violating the threshold
-    for (Chunk* c : chunks)
+    // move them to candidate spaces
+    for (Chunk* c : chunks) {
         if (c->distanceToCamera > distanceThreshold && !candidates.empty()) {
             c->recycleAt(candidates.back()->position);
             candidates.pop_back();
         }
-    
-    // move them to candidate spaces
-    
+    }
 }
 
 void ChunkLoader::addCandidateAt(glm::vec3 pos) {

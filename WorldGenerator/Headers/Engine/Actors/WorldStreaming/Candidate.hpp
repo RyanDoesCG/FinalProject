@@ -23,7 +23,7 @@ class Candidate: public GameObject {
     
         float distanceToCamera;
     
-        bool operator<(const Candidate& that) const;
+        bool operator < (const Candidate& that) const;
     
     private:
         GraphicsObject* graphics;

@@ -15,10 +15,10 @@ uniform mat4 projection;
 
 uniform vec4 colour;
 
-float rand      (vec2 c) { return fract(sin(dot(c.xy ,vec2(12.9898,78.233))) * 43758.5453); }
+float rand (vec2 c) { return /*fract(sin(dot(c.xy ,vec2(12.9898,78.233))) * 43758.5453)*/ 0; }
 
 void main (void) {
-    gl_Position = projection * view * model * vec4(position.x, position.y + (0.2 * rand (vec2(position.x, position.z))), position.z, 1.0);
+    gl_Position = projection * view * model * vec4(position.x, position.y + (0.05 * rand (vec2(position.x, position.z))), position.z, 1.0);
     
     frag_worldPos = model * vec4(position.x, position.y, position.z, 1.0);
     frag_colour = colour;

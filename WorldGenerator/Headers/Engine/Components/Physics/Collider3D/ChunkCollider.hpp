@@ -14,7 +14,7 @@
 
 class ChunkCollider: public PhysicsObject3D {
     public:
-        ChunkCollider (glm::vec3 pos);
+        ChunkCollider (glm::vec3 pos, glm::vec2 size);
        ~ChunkCollider ();
     
         void simulate (double time) override;
@@ -39,6 +39,11 @@ class ChunkCollider: public PhysicsObject3D {
         bool contactRight;
         bool contactTop;
         bool contactBottom;
+    
+        bool testLeft    (ChunkCollider* that);
+        bool testRight   (ChunkCollider* that);
+        bool testTop     (ChunkCollider* that);
+        bool testBottom  (ChunkCollider* that);
 };
 
 #endif /* ChunkCollider_hpp */

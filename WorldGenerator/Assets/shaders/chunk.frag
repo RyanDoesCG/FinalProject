@@ -16,7 +16,7 @@ void main (void) {
     vec4 col = frag_colour;
     
     if (magnitude(viewPosition - vec3(frag_worldPos.xyz)) > renderDistance) {
-        col.a = col.a - (magnitude(viewPosition - vec3 (frag_worldPos.xyz)) * 0.15);
+        //col.a = col.a - (magnitude(viewPosition - vec3 (frag_worldPos.xyz)) * 0.15);
     }
     
     color = col;
