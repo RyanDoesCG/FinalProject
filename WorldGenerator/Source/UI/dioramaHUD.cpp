@@ -7,21 +7,24 @@
 //
 
 #include "dioramaHUD.hpp"
+#include "ShaderCache.hpp"
+#include "QuadGeometry.hpp"
 
 dioramaHUD::dioramaHUD  (GraphicsEngine* graph, PhysicsEngine* phys, Diorama* d):
+    flag           (new QuadGeometry(), new Material(ShaderCache::loadBasicShader("object_textured"))),
     GameHUD        (graph, phys),
     renderDistance (graph, phys),
     amplitude      (graph, phys),
     seaLevel       (graph, phys),
-    example3       (graph, phys),
-    example4       (graph, phys) {
+    example3       (graph, phys) {
     
     //amplitude.scaleTo(glm::vec3(1, 1, 1));
-    renderDistance.moveTo(glm::vec3(-2, 1.25, 0.1));
-    amplitude.moveTo(glm::vec3(-2, 0.75, 0.1));
-    seaLevel.moveTo(glm::vec3(-2, 0.25, 0.1));
-    example3.moveTo(glm::vec3(-2, -0.25, 0.1));
-    example4.moveTo(glm::vec3(-2, -0.75, 0.1));
+    renderDistance.moveTo(glm::vec3(-2, 0.75, 0.1));
+    amplitude.moveTo(glm::vec3(-2, 0.25, 0.1));
+    seaLevel.moveTo(glm::vec3(-2, -0.25, 0.1));
+    example3.moveTo(glm::vec3(-2, -0.75, 0.1));
+    
+   // graph->add(flag);
         
     diorama = d;
 }
@@ -49,8 +52,6 @@ void dioramaHUD::hide () {
     example3.deactivatePhysics();
     example3.isHidden = true;
     
-    example4.deactivatePhysics();
-    example4.isHidden = true;
 }
 
 void dioramaHUD::show () {
@@ -73,9 +74,7 @@ void dioramaHUD::show () {
     
     example3.activatePhysics();
     example3.isHidden = false;
-    
-    example4.activatePhysics();
-    example4.isHidden = false;
+
 }
 
 void dioramaHUD::update (State state) {
@@ -89,7 +88,6 @@ void dioramaHUD::update (State state) {
     amplitude.update(state);
     seaLevel.update(state);
     example3.update(state);
-    example4.update(state);
     
     diorama->setRenderDistance (renderDistance.getValue() * 1.53);
     diorama->setAmplitude      (amplitude.getValue() * 0.05);

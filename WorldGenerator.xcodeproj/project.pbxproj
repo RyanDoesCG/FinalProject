@@ -155,6 +155,13 @@
 		CE720E3B1E7DC1BD0062D240 /* RockSpawner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RockSpawner.cpp; sourceTree = "<group>"; };
 		CE7CA7351E78D2B4005E9345 /* HeightMap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeightMap.hpp; sourceTree = "<group>"; };
 		CE7CA7361E78D3A9005E9345 /* HeightMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeightMap.cpp; sourceTree = "<group>"; };
+		CEAD93781E86C9F2004D7D8C /* Biome.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Biome.hpp; path = Biomes/Biome.hpp; sourceTree = "<group>"; };
+		CEAD93791E86CA93004D7D8C /* Desert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Desert.hpp; path = Biomes/Desert.hpp; sourceTree = "<group>"; };
+		CEC396821E86E1B500F0B28E /* Arctic.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Arctic.hpp; path = Biomes/Arctic.hpp; sourceTree = "<group>"; };
+		CEC396831E86E1DC00F0B28E /* Forrest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Forrest.hpp; path = Biomes/Forrest.hpp; sourceTree = "<group>"; };
+		CEC396841E86E20800F0B28E /* Volcanic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Volcanic.hpp; path = Biomes/Volcanic.hpp; sourceTree = "<group>"; };
+		CEC396851E86E22400F0B28E /* Alien.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Alien.hpp; path = Biomes/Alien.hpp; sourceTree = "<group>"; };
+		CEC396861E86E4E700F0B28E /* Flag.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Flag.hpp; sourceTree = "<group>"; };
 		CEC838041E6DA19F0033CC10 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		CEC838061E6DA1F90033CC10 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		CEC838071E6DA2010033CC10 /* Window.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
@@ -727,6 +734,19 @@
 			name = FastNoise;
 			sourceTree = "<group>";
 		};
+		CEAD93771E86C9DB004D7D8C /* Biomes */ = {
+			isa = PBXGroup;
+			children = (
+				CEAD93781E86C9F2004D7D8C /* Biome.hpp */,
+				CEAD93791E86CA93004D7D8C /* Desert.hpp */,
+				CEC396821E86E1B500F0B28E /* Arctic.hpp */,
+				CEC396831E86E1DC00F0B28E /* Forrest.hpp */,
+				CEC396841E86E20800F0B28E /* Volcanic.hpp */,
+				CEC396851E86E22400F0B28E /* Alien.hpp */,
+			);
+			name = Biomes;
+			sourceTree = "<group>";
+		};
 		CEC838101E6DA4F40033CC10 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -993,6 +1013,7 @@
 		CEDD0C101E00AA0A0078469C /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				CEAD93771E86C9DB004D7D8C /* Biomes */,
 				6209A34A1E802EB5002CA4CB /* WorldStreaming */,
 				CE5A22281E7316FA00235110 /* GameObject.hpp */,
 				CE5A222B1E7341BD00235110 /* EngineTest.hpp */,
@@ -1007,6 +1028,7 @@
 				CE720E371E7DBE260062D240 /* TreeSpawner.hpp */,
 				CE720E3A1E7DC1560062D240 /* RockSpawner.hpp */,
 				CE0F16DF1E7DDEC600635216 /* Butterfly.hpp */,
+				CEC396861E86E4E700F0B28E /* Flag.hpp */,
 			);
 			path = Actors;
 			sourceTree = "<group>";

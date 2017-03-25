@@ -26,6 +26,7 @@ Game::Game ():
     graphics  (WIDTH, HEIGHT),
     physics   () {
         
+    srand(time(0));
     graphics.initPostProcessing();
 }
 
@@ -62,8 +63,6 @@ void Game::boot () {
     diorama   = new Diorama(&graphics, &physics);
     interface = new UIDelegate(&graphics, &physics, this);
     cursor    = new Cursor(&graphics, &physics);
-    srand(time(0));
-    
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */

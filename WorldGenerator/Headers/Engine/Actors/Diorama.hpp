@@ -20,6 +20,9 @@
 #include "RockSpawner.hpp"
 #include "HeightMap.hpp"
 
+#include "Desert.hpp"
+#include "Alien.hpp"
+
 class Diorama: public GameObject {
     public:
         Diorama (GraphicsEngine* g, PhysicsEngine* p);
@@ -33,6 +36,8 @@ class Diorama: public GameObject {
     
     private:
         void updateUniforms ();
+    
+        Biome* biome = new Alien();
     
         GraphicsObject* terrain;
         GraphicsObject* water;

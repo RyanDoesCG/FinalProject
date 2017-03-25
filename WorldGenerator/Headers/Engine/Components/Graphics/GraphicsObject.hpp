@@ -27,8 +27,8 @@ class GraphicsObject {
         void setID (int x) { id = x; }
         int  getID ()      { return id; }
     
-        void addUniform (std::string title, GLfloat value) { uniforms.push_back(uniform1f(title, value)); }
-    
+        void addUniform1f (std::string title, GLfloat value) { uniforms.push_back(uniform1f(title, value)); }
+        
         virtual void draw (Camera* cam) {
             material->bind();
             

@@ -22,8 +22,8 @@ class ObjectSpawner: public GameObject {
     
         virtual void update (State state) {}
     
-        void addUniform (std::string name, GLfloat value) {
-            sprite->addUniform(name, value);
+        void addUniform1f (std::string name, GLfloat value) {
+            sprite->addUniform1f(name, value);
         }
     
     protected:

@@ -25,11 +25,11 @@ class dioramaHUD: public GameHUD {
         virtual void hide   () override;
         virtual void show   () override;
     
+        GraphicsObject flag;
         UISlider renderDistance;
         UISlider amplitude;
         UISlider seaLevel;
         UISlider example3;
-        UISlider example4;
 
         Diorama* diorama;
 };

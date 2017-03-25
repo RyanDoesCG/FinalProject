@@ -32,15 +32,16 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     
     // Scale Fucks Placement
     // Geometry Shader???????????
-    trees = new TreeSpawner (g, "trees/tree", heightmap, glm::vec4(0.05, 0.1, 0.0, 1.0), glm::vec3(0.02), 100);
-    rocks = new RockSpawner (g, "trees/rock", heightmap, glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 100);
+    trees = new TreeSpawner (g, biome->getTreePath(), heightmap, glm::vec4(0.05, 0.1, 0.0, 1.0), glm::vec3(0.02), 100);
+    rocks = new RockSpawner (g, biome->getRockPath(), heightmap, glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 100);
     
-    terrain->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
+    
+    terrain->colour   = biome->getPrimaryColour();
     terrain->position = glm::vec3(10, -2, 10);
     terrain->scale    = glm::vec3(10, 10, 10);
     terrain->wireframe(false);
     
-    water->colour   = glm::vec4(0.65, 0.7, 0.88, 0.25);
+    water->colour   = biome->getUnderwaterColour();
     //water->colour   = glm::vec4(1.0, 0.7, 0.7, 0.25);
     water->position = glm::vec3(10, -2, 10);
     water->scale    = glm::vec3(10, 10, 10);
@@ -82,21 +83,23 @@ void Diorama::setSeaLevel(GLfloat val) {
 }
 
 void Diorama::updateUniforms() {
-    terrain->addUniform("renderDistance", renderDistance);
-    terrain->addUniform("seaLevel", seaLevel);
-    terrain->addUniform("amp", amp);
+    // SMOOTHING VALUE?
+
+    terrain->addUniform1f("renderDistance", renderDistance);
+    terrain->addUniform1f("seaLevel", seaLevel);
+    terrain->addUniform1f("amp", amp);
     
-    water->addUniform("renderDistance", renderDistance);
-    water->addUniform("seaLevel", seaLevel);
-    water->addUniform("time", glfwGetTime());
+    water->addUniform1f("renderDistance", renderDistance);
+    water->addUniform1f("seaLevel", seaLevel);
+    water->addUniform1f("time", glfwGetTime());
     
-    rocks->addUniform("renderDistance", renderDistance);
-    rocks->addUniform("seaLevel", seaLevel);
-    rocks->addUniform("amp", amp);
+    rocks->addUniform1f("renderDistance", renderDistance);
+    rocks->addUniform1f("seaLevel", seaLevel);
+    rocks->addUniform1f("amp", amp);
     
-    trees->addUniform("renderDistance", renderDistance);
-    trees->addUniform("seaLevel", seaLevel);
-    trees->addUniform("amp", amp);
+    trees->addUniform1f("renderDistance", renderDistance);
+    trees->addUniform1f("seaLevel", seaLevel);
+    trees->addUniform1f("amp", amp);
     
 }
 
