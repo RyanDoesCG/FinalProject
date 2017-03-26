@@ -30,6 +30,9 @@ class Diorama: public GameObject {
     
         virtual void update (State state) override;
     
+        void removeFromWorld ();
+        void addToWorld ();
+    
         void setRenderDistance (GLfloat val);
         void setAmplitude      (GLfloat val);
         void setSeaLevel       (GLfloat val);
@@ -38,6 +41,8 @@ class Diorama: public GameObject {
         void updateUniforms ();
     
         Biome* biome = new Alien();
+    
+        GraphicsEngine* graphEng;
     
         GraphicsObject* terrain;
         GraphicsObject* water;

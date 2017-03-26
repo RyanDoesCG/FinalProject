@@ -26,10 +26,10 @@ public:
     std::string getRockPath () override { return rock; }
     
 private:
-    const vec4 primaryColour    = vec4(0.874, 0.815, 0.705, 1.0);
-    const vec4 secondaryColour  = vec4(0.937, 0.776, 0.576, 1.0);
-    const vec4 thirdaryColour   = vec4(0.827, 0.576, 0.274, 1.0);
-    const vec4 underwaterColour = vec4(0.670, 0.686, 0.631, 0.25);
+    const vec4 primaryColour    = vec4(0.874, 0.815, 0.705, 1.0);   // WRONG
+    const vec4 secondaryColour  = vec4(0.937, 0.776, 0.576, 1.0);   // WRONG
+    const vec4 thirdaryColour   = vec4(0.827, 0.576, 0.274, 1.0);   // WRONG
+    const vec4 underwaterColour = vec4(0.670, 0.686, 0.631, 0.25);  // WRONG
     const vec4 mountainColour   = getSecondaryColour();
     
     const std::string tree = "Volcanic/tree";

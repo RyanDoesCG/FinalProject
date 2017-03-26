@@ -23,7 +23,12 @@ class Planet: public GameObject {
     
         virtual void update (State state) override;
     
+        void removeFromWorld ();
+        void addToWorld ();
+    
+    
     private:
+        GraphicsEngine* graphEng;
         GraphicsObject* terrain;
         GraphicsObject* water;
     

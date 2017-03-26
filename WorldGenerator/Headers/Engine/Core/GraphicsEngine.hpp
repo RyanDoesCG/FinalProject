@@ -32,6 +32,10 @@ class GraphicsEngine {
         void addLight (GraphicsObject* object);
         void addToUI  (GraphicsObject* object);
     
+        void remove       (int ID);
+        void removeLight  (int ID);
+        void removeFromUI (int ID);
+    
         Camera* getSceneCamera();
     
     private:

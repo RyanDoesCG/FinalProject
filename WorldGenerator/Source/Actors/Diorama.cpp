@@ -18,6 +18,7 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     terrain = new GraphicsObject (
         new ModelGeometry ("plane/plane512"),
         new Material      (ShaderCache::loadBasicShader("plane_vertextextured"), heightmap->getID() )
+       // new Material      (ShaderCache::loadGeometryShader("plane_vertextextured_recalc"), heightmap->getID() )
     );
     
     water = new GraphicsObject (
@@ -46,6 +47,8 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     water->position = glm::vec3(10, -2, 10);
     water->scale    = glm::vec3(10, 10, 10);
     water->wireframe(false);
+    
+    graphEng = g;
     
     g->add(terrain);
     g->add(water);
@@ -101,6 +104,19 @@ void Diorama::updateUniforms() {
     trees->addUniform1f("seaLevel", seaLevel);
     trees->addUniform1f("amp", amp);
     
+}
+
+void Diorama::removeFromWorld () {
+    graphEng->remove(terrain->getID());
+    graphEng->remove(water->getID());
+    
+    graphEng->remove(trees->getID());
+    graphEng->remove(rocks->getID());
+}
+
+void Diorama::addToWorld () {
+    graphEng->add(terrain);
+    graphEng->add(water);
 }
 
 void Diorama::update(State state) {

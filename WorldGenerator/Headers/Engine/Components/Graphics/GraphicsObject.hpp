@@ -25,7 +25,7 @@ class GraphicsObject {
        ~GraphicsObject () { delete geometry; delete material; }
     
         void setID (int x) { id = x; }
-        int  getID ()      { return id; }
+        const int getID () const { return id; }
     
         void addUniform1f (std::string title, GLfloat value) { uniforms.push_back(uniform1f(title, value)); }
         

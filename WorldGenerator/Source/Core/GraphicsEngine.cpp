@@ -148,8 +148,35 @@ void GraphicsEngine::render(State s) {
 }
 
 void GraphicsEngine::add      (GraphicsObject *object) { object->setID(scene.size()); scene.push_back(object); }
-void GraphicsEngine::addLight (GraphicsObject *object) { object->setID(scene.size()); lights.push_back(object); for (GraphicsObject* o : scene) o->setLightSource(object); }
-void GraphicsEngine::addToUI  (GraphicsObject *object) { object->setID(scene.size()); ui.push_back(object); }
+void GraphicsEngine::addLight (GraphicsObject *object) { object->setID(lights.size()); lights.push_back(object); for (GraphicsObject* o : scene) o->setLightSource(object); }
+void GraphicsEngine::addToUI  (GraphicsObject *object) { object->setID(ui.size()); ui.push_back(object); }
+
+void GraphicsEngine::remove       (int ID) {
+    for (int i = 0; i < scene.size(); i++)
+        if (scene.at(i)->getID() == ID)
+            scene.erase(scene.begin() + i);
+    
+    for (int i = 0; i < scene.size(); i++)
+        scene.at(i)->setID(i);
+}
+
+void GraphicsEngine::removeLight  (int ID) {
+    for (int i = 0; i < lights.size(); i++)
+        if (lights.at(i)->getID() == ID)
+            lights.erase(lights.begin() + i);
+    
+    for (int i = 0; i < lights.size(); i++)
+        lights.at(i)->setID(i);
+}
+
+void GraphicsEngine::removeFromUI (int ID) {
+    for (int i = 0; i < ui.size(); i++)
+        if (ui.at(i)->getID() == ID)
+            ui.erase(ui.begin() + i);
+    
+    for (int i = 0; i < ui.size(); i++)
+        ui.at(i)->setID(i);
+}
 
 void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(sceneCamera); for (GraphicsObject* light : lights) light->draw(sceneCamera); }
 void GraphicsEngine::renderUI    () { for (GraphicsObject* object : ui)    object->draw(frameCamera); }

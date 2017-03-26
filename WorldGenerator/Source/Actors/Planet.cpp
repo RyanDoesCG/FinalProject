@@ -23,7 +23,7 @@ Planet::Planet (GraphicsEngine* g) {
     terrain->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
     terrain->position = glm::vec3(0, 0, -20);
     terrain->scale    = glm::vec3(10, 10, 10);
-    terrain->wireframe(true);
+    terrain->wireframe(false);
     
     //water->colour   = glm::vec4(0.65, 0.7, 0.88, 0.25);
     water->colour   = glm::vec4(1.0, 0.7, 0.7, 0.25);
@@ -34,6 +34,8 @@ Planet::Planet (GraphicsEngine* g) {
     g->add(terrain);
     g->add(water);
     
+    graphEng = g;
+    
     mouse = InputManager::getMouseHandle();
     
     terrain->rotation.x = 0.25;
@@ -41,10 +43,25 @@ Planet::Planet (GraphicsEngine* g) {
 
 Planet::~Planet () {}
 
+void Planet::removeFromWorld () {
+    graphEng->remove(terrain->getID());
+    graphEng->remove(water->getID());
+    
+    //graphEng->remove(trees->getID());
+    //graphEng->remove(rocks->getID());
+}
+
+void Planet::addToWorld () {
+    graphEng->add(terrain);
+    graphEng->add(water);
+}
+
+
 void Planet::update(State state) {
     
     switch (state) {
         case MENU: {
+        /*
             GLfloat restx = 0;
             if (terrain->position.x > restx) { terrain->position.x -= (restx - terrain->position.x) * -0.05; }
             if (water->position.x > restx) { water->position.x -= (restx - water->position.x) * -0.05; }
@@ -52,10 +69,12 @@ void Planet::update(State state) {
             velocity.y += 0.0001;
             terrain->rotation += velocity;
             velocity *= 0.8;
+        */
             break;
         }
             
         case VIEW: {
+        /*
             GLfloat restx = 6;
             if (terrain->position.x < restx) { terrain->position.x += (restx - terrain->position.x) * 0.05; }
             if (water->position.x   < restx) { water->position.x   += (restx - water->position.x) * 0.05; }
@@ -71,6 +90,7 @@ void Planet::update(State state) {
             
             terrain->rotation += velocity;
             velocity *= 0.8;
+        */
             break;
         }
     }
