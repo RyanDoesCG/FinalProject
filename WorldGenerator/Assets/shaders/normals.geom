@@ -17,7 +17,7 @@ void main(void){
         vec3 normal = geom_normal[i];
         
         // draw point
-        gl_Position = projection * view * model * vec4(position.xyz, 1.0);
+        gl_Position = vec4(position.xyz, 1.0);
         colour = vec4(0.0, 0.0, 1.0, 1.0);
         EmitVertex();
         

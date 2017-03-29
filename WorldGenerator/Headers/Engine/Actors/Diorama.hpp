@@ -40,7 +40,7 @@ class Diorama: public GameObject {
     private:
         void updateUniforms ();
     
-        Biome* biome = new Alien();
+        Biome* biome = new Desert ();
     
         GraphicsEngine* graphEng;
     

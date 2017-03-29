@@ -22,8 +22,15 @@ class Desert : public Biome {
         vec4 getUnderwaterColour () override { return Desert::underwaterColour; }; // under water
         vec4 getMountainColour   () override { return Desert::mountainColour; };
 
+        glm::vec4 getTreeColour () override { return treeColour; }
         std::string getTreePath () override { return tree; }
+        int getMaxTreeCount     () override { return maxTreeCount; }
+        int getMinTreeCount     () override { return minTreeCount; }
+    
+        glm::vec4 getRockColour () override { return treeColour; }
         std::string getRockPath () override { return rock; }
+        int getMaxRockCount     () override { return maxTreeCount; }
+        int getMinRockCount     () override { return minTreeCount; }
 
     private:
         const vec4 primaryColour    = vec4(0.874, 0.815, 0.705, 1.0);
@@ -32,8 +39,15 @@ class Desert : public Biome {
         const vec4 underwaterColour = vec4(0.670, 0.686, 0.631, 0.25);
         const vec4 mountainColour   = getSecondaryColour();
     
+        const vec4 treeColour  = glm::vec4(0);
         const std::string tree = "Desert/tree";
+        const int maxTreeCount = 0;
+        const int minTreeCount = 0;
+    
+        const vec4 rockColour  = glm::vec4(0);
         const std::string rock = "Desert/rock";
+        const int maxRockCount = 0;
+        const int minRockCount = 0;
 };
 
 #endif /* Desert_hpp */

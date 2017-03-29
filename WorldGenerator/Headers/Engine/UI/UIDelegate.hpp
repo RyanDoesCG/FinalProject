@@ -45,6 +45,7 @@ class UIDelegate: public GameObject {
         dioramaHUD  dHUD;
         planetHUD   pHUD;
     
+        Keyboard* keyboard;
         Gamepad* gamepad;
         Mouse* mouse;
     

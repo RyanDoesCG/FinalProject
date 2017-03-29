@@ -21,10 +21,12 @@ float generateHeight(){
     return component1 + component2;
 }
 
+float rand      (vec2 c) { return fract(sin(dot(c.xy ,vec2(12.9898,78.233))) * 43758.5453); }
+
 void main() {
-    float height = generateHeight();
+    float height = generateHeight() + (rand(vec2(time * AMPLITUDE, (model * vec4(position, 1.0)).z)) * 0.00008);
     
     // set position
-    gl_Position = model * vec4(position.x, position.y +     height, position.z, 1.0f);
+    gl_Position = model * vec4(position.x, position.y + height, position.z, 1.0f);
     
 }

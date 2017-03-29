@@ -23,13 +23,27 @@ public:
     vec4 getUnderwaterColour () override { return vec4(fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), 0.25); }; // under water
     vec4 getMountainColour   () override { return vec4(fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), 1.0); };
     
+    glm::vec4 getTreeColour () override { return treeColour; }
     std::string getTreePath () override { return tree; }
-    std::string getRockPath () override { return rock; }
+    int getMaxTreeCount     () override { return maxTreeCount; }
+    int getMinTreeCount     () override { return minTreeCount; }
+    
+    glm::vec4 getRockColour () override { return treeColour; }
+    std::string getRockPath () override { return tree; }
+    int getMaxRockCount     () override { return maxTreeCount; }
+    int getMinRockCount     () override { return minTreeCount; }
     
 private:
 
-    const std::string tree = "Desert/tree";
-    const std::string rock = "Desert/rock";
+    const vec4 treeColour  = glm::vec4(0);
+    const std::string tree = "Alien/tree";
+    const int maxTreeCount = 0;
+    const int minTreeCount = 0;
+    
+    const vec4 rockColour  = glm::vec4(0);
+    const std::string rock = "Alien/rock";
+    const int maxRockCount = 0;
+    const int minRockCount = 0;
 };
 
 #endif /* Alien_hpp */

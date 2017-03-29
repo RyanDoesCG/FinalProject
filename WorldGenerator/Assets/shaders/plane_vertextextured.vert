@@ -13,10 +13,8 @@ uniform mat4 view;
 uniform mat4 projection;
 
 uniform vec4 colour;
-
 uniform vec3 viewPosition;
 uniform sampler2D tex;
-
 uniform float renderDistance;
 uniform float seaLevel;
 uniform float amp;

@@ -16,6 +16,7 @@ UIDelegate::UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g):
     
     game = g;
     
+    keyboard = InputManager::getKeyboardHandle();
     gamepad = InputManager::getGamepadHandle();
     mouse   = InputManager::getMouseHandle();
     
@@ -71,6 +72,21 @@ void UIDelegate::update(State state) {
                 //gamepad->buttonHandled(GAMEPAD_BUTTON_A);
                 //mouse->leftButtonHandled();
             }
+            
+            if (keyboard->isKeyDown(GLFW_KEY_SPACE)) {
+                static bool hidden = false;
+                
+                if (!hidden) {
+                    dHUD.hide();
+                    hidden = true;
+                }
+                
+                if (hidden) {
+                    dHUD.show();
+                    hidden = false;
+                }
+            }
+            
             break;
         }
             

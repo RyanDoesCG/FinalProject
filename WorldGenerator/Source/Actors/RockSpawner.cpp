@@ -38,7 +38,7 @@ RockSpawner::RockSpawner ( GraphicsEngine* graph, std::string path, HeightMap* m
     
         for (int i = 0; i < 50; i++) {
             glm::vec3 position = glm::vec3(point.x + betterRand() * 0.2, 0, point.z + betterRand() * 0.2);
-            glm::vec3 rotation = glm::vec3(0);
+            glm::vec3 rotation = glm::vec3(0); //(betterRand(), betterRand(), betterRand());
             glm::vec4 colour   = col * glm::vec4(0.75 + (fmod(unsignedRand(), 0.5)));
             glm::vec3 scale    = scl;
             

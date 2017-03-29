@@ -22,8 +22,15 @@ public:
     vec4 getUnderwaterColour () override { return Arctic::underwaterColour; }; // under water
     vec4 getMountainColour   () override { return Arctic::mountainColour; };
     
+    glm::vec4 getTreeColour () override { return treeColour; }
     std::string getTreePath () override { return tree; }
-    std::string getRockPath () override { return rock; }
+    int getMaxTreeCount     () override { return maxTreeCount; }
+    int getMinTreeCount     () override { return minTreeCount; }
+    
+    glm::vec4 getRockColour () override { return treeColour; }
+    std::string getRockPath () override { return tree; }
+    int getMaxRockCount     () override { return maxTreeCount; }
+    int getMinRockCount     () override { return minTreeCount; }
     
 private:
     const vec4 primaryColour    = vec4(0.874, 0.815, 0.705, 1.0); // WRONG
@@ -31,9 +38,16 @@ private:
     const vec4 thirdaryColour   = vec4(0.827, 0.576, 0.274, 1.0); // wRONG
     const vec4 underwaterColour = vec4(0.670, 0.686, 0.631, 0.25); // WRONG
     const vec4 mountainColour   = getSecondaryColour();
-    
+
+    const vec4 treeColour  = glm::vec4(0);
     const std::string tree = "Arctic/tree";
+    const int maxTreeCount = 0;
+    const int minTreeCount = 0;
+    
+    const vec4 rockColour  = glm::vec4(0);
     const std::string rock = "Arctic/rock";
+    const int maxRockCount = 0;
+    const int minRockCount = 0;
 };
 
 #endif /* Arctic_hpp */

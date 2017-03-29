@@ -18,8 +18,8 @@
 
 #include <algorithm>
 
-#define WIDTH 1920 * 0.5
-#define HEIGHT 1080 * 0.5
+#define WIDTH 1920
+#define HEIGHT 1080
 
 Game::Game ():
     window    (WIDTH, HEIGHT),
@@ -53,6 +53,7 @@ void Game::showTest () {
 void Game::boot () {
     InputManager::initialise(window.asGLFW());
     
+    /*
     diorama   = new Diorama(&graphics, &physics);
     planet    = new Planet(&graphics);
     
@@ -64,16 +65,21 @@ void Game::boot () {
     objects.push_back (planet);
     objects.push_back (interface);
     objects.push_back (cursor);
-    
+    */
+     
+     
     /* * * * * * * * * * * * * * * * *
      *  Objects
      * * * * * * * * * * * * * * * * */
    // ChunkLoader loader = ChunkLoader(&graphics, &physics);
    // objects.push_back(&loader);
     
-    showPlanet();
+   // showDiorama ();
     
-    state = MENU;
+    EngineTest cube = EngineTest(&graphics, &physics);
+    objects.push_back(&cube);
+    
+    state = VIEW;
     
     while (window.isAlive()) {
         InputManager::update();

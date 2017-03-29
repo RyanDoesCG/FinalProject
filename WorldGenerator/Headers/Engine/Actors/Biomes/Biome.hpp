@@ -5,23 +5,29 @@
 //  Created by user on 25/03/2017.
 //  Copyright © 2017 Dissertation. All rights reserved.
 //
-
 #ifndef Biome_hpp
 #define Biome_hpp
 
-using namespace glm;
-
 class Biome {
     public:
-        virtual vec4 getPrimaryColour    () = 0; // above water
-        virtual vec4 getSecondaryColour  () = 0; // above water
-        virtual vec4 getThirdaryColour   () = 0;
+        // landscape colour
+        virtual glm::vec4 getPrimaryColour    () = 0;
+        virtual glm::vec4 getSecondaryColour  () = 0;
+        virtual glm::vec4 getThirdaryColour   () = 0;
+        virtual glm::vec4 getUnderwaterColour () = 0;
+        virtual glm::vec4 getMountainColour   () = 0;
     
-        virtual vec4 getUnderwaterColour () = 0; // under water
-        virtual vec4 getMountainColour   () = 0;
+        // tree colour and placement data
+        virtual glm::vec4 getTreeColour       () = 0;
+        virtual std::string getTreePath       () = 0;
+        virtual int getMaxTreeCount           () = 0;
+        virtual int getMinTreeCount           () = 0;
     
-        virtual std::string getTreePath () = 0;
-        virtual std::string getRockPath () = 0;
+        // rock colour and placement data
+        virtual glm::vec4 getRockColour       () = 0;
+        virtual std::string getRockPath       () = 0;
+        virtual int getMaxRockCount           () = 0;
+        virtual int getMinRockCount           () = 0;
     
 };
 

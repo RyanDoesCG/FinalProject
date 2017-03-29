@@ -21,14 +21,14 @@
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
-        new CubeGeometry  (),
+        new ModelGeometry ("sphere/sphere"),
         new Material      (ShaderCache::loadBasicShader("object_lit"))
     );
     
     graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
-    graphics->position = glm::vec3(0, 0, -20);
+    graphics->position = glm::vec3(0, 0, -40);
     graphics->scale    = glm::vec3(10, 10, 10);
-    graphics->wireframe(true);
+    graphics->wireframe(false);
     
     g->add(graphics);
     
