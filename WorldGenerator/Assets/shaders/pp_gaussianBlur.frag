@@ -9,7 +9,7 @@ out vec4 color;
 
 uniform sampler2D tex;
 
-const float offset = 1.0 / 300;
+const float offset = 1.0 / 230;
 
 void main (void) {
 

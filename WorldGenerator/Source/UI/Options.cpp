@@ -37,6 +37,8 @@ Options::Options (GraphicsEngine* graph, PhysicsEngine* phys):
     items.at(3)->scaleTo (glm::vec3(1, 0.15, 0));
     items.at(3)->moveTo  (glm::vec3(0.0, -1.25, 10));
     items.at(3)->update  (MENU);
+        
+    engine = graph;
 }
 
 Options::~Options () {}
@@ -58,6 +60,7 @@ void Options::show () {
 }
 
 void Options::update (State state) {
+    
     for (UIBox* box : items)
         box->update(state);
 }

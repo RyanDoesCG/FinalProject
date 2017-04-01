@@ -1,21 +1,21 @@
 //
-//  BasicLight.hpp
+//  Sun.hpp
 //  WorldGenerator
 //
 //  Created by Ryan Needham on 17/03/2017.
 //  Copyright © 2017 Dissertation. All rights reserved.
 //
 
-#ifndef BasicLight_hpp
-#define BasicLight_hpp
+#ifndef Sun_hpp
+#define Sun_hpp
 
 #include "GraphicsEngine.hpp"
 #include "GameObject.hpp"
 
-class BasicLight: public GameObject {
+class Sun: public GameObject {
     public:
-        BasicLight (GraphicsEngine* g);
-       ~BasicLight ();
+        Sun (GraphicsEngine* g);
+       ~Sun ();
     
         virtual void update (State state) override;
     
@@ -25,4 +25,4 @@ class BasicLight: public GameObject {
     
 };
 
-#endif /* BasicLight_hpp */
+#endif /* Sun_hpp */

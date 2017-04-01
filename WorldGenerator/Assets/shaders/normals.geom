@@ -11,19 +11,21 @@ uniform mat4 projection;
 uniform mat4 view;
 uniform mat4 model;
 
+float normal_length = 0.5;
+
 void main(void){
     for (int i = 0; i < gl_in.length(); i++) {
         vec3 position = gl_in[i].gl_Position.xyz;
         vec3 normal = geom_normal[i];
         
         // draw point
-        gl_Position = vec4(position.xyz, 1.0);
+        gl_Position = projection * view * model * vec4(position.xyz, 1.0);
         colour = vec4(0.0, 0.0, 1.0, 1.0);
         EmitVertex();
         
         // draw its normal
-        gl_Position = projection * view * model * vec4(position * normal, 1.0);
-        colour = vec4(0.0, 0.0, 1.0, 1.0);
+        gl_Position = projection * view * model * vec4(position + normal * normal_length, 1.0);
+        colour = vec4(1.0, 0.0, 0.0, 1.0);
         EmitVertex();
         
         EndPrimitive();

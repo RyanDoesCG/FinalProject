@@ -21,14 +21,15 @@
 
 EngineTest::EngineTest (GraphicsEngine* g, PhysicsEngine* p) {
     graphics = new GraphicsObject(
-        new ModelGeometry ("sphere/sphere"),
-        new Material      (ShaderCache::loadBasicShader("object_lit"))
+        new ModelGeometry ("sphere/uvsphere"),
+        new Material      (ShaderCache::loadBasicShader("object_textured"), "rock.jpg")
     );
     
     graphics->colour   = glm::vec4(0.31, 0.31, 0.31, 1);
     graphics->position = glm::vec3(0, 0, -40);
     graphics->scale    = glm::vec3(10, 10, 10);
     graphics->wireframe(false);
+    graphics->pointcloud(false);
     
     g->add(graphics);
     

@@ -14,6 +14,7 @@ Geometry::Geometry() {
     scale    = glm::vec3(1);
     
     wireframe = false;
+    pointcloud = false;
     
     setup();
 }

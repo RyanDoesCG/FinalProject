@@ -25,7 +25,6 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
         new ModelGeometry ("plane/plane512"),
         new Material      (ShaderCache::loadGeometryShader("plane_water"))
     );
-
     
     //rain = new Rain(g, p);
     

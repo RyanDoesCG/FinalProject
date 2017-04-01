@@ -29,9 +29,13 @@ class dioramaHUD: public GameHUD {
         UISlider renderDistance;
         UISlider amplitude;
         UISlider seaLevel;
-        UISlider example3;
+        UIPlusMinus example3;
 
         Diorama* diorama;
+    
+    private:
+    
+        GraphicsEngine* engine;
 };
 
 

@@ -8,6 +8,8 @@
 
 #include "UIDelegate.hpp"
 
+bool hideUI = false;
+
 UIDelegate::UIDelegate (GraphicsEngine* graph, PhysicsEngine* phys, Game* g):
     mainMenu    (graph, phys),
     optionsMenu (graph, phys),
@@ -63,8 +65,16 @@ void UIDelegate::update(State state) {
         case diorama: {
             mainMenu.hide();
             optionsMenu.hide();
-            dHUD.show();
             pHUD.hide();
+            
+            
+            if (!hideUI) {
+                dHUD.show();
+            }
+            
+            if (hideUI) {
+                dHUD.hide();
+            }
 
             if (mouse->leftButtonDown() || gamepad->isButtonDown(GAMEPAD_BUTTON_A)) {
                 if (dHUD.back.isSelected()) { uiState = main_menu; game->state = MENU; }
@@ -74,17 +84,8 @@ void UIDelegate::update(State state) {
             }
             
             if (keyboard->isKeyDown(GLFW_KEY_SPACE)) {
-                static bool hidden = false;
-                
-                if (!hidden) {
-                    dHUD.hide();
-                    hidden = true;
-                }
-                
-                if (hidden) {
-                    dHUD.show();
-                    hidden = false;
-                }
+                keyboard->keyHandled(GLFW_KEY_SPACE);
+                hideUI = !hideUI;
             }
             
             break;

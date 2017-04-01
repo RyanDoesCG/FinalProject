@@ -31,6 +31,8 @@ class Options: public GameObject {
     
     public:
         std::vector<UIBox*> items;
+    
+        GraphicsEngine* engine;
 };
 
 #endif /* Options_hpp */

@@ -31,8 +31,8 @@ UIPlusMinus::~UIPlusMinus () {
 }
 
 void UIPlusMinus::moveTo(glm::vec3 p) {
-    plus.moveTo(p * glm::vec3(0.8, 1.05, 1.0));
-    minus.moveTo(p * glm::vec3(1.275, 1.05, 1.0));
+    plus.moveTo(p * glm::vec3(0.8, 1, 1.0));
+    minus.moveTo(p * glm::vec3(1.275, 1, 1.0));
     frame.moveTo(p);
 }
 

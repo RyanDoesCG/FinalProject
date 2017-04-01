@@ -37,6 +37,8 @@ Menu::Menu (GraphicsEngine* graph, PhysicsEngine* phys):
     items.at(3)->scaleTo(glm::vec3(1.5, 0.15, 0));
     items.at(3)->moveTo(glm::vec3(0.0, -1.05, 0.0));
     items.at(3)->update(MENU);
+        
+    engine = graph;
 }
 
 Menu::~Menu () {
@@ -60,6 +62,13 @@ void Menu::show () {
 }
 
 void Menu::update (State state) {
+    if (items.front()->isHidden == false ) {
+        engine->addToText("diorama generator", glm::vec2(0,  -12), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        engine->addToText("planet generator",  glm::vec2(0, -124), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        engine->addToText("options",           glm::vec2(0, -238), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        engine->addToText("exit",              glm::vec2(0, -350), 0.24, glm::vec3(0.64, 0.64, 0.64));
+    }
+    
     for (UIBox* box : items)
         box->update(state);
 }

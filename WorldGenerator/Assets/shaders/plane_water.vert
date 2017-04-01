@@ -11,6 +11,8 @@ uniform mat4 model;
 const float PI = 3.141592653589;
 const float AMPLITUDE = 0.00060;
 
+out vec3 vertexColour;
+
 /**
  *  CREDIT: https://www.youtube.com/watch?v=r2hue52wLF4
  *  adapted by Ryan Needham
@@ -24,9 +26,11 @@ float generateHeight(){
 float rand      (vec2 c) { return fract(sin(dot(c.xy ,vec2(12.9898,78.233))) * 43758.5453); }
 
 void main() {
-    float height = generateHeight() + (rand(vec2(time * AMPLITUDE, (model * vec4(position, 1.0)).z)) * 0.00008);
+    float height =  generateHeight() + (rand(vec2(time * AMPLITUDE, (model * vec4(position, 1.0)).z)) * 0.00008);
     
     // set position
     gl_Position = model * vec4(position.x, position.y + height, position.z, 1.0f);
+    
+    vertexColour = vec3(0.2, 0.4, 0.45);
     
 }

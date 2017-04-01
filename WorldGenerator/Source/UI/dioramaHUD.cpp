@@ -25,8 +25,9 @@ dioramaHUD::dioramaHUD  (GraphicsEngine* graph, PhysicsEngine* phys, Diorama* d)
     example3.moveTo(glm::vec3(-2, -0.75, 0.1));
     
    // graph->add(flag);
-        
     diorama = d;
+        
+    engine = graph;
 }
 
 dioramaHUD::~dioramaHUD () {}
@@ -79,6 +80,13 @@ void dioramaHUD::show () {
 
 void dioramaHUD::update (State state) {
     background.update(state);
+    
+    if (items.front()->isHidden == false ) {
+        engine->addToText("render distance",   glm::vec2(-668,  160), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        engine->addToText("terrain amplitude", glm::vec2(-668,   10), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        
+        engine->addToText("back", glm::vec2(-668,  -418), 0.24, glm::vec3(0.64, 0.64, 0.64));
+    }
     
     for (UIBox* box : items) {
         box->update(state);   

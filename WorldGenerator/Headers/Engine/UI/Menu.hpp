@@ -32,7 +32,7 @@ class Menu: public GameObject {
     
     public:
         std::vector<UIBox*> items;
-    
+        GraphicsEngine* engine;
 };
 
 #endif /* Menu_hpp */

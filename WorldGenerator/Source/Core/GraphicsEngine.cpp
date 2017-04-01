@@ -17,6 +17,7 @@ GraphicsEngine::GraphicsEngine (float width, float height) {
     windowHeight = height;
     
     sceneCamera->position = glm::vec3(0);
+
 }
 
 GraphicsEngine::~GraphicsEngine () {
@@ -40,10 +41,12 @@ void GraphicsEngine::setEffect (Effect e) {
 
 void GraphicsEngine::initPostProcessing () {
     buildFrameBuffer();
-
     setEffect(GraphicsEngine::blur);
-    
     frame->scale = glm::vec3(5.85, 3.25, 1.0);
+}
+
+void GraphicsEngine::initTextRendering () {
+    textInterface = new TextRenderer(windowWidth, windowHeight);
 }
 
 void GraphicsEngine::buildFrameBuffer  () {
@@ -145,11 +148,15 @@ void GraphicsEngine::render(State s) {
     renderScene ();
     onScreen    ();
     renderUI    ();
+    renderText  ();
 }
 
 void GraphicsEngine::add      (GraphicsObject *object) { object->setID(scene.size()); scene.push_back(object); }
 void GraphicsEngine::addLight (GraphicsObject *object) { object->setID(lights.size()); lights.push_back(object); for (GraphicsObject* o : scene) o->setLightSource(object); }
 void GraphicsEngine::addToUI  (GraphicsObject *object) { object->setID(ui.size()); ui.push_back(object); }
+void GraphicsEngine::addToText (std::string txt, glm::vec2 pos, float scl, glm::vec3 col) {
+    textInterface->addToQueue(txt, pos, scl, col);
+}
 
 void GraphicsEngine::remove       (int ID) {
     for (int i = 0; i < scene.size(); i++)
@@ -180,6 +187,7 @@ void GraphicsEngine::removeFromUI (int ID) {
 
 void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(sceneCamera); for (GraphicsObject* light : lights) light->draw(sceneCamera); }
 void GraphicsEngine::renderUI    () { for (GraphicsObject* object : ui)    object->draw(frameCamera); }
+void GraphicsEngine::renderText  () { textInterface->render(); }
 
 Camera* GraphicsEngine::getSceneCamera() {
     return sceneCamera;

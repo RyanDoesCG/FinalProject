@@ -1,5 +1,5 @@
 //
-//  BasicLight.cpp
+//  Sun.cpp
 //  WorldGenerator
 //
 //  Created by Ryan Needham on 17/03/2017.
@@ -7,27 +7,27 @@
 //
 #include "ModelGeometry.hpp"
 #include "ShaderCache.hpp"
-#include "BasicLight.hpp"
+#include "Sun.hpp"
 
-BasicLight::BasicLight (GraphicsEngine* g) {
+Sun::Sun (GraphicsEngine* g) {
     graphics = new GraphicsObject(
         new ModelGeometry ("sphere/sphere"),
         new Material      (ShaderCache::loadBasicShader("object"))
     );
     
     graphics->colour   = glm::vec4(0.5, 0.31, 0.31, 1);
-    graphics->position = glm::vec3(0, 30, -20);
+    graphics->position = glm::vec3(0, 100, 0);
     graphics->scale    = glm::vec3(10, 10, 10);
     graphics->wireframe(false);
     
     g->addLight(graphics);
 }
 
-BasicLight::~BasicLight () {
+Sun::~Sun () {
     
 }
 
-void BasicLight::update(State state) {
-    graphics->position.x += cos(glfwGetTime() * 1);
-    graphics->position.y += sin(glfwGetTime() * 1);
+void Sun::update(State state) {
+    graphics->position.x += cos(glfwGetTime() * 0.001);
+    graphics->position.y += sin(glfwGetTime() * 0.001);
 }

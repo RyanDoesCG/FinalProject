@@ -79,6 +79,11 @@ class GraphicsObject {
                 glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
                     geometry->render();
                 glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            } else if (geometry->pointcloud) {
+                glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+                    glPointSize(10);
+                    geometry->render();
+                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
             } else {
                 geometry->render();
             }
@@ -86,7 +91,8 @@ class GraphicsObject {
             model = glm::mat4();
         }
     
-        void wireframe (bool b) { geometry->wireframe = b; }
+        void wireframe  (bool b) { geometry->wireframe = b; }
+        void pointcloud (bool b) { geometry->pointcloud = b; }
     
         Geometry* geometry;
         Material* material;

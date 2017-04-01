@@ -11,6 +11,7 @@
 
 #include "QuadGeometry.hpp"
 #include "GraphicsObject.hpp"
+#include "TextRenderer.hpp"
 #include "Camera.hpp"
 #include "State.hpp"
 #include <vector>
@@ -23,14 +24,19 @@ class GraphicsEngine {
         enum Effect { blur, fade, none };
     
         void initPostProcessing ();
+        void initTextRendering  ();
     
         void render    (State s);
     
         void setEffect (Effect e);
     
-        void add      (GraphicsObject* object);
-        void addLight (GraphicsObject* object);
-        void addToUI  (GraphicsObject* object);
+        void add       (GraphicsObject* object);
+        void addLight  (GraphicsObject* object);
+        void addToUI   (GraphicsObject* object);
+        void addToText (std::string txt,
+                        glm::vec2   pos,
+                        float       scl,
+                        glm::vec3   col);
     
         void remove       (int ID);
         void removeLight  (int ID);
@@ -45,6 +51,7 @@ class GraphicsEngine {
         void renderScene     ();
         void onScreen        ();
         void renderUI        ();
+        void renderText      ();
     
         std::vector<GraphicsObject*> lights;
         std::vector<GraphicsObject*> scene;
@@ -72,6 +79,8 @@ class GraphicsEngine {
     
         GLuint colourAttachment;
         GraphicsObject* frame;
+    
+        TextRenderer* textInterface;
 };
 
 #endif /* GraphicsEngine_hpp */

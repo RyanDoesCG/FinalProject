@@ -7,12 +7,11 @@
 //
 #include "Game.hpp"
 #include "ParticleEmitter.hpp"
-#include "BasicLight.hpp"
+#include "Sun.hpp"
 #include "EngineTest.hpp"
 #include "Butterfly.hpp"
 #include "Diorama.hpp"
 #include "Planet.hpp"
-#include "BasicLight.hpp"
 
 #include "ChunkLoader.hpp"
 
@@ -27,7 +26,8 @@ Game::Game ():
     physics   () {
         
     srand(time(0));
-    graphics.initPostProcessing();
+    graphics.initPostProcessing ();
+    graphics.initTextRendering  ();
 }
 
 Game::~Game () {}
@@ -51,9 +51,10 @@ void Game::showTest () {
 }
 
 void Game::boot () {
+    
+    
     InputManager::initialise(window.asGLFW());
     
-    /*
     diorama   = new Diorama(&graphics, &physics);
     planet    = new Planet(&graphics);
     
@@ -65,8 +66,7 @@ void Game::boot () {
     objects.push_back (planet);
     objects.push_back (interface);
     objects.push_back (cursor);
-    */
-     
+    
      
     /* * * * * * * * * * * * * * * * *
      *  Objects
@@ -74,12 +74,12 @@ void Game::boot () {
    // ChunkLoader loader = ChunkLoader(&graphics, &physics);
    // objects.push_back(&loader);
     
-   // showDiorama ();
+    showDiorama ();
     
-    EngineTest cube = EngineTest(&graphics, &physics);
-    objects.push_back(&cube);
+   // EngineTest cube = EngineTest(&graphics, &physics);
+   // objects.push_back(&cube);
     
-    state = VIEW;
+    state = MENU;
     
     while (window.isAlive()) {
         InputManager::update();
@@ -92,6 +92,11 @@ void Game::boot () {
             case MENU: graphics.setEffect (GraphicsEngine::blur); break;
             case VIEW: graphics.setEffect (GraphicsEngine::fade); break;
         }
+        
+        //if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_R)) graphics.setEffect (GraphicsEngine::none);
+        //if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_T)) graphics.setEffect (GraphicsEngine::blur);
+        //if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_Y)) graphics.setEffect (GraphicsEngine::fade);
+
         
         graphics.render(state);                  // draw graphics scene
         window.swapBuffers();

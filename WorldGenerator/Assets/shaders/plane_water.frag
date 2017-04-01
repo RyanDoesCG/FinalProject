@@ -38,9 +38,9 @@ void main (void) {
     vec3 result = (ambient + diffuse + specular) * finalColour;
     */
     
-    vec4 col = colour;
+    vec4 col = vec4(finalColour, 0.25);
     if (magnitude(viewPosition - vec3(worldPos.xyz)) > renderDistance) {
-        col.a = col.a - (magnitude(viewPosition - vec3(worldPos.xyz)) - renderDistance) * 0.75;
+        col.a = col.a - (magnitude(viewPosition - vec3(worldPos.xyz)) - renderDistance) * 0.25;
     }
     
     color = col;

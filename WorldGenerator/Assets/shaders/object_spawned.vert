@@ -31,7 +31,7 @@ void main (void) {
     
     /** COMPUTE ALTITUDE */
     vec4 objectWorldPos = model * vec4(0.0, 0.0, 0.0, 1.0);
-    float height = -112 + abs((texture(tex, vec2(objectWorldPos.x / 20, -1 * (objectWorldPos.z / 20))).r)) * (amp * 420);
+    float height = -116.5 + abs((texture(tex, vec2(objectWorldPos.x / 20, -1 * (objectWorldPos.z / 20))).r) * (amp * 424));
     if (height < -90) { height = -10000; }
     
     /** PROCEDURAL VARIATION */
@@ -50,7 +50,7 @@ void main (void) {
     frag_colour = colour;
     vec4 worldPosition = model * vec4(position.x, position.y + height, position.z, 1.0);
     if (magnitude(viewPosition - vec3(worldPosition.xyz)) > renderDistance) {
-        frag_colour.a = frag_colour.a - (magnitude(viewPosition - vec3(worldPosition.xyz)) - renderDistance) * 0.75;
+        frag_colour.a = frag_colour.a - (magnitude(viewPosition - vec3(worldPosition.xyz)) - renderDistance) * 0.25;
     }
     frag_normal = normal;
     frag_uv     = uv;
