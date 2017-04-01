@@ -29,11 +29,9 @@ void main(void){
     vec3 normal         = calculateTriangleNormal();
     vec3 lightDirection = normalize(lightPosition - vec3(worldPosition.xyz));
     float brightness    = max(dot(-lightDirection, normal), ambientLighting);
-        // vec3 colour         = vertexColour[0] * brightness;
     
     gl_Position = projection * view * worldPosition;
     worldPos    = projection * view * worldPosition;
-        //finalColour = colour;
     norm        = normal;
     EmitVertex();
     
@@ -41,11 +39,9 @@ void main(void){
     normal          = calculateTriangleNormal();
     lightDirection  = normalize(lightPosition - vec3(worldPosition.xyz));
     brightness      = max(dot(-lightDirection, normal), ambientLighting);
-        //colour          = vertexColour[0] * brightness;
     
     gl_Position = projection * view * worldPosition;
     worldPos    = projection * view * worldPosition;
-        //finalColour = colour;
     norm        = normal;
     EmitVertex();
     
@@ -53,11 +49,9 @@ void main(void){
     normal          = calculateTriangleNormal();
     lightDirection  = normalize(lightPosition - vec3(worldPosition.xyz));
     brightness      = max(dot(-lightDirection, normal), ambientLighting);
-        //colour          = vertexColour[0] * brightness;
     
     gl_Position = projection * view * worldPosition;
     worldPos    = projection * view * worldPosition;
-        //finalColour = colour;
     norm        = normal;
     EmitVertex();
     

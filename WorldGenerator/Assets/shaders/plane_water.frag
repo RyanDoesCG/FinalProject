@@ -17,7 +17,7 @@ float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
 
 void main (void) {
     vec3 normal = normalize(norm);
-    /*
+    
     // ambient lighting
     float ambStrength = 0.35f;
     vec3  ambient     = ambStrength * lightColour;
@@ -36,9 +36,9 @@ void main (void) {
     
     // stacked result
     vec3 result = (ambient + diffuse + specular) * finalColour;
-    */
     
-    vec4 col = vec4(finalColour, 0.25);
+    
+    vec4 col = vec4(result.rgb, 0.45);
     if (magnitude(viewPosition - vec3(worldPos.xyz)) > renderDistance) {
         col.a = col.a - (magnitude(viewPosition - vec3(worldPos.xyz)) - renderDistance) * 0.25;
     }

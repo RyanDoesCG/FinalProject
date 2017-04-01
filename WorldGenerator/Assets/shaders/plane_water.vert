@@ -19,8 +19,8 @@ out vec3 vertexColour;
  *  adapted by Ryan Needham
  */
 float generateHeight(){
-    float component1 = sin(2.0 * PI * (time * 0.75) + (position.x * 24.0)) * AMPLITUDE;
-    float component2 = sin(2.0 * PI * (time * 0.75) + (position.y * position.x * 12.0)) * AMPLITUDE;
+    float component1 = sin(2.0 * PI * (time * 0.45) + (position.x * 24.0)) * AMPLITUDE;
+    float component2 = sin(2.0 * PI * (time * 0.45) + (position.y * position.x * 12.0)) * AMPLITUDE;
     return component1 + component2;
 }
 
@@ -32,10 +32,11 @@ void main() {
     // set position
     gl_Position = model * vec4(position.x, position.y + height, position.z, 1.0f);
     
-    float ting = rand(vec2(position.x, position.z));
+    vec4 worldPos = model * vec4(position.x, (position.y + height) * 0.5, position.z, 1.0f);
+    float ting = rand(vec2(worldPos.x, worldPos.y));
     
     // PASS THROUGH
-    if      (ting > 0.033) vertexColour = vec3(colour) * 0.8;
-    else if (ting > 0.033 && ting < 0.066) vertexColour = vec3(colour) * 1.0;
-    else vertexColour = vec3(colour) * 1.1;
+    if      (ting > 0.33) vertexColour = vec3(colour) * 0.95;
+    else if (ting > 0.33 && ting < 0.66) vertexColour = vec3(colour) * 1.0;
+    else vertexColour = vec3(colour) * 1.05;
 }

@@ -11,6 +11,7 @@ out vec3 norm;
 
 uniform mat4 projection;
 uniform mat4 view;
+uniform mat4 model;
 uniform vec3 cameraPosition;
 uniform vec3 lightColour;
 uniform vec3 lightPosition;
@@ -19,11 +20,10 @@ uniform vec4 colour;
 const float ambientLighting = 0.8;
 
 vec3 calculateTriangleNormal(){
-    vec3 a = gl_in[0].gl_Position.xyz;
-    vec3 b = gl_in[1].gl_Position.xyz;
-    vec3 c = gl_in[2].gl_Position.xyz;
-    
-    return normalize(cross(b - a, c - a));
+    vec3 tangent = gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+    vec3 bitangent = gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+    vec3 normal = cross(tangent, bitangent);
+    return normalize(mat3(transpose(inverse(model))) * normal);
 }
 
 void main(void){
