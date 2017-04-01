@@ -20,18 +20,10 @@ uniform float amp;
 
 
 float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)); }
-
-
-
-float rand (vec2 c) { return fract(sin(dot(c.xy ,vec2(12.9898,78.233))) * 43758.5453); }
-
-
+float rand      (vec2 c) { return fract(sin(dot(c.xy ,vec2(12.9898,78.233))) * 43758.5453); }
 
 void main (void) {
     float lift = -0.04 + abs((texture(tex, uv).r) * amp);
     
-    gl_Position = projection * view * model * vec4(position.x, position.y + lift, position.z, 1.0);
-    
-        // pass through
-        //vertexColour = objectColour;
+    gl_Position =  vec4(position.x, position.y + lift, position.z, 1.0);
 }

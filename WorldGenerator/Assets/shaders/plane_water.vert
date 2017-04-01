@@ -7,6 +7,7 @@ layout (location = 2) in vec2 uvs;
 uniform float seaLevel;
 uniform float time;
 uniform mat4 model;
+uniform vec4 colour;
 
 const float PI = 3.141592653589;
 const float AMPLITUDE = 0.00060;
@@ -31,6 +32,10 @@ void main() {
     // set position
     gl_Position = model * vec4(position.x, position.y + height, position.z, 1.0f);
     
-    vertexColour = vec3(0.2, 0.4, 0.45);
+    float ting = rand(vec2(position.x, position.z));
     
+    // PASS THROUGH
+    if      (ting > 0.033) vertexColour = vec3(colour) * 0.8;
+    else if (ting > 0.033 && ting < 0.066) vertexColour = vec3(colour) * 1.0;
+    else vertexColour = vec3(colour) * 1.1;
 }

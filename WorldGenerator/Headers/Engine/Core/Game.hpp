@@ -17,6 +17,7 @@
 #include "Window.hpp"
 #include "Planet.hpp"
 #include "Diorama.hpp"
+#include "Sun.hpp"
 #include <vector>
 
 class UIDelegate; // dirty
@@ -40,7 +41,6 @@ class Game {
          */
         Diorama* getDiorama () { return diorama; }
         //Diorama* makeNewDiorama ();
-        
     
         /* * * * *
          * Diorama
@@ -56,6 +56,7 @@ class Game {
     
         Diorama* diorama;
         Planet*  planet;
+        Sun*     sun;
     
         UIDelegate* interface;
         Cursor*     cursor;

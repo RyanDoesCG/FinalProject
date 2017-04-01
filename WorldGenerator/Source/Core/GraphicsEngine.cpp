@@ -109,7 +109,7 @@ void GraphicsEngine::prerender(State s) {
 void GraphicsEngine::offScreen () {
     // render off screen
     glBindFramebuffer   (GL_FRAMEBUFFER, FBO);
-    glClearColor        (0.93f, 0.90f, 0.83f, 1.0f);
+   // glClearColor        (0.93f, 0.90f, 0.83f, 1.0f);
     glClear             (GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
     glEnable            (GL_DEPTH_TEST);
     glDepthFunc         (GL_LEQUAL);

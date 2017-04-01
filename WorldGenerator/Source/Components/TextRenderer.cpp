@@ -97,7 +97,7 @@ void TextRenderer::addToQueue (std::string txt, glm::vec2 pos, float scl, glm::v
 
 void TextRenderer::render() {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    glDisable(GL_DEPTH_TEST);
+   // glDisable(GL_DEPTH_TEST);
     shader->bind();
     
     while (!renderQueue.empty()) {
@@ -146,7 +146,7 @@ void TextRenderer::render() {
         renderQueue.pop();
     }
     
-    glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_DEPTH_TEST);
 }
 
 TextRenderer::~TextRenderer () {}

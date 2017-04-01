@@ -17,7 +17,7 @@
 
 #include <algorithm>
 
-#define WIDTH 1920
+#define WIDTH  1920
 #define HEIGHT 1080
 
 Game::Game ():
@@ -57,6 +57,7 @@ void Game::boot () {
     
     diorama   = new Diorama(&graphics, &physics);
     planet    = new Planet(&graphics);
+    sun       = new Sun(&graphics);
     
     interface = new UIDelegate(&graphics, &physics, this);
     cursor    = new Cursor(&graphics, &physics);
@@ -64,6 +65,7 @@ void Game::boot () {
     
     objects.push_back (diorama);
     objects.push_back (planet);
+    objects.push_back (sun);
     objects.push_back (interface);
     objects.push_back (cursor);
     
@@ -90,7 +92,7 @@ void Game::boot () {
         // script renderer
         switch (state) {
             case MENU: graphics.setEffect (GraphicsEngine::blur); break;
-            case VIEW: graphics.setEffect (GraphicsEngine::fade); break;
+            case VIEW: graphics.setEffect (GraphicsEngine::none); break;
         }
         
         //if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_R)) graphics.setEffect (GraphicsEngine::none);

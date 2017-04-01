@@ -36,7 +36,7 @@ void main(void){
     
     gl_Position = projection * view * worldPosition;
     worldPos    = worldPosition;
-    finalColour = colour;
+    finalColour = vertexColour[0];
     norm        = normal;
     EmitVertex();
     
@@ -48,7 +48,7 @@ void main(void){
     
     gl_Position = projection * view * worldPosition;
     worldPos    = worldPosition;
-    finalColour = colour;
+    finalColour = vertexColour[1];
     norm        = normal;
     EmitVertex();
     
@@ -60,7 +60,7 @@ void main(void){
     
     gl_Position = projection * view * worldPosition;
     worldPos    = worldPosition;
-    finalColour = colour;
+    finalColour = vertexColour[2];
     norm        = normal;
     EmitVertex();
     

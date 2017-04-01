@@ -9,6 +9,7 @@
 #include "Diorama.hpp"
 #include "PlaneGeometry.hpp"
 #include "ModelGeometry.hpp"
+#include "CubeGeometry.hpp"
 #include "Rain.hpp"
 #include "ShaderCache.hpp"
 
@@ -17,13 +18,18 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
 
     terrain = new GraphicsObject (
         new ModelGeometry ("plane/plane512"),
-        new Material      (ShaderCache::loadBasicShader("plane_vertextextured"), heightmap->getID() )
-       // new Material      (ShaderCache::loadGeometryShader("plane_vertextextured_recalc"), heightmap->getID() )
+    //  new Material      (ShaderCache::loadBasicShader("plane_vertextextured"), heightmap->getID() )
+       new Material      (ShaderCache::loadGeometryShader("plane_vertextextured_recalc"), heightmap->getID() )
     );
     
     water = new GraphicsObject (
         new ModelGeometry ("plane/plane512"),
         new Material      (ShaderCache::loadGeometryShader("plane_water"))
+    );
+    
+    base = new GraphicsObject (
+        new CubeGeometry (),
+        new Material (ShaderCache::loadBasicShader("object"))
     );
     
     //rain = new Rain(g, p);
@@ -34,7 +40,6 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     // Geometry Shader???????????
     trees = new TreeSpawner (g, biome->getTreePath(), heightmap, glm::vec4(0.05, 0.1, 0.0, 1.0), glm::vec3(0.02), 100);
     rocks = new RockSpawner (g, biome->getRockPath(), heightmap, glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 100);
-    
     
     terrain->colour   = biome->getPrimaryColour();
     terrain->position = glm::vec3(10, -2, 10);
@@ -47,10 +52,15 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     water->scale    = glm::vec3(10, 10, 10);
     water->wireframe(false);
     
+    base->colour = glm::vec4(0.0, 0.0, 0.0, 1.0);
+    base->position = glm::vec3(10, -2.5, 10);
+    base->scale   = glm::vec3(20, 2, 20);
+    
     graphEng = g;
     
     g->add(terrain);
     g->add(water);
+   // g->add(base);
     
     mouse = InputManager::getMouseHandle();
     

@@ -46,6 +46,7 @@ class Diorama: public GameObject {
     
         GraphicsObject* terrain;
         GraphicsObject* water;
+        GraphicsObject* base;
     
         TreeSpawner* trees;
         RockSpawner* rocks;
