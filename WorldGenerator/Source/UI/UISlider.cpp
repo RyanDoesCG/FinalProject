@@ -13,7 +13,7 @@
 UISlider::UISlider (GraphicsEngine* graph, PhysicsEngine* phys):
         marker(graph, phys),
         range (graph),
-        position_counter(-2.7, -2.095, -1.49),
+        position_counter(-2.1, -2.67, -1.49),
         value_counter(5, 0, 10) {
     
     litColour   = glm::vec3(0.41, 0.41, 0.41);
@@ -67,6 +67,8 @@ void UISlider::update (State state) {
         if (mouse->getXoffset() < 0) { position_counter.incrementBy(mouse->getXoffset()); }
         
         value_counter.incrementBy(mouse->getXoffset());
+        
+        if (position_counter.getValue() < -2.67) position_counter.setValue(-2.66);
 
         marker.physics->position.x = position_counter.getValue();
         lastMouseX = mouse->getXoffset();

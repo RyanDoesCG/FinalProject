@@ -11,32 +11,25 @@
 Menu::Menu (GraphicsEngine* graph, PhysicsEngine* phys):
     dioramas (graph, phys),
     planets  (graph, phys),
-    options  (graph, phys),
     quit     (graph, phys) {
         
     // dioarama generator
     items.push_back(&dioramas);
     items.at(0)->scaleTo(glm::vec3(1.5, 0.15, 0));
-    items.at(0)->moveTo(glm::vec3(0.0, 0.0, 0.0));
+    items.at(0)->moveTo(glm::vec3(0.0, -0.35, 0.0));
     items.at(0)->update(MENU);
     
     // planet generator
     items.push_back(&planets);
     items.at(1)->scaleTo(glm::vec3(1.5, 0.15, 0));
-    items.at(1)->moveTo(glm::vec3(0.0, -0.35, 0.0));
+    items.at(1)->moveTo(glm::vec3(0.0, -0.7, 0.0));
     items.at(1)->update(MENU);
-    
-    // options
-    items.push_back(&options);
-    items.at(2)->scaleTo(glm::vec3(1.5, 0.15, 0));
-    items.at(2)->moveTo(glm::vec3(0.0, -0.7, 0.0));
-    items.at(2)->update(MENU);
 
     // quit
     items.push_back(&quit);
-    items.at(3)->scaleTo(glm::vec3(1.5, 0.15, 0));
-    items.at(3)->moveTo(glm::vec3(0.0, -1.05, 0.0));
-    items.at(3)->update(MENU);
+    items.at(2)->scaleTo(glm::vec3(1.5, 0.15, 0));
+    items.at(2)->moveTo(glm::vec3(0.0, -1.05, 0.0));
+    items.at(2)->update(MENU);
         
     engine = graph;
 }
@@ -63,9 +56,8 @@ void Menu::show () {
 
 void Menu::update (State state) {
     if (items.front()->isHidden == false ) {
-        engine->addToText("diorama generator", glm::vec2(0,  -12), 0.24, glm::vec3(0.64, 0.64, 0.64));
-        engine->addToText("planet generator",  glm::vec2(0, -124), 0.24, glm::vec3(0.64, 0.64, 0.64));
-        engine->addToText("options",           glm::vec2(0, -238), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        engine->addToText("diorama generator", glm::vec2(0,  -120), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        engine->addToText("planet generator",  glm::vec2(0, -230), 0.24, glm::vec3(0.64, 0.64, 0.64));
         engine->addToText("exit",              glm::vec2(0, -350), 0.24, glm::vec3(0.64, 0.64, 0.64));
     }
     

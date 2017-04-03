@@ -6,6 +6,7 @@ in vec2 frag_uv;
 
 out vec4 color;
 
+uniform vec4 colour;
 uniform sampler2D tex;
 
 void main (void) {

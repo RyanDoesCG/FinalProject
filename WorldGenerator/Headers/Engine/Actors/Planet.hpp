@@ -15,10 +15,12 @@
 #include "GraphicsObject.hpp"
 #include "GameObject.hpp"
 #include "InputManager.hpp"
+#include "HeightMap.hpp"
+#include "Stars.hpp"
 
 class Planet: public GameObject {
     public:
-        Planet (GraphicsEngine* g);
+        Planet (GraphicsEngine* g, PhysicsEngine* p);
        ~Planet ();
     
         virtual void update (State state) override;
@@ -26,15 +28,31 @@ class Planet: public GameObject {
         void removeFromWorld ();
         void addToWorld ();
     
+        void setAmplitude (float v) {amp = v;}
+        void changeHeightMap ();
+    
+        void updateUniforms ();
     
     private:
         GraphicsEngine* graphEng;
         GraphicsObject* terrain;
         GraphicsObject* water;
     
+        ParticleEmitter* stars;
+    
         Mouse* mouse;
+        Keyboard* keys;
     
         glm::vec3 velocity;
+    
+        GLfloat restx;
+    
+        HeightMap* heightmap;
+    
+        GLfloat maxScale = 20;
+        GLfloat minScale = 9;
+    
+        GLfloat amp;
 };
 
 #endif /* Planet_hpp */

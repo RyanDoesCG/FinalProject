@@ -2,7 +2,7 @@
 #version 330 core
 
 in vec4 worldPos;
-in vec3 finalColour;
+flat in vec4 finalColour;
 in vec3 norm;
 
 uniform vec4 colour;
@@ -12,8 +12,6 @@ uniform vec3 lightColour;
 uniform float renderDistance;
 
 out vec4 color;
-
-float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)); }
 
 void main (void) {
     vec3 normal = normalize(norm);
@@ -35,13 +33,9 @@ void main (void) {
     vec3  specular            = specStrength * spec * lightColour;
     
     // stacked result
-    vec3 result = (ambient + diffuse + specular) * finalColour;
+    vec3 result = (ambient + diffuse + specular) * vec3(finalColour);
     
     
-    vec4 col = vec4(result.rgb, 0.45);
-    if (magnitude(viewPosition - vec3(worldPos.xyz)) > renderDistance) {
-        col.a = col.a - (magnitude(viewPosition - vec3(worldPos.xyz)) - renderDistance) * 0.25;
-    }
-    
+    vec4 col = vec4(result.rgb, finalColour.a);
     color = col;
 }

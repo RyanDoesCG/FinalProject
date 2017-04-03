@@ -11,10 +11,14 @@
 #include "ModelGeometry.hpp"
 #include "CubeGeometry.hpp"
 #include "Rain.hpp"
+#include "Stars.hpp"
 #include "ShaderCache.hpp"
 
 Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
-    heightmap = new HeightMap( "noise/test.jpg" );
+    //heightmap = new HeightMap( "noise_generation/output_" + std::to_string(rand() % 99) + ".jpg" );
+    //heightmap = new HeightMap( "noise/layerTest.jpg");
+    heightmap = new HeightMap("heightMapMakerPro/" + std::to_string(rand() % 100) + ".jpg");
+
 
     terrain = new GraphicsObject (
         new ModelGeometry ("plane/plane512"),
@@ -32,13 +36,15 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
         new Material (ShaderCache::loadBasicShader("object"))
     );
     
+    stars = new Stars (g, p);
+    
     //rain = new Rain(g, p);
     
-    //rain->position = glm::vec3(0, 8, -10);
+    // rain->position = glm::vec3(0, 8, -10);
     
     // Scale Fucks Placement
     // Geometry Shader???????????
-    trees = new TreeSpawner (g, biome->getTreePath(), heightmap, glm::vec4(0.05, 0.1, 0.0, 1.0), glm::vec3(0.02), 100);
+    trees = new TreeSpawner (g, biome->getTreePath(), heightmap, glm::vec4(0.05, 0.5, 0.05, 1.0), glm::vec3(0.02), 100);
     rocks = new RockSpawner (g, biome->getRockPath(), heightmap, glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 100);
     
     terrain->colour   = biome->getPrimaryColour();
@@ -49,7 +55,7 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     water->colour   = biome->getUnderwaterColour();
     //water->colour   = glm::vec4(1.0, 0.7, 0.7, 0.25);
     water->position = glm::vec3(10, -2, 10);
-    water->scale    = glm::vec3(10, 10, 10);
+    water->scale    = glm::vec3(30, 10, 30);
     water->wireframe(false);
     
     base->colour = glm::vec4(0.0, 0.0, 0.0, 1.0);
@@ -63,6 +69,7 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
    // g->add(base);
     
     mouse = InputManager::getMouseHandle();
+    keys = InputManager::getKeyboardHandle();
     
     //terrain->rotation.x = 0.25;
     //water->rotation.x = 0.25;
@@ -94,16 +101,24 @@ void Diorama::setSeaLevel(GLfloat val) {
     seaLevel = val;
 }
 
+void Diorama::changeHeightMap() {
+    heightmap = new HeightMap("heightMapMakerPro/" + std::to_string(rand() % 100) + ".jpg");
+    terrain->material->setTexture(heightmap->getID());
+    rocks->setHeightMap(heightmap->getID());
+    trees->setHeightMap(heightmap->getID());
+}
+
 void Diorama::updateUniforms() {
     // SMOOTHING VALUE?
-
     terrain->addUniform1f("renderDistance", renderDistance);
     terrain->addUniform1f("seaLevel", seaLevel);
+    terrain->addUniform1f("smoothing", 0.001);
     terrain->addUniform1f("amp", amp);
     
     water->addUniform1f("renderDistance", renderDistance);
     water->addUniform1f("seaLevel", seaLevel);
     water->addUniform1f("time", glfwGetTime());
+    
     
     rocks->addUniform1f("renderDistance", renderDistance);
     rocks->addUniform1f("seaLevel", seaLevel);
@@ -116,22 +131,23 @@ void Diorama::updateUniforms() {
 }
 
 void Diorama::removeFromWorld () {
-    graphEng->remove(terrain->getID());
-    graphEng->remove(water->getID());
-    
-    graphEng->remove(trees->getID());
-    graphEng->remove(rocks->getID());
+    terrain->shouldDraw(false);
+    water->shouldDraw(false);
+    stars->shouldDraw(false);
+    trees->shouldDraw(false);
+    rocks->shouldDraw(false);
 }
 
 void Diorama::addToWorld () {
-    graphEng->add(terrain);
-    graphEng->add(water);
+    terrain->shouldDraw(true);
+    water->shouldDraw(true);
+    stars->shouldDraw(true);
+    trees->shouldDraw(true);
+    rocks->shouldDraw(true);
 }
 
 void Diorama::update(State state) {
     updateUniforms();
-    
-    std::cout << "  sea: " << seaLevel << std::endl;
     
     switch (state) {
         case MENU: {
@@ -160,6 +176,9 @@ void Diorama::update(State state) {
             water->rotation += velocity;
             velocity *= 0.8;
             */
+            
+            if (keys->isKeyDown(GLFW_KEY_X)) { changeHeightMap(); }
+            
             break;
         }
     }

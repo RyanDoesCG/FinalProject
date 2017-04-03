@@ -51,17 +51,14 @@ void Game::showTest () {
 }
 
 void Game::boot () {
-    
-    
     InputManager::initialise(window.asGLFW());
     
     diorama   = new Diorama(&graphics, &physics);
-    planet    = new Planet(&graphics);
+    planet    = new Planet(&graphics, &physics);
     sun       = new Sun(&graphics);
     
     interface = new UIDelegate(&graphics, &physics, this);
     cursor    = new Cursor(&graphics, &physics);
-    
     
     objects.push_back (diorama);
     objects.push_back (planet);
@@ -77,7 +74,7 @@ void Game::boot () {
    // objects.push_back(&loader);
     
     showDiorama ();
-    
+    //showPlanet();
    // EngineTest cube = EngineTest(&graphics, &physics);
    // objects.push_back(&cube);
     
@@ -94,10 +91,10 @@ void Game::boot () {
             case MENU: graphics.setEffect (GraphicsEngine::blur); break;
             case VIEW: graphics.setEffect (GraphicsEngine::none); break;
         }
-        
-        //if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_R)) graphics.setEffect (GraphicsEngine::none);
-        //if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_T)) graphics.setEffect (GraphicsEngine::blur);
-        //if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_Y)) graphics.setEffect (GraphicsEngine::fade);
+
+        if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_R)) graphics.setEffect (GraphicsEngine::none);
+        if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_T)) graphics.setEffect (GraphicsEngine::blur);
+        if (input.getKeyboardHandle()->isKeyDown(GLFW_KEY_Y)) graphics.setEffect (GraphicsEngine::fade);
 
         
         graphics.render(state);                  // draw graphics scene

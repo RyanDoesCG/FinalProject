@@ -15,6 +15,10 @@
 #include "GameHUD.hpp"
 #include "Diorama.hpp"
 #include "UIPlusMinus.hpp"
+#include "Flag.hpp"
+#include "MarkovGenerator.hpp"
+
+// PUT PLANET UI IN HERE
 
 class dioramaHUD: public GameHUD {
     public:
@@ -25,11 +29,11 @@ class dioramaHUD: public GameHUD {
         virtual void hide   () override;
         virtual void show   () override;
     
-        GraphicsObject flag;
-        UISlider renderDistance;
-        UISlider amplitude;
-        UISlider seaLevel;
-        UIPlusMinus example3;
+        Flag            flagData;
+        std::string     name;
+        GraphicsObject* flag;
+        UIBox           heightMap;
+        UISlider        amplitude;
 
         Diorama* diorama;
     

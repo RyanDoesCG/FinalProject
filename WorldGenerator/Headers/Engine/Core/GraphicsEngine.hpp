@@ -14,7 +14,7 @@
 #include "TextRenderer.hpp"
 #include "Camera.hpp"
 #include "State.hpp"
-#include <vector>
+#include <map>
 
 class GraphicsEngine {
     public:
@@ -53,9 +53,15 @@ class GraphicsEngine {
         void renderUI        ();
         void renderText      ();
     
-        std::vector<GraphicsObject*> lights;
-        std::vector<GraphicsObject*> scene;
-        std::vector<GraphicsObject*> ui;
+        struct depthTest {
+            bool operator()(const GraphicsObject* a, const GraphicsObject* b) const {
+                return a->position.z < b->position.z;
+            }
+        };
+
+        std::map<GraphicsObject*, int> lights;
+        std::map<GraphicsObject*, int> scene;
+        std::map<GraphicsObject*, int> ui;
     
         void buildFrameBuffer  ();
         void buildColourBuffer ();
@@ -81,6 +87,7 @@ class GraphicsEngine {
         GraphicsObject* frame;
     
         TextRenderer* textInterface;
+    
 };
 
 #endif /* GraphicsEngine_hpp */

@@ -31,6 +31,8 @@ Camera::Camera(GLfloat aspect) {
     proj = glm::perspective(zoom, aspectRatio, 0.01f, 1000.0f);
     keys = InputManager::getKeyboardHandle();
     mouse = InputManager::getMouseHandle();
+    
+    moving = false;
 }
 
 Camera::~Camera() {
@@ -49,16 +51,24 @@ void Camera::update (State s) {
             GLfloat radius = 2;
             position = glm::vec3(10, -1, 10);
             
-            yaw += 0.05;
+            yaw = -90;
             
-            //relativeFront =  glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0)));
+            relativeFront =  glm::normalize(glm::vec3(
+                cos (glm::radians(yaw) * cos (glm::radians(pitch))),    // x
+                sin (glm::radians(pitch)),                              // y
+                sin (glm::radians(yaw) * cos (glm::radians(pitch)))     // z
+            ));
+            
             break;
         }
         
         case VIEW: {
             if (!mouse->leftButtonDown()) {
-                yaw += mouse->getXoffset() * 4.5;
-                pitch += mouse->getYoffset() * 4.5;
+            
+                if (moving) {
+                    yaw += mouse->getXoffset() * 4.5;
+                    pitch += mouse->getYoffset() * 4.5;
+                }
                 
                 float speed = (keys->isKeyDown(GLFW_KEY_LEFT_SHIFT) ? 0.05 : 0.025);
                 
@@ -67,6 +77,13 @@ void Camera::update (State s) {
                 if (keys->isKeyDown(GLFW_KEY_S)) { position -= glm::normalize(relativeFront) * glm::vec3(speed); }
                 if (keys->isKeyDown(GLFW_KEY_D)) { position += glm::normalize(relativeRight) * glm::vec3(speed); }
                 
+                if (keys->isKeyDown(GLFW_KEY_UP)) {  }
+                if (keys->isKeyDown(GLFW_KEY_LEFT)) { yaw -= speed * 24; }
+                if (keys->isKeyDown(GLFW_KEY_DOWN)) {  }
+                if (keys->isKeyDown(GLFW_KEY_RIGHT)) { yaw += speed * 24; }
+                
+                if (keys->isKeyDown(GLFW_KEY_SPACE)) { moving = !moving; keys->keyHandled(GLFW_KEY_SPACE); }
+
                 //relativeFront =  glm::normalize(glm::vec3(position - glm::vec3(0.0, 0.0, 0.0)));
             }
             break;

@@ -34,14 +34,12 @@ class UIDelegate: public GameObject {
             infinite,
             diorama,
             planet,
-            options,
             hidden,
             over
         };
     
         UIState     uiState;
         Menu        mainMenu;
-        Options     optionsMenu;
         dioramaHUD  dHUD;
         planetHUD   pHUD;
     

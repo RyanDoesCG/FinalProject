@@ -41,6 +41,7 @@
 		CE63ED981E799910000C1972 /* UISlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE63ED971E799910000C1972 /* UISlider.cpp */; };
 		CE720E391E7DBF3F0062D240 /* TreeSpawner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE720E381E7DBF3F0062D240 /* TreeSpawner.cpp */; };
 		CE720E3C1E7DC1BD0062D240 /* RockSpawner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE720E3B1E7DC1BD0062D240 /* RockSpawner.cpp */; };
+		CE7BA7321E92FBB700F1F406 /* MarkovGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7BA7311E92FBB700F1F406 /* MarkovGenerator.cpp */; };
 		CE7CA7371E78D3A9005E9345 /* HeightMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7CA7361E78D3A9005E9345 /* HeightMap.cpp */; };
 		CEC838051E6DA19F0033CC10 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838041E6DA19F0033CC10 /* main.cpp */; };
 		CEC838091E6DA29F0033CC10 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC838081E6DA29F0033CC10 /* Game.cpp */; };
@@ -156,6 +157,11 @@
 		CE720E381E7DBF3F0062D240 /* TreeSpawner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TreeSpawner.cpp; sourceTree = "<group>"; };
 		CE720E3A1E7DC1560062D240 /* RockSpawner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RockSpawner.hpp; sourceTree = "<group>"; };
 		CE720E3B1E7DC1BD0062D240 /* RockSpawner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RockSpawner.cpp; sourceTree = "<group>"; };
+		CE7BA72C1E92FB0B00F1F406 /* Consonant.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Consonant.hpp; path = Names/Consonant.hpp; sourceTree = "<group>"; };
+		CE7BA72D1E92FB0B00F1F406 /* Letter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Letter.hpp; path = Names/Letter.hpp; sourceTree = "<group>"; };
+		CE7BA72E1E92FB0B00F1F406 /* MarkovGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MarkovGenerator.hpp; path = Names/MarkovGenerator.hpp; sourceTree = "<group>"; };
+		CE7BA72F1E92FB0B00F1F406 /* Vowel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vowel.hpp; path = Names/Vowel.hpp; sourceTree = "<group>"; };
+		CE7BA7311E92FBB700F1F406 /* MarkovGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MarkovGenerator.cpp; path = Names/MarkovGenerator.cpp; sourceTree = "<group>"; };
 		CE7CA7351E78D2B4005E9345 /* HeightMap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeightMap.hpp; sourceTree = "<group>"; };
 		CE7CA7361E78D3A9005E9345 /* HeightMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeightMap.cpp; sourceTree = "<group>"; };
 		CEAD93781E86C9F2004D7D8C /* Biome.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Biome.hpp; path = Biomes/Biome.hpp; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 		CED4057F1E74925A001ED29B /* Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Options.cpp; sourceTree = "<group>"; };
 		CED62ABB1D89AC6300805C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CED62ABD1D89ACF900805C8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		CED959BC1E906ECD0069C142 /* Stars.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Stars.hpp; sourceTree = "<group>"; };
 		CEDD0BAF1E00A9020078469C /* WorldGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDD0BDF1E00AA0A0078469C /* .editorconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .editorconfig; sourceTree = "<group>"; };
 		CEDD0BE01E00AA0A0078469C /* ai_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ai_assert.h; sourceTree = "<group>"; };
@@ -737,6 +744,25 @@
 			name = FastNoise;
 			sourceTree = "<group>";
 		};
+		CE7BA72B1E92FAE100F1F406 /* Names */ = {
+			isa = PBXGroup;
+			children = (
+				CE7BA72C1E92FB0B00F1F406 /* Consonant.hpp */,
+				CE7BA72D1E92FB0B00F1F406 /* Letter.hpp */,
+				CE7BA72E1E92FB0B00F1F406 /* MarkovGenerator.hpp */,
+				CE7BA72F1E92FB0B00F1F406 /* Vowel.hpp */,
+			);
+			name = Names;
+			sourceTree = "<group>";
+		};
+		CE7BA7301E92FB2000F1F406 /* Names */ = {
+			isa = PBXGroup;
+			children = (
+				CE7BA7311E92FBB700F1F406 /* MarkovGenerator.cpp */,
+			);
+			name = Names;
+			sourceTree = "<group>";
+		};
 		CEAD93771E86C9DB004D7D8C /* Biomes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,6 +1044,7 @@
 		CEDD0C101E00AA0A0078469C /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				CE7BA72B1E92FAE100F1F406 /* Names */,
 				CEAD93771E86C9DB004D7D8C /* Biomes */,
 				6209A34A1E802EB5002CA4CB /* WorldStreaming */,
 				CE5A22281E7316FA00235110 /* GameObject.hpp */,
@@ -1028,6 +1055,7 @@
 				6217EF3D1E78690C003EFAD0 /* ParticleEmitter.hpp */,
 				6217EF401E786A65003EFAD0 /* Particle.hpp */,
 				6217EF441E7877F5003EFAD0 /* ObjectSpawner.hpp */,
+				CED959BC1E906ECD0069C142 /* Stars.hpp */,
 				CE1A200D1E78C82600651BB4 /* Rain.hpp */,
 				6286AD691E7C371A00888483 /* Sun.hpp */,
 				CE720E371E7DBE260062D240 /* TreeSpawner.hpp */,
@@ -1573,6 +1601,7 @@
 		CEDD0DAB1E00AA0A0078469C /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				CE7BA7301E92FB2000F1F406 /* Names */,
 				6209A34D1E802FEE002CA4CB /* WorldStreaming */,
 				CE5A222C1E73421C00235110 /* EngineTest.cpp */,
 				CE5A22311E735A2500235110 /* Cursor.cpp */,
@@ -1764,6 +1793,7 @@
 				6279F4E51E8FD5340096E879 /* TextRenderer.cpp in Sources */,
 				CE36D7DB1E7B5CA300951A1A /* GeometryShader.cpp in Sources */,
 				CED405801E74925A001ED29B /* Options.cpp in Sources */,
+				CE7BA7321E92FBB700F1F406 /* MarkovGenerator.cpp in Sources */,
 				6217EF391E785AF0003EFAD0 /* Diorama.cpp in Sources */,
 				CEEF73921E6EC03E00B36E03 /* Material.cpp in Sources */,
 				CEC838261E6DAC240033CC10 /* PhysicsEngine.cpp in Sources */,

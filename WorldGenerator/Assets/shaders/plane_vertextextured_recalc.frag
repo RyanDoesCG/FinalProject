@@ -1,5 +1,6 @@
 #version 330 core
 
+flat in float f_alpha;
 in vec4 worldPos;
 in vec3 norm;
 
@@ -8,8 +9,13 @@ uniform vec4 colour;
 uniform vec3 viewPosition;
 uniform vec3 lightPosition;
 uniform vec3 lightColour;
+uniform float renderDistance;
 
 out vec4 color;
+
+vec3 defaultNorm = vec3(0, 1, 0);
+
+float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)); }
 
 float rand(vec2 co){
     return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
@@ -36,5 +42,16 @@ void main (void) {
     
         // stacked result
     vec3 result = (ambient + diffuse + specular) * vec3(colour);
-    color = vec4(result, 1.0f);
+    
+    
+    vec4 col = vec4(result.rgb, f_alpha);
+    
+    /*
+    if (magnitude(viewPosition - vec3(worldPos.xyz)) > renderDistance) {
+        //col.a = col.a - (magnitude(viewPosition - vec3(worldPos.xyz)) - renderDistance) * 0.25;
+    }
+    */
+    
+    
+    color = vec4(col);
 }

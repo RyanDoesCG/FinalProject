@@ -9,13 +9,14 @@
 #ifndef Flag_hpp
 #define Flag_hpp
 
-#include "GameObject"
+#include "Random.hpp"
+#include "GameObject.hpp"
 
 class Flag {
     public:
         Flag () {
-            colour = vec4(fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), 1.0);
-            ID = 1 + (rand() % 14);
+            colour = glm::vec4(fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), 1.0);
+            ID = 1 + (rand() % 8);
         }
     
        ~Flag () {}

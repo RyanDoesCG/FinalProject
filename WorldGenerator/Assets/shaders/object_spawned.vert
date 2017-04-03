@@ -31,8 +31,8 @@ void main (void) {
     
     /** COMPUTE ALTITUDE */
     vec4 objectWorldPos = model * vec4(0.0, 0.0, 0.0, 1.0);
-    float height = -116.5 + abs((texture(tex, vec2(objectWorldPos.x / 20, -1 * (objectWorldPos.z / 20))).r) * (amp * 424));
-    if (height < -90) { height = -10000; }
+    float height = -121 + abs((texture(tex, vec2(objectWorldPos.x / 20, -1 * (objectWorldPos.z / 20))).r) * (amp * 248));
+    if (height < -100) { height = -10000; }
     
     /** PROCEDURAL VARIATION */
     

@@ -11,22 +11,30 @@
 #include "QuadGeometry.hpp"
 
 dioramaHUD::dioramaHUD  (GraphicsEngine* graph, PhysicsEngine* phys, Diorama* d):
-    flag           (new QuadGeometry(), new Material(ShaderCache::loadBasicShader("object_textured"))),
     GameHUD        (graph, phys),
-    renderDistance (graph, phys),
     amplitude      (graph, phys),
-    seaLevel       (graph, phys),
-    example3       (graph, phys) {
+    heightMap      (graph, phys) {
+    
+    flag = new GraphicsObject (
+        new QuadGeometry(),
+        new Material(ShaderCache::loadBasicShader("flag"), std::string("flags/background_" + std::to_string(flagData.getID()) + ".png"))
+    );
+    
+    name = MarkovGenerator::generate(2 + (rand() % 6));
     
     //amplitude.scaleTo(glm::vec3(1, 1, 1));
-    renderDistance.moveTo(glm::vec3(-2, 0.75, 0.1));
-    amplitude.moveTo(glm::vec3(-2, 0.25, 0.1));
-    seaLevel.moveTo(glm::vec3(-2, -0.25, 0.1));
-    example3.moveTo(glm::vec3(-2, -0.75, 0.1));
-    
+    amplitude.moveTo(glm::vec3(-2.075, 0.25, 0));
+    heightMap.scaleTo(glm::vec3(1.25, 0.25, 1.0));
+    heightMap.moveTo(glm::vec3(-2.075, 0.6, 0));
    // graph->add(flag);
     diorama = d;
-        
+    
+    flag->scale = glm::vec3(1, 0.5, 0.25);
+    flag->position = glm::vec3(-2, 1.2, 0.1);
+    flag->colour = flagData.getColour();
+    
+    graph->addToUI(flag);
+    
     engine = graph;
 }
 
@@ -41,17 +49,14 @@ void dioramaHUD::hide () {
         box->isHidden = true;
     });
     
-    renderDistance.deactivatePhysics();
-    renderDistance.isHidden = true;
-    
     amplitude.deactivatePhysics();
     amplitude.isHidden = true;
     
-    seaLevel.deactivatePhysics();
-    seaLevel.isHidden = true;
+    heightMap.deactivatePhysics();
+    heightMap.isHidden = true;
     
-    example3.deactivatePhysics();
-    example3.isHidden = true;
+    if (flag->colour.a > 0)
+        flag->colour.a -= 0.5;
     
 }
 
@@ -64,40 +69,38 @@ void dioramaHUD::show () {
         box->isHidden = false;
     });
     
-    renderDistance.activatePhysics();
-    renderDistance.isHidden = false;
-
     amplitude.activatePhysics();
     amplitude.isHidden = false;
     
-    seaLevel.activatePhysics();
-    seaLevel.isHidden = false;
-    
-    example3.activatePhysics();
-    example3.isHidden = false;
+    heightMap.activatePhysics();
+    heightMap.isHidden = false;
 
+    if (flag->colour.a < 1)
+        flag->colour.a += 0.5;
+    
 }
 
 void dioramaHUD::update (State state) {
     background.update(state);
     
     if (items.front()->isHidden == false ) {
-        engine->addToText("render distance",   glm::vec2(-668,  160), 0.24, glm::vec3(0.64, 0.64, 0.64));
-        engine->addToText("terrain amplitude", glm::vec2(-668,   10), 0.24, glm::vec3(0.64, 0.64, 0.64));
-        
-        engine->addToText("back", glm::vec2(-668,  -418), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        engine->addToText(name, glm::vec2(-672, 280), 0.24, glm::vec3(1.0, 1.0, 1.0));
+        engine->addToText("<   height map   >",   glm::vec2(-685,  180), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        engine->addToText("terrain amplitude", glm::vec2(-685,   10), 0.24, glm::vec3(0.64, 0.64, 0.64));
+        engine->addToText("back", glm::vec2(-672,  -414), 0.24, glm::vec3(0.64, 0.64, 0.64));
     }
     
     for (UIBox* box : items) {
         box->update(state);   
     }
     
-    renderDistance.update(state);
-    amplitude.update(state);
-    seaLevel.update(state);
-    example3.update(state);
+    if (heightMap.isClicked()) {
+        diorama->changeHeightMap();
+    }
     
-    diorama->setRenderDistance (renderDistance.getValue() * 1.53);
+    amplitude.update(state);
+    heightMap.update(state);
+    
     diorama->setAmplitude      (amplitude.getValue() * 0.05);
-    diorama->setSeaLevel       (seaLevel.getValue() * 0.25);
+    //diorama->setSeaLevel       (seaLevel.getValue() * 0.25);
 }

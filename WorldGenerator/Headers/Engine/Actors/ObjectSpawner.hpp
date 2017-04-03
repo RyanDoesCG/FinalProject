@@ -24,9 +24,13 @@ class ObjectSpawner: public GameObject {
     
         int getID () { return sprite->getID(); }
     
+        void shouldDraw(bool b) { sprite->shouldDraw(b);}
+    
         void addUniform1f (std::string name, GLfloat value) {
             sprite->addUniform1f(name, value);
         }
+    
+        void setHeightMap (GLuint id) { sprite->material->setTexture(id); }
     
     protected:
         FlyweightGraphicsObject* sprite;

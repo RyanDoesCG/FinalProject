@@ -28,7 +28,7 @@ public:
     int getMinTreeCount     () override { return minTreeCount; }
     
     glm::vec4 getRockColour () override { return treeColour; }
-    std::string getRockPath () override { return tree; }
+    std::string getRockPath () override { return rock; }
     int getMaxRockCount     () override { return maxTreeCount; }
     int getMinRockCount     () override { return minTreeCount; }
     

@@ -15,6 +15,10 @@ GraphicsEngine::GraphicsEngine (float width, float height) {
     frameCamera->update(NONE);
     windowWidth = width;
     windowHeight = height;
+
+    /* std::sort(scene.begin(), scene.end(),
+
+     ); */
     
     sceneCamera->position = glm::vec3(0);
 
@@ -34,6 +38,7 @@ void GraphicsEngine::setEffect (Effect e) {
                           new Material (new BasicShader("object_textured"), colourAttachment)
         );
         frame->scale = glm::vec3(5.85, 3.25, 1.0);
+        frame->shouldDraw(true);
         currentEffect = e;
     }
 }
@@ -96,12 +101,6 @@ void GraphicsEngine::buildShadowDepthBuffer () {
 }
 
 void GraphicsEngine::prerender(State s) {
-    std::sort(scene.begin(), scene.end(),
-        [] (GraphicsObject* a, GraphicsObject* b) -> bool {
-            return a->position.z < b->position.z;
-        }
-    );
-    
     sceneCamera->update(s);
     //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -151,43 +150,60 @@ void GraphicsEngine::render(State s) {
     renderText  ();
 }
 
-void GraphicsEngine::add      (GraphicsObject *object) { object->setID(scene.size()); scene.push_back(object); }
-void GraphicsEngine::addLight (GraphicsObject *object) { object->setID(lights.size()); lights.push_back(object); for (GraphicsObject* o : scene) o->setLightSource(object); }
-void GraphicsEngine::addToUI  (GraphicsObject *object) { object->setID(ui.size()); ui.push_back(object); }
+void GraphicsEngine::add      (GraphicsObject *object) {
+    object->setID(scene.size());
+    object->shouldDraw(true);
+    scene.insert(std::pair<GraphicsObject*, int>(object, scene.size()));
+}
+
+void GraphicsEngine::addLight (GraphicsObject *object) {
+    object->setID(lights.size());
+    object->shouldDraw(true);
+    lights.insert(std::pair<GraphicsObject*, int>(object, scene.size()));
+    for (std::pair<GraphicsObject*, int> o : scene)
+        o.first->setLightSource(object);
+}
+
+void GraphicsEngine::addToUI  (GraphicsObject *object) {
+    object->setID(ui.size());
+    object->shouldDraw(true);
+    ui.insert(std::pair<GraphicsObject*, int>(object, scene.size()));
+}
+
 void GraphicsEngine::addToText (std::string txt, glm::vec2 pos, float scl, glm::vec3 col) {
     textInterface->addToQueue(txt, pos, scl, col);
 }
 
 void GraphicsEngine::remove       (int ID) {
-    for (int i = 0; i < scene.size(); i++)
-        if (scene.at(i)->getID() == ID)
-            scene.erase(scene.begin() + i);
-    
-    for (int i = 0; i < scene.size(); i++)
-        scene.at(i)->setID(i);
+    for (std::pair<GraphicsObject*, int> o : scene)
+        if (o.second == ID) o.first->shouldDraw(false);
 }
 
 void GraphicsEngine::removeLight  (int ID) {
-    for (int i = 0; i < lights.size(); i++)
-        if (lights.at(i)->getID() == ID)
-            lights.erase(lights.begin() + i);
-    
-    for (int i = 0; i < lights.size(); i++)
-        lights.at(i)->setID(i);
+    for (std::pair<GraphicsObject*, int> o : lights )
+        if (o.second == ID) o.first->shouldDraw(false);
 }
 
 void GraphicsEngine::removeFromUI (int ID) {
-    for (int i = 0; i < ui.size(); i++)
-        if (ui.at(i)->getID() == ID)
-            ui.erase(ui.begin() + i);
-    
-    for (int i = 0; i < ui.size(); i++)
-        ui.at(i)->setID(i);
+    for (std::pair<GraphicsObject*, int> o : ui )
+        if (o.second == ID) o.first->shouldDraw(false);
 }
 
-void GraphicsEngine::renderScene () { for (GraphicsObject* object : scene) object->draw(sceneCamera); for (GraphicsObject* light : lights) light->draw(sceneCamera); }
-void GraphicsEngine::renderUI    () { for (GraphicsObject* object : ui)    object->draw(frameCamera); }
-void GraphicsEngine::renderText  () { textInterface->render(); }
+void GraphicsEngine::renderScene () {
+    for (std::pair<GraphicsObject*, int> object : scene)
+        object.first->draw(sceneCamera);
+    
+    for (std::pair<GraphicsObject*, int> light : lights)
+        light.first->draw(sceneCamera);
+
+}
+void GraphicsEngine::renderUI    () {
+    for (std::pair<GraphicsObject*, int> object : ui)
+        object.first->draw(frameCamera);
+}
+void GraphicsEngine::renderText  () {
+    textInterface->render();
+}
 
 Camera* GraphicsEngine::getSceneCamera() {
     return sceneCamera;

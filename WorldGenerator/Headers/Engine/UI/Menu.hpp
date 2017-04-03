@@ -27,7 +27,6 @@ class Menu: public GameObject {
 
         UIBox dioramas;
         UIBox planets;
-        UIBox options;
         UIBox quit;
     
     public:

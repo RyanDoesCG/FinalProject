@@ -21,7 +21,7 @@ Cursor::Cursor(GraphicsEngine* g, PhysicsEngine* p) {
     g->addToUI(quad);
     p->addTo2D(collider);
     
-    quad->position = glm::vec3(0, 0, 0.2);
+    quad->position = glm::vec3(0, 0, 0);
     quad->colour   = glm::vec4(0.81, 0.81, 0.81, 1);
     quad->scale    = glm::vec3(0.05, 0.05, 0.05);
     
@@ -52,7 +52,7 @@ void Cursor::update(State state) {
     lastXoffset = mouse->getXoffset();
     lastYoffset = mouse->getYoffset();
     
-    std::cout << collider->colliding << std::endl;
+   // std::cout << collider->colliding << std::endl;
     
     if (collider->colliding) quad->colour = glm::vec4(1.0, 0.81, 0.81, 1);
     else quad->colour = glm::vec4(0.81, 0.81, 0.81, 1);

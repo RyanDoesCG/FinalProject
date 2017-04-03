@@ -26,6 +26,9 @@ class ParticleEmitter: public GameObject {
     
         virtual void update (State state) override;
     
+    
+        void shouldDraw(bool b) { sprite->shouldDraw(b);}
+    
     protected:
         std::vector<Particle> particles;
         GLfloat numParticles;

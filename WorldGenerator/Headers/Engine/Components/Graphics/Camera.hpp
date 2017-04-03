@@ -54,6 +54,8 @@ class Camera {
         Keyboard* keys;
         Mouse* mouse;
     
+        bool moving;
+    
         GLfloat aspectRatio;
     
         struct MovementTarget {

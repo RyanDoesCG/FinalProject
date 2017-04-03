@@ -19,7 +19,7 @@
 #include "TreeSpawner.hpp"
 #include "RockSpawner.hpp"
 #include "HeightMap.hpp"
-
+#include "Forrest.hpp"
 #include "Desert.hpp"
 #include "Alien.hpp"
 
@@ -36,17 +36,20 @@ class Diorama: public GameObject {
         void setRenderDistance (GLfloat val);
         void setAmplitude      (GLfloat val);
         void setSeaLevel       (GLfloat val);
+        void changeHeightMap   ();
     
     private:
         void updateUniforms ();
     
-        Biome* biome = new Desert ();
+        Biome* biome = new Forrest ();
     
         GraphicsEngine* graphEng;
     
         GraphicsObject* terrain;
         GraphicsObject* water;
         GraphicsObject* base;
+    
+        ParticleEmitter* stars;
     
         TreeSpawner* trees;
         RockSpawner* rocks;
@@ -56,6 +59,7 @@ class Diorama: public GameObject {
         HeightMap* heightmap;
     
         Mouse* mouse;
+        Keyboard* keys;
     
         glm::vec3 velocity;
     
