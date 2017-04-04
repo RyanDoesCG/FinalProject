@@ -31,7 +31,8 @@ planetHUD::planetHUD  (GraphicsEngine* graph, PhysicsEngine* phys, Planet* p):
         heightMap.moveTo(glm::vec3(-2.075, 0, 0));
         
         amplitude.moveTo(glm::vec3(-2.075, -0.6, 0));
-        // graph->add(flag);
+        
+        
         planet = p;
             
         flag->scale = glm::vec3(1, 0.5, 0.25);

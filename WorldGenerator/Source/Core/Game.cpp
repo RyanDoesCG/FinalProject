@@ -73,8 +73,8 @@ void Game::boot () {
    // ChunkLoader loader = ChunkLoader(&graphics, &physics);
    // objects.push_back(&loader);
     
-    showDiorama ();
-    //showPlanet();
+   // showDiorama ();
+     showPlanet();
    // EngineTest cube = EngineTest(&graphics, &physics);
    // objects.push_back(&cube);
     

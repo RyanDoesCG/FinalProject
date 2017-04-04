@@ -17,6 +17,7 @@
 #include "InputManager.hpp"
 #include "HeightMap.hpp"
 #include "Stars.hpp"
+#include "Biome.hpp"
 
 class Planet: public GameObject {
     public:
@@ -40,19 +41,24 @@ class Planet: public GameObject {
     
         ParticleEmitter* stars;
     
+        void pickBiome();
+        Biome* biome;
+    
         Mouse* mouse;
         Keyboard* keys;
     
         glm::vec3 velocity;
     
+        GLfloat resty;
         GLfloat restx;
     
         HeightMap* heightmap;
     
-        GLfloat maxScale = 20;
-        GLfloat minScale = 9;
+        GLfloat maxScale = 10;
+        GLfloat minScale = 4.5;
     
         GLfloat amp;
+        GLfloat mode;
 };
 
 #endif /* Planet_hpp */

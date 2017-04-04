@@ -51,4 +51,6 @@ RockSpawner::RockSpawner ( GraphicsEngine* graph, std::string path, HeightMap* m
     graph->add(sprite);
 }
 
-RockSpawner::~RockSpawner () {}
+RockSpawner::~RockSpawner () {
+    sprite->shouldDraw(false);
+}

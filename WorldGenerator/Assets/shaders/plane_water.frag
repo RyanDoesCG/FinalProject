@@ -2,7 +2,7 @@
 #version 330 core
 
 in vec4 worldPos;
-flat in vec4 finalColour;
+in vec4 finalColour;
 in vec3 norm;
 
 uniform vec4 colour;

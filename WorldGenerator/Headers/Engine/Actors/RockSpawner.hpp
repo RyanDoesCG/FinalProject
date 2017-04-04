@@ -23,6 +23,10 @@ class RockSpawner: public ObjectSpawner {
         );
     
        ~RockSpawner ();
+    
+    private:
+    
+        GraphicsEngine* engine;
 };
 
 #endif /* RockSpawner_hpp */

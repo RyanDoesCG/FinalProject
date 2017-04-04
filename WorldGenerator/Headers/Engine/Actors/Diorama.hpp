@@ -19,9 +19,7 @@
 #include "TreeSpawner.hpp"
 #include "RockSpawner.hpp"
 #include "HeightMap.hpp"
-#include "Forrest.hpp"
-#include "Desert.hpp"
-#include "Alien.hpp"
+#include "Biome.hpp"
 
 class Diorama: public GameObject {
     public:
@@ -40,8 +38,9 @@ class Diorama: public GameObject {
     
     private:
         void updateUniforms ();
+        void pickBiome ();
     
-        Biome* biome = new Forrest ();
+        Biome* biome;
     
         GraphicsEngine* graphEng;
     

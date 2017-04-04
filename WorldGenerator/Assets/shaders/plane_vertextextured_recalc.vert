@@ -31,7 +31,7 @@ void main (void) {
     
     alpha = 1;
     
-        vec4 worldPos = model * vec4(position.x, (position.y + lift), position.z, 1.0f);
+    vec4 worldPos = model * vec4(position.x, (position.y + lift), position.z, 1.0f);
     if (magnitude(viewPosition - vec3(worldPos.xyz)) > renderDistance) {
         alpha -= (magnitude(viewPosition - vec3(worldPos.xyz)) - renderDistance) * 0.5;
     }

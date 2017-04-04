@@ -14,7 +14,7 @@ uniform vec3 viewPosition;
 const float PI = 3.141592653589;
 const float AMPLITUDE = 0.00060;
 
-flat out vec4 vertexColour;
+out vec4 vertexColour;
 
 /**
  *  CREDIT: https://www.youtube.com/watch?v=r2hue52wLF4

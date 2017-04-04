@@ -27,7 +27,7 @@ class Desert : public Biome {
         int getMaxTreeCount     () override { return maxTreeCount; }
         int getMinTreeCount     () override { return minTreeCount; }
     
-        glm::vec4 getRockColour () override { return treeColour; }
+        glm::vec4 getRockColour () override { return rockColour; }
         std::string getRockPath () override { return rock; }
         int getMaxRockCount     () override { return maxTreeCount; }
         int getMinRockCount     () override { return minTreeCount; }
@@ -39,12 +39,12 @@ class Desert : public Biome {
         const vec4 underwaterColour = vec4(0.670, 0.686, 0.631, 0.25);
         const vec4 mountainColour   = getSecondaryColour();
     
-        const vec4 treeColour  = glm::vec4(0);
+        const vec4 treeColour  = glm::vec4(0.749, 0.764, 0.670, 1.0);
         const std::string tree = "Desert/tree";
         const int maxTreeCount = 0;
         const int minTreeCount = 0;
     
-        const vec4 rockColour  = glm::vec4(0);
+        const vec4 rockColour  = glm::vec4(0.64, 0.64, 0.64, 1.0);
         const std::string rock = "Desert/rock";
         const int maxRockCount = 0;
         const int minRockCount = 0;

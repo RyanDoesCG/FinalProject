@@ -19,13 +19,31 @@ uniform float seaLevel;
 uniform float smoothing;
 uniform float amp;
 
+uniform float mode;
+
 flat out float alpha;
 
 float magnitude (vec3 v) { return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)); }
 float rand      (vec2 c) { return fract(sin(dot(c.xy ,vec2(12.9898,78.233))) * 43758.5453); }
 
 void main (void) {
-    float lift = 1 + (0.5 * abs((texture(tex, uv).r) * (amp * 2.32)));
+    float lift = 0.865;// + (0.5 * abs((texture(tex, uv).r) * amp));
+    
+    if (mode == 0.0) {
+         lift += ((cos(rand(vec2(position.y * 100 * amp, position.z * 24753)))) * (amp * 2.5));
+    }
+    
+    if (mode == 1.0) {
+        lift += ((sqrt(rand(vec2(position.y * 100 * amp, position.z * 24753)))) * (amp * 2.5));
+    }
+    
+    if (mode == 2.0) {
+        lift += ((acos(rand(vec2(position.y * 100 * amp, position.z * 24753)))) * (amp * 2.5));
+    }
+    
+    if (mode == 3.0) {
+         lift += ((tan(rand(vec2(position.y * 100 * amp, position.z * 24753)))) * (amp * 2.5));
+    }
     
     vec3 a = vec3(0, 0, 0);
     vec3 b = position;

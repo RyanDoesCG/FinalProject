@@ -141,6 +141,11 @@ void GraphicsEngine::renderShadows () {
     renderScene   ();
 }
 
+void GraphicsEngine::renderMouse() {
+    for (std::pair<GraphicsObject*, int> object : ui)
+        if (object.first->isCursor) object.first->draw(frameCamera);
+}
+
 void GraphicsEngine::render(State s) {
     prerender   (s);
     offScreen   ();
@@ -148,6 +153,7 @@ void GraphicsEngine::render(State s) {
     onScreen    ();
     renderUI    ();
     renderText  ();
+    renderMouse ();
 }
 
 void GraphicsEngine::add      (GraphicsObject *object) {

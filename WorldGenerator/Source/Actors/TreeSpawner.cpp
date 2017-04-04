@@ -42,4 +42,6 @@ TreeSpawner::TreeSpawner ( GraphicsEngine* graph, std::string path, HeightMap* m
         graph->add(sprite);
 }
 
-TreeSpawner::~TreeSpawner () {}
+TreeSpawner::~TreeSpawner () {
+    sprite->shouldDraw(false);
+}

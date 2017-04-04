@@ -32,6 +32,7 @@ class dioramaHUD: public GameHUD {
         Flag            flagData;
         std::string     name;
         GraphicsObject* flag;
+        UIBox           metaData;
         UIBox           heightMap;
         UISlider        amplitude;
 

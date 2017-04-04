@@ -14,10 +14,12 @@ float rand(vec2 co){
 }
 
 void main (void) {
-    if (vec4(texture(tex, frag_uv).rgb, frag_colour.a) ==
-        vec4(0.0, 0.0, 0.0, frag_colour.a)) {
-        color = colour * vec4(rand(vec2(colour.r, colour.g)) * 10, rand(vec2(colour.r, colour.g)) * 10, rand(vec2(colour.r, colour.g)) * 10, frag_colour.a);
+    if (vec3(texture(tex, frag_uv).rgb) ==
+        vec3(0.0, 0.0, 0.0)) {
+        color = colour * vec4(rand(vec2(colour.r, colour.g)) * 10, rand(vec2(colour.r, colour.g)) * 10, rand(vec2(colour.r, colour.g)) * 10, colour.a);
     } else {
-        color = colour * vec4(texture(tex, frag_uv).rgb, frag_colour.a);
+        color = colour * vec4(texture(tex, frag_uv).rgb, colour.a);
     }
+    
+    color.a = colour.a;
 }

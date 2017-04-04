@@ -27,6 +27,8 @@ class GraphicsObject {
         void setID (int x) { id = x; }
         const int getID () const { return id; }
     
+        bool isCursor = false;
+    
         void addUniform1f (std::string title, GLfloat value) { uniforms.push_back(uniform1f(title, value)); }
         
         virtual void draw (Camera* cam) {
@@ -71,6 +73,8 @@ class GraphicsObject {
                 model = glm::scale  (model, scale);
                 glUniformMatrix4fv(glGetUniformLocation(material->getProgramID(), "model"), 1, GL_FALSE, glm::value_ptr(model));
                 
+                if (nocull) glDisable(GL_CULL_FACE);
+                
                 // EXTERNAL WIREFRAME
                 if (geometry->wireframe) {
                     // upload colour to shader
@@ -88,7 +92,7 @@ class GraphicsObject {
                 } else {
                     geometry->render();
                 }
-                
+
                 model = glm::mat4();   
             }
         }
@@ -96,6 +100,8 @@ class GraphicsObject {
         void wireframe  (bool b) { geometry->wireframe = b; }
         void pointcloud (bool b) { geometry->pointcloud = b; }
         virtual void shouldDraw (bool b) { drawable = b; }
+        virtual void shouldntCull (bool b) { nocull = b; }
+    
     
         Geometry* geometry;
         Material* material;
@@ -116,6 +122,7 @@ class GraphicsObject {
     private:
         std::vector<uniform1f> uniforms;
         bool drawable = false;
+        bool nocull   = false;
         int id;
 };
 

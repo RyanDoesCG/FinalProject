@@ -3,10 +3,10 @@
 layout (triangles) in;
 layout (triangle_strip, max_vertices = 3) out;
 
-flat in vec4 vertexColour[];
+in vec4 vertexColour[];
 
 out vec4 worldPos;
-flat out vec4 finalColour;
+out vec4 finalColour;
 out vec3 norm;
 
 uniform mat4 projection;

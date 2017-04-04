@@ -52,6 +52,7 @@ class GraphicsEngine {
         void onScreen        ();
         void renderUI        ();
         void renderText      ();
+        void renderMouse     ();
     
         struct depthTest {
             bool operator()(const GraphicsObject* a, const GraphicsObject* b) const {

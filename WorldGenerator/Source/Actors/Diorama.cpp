@@ -14,11 +14,46 @@
 #include "Stars.hpp"
 #include "ShaderCache.hpp"
 
+// BIOMES
+#include "Forrest.hpp" // Done
+#include "Desert.hpp"  // Done
+#include "Alien.hpp"   // Done
+#include "Volcanic.hpp"// Done
+#include "Arctic.hpp"  // Done
+
+void Diorama::pickBiome() {
+    switch (rand() % 5) {
+        case 0: biome = new Forrest(); break;
+        case 1: biome = new Desert(); break;
+        case 2: biome = new Volcanic(); break;
+        case 3: biome = new Alien(); break;
+        case 4: biome = new Arctic(); break;
+    }
+    
+    terrain->colour   = biome->getPrimaryColour();
+    water->colour   = biome->getUnderwaterColour();
+    
+    delete rocks;
+    delete trees;
+    
+    trees = new TreeSpawner (graphEng, biome->getTreePath(), heightmap, biome->getTreeColour(), glm::vec3(0.02), 100);
+    rocks = new RockSpawner (graphEng, biome->getRockPath(), heightmap, biome->getRockColour(), glm::vec3(0.02), 100);
+    
+    
+}
+
 Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     //heightmap = new HeightMap( "noise_generation/output_" + std::to_string(rand() % 99) + ".jpg" );
     //heightmap = new HeightMap( "noise/layerTest.jpg");
-    heightmap = new HeightMap("heightMapMakerPro/" + std::to_string(rand() % 100) + ".jpg");
+    heightmap = new HeightMap("planeMaps/" + std::to_string(rand() % 100) + ".jpg");
 
+    switch (rand() % 5) {
+        case 0: biome = new Forrest(); break;
+        case 1: biome = new Desert(); break;
+        case 2: biome = new Volcanic(); break;
+        case 3: biome = new Alien(); break;
+        case 4: biome = new Arctic(); break;
+    }
 
     terrain = new GraphicsObject (
         new ModelGeometry ("plane/plane512"),
@@ -44,23 +79,17 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     
     // Scale Fucks Placement
     // Geometry Shader???????????
-    trees = new TreeSpawner (g, biome->getTreePath(), heightmap, glm::vec4(0.05, 0.5, 0.05, 1.0), glm::vec3(0.02), 100);
-    rocks = new RockSpawner (g, biome->getRockPath(), heightmap, glm::vec4(0.21, 0.21, 0.21, 1.0), glm::vec3(0.02), 100);
+    trees = new TreeSpawner (g, biome->getTreePath(), heightmap, biome->getTreeColour(), glm::vec3(0.02), 100);
+    rocks = new RockSpawner (g, biome->getRockPath(), heightmap, biome->getRockColour(), glm::vec3(0.02), 100);
     
-    terrain->colour   = biome->getPrimaryColour();
     terrain->position = glm::vec3(10, -2, 10);
     terrain->scale    = glm::vec3(10, 10, 10);
     terrain->wireframe(false);
     
-    water->colour   = biome->getUnderwaterColour();
     //water->colour   = glm::vec4(1.0, 0.7, 0.7, 0.25);
     water->position = glm::vec3(10, -2, 10);
     water->scale    = glm::vec3(30, 10, 30);
     water->wireframe(false);
-    
-    base->colour = glm::vec4(0.0, 0.0, 0.0, 1.0);
-    base->position = glm::vec3(10, -2.5, 10);
-    base->scale   = glm::vec3(20, 2, 20);
     
     graphEng = g;
     
@@ -78,7 +107,10 @@ Diorama::Diorama (GraphicsEngine* g, PhysicsEngine* p) {
     seaLevel = 0;
     amp = 0.25;
     
+    
+    pickBiome();
     updateUniforms();
+
 }
 
 Diorama::~Diorama () {
@@ -102,10 +134,11 @@ void Diorama::setSeaLevel(GLfloat val) {
 }
 
 void Diorama::changeHeightMap() {
-    heightmap = new HeightMap("heightMapMakerPro/" + std::to_string(rand() % 100) + ".jpg");
+    heightmap = new HeightMap("planeMaps/" + std::to_string(rand() % 100) + ".jpg");
     terrain->material->setTexture(heightmap->getID());
     rocks->setHeightMap(heightmap->getID());
     trees->setHeightMap(heightmap->getID());
+    pickBiome();
 }
 
 void Diorama::updateUniforms() {
@@ -134,6 +167,7 @@ void Diorama::removeFromWorld () {
     terrain->shouldDraw(false);
     water->shouldDraw(false);
     stars->shouldDraw(false);
+    
     trees->shouldDraw(false);
     rocks->shouldDraw(false);
 }

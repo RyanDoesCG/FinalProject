@@ -7,6 +7,7 @@
 //
 
 #include "Camera.hpp"
+#include <iostream>
 
 Camera::Camera(GLfloat aspect) {
     movementSpeed = 0.004f;
@@ -52,7 +53,7 @@ void Camera::update (State s) {
             position = glm::vec3(10, -1, 10);
             
             yaw = -90;
-            
+
             relativeFront =  glm::normalize(glm::vec3(
                 cos (glm::radians(yaw) * cos (glm::radians(pitch))),    // x
                 sin (glm::radians(pitch)),                              // y
@@ -77,9 +78,9 @@ void Camera::update (State s) {
                 if (keys->isKeyDown(GLFW_KEY_S)) { position -= glm::normalize(relativeFront) * glm::vec3(speed); }
                 if (keys->isKeyDown(GLFW_KEY_D)) { position += glm::normalize(relativeRight) * glm::vec3(speed); }
                 
-                if (keys->isKeyDown(GLFW_KEY_UP)) {  }
+                if (keys->isKeyDown(GLFW_KEY_UP)) { position.y += speed * 24; }
                 if (keys->isKeyDown(GLFW_KEY_LEFT)) { yaw -= speed * 24; }
-                if (keys->isKeyDown(GLFW_KEY_DOWN)) {  }
+                if (keys->isKeyDown(GLFW_KEY_DOWN)) { position -= speed * 24; }
                 if (keys->isKeyDown(GLFW_KEY_RIGHT)) { yaw += speed * 24; }
                 
                 if (keys->isKeyDown(GLFW_KEY_SPACE)) { moving = !moving; keys->keyHandled(GLFW_KEY_SPACE); }

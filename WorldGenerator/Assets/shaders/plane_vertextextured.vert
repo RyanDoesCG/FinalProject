@@ -66,12 +66,12 @@ void main (void) {
     else if (num > 0.3 && num < 0.6) { frag_colour = vec4(frag_colour.rgb * 1.00, frag_colour.a); }
     else                             { frag_colour = vec4(frag_colour.rgb * 1.05, frag_colour.a); }
     */
-    
+    /*
     vec4 worldPosition = model * vec4(position.x, position.y + lift, position.z, 1.0);
     if (magnitude(viewPosition - vec3(worldPosition.xyz)) > renderDistance) {
         frag_colour.a = frag_colour.a - (magnitude(viewPosition - vec3(worldPosition.xyz)) - renderDistance) * 0.25;
     }
-    
+    */
     frag_normal = normal;
     frag_uv     = uv;
 }

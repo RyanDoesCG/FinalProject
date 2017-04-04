@@ -33,18 +33,18 @@ public:
     int getMinRockCount     () override { return minTreeCount; }
     
 private:
-    const vec4 primaryColour    = vec4(0.874, 0.815, 0.705, 1.0); // WRONG
+    const vec4 primaryColour    = vec4(1.0, 1.0, 1.0, 1.0); // WRONG
     const vec4 secondaryColour  = vec4(0.937, 0.776, 0.576, 1.0); // WRONG
     const vec4 thirdaryColour   = vec4(0.827, 0.576, 0.274, 1.0); // wRONG
-    const vec4 underwaterColour = vec4(0.670, 0.686, 0.631, 0.25); // WRONG
+    const vec4 underwaterColour = vec4(0.694, 0.866, 0.945, 0.25);
     const vec4 mountainColour   = getSecondaryColour();
 
-    const vec4 treeColour  = glm::vec4(0);
+    const vec4 treeColour  = glm::vec4(0.9, 1.0, 0.9, 1.0);
     const std::string tree = "Arctic/tree";
     const int maxTreeCount = 0;
     const int minTreeCount = 0;
     
-    const vec4 rockColour  = glm::vec4(0);
+    const vec4 rockColour  = glm::vec4(0.8, 0.8, 0.8, 1.0);
     const std::string rock = "Arctic/rock";
     const int maxRockCount = 0;
     const int minRockCount = 0;

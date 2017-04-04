@@ -35,13 +35,13 @@ public:
     
 private:
 
-    const vec4 treeColour  = glm::vec4(0);
-    const std::string tree = "Alien/tree";
+    const vec4 treeColour  = vec4(fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), 1.0);
+    const std::string tree = "Alien/tree" + std::to_string(rand() % 3);
     const int maxTreeCount = 0;
     const int minTreeCount = 0;
     
-    const vec4 rockColour  = glm::vec4(0);
-    const std::string rock = "Alien/rock";
+    const vec4 rockColour  = vec4(fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), fmod(unsignedRand(), unsignedRand()), 1.0);
+    const std::string rock = "Alien/rock" + std::to_string(rand() % 2);
     const int maxRockCount = 0;
     const int minRockCount = 0;
 };

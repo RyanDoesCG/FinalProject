@@ -29,6 +29,8 @@ Cursor::Cursor(GraphicsEngine* g, PhysicsEngine* p) {
     
     mouse = InputManager::getMouseHandle();
     mouse->hide();
+    
+    quad->isCursor = true;
 }
 
 Cursor::~Cursor() {
